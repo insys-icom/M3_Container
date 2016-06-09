@@ -1,13 +1,24 @@
-!working/.keep
-working/*
-!images/.keep
-images/*
-!closed_packages/.keep
+# ignore complete directories
 closed_packages/*
-!oss_packages/src/.keep
+!closed_packages/.keep
+
+images/*
+!images/.keep
+
 oss_packages/*
-oss_packages/dl/*
-scripts/keys/*
+!oss_packages/src/.keep
+!oss_packages/dl/.keep
+
+scripts/*
+!scripts/keys/.keep
+!scripts/rootfs_lists/.keep
+
 rootfs_staging/*
+
+working/*
+!working/.keep
+
+
+# ignore single files
 rootfs_skeleton/usr/share/build
 scripts/cgi-bin/gitweb.conf
