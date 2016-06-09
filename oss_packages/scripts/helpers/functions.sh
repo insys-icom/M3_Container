@@ -1,8 +1,4 @@
-#! /bin/sh
-
-[ -n "${FUNCTIONS_INCLUDED}" ] && return
-
-FUNCTIONS_INCLUDED=1
+#!/bin/sh
 
 # download the sources with wget, if the file is not already stored
 download()
@@ -21,6 +17,7 @@ download()
 
     wget "${PKG_DOWNLOAD}" -O "${PKG_ARCHIVE}"
     if ! [ "$?" == "0" ] ; then
+        mkdir -p "${DOWNLOADS_DIR}"
         echo "Failed to download ${PKG_DOWNLOAD}"
     fi
 }

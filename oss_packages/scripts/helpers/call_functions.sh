@@ -1,7 +1,8 @@
-#! /bin/sh
+#!/bin/sh
 
 # this is executed at the end of every build script
 
+# print the usage of a build script
 print_help()
 {
     echo "Possible actions are:"
