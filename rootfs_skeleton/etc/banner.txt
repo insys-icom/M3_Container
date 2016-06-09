@@ -1,0 +1,12 @@
+#######################################################
+#                                                     #
+#            Welcome to the container!                #
+#            -------------------------                #
+#                                                     #
+#    Please change the root password now:             #
+#        # passwd                                     #
+#                                                     #
+#    Read the introduction for the next steps:        #
+#        # cat readme.txt                             #
+#                                                     #
+#######################################################

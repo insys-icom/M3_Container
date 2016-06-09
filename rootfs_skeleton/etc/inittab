@@ -1,0 +1,3 @@
+::sysinit:/bin/start.sh
+::respawn:/bin/telnetd -l /bin/login
+#::respawn:/bin/getty 115200 ../devices/3_serial1
