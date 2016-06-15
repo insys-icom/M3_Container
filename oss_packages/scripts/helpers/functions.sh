@@ -19,6 +19,9 @@ download()
     if ! [ "$?" == "0" ] ; then
         mkdir -p "${DOWNLOADS_DIR}"
         echo "Failed to download ${PKG_DOWNLOAD}"
+        echo ""
+        echo "Check connection to internet or download and store the file manually as \"${PKG_ARCHIVE}\""
+        exit 1
     fi
 }
 

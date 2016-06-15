@@ -15,7 +15,7 @@ DESCRIPTION=""
 VERSION=""
 MD5SUM=""
 KEY=""
-FILESYSTEM_LIST="default_rootfs_list.txt"
+FILESYSTEM_LIST="default.txt"
 
 # print parameter list of this script
 usage()

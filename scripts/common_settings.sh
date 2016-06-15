@@ -26,6 +26,7 @@ export RANLIB="$(which ${M3_CROSS_COMPILE}gcc-ranlib)"
 M3_MAKEFLAGS="-j${CPU_THREADS}"
 
 OSS_PACKAGES_DIR="${TOPDIR}/oss_packages"
+OSS_PACKAGES_SCRIPTS="${OSS_PACKAGES_DIR}/scripts"
 DOWNLOADS_DIR="${OSS_PACKAGES_DIR}/dl"
 SOURCES_DIR="${OSS_PACKAGES_DIR}/src"
 CLOSED_PACKAGES_DIR="${TOPDIR}/closed_packages"
@@ -43,9 +44,5 @@ GCC_LIB_DIR="/usr/lib/gcc/armv7a-hardfloat-linux-gnueabi/5.3.0/"
 SYSROOT_DIR="/usr/armv7a-hardfloat-linux-gnueabi"
 
 OUTPUT_DIR="$(realpath "${TOPDIR}/images")"
-
-ROOTFS_KERNEL_VERSION="4.4"
-ROOTFS_KERNEL_VERSION_MINOR="4"
-ROOTFS_KERNEL_VERSION_FULL="${ROOTFS_KERNEL_VERSION}.${ROOTFS_KERNEL_VERSION_MINOR}"
 
 UPDATE_TAR="${BUILD_DIR}/update/update.tar"

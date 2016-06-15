@@ -29,8 +29,7 @@ modified files are stored here. These files replace the files of the original pr
 gets build.
 
 ./rootfs_skeleton
-> The base files of a containers rootfs are stored here. These files always get copied in a final
-container.
+> Files stored here are copied to the containers root file system when they are mentioned in a rootfs_list.txt file.
 
 ./rootfs_staging
 > Build scripts of Open Source or closed sourced projects should install the compiled files here in
@@ -43,9 +42,12 @@ their unstripped form, so other projects can link against them.
 > Here are public and private RSA keys used to optionally encrypt containers
 
 ./scripts/rootfs_lists
-> These lists contain which files are put into a container. They define the content of a root file
+> These lists contain which files from /rootfs_skeleton are copied into a container. They define the content of a root file
 system of a container
 
 ./working
 > The build scripts are working in this volatile directory. The Open Source packets are extracted,
 configured, maked and installed here. The wanted parts of the project are copied to rootfs_staging.
+
+./working/rootfs_target
+> This directory contains the rootfs of the container, that has finally been created and is used to package. This directory gets removed and created freshly when invoking "mk_container.sh" script.
