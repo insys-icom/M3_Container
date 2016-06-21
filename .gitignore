@@ -9,9 +9,8 @@ oss_packages/*
 !oss_packages/src/.keep
 !oss_packages/dl/.keep
 
-scripts/*
+scripts/keys/*
 !scripts/keys/.keep
-!scripts/rootfs_lists/.keep
 
 rootfs_staging/*
 !rootfs_staging/.keep
