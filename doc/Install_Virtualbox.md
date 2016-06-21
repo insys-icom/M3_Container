@@ -30,7 +30,7 @@ First steps within the SDK
 * Start the virtual machine with the VirtualBox GUI to get the console login. There are two users:  
     "root", passwort is "root"  
     "user", password is "user"
-* Test mounting the shared folder als normal "user":  
+* Test if the shared folder has already been mounted:  mounting the shared folder als normal "user":  
     `> mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src`
     This will mount the directory with the repository to the virtual machine directory /home/user/src
 * If mounting has been successful (check with command "df") and you want to automatically mount the shared folder after every start of the VM, use this command as root:  

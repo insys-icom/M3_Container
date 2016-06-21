@@ -5,8 +5,7 @@ closed_packages/*
 images/*
 !images/.keep
 
-oss_packages/*
-!oss_packages/src/.keep
+oss_packages/dl
 !oss_packages/dl/.keep
 
 scripts/keys/*
