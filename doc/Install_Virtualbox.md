@@ -20,9 +20,9 @@ Install the SDK
     * There is no immediate need to configure USB or serial interfaces.
     * Add a "shard folder": Select the directory of the cloned repository "M3_Container". Make sure that the checkbox "mount automatically" is checked and the the "read-only" checkbox is unchecked.
 * To allow usage of symlinks within the shared folder the VM config has to be modified by the command:  
-    `> VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1`
-    with "VM_NAME" as the VM name (most likely "M3_SDK")
-    with "SHARED" the name of the shared folder (most liklely "M3_Container")
+    `> VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1`  
+    with "VM_NAME" as the VM name (most likely "M3_SDK")  
+    with "SHARED" the name of the shared folder (most liklely "M3_Container")  
     Without this modification the VM is not allowed to follow symlinks. This could be a problem when compiling some projects.
 
 First steps within the SDK
@@ -31,21 +31,21 @@ First steps within the SDK
 1. "root", passwort is "root"
 2. "user", password is "user"
 
-* Test mounting the shared folder als normal "user":
+* Test mounting the shared folder als normal "user":  
     `> mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src`
     This will mount the directory with the repository to the virtual machine directory /home/user/src
-* If mounting has been successful (check with command "df") and you want to automatically mount the shared folder after every start of the VM, use this command as root:
-    `> su root`
-    `> echo "mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src" > /etc/local.d/mount_sf.start`
-    `> chmod 755 /etc/local.d/mount_sf.start`
-* Configure networking as root
-    `> /root/set_ip.sh 192.168.1.3/24`
-    Change the IP address and net size to fit your net which is connected to the internet. The script will store the net configuration permanently. A SSH server will be configured and started, too.
-    Enter a default gateway:
-    `> nano /etc/conf.d/net`
-    Add a line similar to this: `routes_eth0="default gw 192.168.1.1"`
-    Edit the DNS servers
-    `> echo "nameserver 192.168.1.1" > /etc/resolv.conf`
+* If mounting has been successful (check with command "df") and you want to automatically mount the shared folder after every start of the VM, use this command as root:  
+    `> su root`  
+    `> echo "mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src" > /etc/local.d/mount_sf.start`  
+    `> chmod 755 /etc/local.d/mount_sf.start`  
+* Configure networking as root  
+    `> /root/set_ip.sh 192.168.1.3/24`  
+    Change the IP address and net size to fit your net which is connected to the internet. The script will store the net configuration permanently. A SSH server will be configured and started, too.  
+    Enter a default gateway:  
+    `> nano /etc/conf.d/net`  
+    Add a line similar to this: `routes_eth0="default gw 192.168.1.1"`  
+    Edit the DNS servers  
+    `> echo "nameserver 192.168.1.1" > /etc/resolv.conf`  
 
 Usage of SDK
 ===================
