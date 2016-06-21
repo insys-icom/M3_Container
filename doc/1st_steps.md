@@ -2,9 +2,9 @@ The files within this repository help to create new binaries and containers.
 
 The plan is:
 
-1 Get build scripts
-2 Install a SDK
-3 Use both
+1. Get build scripts
+2. Install a SDK
+3. Use both
 
 
 To get most of the OpenSource projects compiled you need a cross compiler, a linker and some other tools. They are located within the SDK (Software Development Kit). These scripts can "configure", "make" and "make install" projects. The result can be packed to a container that can be uploaded onto a router.
@@ -29,4 +29,4 @@ A more detailed installation instruction can be found in ./doc/Install_Virtualbo
 
 3 Use both
 ----------
-The cross compiler in combination with the build scripts from this repo create new binaries and a new container
+The cross compiler in combination with the build scripts from this repo create new binaries and a new container.
