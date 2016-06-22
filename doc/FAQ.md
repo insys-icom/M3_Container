@@ -7,7 +7,7 @@ The routers firmware will check if /dev exists within the rootfs of the containe
 
 2 Can I develop containers on Windows?
 --------------------------------------
-Yes and no. Windows does not know things like symlinks. Thatfore a lot of the open source project will not cross compile. Packing a container also requires to be able to create symlinks.
+Most likely not. Windows file systems do not know basic stuff like symlinks or detailed file permissions. Thatfore a lot of the open source project will not cross compile. Packing a container also requires symlinks and the ability to set the read/write/execute bits. If you have nothing else apart from Windows, you will have to have all sources within the virtual machine.
 
 3 Can I use the already existing /media/sf_M3_Container in my VM?
 -----------------------------------------------------------------
@@ -26,6 +26,10 @@ Have a look at ./closed_source/hello_world. Use this as a template for your own 
 No, absolutely not. The SDK should be a reference. It should be most robust, light weight and flexible. It is not the most performant or comfortable way to cross compile. Alternatives:  
 - Use a native Gentoo Linux with its crossdev
 - Extend the content of the SDK (X11, window mangager, editor) to a full desktop machine and develop completely within the VM
-- Use any other ARMv7-hf toolchain (e.g. [http://www.acmesystems.it/arm0_toolchain](http://www.acmesystems.it/arm0_toolchain))
+- Use any other ARMv7-hf toolchain:
+    - [https://buildroot.org](https://buildroot.org)
+    - [http://crosstool-ng.org](http://crosstool-ng.org)
+    - [http://www.acmesystems.it/arm0_toolchain](http://www.acmesystems.it/arm9_toolchain)    
+    - [https://www.yoctoproject.org](https://www.yoctoproject.org/)
 - use LXC on your linux PC: startup the SDK from a external boot medium, pack all content, extract it to your host and add a lxc.conf file. Automount your M3_Container directory and compile without the overhead of a real virtual machine.
 
