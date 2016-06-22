@@ -1,15 +1,23 @@
 #! /bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="http://www.tcpdump.org/release/libpcap-1.7.4.tar.gz"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="b2e13142bbaba857ab1c6894aedaf547"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="libpcap-1.7.4"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="ncurses-5.9"
-PKG_ARCHIVE_FILE="ncurses-5.9.tar.gz"
-PKG_CHECKSUM="8cb9c412e5f2d96bc6f459aa8c6282a1"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
@@ -20,7 +28,8 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --disable-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop 
+    export CFLAGS="${M3_LDFLAGS}"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --without-libnl --enable-ipv6 --disable-bluetooth --disable-dbus --disable-usb --disable-canusb --disable-can --disable-protochain --with-pcap=linux --prefix=""
 }
 
 compile()

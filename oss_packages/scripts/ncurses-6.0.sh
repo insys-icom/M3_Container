@@ -1,16 +1,16 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://tukaani.org/xz/xz-5.2.2.tar.xz"
+PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="e26772b69940085c0632589ab1d52e64"
+PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.2.2"
+PKG_DIR="ncurses-6.0"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -27,9 +27,8 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize"
-    export LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-nls --enable-static --disable-lzmainfo --disable-lzmadec --disable-xzdec --disable-shared --disable-threads --enable-threads=no --enable-small --prefix=""
+    export CFLAGS="${M3_CFLAGS}"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --disable-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop 
 }
 
 compile()

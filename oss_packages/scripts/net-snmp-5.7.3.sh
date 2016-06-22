@@ -1,15 +1,23 @@
 #! /bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://sourceforge.net/projects/net-snmp/files/net-snmp/5.7.3/net-snmp-5.7.3.tar.gz/download"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="d4a3459e1577d0efa8d96ca70a885e53"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="net-snmp-5.7.3"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="net-snmp-5.7.3"
-PKG_ARCHIVE_FILE="net-snmp-5.7.3.tar.gz"
-PKG_CHECKSUM="d4a3459e1577d0efa8d96ca70a885e53"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
@@ -30,11 +38,8 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-#     export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
-#     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make install
-    #make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
@@ -43,9 +48,6 @@ install_staging()
     # Copy the needed files manually, as the configure script would mess up the paths if the prefix is not given or empty
     cp -r ${PKG_INSTALL_DIR}/include/* ${STAGING_DIR}/include
     cp -P ${PKG_INSTALL_DIR}/lib/libnetsnmp.so* ${STAGING_DIR}/lib/
-    #make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
-
-# Muss hier ein uninstall_staging rein? Weil die Dateien manuell kopiert wurden?
 
 . ${HELPERSDIR}/call_functions.sh

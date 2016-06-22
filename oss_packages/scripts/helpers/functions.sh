@@ -32,13 +32,15 @@ check_md5()
 {
     CALC_SUM=$(md5sum $1 | cut -c -32)
     [ "$2" = "${CALC_SUM}" ]
-    return $?
+    ret=$?
+    ! [ "${ret}" = "0" ] && echo "Checksum is ${CALC_SUM} but should be $2"
+    return "${ret}"
 }
 
 # check if source files is stored in dl directory
 check_source()
 {
-    [ "${PKG_CHECKSUM}" = "none" ] && return
+    [ "${PKG_CHECKSUM}" = "none" ] && return       
     check_md5 ${PKG_ARCHIVE} ${PKG_CHECKSUM} || exit_failure "Checksum failure"
 }
 

@@ -1,15 +1,23 @@
 #! /bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://curl.haxx.se/download/curl-7.49.1.tar.bz2"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="6bb1f7af5b58b30e4e6414b8c1abccab"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="curl-7.49.1"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="curl-7.47.1"
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
-PKG_CHECKSUM="9ea3123449439bbd960cd25cf98796fb"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
@@ -24,7 +32,7 @@ configure()
     # export PKG_CONFIG_LIBDIR="${STAGING_LIB}/pkgconfig"
     # dont use the gentoo wrapper, it will only word on packages installed by cross-emerge
     # export PKG_CONFIG=pkg-config
-    # the wohle pkg-config stuff cant't be used here, because configure will overwrite all possible variables
+    # the wohle pkg-config stuff can't be used here, because configure will overwrite all possible variables
     # --with-ssl= will be used as PKG_CONFIG_LIBDIR
     ./configure --target=${M3_TARGET} --host=${M3_TARGET} --enable-shared --prefix="" \
     --enable-http --enable-ftp --enable-file --disable-ldap --disable-ldaps --enable-rtsp \

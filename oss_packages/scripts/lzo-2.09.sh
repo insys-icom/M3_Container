@@ -1,15 +1,23 @@
 #! /bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="c7ffc9a103afe2d1bba0b015e7aa887f"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="lzo-2.09"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="lzo-2.09"
-PKG_ARCHIVE_FILE="lzo-2.09.tar.gz"
-PKG_CHECKSUM="c7ffc9a103afe2d1bba0b015e7aa887f"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

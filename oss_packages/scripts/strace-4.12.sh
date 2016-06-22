@@ -1,15 +1,23 @@
 #! /bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/strace/strace/4.12/strace-4.12.tar.xz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fstrace%2F&ts=1466578770&use_mirror=tenet"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="efb8611fc332e71ec419c53f59faa93e"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="strace-4.12"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="strace-4.8"
-PKG_ARCHIVE_FILE="strace-4.8.tar.xz"
-PKG_CHECKSUM="c575ef43829586801f514fd91bfe7575"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
