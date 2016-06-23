@@ -12,9 +12,9 @@ PKG_DIR="sqlite-src-3110100"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
-SCRIPTSDIR=$(dirname $0)
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

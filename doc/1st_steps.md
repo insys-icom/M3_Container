@@ -19,7 +19,7 @@ This repository is all about build scripts. Most likely you already have gotten 
 ---------------
 The cross compiler and its toolchain must be for ARMv7 architecture with hardware floating point support (armv7-hf).
 There are several possibilities to achive get a cross toolchain:  
-* Use the INSYS SDK (recommended)
+* Use the INSYS SDK (recommended), read more in "./doc/Install_Virtualbox.md"
 * In case you use Gentoo on your host: install a cross compiler using "crossdev"
 * Get another toolchain (e.g. Ubuntu, Linaro, buildroot ...)
 
