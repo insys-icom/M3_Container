@@ -1,13 +1,13 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="http://libmodbus.org/releases/libmodbus-3.1.4.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="b1a8fd3a40d2db4de51fb0cbcb201806"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="libmodbus-3.1.4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -28,7 +28,8 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    export LDFLAGS="${M3_LDFLAGS}"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-largefile --disable-tests --without-documentation
 }
 
 compile()

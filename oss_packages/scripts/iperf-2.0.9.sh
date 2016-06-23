@@ -1,13 +1,13 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="https://iperf.fr/download/source/iperf-2.0.9-source.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="1bb3a1d98b1973aee6e8f171933c0f61"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="iperf-2.0.9"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -27,8 +27,12 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    # rpl
+    export ac_cv_func_malloc_0_nonnull=yes
+    export ac_cv_func_realloc_0_nonnull=yes   
+    export CFLAGS="${M3_CFLAGS} -static-libstdc++ -L${STAGING_LIB} -I${STAGING_INCLUDE}"
+    export LDFLAGS="${M3_LDFLAGS} -static-libstdc++ -L${STAGING_LIB}"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix=""
 }
 
 compile()
@@ -42,7 +46,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

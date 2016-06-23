@@ -1,13 +1,13 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="https://ftp.gnu.org/gnu/nettle/nettle-3.2.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="afb15b4764ebf1b4e6d06c62bd4d29e4"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="nettle-3.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -28,21 +28,23 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    export LDFLAGS="${M3_LDFLAGS}"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-shared --enable-arm-neon --enable-mini-gmp --with-lib-path=${STAGING_LIB} --with-include-path=${STAGING_INCLUDE}
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make ${M3_MAKEFLAGS} PREFIX=/ CC="${M3_CROSS_COMPILE}gcc" CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" || exit_failure "failed to build ${PKG_DIR}"
+
+    make PREFIX=/ DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make PREFIX=/ DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

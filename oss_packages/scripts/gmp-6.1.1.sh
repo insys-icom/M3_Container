@@ -1,16 +1,16 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="https://gmplib.org/download/gmp/gmp-6.1.1.tar.xz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="e70e183609244a332d80529e7e155a35"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="gmp-6.1.1"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -28,7 +28,7 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --enable-shared --prefix=""
 }
 
 compile()

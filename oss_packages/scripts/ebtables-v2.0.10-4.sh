@@ -1,13 +1,13 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="ftp://ftp.netfilter.org/pub/ebtables/ebtables-v2.0.10-4.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="506742a3d44b9925955425a659c1a8d0"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="ebtables-v2.0.10-4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -26,23 +26,23 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    true
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make ${M3_MAKEFLAGS} CC="${M3_CROSS_COMPILE}gcc" CFLAGS="${M3_CFLAGS} -I${PKG_BUILD_DIR}/include" KERNEL_INCLUDES="${BUILD_DIR}/linux-${ROOTFS_KERNEL_VERSION}" || exit_failure "failed to build ${PKG_DIR}"
+    # ignore errors by install caused by chmod root
+    make -i DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    # ignore errors by install caused by chmod root
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

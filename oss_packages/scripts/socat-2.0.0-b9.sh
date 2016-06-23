@@ -1,16 +1,18 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="http://www.dest-unreach.org/socat/download/socat-2.0.0-b9.tar.bz2"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="553b1593d0a192cb09cbdc687ef1baac"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="socat-2.0.0-b9"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+
+http://www.dest-unreach.org/socat/download/socat-2.0.0-b9.tar.gz
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -27,8 +29,9 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    export CFLAGS="${M3_CFLAGS} -include stddef.h"
+    export LDFLAGS="${M3_LDFLAGS}"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-openssl --disable-readline --prefix=""
 }
 
 compile()

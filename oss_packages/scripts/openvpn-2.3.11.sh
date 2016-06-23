@@ -1,16 +1,16 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/openvpn-2.3.11.tar.xz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="fe17a25235d65e60af8986c6c78c4650"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="openvpn-2.3.11"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -27,8 +27,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --prefix="" --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
+    export LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB}"
+    export OPENSSL_SSL_LIBS="-lssl -L${STAGING_LIB}"
+    export OPENSSL_SSL_CFLAGS="-I${STAGING_INCLUDE}"
+    export OPENSSL_CRYPTO_CFLAGS="-I${STAGING_INCLUDE}"
+    export OPENSSL_CRYPTO_LIBS="-lcrypto -L${STAGING_LIB}"
+    export IPROUTE=/sbin/iproute
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-plugin-auth-pam --disable-plugins --disable-debug --enable-password-save --enable-iproute2 --enable-small
 }
 
 compile()
@@ -42,7 +48,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
