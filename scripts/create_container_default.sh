@@ -1,6 +1,10 @@
 #!/bin/sh
 
-echo "This creates a default container similar to the one, the router can create of its own."
+DESCRIPTION="A container like the router firmware can create it"
+CONTAINER_NAME="default_container"
+ROOTFS_LIST="default.txt"
+
+echo "This creates a default container similar to the one the router can create of its own."
 echo ""
 echo "It is necessary to build these Open Source projects in this order:"
 echo "- Linux-PAM-1.2.1.sh"
@@ -13,15 +17,15 @@ echo "- pcre-8.38.sh"
 echo "- metalog-3.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " # scripts/mk_container.sh -n default_container -l default.txt"
+echo " # scripts/mk_container.sh -n ${CONTAINER_NAME} -l ${ROOTFS_LIST}"
 echo " "
 echo "Continue? <y/n>"
 
 read text
 ! [ "${text}" = "y" ] && exit 0
 
-SCRIPTSDIR=$(dirname $0)
-TOPDIR=$(realpath ${SCRIPTSDIR}/..)
+SCRIPTSDIR="$(dirname $0)"
+TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 
 # compile the needed packages
@@ -37,5 +41,4 @@ ${OSS_PACKAGES_SCRIPTS}/metalog-3.sh all
 # package container
 echo " "
 echo "Packaging the container"
-DESCRIPTION="A container like the router firmware can create it"
-${TOPDIR}/scripts/mk_container.sh -n default_container -l default.txt -d "${DESCRIPTION}" -v "1.0"
+${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"

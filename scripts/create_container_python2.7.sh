@@ -1,5 +1,9 @@
 #!/bin/sh
 
+DESCRIPTION="A container with Python 2.7 in it"
+CONTAINER_NAME="python_2.7"
+ROOTFS_LIST="python_2.7.txt"
+
 echo "This creates a container that only contains busybox"
 echo ""
 echo "It is necessary to build these Open Source projects in this order:"
@@ -21,15 +25,15 @@ echo "- sqlite-src-3110100.sh"
 echo "- python-2.7.11.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " # scripts/mk_container.sh -n busybox_container -l busybox.txt"
+echo " > ./scripts/mk_container.sh -n ${CONTAINER_NAME} -l ${ROOTFS_LIST}"
 echo " "
 echo "Continue? <y/n>"
 
 read text
 ! [ "${text}" = "y" ] && exit 0
 
-SCRIPTSDIR=$(dirname $0)
-TOPDIR=$(realpath ${SCRIPTSDIR}/..)
+SCRIPTSDIR="$(dirname $0)"
+TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 
 # compile the needed packages
@@ -53,5 +57,4 @@ ${OSS_PACKAGES_SCRIPTS}/python-2.7.11.sh all
 # package container
 echo " "
 echo "Packaging the container"
-DESCRIPTION="A container with only busybox in it"
-${TOPDIR}/scripts/mk_container.sh -n busybox_container -l busybox.txt -d "${DESCRIPTION}" -v "1.0"
+${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"
