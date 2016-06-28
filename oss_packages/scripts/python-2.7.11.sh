@@ -27,13 +27,13 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_INCLUDE}/ncurses -I${STAGING_INCLUDE}/ncursesw"
+    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_DIR}/usr/include/ncurses -I${STAGING_DIR}/usr/include/ncursesw"
     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} "
     export ac_cv_file__dev_ptc=no
-    export ac_cv_file__dev_ptmx=yes
+    export ac_cv_file__dev_ptmx=no
     export CXX
 
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --prefix="" --with-fpectl --enable-shared --enable-ipv6 --with-threads --enable-unicode=ucs4 --with-computed-gotos --with-system-expat
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --with-fpectl --enable-shared --enable-ipv6 --with-threads --enable-unicode=ucs4 --with-computed-gotos --with-system-expat --without-ensurepip -- c_cv_file__dev_ptmx=no ac_cv_file__dev_ptc=no ac_cv_have_long_long_format=yes
 }
 
 compile()
@@ -42,7 +42,9 @@ compile()
     cd "${PKG_BUILD_DIR}"
     touch Include/graminit.h Python/graminit.c
     #make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    #make DESTDIR="${PKG_INSTALL_DIR}" sharedinstall
+    export PYTHONHOME="/bin"
+    export PYTHONPATH="/usr/lib/python2.7"
+
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 

@@ -1,0 +1,30 @@
+## Here is an example for nftables.
+
+syntax "nftables" "\.(nft|nftables)$"
+header "^#!.*(nft|nftables)"
+comment "#"
+
+# Objects and operations
+color green "\b(chain|hook|policy|priority|ruleset|set|table|type|v?map)\b"
+color green "\b(define|include)\b"
+color red "\b(add|delete|flush|insert|remove|replace)\b"
+
+# Families
+color yellow "\b(arp|bridge|inet|ip6?)\b"
+
+# Terminal statements
+color red "\b(drop|reject)\b"
+color brightblue "\b(accept|continue|(d|s)nat|goto|jump|masquerade|return)\b"
+
+# Comments
+color cyan "(^|[[:space:]])#.*$"
+
+# Trailing whitespace
+color ,green "[[:space:]]+$"
+
+# Strings and others
+color yellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+color green "[{}():;|`$<>!=&\\]" "(\]|\[)"
+
+# Basic variable names
+color brightred "\$[[:alpha:]_][[:alnum:]_.]*"

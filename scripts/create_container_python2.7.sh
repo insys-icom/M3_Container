@@ -12,6 +12,7 @@ echo "- busybox-1.24.2.sh"
 echo "- finit-1.10.sh"
 echo "- zlib-1.2.8.sh"
 echo "- dropbear-2016.73.sh"
+echo "- timezone2016e.sh"
 echo "- mcip.sh"
 echo "- pcre-8.38.sh"
 echo "- metalog-3.sh"
@@ -42,6 +43,7 @@ ${OSS_PACKAGES_SCRIPTS}/busybox-1.24.2.sh all
 ${OSS_PACKAGES_SCRIPTS}/finit-1.10.sh all
 ${OSS_PACKAGES_SCRIPTS}/zlib-1.2.8.sh all
 ${OSS_PACKAGES_SCRIPTS}/dropbear-2016.73.sh all
+${OSS_PACKAGES_SCRIPTS}/timezone2016e.sh all
 ${OSS_PACKAGES_SCRIPTS}/mcip.sh all
 ${OSS_PACKAGES_SCRIPTS}/pcre-8.38.sh all
 ${OSS_PACKAGES_SCRIPTS}/metalog-3.sh all

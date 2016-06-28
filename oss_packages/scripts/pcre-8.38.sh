@@ -29,7 +29,7 @@ configure()
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-pcregrep-jit --enable-shared=no --enable-utf --disable-cpp --prefix=""
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-pcregrep-jit --enable-shared=yes --enable-utf --disable-cpp --prefix=""
 }
 
 compile()

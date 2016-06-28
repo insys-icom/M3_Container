@@ -1,0 +1,63 @@
+## Syntax highlighting for Lua.
+#
+## Author:  Matthew Wild <mwild1 (at) gmail.com>
+## License: GPL 3 or later
+## Version: 2011-05-05
+
+syntax "lua" "\.lua$"
+comment "--"
+
+color brightwhite "\[\[.*\]\]"
+
+# Operators
+color brightyellow ":|\*|/|%|\+|-|\^|>|>=|<|<=|~=|=|\.\.|\b(not|and|or)\b"
+
+# Statements
+color brightblue "\b(do|end|while|repeat|until|if|elseif|then|else|for|in|function|local|return|break)\b"
+
+# Keywords
+color brightyellow "\b(io|math|os|string|table|coroutine|debug)\b\."
+color brightyellow "\b(_G|_VERSION|assert|collectgarbage|dofile|error|getfenv|getmetatable|ipairs|load|loadfile|module|next|pairs|pcall|print|rawequal|rawget|rawset|require|select|setfenv|setmetatable|tonumber|tostring|type|unpack|xpcall)\s*\("
+
+# Standard library
+color brightyellow "io\.\b(close|flush|input|lines|open|output|popen|read|tmpfile|type|write|stdin|stdout|stderr)\b"
+color brightyellow "math\.\b(abs|acos|asin|atan2|atan|ceil|cosh|cos|deg|exp|floor|fmod|frexp|huge|ldexp|log10|log)\b"
+color brightyellow "math\.\b(max|min|mod|modf|pi|pow|rad|random|randomseed|sinh|tan)\b"
+color brightyellow "os\.\b(clock|date|difftime|execute|exit|getenv|remove|rename|setlocale|time|tmpname)\b"
+color brightyellow "package\.\b(cpath|loaded|loadlib|path|preload|seeall)\b"
+color brightyellow "string\.\b(byte|char|dump|find|format|gmatch|gsub|len|lower|match|rep|reverse|sub|upper)\b"
+color brightyellow "table\.\b(concat|insert|maxn|remove|sort)\b"
+color brightyellow "coroutine\.\b(create|resume|running|status|wrap|yield)\b"
+color brightyellow "debug\.\b(debug|getfenv|gethook|getinfo|getlocal|getmetatable|getregistry|getupvalue)\b"
+color brightyellow "debug\.\b(setfenv|sethook|setlocal|setmetatable|setupvalue|traceback)\b"
+
+# File handle methods
+color brightyellow "\:\b(close|flush|lines|read|seek|setvbuf|write)\b"
+
+# false, nil, true
+color brightmagenta "\b(false|nil|true)\b"
+
+# External files
+color brightgreen "\b(dofile|require)\b"
+
+# Numbers
+color red "\b([0-9]+)\b"
+
+# Symbols
+color brightmagenta "(\(|\)|\[|\]|\{|\})"
+
+# Shebang
+color brightcyan   "^#!.*"
+
+# Simple comments
+color green        "\-\-.*$"
+
+# Multiline comments
+color green         start="\-\-\[\[" end="\]\]"
+
+# Strings
+color red "\"(\\.|[^\\\"])*\"|'(\\.|[^\\'])*'"
+##color red         start="\[\[" end="\]\]"
+
+# Hex literals
+color red "0x[0-9a-fA-F]*"

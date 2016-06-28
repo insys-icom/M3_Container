@@ -1,16 +1,16 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.39.tar.xz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
+PKG_CHECKSUM="63c7563be1c7a7a9819a51f07f1af8b2"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ncurses-6.0"
+PKG_DIR="lighttpd-1.4.39"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -27,8 +27,11 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-termlib --enable-static --with-shared --without-cxx --without-ada --without-manpages --without-progs --without-tests --disable-big-core --disable-home-terminfo --without-develop --enable-widec
+    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
+    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lpcre"
+    export PCRECONFIG="${STAGING}/bin/pcre-config"
+
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-openssl --with-zlib --without-bzip2 --with-webdav-props --with-webdav-locks --without-lua --with-pcre --with-memcache --disable-lfs --with-gdbm
 }
 
 compile()

@@ -1,0 +1,68 @@
+## Here is an example for Gentoo ebuilds/eclasses.
+
+syntax "ebuild" "\.e(build|class)$"
+comment "#"
+
+## All the standard portage functions
+color brightgreen "(^|\bdefault_)src_(unpack|prepare|configure|compile|install|test)\b"
+color brightgreen "^pkg_(config|nofetch|info|pretend|setup|(pre|post)(inst|rm))\b"
+color brightgreen "\bdefault(_pkg_nofetch|_src_(unpack|prepare|configure|compile|test))?\b"
+## Highlight bash related syntax
+color green "\b(break|case|continue|do|done|elif|else|esac|exit|fi|for|function|if|in|read|return|select|shift|then|time|until|while)\b"
+color green "\b(declare|eval|exec|export|let|local)\b"
+color green "[{}():;|`$<>!=&\\]" "(\]|\[)"
+color green "-[defhnrsuwxzL]\b"
+color green "-(eq|ne|gt|lt|ge|le)\b"
+## Highlight variables ... official portage ones in red, all others in bright red
+color brightred "\$[-0-9@*#?$!]" "\$[[:alpha:]_][[:alnum:]_]*"
+color brightred "\$\{[#!]?([-@*#?$!]|[0-9]+|[[:alpha:]_][[:alnum:]_]*)(\[([[:digit:]]|@)+\])?(([#%/]|:?[-=?+])[^}]*\}|\[|\})"
+color red "\b(EAPI|ARCH|HOMEPAGE|DESCRIPTION|IUSE|SRC_URI|LICENSE|SLOT|KEYWORDS|[HPR]?DEPEND|PROVIDE|PROPERTIES|REQUIRED_USE|RESTRICT|USERLAND)\b"
+color red "\b(S|E?D|T|PV|PF|P|PN|PR|PVR|A|CATEGORY|DISTDIR|FILESDIR|EPREFIX|E?ROOT|WORKDIR)\b"
+color red "\b(AS|C(PP|XX)?|LD)FLAGS\b" "\bC(HOST|TARGET|BUILD)\b" "\b(MERGE_TYPE|REPLACING_VERSIONS|REPLACED_BY_VERSION)\b"
+color red "\bEBUILD_PHASE(_FUNC)?\b"
+color red "\bQA_((TEXTRELS|EXECSTACK|WX_LOAD)(_[a-zA-Z_0-9]+)?|DT_HASH|PRESTRIPPED)\b"
+color red "\b(PATCHES|(HTML_)?DOCS)\b" "\bWANT_(AUTO(CONF|MAKE)|LIBTOOL)\b" "\bAT_M4DIR\b"
+## Highlight portage commands
+color magenta "\b(use(_(with|enable|if_iuse)|x)?|in_iuse)\b [!a-zA-Z0-9_+ -]*" "inherit.*"
+color brightblue "\be(begin|end|conf|install|make|qmake4|ant|(qa)?warn|infon?|error|log|patch(_user)?|new(group|user))\b"
+color brightblue "\be(pause|beep|mktemp|(cvs|svn)_clean|punt_cxx)\b" "\be(aclocal|auto(reconf|header|conf|make)|libtoolize)\b"
+color brightblue "\be(stack|shopts|umask)_(push|pop)\b" "\bversion_is_at_least\b"
+color brightblue "\bmake_desktop_entry\b" "\bunpack(_(makeself|pdv))?\b"
+color brightblue "\b(die|hasv?|inherit|nonfatal)\b" "\b(use(_(with|enable|if_iuse)|x)?|in_iuse)\b" "\b(has|best)_version\b"
+color brightblue "\b(do|new)(ins|(games)?s?bin|doc|lib(\.so|\.a)?|man|info|exe|initd|confd|envd|pam|menu|icon)\b"
+color brightblue "\bdo(compress|header|python|sed|dir|hard|sym|html|jar|mo)\b" "\bkeepdir\b"
+color brightblue "\bprepall(docs|info|man|strip)?\b" "\bprep(info|lib|lib\.(so|a)|man|strip|gamesdirs)\b"
+color brightblue "\b(doc|ins|exe)?into\b" "\b(f|games)(owners|perms)\b" "\b(exe|ins|dir)opts\b"
+color brightblue "\btc-get(BUILD_)?(AR|AS|CC|CPP|CXX|LD|NM|OBJCOPY|PKG_CONFIG|RANLIB)\b"
+color brightblue "\btc-(arch(-kernel)?|export|has-(tls|openmp))\b"
+## Highlight common commands used in ebuilds
+color blue "\b(awk|cat|cd|chmod|chown|cp|echo|env|find|e?grep|ln|make|mkdir|mv|popd|printf|pushd|rm|rmdir|sed|set|tar|touch|unset|xargs)\b"
+## Highlight comments (doesnt work that well)
+color yellow "(^|[[:space:]])#.*$"
+## Highlight strings (doesnt work that well)
+color brightyellow ""(\\.|[^\"])*"" "'(\\.|[^'])*'"
+## Trailing space is bad!
+color ,green "[[:space:]]+$"
+
+## Here is an example for Portage control files.
+##
+syntax "/etc/portage" "\.(accept_keywords|env|keywords|mask|unmask|use)(/.+)?$"
+## Base text:
+color green "^.+$"
+## Use flags:
+color brightred "[[:space:]]+\+?[a-zA-Z0-9_-]+"
+color brightblue "[[:space:]]+-[a-zA-Z0-9_-]+"
+## Likely version and slot numbers:
+color magenta "-[[:digit:]].*([[:space:]]|$)"
+color magenta ":[^[:space:]]+([[:space:]]|$)"
+## Accepted arches:
+color white "[~-]?\b(alpha|amd64|arm|hppa|ia64|mips|ppc|ppc64|s390|sh|sparc(-fbsd)?|x86(-fbsd)?)\b"
+color white "[[:space:]][*~-]?\*"
+## Categories:
+color cyan "^[[:space:]]*.*/"
+## Masking regulators:
+color brightmagenta "^[[:space:]]*(=|~|<|<=|=<|>|>=|=>)"
+## Comments:
+color yellow "#.*$"
+## Trailing space is bad!
+color ,green "[[:space:]]+$"

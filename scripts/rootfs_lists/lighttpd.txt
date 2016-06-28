@@ -1,5 +1,7 @@
 # This file contains a list of all files which will be copied to rootfs_target
 #
+# This container will only use applets from busybox, nothing else
+#
 # Syntax:
 #    # is a comment, these lines will be ignored
 #    file <name> <location> <mode> <uid> <gid> [<hard links>]
@@ -16,6 +18,9 @@
 #    <gid>        group id (0=root)
 #    <hard links> space separated list of other links to file
 
+#############################
+# all necessary directories #
+#############################
 dir /                           0755 0 0
 dir /bin                        0755 0 0
 dir /data                       0755 0 0
@@ -34,11 +39,20 @@ dir /root/.ssh                  0700 0 0
 dir /sys                        0755 0 0
 dir /tmp                        0777 0 0
 dir /usr                        0755 0 0
+dir /usr/local                  0755 0 0
+dir /usr/local/lib              0755 0 0
 dir /usr/share                  0755 0 0
+dir /usr/share/nano             0755 0 0
 dir /usr/share/zoneinfo         0755 0 0
 dir /var                        0755 0 0
 dir /var/log                    0755 0 0
+dir /var/www                    0755 0 0
+dir /var/www/localhost          0755 0 0
+dir /var/www/localhost/htdocs   0755 0 0
 
+###############
+# basic files #
+###############
 file /bin/busybox                     ${STAGING_DIR}/bin/busybox                     4755 0 0
 file /bin/dropbearmulti               ${STAGING_DIR}/bin/dropbearmulti               0755 0 0
 slink /bin/dropbear                   dropbearmulti                                  0777 0 0
@@ -57,7 +71,7 @@ file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt            
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
-file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf                 0644 0 0
+file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit_lighttpd.conf        0644 0 0
 file /etc/mcip.conf                   ${SKELETON_DIR}/etc/mcip.conf                  0644 0 0
 file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf               0644 0 0
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
@@ -80,13 +94,13 @@ file /lib/ld-2.22.so                  ${SYSROOT_DIR}/lib/ld-2.22.so             
 file /lib/libcrypt.so.1               ${SYSROOT_DIR}/lib/libcrypt-2.22.so            0755 0 0
 file /lib/libutil.so.1                ${SYSROOT_DIR}/lib/libutil-2.22.so             0755 0 0
 file /lib/libresolv.so.2              ${SYSROOT_DIR}/lib/libresolv-2.22.so           0755 0 0
+file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.6            0755 0 0
 file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib/libdl-2.22.so               0755 0 0
 file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib/libpthread-2.22.so          0755 0 0
 file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm-2.22.so                0755 0 0
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt-2.22.so               0755 0 0
 slink /lib/ld-linux-armhf.so.3        ld-2.22.so                                     0777 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1.2.8               0644 0 0
-file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.6            0755 0 0
 
 file /lib/finit/plugins/initctl.so    ${STAGING_DIR}/lib/finit/plugins/initctl.so    0644 0 0
 file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0
@@ -99,16 +113,132 @@ file /lib/libpam_misc.so.0            ${STAGING_DIR}/lib/libpam_misc.so.0       
 file /lib/libpam.so.0                 ${STAGING_DIR}/lib/libpam.so.0                 0644 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme_default.txt        0644 0 0
+slink /root/.nanorc                   /etc/nanorc                                    0777 0 0
 
-slink /run tmp/run 0777 0 0
-slink /sbin bin 0777 0 0
-slink /usr/bin ../bin 0777 0 0
-slink /usr/sbin ../bin 0777 0 0
+slink /run                            tmp/run                                        0777 0 0
+slink /sbin                           bin                                            0777 0 0
+slink /usr/bin                        ../bin                                         0777 0 0
+slink /usr/sbin                       ../bin                                         0777 0 0
 
 file /usr/share/version                ${SKELETON_DIR}/usr/share/version             0644 0 0
 file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
 file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
 
+slink /var/lock                        /tmp/lock                                     0777 0 0
+slink /var/run                         /tmp/run                                      0777 0 0
+
+############################
+# oepnssl files            #
+############################
+
+file /bin/openssl                      ${STAGING_DIR}/bin/openssl                    0755 0 0
+file /lib/libssl.so.1.0.0              ${STAGING_DIR}/lib/libssl.so.1.0.0            0644 0 0
+file /lib/libcrypto.so.1.0.0           ${STAGING_DIR}/lib/libcrypto.so.1.0.0         0644 0 0
+
+############################
+# sqlite3 files            #
+############################
+
+file /bin/sqlite3                      ${STAGING_DIR}/bin/sqlite3                    0755 0 0
+file /lib/libsqlite3.so.0.8.6          ${STAGING_DIR}/lib/libsqlite3.so.0.8.6        0755 0 0
+slink /lib/libsqlite3.so               libsqlite3.so.0.8.6                           0777 0 0
+slink /lib/libsqlite3.so.0             libsqlite3.so.0.8.6                           0777 0 0
+
+############################
+# ncurses files            #
+############################
+file /lib/libformw.so.6.0              ${STAGING_DIR}/usr/lib/libformw.so.6.0        0755 0 0
+slink /lib/libformw.so                 libformw.so.6                                 0777 0 0
+slink /lib/libformw.so.6               libformw.so.6.0                               0777 0 0
+file /lib/libmenuw.so.6.0              ${STAGING_DIR}/usr/lib/libmenuw.so.6.0        0755 0 0
+slink /lib/libmenuw.so                 libmenuw.so.6                                 0777 0 0
+slink /lib/libmenuw.so.6               libmenuw.so.6.0                               0777 0 0
+file /lib/libncursesw.so.6.0           ${STAGING_DIR}/usr/lib/libncursesw.so.6.0     0755 0 0
+slink /lib/libncursesw.so              libncursesw.so.6                              0777 0 0
+slink /lib/libncursesw.so.6            libncursesw.so.6.0                            0777 0 0
+file /lib/libpanelw.so.6.0             ${STAGING_DIR}/usr/lib/libpanelw.so.6.0       0755 0 0
+slink /lib/libpanelw.so                libpanelw.so.6                                0777 0 0
+slink /lib/libpanelw.so.6              libpanelw.so.6.0                              0777 0 0
+file /lib/libtinfow.so.6.0             ${STAGING_DIR}/usr/lib/libtinfow.so.6.0       0755 0 0
+slink /lib/libtinfow.so                libtinfow.so.6                                0777 0 0
+slink /lib/libtinfow.so.6              libtinfow.so.6.0                              0777 0 0
+
+# add more file in case you need it
+dir /usr/share/terminfo                                                              0755 0 0
+dir /usr/share/terminfo/x                                                            0755 0 0
+file /usr/share/terminfo/x/xterm       ${STAGING_DIR}/usr/share/terminfo/x/xterm     0644 0 0
+file /usr/share/terminfo/x/xterm-utf8  ${STAGING_DIR}/usr/share/terminfo/x/xterm-utf8 0644 0 0
+slink /lib/terminfo                    ../usr/share/terminfo                         0777 0 0
+
+############################
+# nano editor files        #
+############################
+file /bin/nano                         ${STAGING_DIR}/usr/local/bin/nano                        0755 0 0
+file /etc/nanorc                       ${SKELETON_DIR}/etc/nanorc                               0644 0 0
+file /usr/share/nano/changelog.nanorc  ${SKELETON_DIR}/usr/share/nano/changelog.nanorc          0644 0 0
+file /usr/share/nano/css.nanorc        ${SKELETON_DIR}/usr/share/nano/css.nanorc                0644 0 0
+file /usr/share/nano/default.nanorc    ${SKELETON_DIR}/usr/share/nano/default.nanorc            0644 0 0
+file /usr/share/nano/gentoo.nanorc     ${SKELETON_DIR}/usr/share/nano/gentoo.nanorc             0644 0 0
+file /usr/share/nano/groff.nanorc      ${SKELETON_DIR}/usr/share/nano/groff.nanorc              0644 0 0
+file /usr/share/nano/html.nanorc       ${SKELETON_DIR}/usr/share/nano/html.nanorc               0644 0 0
+file /usr/share/nano/java.nanorc       ${SKELETON_DIR}/usr/share/nano/java.nanorc               0644 0 0
+file /usr/share/nano/javascript.nanorc ${SKELETON_DIR}/usr/share/nano/javascript.nanorc         0644 0 0
+file /usr/share/nano/json.nanorc       ${SKELETON_DIR}/usr/share/nano/json.nanorc               0644 0 0
+file /usr/share/nano/lua.nanorc        ${SKELETON_DIR}/usr/share/nano/lua.nanorc                0644 0 0
+file /usr/share/nano/makefile.nanorc   ${SKELETON_DIR}/usr/share/nano/makefile.nanorc           0644 0 0
+file /usr/share/nano/man.nanorc        ${SKELETON_DIR}/usr/share/nano/man.nanorc                0644 0 0
+file /usr/share/nano/nanorc.nanorc     ${SKELETON_DIR}/usr/share/nano/nanorc.nanorc             0644 0 0
+file /usr/share/nano/nftables.nanorc   ${SKELETON_DIR}/usr/share/nano/nftables.nanorc           0644 0 0
+file /usr/share/nano/ocaml.nanorc      ${SKELETON_DIR}/usr/share/nano/ocaml.nanorc              0644 0 0
+file /usr/share/nano/perl.nanorc       ${SKELETON_DIR}/usr/share/nano/perl.nanorc               0644 0 0
+file /usr/share/nano/php.nanorc        ${SKELETON_DIR}/usr/share/nano/php.nanorc                0644 0 0
+file /usr/share/nano/python.nanorc     ${SKELETON_DIR}/usr/share/nano/python.nanorc             0644 0 0
+file /usr/share/nano/sh.nanorc         ${SKELETON_DIR}/usr/share/nano/sh.nanorc                 0644 0 0
+file /usr/share/nano/tex.nanorc        ${SKELETON_DIR}/usr/share/nano/tex.nanorc                0644 0 0
+file /usr/share/nano/texinfo.nanorc    ${SKELETON_DIR}/usr/share/nano/texinfo.nanorc            0644 0 0
+file /usr/share/nano/xml.nanorc        ${SKELETON_DIR}/usr/share/nano/xml.nanorc                0644 0 0
+
+##################
+# lighttpd files #
+##################
+file /bin/lighttpd        ${STAGING_DIR}/usr/local/sbin/armv7a-hardfloat-linux-gnueabi-lighttpd 0755 0 0
+file /etc/lighttpd.conf          ${SKELETON_DIR}/etc/lighttpd.conf                              0644 0 0
+file /usr/local/lib/mod_access.so          ${STAGING_DIR}/usr/local/lib/mod_access.so           0755 0 0
+file /usr/local/lib/mod_accesslog.so       ${STAGING_DIR}/usr/local/lib/mod_accesslog.so        0755 0 0
+file /usr/local/lib/mod_alias.so           ${STAGING_DIR}/usr/local/lib/mod_alias.so            0755 0 0
+file /usr/local/lib/mod_auth.so            ${STAGING_DIR}/usr/local/lib/mod_auth.so             0755 0 0
+file /usr/local/lib/mod_cgi.so             ${STAGING_DIR}/usr/local/lib/mod_cgi.so              0755 0 0
+file /usr/local/lib/mod_cml.so             ${STAGING_DIR}/usr/local/lib/mod_cml.so              0755 0 0
+file /usr/local/lib/mod_compress.so        ${STAGING_DIR}/usr/local/lib/mod_compress.so         0755 0 0
+file /usr/local/lib/mod_dirlisting.so      ${STAGING_DIR}/usr/local/lib/mod_dirlisting.so       0755 0 0
+file /usr/local/lib/mod_evasive.so         ${STAGING_DIR}/usr/local/lib/mod_evasive.so          0755 0 0
+file /usr/local/lib/mod_evhost.so          ${STAGING_DIR}/usr/local/lib/mod_evhost.so           0755 0 0
+file /usr/local/lib/mod_expire.so          ${STAGING_DIR}/usr/local/lib/mod_expire.so           0755 0 0
+file /usr/local/lib/mod_extforward.so      ${STAGING_DIR}/usr/local/lib/mod_extforward.so       0755 0 0
+file /usr/local/lib/mod_fastcgi.so         ${STAGING_DIR}/usr/local/lib/mod_fastcgi.so          0755 0 0
+file /usr/local/lib/mod_flv_streaming.so   ${STAGING_DIR}/usr/local/lib/mod_flv_streaming.so    0755 0 0
+file /usr/local/lib/mod_indexfile.so       ${STAGING_DIR}/usr/local/lib/mod_indexfile.so        0755 0 0
+file /usr/local/lib/mod_magnet.so          ${STAGING_DIR}/usr/local/lib/mod_magnet.so           0755 0 0
+file /usr/local/lib/mod_mysql_vhost.so     ${STAGING_DIR}/usr/local/lib/mod_mysql_vhost.so      0755 0 0
+file /usr/local/lib/mod_proxy.so           ${STAGING_DIR}/usr/local/lib/mod_proxy.so            0755 0 0
+file /usr/local/lib/mod_redirect.so        ${STAGING_DIR}/usr/local/lib/mod_redirect.so         0755 0 0
+file /usr/local/lib/mod_rewrite.so         ${STAGING_DIR}/usr/local/lib/mod_rewrite.so          0755 0 0
+file /usr/local/lib/mod_rrdtool.so         ${STAGING_DIR}/usr/local/lib/mod_rrdtool.so          0755 0 0
+file /usr/local/lib/mod_scgi.so            ${STAGING_DIR}/usr/local/lib/mod_scgi.so             0755 0 0
+file /usr/local/lib/mod_secdownload.so     ${STAGING_DIR}/usr/local/lib/mod_secdownload.so      0755 0 0
+file /usr/local/lib/mod_setenv.so          ${STAGING_DIR}/usr/local/lib/mod_setenv.so           0755 0 0
+file /usr/local/lib/mod_simple_vhost.so    ${STAGING_DIR}/usr/local/lib/mod_simple_vhost.so     0755 0 0
+file /usr/local/lib/mod_ssi.so             ${STAGING_DIR}/usr/local/lib/mod_ssi.so              0755 0 0
+file /usr/local/lib/mod_staticfile.so      ${STAGING_DIR}/usr/local/lib/mod_staticfile.so       0755 0 0
+file /usr/local/lib/mod_status.so          ${STAGING_DIR}/usr/local/lib/mod_status.so           0755 0 0
+file /usr/local/lib/mod_trigger_b4_dl.so   ${STAGING_DIR}/usr/local/lib/mod_trigger_b4_dl.so    0755 0 0
+file /usr/local/lib/mod_userdir.so         ${STAGING_DIR}/usr/local/lib/mod_userdir.so          0755 0 0
+file /usr/local/lib/mod_usertrack.so       ${STAGING_DIR}/usr/local/lib/mod_usertrack.so        0755 0 0
+file /usr/local/lib/mod_webdav.so          ${STAGING_DIR}/usr/local/lib/mod_webdav.so           0755 0 0
+
+##################
+# timzeone files #
+##################
 file /usr/share/zoneinfo/GMT            ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT               0644 0 0
 file /usr/share/zoneinfo/GMT-1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+1             0644 0 0
 file /usr/share/zoneinfo/GMT-10         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+10            0644 0 0
@@ -198,14 +328,11 @@ file /usr/share/zoneinfo/Zaporozhye     ${STAGING_DIR}/usr/share/zoneinfo/Europe
 file /usr/share/zoneinfo/Zurich         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Zurich         0644 0 0
 slink /etc/localtime                    /usr/share/zoneinfo/Regensburg                          0644 0 0
 
-slink /var/lock                        /tmp/lock                                     0777 0 0
-slink /var/run                         /tmp/run                                      0777 0 0
-
 #################
 # busybox links #
 #################
 # create these lines automatically by executing the next line in "working/busybox-X.Y.Z/build/system"
-# sh ../../../linux-4.4.4/scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d _install | grep slink | sed 's|_install|${SKELETON_DIR}|' | sort
+# sh scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d _install | grep slink | sed 's|_install|${SKELETON_DIR}|' | sort
 # do not add init and reboot, they are for container users
 slink /init /bin/busybox 0755 0 0
 slink /bin/[ busybox 777 0 0
