@@ -1,7 +1,7 @@
 HowTo create a new container
 ============================
 
-For all following examples it is assumed that you changed the directory to the root of the git repository, which is most of the time "~/M3_Container".
+For all following examples it is assumed that you changed to the root directory of the git repository, which is most likely "~/M3_Container".
 
 In short
 --------
@@ -12,7 +12,7 @@ In short
 
 Comfortable
 -----------
-There already are a few recepts for complete containers called "create_container_XYZ.sh" located in the directory "scripts". These scripts will try to get the sources, configure and compile them and pack a complete container without more interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to build are satisfied. This scripts can be used as a template for own containers.
+There already are a few recepts for complete containers called "create_container_XYZ.sh" located in the directory "scripts". These scripts will try to get the sources, configure and compile them and pack a complete container without interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to build are satisfied. This scripts can be used as a template for own containers.
 
 
 Detailed
@@ -51,11 +51,11 @@ After compiling all needed open source binaries the own closed sources should be
 
 The final step is packaging everything to an update packet that can be stored and installed on a router. The script "./scripts/mk_container.sh" packs everything and stores the final update packet in "./images". The script will create directory "./working/rootfs_target/rootfs", which will contain all files for the root file system of the container. It copies every file from "./rootfs_skeleton" as the basic structure into that working directory. Afterwards files will get copied to the working directory that are listed in a "rootfs_list.txt" file. These lists are located in "./scripts/rootfs_lists". They get interpreted by the script "./scripts/gen_initramfs_list.sh". The advantage is, that the permissions and ownership of that files can be modfied without the need of being root on the local machine and the ability, to create links.
 
-To get more information get the help of the script: "./scripts/mk_container.sh -h":
-    -n  name of the update packet with container to be packed
-    -l  use this file in the directory "./scripts/rootfs_lists/" to fill the root file system of container
-    -k  use this RSA key in the directory "./scripts/keys/" to encrypt the container
-    -d  use that description within MANIFEST
-    -v  use that version string within MANIFEST
+To get more information get the help of the script: "./scripts/mk_container.sh -h":  
+    -n  name of the update packet with container to be packed  
+    -l  use this file in the directory "./scripts/rootfs_lists/" to fill the root file system of container  
+    -k  use this RSA key in the directory "./scripts/keys/" to encrypt the container  
+    -d  use that description within MANIFEST  
+    -v  use that version string within MANIFEST  
 
 After packing the root file content the script creates an update packet with a MANIFEST file. Optionally the root file system can be encrypted. In that case a random key is generated and the root file system gets encrypted with AES 256. The randomly generated key gets encrypted with a RSA key pair. The public part of the RSA key pair must exist on the router in order to be able to decrypt the update packet. The RSA key pairs to be used have to be stored in "./scripts/keys/". If there is no key pair, the script will create a new one and store it there.    
