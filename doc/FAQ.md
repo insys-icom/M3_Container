@@ -33,3 +33,7 @@ No, absolutely not. The SDK should be a reference. It should be most robust, lig
     - [https://www.yoctoproject.org](https://www.yoctoproject.org/)
 - use LXC on your linux PC: startup the SDK from a external boot medium, pack all content, extract it to your host and add a lxc.conf file. Automount your M3_Container directory and compile without the overhead of a real virtual machine.
 
+7 Where do I get a build script for the open source project X version Y?
+------------------------------------------------------------------------
+Make one yourself and share it via github! This applies also in case a build script exists, but there is a newer version of the project or you need modified compile options. Go to github, fork the repository, add or change build scripts and add a new pull request on github.
+There is already a template "./oss_sources/scripts/template.sh" as a basic script.
