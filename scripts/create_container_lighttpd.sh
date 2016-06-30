@@ -24,7 +24,7 @@ echo "- gdbm-1.12.sh"
 echo "- lighttpd-1.4.39.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " # scripts/mk_container.sh -n ${CONTAINER_NAME} -l ${ROOTFS_LIST}"
+echo " # ./scripts/mk_container.sh -n ${CONTAINER_NAME} -l ${ROOTFS_LIST}"
 echo " "
 echo "Continue? <y/n>"
 
