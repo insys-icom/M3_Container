@@ -1,2 +1,2 @@
-::sysinit:/bin/start.sh
-::respawn:/bin/telnetd -l /bin/login -f /etc/banner.txt
+::sysinit:/bin/start_net.sh
+::respawn:/bin/telnetd -l /bin/login -f /etc/banner.txt -F

@@ -27,14 +27,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="-g -std=gnu99 ${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}"  
+    export CFLAGS="-g -std=gnu99 ${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE} -DHAVE_WORKING_GETADDRINFO=1"
     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --enable-ipv6 --with-openssl --with-pam
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --enable-ipv6 --with-openssl --with-pam #--enable-debug
 }
 
 compile()
 {
-    copy_overlay    
+    copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
