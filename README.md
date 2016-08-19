@@ -6,8 +6,8 @@ That's the plan:
                                         |
                                         |
                                         V
-                          build scripts and use the SDK to
-                       create binaries and the final container
+                   The build scripts within the repo use the SDK 
+                       to create binaries and final containers
 
 1) Clone this repository on your host: `> git clone https://github.com/insys-icom/M3_Container.git`
 
