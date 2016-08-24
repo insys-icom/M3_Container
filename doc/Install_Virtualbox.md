@@ -48,9 +48,9 @@ Usage of SDK
 ===================
 Normally you will always log in as "user" via VirtualBox console or via SSH (ssh user@192.168.1.3) and use the build scripts of the mounted repository, so you will most likeley cd to /home/user/src and use the scripts there. Get more info about the directories and files there from the document "/home/user/src/doc/Directories_and_files.md". Examples:  
 
-* Compile a single open source project, here: busybox  
+* Compile a single open source project, here: mcip  
 `> cd /home/user/M3_Container`  
-`> ./oss_packages/scripts/busybox all`  
+`> ./oss_packages/scripts/mcip all`  
 If downloading the sources fails (no net connection, wrong default route, no DNS server) you will have to download the sources manually and store it in "oss_packages/dl".  
 
 * Compile all content for a complete container, here: a small container with telnetd and init from busybox  
