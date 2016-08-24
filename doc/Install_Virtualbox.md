@@ -30,19 +30,17 @@ First steps within the SDK
 * Start the virtual machine with the VirtualBox GUI to get the console login. There are two users:  
     "root", passwort is "root"  
     "user", password is "user"
-* Test if the shared folder has already been mounted:  mounting the shared folder als normal "user":  
-    `> mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src`
-    This will mount the directory with the repository to the virtual machine directory /home/user/src
-* If mounting has been successful (check with command "df") and you want to automatically mount the shared folder after every start of the VM, use this command as root:  
-    `> su root`  
-    `> echo "mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src" > /etc/local.d/mount_sf.start`  
-    `> chmod 755 /etc/local.d/mount_sf.start`
+* Test if the shared folder has already been mounted:  
+    `> df`  
+    This should show the shared folder mounted in /media/sf_M3_Container
+* Optionally create a symlink the shared folder to your home directory  
+    `> ln -s /media/sf_M3_Container ~/M3_Container`  
 * Configure networking as root  
     `> /root/set_ip.sh 192.168.1.3/24`  
     Change the IP address and net size to fit your net which is connected to the internet. The script will store the net configuration permanently. A SSH server will be configured and started, too.  
     Enter a default gateway:  
     `> nano /etc/conf.d/net`  
-    Add a line similar to this: `routes_eth0="default gw 192.168.1.1"`  
+    Add a line similar to this: `routes_enp0s3="default gw 192.168.1.1"`  
     Edit the DNS servers  
     `> echo "nameserver 192.168.1.1" > /etc/resolv.conf`  
 
