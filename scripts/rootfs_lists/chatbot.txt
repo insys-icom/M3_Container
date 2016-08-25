@@ -22,6 +22,7 @@ dir /                           0755 0 0
 dir /bin                        0755 0 0
 dir /data                       0755 0 0
 dir /devices                    0755 0 0
+dir /devices/cli_no_auth        0755 0 0
 dir /etc                        0755 0 0
 dir /home                       0755 0 0
 dir /lib                        0755 0 0
