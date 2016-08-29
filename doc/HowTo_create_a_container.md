@@ -10,18 +10,20 @@ In short
 3. Pack the container with ./scripts/mk_container.sh and a ./scripts/rootfs_list/*txt file to define the files that should be copied into a container
 
 
-Comfortable
------------
+The Comfortable way
+-------------------
 There already are a few recepts for complete containers called "create_container_XYZ.sh" located in the directory "scripts". These scripts will try to get the sources, configure and compile them and pack a complete container without interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to build are satisfied. This scripts can be used as a template for own containers.
 
 
-Detailed
---------
+Detailed instructions for creating containers
+---------------------------------------------
 The build scripts located in ./oss_sources/scripts/*.sh are used to download, configure and compile the open source projects. A build script needs one of the parameters "all", "download", "check_source", "unpack", "configure", "compile", "install_staging" or "uninstall_staging".
 
 This parameters are functions that optionally can exist in a build script, they are not mandatory. If a build script lacks one of the functions, a generic function will do its default action.
 
 The build script are named after the package they will try to compile. They should be very specific and contain something like a version, so that build scripts for newer/older versions of the same project can be built.
+
+If building an open source project using one of these scripts fails, a missing dependency might be the reason. This is often the case when an open source package needs external libraries like openssl. Thatfore it might be important to compile the packages within the right order.
 
 1.  "all"
     This parameter of a build script will try all steps from getting the sources up to installing the binaries
