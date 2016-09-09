@@ -18,7 +18,7 @@ Install the SDK
     * Configure the net adapter. It is recommended to use a network bridge. That way you can ssh into the VM. Assign the  net interface of your PC that is used to connect your PC to the internet.
     It is not mandatory to configure networking to use the SDK, but it is useful for logins via SSH and to enable automatically downloads of the sources within the build scripts.
     * There is no immediate need to configure USB or serial interfaces.
-    * Add a "shard folder": Select the directory of the cloned repository "M3_Container". Make sure that the checkbox "mount automatically" is checked and the the "read-only" checkbox is unchecked.
+    * Add a "shard folder": Select the directory of the cloned repository "M3_Container". Do not tick the checkbox "mount automatically" or the "read-only" checkbox.
 * To allow usage of symlinks within the shared folder the VM config has to be modified by the command:  
     `> VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1`  
     with "VM_NAME" as the VM name (most likely "M3_SDK")  
@@ -30,15 +30,18 @@ First steps within the SDK
 * Start the virtual machine with the VirtualBox GUI to get the console login. There are two users:  
     "root", passwort is "root"  
     "user", password is "user"
-* Test if the shared folder has already been mounted:  
-    `> df`  
-    This should show the shared folder mounted in /media/sf_M3_Container
-* Optionally create a symlink the shared folder to your home directory  
-    `> ln -s /media/sf_M3_Container ~/M3_Container`  
-* Configure networking as root  
-    `> /root/set_ip.sh 192.168.1.3/24`  
-    Change the IP address and net size to fit your net which is connected to the internet. The script will store the net configuration permanently. A SSH server will be configured and started, too.  
-    Enter a default gateway:  
+* Become root for configuring purpose:
+    `> su root`
+* Create a script that will mount the shared folder with read/write permissions and the correct UID/GID whenever the SDK starts:  
+    `> echo "mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src" > /etc/local.d/vboxsf_mount.start`
+    `> chmod 755 /etc/local.d/vboxsf_mount.start`
+    `> /etc/local.d/vboxsf_mount.start
+* Optionally create a symlink the shared folder to your home directory:  
+    `> ln -s ~/src ~/M3_Container`  
+* Configure networking:  
+    Configure the IP address and net size to fit your net which is connected to the internet.
+    `> /root/set_ip.sh 192.168.1.3/24`
+    Optionally nter a default gateway:  
     `> nano /etc/conf.d/net`  
     Add a line similar to this: `routes_enp0s3="default gw 192.168.1.1"`  
     Edit the DNS servers  
