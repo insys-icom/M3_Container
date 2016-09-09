@@ -41,6 +41,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
+    mkdir -p "${STAGING_DIR}"/include
     mkdir -p "${STAGING_DIR}"/lib
     mkdir -p "${STAGING_DIR}"/usr/bin
     cp "src/mcip/mcip" "${STAGING_DIR}/usr/bin/mcip"
