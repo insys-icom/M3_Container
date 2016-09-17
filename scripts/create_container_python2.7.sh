@@ -54,7 +54,7 @@ ${OSS_PACKAGES_SCRIPTS}/ncurses-6.0.sh all
 ${OSS_PACKAGES_SCRIPTS}/openssl-1.0.2h.sh all
 ${OSS_PACKAGES_SCRIPTS}/readline-6.3.sh all
 ${OSS_PACKAGES_SCRIPTS}/sqlite-src-3110100.sh all
-${OSS_PACKAGES_SCRIPTS}/python-2.7.11.sh all
+${OSS_PACKAGES_SCRIPTS}/python-2.7.12.sh all
 
 # package container
 echo " "
