@@ -7,11 +7,13 @@ The routers firmware will check if /dev exists within the rootfs of the containe
 
 2 Can I develop containers on Windows?
 --------------------------------------
-Most likely not. Windows file systems do not know basic stuff like symlinks or detailed file permissions. Thatfore a lot of the open source project will not cross compile. Packing a container also requires symlinks and the ability to set the read/write/execute bits. If you have nothing else apart from Windows, you will have to have all sources within the virtual machine.
+Yes, but there are limitations. Windows file systems do not know basic stuff like symlinks or detailed file permissions. Thatfore some of the open source project will not cross compile out of the box (like "busybox"). Packing a container also requires symlinks and the ability to set the read/write/execute bits. If you have nothing else apart from Windows, you will have to have all sources within the virtual machine with the C/C++ SDK.
+
+There are other programming languages, which do not need a cross compiler like Python or Go. Using one of these and use the routers capabilities to export containers and you will be fine.
 
 3 Can I use the already existing /media/sf_M3_Container in my VM?
 -----------------------------------------------------------------
-Yes. VirtualBox will mount the directory automatically there, if the user configured the Shared Folder in the GUI. It is recommended to remove the empty directory `/home/user/src` and replace it with a symlink to the automatically created directory: `> rm /home/usr/src; ln -s /media/sf_M3_Container /home/user/M3_Container`.
+There could be a problem with the Group and User IDs that will prevent write permission. To avoid this it is recomended to let the SDK mount the shared folder (as described in "Install_Virtualbox.md").
 
 4 Why fails compiling busybox with "read-only filesystem"?
 ----------------------------------------------------------
