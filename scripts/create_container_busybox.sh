@@ -35,7 +35,6 @@ for PACKAGE in ${PACKAGES} ; do
     ${OSS_PACKAGES_SCRIPTS}/${PACKAGE}          all || exit
 done
 
-
 # package container
 echo
 echo "*************************************************************************************"

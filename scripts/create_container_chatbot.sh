@@ -4,6 +4,10 @@ DESCRIPTION="A container with an IRC chatbot (energymech)"
 CONTAINER_NAME="chatbot_container"
 ROOTFS_LIST="chatbot.txt"
 
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
+. ${TOPDIR}/scripts/common_settings.sh
+
 echo "This creates a minimalistic container with the IRC chatbot \"energymech\""
 echo ""
 echo "It is necessary to build these Open Source projects in this order:"
@@ -16,17 +20,26 @@ echo " "
 echo "Continue? <y/n>"
 
 read text
-! [ "${text}" = "y" ] && exit 0
+! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
-. ${TOPDIR}/scripts/common_settings.sh
+PACKAGES="${PACKAGES}  busybox-1.24.2_mini.sh"
+PACKAGES="${PACKAGES}  energymech-master.sh"
 
 # compile the needed packages
-${OSS_PACKAGES_SCRIPTS}/busybox-1.24.2_mini.sh all
-${OSS_PACKAGES_SCRIPTS}/energymech-master.sh all
+for PACKAGE in ${PACKAGES} ; do
+    echo
+    echo "*************************************************************************************"
+    echo "* downloading, checking, configuring, compiling and installing ${PACKAGE%.sh}"
+    echo "*************************************************************************************"
+    echo
+    ${OSS_PACKAGES_SCRIPTS}/${PACKAGE}          all || exit
+done
+
 
 # package container
-echo " "
-echo "Packaging the container"
+echo
+echo "*************************************************************************************"
+echo "* Packaging the container"
+echo "*************************************************************************************"
+echo
 ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"
