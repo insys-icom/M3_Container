@@ -1,23 +1,16 @@
-#! /bin/sh
+#!/bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/readline-6.3.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="33c8fb279e981274f485fd91da77e94a"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="readline-6.3"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="readline-6.3"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/${PKG_ARCHIVE_FILE}"
+PKG_CHECKSUM="33c8fb279e981274f485fd91da77e94a"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

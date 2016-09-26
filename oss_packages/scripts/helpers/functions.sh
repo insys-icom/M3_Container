@@ -1,27 +1,38 @@
-#!/bin/sh
+#! /bin/sh
 
-# download the sources with wget, if the file is not already stored
+[ -n "${FUNCTIONS_INCLUDED}" ] && return
+
+FUNCTIONS_INCLUDED=1
+
+# download the source file
 download()
 {
-    echo ${PKG_ARCHIVE}
-    if [ -e "${PKG_ARCHIVE}" ] ; then
+    if [ ! -e "${DOWNLOADS_DIR}" ]; then
+        mkdir -p ${DOWNLOADS_DIR}
+    fi
+    
+    if [ "${PKG_DOWNLOAD}" = "none" ]; then
+        echo "\$PKG_DOWNLOAD is set to none, skipping download"
+        return
+    elif [ -z "$PKG_ARCHIVE_FILE" ]; then
+        echo "\$PKG_ARCHIVE_FILE is empty, nothing to download"
+        return
+    elif [ -e "${PKG_ARCHIVE}" ] ; then
         # check the size of the file is not zero
         SIZE="$(stat -c%s ${PKG_ARCHIVE})"
         if ! [ "${SIZE}" = "0" ] ; then
-            echo ""
-            echo "The sources \"${PKG_DOWNLOAD}\" are already stored, no need to download them again"
-            echo ""
+            echo "downloadfile \"${PKG_ARCHIVE}\" already exists"
             return
         fi
+    elif [ -z "$PKG_DOWNLOAD" ]; then
+        echo "\$PKG_DOWNLOAD is empty, cannot download"
+        return
     fi
-
-    wget "${PKG_DOWNLOAD}" -O "${PKG_ARCHIVE}"
-    if ! [ "$?" == "0" ] ; then
-        mkdir -p "${DOWNLOADS_DIR}"
-        echo "Failed to download ${PKG_DOWNLOAD}"
-        echo ""
-        echo "Check connection to internet or download and store the file manually as \"${PKG_ARCHIVE}\""
-        exit 1
+    echo "downloading to ${PKG_ARCHIVE}"
+    wget -4 "${PKG_DOWNLOAD}" -O "${PKG_ARCHIVE}"
+    ret=$?
+    if [ $ret -ne 0 ] ; then
+        exit_failure "Failed to download ${PKG_DOWNLOAD}"
     fi
 }
 
@@ -37,11 +48,42 @@ check_md5()
     return "${ret}"
 }
 
-# check if source files is stored in dl directory
+# check source file in dl directory
 check_source()
 {
-    [ "${PKG_CHECKSUM}" = "none" ] && return       
-    check_md5 ${PKG_ARCHIVE} ${PKG_CHECKSUM} || exit_failure "Checksum failure"
+    # MD5SUM test
+    if [ -z "$PKG_ARCHIVE" -o -z "$PKG_ARCHIVE_FILE" ]; then
+        echo "\$PKG_ARCHIVE/\$PKG_ARCHIVE_FILE is empty, skipping check_source()"
+        return
+    elif [ "${PKG_CHECKSUM}" = "none" ]; then
+        echo "\$PKG_CHECKSUM is set to none, skipping MD5SUM check"
+        return
+    elif [ -z "${PKG_CHECKSUM}" ]; then
+        exit_failure "\$PKG_CHECKSUM is not set, skipping MD5SUM check"
+    elif [ ! "${PKG_CHECKSUM}" = "none" -a ! "${PKG_CHECKSUM}" = "" ] ; then
+        check_md5 ${PKG_ARCHIVE} ${PKG_CHECKSUM}
+        ret=$?
+        if [ $ret -ne 0 ]; then
+          exit_failure "md5sum check failed"
+        else
+            echo "md5sum check OK"
+        fi
+    fi
+
+    # Optional archive test, can be commented out if desired
+    if [ "${PKG_ARCHIVE##*.}" = "zip" ]; then
+        unzip -t ${PKG_ARCHIVE} > /dev/null
+        ret=$?
+    else
+        tar -tf ${PKG_ARCHIVE} > /dev/null
+        ret=$?
+    fi
+
+    if [ $ret -ne 0 ]; then
+        exit_failure "archive check failed"
+    else
+        echo "archive check OK"
+    fi
 }
 
 # check dependencies of project
@@ -50,7 +92,7 @@ check_deps()
     true
 }
 
-# replace projects files with the local ones
+# replace project files with the local ones
 copy_overlay()
 {
     if [ -d "${PKG_SRC_DIR}" ] ; then
@@ -66,9 +108,10 @@ copy_overlay()
     fi
 }
 
-# extract the projects sources into the working directory
+# extract the project sources into working directory
 unpack()
 {
+    echo "unpacking ${PKG_ARCHIVE_FILE}"
     if ! [ "${PKG_ARCHIVE_FILE}" = "none" ] ; then
         tar -C ${BUILD_DIR} -xf ${PKG_ARCHIVE} || exit_failure "unable to extract ${PKG_ARCHIVE}"
         [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
@@ -77,7 +120,7 @@ unpack()
     copy_overlay
 }
 
-# remove in installed project fieles from the staging area
+# remove installed project files from the staging area
 uninstall_staging()
 {
     [ -d "${PKG_INSTALL_DIR}" ] || return 1

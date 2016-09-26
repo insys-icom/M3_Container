@@ -1,23 +1,16 @@
-#! /bin/sh
+#!/bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://sourceforge.net/projects/bftpd/files/latest/download?source=files"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="dbd6740895e04f083b393b1167a11936"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="bftpd"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="bftpd-4.4"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/bftpd/bftpd/${PKG_DIR}/${PKG_ARCHIVE_FILE}?r=&ts=1474881057&use_mirror=netcologne"
+PKG_CHECKSUM="dbd6740895e04f083b393b1167a11936"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

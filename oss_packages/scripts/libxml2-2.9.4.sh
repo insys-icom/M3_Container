@@ -1,23 +1,16 @@
-#! /bin/sh
+#!/bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://xmlsoft.org/libxml2/libxml2-2.9.4.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="ae249165c173b1ff386ee8ad676815f5"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="libxml2-2.9.4"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="libxml2-2.9.4"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_DOWNLOAD="ftp://xmlsoft.org/libxml2/${PKG_ARCHIVE_FILE}"
+PKG_CHECKSUM="ae249165c173b1ff386ee8ad676815f5"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

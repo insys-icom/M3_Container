@@ -1,26 +1,15 @@
 #! /bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://github.com/troglobit/finit/releases/download/1.10/finit-1.10.tar.xz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="c41d53e8bc776f2cee133b35ea95719a"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="finit-1.10"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="finit-1.10.tar.xz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
 
 PKG_DIR="finit-1.10"
-PKG_ARCHIVE_FILE="finit-1.10.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_DOWNLOAD="https://github.com/troglobit/finit/releases/download/1.10/${PKG_ARCHIVE_FILE}"
 PKG_CHECKSUM="c41d53e8bc776f2cee133b35ea95719a"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"

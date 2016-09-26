@@ -1,23 +1,16 @@
 #! /bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://zlib.net/zlib-1.2.8.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="44d667c142d7cda120332623eab69f40"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="zlib-1.2.8"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="zlib-1.2.8.tar.gz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="zlib-1.2.8"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_DOWNLOAD="http://zlib.net/${PKG_ARCHIVE_FILE}"
+PKG_CHECKSUM="44d667c142d7cda120332623eab69f40"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

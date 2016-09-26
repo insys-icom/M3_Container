@@ -1,23 +1,17 @@
 #! /bin/sh
+# https://www.openssl.org/
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.openssl.org/source/openssl-1.0.2h.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="9392e65072ce4b614c1392eefc1f23d0"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="openssl-1.0.2h"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="openssl-1.0.2h"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_DOWNLOAD="https://www.openssl.org/source/${PKG_ARCHIVE_FILE}"
+PKG_CHECKSUM="9392e65072ce4b614c1392eefc1f23d0"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

@@ -1,23 +1,16 @@
 #! /bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://tukaani.org/xz/xz-5.2.2.tar.xz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="e26772b69940085c0632589ab1d52e64"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.2.2"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="xz-5.2.2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_DOWNLOAD="http://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+PKG_CHECKSUM="e26772b69940085c0632589ab1d52e64"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

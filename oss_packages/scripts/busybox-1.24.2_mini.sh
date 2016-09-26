@@ -1,24 +1,16 @@
-#! /bin/sh
+#!/bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://busybox.net/downloads/busybox-1.24.2.tar.bz2"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="2eaae519cac1143bcf583636a745381f"
-
-# name of directory after extracting the archive in working directory
-PKG_DIR="busybox-1.24.2_mini"
-PKG_DIR_ORIG="busybox-1.24.2"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="busybox-1.24.2.tar.bz2"
-
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
+
+PKG_DIR="busybox-1.24.2_mini"
+PKG_ARCHIVE_FILE="busybox-1.24.2.tar.bz2"
+PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
+PKG_CHECKSUM="2eaae519cac1143bcf583636a745381f"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
