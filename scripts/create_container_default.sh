@@ -7,6 +7,7 @@ ROOTFS_LIST="default.txt"
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
+. ${TOPDIR}/scripts/helpers.sh
 
 echo "This creates a default container similar to the one the router can create of its own."
 echo ""
@@ -41,18 +42,18 @@ PACKAGES="${PACKAGES}  timezone2016e.sh"
 
 # compile the needed packages
 for PACKAGE in ${PACKAGES} ; do
-    echo
+    echo ""
     echo "*************************************************************************************"
     echo "* downloading, checking, configuring, compiling and installing ${PACKAGE%.sh}"
     echo "*************************************************************************************"
-    echo
+    echo ""
     ${OSS_PACKAGES_SCRIPTS}/${PACKAGE}          all || exit
 done
 
 # package container
-echo
+echo ""
 echo "*************************************************************************************"
 echo "* Packaging the container"
 echo "*************************************************************************************"
-echo
+echo ""
 ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"

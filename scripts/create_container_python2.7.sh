@@ -1,12 +1,13 @@
 #!/bin/sh
 
 DESCRIPTION="A container with Python 2.7 in it"
-CONTAINER_NAME="python_2.7"
+CONTAINER_NAME="python_2.7_container"
 ROOTFS_LIST="python_2.7.txt"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
+. ${TOPDIR}/scripts/helpers.sh
 
 echo "This creates a container that only contains busybox"
 echo ""
@@ -27,7 +28,7 @@ echo "- ncurses-6.0.sh"
 echo "- openssl-1.0.2h.sh"
 echo "- readline-6.3.sh"
 echo "- sqlite-src-3110100.sh"
-echo "- python-2.7.11.sh"
+echo "- python-2.7.12.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
 echo " > ./scripts/mk_container.sh -n ${CONTAINER_NAME} -l ${ROOTFS_LIST}"
@@ -57,18 +58,18 @@ PACKAGES="${PACKAGES}  python-2.7.12.sh"
 
 # compile the needed packages
 for PACKAGE in ${PACKAGES} ; do
-    echo
+    echo ""
     echo "*************************************************************************************"
     echo "* downloading, checking, configuring, compiling and installing ${PACKAGE%.sh}"
     echo "*************************************************************************************"
-    echo
+    echo ""
     ${OSS_PACKAGES_SCRIPTS}/${PACKAGE}          all || exit
 done
 
 # package container
-echo
+echo ""
 echo "*************************************************************************************"
 echo "* Packaging the container"
 echo "*************************************************************************************"
-echo
+echo ""
 ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"
