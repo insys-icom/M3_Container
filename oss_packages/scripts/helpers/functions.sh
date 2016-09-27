@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 [ -n "${FUNCTIONS_INCLUDED}" ] && return
 
@@ -60,7 +60,7 @@ check_source()
         return
     elif [ -z "${PKG_CHECKSUM}" ]; then
         exit_failure "\$PKG_CHECKSUM is not set, skipping MD5SUM check"
-    elif [ ! "${PKG_CHECKSUM}" = "none" -a ! "${PKG_CHECKSUM}" = "" ] ; then
+    else
         check_md5 ${PKG_ARCHIVE} ${PKG_CHECKSUM}
         ret=$?
         if [ $ret -ne 0 ]; then

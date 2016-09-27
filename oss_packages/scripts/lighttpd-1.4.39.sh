@@ -1,16 +1,24 @@
 #!/bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="63c7563be1c7a7a9819a51f07f1af8b2"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="lighttpd-1.4.39"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="lighttpd-1.4.39"
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
-PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
-PKG_CHECKSUM="63c7563be1c7a7a9819a51f07f1af8b2"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

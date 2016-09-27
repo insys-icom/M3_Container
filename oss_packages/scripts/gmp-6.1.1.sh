@@ -1,16 +1,24 @@
 #!/bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://gmplib.org/download/gmp/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="e70e183609244a332d80529e7e155a35"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="gmp-6.1.1"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="gmp-6.1.1"
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
-PKG_DOWNLOAD="https://gmplib.org/download/gmp/${PKG_ARCHIVE_FILE}"
-PKG_CHECKSUM="e70e183609244a332d80529e7e155a35"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

@@ -1,16 +1,24 @@
 #!/bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://www.sqlite.org/2016/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="52f96513281a97f0632d2280964798fa"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="sqlite-src-3110100"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
+
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="sqlite-src-3110100"
-PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
-PKG_DOWNLOAD="https://www.sqlite.org/2016/${PKG_ARCHIVE_FILE}"
-PKG_CHECKSUM="52f96513281a97f0632d2280964798fa"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

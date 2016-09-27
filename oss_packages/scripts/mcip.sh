@@ -1,16 +1,24 @@
 #!/bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="5b2ec1b3c7e79d27fc708ace9d4b2bc0"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="mcip"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="mcip_2016.01.19.tar.gz"
+
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="mcip"
-PKG_ARCHIVE_FILE="mcip_2016.01.19.tar.gz"
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
-PKG_CHECKSUM="5b2ec1b3c7e79d27fc708ace9d4b2bc0"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"

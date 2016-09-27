@@ -1,16 +1,24 @@
 #! /bin/sh
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://sourceforge.net/projects/net-snmp/files/net-snmp/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}/download"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="d4a3459e1577d0efa8d96ca70a885e53"
+
+# name of directory after extracting the archive in working directory
+PKG_DIR="net-snmp-5.7.3"
+
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
+
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
-PKG_DIR="net-snmp-5.7.3"
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
-PKG_DOWNLOAD="https://sourceforge.net/projects/net-snmp/files/net-snmp/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}/download"
-PKG_CHECKSUM="d4a3459e1577d0efa8d96ca70a885e53"
 
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
