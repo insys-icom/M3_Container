@@ -14,9 +14,9 @@ PKG_DIR="ncurses-6.0"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 
-SCRIPTSDIR=$(dirname $0)
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

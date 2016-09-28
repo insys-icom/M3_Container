@@ -14,9 +14,9 @@ PKG_DIR="socat-2.0.0-b9"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 
-SCRIPTSDIR=$(dirname $0)
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

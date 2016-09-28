@@ -13,9 +13,9 @@ PKG_DIR="bftpd-4.4"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
-SCRIPTSDIR=$(dirname $0)
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

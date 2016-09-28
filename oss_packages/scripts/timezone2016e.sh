@@ -18,9 +18,9 @@ PKG_ARCHIVE_DATA_FILE="tzdata2016e.tar.gz"
 PKG_ARCHIVE_CODE_FILE="tzcode2016e.tar.gz"
 
 
-SCRIPTSDIR=$(dirname $0)
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

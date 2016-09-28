@@ -14,9 +14,9 @@ PKG_DIR="gmp-6.1.1"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 
-SCRIPTSDIR=$(dirname $0)
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
