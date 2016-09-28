@@ -22,6 +22,7 @@ echo "- busybox-1.24.2.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
 echo " # ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -k \"${KEYFILE}\" -d \"${DESCRIPTION}\" -v \"1.0\""
+echo " where the options -n and -l are mandatory."
 echo " "
 echo "Continue? <y/n>"
 
