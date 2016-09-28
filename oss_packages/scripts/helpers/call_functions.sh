@@ -24,6 +24,7 @@ fi
 
 while [ $# -gt 0 ]
 do
+    # call the desired function
     ${1} || (print_help ; exit_failure "${1} failed")
     shift
 done

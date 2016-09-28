@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="ftp://ftp.gnu.org/gnu/gdbm/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.12.tar.gz"
 
 # md5 checksum of archive in dl directory
@@ -12,9 +13,10 @@ PKG_DIR="gdbm-1.12"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
-SCRIPTSDIR="$(dirname $0)"
+
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

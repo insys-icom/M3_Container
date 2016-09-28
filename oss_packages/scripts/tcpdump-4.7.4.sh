@@ -1,6 +1,7 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="http://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="http://www.tcpdump.org/release/tcpdump-4.7.4.tar.gz"
 
 # md5 checksum of archive in dl directory
@@ -12,9 +13,10 @@ PKG_DIR="tcpdump-4.7.4"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
-SCRIPTSDIR="$(dirname $0)"
+
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

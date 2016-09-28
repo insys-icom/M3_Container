@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz"
 
 # md5 checksum of archive in dl directory
@@ -12,9 +13,10 @@ PKG_DIR="rsync-3.1.2"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
-SCRIPTSDIR="$(dirname $0)"
+
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

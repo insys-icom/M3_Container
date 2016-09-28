@@ -1,6 +1,8 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
+#PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_CODE_FILE}"
 PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/tzdata2016e.tar.gz"
 PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/tzcode2016e.tar.gz"
 
@@ -15,9 +17,10 @@ PKG_DIR="timezone2016e"
 PKG_ARCHIVE_DATA_FILE="tzdata2016e.tar.gz"
 PKG_ARCHIVE_CODE_FILE="tzcode2016e.tar.gz"
 
-SCRIPTSDIR="$(dirname $0)"
+
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
@@ -28,41 +31,112 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-# download the sources with wget, if the file is not already stored
-download_part()
+download()
 {
-    echo "${1}"
-    if [ -e "${1}" ] ; then
+    local data_fail=0
+    local code_fail=0
+
+    if [ -e "${PKG_ARCHIVE_DATA}" ]; then
         # check the size of the file is not zero
-        SIZE="$(stat -c%s ${1})"
+        SIZE="$(stat -c%s ${PKG_ARCHIVE_DATA})"
         if ! [ "${SIZE}" = "0" ] ; then
-            echo ""
-            echo "The sources \"${2}\" are already stored, no need to download them again"
-            echo ""
-            return
+            echo "downloadfile \"${PKG_ARCHIVE_DATA}\" already exists"
+        else
+            echo "source \"${PKG_ARCHIVE_DATA}\" has 0Bytes"
+            data_fail=1
+        fi
+    else
+        echo "downloading to ${PKG_ARCHIVE_DATA}"
+        wget -4 "${PKG_DOWNLOAD_DATA}" -O "${PKG_ARCHIVE_DATA}"
+        ret=$?
+        if [ $ret -ne 0 ] ; then
+            echo "Failed to download ${PKG_DOWNLOAD_DATA}"
+            data_fail=1
         fi
     fi
 
-    wget "${2}" -O "${1}"
-    if ! [ "$?" == "0" ] ; then
-        mkdir -p "${DOWNLOADS_DIR}"
-        echo "Failed to download ${2}"
-        echo ""
-        echo "Check connection to internet or download and store the file manually as \"${2}\""
-        exit 1
+    if [ -e "${PKG_ARCHIVE_CODE}" ]; then
+        # check the size of the file is not zero
+        SIZE="$(stat -c%s ${PKG_ARCHIVE_CODE})"
+        if ! [ "${SIZE}" = "0" ] ; then
+            echo "downloadfile \"${PKG_ARCHIVE_CODE}\" already exists"
+        else
+            echo "source \"${PKG_ARCHIVE_CODE}\" has 0Bytes"
+            code_fail=1
+        fi
+    else
+        echo "downloading to ${PKG_ARCHIVE_CODE}"
+        wget -4 "${PKG_DOWNLOAD_CODE}" -O "${PKG_ARCHIVE_CODE}"
+        ret=$?
+        if [ $ret -ne 0 ] ; then
+            echo "Failed to download ${PKG_DOWNLOAD_CODE}"
+            code_fail=1
+        fi
     fi
-}
 
-download()
-{    
-    download_part "${PKG_ARCHIVE_DATA}" "${PKG_DOWNLOAD_DATA}"
-    download_part "${PKG_ARCHIVE_CODE}" "${PKG_DOWNLOAD_CODE}"
+    if [ $data_fail -eq 1 -o $code_fail -eq 1 ]; then
+        exit_failure "Download failed"
+    fi
 }
 
 check_source()
 { 
-    check_md5 ${PKG_ARCHIVE_DATA} ${PKG_CHECKSUM_DATA} || exit_failure "Checksum failure"
-    check_md5 ${PKG_ARCHIVE_CODE} ${PKG_CHECKSUM_CODE} || exit_failure "Checksum failure"
+    local data_fail=0
+    local code_fail=0
+
+    # MD5SUM test 1
+    check_md5 ${PKG_ARCHIVE_DATA} ${PKG_CHECKSUM_DATA}
+    ret=$?
+    if [ $ret -ne 0 ]; then
+      echo "md5sum check of ${PKG_ARCHIVE_DATA_FILE} failed"
+      data_fail=1
+    else
+      echo "md5sum check of ${PKG_ARCHIVE_DATA_FILE} OK"
+    fi
+    # Optional archive test 1, can be commented out if desired
+    if [ "${PKG_ARCHIVE_DATA##*.}" = "zip" ]; then
+        unzip -t ${PKG_ARCHIVE_DATA} > /dev/null
+        ret=$?
+    else
+        tar -tf ${PKG_ARCHIVE_DATA} > /dev/null
+        ret=$?
+    fi
+
+    if [ $ret -ne 0 ]; then
+        echo "archive check of ${PKG_ARCHIVE_DATA_FILE} failed"
+        data_fail=1
+    else
+        echo "archive check of ${PKG_ARCHIVE_DATA_FILE} OK"
+    fi
+
+   # MD5SUM test 2
+    check_md5 ${PKG_ARCHIVE_CODE} ${PKG_CHECKSUM_CODE}
+    ret=$?
+    if [ $ret -ne 0 ]; then
+      echo "md5sum check of ${PKG_ARCHIVE_CODE_FILE} failed"
+      code_fail=1
+    else
+      echo "md5sum check of ${PKG_ARCHIVE_CODE_FILE} OK"
+    fi
+    # Optional archive test 2, can be commented out if desired
+    if [ "${PKG_ARCHIVE_CODE##*.}" = "zip" ]; then
+        unzip -t ${PKG_ARCHIVE_CODE} > /dev/null
+        ret=$?
+    else
+        tar -tf ${PKG_ARCHIVE_CODE} > /dev/null
+        ret=$?
+    fi
+
+    if [ $ret -ne 0 ]; then
+        echo "archive check of ${PKG_ARCHIVE_CODE_FILE} failed"
+        code_fail=1
+    else
+        echo "archive check of ${PKG_ARCHIVE_CODE_FILE} OK"
+    fi
+
+    if [ $data_fail -eq 1 -o $code_fail -eq 1 ]; then
+        exit_failure "check_source failed"
+    fi
 }
 
 unpack()
