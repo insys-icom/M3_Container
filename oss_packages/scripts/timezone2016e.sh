@@ -141,7 +141,7 @@ check_source()
 
 unpack()
 {
-    mkdir ${PKG_BUILD_DIR} 2> /dev/null
+    mkdir -p ${PKG_BUILD_DIR} 2> /dev/null
     tar -C ${PKG_BUILD_DIR} -xf ${PKG_ARCHIVE_DATA} || exit_failure "unable to extract ${PKG_ARCHIVE}"
     tar -C ${PKG_BUILD_DIR} -xf ${PKG_ARCHIVE_CODE} || exit_failure "unable to extract ${PKG_ARCHIVE}"
     copy_overlay

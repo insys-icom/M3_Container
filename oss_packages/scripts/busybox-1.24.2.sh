@@ -50,7 +50,7 @@ compile()
 
 install_staging()
 {
-    mkdir "${STAGING_DIR}/bin/"
+    mkdir -p "${STAGING_DIR}/bin/"
     cp "${BBOX_BUILD_DIR}/busybox" "${STAGING_DIR}/bin/"
     cp "${BBOX_BUILD_DIR}/busybox.links" "${STAGING_DIR}/bin/"
 }
