@@ -1,7 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.lua.org/ftp/lua-5.3.3.tar.gz"
+PKG_DOWNLOAD="https://www.lua.org/ftp/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="703f75caa4fdf4a911c1a72e67a27498"
@@ -12,9 +12,10 @@ PKG_DIR="lua-5.3.3"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
-SCRIPTSDIR="$(dirname $0)"
+
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

@@ -1,7 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://gmplib.org/download/gmp/gmp-6.1.1.tar.xz"
+PKG_DOWNLOAD="https://gmplib.org/download/gmp/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="e70e183609244a332d80529e7e155a35"
@@ -12,9 +12,10 @@ PKG_DIR="gmp-6.1.1"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
-SCRIPTSDIR="$(dirname $0)"
+
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh

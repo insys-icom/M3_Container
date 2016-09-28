@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://www.dest-unreach.org/socat/download/socat-2.0.0-b9.tar.bz2"
+PKG_DOWNLOAD="http://www.dest-unreach.org/socat/download/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="553b1593d0a192cb09cbdc687ef1baac"
@@ -12,11 +12,10 @@ PKG_DIR="socat-2.0.0-b9"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
-http://www.dest-unreach.org/socat/download/socat-2.0.0-b9.tar.gz
 
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
