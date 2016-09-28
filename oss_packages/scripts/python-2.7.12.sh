@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="57dffcee9cee8bb2ab5f82af1d8e9a69"

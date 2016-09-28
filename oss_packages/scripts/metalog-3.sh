@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/metalog/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmetalog%2Ffiles%2F&ts=1474464488&use_mirror=liquidtelecom"
+#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/metalog/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmetalog%2Ffiles%2F&ts=1474464488&use_mirror=liquidtelecom"
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/metalog/metalog-3.tar.xz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmetalog%2Ffiles%2F&ts=1474464488&use_mirror=liquidtelecom"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="6fe404e49764fa24108fd090417bacb5"

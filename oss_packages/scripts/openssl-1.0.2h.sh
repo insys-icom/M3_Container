@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.openssl.org/source/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.openssl.org/source/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.openssl.org/source/openssl-1.0.2h.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="9392e65072ce4b614c1392eefc1f23d0"

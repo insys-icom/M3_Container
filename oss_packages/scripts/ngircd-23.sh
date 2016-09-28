@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ngircd.barton.de/pub/ngircd/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://ngircd.barton.de/pub/ngircd/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://ngircd.barton.de/pub/ngircd/ngircd-23.tar.xz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="b438e9044b9fabebf1ba9b07d09f5add"

@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
-PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_CODE_FILE}"
+#PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
+#PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_CODE_FILE}"
+PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/tzdata2016e.tar.gz"
+PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/tzcode2016e.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM_DATA="43f9f929a8baf0dd2f17efaea02c2d2a"

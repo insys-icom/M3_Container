@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
+#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/mcip_2016.01.19.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="5b2ec1b3c7e79d27fc708ace9d4b2bc0"

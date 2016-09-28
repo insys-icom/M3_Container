@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://www.netfilter.org/projects/iptables/files/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://www.netfilter.org/projects/iptables/files/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.netfilter.org/projects/iptables/files/iptables-1.6.0.tar.bz2"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="27ba3451cb622467fc9267a176f19a31"

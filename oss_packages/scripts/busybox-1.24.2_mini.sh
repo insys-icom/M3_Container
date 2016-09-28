@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://busybox.net/downloads/busybox-1.24.2.tar.bz2"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="2eaae519cac1143bcf583636a745381f"

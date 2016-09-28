@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/readline-6.3.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="33c8fb279e981274f485fd91da77e94a"

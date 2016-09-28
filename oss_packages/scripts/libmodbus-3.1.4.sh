@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://libmodbus.org/releases/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://libmodbus.org/releases/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://libmodbus.org/releases/libmodbus-3.1.4.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="b1a8fd3a40d2db4de51fb0cbcb201806"

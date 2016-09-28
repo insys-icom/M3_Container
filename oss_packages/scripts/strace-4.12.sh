@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/strace/strace/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fstrace%2F&ts=1466578770&use_mirror=tenet"
+#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/strace/strace/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fstrace%2F&ts=1466578770&use_mirror=tenet"
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/strace/strace/4.12/strace-4.12.tar.xz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fstrace%2F&ts=1466578770&use_mirror=tenet"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="efb8611fc332e71ec419c53f59faa93e"

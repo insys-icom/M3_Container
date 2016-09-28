@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://www.oberhumer.com/opensource/lzo/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://www.oberhumer.com/opensource/lzo/download/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.oberhumer.com/opensource/lzo/download/lzo-2.09.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="c7ffc9a103afe2d1bba0b015e7aa887f"

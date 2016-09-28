@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.sqlite.org/2016/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.sqlite.org/2016/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.sqlite.org/2016/sqlite-src-3110100.zip"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="52f96513281a97f0632d2280964798fa"

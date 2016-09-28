@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://gmplib.org/download/gmp/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://gmplib.org/download/gmp/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://gmplib.org/download/gmp/gmp-6.1.1.tar.xz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="e70e183609244a332d80529e7e155a35"

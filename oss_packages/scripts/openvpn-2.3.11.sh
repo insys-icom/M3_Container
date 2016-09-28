@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/openvpn-2.3.11.tar.xz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="fe17a25235d65e60af8986c6c78c4650"

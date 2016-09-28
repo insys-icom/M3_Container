@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://ftp.gnu.org/gnu/gdbm/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="ftp://ftp.gnu.org/gnu/gdbm/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="ftp://ftp.gnu.org/gnu/gdbm/gdbm-1.12.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="9ce96ff4c99e74295ea19040931c8fb9"

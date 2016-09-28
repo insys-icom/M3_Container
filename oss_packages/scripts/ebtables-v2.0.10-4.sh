@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://ftp.netfilter.org/pub/ebtables/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="ftp://ftp.netfilter.org/pub/ebtables/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="ftp://ftp.netfilter.org/pub/ebtables/ebtables-v2.0.10-4.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="506742a3d44b9925955425a659c1a8d0"

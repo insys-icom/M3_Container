@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://de1.php.net/get/${PKG_ARCHIVE_FILE}/from/this/mirror"
+#PKG_DOWNLOAD="http://de1.php.net/get/${PKG_ARCHIVE_FILE}/from/this/mirror"
+PKG_DOWNLOAD="http://de1.php.net/get/php-7.0.8.tar.xz/from/this/mirror"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="c4438583c95d3ddf746929d7fcb61045"

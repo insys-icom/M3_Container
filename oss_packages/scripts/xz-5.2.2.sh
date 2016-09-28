@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://tukaani.org/xz/xz-5.2.2.tar.xz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="e26772b69940085c0632589ab1d52e64"

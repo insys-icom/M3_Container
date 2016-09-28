@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://curl.haxx.se/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://curl.haxx.se/download/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://curl.haxx.se/download/curl-7.49.1.tar.bz2"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="6bb1f7af5b58b30e4e6414b8c1abccab"

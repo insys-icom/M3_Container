@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/expat/expat/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fexpat%2Ffiles%2Flatest%2Fdownload%3Fsource%3Dfiles&ts=1474882995&use_mirror=netcologne"
+#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/expat/expat/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fexpat%2Ffiles%2Flatest%2Fdownload%3Fsource%3Dfiles&ts=1474882995&use_mirror=netcologne"
+PKG_DOWNLOAD="http://downloads.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fexpat%2Ffiles%2Flatest%2Fdownload%3Fsource%3Dfiles&ts=1474882995&use_mirror=netcologne"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="2f47841c829facb346eb6e3fab5212e2"

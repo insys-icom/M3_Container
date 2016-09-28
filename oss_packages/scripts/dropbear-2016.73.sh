@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/dropbear-2016.73.tar.bz2"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="8d6d78ce60ca52350ec04fcbd711ce9b"

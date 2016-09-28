@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://ftp.gnu.org/gnu/nettle/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://ftp.gnu.org/gnu/nettle/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://ftp.gnu.org/gnu/nettle/nettle-3.2.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="afb15b4764ebf1b4e6d06c62bd4d29e4"

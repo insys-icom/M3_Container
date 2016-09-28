@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://www.linux-pam.org/library/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://www.linux-pam.org/library/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.linux-pam.org/library/Linux-PAM-1.2.1.tar.bz2"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="9dc53067556d2dd567808fd509519dd6"

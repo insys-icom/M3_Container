@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://www.thekelleys.org.uk/dnsmasq/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://www.thekelleys.org.uk/dnsmasq/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.76.tar.xz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="00f5ee66b4e4b7f14538bf62ae3c9461"

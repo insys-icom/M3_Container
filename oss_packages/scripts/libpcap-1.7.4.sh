@@ -1,7 +1,8 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.tcpdump.org/release/libpcap-1.7.4.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="b2e13142bbaba857ab1c6894aedaf547"

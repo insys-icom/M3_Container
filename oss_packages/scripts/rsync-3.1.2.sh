@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="0f758d7e000c0f7f7d3792610fad70cb"
