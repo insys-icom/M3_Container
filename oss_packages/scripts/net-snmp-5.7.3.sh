@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="https://sourceforge.net/projects/net-snmp/files/net-snmp/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}/download"

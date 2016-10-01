@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="http://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"

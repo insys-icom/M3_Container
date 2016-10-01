@@ -4,8 +4,8 @@ DESCRIPTION="A container with lighttpd in it"
 CONTAINER_NAME="lighttpd_container"
 ROOTFS_LIST="lighttpd.txt"
 
-SCRIPTSDIR=$(dirname $0)
-TOPDIR=$(realpath ${SCRIPTSDIR}/..)
+SCRIPTSDIR="$(dirname $0)"
+TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
@@ -29,7 +29,7 @@ echo "- gdbm-1.12.sh"
 echo "- lighttpd-1.4.39.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " # ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
+echo " $ ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
 echo " where the options -n and -l are mandatory."
 echo " "
 echo "Continue? <y/n>"

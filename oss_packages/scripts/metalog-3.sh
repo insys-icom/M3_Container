@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="http://downloads.sourceforge.net/project/metalog/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmetalog%2Ffiles%2F&ts=1474464488&use_mirror=liquidtelecom"

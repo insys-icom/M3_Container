@@ -4,8 +4,8 @@ DESCRIPTION="A container with Python 2.7 in it"
 CONTAINER_NAME="python_2.7_container"
 ROOTFS_LIST="python_2.7.txt"
 
-SCRIPTSDIR=$(dirname $0)
-TOPDIR=$(realpath ${SCRIPTSDIR}/..)
+SCRIPTSDIR="$(dirname $0)"
+TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
@@ -31,7 +31,7 @@ echo "- sqlite-src-3110100.sh"
 echo "- python-2.7.12.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " > ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
+echo " $ ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
 echo " where the options -n and -l are mandatory."
 echo " "
 echo "Continue? <y/n>"

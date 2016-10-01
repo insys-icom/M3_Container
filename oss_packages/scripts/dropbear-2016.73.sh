@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/${PKG_ARCHIVE_FILE}"

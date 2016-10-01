@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="http://tukaani.org/xz/${PKG_ARCHIVE_FILE}"

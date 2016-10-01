@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="http://www.oberhumer.com/opensource/lzo/download/${PKG_ARCHIVE_FILE}"

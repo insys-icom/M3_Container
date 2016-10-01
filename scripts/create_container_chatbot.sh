@@ -4,8 +4,8 @@ DESCRIPTION="A container with an IRC chatbot (energymech)"
 CONTAINER_NAME="chatbot_container"
 ROOTFS_LIST="chatbot.txt"
 
-SCRIPTSDIR=$(dirname $0)
-TOPDIR=$(realpath ${SCRIPTSDIR}/..)
+SCRIPTSDIR="$(dirname $0)"
+TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
@@ -16,7 +16,7 @@ echo "- busybox-1.24.2_mini.sh"
 echo "- energymech-master.sh"
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " # ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
+echo " $ ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
 echo " where the options -n and -l are mandatory."
 echo " "
 echo "Continue? <y/n>"

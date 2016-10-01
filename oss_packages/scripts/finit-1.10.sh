@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="https://github.com/troglobit/finit/releases/download/1.10/${PKG_ARCHIVE_FILE}"

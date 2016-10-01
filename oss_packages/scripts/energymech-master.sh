@@ -1,6 +1,6 @@
 #!/bin/sh
-# Unrevisioned source, we always checkout the newest version from git.
 
+# Unrevisioned source, we always checkout the newest version from git.
 # download link for the sources to be stored in dl directory
 PKG_DOWNLOAD="https://github.com/MadCamel/energymech/archive/master.tar.gz"
 
