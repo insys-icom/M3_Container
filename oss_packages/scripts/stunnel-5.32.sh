@@ -1,7 +1,8 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.stunnel.org/downloads/stunnel-5.32.tar.gz"
+#PKG_DOWNLOAD="http://www.usenix.org.uk/mirrors/stunnel/archive/5.x/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.usenix.org.uk/mirrors/stunnel/archive/5.x/stunnel-5.32.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="60462f97b62e745288541089e8c0877c"
@@ -11,6 +12,7 @@ PKG_DIR="stunnel-5.32"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"

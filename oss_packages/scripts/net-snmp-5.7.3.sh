@@ -1,6 +1,7 @@
 #! /bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://sourceforge.net/projects/net-snmp/files/net-snmp/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}/download"
 PKG_DOWNLOAD="https://sourceforge.net/projects/net-snmp/files/net-snmp/5.7.3/net-snmp-5.7.3.tar.gz/download"
 
 # md5 checksum of archive in dl directory
@@ -11,6 +12,7 @@ PKG_DIR="net-snmp-5.7.3"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"

@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tar.xz"
 
 # md5 checksum of archive in dl directory
@@ -11,6 +12,7 @@ PKG_DIR="Python-2.7.12"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -40,6 +42,8 @@ configure()
 
 compile()
 {
+    echo "******************************************"
+    echo "* Compiling and installing to: ${PKG_INSTALL_DIR}"
     cd "${PKG_BUILD_DIR}"
     touch Include/graminit.h Python/graminit.c
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
@@ -48,6 +52,8 @@ compile()
 
 install_staging()
 {
+    echo "******************************************"
+    echo "* Installing to staging: ${STAGING_DIR}"
     rm -rf "${STAGING_DIR}/lib/libpython2"*
     cp -r "${PKG_INSTALL_DIR}/usr/local/"* "${STAGING_DIR}"
 }

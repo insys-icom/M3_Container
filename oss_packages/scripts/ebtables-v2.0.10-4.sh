@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="ftp://ftp.netfilter.org/pub/ebtables/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="ftp://ftp.netfilter.org/pub/ebtables/ebtables-v2.0.10-4.tar.gz"
 
 # md5 checksum of archive in dl directory
@@ -11,6 +12,7 @@ PKG_DIR="ebtables-v2.0.10-4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"

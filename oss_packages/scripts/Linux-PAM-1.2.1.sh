@@ -1,7 +1,8 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://linux-pam.org/library/Linux-PAM-1.2.1.tar.bz2"
+#PKG_DOWNLOAD="http://www.linux-pam.org/library/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.linux-pam.org/library/Linux-PAM-1.2.1.tar.bz2"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="9dc53067556d2dd567808fd509519dd6"
@@ -11,6 +12,7 @@ PKG_DIR="Linux-PAM-1.2.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -39,7 +41,8 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    # work around undefined yywrap error, because YFLAGS=--noyywrap didn't help
+    # export CROSS_COMPILE="${M3_CROSS_COMPILE}"
+    # work around undefined yywrap error, cuz YFLAGS=--noyywrap didn't help
     touch conf/pam_conv1/pam_conv_l.o
     touch conf/pam_conv1/pam_conv_y.o
     touch conf/pam_conv1/pam_conv1
@@ -48,7 +51,7 @@ compile()
     chmod +x doc/specs/padout
     make ${M3_MAKEFLAGS} CROSS_COMPILE="${M3_CROSS_COMPILE}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
-    # libtool breaks everything
+    # libtool is evil and breaks everything
     rm ${PKG_INSTALL_DIR}/lib/libpam.la
 }
 
@@ -56,7 +59,7 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
-    # libtool breaks everything
+    # libtool is evil and breaks everything
     rm ${STAGING_DIR}/lib/libpam.la
 }
 

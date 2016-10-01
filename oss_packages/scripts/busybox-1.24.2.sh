@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://busybox.net/downloads/busybox-1.24.2.tar.bz2"
 
 # md5 checksum of archive in dl directory
@@ -11,6 +12,7 @@ PKG_DIR="busybox-1.24.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -28,7 +30,7 @@ BBOX_BUILD_DIR="${PKG_BUILD_DIR}/build/system"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} V=1 O="${BBOX_BUILD_DIR}" CONFIG_EXTRA_CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" CONFIG_EXTRA_LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" AR="${AR}" RANLIB="${RANLIB}" NM="${NM}" CROSS_COMPILE=${M3_CROSS_COMPILE}
+    make ${M3_MAKEFLAGS} V=1 O="${BBOX_BUILD_DIR}" CONFIG_EXTRA_CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" CONFIG_EXTRA_LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" AR="${AR}" RANLIB="${RANLIB}" NM="${NM}" CROSS_COMPILE=${M3_CROSS_COMPILE} oldconfig
 }
 
 menuconfig()
@@ -48,7 +50,7 @@ compile()
 
 install_staging()
 {
-    mkdir "${STAGING_DIR}/bin/"
+    mkdir -p "${STAGING_DIR}/bin/"
     cp "${BBOX_BUILD_DIR}/busybox" "${STAGING_DIR}/bin/"
     cp "${BBOX_BUILD_DIR}/busybox.links" "${STAGING_DIR}/bin/"
 }

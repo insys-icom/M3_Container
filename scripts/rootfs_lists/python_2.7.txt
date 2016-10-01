@@ -244,7 +244,6 @@ dir /lib/python2.7/xml/etree 755 0 0
 dir /lib/python2.7/xml/parsers 755 0 0
 dir /lib/python2.7/xml/sax 755 0 0
 file /bin/python2.7 ${STAGING_DIR}/bin/python2.7 755 0 0
-file /lib/libpython2.7.so.1.0 ${STAGING_DIR}/lib/libpython2.7.so.1.0 555 0 0
 file /lib/pkgconfig/python-2.7.pc ${STAGING_DIR}/lib/pkgconfig/python-2.7.pc 644 0 0
 file /lib/python2.7/BaseHTTPServer.pyc ${STAGING_DIR}/lib/python2.7/BaseHTTPServer.pyc 644 0 0
 file /lib/python2.7/Bastion.pyc ${STAGING_DIR}/lib/python2.7/Bastion.pyc 644 0 0
@@ -896,7 +895,6 @@ file /lib/python2.7/xmlrpclib.pyc ${STAGING_DIR}/lib/python2.7/xmlrpclib.pyc 644
 file /lib/python2.7/zipfile.pyc ${STAGING_DIR}/lib/python2.7/zipfile.pyc 644 0 0
 slink /bin/python python2 777 0 0
 slink /bin/python2 python2.7 777 0 0
-slink /lib/libpython2.7.so libpython2.7.so.1.0 777 0 0
 slink /lib/pkgconfig/python.pc python2.pc 777 0 0
 slink /lib/pkgconfig/python2.pc python-2.7.pc 777 0 0
 

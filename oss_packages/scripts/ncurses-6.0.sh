@@ -1,7 +1,8 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
+#PKG_DOWNLOAD="https://ftp.gnu.org/gnu/ncurses/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="ee13d052e1ead260d7c28071f46eefb1"
@@ -11,6 +12,7 @@ PKG_DIR="ncurses-6.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"

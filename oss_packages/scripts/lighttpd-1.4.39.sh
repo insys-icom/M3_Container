@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.39.tar.xz"
 
 # md5 checksum of archive in dl directory
@@ -11,6 +12,7 @@ PKG_DIR="lighttpd-1.4.39"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"

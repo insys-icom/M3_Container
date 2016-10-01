@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/pcre/pcre/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpcre%2F&ts=1465978062&use_mirror=netassist"
 PKG_DOWNLOAD="http://downloads.sourceforge.net/project/pcre/pcre/8.38/pcre-8.38.tar.bz2?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpcre%2F&ts=1465978062&use_mirror=netassist"
 
 # md5 checksum of archive in dl directory
@@ -11,6 +12,7 @@ PKG_DIR="pcre-8.38"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"

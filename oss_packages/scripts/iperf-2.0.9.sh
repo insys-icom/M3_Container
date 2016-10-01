@@ -1,6 +1,7 @@
-#! /bin/sh
+#!/bin/sh
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://iperf.fr/download/source/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://iperf.fr/download/source/iperf-2.0.9-source.tar.gz"
 
 # md5 checksum of archive in dl directory
@@ -10,7 +11,8 @@ PKG_CHECKSUM="1bb3a1d98b1973aee6e8f171933c0f61"
 PKG_DIR="iperf-2.0.9"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}-source.tar.gz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
