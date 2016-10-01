@@ -9,7 +9,8 @@ TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
-echo "This creates a container that only contains busybox"
+echo "This creates a container that offers Python 2 along with useful libs like OpenSSL."
+echo "Within the container will start an SSH server for logins. Both user name and password is \"root\"."
 echo ""
 echo "It is necessary to build these Open Source projects in this order:"
 echo "- Linux-PAM-1.2.1.sh"
