@@ -37,7 +37,7 @@ configure()
     export ac_cv_file__dev_ptmx=no
     export CXX
 
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --with-fpectl --enable-ipv6 --with-threads --enable-unicode --with-computed-gotos --with-system-expat --with-lto
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --with-fpectl --enable-ipv6 --with-threads --enable-unicode --with-computed-gotos --with-system-expat --with-lto --enable-shared
 }
 
 compile()
@@ -54,8 +54,8 @@ install_staging()
 {
     echo "******************************************"
     echo "* Installing to staging: ${STAGING_DIR}"
-    rm -rf "${STAGING_DIR}/lib/libpython2"*
-    cp -r "${PKG_INSTALL_DIR}/usr/local/"* "${STAGING_DIR}"
+    rm -rf "${STAGING_DIR}/usr/local/lib/libpython2"*
+    cp -r "${PKG_INSTALL_DIR}/"* "${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
