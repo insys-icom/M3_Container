@@ -17,6 +17,10 @@
 #    <uid>        user id (0=root)
 #    <gid>        group id (0=root)
 #    <hard links> space separated list of other links to file
+#
+#
+#     !!! DO NOT USE TABULATORS !!!
+#
 
 #############################
 # all necessary directories #
