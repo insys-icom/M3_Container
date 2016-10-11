@@ -14,7 +14,7 @@ PKG_DIR="libmodbus-3.1.4"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 
-SCRIPTSDIR="(dirname $0)"
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 
@@ -31,7 +31,7 @@ configure()
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-largefile --disable-tests --without-documentation
+    ac_cv_func_malloc_0_nonnull=yes ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-largefile --disable-tests --without-documentation
 }
 
 compile()
