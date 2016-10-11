@@ -103,7 +103,7 @@ SQLITE3_OMIT_FLAGS=" -DSQLITE_TEMP_STORE=2 \
 
 unpack()
 {
-    unzip -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
+    unzip -o -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
     [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
 
     copy_overlay
