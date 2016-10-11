@@ -1,0 +1,4 @@
+root:x:0:0:root:/root:/bin/sh
+www-data:x:1001:1001:Linux User,,,:/home/www-data:/bin/sh
+user:x:1000:1000:Linux User,,,:/home/user:/bin/sh
+app:x:1002:1000:Linux User,,,:/home/app:/bin/sh

@@ -7,10 +7,12 @@ FUNCTIONS_INCLUDED=1
 # download the source file
 download()
 {
+    [ "${PKG_DOWNLOAD}" = "none" ] && return
+
     if [ ! -e "${DOWNLOADS_DIR}" ]; then
         mkdir -p ${DOWNLOADS_DIR}
     fi
-    
+
     if [ "${PKG_DOWNLOAD}" = "none" ]; then
         echo "\$PKG_DOWNLOAD is set to none, skipping download"
         return

@@ -1,0 +1,7 @@
+#ifndef ERROR_DEFINES_H_INCLUDED
+#define ERROR_DEFINES_H_INCLUDED
+
+#define SUCCESS 0
+#define ERROR   1
+
+#endif // ERROR_DEFINES_H_INCLUDED
