@@ -26,18 +26,20 @@ void *web_s_authentication(void) {
 	login = fopen(file, "r");
 
 	if(login != NULL) {
-		fgets(line, 200, login);
-
-		/* Split line for username and password */
-		username = strtok(line, ":");
-		password = strtok(NULL, ":");
-
-		/* If something is wrong with this file, don´t show username and password */
-		if(strtok(NULL, ":") != NULL) {
-			username = NULL;
+		if(fgets(line, 200, login) == NULL) {
+			username = NULL,
 			password = NULL;
-		}
+		} else {
+			/* Split line for username and password */
+			username = strtok(line, ":");
+			password = strtok(NULL, ":");
 
+			/* If something is wrong with this file, don´t show username and password */
+			if(strtok(NULL, ":") != NULL) {
+				username = NULL;
+				password = NULL;
+			}
+		}
 		fclose(login);
 	}
 
@@ -82,7 +84,7 @@ void *web_c_authentication(void) {
 	/* Check data */
 	if(usr == NULL || check_string_empty(usr) == FAIL || pw == NULL || check_string_empty(pw) == FAIL){
 		/* Get back */
-		perror("Error getting username");
+		log_entry(LOG_FILE, "Error getting username");
 		web_s_authentication();
 		return NULL;
 	} 
@@ -90,7 +92,7 @@ void *web_c_authentication(void) {
 	/* Check forbidden characters */
 	if(check_forbidden_characters(usr, forbidden) == FAIL || check_forbidden_characters(pw, forbidden) == FAIL) {
 		/* Get back */
-		perror("Forbidden characters in username or password");
+		log_entry(LOG_FILE, "Forbidden characters in username or password");
 		web_s_authentication();
 		return NULL;
 	}
@@ -99,7 +101,7 @@ void *web_c_authentication(void) {
 	login = fopen("/tmp/new_login", "w+");
 	if(login == NULL) {
 		/* Get back */
-		perror("Error opening loginfile");
+		log_entry(LOG_FILE, "Error opening loginfile");
 		web_s_authentication();
 		return NULL;
 	}

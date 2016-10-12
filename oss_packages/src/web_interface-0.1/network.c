@@ -1,13 +1,13 @@
 #include "defines.h"
 
 void *web_s_network(void) {
-	char dns[25], gw[25];
+	char dns[NETWORK_BUFFER], gw[NETWORK_BUFFER];
 
 	visited("network");
 
 	/* Read data from files */
-	getDNS(dns);
-	getGateway(gw);
+	getDNS(dns, NETWORK_BUFFER);
+	getGateway(gw, NETWORK_BUFFER);
 
 	fprintf(output, "<form action=\"web_c_network.cgi\" method=post>\n");
 

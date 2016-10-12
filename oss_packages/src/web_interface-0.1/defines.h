@@ -29,8 +29,6 @@
 
 #define LANGUAGE_TEXTS      "/var/www/localhost/htdocs/doc"
 
-//#define COMMANDS_FILE       "/etc/commands"
-//#define CONFIG_FILES        "/etc/config"
 #define LANGUAGE            "/usr/application/settings/lang"
 #define HTTP_CONFIG         "/etc/thttpd.conf"
 #define VISITED             "/tmp/visited"
@@ -38,17 +36,17 @@
 #define TMP_CGI             "/tmp/config_switcher_web"
 #define HTTP_OUTPUT_FILE    "/tmp/web_interface_head.html"  /* File where head and navi are temporarily stored */
 #define HTML_OUTPUT_FILE    "/tmp/web_interface_output.html"
-//#define ASCII_CONFIG        "/var/spool/ascii_config.txt"
-//#define WEB_PASS_ENCRYPTED  "/var/web/.htpasswd"
 #define WELCOME_TEXT        "/var/web/welcome.txt"  /* Text with the product name */
 #define TMP_UPLOADED        "/tmp/update/file"
 #define TMP_IMAGE           "/tmp/update/image"
 #define TMP_MD5             "/tmp/md5"
+#define LOG_FILE			"/var/log/web_interface/web_interface.log"
 
 #define MAX_TEXT_LENGTH     1000
 #define MAX_CONFIGS         5
 #define VALUE_TYPE_INT      1
 #define VALUE_TYPE_STRING   2
+#define NETWORK_BUFFER		25
 
 #define ishex(x)        (((x) >= '0' && (x) <= '9') || ((x) >= 'a' && (x) <= 'f') || ((x) >= 'A' && (x) <= 'F'))
 #define CHMOD_755       (S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH)
@@ -138,8 +136,8 @@ int check_ip(const char *ip);
 int check_string_empty(const char *str);
 int check_forbidden_characters(const char *str, const char *forbidden);
 void reboot();
-void getGateway(char *gw);
-void getDNS(char *dns);
+void getGateway(char *gw, int buff_size);
+void getDNS(char *dns, int buff_size);
 
 /* overview page */
 void *web_s_overview(void);

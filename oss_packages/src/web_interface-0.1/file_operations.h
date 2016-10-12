@@ -6,7 +6,7 @@
 #define FILE_FOUND_YES 		1
 #define FILE_FOUND_NO		0
 
-#define BUF_SIZE		200
+#define BUF_SIZE			200
 
 int check_file(char *file);
 int check_files();

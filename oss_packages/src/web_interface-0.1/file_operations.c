@@ -1,11 +1,6 @@
-#include <fcntl.h>
 #include <grp.h>
 #include <pwd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "defines.h"
 
 #include "file_operations.h"
 
@@ -49,7 +44,9 @@ void change_owner(char *file, char *user, char *group) {
   pwd = getpwnam(user);
   grp = getgrnam(group);
 
-  fchown(fildes, pwd->pw_uid, grp->gr_gid);
+  if(fchown(fildes, pwd->pw_uid, grp->gr_gid) == -1){
+	  log_entry(LOG_FILE, "Error settings owner");
+  }
 
   close(fildes);
 }
