@@ -45,7 +45,7 @@ void change_owner(char *file, char *user, char *group) {
   grp = getgrnam(group);
 
   if(fchown(fildes, pwd->pw_uid, grp->gr_gid) == -1){
-	  log_entry(LOG_FILE, "Error settings owner");
+	  log_entry(LOG_FILE, "Error setting owner");
   }
 
   close(fildes);
