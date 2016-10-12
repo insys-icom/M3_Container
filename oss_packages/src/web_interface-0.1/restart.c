@@ -37,7 +37,9 @@ void *web_s_restart(void) {
 
 void *web_c_restart_app(void) {
 
-	system("touch /tmp/restart_app");
+	if(system("touch /tmp/restart_app") == -1) {
+		log_entry(LOG_FILE, "Error creating file for restarting application");
+	}
 
 	web_s_restart();
 
@@ -73,7 +75,9 @@ void *web_c_restart_device(void) {
 
     print_to_browser();
 
-    system("touch /tmp/reboot");
+    if(system("touch /tmp/reboot") == -1) {
+		log_entry(LOG_FILE, "Error creating reboot file");
+	}
 
     return NULL;
 }
