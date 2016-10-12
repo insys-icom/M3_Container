@@ -52,6 +52,7 @@ dir /var/www/localhost          0755 0 0
 dir /var/www/localhost/htdocs   0755 0 0
 
 dir /var/log/application                0755 0 0
+dir /var/log/web_interface              0755 1001 1001
 dir /var/www/localhost/htdocs/doc       0755 0 0
 dir /var/www/localhost/htdocs/icons     0755 0 0
 dir /usr/application                    0755 1000 1000

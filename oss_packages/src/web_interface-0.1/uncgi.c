@@ -184,7 +184,11 @@ unsigned long store_file(char *bound, char *filetype)
         }
         fclose(tmp);
         sprintf(filetype, "dbupdate");
-        system("/usr/bin/md5sum "TMP_UPLOADED" > "TMP_MD5);
+        
+        if(system("/usr/bin/md5sum "TMP_UPLOADED" > "TMP_MD5) == -1) {
+            log_entry(LOG_FILE, "Error using /usr/bin/md5sum");
+        }
+        
         rename(TMP_UPLOADED, TMP_IMAGE);
     } /* end serge at file */
 
