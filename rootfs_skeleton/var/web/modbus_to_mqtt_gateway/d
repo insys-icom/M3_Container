@@ -26,5 +26,6 @@ SAVE_TEXT=Einstellungen speichern
 SAVE_TEXT_AND_RESTART=Einstellungen speichern und Container neu starten
 SUPPORT=Support
 SYSTEM_INFO=Systeminformationen
+TOPIC=Topic
 USERNAME=Benutzername
 USER_PASSWORD=Passwort
