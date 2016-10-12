@@ -1,8 +1,8 @@
 #include "defines.h"
 #include "file_operations.h"
 
-void getGateway(char *gw) {
-    char buf[200], *tmp;
+void getGateway(char *gw, int buff_size) {
+    char buf[BUF_SIZE], *tmp;
     FILE *net;
 
     if(check_file("/tmp/new_network") != FILE_NOT_EXIST) {
@@ -14,9 +14,16 @@ void getGateway(char *gw) {
         }
 
         /* Gateway */
-        fgets(buf, 100, net);
-        strtok(buf, " ");
-        strcpy(gw, buf);
+        if(fgets(buf, BUF_SIZE, net) != NULL) {
+<<<<<<< HEAD
+            strtok(buf, " ");
+            strncpy(gw, buf, buff_size);
+        }
+=======
+			strtok(buf, " ");
+			strncpy(gw, buf, buff_size);
+		}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
     } else {
         net = fopen("/bin/start_net.sh", "r");
 
@@ -33,7 +40,7 @@ void getGateway(char *gw) {
                 strtok(buf, " ");
 
                 while((tmp = strtok(NULL, " ")) != NULL) {
-                    strncpy(gw, tmp, 25);
+                    strncpy(gw, tmp, buff_size);
                 }
 
                 break;
@@ -45,8 +52,8 @@ void getGateway(char *gw) {
     return;
 }
 
-void getDNS(char *dns) {
-    char buf[200];
+void getDNS(char *dns, int buff_size) {
+    char buf[BUF_SIZE];
     FILE *resolv;
 
     if(check_file("/tmp/new_network") != FILE_NOT_EXIST) {
@@ -58,10 +65,31 @@ void getDNS(char *dns) {
         }
 
         /* Nameserver */
-        fgets(buf, 100, resolv);
-        fgets(buf, 100, resolv);
+        // read first line
+        if(fgets(buf, 100, resolv) == NULL) {
+<<<<<<< HEAD
+            log_entry(LOG_FILE, "Error reading new_network file");
+            return;
+        }
+        
+        // read second line
+        if(fgets(buf, 100, resolv) == NULL) {
+            log_entry(LOG_FILE, "Error reading new_network file");
+            return;
+        }
+=======
+			log_entry(LOG_FILE, "Error reading new_network file");
+			return;
+		}
+		
+        // read second line
+        if(fgets(buf, 100, resolv) == NULL) {
+			log_entry(LOG_FILE, "Error reading new_network file");
+			return;
+		}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
         strtok(buf, " ");
-        strcpy(dns, buf);
+        strncpy(dns, buf, buff_size);
 
     } else {
         resolv = fopen("/etc/resolv.conf", "r");
@@ -74,7 +102,7 @@ void getDNS(char *dns) {
         while(fgets(buf, sizeof(buf), resolv)) {
             if(strstr(buf, "nameserver")) {
                 strtok(buf, " ");
-                strncpy(dns, strtok(NULL, " "),25);
+                strncpy(dns, strtok(NULL, " "), buff_size);
                 break;
             }
         }

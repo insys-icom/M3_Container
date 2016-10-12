@@ -68,9 +68,19 @@ char *get_text(char text[MAX_TEXT_LENGTH])
                  break;
              }
         }
+        
         if(feof(textfile))
             break;
-        fgets(buffer, MAX_TEXT_LENGTH, textfile);
+            
+        if(fgets(buffer, MAX_TEXT_LENGTH, textfile) == NULL) {
+<<<<<<< HEAD
+            return "(null)";
+        }
+=======
+			return "(null)";
+		}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
+        
         p = index(buffer, '=');
         *p = '\0';
         cmp = strcmp(text, buffer);
@@ -399,7 +409,16 @@ void get_welcome(void)
     welcome[0] = '\0';
     tmp = fopen(WELCOME_TEXT, "r");
     if(tmp != NULL) {
-        fgets(welcome, MAX_TEXT_LENGTH, tmp);
+        if(fgets(welcome, MAX_TEXT_LENGTH, tmp) == NULL) {
+<<<<<<< HEAD
+            log_entry(LOG_FILE, "Error reading welcome text");
+            welcome[0] = '\0';
+        }
+=======
+			log_entry(LOG_FILE, "Error reading welcome text");
+			welcome[0] = '\0';
+		}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
         fclose(tmp);
     }
     return;

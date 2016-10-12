@@ -1,11 +1,6 @@
-#include <fcntl.h>
 #include <grp.h>
 #include <pwd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <unistd.h>
+#include "defines.h"
 
 #include "file_operations.h"
 
@@ -14,16 +9,16 @@ int check_file(char *file) {
 }
 
 int check_files() {
-	if(check_file("/tmp/new_login") != -1)
-		return FILE_FOUND_YES;
+    if(check_file("/tmp/new_login") != -1)
+        return FILE_FOUND_YES;
 
-	if(check_file("/tmp/new_config") != -1)
-		return FILE_FOUND_YES;
+    if(check_file("/tmp/new_config") != -1)
+        return FILE_FOUND_YES;
 
-	if(check_file("/tmp/new_network") != -1)
-		return FILE_FOUND_YES;
+    if(check_file("/tmp/new_network") != -1)
+        return FILE_FOUND_YES;
 
-	return FILE_FOUND_NO;
+    return FILE_FOUND_NO;
 }
 
 void move_file(char *source_file, char *destination_file) {
@@ -49,7 +44,13 @@ void change_owner(char *file, char *user, char *group) {
   pwd = getpwnam(user);
   grp = getgrnam(group);
 
-  fchown(fildes, pwd->pw_uid, grp->gr_gid);
+  if(fchown(fildes, pwd->pw_uid, grp->gr_gid) == -1){
+<<<<<<< HEAD
+      log_entry(LOG_FILE, "Error setting owner");
+=======
+	  log_entry(LOG_FILE, "Error setting owner");
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
+  }
 
   close(fildes);
 }
