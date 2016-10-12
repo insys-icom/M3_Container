@@ -1,69 +1,69 @@
 #include "defines.h"
 
 void *web_s_network(void) {
-	char dns[NETWORK_BUFFER], gw[NETWORK_BUFFER];
+    char dns[NETWORK_BUFFER], gw[NETWORK_BUFFER];
 
-	visited("network");
+    visited("network");
 
-	/* Read data from files */
-	getDNS(dns, NETWORK_BUFFER);
-	getGateway(gw, NETWORK_BUFFER);
+    /* Read data from files */
+    getDNS(dns, NETWORK_BUFFER);
+    getGateway(gw, NETWORK_BUFFER);
 
-	fprintf(output, "<form action=\"web_c_network.cgi\" method=post>\n");
+    fprintf(output, "<form action=\"web_c_network.cgi\" method=post>\n");
 
-	/* Network */
-	start_box();
-	fprintf(output, "<h1>%s</h1>", get_text("IP_NETWORK"));
-	end_box();
+    /* Network */
+    start_box();
+    fprintf(output, "<h1>%s</h1>", get_text("IP_NETWORK"));
+    end_box();
 
-	start_box();
-	/* Gateway */
-	fprintf(output, "%s", get_text("GATEWAY"));
-	print_input("text", "Gateway", gw, "float: right; margin-right: 500px;", "");
-	fprintf(output, "<br><br>");
+    start_box();
+    /* Gateway */
+    fprintf(output, "%s", get_text("GATEWAY"));
+    print_input("text", "Gateway", gw, "float: right; margin-right: 500px;", "");
+    fprintf(output, "<br><br>");
 
-	/* DNS */
-	fprintf(output, "%s", get_text("DNS"));
-	print_input("text", "DNS", dns, "float: right; margin-right: 500px;", "");
+    /* DNS */
+    fprintf(output, "%s", get_text("DNS"));
+    print_input("text", "DNS", dns, "float: right; margin-right: 500px;", "");
 
-	end_box();
+    end_box();
 
-	/* Submit */
-	start_box();
-	print_input("submit", "btnSubNetwork", "OK", "margin-right:10px;", get_text("SAVE_TEXT"));
-	end_box();
+    /* Submit */
+    start_box();
+    print_input("submit", "btnSubNetwork", "OK", "margin-right:10px;", get_text("SAVE_TEXT"));
+    end_box();
 
-	fprintf(output, "</form>\n");
+    fprintf(output, "</form>\n");
 
-	return NULL;
+    return NULL;
 }
 
 void *web_c_network(void) {
-	char *gw, *dns;
-	FILE *tmp = fopen("/tmp/new_network", "w+");
+    char *gw, *dns;
+    FILE *tmp = fopen("/tmp/new_network", "w+");
 
-	if(NULL == tmp) {
-		/* Get back */
-		web_s_network();
-		return NULL;
-	}
+    if(NULL == tmp) {
+        /* Get back */
+        web_s_network();
+        return NULL;
+    }
 
-	/* Get data */
-	gw = getenv("WWW_Gateway");
-	dns = getenv("WWW_DNS");
+    /* Get data */
+    gw = getenv("WWW_Gateway");
+    dns = getenv("WWW_DNS");
 
-	/* Check data */
-	if(check_ip(gw) == SUCCESS && check_ip(dns) == SUCCESS) {
-		fprintf(tmp, "%s\n", gw);
-		fprintf(tmp, dns);
-	}
+    /* Check data */
+    if(check_ip(gw) == SUCCESS && check_ip(dns) == SUCCESS) {
+        fprintf(tmp, "%s\n", gw);
+        fprintf(tmp, dns);
+    }
 
-	fclose(tmp);
+    fclose(tmp);
 
-	sleep(1);
+    sleep(1);
 
-	/* Get back */
-	web_s_network();
+    /* Get back */
+    web_s_network();
 
-	return NULL;
+    return NULL;
 }

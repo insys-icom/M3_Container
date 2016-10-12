@@ -15,9 +15,9 @@ void getGateway(char *gw, int buff_size) {
 
         /* Gateway */
         if(fgets(buf, BUF_SIZE, net) != NULL) {
-			strtok(buf, " ");
-			strncpy(gw, buf, buff_size);
-		}
+            strtok(buf, " ");
+            strncpy(gw, buf, buff_size);
+        }
     } else {
         net = fopen("/bin/start_net.sh", "r");
 
@@ -61,15 +61,15 @@ void getDNS(char *dns, int buff_size) {
         /* Nameserver */
         // read first line
         if(fgets(buf, 100, resolv) == NULL) {
-			log_entry(LOG_FILE, "Error reading new_network file");
-			return;
-		}
-		
+            log_entry(LOG_FILE, "Error reading new_network file");
+            return;
+        }
+        
         // read second line
         if(fgets(buf, 100, resolv) == NULL) {
-			log_entry(LOG_FILE, "Error reading new_network file");
-			return;
-		}
+            log_entry(LOG_FILE, "Error reading new_network file");
+            return;
+        }
         strtok(buf, " ");
         strncpy(dns, buf, buff_size);
 

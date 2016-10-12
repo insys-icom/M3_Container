@@ -73,8 +73,8 @@ char *get_text(char text[MAX_TEXT_LENGTH])
             break;
             
         if(fgets(buffer, MAX_TEXT_LENGTH, textfile) == NULL) {
-			return "(null)";
-		}
+            return "(null)";
+        }
         
         p = index(buffer, '=');
         *p = '\0';
@@ -405,9 +405,9 @@ void get_welcome(void)
     tmp = fopen(WELCOME_TEXT, "r");
     if(tmp != NULL) {
         if(fgets(welcome, MAX_TEXT_LENGTH, tmp) == NULL) {
-			log_entry(LOG_FILE, "Error reading welcome text");
-			welcome[0] = '\0';
-		}
+            log_entry(LOG_FILE, "Error reading welcome text");
+            welcome[0] = '\0';
+        }
         fclose(tmp);
     }
     return;

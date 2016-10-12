@@ -9,41 +9,41 @@
 
 void *web_s_restart(void) {
 
-	visited("restart");
+    visited("restart");
 
-	/* Print out page */
+    /* Print out page */
 
-	/* Network */
-	start_box();
-	fprintf(output, "<h1>%s</h1>", get_text("RESTART"));
-	end_box();
+    /* Network */
+    start_box();
+    fprintf(output, "<h1>%s</h1>", get_text("RESTART"));
+    end_box();
 
-	fprintf(output, "<form action=\"web_c_restart_app.cgi\" method=post>\n");
-	start_box();
-	/* Submit */
-	print_input("submit", "btnRestartApp", get_text("RESTART_APP"), "margin-right:10px;", "");
-	end_box();
-	fprintf(output, "</form>\n");
+    fprintf(output, "<form action=\"web_c_restart_app.cgi\" method=post>\n");
+    start_box();
+    /* Submit */
+    print_input("submit", "btnRestartApp", get_text("RESTART_APP"), "margin-right:10px;", "");
+    end_box();
+    fprintf(output, "</form>\n");
 
-	fprintf(output, "<form action=\"web_c_restart_device.cgi\" method=post>\n");
-	start_box();
-	/* Submit */
-	print_input("submit", "btnRestartDev", get_text("RESTART_CONTAINER"), "margin-right:10px;", "");
-	end_box();
-	fprintf(output, "</form>\n");
+    fprintf(output, "<form action=\"web_c_restart_device.cgi\" method=post>\n");
+    start_box();
+    /* Submit */
+    print_input("submit", "btnRestartDev", get_text("RESTART_CONTAINER"), "margin-right:10px;", "");
+    end_box();
+    fprintf(output, "</form>\n");
 
-	return NULL;
+    return NULL;
 }
 
 void *web_c_restart_app(void) {
 
-	if(system("touch /tmp/restart_app") == -1) {
-		log_entry(LOG_FILE, "Error creating file for restarting application");
-	}
+    if(system("touch /tmp/restart_app") == -1) {
+        log_entry(LOG_FILE, "Error creating file for restarting application");
+    }
 
-	web_s_restart();
+    web_s_restart();
 
-	return NULL;
+    return NULL;
 }
 
 void *web_c_restart_device(void) {
@@ -76,8 +76,8 @@ void *web_c_restart_device(void) {
     print_to_browser();
 
     if(system("touch /tmp/reboot") == -1) {
-		log_entry(LOG_FILE, "Error creating reboot file");
-	}
+        log_entry(LOG_FILE, "Error creating reboot file");
+    }
 
     return NULL;
 }
