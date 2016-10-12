@@ -26,5 +26,6 @@ SAVE_TEXT=Save settings
 SAVE_TEXT_AND_RESTART=Save settings and restart container
 SUPPORT=Support
 SYSTEM_INFO=System information
+TOPIC=Topic
 USERNAME=User name
 USER_PASSWORD=Password
