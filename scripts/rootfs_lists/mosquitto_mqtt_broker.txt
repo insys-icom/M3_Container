@@ -168,8 +168,8 @@ file /var/www/localhost/htdocs/icons/favicon.png            ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/icons/gear_wheel.gif         ${SKELETON_DIR}/var/web/icons/gear_wheel.gif                0755 0 0
 
 # language files
-file /var/www/localhost/htdocs/doc/e                        ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/e                 0755 0 0
-file /var/www/localhost/htdocs/doc/d                        ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/d                 0755 0 0
+file /var/www/localhost/htdocs/doc/e                        ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/e             0755 0 0
+file /var/www/localhost/htdocs/doc/d                        ${SKELETON_DIR}/var/web/mosquitto_mqtt_broker/d             0755 0 0
 file /usr/application/settings/lang                         ${SKELETON_DIR}/var/web/lang                                0755 1001 1001
 
 # html docs
