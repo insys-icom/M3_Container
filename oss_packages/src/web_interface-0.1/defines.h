@@ -40,13 +40,21 @@
 #define TMP_UPLOADED        "/tmp/update/file"
 #define TMP_IMAGE           "/tmp/update/image"
 #define TMP_MD5             "/tmp/md5"
+<<<<<<< HEAD
 #define LOG_FILE            "/var/log/web_interface/web_interface.log"
+=======
+#define LOG_FILE			"/var/log/web_interface/web_interface.log"
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 
 #define MAX_TEXT_LENGTH     1000
 #define MAX_CONFIGS         5
 #define VALUE_TYPE_INT      1
 #define VALUE_TYPE_STRING   2
+<<<<<<< HEAD
 #define NETWORK_BUFFER      25
+=======
+#define NETWORK_BUFFER		25
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 
 #define ishex(x)        (((x) >= '0' && (x) <= '9') || ((x) >= 'a' && (x) <= 'f') || ((x) >= 'A' && (x) <= 'F'))
 #define CHMOD_755       (S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH)

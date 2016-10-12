@@ -1,13 +1,23 @@
 #include "defines.h"
 
 void *web_s_network(void) {
+<<<<<<< HEAD
     char dns[NETWORK_BUFFER], gw[NETWORK_BUFFER];
+=======
+	char dns[NETWORK_BUFFER], gw[NETWORK_BUFFER];
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 
     visited("network");
 
+<<<<<<< HEAD
     /* Read data from files */
     getDNS(dns, NETWORK_BUFFER);
     getGateway(gw, NETWORK_BUFFER);
+=======
+	/* Read data from files */
+	getDNS(dns, NETWORK_BUFFER);
+	getGateway(gw, NETWORK_BUFFER);
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 
     fprintf(output, "<form action=\"web_c_network.cgi\" method=post>\n");
 
@@ -65,5 +75,9 @@ void *web_c_network(void) {
     /* Get back */
     web_s_network();
 
+<<<<<<< HEAD
     return NULL;
+=======
+	return NULL;
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 }

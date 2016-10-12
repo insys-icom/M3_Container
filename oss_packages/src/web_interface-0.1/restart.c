@@ -37,9 +37,15 @@ void *web_s_restart(void) {
 
 void *web_c_restart_app(void) {
 
+<<<<<<< HEAD
     if(system("touch /tmp/restart_app") == -1) {
         log_entry(LOG_FILE, "Error creating file for restarting application");
     }
+=======
+	if(system("touch /tmp/restart_app") == -1) {
+		log_entry(LOG_FILE, "Error creating file for restarting application");
+	}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 
     web_s_restart();
 
@@ -76,8 +82,13 @@ void *web_c_restart_device(void) {
     print_to_browser();
 
     if(system("touch /tmp/reboot") == -1) {
+<<<<<<< HEAD
         log_entry(LOG_FILE, "Error creating reboot file");
     }
+=======
+		log_entry(LOG_FILE, "Error creating reboot file");
+	}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
 
     return NULL;
 }

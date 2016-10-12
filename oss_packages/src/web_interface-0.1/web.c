@@ -59,11 +59,19 @@ void web_main(char *cmdname)
                 sprintf(cmdname, "web_s_overview.cgi");
             else {
                 if(fgets(visited, 29, tmp) != NULL) {
+<<<<<<< HEAD
                     strncpy(cmdname, "web_s_", strlen("web_s_"));
                     cmdname[strlen("web_s_")] = '\0';
                     strncat(cmdname, visited, strlen(visited) - 1);
                     strncat(cmdname, ".cgi", 4);
                 }
+=======
+					strncpy(cmdname, "web_s_", strlen("web_s_"));
+					cmdname[strlen("web_s_")] = '\0';
+					strncat(cmdname, visited, strlen(visited) - 1);
+					strncat(cmdname, ".cgi", 4);
+				}
+>>>>>>> f150bc17286bde169b4dd8c8b7fb73781a2e1e16
                 fclose(tmp);
             }
         }
