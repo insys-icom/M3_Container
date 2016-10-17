@@ -1,16 +1,18 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD=""
+#PKG_DOWNLOAD="http://artfiles.org/openbsd/OpenSSH/portable${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://artfiles.org/openbsd/OpenSSH/portable/openssh-7.3p1.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM=""
+PKG_CHECKSUM="dfadd9f035d38ce5d58a3bf130b86d08"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="project_name"
+PKG_DIR="openssh-7.3p1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -27,10 +29,9 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    #export CROSS_COMPILE="${M3_CROSS_COMPILE}"
     export CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}"
     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}" --prefix=""
+    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}" --prefix="" --disable-strip
 }
 
 compile()
@@ -44,7 +45,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" AR="${AR} r" RANLIB="${RANLIB}" NM="${NM}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
