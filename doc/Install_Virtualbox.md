@@ -68,7 +68,7 @@ Normally you will always log in as "user" via VirtualBox console or via SSH (ssh
 * Compile a single open source project, here: mcip
     <pre>
     $ cd /home/user/M3_Container
-    $ ./oss_packages/scripts/mcip all
+    $ ./oss_packages/scripts/mcip.sh all
     </pre>
 If downloading the sources fails (no net connection, wrong default route, no DNS server) you will have to download the sources manually and store it in "oss_packages/dl".  
 
