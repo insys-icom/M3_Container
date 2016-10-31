@@ -114,7 +114,7 @@ void get_text_from_file(char *filename) {
     }
     else {
         while(fgets(buff, MAX_TEXT_LENGTH, data)) {
-             fprintf(output,"%s<br>", buff);
+             fprintf(output,"%s", buff);
         }
 
         fclose(data);

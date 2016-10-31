@@ -65,7 +65,7 @@ void *web_s_log(void) {
     visited("log");
 
     start_box();
-    fprintf(output, "<h1>%s</h1>", "Logging");
+    fprintf(output, "<h1>%s</h1>", get_text("LOGGING"));
     end_box();
 
     start_box();
