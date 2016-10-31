@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="ftp://sourceware.org/pub/libffi/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz"
 
 # md5 checksum of archive in dl directory
