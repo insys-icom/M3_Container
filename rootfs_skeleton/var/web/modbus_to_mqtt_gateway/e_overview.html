@@ -1,5 +1,5 @@
 <h3>Modbus to MQTT Gateway</h3>
-This is a demonstration container running SmartBox of MRX routers. It is provided by INSYS icom on the base of extisting 3<sup>rd</sup> party software like
+This is a demonstration container running in the SmartBox of MRX routers. It is provided by INSYS icom on the base of extisting 3<sup>rd</sup> party software like
 <ul>
 <li>a Modbus library (<a href="http://www.libmodbus.org/">libmodbus</a>)</li>
 <li>an MQTT publisher (<a href="http://www.mosquitto.org/">Mosuqitto</a>)</li>
@@ -16,7 +16,7 @@ and combines them in an application draft which<ul>
 <div style="font-size: 30px;float: left;vertical-align: center;font-weight: bold;line-height: 75px;">&rarr;</div>
 <div style="border: 3px black solid;padding: 10px;width:100px;height: 70px;margin-left: 30px;float: left;text-align: center;line-height: 20px;">MQTT<br>subscriber</div>
 <br><br><br><br><br><br><br><br>
-<p>The routers network capabilities can be used toconnect to the MQTT broker. MQTT is one of the leading protocols for the IoT (Internet of Things) as its publisher-subscriber architecture realises the necessary information flow without polling in slim andreliable way.<br>To operate this showcase you need</p>
+<p>The routers network capabilities can be used toconnect to the MQTT broker. MQTT is one of the leading protocols for the IoT (Internet of Things) as its publisher-subscriber architecture realises the necessary information flow without polling in slim and reliable way.<br>To operate this showcase you need</p>
 <ul>
 <li>a ModbusTCP device (e.g. a PLC) as a data source</li>
 <li>access to a MQTT broker (e.g. the free <a href="http://www.hivemq.com">HiveMQ</a> or ademonstrator from INSYS in another container of your MRX router)</li>
@@ -25,7 +25,7 @@ and combines them in an application draft which<ul>
 <h3>Configuration</h3>
 <ul>
 <li>The access to the ModbusTCP device and to the MQTT broker is configured in the menu "Application"</li>
-<li>SettheIP address of the MRX router as default gateway and DNS server in the IP network menu</li>
+<li>Set the IP address of the MRX router as default gateway and DNS server in the IP network menu</li>
 <li>The IP address of the container itself is managed in the router´s menu Administration/Container</li>
 </ul>
 <p>Additional MQTT options such as <em>QoS, TLS, user/password authentication, Birth Message, Last Will</em> are supported by Mosquitto, but not available with this demonstrator.<br>
@@ -36,7 +36,7 @@ This is a demonstration container withthe only purpose to show how existing tech
 <br>Insight to this container is given further investigation and changes in two ways:
 <ul>
 <li>Command line access by ssh is granted for the user <em>root</em> with the password <em>root</em>.
- You can check andchange anything within the running container.</li>
+ You can check and change anything within the running container.</li>
 <li>The container with all its available sources is published on the public project pages on <a href="https://github.com/insys-icom/m3_container">Github</a>
 </li>
 </ul>

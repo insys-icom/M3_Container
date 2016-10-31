@@ -29,5 +29,5 @@ SUPPORT=Support
 SYSTEM_INFO=System information
 TCP_PORT=TCP port
 TOPIC=Topic
-USERNAME=Username
+USERNAME=User name
 USER_PASSWORD=Password
