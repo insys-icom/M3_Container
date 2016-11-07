@@ -18,13 +18,13 @@ Consider following MQTT connection settings:
 Follow the instructions in the [Install guide](https://github.com/insys-icom/M3_Container/blob/master/doc/Install_Virtualbox.md "Install Virtualbox") to setup the SDK.
 
 #### 2. Create container with MQTT broker service
-To create a container with a mosquitto MQTT broker service follow these steps:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;##### 2.1 Start virtualbox with your SDK
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;##### 2.2 Change to the root directory of the git repository (most likely *~/M3_Container*) 
+To create a container with a mosquitto MQTT broker service follow these steps:<br>
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Start virtualbox with your SDK
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Change to the root directory of the git repository (most likely *~/M3_Container*) 
 <pre>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>cd ~/M3_Container</b>
 </pre>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;##### 2.3 Execute the following command:
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Execute the following command:
 <pre>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ <b>./scripts/create_container_mosquitto_mqtt_broker.sh</b>
 </pre>
