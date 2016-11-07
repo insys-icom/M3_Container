@@ -12,6 +12,29 @@ Consider following MQTT connection settings:
 - Username: joe
 - Password: secret 
 
+### Setup container with MQTT broker service
+
+#### 1. Install SDK
+Follow the instructions in the [Install guide](https://github.com/insys-icom/M3_Container/blob/master/doc/Install_Virtualbox.md) to setup the SDK.
+
+#### 2. Create container with MQTT broker service
+To create a container with a mosquitto MQTT broker service follow these steps:
+##### 2.1 Start virtualbox with your SDK
+##### 2.2 Change to the root directory of the git repository (most likely "~/M3_Container") 
+##### 2.3 Execute the following command:
+<pre>
+$ <b>./scripts/create_container_mosquitto_mqtt_broker.sh</b>
+</pre>
+
+#### 3. Import container
+Now startup your MRX device and login to the webinterface. 
+Go to "/Administration/Container", click the choose file button and select the created container (see ~/M3_Container/images/ in your git repository).
+After that configure Bridge to Net and IP address of the container.
+
+#### 4. Configure MQTT Broker service
+Now open a new tab and type in the IP address of the MQTT broker container.
+The overview page shows you how to configure the service.
+
 ### Setup the MQTT broker service
 Start an Ubuntu 14.04 instance and setup the Mosquitto MQTT service as described below. This demonstration uses a [Digital Ocean](https://www.digitalocean.com/ "Digital Ocean") droplet.
 
