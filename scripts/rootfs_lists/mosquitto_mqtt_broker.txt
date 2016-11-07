@@ -191,6 +191,7 @@ file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/
 # application
 file /usr/application/mosquitto                             ${STAGING_DIR}/sbin/mosquitto                                                          0755 1000 1000
 file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/configuration.config.d/configuration_mosquitto_mqtt_broker.config  0755 1000 1000
+file /usr/sbin/mosquitto_passwd                             ${STAGING_DIR}/bin/mosquitto_passwd                                                    0755 1000 1000
 
 
 
