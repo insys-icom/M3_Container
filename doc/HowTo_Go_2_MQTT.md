@@ -1,16 +1,8 @@
 # Container Application Development with Go
 
 ## MQTT Sample Application
-<br>
-## Table of contents
-<ul>
-<li><a href="#intro">Introduction</a></li>
-<li>a) <a href="#setup_container">Setup a container with the MQTT broker service</a></li>
-<li>b) <a href="#setup_ubuntu">Setup the MQTT broker service on an Ubuntu server</a></li>
-<li><a href="#create_pub">Create the MQTT publisher for your container</a></li>
-</ul><br>
 
-### <p id="intro">Introduction</p>
+### Introduction
 This demo shows how to setup a MQTT broker service and a container 
 application written in Go. The demo uses the [Mosquitto](http://www.mosquitto.org/ "Mosquitto")
 service on a Mosqiottp MQTT broker container or on an Ubuntu linux server and the Paho Go Client for the MQTT connection.
@@ -18,7 +10,18 @@ service on a Mosqiottp MQTT broker container or on an Ubuntu linux server and th
 Consider following MQTT connection settings:
 - Topic: first/demo
 - Username: joe
-- Password: secret 
+- Password: secret
+
+<br>
+
+## Table of contents
+
+>1a) &nbsp;&nbsp;<a href="#setup_container">Setup a container with the MQTT broker service</a><br>
+1b) &nbsp;&nbsp;<a href="#setup_ubuntu">Setup the MQTT broker service on an Ubuntu server</a><br>
+2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#create_pub">Create the MQTT publisher for your container</a>
+
+<br> 
+<br>
 
 ### <p id="setup_container">1a) Setup a container with the MQTT broker service</p>
 
@@ -30,12 +33,12 @@ To create a container with a mosquitto MQTT broker service follow these steps:<b
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Start virtualbox with your SDK
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Change to the root directory of the git repository (most likely *~/M3_Container*) 
 <pre>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>cd ~/M3_Container</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$ cd ~/M3_Container</b>
 </pre>
 
 ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3  Use this build script to cross compile all necessary software and create an update packet with the final container
 <pre>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ <b>./scripts/create_container_mosquitto_mqtt_broker.sh</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>$ ./scripts/create_container_mosquitto_mqtt_broker.sh</b>
 </pre>
 
 #### 3. Import container
