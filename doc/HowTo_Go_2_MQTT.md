@@ -20,7 +20,6 @@ Use these MQTT settings for broker and publisher:
 1b &nbsp;&nbsp;<a href="#setup_ubuntu">Set up the MQTT broker service on an Ubuntu server</a><br>
 2 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#create_pub">Create the MQTT publisher for your container</a>
 
-<br> 
 <br>
 
 ### <p id="setup_container">1a) Set up a container with the MQTT broker service</p>
@@ -134,10 +133,10 @@ session to your Ubuntu server and try to connect to the Mosquitto service.
 <pre>
 $ <b>mosquitto_sub -h &lt;your-server-ip&gt; -p 8883 -v -t 'first/demo' -u joe -P secret</b>
 </pre>
-If you're connected successfully, no errors appear and the Mosquitto service
+If you are connected successfully, no errors appear and the Mosquitto service
 logs a successful connection.
 
-Stop both processes and create an Upstart service.
+Stop both processes and create an upstart service.
 <pre>
 $ <b>vi /etc/init/mosquitto.conf</b>
 </pre>
