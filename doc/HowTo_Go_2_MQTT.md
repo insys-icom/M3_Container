@@ -15,21 +15,24 @@ Consider following MQTT connection settings:
 ### Setup container with MQTT broker service
 
 #### 1. Install SDK
-Follow the instructions in the [Install guide](https://github.com/insys-icom/M3_Container/blob/master/doc/Install_Virtualbox.md) to setup the SDK.
+Follow the instructions in the [Install guide](https://github.com/insys-icom/M3_Container/blob/master/doc/Install_Virtualbox.md "Install Virtualbox") to setup the SDK.
 
 #### 2. Create container with MQTT broker service
 To create a container with a mosquitto MQTT broker service follow these steps:
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Start virtualbox with your SDK
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Change to the root directory of the git repository (most likely "~/M3_Container") 
-##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3 Execute the following command:
+#####    * Start virtualbox with your SDK
+#####    * Change to the root directory of the git repository (most likely "~/M3_Container") 
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>cd ~/M3_Container</b>
+</pre>
+#####    * Execute the following command:
 <pre>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ <b>./scripts/create_container_mosquitto_mqtt_broker.sh</b>
 </pre>
 
 #### 3. Import container
-Now startup your MRX device and login to the webinterface. 
-Go to "/Administration/Container", click the choose file button and select the created container (see ~/M3_Container/images/ in your git repository).
-After that configure Bridge to Net and IP address of the container.
+Now startup your MRX device and login to the webinterface.<br> 
+Go to "/Administration/Container", click the choose file button and select the created container (see ~/M3_Container/images/ in your git repository).<br>
+After that configure "Bridge to Net" and "IP address" of the container.
 
 #### 4. Configure MQTT Broker service
 Now open a new tab and type in the IP address of the MQTT broker container.
