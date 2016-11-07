@@ -9,13 +9,13 @@ void *web_s_configuration(void) {
   struct setting settings[SETTINGS_COUNT] = {
 	  {	"POLLING_TIME", 		"modbus_polling_Interval", 	""	},
 	  {	"IP_ADDRESS",			"modbus_address", 		""	},
-	  {	"PORT",				"modbus_port", 			""	},
+	  {	"TCP_PORT",				"modbus_port", 			""	},
 	  {	"MODBUS_REGISTER",		"modbus_register", 		""	},
 	  {	"MODBUS_REGISTER_TYPE",		"modbus_register_type", 	""	},
 	  {	"DESIRED_BIT",			"modbus_desired_bit", 		""	},
 	  {	"MODBUS_DATA_TYPE",		"modbus_data_type", 		""	},
 	  {	"IP_ADDRESS",			"mosquitto_address",		""	},
-	  {	"PORT",				"mosquitto_port",		""	},
+	  {	"TCP_PORT",				"mosquitto_port",		""	},
 	  {	"TOPIC",			"mosquitto_topic",		""	},
   };
 

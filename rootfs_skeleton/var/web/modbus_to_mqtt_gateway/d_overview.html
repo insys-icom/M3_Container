@@ -1,0 +1,44 @@
+<h3>Modbus to MQTT Gateway</h3>
+<p>Dies ist ein Demo-Container f&#252;r die SmartBox der MRX-Router. Er wurde von INSYS icom auf der Basis von verf&#252;gbarer Software von Dritten wie</p>
+<ul>
+<li>einer Modbus-Bibliothek (<a href="http://www.libmodbus.org/">libmodbus</a>)</li>
+<li>einem MQTT-Publisher (<a href="http://www.mosquitto.org/">Mosuqitto</a>)</li>
+</ul>
+<p>erstellt und f&#252;gt diese zu dieser Beispiel-Anwendung zusammen:</p>
+<ul>
+<li>periodisches Auslesen 1 Registers von einem ModbusTCP-Ger&#228;t</li>
+<li>Hochladen des Register-Wertes an einen MQTT-Broker.</li>
+</ul><br>
+<div style="border: 3px black solid;padding: 10px;width: 100px;height: 70px;margin-right:30;float: left;text-align: center;line-height: 20px;">ModbusTCP<br>Ger&#228;t</div>
+<div style="font-size: 30px;float: left;vertical-align: center;font-weight: bold;line-height: 75px;">&rarr;</div>
+<div style="color: #00a5db; border:3px #00a5db solid;padding: 10px;width: 100px;height: 70px;margin-left: 30px;margin-right: 30px;float: left;text-align: center;line-height: 20px;">Container<br>in der MRX<br>SmartBox</div>
+<div style="font-size: 30px;float: left;vertical-align: center;font-weight: bold;line-height: 75px;">&rarr;</div>
+<div style="border: 3px black solid;padding: 10px;width:100px;height: 70px;margin-left: 30px;margin-right: 30px;float: left;text-align: center;line-height: 20px;">MQTT<br>Broker</div>
+<div style="font-size: 30px;float: left;vertical-align: center;font-weight: bold;line-height: 75px;">&rarr;</div>
+<div style="border: 3px black solid;padding: 10px;width:100px;height: 70px;margin-left: 30px;float: left;text-align: center;line-height: 20px;">MQTT<br>Subscriber</div>
+<br><br><br><br><br><br><br><br>
+<p>Die Netzwerk-F&#228;higkeiten des Routers k&#246;nnen genutzt werden, um die Verbindung zum MQTT-Broker herzustellen. MQTT ist eines der f&#252;hrenden Protokolle f&#252;r die Kommunikation im IoT (Internet of Things), da seine Publisher-Subscriber-Architektur die notwendige Informations&#252;bermittlung ohne Polling schlank und zuverl&#228;ssig erledigt.<br>
+Zum Betrieb dieser Anwendung brauchen Sie:</p>
+<ul>
+<li>ein ModbusTCP-Ger&#228;t (z.B. eine SPS) als Quelle</li>
+<li>Zugang zu einem MQTT-Broker (z.B. zum freien <a href="http://www.hivemq.com">HiveMQ</a> oder zu einer Demo-Implementierung von INSYS in einem anderen Container Ihres MRX-Routers)</li>
+<li>ein MQTT-Subscriber-Programm auf einem PC oder Smartphone (f&#252;r Empfehlungen siehe <a href="http://www.hivemq.com/blog/seven-best-mqtt-client-tools">HiveMQ/Clients</a>) zur Anzeige der Werte</li>
+</ul>
+<h3>Konfiguration</h3>
+<ul>
+<li>Den Zugang zum ModbusTCP-Ger&#228;t und zum MQTT-Broker konfigurieren Sie im folgenden Men&#252; <q>Anwendung</q></li>
+<li>Die IP-Adresse des MRX-Router als Default-Gateway und DNS-Server tragen Sie unter IP-Netzwerk ein.</li>
+<li>Die IP-Adresse des Containers selbst wird im Men&#252; Administration/Container des Routers verwaltet</li>
+</ul>
+<p>Weitere MQTT-Optionen wie <em>QoS, TLS, Name/Passwort am Broker, Birth Message, Last Will</em> werden von Mosquitto unterst&#252;tzt, sind aber in diesem Demonstrator nicht konfigurierbar.<br>
+<strong>Hinweis:</strong> Konfigurations&#228;nderungen werden erst nach Bet&#228;tigen der Schaltfl&#228;che <q>Einstellungen aktivieren</q> in der Kopfzeile wirksam.<br></p>
+<h3>Demo-Container</h3>
+<p>INSYS icom stellt diesen Demo-Container ohne Zusicherung einer Funktion bereit. Er wird von INSYS icom nicht weiter gepflegt.
+Dieser Container benutzt Software von Dritten, deren Rechte ber&#252;cksichtig werden m&#252;ssen.
+Dieser Demo-Container ist nur dazu erstellt worden, die Verwendung von bestehenden Technologien in der SmartBox der MRX-Router zu zeigen. Dieser Demo-Container ist nicht zum Betrieb au&#223;erhalb von Testumgebungen freigegeben.
+Der Einblick in diesen Container f&#252;r weitere Untersuchungen und Anpassungen wird auf zwei Arten gew&#228;hrt:
+<ul>
+<li>Auf die Kommandozeile kann mit dem Benutzernamen root und dem Passwort root per ssh zugegriffen werden. Damit kann der Container im laufenden Betrieb beobachtet und ver&#228;ndert werden.</li>
+<li>Der Container mit allen verf&#252;gbaren Quellen wird auf den Projektseiten auf <a href="https://github.com/insys-icom/m3_container">Github</a> ver&#246;ffentlicht.</li>
+</ul>
+</p>
