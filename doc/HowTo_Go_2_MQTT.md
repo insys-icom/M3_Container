@@ -2,29 +2,64 @@
 
 ## MQTT Sample Application
 
-### Introduction
-This demo shows how to setup a MQTT broker service and a container 
-application written in Go. The demo uses the [Mosquitto](http://www.mosquitto.org/ "Mosquitto")
-service on an Ubuntu linux server and the Paho Go Client for the MQTT connection.
+This demo shows you how to set up a MQTT broker and a 
+MQTT client application written in Go, running in a container.<br>
+As a MQTT broker you can choose between a container or a Ubuntu linux server running the [Mosquitto](http://www.mosquitto.org/ "Mosquitto") MQTT broker service.<br>
+For the MQTT connection the application uses the Paho Go Client.
 
-Consider following MQTT connection settings:
+Use these MQTT settings for broker and publisher:
 - Topic: first/demo
-- Username: joe
-- Password: secret 
+- User name: joe
+- Password: secret
 
-### Setup the MQTT broker service
-Start an Ubuntu 14.04 instance and setup the Mosquitto MQTT service as described below. This demonstration uses a [Digital Ocean](https://www.digitalocean.com/ "Digital Ocean") droplet.
+<br>
 
-Alternatively get the [demo MQTT broker container image (Todo: fix link)](https://www.insys-icom.de/smartbox) and install it in another container instance.
+### Table of contents
 
-#### 1. Create user "mosquitto"
-The Mosquitto process should run as a normal user and not as root.
+>1a &nbsp;&nbsp;<a href="#setup_container">Set up a container with the MQTT broker service</a><br>
+1b &nbsp;&nbsp;<a href="#setup_ubuntu">Set up the MQTT broker service on an Ubuntu server</a><br>
+2 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#create_pub">Create the MQTT publisher for your container</a>
+
+<br>
+
+### <p id="setup_container">1a) Set up a container with the MQTT broker service</p>
+
+#### 1. Install the SDK
+Follow the [Install guide](https://github.com/insys-icom/M3_Container/blob/master/doc/Install_Virtualbox.md "Install Virtualbox") to set up the SDK on your development machine.
+
+#### 2. Create a container with the MQTT broker service
+To create a container with the Mosquitto MQTT broker service please follow these steps:<br>
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1 Start VirtualBox with your SDK
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2 Change to the root directory of the git repository (most likely *~/M3_Container*) 
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ <b>cd ~/M3_Container</b>
+</pre>
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3  Use this build script to cross compile all necessary software and create an upload package with the final container
+<pre>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ <b>./scripts/create_container_mosquitto_mqtt_broker.sh</b>
+</pre>
+
+#### 3. Import the container
+Now start up your MRX device and log in to the webinterface.<br> 
+Go to */Administration/Container*, click the *choose file* button and select the created container (see *~/M3_Container/images/* in your git repository).<br>
+After that, click *OK* to start the upload. Then configure *Bridge to Net* and *IP address* of the container.
+
+#### 4. Configure the MQTT Broker service
+Open a new tab and type in the IP address of the MQTT broker container to see the web interface.
+The overview page tells you more details and shows you how to configure the MQTT broker.
+
+### <p id="setup_ubuntu">1b) Set up the MQTT broker service on an Ubuntu server</p>
+Start an Ubuntu 14.04 instance and set up the Mosquitto MQTT service as described below. (This demonstration uses a [Digital Ocean](https://www.digitalocean.com/ "Digital Ocean") droplet)
+
+#### 1. Create user <q>mosquitto</q>
+The Mosquitto process should run as a normal user (not root).
 <pre>
 $ <b>adduser mosquitto</b>
 </pre>
 
 #### 2. Install Mosquitto
-Update the Ubuntu repositories and install Mosquitto dependencies.
+Update the Ubuntu repositories and install the Mosquitto dependencies.
 <pre>
 $ <b>apt-get update</b>
 $ <b>apt-get install build-essential libwrap0-dev libssl-dev libc-ares-dev uuid-dev xsltproc</b>
@@ -42,15 +77,15 @@ $ <b>cd /home/mosquitto/mosquitto-1.4.10</b>
 $ <b>make install</b>
 </pre>
 
-The binaries are now available under /usr/local
+The binaries are now available under */usr/local*
 
-#### 3. Setup Mosquitto
-Create the Mosquitto user "joe" for the demo application.
+#### 3. Set up Mosquitto
+Create the Mosquitto user <q>joe</q> for the demo application.
 <pre>
 $ <b>mosquitto_passwd -c /etc/mosquitto/pwfile joe</b>
 </pre>
 
-Enter the password as described under section "Introduction".
+Enter the password as described at the beginning of this tutorial.
 
 Create the Mosquitto database directory.
 <pre>
@@ -58,13 +93,13 @@ $ <b>mkdir /var/lib/mosquitto/</b>
 $ <b>chown mosquitto:mosquitto /var/lib/mosquitto/ -R</b>
 </pre>
 
-Create your Mosquitto configuration file.
+Create your Mosquitto configuration file
 <pre>
 $ <b>cp /etc/mosquitto/mosquitto.conf.example /etc/mosquitto/mosquitto.conf</b>
 $ <b>vi /etc/mosquitto/mosquitto.conf</b>
 </pre>
 
-Add following configuration at the end of the configuration file.
+and add following configuration at the end of the configuration file:
 ```
 listener 8883 <your-server-ip-address>
 persistence true
@@ -83,7 +118,7 @@ allow_anonymous false
 password_file /etc/mosquitto/pwfile
 ```
 
-Run once.
+Run once:
 <pre>
 $ <b>/sbin/ldconfig</b>
 </pre>
@@ -98,20 +133,20 @@ session to your Ubuntu server and try to connect to the Mosquitto service.
 <pre>
 $ <b>mosquitto_sub -h &lt;your-server-ip&gt; -p 8883 -v -t 'first/demo' -u joe -P secret</b>
 </pre>
-If you're successfully connected, no errors appears and the Mosquitto service
+If you are connected successfully, no errors appear and the Mosquitto service
 logs a successful connection.
 
-Stop both processes and create an Upstart service.
+Stop both processes and create an upstart service.
 <pre>
 $ <b>vi /etc/init/mosquitto.conf</b>
 </pre>
 Paste following content into the file:
-```
+<pre>
 description "Mosquitto MQTT broker"
 start on net-device-up
 respawn
 exec /usr/local/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
-```
+</pre>
 Start the service with:
 <pre>
 $ <b>service mosquitto start</b>
@@ -119,14 +154,15 @@ $ <b>service mosquitto start</b>
 
 You're running a MQTT broker, now!
 
-### Create the MQTT publisher for your container
+
+###  <p id="create_pub">2 Create the MQTT publisher for your container</p>
 
 On your Go development machine install the Paho Go Client.
 <pre>
 $ <b>go get github.com/eclipse/paho.mqtt.golang</b>
 </pre>
 
-Create a new Go source file "mqttpub.go" and paste following source code. 
+Create a new Go source file <q>mqttpub.go</q> and paste following source code. 
 Replace the IP address with your Ubuntu server address.
 ```go
 package main
@@ -173,7 +209,7 @@ application locally first.
 $ <b>go run mqttpub.go</b>
 </pre>
 
-You should see on the Ubuntu server session following output:
+On the Ubuntu server session you should see the following output:
 ```
 first/demo this is msg #0!
 first/demo this is msg #1!
@@ -205,5 +241,5 @@ root@container-1234 ~  $ <b>./mqttpub</b>
 </pre>
 
 Your subscriber should show the same output as the previous run on your
-local machine. Your sucessfully running a MQTT client, written on Go, 
-inside your container. Done!
+local machine. You're running a MQTT client, written with Go, 
+inside your container sucessfully. Done!

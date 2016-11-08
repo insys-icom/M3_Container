@@ -7,7 +7,7 @@ PKG_DOWNLOAD="none"
 PKG_CHECKSUM="none"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="web_interface-0.1"
+PKG_DIR="modbus_to_mqtt_gateway-1.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="none"
@@ -35,13 +35,6 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
 
-    mv configuration_mqtt_broker.c configuration.c
-    rm configuration_modbus_mqtt.c
-
-    mv settings_defines_mqtt_broker.h settings_defines.h
-    rm settings_defines_modbus_mqtt.h
-
-    make clean
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }
