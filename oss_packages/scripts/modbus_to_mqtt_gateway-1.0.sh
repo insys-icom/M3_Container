@@ -7,7 +7,7 @@ PKG_DOWNLOAD="none"
 PKG_CHECKSUM="none"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="modbus_to_mqtt_gateway-0.1"
+PKG_DIR="modbus_to_mqtt_gateway-1.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="none"
