@@ -139,7 +139,7 @@ slink /var/run                         /tmp/run                                 
 # additionally
 
 # web_interface
-file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface-0.1 0755 0 0
+file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface-1.0 0755 0 0
 
 # slinks für web.cgi
 slink /var/www/localhost/htdocs/web_s_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
@@ -186,11 +186,11 @@ file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                                0755 0 0
 
 # app_handler
-file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-0.1                                                 0755 0 0
-file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_modbus_to_mqtt_gateway.conf     0755 0 0
+file /usr/sbin/app_handler                       ${STAGING_DIR}/bin/app_handler-1.0                                                 0755 0 0
+file /etc/app_handler.conf                       ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_modbus_to_mqtt_gateway.conf     0755 0 0
 
 # application
-file /usr/application/modbus_to_mqtt_gateway                ${STAGING_DIR}/bin/modbus_to_mqtt_gateway-0.1                                          0755 1000 1000
+file /usr/application/modbus_to_mqtt_gateway                ${STAGING_DIR}/bin/modbus_to_mqtt_gateway-1.0                                          0755 1000 1000
 file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/configuration.config.d/configuration_modbus_to_mqtt_gateway.config 0755 1000 1000
 
 # libraries

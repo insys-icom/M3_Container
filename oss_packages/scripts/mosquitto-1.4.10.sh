@@ -27,17 +27,17 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    true
+    export CROSS_COMPILE=""
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    
+
     export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
     export LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB} -lcrypto -lssl"
-    
+
     make ${M3_MAKEFLAGS}
 }
 
