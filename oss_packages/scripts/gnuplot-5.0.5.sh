@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://ftp.dante.de/pub/tex/graphics/gnuplot/5.0.4/gnuplot-5.0.4.tar.gz"
+PKG_DOWNLOAD="ftp://ftp.dante.de/pub/tex/graphics/gnuplot/5.0.5/gnuplot-5.0.5.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="cb228f60ae152712ffde0db5de346c40"
+PKG_CHECKSUM="c5e96fca73afbee4f57cbc1bfce6b3b8"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="gnuplot-5.0.4"
+PKG_DIR="gnuplot-5.0.5"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -27,7 +27,6 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    #export CROSS_COMPILE="${M3_CROSS_COMPILE}"
     export CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}"
     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
     export CC_FOR_BUILD="${M3_CROSS_COMPILE}gcc"
