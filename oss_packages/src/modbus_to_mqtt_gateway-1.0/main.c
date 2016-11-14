@@ -106,6 +106,10 @@ int main(void)
     mosq = mosquitto_initialize(CONFIG_FILE_PATH);
     if(mosq == NULL) {
         log_entry(APP_NAME, "Error: Could not initialize mqtt connection");
+        
+        /* wait for new config */
+        while(1);
+        
         return EXIT_FAILURE;
     }
 
@@ -114,6 +118,10 @@ int main(void)
     ctx = modbus_init(CONFIG_FILE_PATH);
     if(ctx == NULL) {
         log_entry(APP_NAME, "Error: Could not initialize modbus connection");
+        
+        /* wait for new config */
+        while(1);
+        
         return EXIT_FAILURE;
     }
 
