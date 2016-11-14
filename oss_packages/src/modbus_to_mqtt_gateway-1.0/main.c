@@ -49,11 +49,17 @@ int check_values(int no_register, int pollingInterval)
     return SUCCESS;
 }
 
+/* wait for app_handler to restart the application in case of a new configuration */
+void wait_for_new_config() {
+    while(1) {
+        sleep(100);
+    }
+}
+
 int main(void)
 {
 
 /* ######################### Variables #########################  */
-
 
     /* Variables for modbus */
     modbus_t *ctx;
@@ -85,7 +91,7 @@ int main(void)
         printf("Error reading topic..\n");
         
         /* wait for new config */
-        while(1);
+        wait_for_new_config();
         
         return EXIT_FAILURE;
     }
@@ -101,14 +107,13 @@ int main(void)
         log_entry(APP_NAME, "Error: Invalid values");
         
         /* wait for new config */
-        while(1);
+        wait_for_new_config();
         
         return EXIT_FAILURE;
     }
 
 
 /* ######################### Initialize communication #########################  */
-
 
     /* Initialize Mosquitto */
     printf(SPLIT_LINE);
@@ -117,7 +122,7 @@ int main(void)
         log_entry(APP_NAME, "Error: Could not initialize mqtt connection");
 
         /* wait for new config */
-        while(1);
+        wait_for_new_config();
 
         return EXIT_FAILURE;
     }
@@ -129,7 +134,7 @@ int main(void)
         log_entry(APP_NAME, "Error: Could not initialize modbus connection");
 
         /* wait for new config */
-        while(1);
+        wait_for_new_config();
 
         return EXIT_FAILURE;
     }
@@ -139,7 +144,6 @@ int main(void)
 
 
 /* ######################### Start application #########################  */
-
 
     printf(SPLIT_LINE);
     log_entry(APP_NAME, "Start reading values..");
