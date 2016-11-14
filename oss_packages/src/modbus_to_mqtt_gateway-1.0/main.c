@@ -49,11 +49,17 @@ int check_values(int no_register, int pollingInterval)
     return SUCCESS;
 }
 
+/* wait for app_handler to restart the application in case of a new configuration */
+void wait_for_new_config() {
+    while(1) {
+        sleep(100);
+    }
+}
+
 int main(void)
 {
 
 /* ######################### Variables #########################  */
-
 
     /* Variables for modbus */
     modbus_t *ctx;
@@ -83,6 +89,11 @@ int main(void)
     if(getStringFromFile_n(CONFIG_FILE_PATH, "mosquitto_topic", topic, BUFFER_SIZE) == -1) {
         log_entry(APP_NAME, "Error reading topic");
         printf("Error reading topic..\n");
+        
+        /* wait for new config */
+        wait_for_new_config();
+        
+        return EXIT_FAILURE;
     }
 
     pollingInterval = getIntFromFile(CONFIG_FILE_PATH, "modbus_polling_Interval");
@@ -94,18 +105,25 @@ int main(void)
     /* Check values of variables */
     if(check_values(no_register, pollingInterval) == ERROR) {
         log_entry(APP_NAME, "Error: Invalid values");
+        
+        /* wait for new config */
+        wait_for_new_config();
+        
         return EXIT_FAILURE;
     }
 
 
 /* ######################### Initialize communication #########################  */
 
-
     /* Initialize Mosquitto */
     printf(SPLIT_LINE);
     mosq = mosquitto_initialize(CONFIG_FILE_PATH);
     if(mosq == NULL) {
         log_entry(APP_NAME, "Error: Could not initialize mqtt connection");
+
+        /* wait for new config */
+        wait_for_new_config();
+
         return EXIT_FAILURE;
     }
 
@@ -114,6 +132,10 @@ int main(void)
     ctx = modbus_init(CONFIG_FILE_PATH);
     if(ctx == NULL) {
         log_entry(APP_NAME, "Error: Could not initialize modbus connection");
+
+        /* wait for new config */
+        wait_for_new_config();
+
         return EXIT_FAILURE;
     }
 
@@ -122,7 +144,6 @@ int main(void)
 
 
 /* ######################### Start application #########################  */
-
 
     printf(SPLIT_LINE);
     log_entry(APP_NAME, "Start reading values..");
