@@ -83,6 +83,11 @@ int main(void)
     if(getStringFromFile_n(CONFIG_FILE_PATH, "mosquitto_topic", topic, BUFFER_SIZE) == -1) {
         log_entry(APP_NAME, "Error reading topic");
         printf("Error reading topic..\n");
+        
+        /* wait for new config */
+        while(1);
+        
+        return EXIT_FAILURE;
     }
 
     pollingInterval = getIntFromFile(CONFIG_FILE_PATH, "modbus_polling_Interval");
@@ -94,6 +99,10 @@ int main(void)
     /* Check values of variables */
     if(check_values(no_register, pollingInterval) == ERROR) {
         log_entry(APP_NAME, "Error: Invalid values");
+        
+        /* wait for new config */
+        while(1);
+        
         return EXIT_FAILURE;
     }
 
@@ -106,10 +115,10 @@ int main(void)
     mosq = mosquitto_initialize(CONFIG_FILE_PATH);
     if(mosq == NULL) {
         log_entry(APP_NAME, "Error: Could not initialize mqtt connection");
-        
+
         /* wait for new config */
         while(1);
-        
+
         return EXIT_FAILURE;
     }
 
@@ -118,10 +127,10 @@ int main(void)
     ctx = modbus_init(CONFIG_FILE_PATH);
     if(ctx == NULL) {
         log_entry(APP_NAME, "Error: Could not initialize modbus connection");
-        
+
         /* wait for new config */
         while(1);
-        
+
         return EXIT_FAILURE;
     }
 
