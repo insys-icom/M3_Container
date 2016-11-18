@@ -23,14 +23,14 @@ Install the SDK
     <pre>
     $ VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1
     </pre>
-    with "VM_NAME" as the VM name (most likely "M3_SDK")  
-    with "SHARED" the name of the shared folder (most liklely "M3_Container")  
+    with "VM_NAME" as the VM name (most likely "M3_SDK")
+    with "SHARED" the name of the shared folder (most liklely "M3_Container")
     Without this modification the VM is not allowed to follow symlinks. This could be a problem when compiling some projects.
 
 First steps within the SDK
 ==========================
-* Start the virtual machine with the VirtualBox GUI to get the console login. There are two users:  
-    "root", passwort is "root"  
+* Start the virtual machine with the VirtualBox GUI to get the console login. There are two users:
+    "root", passwort is "root"
     "user", password is "user"
 * Become root for configuring purpose:
     <pre>
@@ -41,13 +41,14 @@ First steps within the SDK
     $ echo "mount -t vboxsf -o rw,uid=1000 M3_Container /home/user/src" > /etc/local.d/vboxsf_mount.start
     $ chmod 755 /etc/local.d/vboxsf_mount.start
     $ /etc/local.d/vboxsf_mount.start
+    $ rc-update add local default
     </pre>
 * Optionally create a symlink the shared folder to your home directory:
-    <pre> 
+    <pre>
     $ ln -s ~/src ~/M3_Container
     </pre>
-* Configure networking:   
-    Configure the IP address and net size to fit your net which is connected to the internet. 
+* Configure networking:
+    Configure the IP address and net size to fit your net which is connected to the internet.
     <pre>
     $ /root/set_ip.sh 192.168.1.3/24
     </pre>
@@ -55,7 +56,7 @@ First steps within the SDK
     <pre>
     $ nano /etc/conf.d/net
     </pre>
-    Add a line similar to this: `routes_enp0s3="default gw 192.168.1.1"`   
+    Add a line similar to this: `routes_enp0s3="default gw 192.168.1.1"`
     Edit the DNS servers
     <pre>
     $ echo "nameserver 192.168.1.1" > /etc/resolv.conf
@@ -63,14 +64,14 @@ First steps within the SDK
 
 Usage of SDK
 ===================
-Normally you will always log in as "user" via VirtualBox console or via SSH (ssh user@192.168.1.3) and use the build scripts of the mounted repository, so you will most likeley cd to /home/user/src and use the scripts there. Get more info about the directories and files there from the document "/home/user/src/doc/Directories_and_files.md". Examples:  
+Normally you will always log in as "user" via VirtualBox console or via SSH (ssh user@192.168.1.3) and use the build scripts of the mounted repository, so you will most likeley cd to /home/user/src and use the scripts there. Get more info about the directories and files there from the document "/home/user/src/doc/Directories_and_files.md". Examples:
 
 * Compile a single open source project, here: mcip
     <pre>
     $ cd /home/user/M3_Container
     $ ./oss_packages/scripts/mcip.sh all
     </pre>
-If downloading the sources fails (no net connection, wrong default route, no DNS server) you will have to download the sources manually and store it in "oss_packages/dl".  
+If downloading the sources fails (no net connection, wrong default route, no DNS server) you will have to download the sources manually and store it in "oss_packages/dl".
 
 * Compile all content for a complete container, here: a small container with telnetd and init from busybox
     <pre>
