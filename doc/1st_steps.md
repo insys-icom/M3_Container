@@ -10,12 +10,12 @@ There are several possibilities to get a cross toolchain:
 * In case you use Gentoo on your host: install a cross compiler using "crossdev"
 * Get another toolchain (e.g. Ubuntu, Linaro, buildroot ...)
 
-It is recommended to use the INSYS SDK. It's a virtual Machine ([VirtualBox](https://virtualbox.org)) with a tiny Gentoo Linux distribution and the crossdev target armv7-hf. More detailed instructions are [here](doc/Install_VirtualBox.md "doc/Install_VirtualBox.md").
+It is recommended to use the INSYS SDK. It's a virtual Machine ([VirtualBox](https://virtualbox.org)) with a tiny Gentoo Linux distribution and the crossdev target armv7-hf. More detailed instructions are [here](Install_VirtualBox.md "doc/Install_VirtualBox.md").
 
 
 2 Get build scripts into the SDK
 ---
-This repository is all about build scripts. Most likely you already have gotten this repository, as you are reading this text. If that's not the case log into the SDK (console or ssh) and clone this repository by typing:
+This repository is all about build scripts. Most likely you already have cloned this repository, as you are reading this text. If that's not the case log into the SDK (console or ssh) and clone this repository by typing:
 <pre>
     $ ssh user@IP-address-of-SDK
     $ git clone git@github.com:insys-icom/M3_Container.git
@@ -24,9 +24,9 @@ This repository is all about build scripts. Most likely you already have gotten 
 
 3 Use the scripts
 ---
-The cross compiler in combination with the build scripts from this repository create new binaries and a new container. This will crate a default container:
+The cross compiler in combination with the build scripts from this repository create new binaries and a new container. This will create a default container:
 <pre>
-    $ cd M3\_Container
+    $ cd M3_Container
     $ ./scripts/mk_container.sh
 </pre>
-The scripts will download all needed open source packetets from the internet and compile an update packet with the container. This update packet will be stored in ./images.
+The scripts will download all needed open source packets from the internet and compile an update packet with the container to be installed on an M3 device.
