@@ -13,6 +13,8 @@ The solution is LXC
 ---
 The same mechanism used within the M3 platform devices can be used on every modern Linux machine. Let the SDK run in an LXC container. Share all files except the SDK system files with your host system and use the SDK (toolchain) for compiling sources and packaging the containers.
 
+Using the SDK as an LXC container will result in a huge performance improvement when compiling. The pain with the file exchange will go away and starting up the SDK will happen almost instantly.
+
 1. Extract the content of the SDK into a directory
 2. Make minor modifications to some files of the SDK
 3. Create a configuration file for LXC
@@ -20,7 +22,6 @@ The same mechanism used within the M3 platform devices can be used on every mode
 
 Extract the SDK
 ---
-
 Start the virtual machine with the SDK and log in as root. Change to the / directory and pack the content of the SDK. Do not pack directories with runtime data like "tmp", "sys" or "proc"!
 	<pre>
 	m3sdk login: root
