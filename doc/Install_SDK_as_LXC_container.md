@@ -69,7 +69,7 @@ Get the user and group ID (UID, GID) of the user in the LXC container to the sam
     
 Modify the UID and GID of the user "user" of the LXC container:
     <pre>
-    root@host rootfs # nano /etc/lxc/m3sdk_2/rootfs/etc/passwd
+    root@host rootfs # nano /etc/lxc/m3sdk/rootfs/etc/passwd
     ...    
     user:x:1001:1005::/home/user:/bin/bash
     ...
@@ -77,8 +77,8 @@ Modify the UID and GID of the user "user" of the LXC container:
     
 Stop the start of networking, as there is no different netspace. Stop starting the VirtualBox Guest additions and sshd. This only avoids error messages when starting the LXC container:
     <pre>
-    root@host rootfs # rm /etc/lxc/m3sdk_2/rootfs/etc/runlevels/default/*
-    root@host rootfs # rm /etc/lxc/m3sdk_2/rootfs/etc/runlevels/boot/net.lo
+    root@host rootfs # rm /etc/lxc/m3sdk/rootfs/etc/runlevels/default/*
+    root@host rootfs # rm /etc/lxc/m3sdk/rootfs/etc/runlevels/boot/net.lo
     </pre>
    
     
@@ -86,7 +86,7 @@ Create a configuration file for LXC
 ---
 To start an LXC container a config file is needed. It is located in "/etc/lxc/m3sdk/"
     <pre>
-    root@host rootfs # nano /etc/lxc/m3sdk_2/rootfs/etc/lxc/m3sdk/config
+    root@host rootfs # nano /etc/lxc/m3sdk/config
     </pre>
     
 Fill the configuration with this lines:
