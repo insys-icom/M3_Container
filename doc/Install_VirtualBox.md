@@ -2,7 +2,7 @@ Introduction
 ---
 The SDK (Software Development Kit) is a VirtualBox image. The SDK should be an independent reference building machine. It should not interfere with users host system. 
 
-The VM consists of a minimal Gentoo Linux installation without graphical user interface support. Installed is crossdev with the armv7-hf cross compiler tool chain. 
+The VM consists of a minimal Gentoo Linux installation without graphical user interface support. Installed is crossdev with the armv7-hf cross compiler toolchain. 
 
 The SDK is supposed to have access to the internet in order to be able to clone this repository and to get the open-source-packages needed to fill the containers. Therefore one Ethernet interface must be bridged to the SDK.
 
@@ -122,7 +122,7 @@ To add a "shard folder":
 * Enter these lines into the script:
     <pre>
     #!/bin/sh
-    mount -t vboxsf -o rw,uid=1000 images /home/user/M3_Container/images" 
+    mount -t vboxsf -o rw,uid=1000 images /home/user/M3_Container/images
     </pre>
   
 * Give the script the correct permisssions and add it to the system start, so the mounting happens every time the SDK starts:
