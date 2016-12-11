@@ -37,7 +37,7 @@ No, absolutely not. The SDK should be a reference. It should be most robust, lig
     - [http://www.acmesystems.it/arm0_toolchain](http://www.acmesystems.it/arm9_toolchain)
     - [https://www.yoctoproject.org](https://www.yoctoproject.org/)
 
-### <a name="sdk_3">Can I use the "shared folder" feature of VirtualBox?</a>
+### <a name="sdk_2">Can I use the "shared folder" feature of VirtualBox?</a>
 Yes, it's possible to share files with the SDK this way, 
 
 Be aware that there are problems:
