@@ -56,6 +56,10 @@ install_staging()
     echo "* Installing to staging: ${STAGING_DIR}"
     rm -rf "${STAGING_DIR}/usr/local/lib/libpython2"*
     cp -r "${PKG_INSTALL_DIR}/"* "${STAGING_DIR}"
+
+    # remove all precompiled python bytecode
+    #find "${STAGING_DIR}/usr/local/lib/python2.7" -name  *.pyo | xargs  rm -Rf
+    #find "${STAGING_DIR}/usr/local/lib/python2.7" -name  *.pyc | xargs  rm -Rf
 }
 
 . ${HELPERSDIR}/call_functions.sh
