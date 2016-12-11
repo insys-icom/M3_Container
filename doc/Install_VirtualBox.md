@@ -34,18 +34,18 @@ First steps within the SDK
     	user@m3sdk ~ $ su root
     	Password: root
     </pre>
-* Configure networking. It's assumed you bridged an Ethernet interface to the SDK, your LAN is the 192.168.1.0/24 and your gateway has the IP address 192.168.1.1/24. 
+* Configure networking. It's assumed you bridged an Ethernet interface to the SDK, your LAN is the 192.168.2.0/24 and your gateway has the IP address 192.168.2.1/24. 
     Configure a free IP address of your LAN to the Ethernet interface within the SDK:
     <pre>
-        m3sdk user # /root/set_ip.sh 192.168.1.3/24
+        m3sdk user # /root/set_ip.sh 192.168.2.3/24
     </pre>
     Configure the default gateway:
     <pre>
-        m3sdk user # echo 'routes_enp0s3="default gw 192.168.1.1"' > /etc/conf.d/net
+        m3sdk user # echo 'routes_enp0s3="default gw 192.168.2.1"' > /etc/conf.d/net
     </pre>
     Configure a DNS server address:
     <pre>
-        m3sdk user # echo "nameserver 192.168.1.1" > /etc/resolv.conf
+        m3sdk user # echo "nameserver 192.168.2.1" > /etc/resolv.conf
     </pre>
     Test the internet connection
     <pre>
@@ -65,18 +65,17 @@ First steps within the SDK
 
 Usage of SDK
 ---
-Normally you will always log in as "user" via VirtualBox. It's recommended to use SSH to login to the SDK (ssh user@192.168.1.3) instead of the console that VirtualBox gives you after starting the SDK. In case your host system doesn't have an built in SSH client you might try [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/ "Putty").
+Normally you will always log in as "user" via VirtualBox. It's recommended to use SSH to login to the SDK (ssh user@192.168.2.3) instead of the console that VirtualBox gives you after starting the SDK. In case your host system doesn't have an built in SSH client you might try [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/ "Putty").
 
 Normally you will use the scripts that came with the repository. Enter the directory:
     <pre>
     user@m3sdk ~ $ cd M3_Container
     </pre>
-    Read more about the directories and files of this repository by reading the documents in [doc/Directories_and_files.md]("doc/Directories_and_files.md").
+    Read more about the directories and files of this repository in [doc/Directories_and_files.md]("doc/Directories_and_files.md").
 
 * Compile a single open source project, here: mcip
     <pre>
-    user@m3sdk ~ $ cd /home/user/M3_Container
-    user@m3sdk ~ $ ./oss_packages/scripts/mcip.sh all
+    user@m3sdk ~/M3_Container $ ./oss_packages/scripts/mcip.sh all
     </pre>
 If downloading the sources fails (no internet connection, wrong default route, no DNS server) you will have to download the sources manually and store them in "oss_packages/dl".
 
@@ -102,10 +101,9 @@ To add a "shard folder":
 
 * SSH into the SDK as "user" and empty the directory, into which the shared folder should be mounted. For this example the directory "~/M3_Container/images" should be shared, so the final containers are easily available for the host.
     <pre>
-    $ ssh user@192.168.1.3
+    $ ssh user@192.168.2.3
     Password: user
-    m3sdk@user ~ $ cd M3_Container/images
-    m3sdk@user ~ $ rm -Rf *
+    m3sdk@user ~ $ rm -Rf ./M3_Container/images/*
     </pre>
     
 * Become "root" 
