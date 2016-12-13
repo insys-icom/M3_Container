@@ -20,6 +20,8 @@ Using the SDK as an LXC container will result in a huge performance improvement 
 3. Create a configuration file for LXC
 4. Start the LXC Container on your host system
 
+LXC must be installed on your host system. The kernel of the host system must support CGroups and namespaces, witch is most likely already included. Read more on the [LXC website](https://linuxcontainers.org/lxc/getting-started)
+
 Extract the SDK
 ---
 Start the virtual machine with the SDK and log in as root. Change to the / directory and pack the content of the SDK. Do not pack directories with runtime data like "tmp", "sys" or "proc"!
@@ -59,11 +61,11 @@ To automatically log in as "user" when the LXC container gets started enter this
     1:12345:respawn:/sbin/agetty -a user --noclear 115200 console linux
     </pre>
     
-Get the user and group ID (UID, GID) of the user in the LXC container to the same values of the user, with which you normally log into your host system. It's assumed the user is named "joe" and has UID 1001 and GID 1005:
+Get the user and group ID (UID, GID) of the user in the LXC container to the same values of the user, with which you normally log into your host system. Here it's assumed the user has UID 1001 and GID 1005:
     <pre>
-    root@host rootfs # id joe -u
+    root@host rootfs # id \<your_user_name\> -u
     1001
-    root@host rootfs # id joe -g
+    root@host rootfs # id \<your_user_name\> -g
     1005
     </pre>
     
@@ -95,17 +97,17 @@ Fill the configuration with this lines:
     lxc.rootfs = /etc/lxc/m3sdk/rootfs
     lxc.haltsignal = SIGUSR1
     lxc.utsname = m3sdk
-    lxc.tty = 1
-    lxc.pts = 0
+    lxc.tty = 10
+    lxc.pts = 1024
     lxc.cap.drop = audit_control audit_write dac_read_search fsetid ipc_owner linux_immutable mac_admin mac_override mknod setfcap sys_admin sys_boot sys_module sys_pacct sys_ptrace sys_rawio sys_resource sys_time sys_tty_config syslog
     lxc.mount.entry = /dev dev none rw,bind 0 0
     lxc.mount.entry = proc proc proc nodev,noexec,nosuid 0 0
     lxc.mount.entry = sysfs sys sysfs ro 0 0
     </pre>
     
-Mount the home directory of the user "joe" automatically into the LXC container. Append this line to the config file above and modify "joe" to the real user name of your host system:
+Mount the M3_Container directory  or optionally the complete home directory of your normal user of the host system automatically into the LXC container. Append this line to the config file above and modify the real user name of your host system:
     <pre>
-    lxc.mount.entry = /home/joe home/user defaults rw,bind 0 0
+    lxc.mount.entry = /home/<your_user_name> home/user defaults rw,bind 0 0
     </pre>
     
 You can mount as much directories as you wish, as long the mount points in the LXC container exist and the user has the permission to enter them.
@@ -118,11 +120,15 @@ Starting and stopping a container may require root permissions on the host syste
     Passwort: 
     root@host ~ # lxc-start -n m3sdk
     </pre>
-    
+
+Optionally open another console in the SDK:
+    <pre>
+    root@host ~ # lxc-console -n m3sdk
+    </pre>
+
 The container will start immediately in the terminal, where the command has been entered. The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
     <pre>
     $ su root
     Passwort: 
     root@host ~ # lxc-stop -n m3sdk -k
     </pre>
-    

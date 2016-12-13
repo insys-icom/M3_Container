@@ -85,7 +85,7 @@ If downloading the sources fails (no internet connection, wrong default route, n
     </pre>
 
 
-Using shared folders with of SDK
+Using shared folders with SDK
 ---
 In order to exchange file between SDK and host system more comfortably VirtualBox comes with a feature called "Shared folders". Via VirtualBox GUI you can define one ore more directories, that can be mounted by the SDK. The files within the directory will stay on your host system. They can be read and modified within the SDK. 
 
