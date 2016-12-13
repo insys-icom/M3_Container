@@ -5,7 +5,7 @@ The SDK in form of a VirtualBox image is the most reliable and portable way to p
 
 * The overall performance within a virtual machine (VM) is never that high than the one on the host machine. Compiling source code normally takes a lot of performance. Compiling within the VM can be very slow
 
-* Exchanging files between the VM and the host system is not always that easy, it quite slow and takes a huge amount of CPU power. This pain can be eased but will never get extinct. Solutions might be mounting directories within the SDK by using scp, NFS, shared folders, FUSE, samba or even FTP. All of this solutions add a protocol with naturally slow down the file exchange. Every file exchange protocol will have additional problems, e.g. problems with synchronizing GIDs and UIDs, access rights or ownership of files. There is the problem of different file systems, where not all of them know symlinks or hardlinks. It may be forbidden to follow symlinks like it is the case with "shared folders".
+* Exchanging files between the VM and the host system is not always that easy, it's quite slow and takes a huge amount of CPU power. This pain can be eased but will never get extinct. Solutions might be mounting directories within the SDK by using scp, NFS, shared folders, FUSE, samba or even FTP. All of this solutions add a protocol with naturally slow down the file exchange. Every file exchange protocol will have additional problems, e.g. problems with synchronizing GIDs and UIDs, access rights or ownership of files. There is the problem of different file systems, where not all of them know symlinks or hardlinks. It may be forbidden to follow symlinks like it is the case with "shared folders".
 
 * Living within a VM most of the times is quite uncomfortable. There never are the right tools like editors. In case of the SDK there is not even an X server installed.
 
@@ -56,7 +56,6 @@ There are minor changes to be made in the rootfs of the LXC container.
 
 To automatically log in as "user" when the LXC container gets started enter this as the first line in "/etc/inittab":
     <pre>
-    root@host # cd /etc/lxc/m3sdk/rootfs
     root@host rootfs # nano /etc/lxc/m3sdk/rootfs/etc/inittab
     1:12345:respawn:/sbin/agetty -a user --noclear 115200 console linux
     </pre>
@@ -107,7 +106,7 @@ Fill the configuration with this lines:
     
 Mount the M3_Container directory  or optionally the complete home directory of your normal user of the host system automatically into the LXC container. Append this line to the config file above and modify the real user name of your host system:
     <pre>
-    lxc.mount.entry = /home/<your_user_name> home/user defaults rw,bind 0 0
+    lxc.mount.entry = /home/\<your_user_name\> home/user defaults rw,bind 0 0
     </pre>
     
 You can mount as much directories as you wish, as long the mount points in the LXC container exist and the user has the permission to enter them.
@@ -119,6 +118,11 @@ Starting and stopping a container may require root permissions on the host syste
     $ su root
     Passwort: 
     root@host ~ # lxc-start -n m3sdk
+    </pre>
+
+In case of an error (... "empty /sbin/init ...") your LXC installation is looking for the rootfs in the wrong place. It may help to create a symlink. Ubuntu expects container at /var/lib/lxc.
+    <pre>
+    root@host ~ # ln -s /etc/lxc/m3sdk /var/lib/lxc/m3sdk
     </pre>
 
 Optionally open another console in the SDK:
