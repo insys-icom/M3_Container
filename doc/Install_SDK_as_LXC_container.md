@@ -117,12 +117,7 @@ Starting and stopping a container may require root permissions on the host syste
     <pre>
     $ su root
     Passwort: 
-    root@host ~ # lxc-start -n m3sdk
-    </pre>
-
-In case of an error (... "empty /sbin/init ...") your LXC installation is looking for the rootfs in the wrong place. It may help to create a symlink. Ubuntu expects container at /var/lib/lxc.
-    <pre>
-    root@host ~ # ln -s /etc/lxc/m3sdk /var/lib/lxc/m3sdk
+    root@host ~ # lxc-start -P /etc/lxc -n m3sdk
     </pre>
 
 Optionally open another console in the SDK:
@@ -134,5 +129,5 @@ The container will start immediately in the terminal, where the command has been
     <pre>
     $ su root
     Passwort: 
-    root@host ~ # lxc-stop -n m3sdk -k
+    root@host ~ # lxc-stop -P /etc/lxc -n m3sdk -k
     </pre>
