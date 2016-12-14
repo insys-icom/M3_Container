@@ -122,7 +122,7 @@ Starting and stopping a container may require root permissions on the host syste
 
 Optionally open another console in the SDK:
     <pre>
-    root@host ~ # lxc-console -n m3sdk
+    root@host ~ # lxc-console -P /etc/lxc -n m3sdk
     </pre>
 
 The container will start immediately in the terminal, where the command has been entered. The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
