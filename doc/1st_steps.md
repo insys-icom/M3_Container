@@ -4,7 +4,7 @@ The files within this repository help to create containers and ease cross compil
 1 Install a SDK
 ---
 The cross compiler and its toolchain must be for ARMv7 architecture with hardware floating point support (armv7-hf).
-There are several possibilities to get a cross toolchain:  
+There are several possibilities to get a cross toolchain:
 
 * Use the INSYS [SDK](https://www.insys-icom.de/data/smartbox/M3_SDK_2.ova) (recommended)
 * In case you use Gentoo on your host: install a cross compiler using "crossdev"
@@ -27,6 +27,6 @@ This repository is all about build scripts. Most likely you already have cloned 
 The cross compiler in combination with the build scripts from this repository create new binaries and a new container. This will create a default container:
 <pre>
     $ cd M3_Container
-    $ ./scripts/mk_container.sh
+    $ ./scripts/create_container_default.sh
 </pre>
 The scripts will download all needed open source packets from the internet and compile an update packet with the container to be installed on an M3 device.
