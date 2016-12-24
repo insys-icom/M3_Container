@@ -57,9 +57,9 @@ configure()
 compile()
 {
     export PYTHONHOME="${PYTHON_HOST}"
-    export PYTHONPATH="${PYTHON_HOST}/lib/python3.5"
+    export PYTHONPATH="${PYTHON_HOST}/lib/python3.6"
     export PATH="${PATH}:${PYTHON_HOST}/bin"
-    PYTHON_FOR_BUILD="${PYTHON_HOST}/bin/python3.5"
+    PYTHON_FOR_BUILD="${PYTHON_HOST}/bin/python3.6"
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
@@ -71,7 +71,7 @@ install_staging()
     make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 
     # remove all precompiled python bytecode
-    find "${STAGING_DIR}/usr/local/lib/python3.5" -name  __pycache__ | xargs  rm -Rf
+    find "${STAGING_DIR}/usr/local/lib/python3.6" -name  __pycache__ | xargs  rm -Rf
 }
 
 . ${HELPERSDIR}/call_functions.sh

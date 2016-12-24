@@ -4,7 +4,7 @@
 PKG_DOWNLOAD=""
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM=""
+PKG_CHECKSUM="replaceme"
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="project_name"
