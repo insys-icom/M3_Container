@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.python.org/ftp/python/3.5.2/Python-3.5.2.tar.xz"
+PKG_DOWNLOAD="https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tar.xz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="8906efbacfcdc7c3c9198aeefafd159e"
+PKG_CHECKSUM="82b143ebbf4514d7e05876bed7a6b1f5"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.5.2"
+PKG_DIR="Python-3.6.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
