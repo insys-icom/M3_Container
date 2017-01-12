@@ -2,13 +2,13 @@
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="http://zlib.net/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="http://zlib.net/zlib-1.2.8.tar.gz"
+PKG_DOWNLOAD="http://zlib.net/zlib-1.2.10.tar.gz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="44d667c142d7cda120332623eab69f40"
+PKG_CHECKSUM="d9794246f853d15ce0fcbf79b9a3cf13"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="zlib-1.2.8"
+PKG_DIR="zlib-1.2.10"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
