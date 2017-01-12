@@ -4,6 +4,7 @@
 [What's the deal will all these names: M3, MRX, MRO?](#generic_1)<br>
 [Can I develop containers on Windows or MAC OS?](#generic_2)<br>
 [I imported a container on my device - how can I access it?](#generic_3)<br>
+[Why can't I ping my new container](#generic_4)<br>
 
 ## SDK:
 [The VM is slow/uncomfortable/etc, do I have to use it?](#sdk_1)<br>
@@ -24,6 +25,14 @@ There are other programming languages, which do not need a cross compiler like P
 
 ### <a name="generic_3">I imported a container on my device - how can I access it?</a>
 Most of the times a fresh container contains an SSH or telnet server. There will be a user with user name "root" and password "root". It is strongly recommended to change the root password with the command "passwd". It is also a good idea to add another user for further operations.
+
+### <a name="generic_4">Why can't I ping my new container?</a>
+Checklist:
+
+- Have you assigned an IP address to the container, which is in your net?
+- Have you assigned a MAC address to the container? In case you changed the MAC address recently, flush your ARP cache!
+- Have you enabled the firewall? Then you need explicit rules to allow traffic to the container, too! Don't forget, that you need a FORWARD rule to allow traffic from the net interface to the virtual Ethernet interface of the container (e.g. FORWARD ALL from net2 to net2)
+- In case the traffic must be routed before it gets to the container: Are all routes correctly set on all machines? Maybe you need to use NAT?
 
 ### <a name="sdk_1">The VM is slow/uncomfortable/etc, do I have to use it?</a>
 No, absolutely not. The SDK should be a reference. It should be most robust, light weight and flexible. It isn't the most fast or comfortable way to cross compile. Alternatives:

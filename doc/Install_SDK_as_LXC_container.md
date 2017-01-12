@@ -20,7 +20,7 @@ Using the SDK as an LXC container will result in a huge performance improvement 
 3. Create a configuration file for LXC
 4. Start the LXC Container on your host system
 
-LXC must be installed on your host system. The kernel of the host system must support CGroups and namespaces, witch is most likely already included. Read more on the [LXC website](https://linuxcontainers.org/lxc/getting-started)
+LXC must be installed on your host system. The kernel of the host system must support CGroups and namespaces, which is most likely already included. Read more on the [LXC website](https://linuxcontainers.org/lxc/getting-started)
 
 Extract the SDK
 ---
