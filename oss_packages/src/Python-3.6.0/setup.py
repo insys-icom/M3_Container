@@ -1181,10 +1181,6 @@ class PyBuildExt(build_ext):
                 elif sqlite_setup_debug:
                     print("sqlite: %s had no SQLITE_VERSION"%(f,))
 
-        # inserted for M3_Container
-        sqlite_incdir = os.environ.get('STAGING_INCLUDE')
-        sqlite_libdir = os.environ.get('STAGING_LIB')
-
         if sqlite_incdir:
             sqlite_dirs_to_check = [
                 os.path.join(sqlite_incdir, '..', 'lib64'),

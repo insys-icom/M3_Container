@@ -12,6 +12,9 @@ PKG_DIR="Python-3.6.0"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
+# Variable for the install path used in script
+PYTHON_VERSION="python3.6"
+
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
@@ -26,25 +29,19 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    echo "Be sure you compiled these oss_packages first:"
-    echo " - openssl"
-    echo " - zlib"
-    echo " - expat"
-    echo " - sqlite"
-    echo " "
-    echo "Continue? <y/n>"
+    # Be sure you compiled these oss_packages first:
+    #  - openssl
+    #  - zlib
+    #  - sqlite
 
-    read text
-    ! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
-
-    # compile Python for x86
+    # compile Python for x86. This is only needed once in case there is not native python 3 in the SDK
     PYTHON_HOST="${PKG_BUILD_DIR}/Python_host"
-    mkdir -P "${PYTHON_HOST}"
-    cd "${PKG_BUILD_DIR}"
-    ./configure --prefix="${PKG_BUILD_DIR}/Python_host" --with-fpectl --with-computed-gotos --with-libc= --without-ensurepip --without-lto
-
-    make ${M3_MAKEFLAGS}
-    make install
+  #  mkdir -P "${PYTHON_HOST}"
+  #  cd "${PKG_BUILD_DIR}"
+  #  ./configure --prefix="${PKG_BUILD_DIR}/Python_host" --with-fpectl --with-computed-gotos --with-libc= --without-ensurepip --without-lto
+  #
+  #  make ${M3_MAKEFLAGS}
+  #  make install
 
     rm "${PKG_BUILD_DIR}/Parser/"*".o"
     rm "${PKG_BUILD_DIR}/Programs/"*".o"
@@ -62,16 +59,17 @@ configure()
     export ac_cv_file__dev_ptmx=no
     export CXX
 
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --with-fpectl --enable-ipv6 --with-threads --with-computed-gotos --with-system-expat --with-lto --enable-shared --enable-loadable-sqlite-extensions --without-ensurepip
+    # --enable-optimizations will increase the time for compilation significantly
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --with-fpectl --enable-ipv6 --with-threads --with-computed-gotos --with-system-expat --with-lto --enable-shared --without-ensurepip # --enable-optimizations
 }
 
 compile()
 {
     export PYTHON_HOST="${PKG_BUILD_DIR}/Python_host"
     export PYTHONHOME="${PYTHON_HOST}"
-    export PYTHONPATH="${PYTHON_HOST}/lib/python3.6"
+    export PYTHONPATH="${PYTHON_HOST}/lib/${PYTHON_VERSION}"
     export PATH="${PATH}:${PYTHON_HOST}/bin"
-    PYTHON_FOR_BUILD="${PYTHON_HOST}/bin/python3.6"
+    PYTHON_FOR_BUILD="${PYTHON_HOST}/bin/${PYTHON_VERSION}"
     export STAGING_INCLUDE="${STAGING_INCLUDE}"
     export STAGING_LIB="${STAGING_LIB}"
 
@@ -84,15 +82,25 @@ install_staging()
 {
     export PYTHON_HOST="${PKG_BUILD_DIR}/Python_host"
     export PYTHONHOME="${PYTHON_HOST}"
-    export PYTHONPATH="${PYTHON_HOST}/lib/python3.6"
+    export PYTHONPATH="${PYTHON_HOST}/lib/${PYTHON_VERSION}"
     export PATH="${PATH}:${PYTHON_HOST}/bin"
-    PYTHON_FOR_BUILD="${PYTHON_HOST}/bin/python3.6"
+    PYTHON_FOR_BUILDPYTHON_FOR_BUILD="${PYTHON_HOST}/bin/${PYTHON_VERSION}"
 
     cd "${PKG_BUILD_DIR}"
     make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 
+    # remove the static lib
+    rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/config-"*
+
+    # remove directories which are not needed (like the included idle editor)
+    rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/test"
+    rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/idlelib"
+    rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/lib2eto3"
+    rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/tkinter"
+    rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/distutils/command/wininst"*
+
     # remove all precompiled python bytecode
-    find "${STAGING_DIR}/usr/local/lib/python3.6" -name  __pycache__ | xargs  rm -Rf
+    find "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}" -name  __pycache__ | xargs  rm -Rf
 }
 
 . ${HELPERSDIR}/call_functions.sh
