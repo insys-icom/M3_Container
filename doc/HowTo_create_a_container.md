@@ -2,18 +2,19 @@
 
 For all following examples it is assumed that you changed to the root directory of the git repository, which is most likely "~/M3_Container".
 
-## In short
+
+## The comfortable way (for beginners)
+There already are a few recipes for complete containers in "./scripts/create_container_XYZ.sh". These scripts will try to get the sources, configure and compile them and pack a complete container without interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to build are satisfied. This scripts can be used as a template for own containers.
+
+
+## In short (for advanced)
 1. Use ./oss_sources/scripts/*.sh build scripts to cross compile open source projects
 2. Optionally compile your own applications in ./closed_sources/*
 3. Create a list ./scripts/rootfs_list/*.txt defining all files to be copied into the container 
 3. Create the update packet with the container with ./scripts/mk_container.sh 
 
 
-## The comfortable way
-There already are a few recipes for complete containers in "./scripts/create_container_XYZ.sh". These scripts will try to get the sources, configure and compile them and pack a complete container without interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to build are satisfied. This scripts can be used as a template for own containers.
-
-
-## Detailed instructions for creating containers
+## Detailed instructions for creating containers (for experts)
 The build scripts located in ./oss_sources/scripts/*.sh are used to download, configure and compile the open source projects. A build script needs one of the parameters "all", "download", "check_source", "unpack", "configure", "compile", "install_staging" or "uninstall_staging".
 
 This parameters are functions that optionally can exist in a build script, they are not mandatory. If a build script lacks one of the functions, a generic function will do its default action.
