@@ -36,12 +36,12 @@ configure()
 
     # compile Python for x86. This is only needed once in case there is not native python 3 in the SDK
     PYTHON_HOST="${PKG_BUILD_DIR}/Python_host"
-  #  mkdir -P "${PYTHON_HOST}"
-  #  cd "${PKG_BUILD_DIR}"
-  #  ./configure --prefix="${PKG_BUILD_DIR}/Python_host" --with-fpectl --with-computed-gotos --with-libc= --without-ensurepip --without-lto
-  #
-  #  make ${M3_MAKEFLAGS}
-  #  make install
+    mkdir -P "${PYTHON_HOST}"
+    cd "${PKG_BUILD_DIR}"
+    ./configure --prefix="${PKG_BUILD_DIR}/Python_host" --with-fpectl --with-computed-gotos --with-libc= --without-ensurepip --without-lto
+
+    make ${M3_MAKEFLAGS}
+    make install
 
     rm "${PKG_BUILD_DIR}/Parser/"*".o"
     rm "${PKG_BUILD_DIR}/Programs/"*".o"
