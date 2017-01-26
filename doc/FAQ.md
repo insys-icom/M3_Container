@@ -9,6 +9,8 @@
 ## SDK:
 [The VM is slow/uncomfortable/etc, do I have to use it?](#sdk_1)<br>
 [Can I use the "shared folder" feature of VirtualBox?](#sdk_2)<br>
+[Why can't I use my WLAN interface to bridge to the VM?](#sdk_3)<br>
+[Why doesn't start the VM at all?](#sdk_4)<br>
 
 ## Programming:
 [How should I begin with my own C/C++ application development?](#programming_1)<br>
@@ -47,15 +49,21 @@ No, absolutely not. The SDK should be a reference. It should be most robust, lig
     - [https://www.yoctoproject.org](https://www.yoctoproject.org/)
 
 ### <a name="sdk_2">Can I use the "shared folder" feature of VirtualBox?</a>
-Yes, it's possible to share files with the SDK this way, 
+Yes, it's possible to share files with the SDK this way.
 
-Be aware that there are problems:
+Be aware that there are problems/limitations:
 
 - The performance is very bad.
 - Due to it's bad performance timing problems can occur, especially with parallel compiling.
 - VirtualBox does not allow to follow symlinks as a security measure to avoid, that users leave the Shared Folder. You must allow following symlinks. Stop the SDK and use `> VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1`
 - Depending on the file system of the shared folder there can be problems with permissions, or the ownership (UID, GID) of the shared files. That might make it necessary to mount the shared folder manually in the SDK:<br>
 "$ mount -t vboxsf -o uid=1000,gid=1000 folder_to_share /mnt/mount_point_in_SDK". 
+
+### <a name="sdk_3">Why can't I use my WLAN interface to bridge to the VM?</a>
+A lot of WLAN chipsets do not support bridge mode. You will not get an error if you try to bridge a WLAN interface to the VM, but in most of the cases you will not get any traffic through to the VM. If you have to use WLAN (e.g. you have no Ethernet port) you will have to connect to the VM via NAT and use different IP networks on your host and within the VM.
+
+### <a name="sdk_3">Why doesn't start the VM at all?</a>
+Depending on your host system it can be necessary to modify the settings, especially "Settings -> Processor". More information can be found at the VirtuaBox vendor site: https://www.virtualbox.org/wiki/User_FAQ
 
 ### <a name="programming_1">How should I begin with my own C/C++ application development?</a>
 Have a look at ./closed_source/hello_world. Use this as a template for your own application. Do not forget to enter your binary in the rootfs list (./scripts/rootfs_lists/default.txt), so your application will be included next time you pack a container.
