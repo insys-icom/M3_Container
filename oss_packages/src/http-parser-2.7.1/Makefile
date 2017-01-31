@@ -65,8 +65,8 @@ LDFLAGS_LIB += -Wl,-soname=$(SONAME)
 endif
 
 test: test_g test_fast
-	$(HELPER) ./test_g$(BINEXT)
-	$(HELPER) ./test_fast$(BINEXT)
+	#$(HELPER) ./test_g$(BINEXT)
+	#$(HELPER) ./test_fast$(BINEXT)
 
 test_g: http_parser_g.o test_g.o
 	$(CC) $(CFLAGS_DEBUG) $(LDFLAGS) http_parser_g.o test_g.o -o $@
@@ -93,10 +93,10 @@ http_parser.o: http_parser.c http_parser.h Makefile
 	$(CC) $(CPPFLAGS_FAST) $(CFLAGS_FAST) -c http_parser.c
 
 test-run-timed: test_fast
-	while(true) do time $(HELPER) ./test_fast$(BINEXT) > /dev/null; done
+	#while(true) do time $(HELPER) ./test_fast$(BINEXT) > /dev/null; done
 
 test-valgrind: test_g
-	valgrind ./test_g
+	#valgrind ./test_g
 
 libhttp_parser.o: http_parser.c http_parser.h Makefile
 	$(CC) $(CPPFLAGS_FAST) $(CFLAGS_LIB) -c http_parser.c -o libhttp_parser.o
