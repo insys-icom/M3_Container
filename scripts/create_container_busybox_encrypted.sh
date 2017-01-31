@@ -5,6 +5,9 @@ CONTAINER_NAME="busybox_container_encrypted"
 ROOTFS_LIST="busybox.txt"
 KEYFILE="busybox_encrypted.key"
 
+PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
+PACKAGES="${PACKAGES} busybox-1.24.2.sh"
+
 SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
@@ -19,8 +22,7 @@ echo "      \"administration -> certificates\") before the container can be impo
 echo "      into the router. It is stored in scripts/keys/<key>.router."
 echo " "
 echo "It is necessary to build these Open Source projects in this order:"
-echo "- Linux-PAM-1.2.1.sh"
-echo "- busybox-1.24.2.sh"
+for PACKAGE in ${PACKAGES} ; do echo "- ${PACKAGE}"; done
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
 echo " $ ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -k \"${KEYFILE}\" -d \"${DESCRIPTION}\" -v \"1.0\""
@@ -30,9 +32,6 @@ echo "Continue? <y/n>"
 
 read text
 ! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
-
-PACKAGES="${PACKAGES}  Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES}  busybox-1.24.2.sh"
 
 # compile the needed packages
 for PACKAGE in ${PACKAGES} ; do
