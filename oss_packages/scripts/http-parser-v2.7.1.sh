@@ -39,6 +39,7 @@ compile()
     export AR="armv7a-hardfloat-linux-gnueabi-ar"
     export CC="armv7a-hardfloat-linux-gnueabi-gcc"
     export PREFIX='$(DESTDIR)'
+    rm -Rf "${PKG_INSTALL_DIR}"
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }
@@ -52,6 +53,7 @@ install_staging()
     export AR="armv7a-hardfloat-linux-gnueabi-ar"
     export CC="armv7a-hardfloat-linux-gnueabi-gcc"
     export PREFIX='$(DESTDIR)'
+    rm -Rf "${STAGING_LIB}/libhttp_parser.so"
     make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
