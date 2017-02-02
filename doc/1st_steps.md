@@ -18,7 +18,7 @@ It is recommended to use the INSYS SDK. It's a virtual Machine ([VirtualBox](htt
 This repository is all about build scripts. Most likely you already have cloned this repository, as you are reading this text. If that's not the case log into the SDK (console or ssh) and clone this repository by typing:
 <pre>
     $ ssh user@IP-address-of-SDK
-    $ git clone git@github.com:insys-icom/M3_Container.git
+    $ git clone https://github.com/insys-icom/M3_Container.git
 </pre>
 
 

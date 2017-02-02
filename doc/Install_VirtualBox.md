@@ -56,10 +56,15 @@ First steps within the SDK
     <pre>
         m3sdk user # exit
     </pre>
-* Clone this repository into the SDK:
+* Clone this repository into the SDK. In case you already have an account at github you can alternatively use the ssh protocol:
     <pre>
         user@m3sdk ~ $ git clone git@github.com:insys-icom/M3_Container.git
     </pre>
+    With no account you have to use HTTPS:
+    <pre>
+        user@m3sdk ~ $ git clone https://github.com/insys-icom/M3_Container.git
+    </pre>
+
     The directory "M3_Container" will be created and filled with the content of the repository.
 
 
