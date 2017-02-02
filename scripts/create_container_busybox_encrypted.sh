@@ -13,8 +13,11 @@ TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
-echo "This creates an encrypted container that only contains busybox."
-echo "Within the container will start a telnet server for logins. Both user name and password is \"root\"."
+echo " "
+echo "###################################################################################################"
+echo " This creates an encrypted container that only contains busybox."
+echo " Within the container will start a telnet server for logins. Both user name and password is \"root\"."
+echo "###################################################################################################"
 echo " "
 echo "Note: The key to ecrypt the container (-k option) is stored in scripts/keys/<key>".
 echo "      The key to decrypt the container must to be imported into the router (menu "

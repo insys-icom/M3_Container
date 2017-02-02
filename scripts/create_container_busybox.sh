@@ -12,8 +12,11 @@ TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
-echo "This creates a container that only contains busybox."
-echo "Within the container will start a telnet server for logins. Both user name and password is \"root\"."
+echo " "
+echo "###################################################################################################"
+echo " This creates a container that only contains busybox."
+echo " Within the container will start a telnet server for logins. Both user name and password is \"root\"."
+echo "###################################################################################################"
 echo " "
 echo "It is necessary to build these Open Source projects in this order:"
 for PACKAGE in ${PACKAGES} ; do echo "- ${PACKAGE}"; done
