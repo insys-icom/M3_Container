@@ -73,6 +73,8 @@ file /bin/metalog                     ${STAGING_DIR}/sbin/metalog               
 file /bin/start_net.sh                ${SKELETON_DIR}/bin/start_net.sh               0755 0 0
 file /bin/reboot                      ${STAGING_DIR}/sbin/reboot                     0755 0 0
 file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
+file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
+file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
@@ -108,6 +110,7 @@ file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm-2.22.so           
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt-2.22.so               0755 0 0
 slink /lib/ld-linux-armhf.so.3        ld-2.22.so                                     0777 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1.2.11              0644 0 0
+file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
 
 file /lib/finit/plugins/initctl.so    ${STAGING_DIR}/lib/finit/plugins/initctl.so    0644 0 0
 file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0

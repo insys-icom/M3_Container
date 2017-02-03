@@ -1,18 +1,16 @@
 #!/bin/sh
 
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="mcip_2017.02.03.tar.gz"
+
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/mcip/mcip_2016.01.19.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2F&ts=1465459732&use_mirror=liquidtelecom"
+PKG_DOWNLOAD="https://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2Ffiles%2F%3Fsource%3Dnavbar&ts=1486116300&use_mirror=master"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="5b2ec1b3c7e79d27fc708ace9d4b2bc0"
+PKG_CHECKSUM="d44e3fa2a941e05b927e06de376243dd"
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="mcip"
-
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="mcip_2016.01.19.tar.gz"
-
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -43,7 +41,6 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}"/include
     mkdir -p "${STAGING_DIR}"/lib
     mkdir -p "${STAGING_DIR}"/usr/bin
     cp "src/mcip/mcip" "${STAGING_DIR}/usr/bin/mcip"
@@ -51,7 +48,6 @@ install_staging()
     cp "libmcip/libmcip.so.1.0" "${STAGING_DIR}/lib/libmcip.so"
 
     cp "include/libmcip.h" "${STAGING_DIR}/include"
-    cp "include/mcip.h" "${STAGING_DIR}/include"
     cp "include/mcip_common.h" "${STAGING_DIR}/include"
 }
 
