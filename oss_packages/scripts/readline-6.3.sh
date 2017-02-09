@@ -2,7 +2,7 @@
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/readline-6.3.tar.gz"
+PKG_DOWNLOAD="ftp://ftp.gnu.org/gnu/readline/readline-6.3.tar.gz"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="33c8fb279e981274f485fd91da77e94a"
@@ -12,7 +12,6 @@ PKG_DIR="readline-6.3"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
-
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -32,8 +31,8 @@ configure()
     export CFLAGS="${M3_CFLAGS}"
     export bash_cv_func_sigsetjmp='present'
     export bash_cv_func_ctype_nonascii='yes'
-    export bash_cv_wcwidth_broken='no' 
-        
+    export bash_cv_wcwidth_broken='no'
+
     ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-largefile --enable-multibyte --with-curses --enable-shared --enable-static --prefix=""
 }
 
