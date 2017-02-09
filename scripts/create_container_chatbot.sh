@@ -4,6 +4,7 @@ DESCRIPTION="A container with an IRC chatbot (energymech)"
 CONTAINER_NAME="chatbot_container"
 ROOTFS_LIST="chatbot.txt"
 
+PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
 PACKAGES="${PACKAGES} busybox-1.24.2_mini.sh"
 PACKAGES="${PACKAGES} energymech-master.sh"
 
