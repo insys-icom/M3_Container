@@ -2,13 +2,13 @@
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="http://ngircd.barton.de/pub/ngircd/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="http://ngircd.barton.de/pub/ngircd/ngircd-23.tar.xz"
+PKG_DOWNLOAD="http://ngircd.barton.de/pub/ngircd/ngircd-24.tar.xz"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="b438e9044b9fabebf1ba9b07d09f5add"
+PKG_CHECKSUM="81b9c5ae283d07aab35ce16eaf49e458"
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="ngircd-23"
+PKG_DIR="ngircd-24"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"

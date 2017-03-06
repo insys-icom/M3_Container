@@ -11,7 +11,7 @@ PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2016.73.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2h.sh"
 PACKAGES="${PACKAGES} timezone2016e.sh"
-PACKAGES="${PACKAGES} ngircd-23.sh"
+PACKAGES="${PACKAGES} ngircd-24.sh"
 
 SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
