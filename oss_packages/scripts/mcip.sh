@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="mcip_2017.02.03.tar.gz"
+PKG_ARCHIVE_FILE="mcip_2017.03.24.tar.gz"
 
 # download link for the sources to be stored in dl directory
 PKG_DOWNLOAD="https://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2Ffiles%2F%3Fsource%3Dnavbar&ts=1486116300&use_mirror=master"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="d44e3fa2a941e05b927e06de376243dd"
+PKG_CHECKSUM="6eca0a8b6f0a2cab05af3fcd39d4f011"
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="mcip"
