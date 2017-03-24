@@ -7,7 +7,7 @@ PKG_ARCHIVE_FILE="mcip_2017.03.24.tar.gz"
 PKG_DOWNLOAD="https://downloads.sourceforge.net/project/mcip/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fmcip%2Ffiles%2F%3Fsource%3Dnavbar&ts=1486116300&use_mirror=master"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="6eca0a8b6f0a2cab05af3fcd39d4f011"
+PKG_CHECKSUM="0c32e1bc2c18f1860e848f154b0219f9"
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="mcip"
