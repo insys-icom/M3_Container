@@ -117,6 +117,7 @@ slink /usr/sbin ../bin 0777 0 0
 file /usr/share/version                ${SKELETON_DIR}/usr/share/version             0644 0 0
 file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
 file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
+file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_irc.html    0644 0 0
 
 file /usr/share/zoneinfo/GMT            ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT               0644 0 0
 file /usr/share/zoneinfo/GMT-1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+1             0644 0 0

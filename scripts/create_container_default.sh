@@ -30,7 +30,7 @@ echo "It is necessary to build these Open Source projects in this order:"
 for PACKAGE in ${PACKAGES} ; do echo "- ${PACKAGE}"; done
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " $ scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
+echo " $ ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
 echo " where the options -n and -l are mandatory."
 echo " "
 echo "Continue? <y/n>"
