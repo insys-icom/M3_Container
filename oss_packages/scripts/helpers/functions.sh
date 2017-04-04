@@ -115,7 +115,7 @@ unpack()
 {
     echo "unpacking ${PKG_ARCHIVE_FILE}"
     if ! [ "${PKG_ARCHIVE_FILE}" = "none" ] ; then
-        tar -C ${BUILD_DIR} -xf ${PKG_ARCHIVE} || exit_failure "unable to extract ${PKG_ARCHIVE}"
+        tar -C "${BUILD_DIR}" -xf "${PKG_ARCHIVE}" || unzip "${PKG_ARCHIVE}" -d "${BUILD_DIR}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
         [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
     fi
 
