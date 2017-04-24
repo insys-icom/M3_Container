@@ -12,7 +12,7 @@
 #include "MRXCliSMSMessageSender.h"
 #include "MRXCliRebooter.h"
 #include "MRXCliCliCommander.h"
-#include "Exceptions.h"
+#include "../Include/Exceptions.h"
 
 InputReader* MRXCliFactory::getInputControl() {
 	try

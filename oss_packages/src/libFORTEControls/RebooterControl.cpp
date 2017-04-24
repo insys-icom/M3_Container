@@ -5,7 +5,7 @@
  *      Author: Michael Schindler
  */
 
-#include "RebooterControl.h"
+#include "Include/RebooterControl.h"
 #include <Exceptions.h>
 
 RebooterControl::RebooterControl(Rebooter* rebooter) : rebooter(rebooter) {

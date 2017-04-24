@@ -5,7 +5,7 @@
  *      Author: Michael Schindler
  */
 
-#include "FORTEControl.h"
+#include "Include/FORTEControl.h"
 
 FORTEControl::FORTEControl() {
 	this->statusMessage = "OK";

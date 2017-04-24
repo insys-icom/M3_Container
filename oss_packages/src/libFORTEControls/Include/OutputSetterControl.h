@@ -8,8 +8,8 @@
 #ifndef OUTPUTSETTERCONTROL_H_
 #define OUTPUTSETTERCONTROL_H_
 
-#include <FORTEControl.h>
-#include <OutputSetter.h>
+#include "FORTEControl.h"
+#include "OutputSetter.h"
 
 class OutputSetterControl: public FORTEControl {
 private:
