@@ -133,16 +133,14 @@ file /lib/libmrx_control.so           ${STAGING_DIR}/lib/libmrx_control.so      
 file /lib/libpaho-mqtt3a.so.1.0.3     ${STAGING_DIR}/lib/libpaho-mqtt3a.so.1.0.3     0644 0 0
 slink /lib/libpaho-mqtt3a.so.1        /lib/libpaho-mqtt3a.so.1.0.3                   0777 0 0
 slink /lib/libpaho-mqtt3a.so          /lib/libpaho-mqtt3a.so.1                       0777 0 0
-file /lib/libpaho-mqtt3a.so.1.0       ${STAGING_DIR}/lib/libpaho-mqtt3a.so.1.0       0644 0 0
-file /lib/libpaho-mqtt3as.so.1.0      ${STAGING_DIR}/lib/libpaho-mqtt3as.so.1.0      0644 0 0
-slink /lib/libpaho-mqtt3as.so.1       /lib/libpaho-mqtt3a2.so.1.0                    0777 0 0
+file /lib/libpaho-mqtt3as.so.1.0.3    ${STAGING_DIR}/lib/libpaho-mqtt3as.so.1.0.3    0644 0 0
+slink /lib/libpaho-mqtt3as.so.1       /lib/libpaho-mqtt3a2.so.1.0.3                  0777 0 0
 slink /lib/libpaho-mqtt3as.so         /lib/libpaho-mqtt3a2.so.1                      0777 0 0
-file /lib/libpaho-mqtt3c.so.1.0       ${STAGING_DIR}/lib/libpaho-mqtt3c.so.1.0       0644 0 0
 file /lib/libpaho-mqtt3c.so.1.0.3     ${STAGING_DIR}/lib/libpaho-mqtt3c.so.1.0.3     0644 0 0
 slink /lib/libpaho-mqtt3c.so.1        /lib/libpaho-mqtt3c.so.1.0.3                   0777 0 0
 slink /lib/libpaho-mqtt3c.so          /lib/libpaho-mqtt3c.so.1                       0777 0 0
-file /lib/libpaho-mqtt3cs.so.1.0      ${STAGING_DIR}/lib/libpaho-mqtt3cs.so.1.0      0644 0 0
-slink /lib/libpaho-mqtt3cs.so.1       /lib/libpaho-mqtt3cs.so.1.0                    0777 0 0
+file /lib/libpaho-mqtt3cs.so.1.0.4    ${STAGING_DIR}/lib/libpaho-mqtt3cs.so.1.0.3    0644 0 0
+slink /lib/libpaho-mqtt3cs.so.1       /lib/libpaho-mqtt3cs.so.1.0.3                  0777 0 0
 slink /lib/libpaho-mqtt3cs.so         /lib/libpaho-mqtt3cs.so.1                      0777 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme_default.txt        0644 0 0
