@@ -24,6 +24,7 @@ PACKAGES="${PACKAGES} c-ares-1.12.0.sh"
 PACKAGES="${PACKAGES} libmodbus-3.1.4.sh"
 PACKAGES="${PACKAGES} libmrx_control.sh"
 PACKAGES="${PACKAGES} libFORTEControls.sh"
+PACKAGES="${PACKAGES} paho.mqtt.c.sh"
 PACKAGES="${PACKAGES} forte-1.8.4.sh"
 
 SCRIPTSDIR="$(dirname $0)"
