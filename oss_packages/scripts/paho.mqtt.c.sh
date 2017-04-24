@@ -34,14 +34,13 @@ configure()
     cmake -DCMAKE_C_COMPILER=${CROSS_COMPILE}gcc -DCMAKE_AR=${CROSS_COMPILE}ar \
           -DCMAKE_LINKER=${CROSS_COMPILE}ld -DCMAKE_STRIP=${CROSS_COMPILE}strip -DCMAKE_NM=${CROSS_COMPILE}nm -DCMAKE_OBJCOPY=${CROSS_COMPILE}objcopy \
           -DCMAKE_OBJDUMP=${CROSS_COMPILE}objdump -DCMAKE_RANLIB=${CROSS_COMPILE}ranlib \
-          -DCMAKE_C_FLAGS="-I${STAGING_DIR}/include" -DCMAKE_INSTALL_PREFIX=""
+          -DCMAKE_C_FLAGS="-fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" -DPAHO_WITH_SSL=ON -DCMAKE_INSTALL_PREFIX=""
 }
 
 compile()
 {
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    #make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
