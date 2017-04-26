@@ -1,8 +1,10 @@
 CC = $(CROSS_COMPILE)gcc
 CXX = $(CROSS_COMPILE)g++
+
 C_FLAGS = ${CFLAGS} -std=c11 -Wall -fPIC
 CXXFLAGS = ${CFLAGS} -std=c++0x -Wall -fPIC
 LINKERFLAGS = ${LDFLAGS}
+
 INCLUDES="${INCLUDES} -IInclude"
 LIBS = -lmcip
 

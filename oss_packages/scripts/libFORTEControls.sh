@@ -37,6 +37,7 @@ compile()
         
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
+    export CROSS_COMPILE="${M3_CROSS_COMPILE}"
     
     make ${M3_MAKEFLAGS} INCLUDES="-I${STAGING_INCLUDE}" || exit_failure "failed to build ${PKG_DIR}"
 }

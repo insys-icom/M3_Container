@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DESCRIPTION="A container with the 4DIA-Runtime called FORTE"
+DESCRIPTION="A container with the 4DIAC-Runtime called FORTE"
 CONTAINER_NAME="forte_container"
 ROOTFS_LIST="forte.txt"
 
