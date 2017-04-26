@@ -1,9 +1,8 @@
-CC = /usr/bin/armv7a-hardfloat-linux-gnueabi-gcc
-CXX = /usr/bin/armv7a-hardfloat-linux-gnueabi-g++
-CFLAGS = -Os -s -mthumb -march=armv7-a -mtune=cortex-a8 -fuse-linker-plugin -ffunction-sections -fdata-sections -std=c11 -O0 -g3 -Wall -c -fmessage-length=0 -fPIC
-CXXFLAGS = -Os -s -mthumb -march=armv7-a -mtune=cortex-a8 -fuse-linker-plugin -ffunction-sections -fdata-sections -std=c++0x -O0 -g3 -Wall -fmessage-length=0 -fPIC
-LINKERFLAGS= -Wl,--as-needed -fuse-linker-plugin -Wl,--gc-sections
-EXT_INCLUDES =
+CC = $(CROSS_COMPILE)gcc
+CXX = $(CROSS_COMPILE)g++
+C_FLAGS = ${CFLAGS} -std=c11 -Wall -fPIC
+CXXFLAGS = ${CFLAGS} -std=c++0x -Wall -fPIC
+LINKERFLAGS = ${LDFLAGS}
 INCLUDES="${INCLUDES} -IInclude"
 LIBS = -lmcip
 
@@ -12,6 +11,7 @@ OBJECTS = 	CardInfoProvider.o EmailMessageSender.o InputReader.o OutputSetter.o 
 			MRXCliEmailMessageSender.o MRXCliOutputSetter.o MRXCliCliCommander.o MRXCliFactory.o MRXCliRebooter.o \
 			MRXCliCommandSender.o MRXCliInputReader.o MRXCliSMSMessageSender.o \
 			CommandSender.o
+			
 all: libmrx_control.so
 
 libmrx_control.so: $(OBJECTS)
@@ -37,7 +37,7 @@ libmrx_control.so: $(OBJECTS)
 	
 %.o: MRX_CLI/%.c
 	@echo 'Building file: $<'
-	$(CC) -c $(CFLAGS) $(INCLUDES) $(EXT_INCLUDES) $(LINKERFLAGS) $< $(LIBS)
+	$(CC) -c $(C_FLAGS) $(INCLUDES) $(LINKERFLAGS) $< $(LIBS)
 	@echo 'Finished building: $<'
 	@echo ' ' 
 	

@@ -32,17 +32,20 @@ configure()
 
 compile()
 {
-    copy_overlay
+	copy_overlay	
     cd "${PKG_BUILD_DIR}"
-
-    make ${M3_MAKEFLAGS} INCLUDES="-I${STAGING_DIR}/include" || exit_failure "failed to build ${PKG_DIR}"
+        
+    export CFLAGS="${M3_CFLAGS}"
+    export LDFLAGS="${M3_LDFLAGS}"
+    
+    make ${M3_MAKEFLAGS} INCLUDES="-I${STAGING_INCLUDE}" || exit_failure "failed to build ${PKG_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    cp libFORTEControls.a "${STAGING_DIR}/lib"
-    cp Include/* "${STAGING_DIR}/include"
+    cp libFORTEControls.a "${STAGING_LIB}"
+    cp Include/* "${STAGING_INCLUDE}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
