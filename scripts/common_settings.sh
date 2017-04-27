@@ -40,7 +40,9 @@ FS_TARGET_DIR="$(realpath "${TOPDIR}/working/rootfs_target")"
 TARGET_DIR="${FS_TARGET_DIR}/rootfs"
 SKELETON_DIR="$(realpath "${TOPDIR}/rootfs_skeleton")"
 
-GCC_LIB_DIR="/usr/lib/gcc/armv7a-hardfloat-linux-gnueabi/5.3.0/"
+# use the latest available compiler version
+GCC_VERSION="$(ls /usr/lib/gcc/armv7a-hardfloat-linux-gnueabi | sort  | tail -n 1)"
+GCC_LIB_DIR="/usr/lib/gcc/armv7a-hardfloat-linux-gnueabi/${GCC_VERSION}/"
 SYSROOT_DIR="/usr/armv7a-hardfloat-linux-gnueabi"
 
 OUTPUT_DIR="$(realpath "${TOPDIR}/images")"
