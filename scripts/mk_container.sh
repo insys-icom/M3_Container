@@ -189,7 +189,8 @@ process_filesystem_list()
 
         case ${ACTION} in
             "create_tar")
-                echo ${TAR_FILES} | xargs tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
+                tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --add-file="./rootfs/${DESTINATION_FILE}" --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
+                #echo ${TAR_FILES} | xargs tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
             ;;
             "create_list")
                 echo ${LINE} >> "${FS_OUTFILE}"
@@ -201,7 +202,8 @@ process_filesystem_list()
         esac
 
     done
-    test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=644 --owner=0 --group=0
+    test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --add-file="./rootfs/md5sums" --numeric-owner --mode=644 --owner=0 --group=0
+    #test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=644 --owner=0 --group=0
     IFS=$OLDIFS
 }
 
