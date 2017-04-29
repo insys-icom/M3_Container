@@ -25,25 +25,25 @@ TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 LIST_FILE="${OSS_PACKAGES_SCRIPTS}/helpers/list.txt"
 
 # clean up
-#rm -Rf "${TOPDIR}/images/"*
-#rm -Rf "${STAGING_DIR}/"*
-#rm -Rf "${TOPDIR}/working/"*
-#rm -Rf "${DOWNLOADS_DIR}/"*
-#
-### build all open source projects in the order given by the list file
-#while read BUILDSCRIPT ; do
-#    # ignore line with starting # or space
-#    [ "$(echo $BUILDSCRIPT | cut -c1-1)" = '#' -o "$(echo $BUILDSCRIPT | cut -c1-1)" = "" ] && continue
-#
-#    # announce the build script
-#    echo ""
-#    echo "###########################################################################"
-#    printf "executing \"%s$BUILDSCRIPT all\"\n"
-#    echo "###########################################################################"
-#
-#    # process build script
-#    "${OSS_PACKAGES_SCRIPTS}/${BUILDSCRIPT}" all || exit_message "Failed to execute ${BUILDSCRIPT} all"
-#done < "$(ls ${LIST_FILE})"
+rm -Rf "${TOPDIR}/images/"*
+rm -Rf "${STAGING_DIR}/"*
+rm -Rf "${TOPDIR}/working/"*
+rm -Rf "${DOWNLOADS_DIR}/"*
+
+# build all open source projects in the order given by the list file
+while read BUILDSCRIPT ; do
+    # ignore line with starting # or space
+    [ "$(echo $BUILDSCRIPT | cut -c1-1)" = '#' -o "$(echo $BUILDSCRIPT | cut -c1-1)" = "" ] && continue
+
+    # announce the build script
+    echo ""
+    echo "###########################################################################"
+    printf "executing \"%s$BUILDSCRIPT all\"\n"
+    echo "###########################################################################"
+
+    # process build script
+    "${OSS_PACKAGES_SCRIPTS}/${BUILDSCRIPT}" all || exit_message "Failed to execute ${BUILDSCRIPT} all"
+done < "$(ls ${LIST_FILE})"
 
 # create all containers
 cd "${SCRIPTSDIR}/rootfs_lists"
