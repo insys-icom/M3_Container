@@ -138,6 +138,11 @@ process_filesystem_list()
         OWNER="${PARAM_3}"
         GROUP="${PARAM_4}"
 
+        # we have to keep the "." in front of the path inside the tar file
+        # we could have cut off the leading /, but we didn't and now we need to keep it for compatibility
+        # in update.c we extract "./usr/share/version", which would fail otherwise
+        TAR_FILES=".${DESTINATION_FILE}"
+
         # remove symbolic links, because overwriting them will overwrite the link target
         test -L "${TARGET_DIR}${DESTINATION_FILE}" && rm "${TARGET_DIR}${DESTINATION_FILE}"
 
@@ -168,16 +173,18 @@ process_filesystem_list()
             "wildcard")
                 # wildcard is a dedicated target, because this feature is not available in the original initramfs list format
                 # we do not strip here, because it should only be used for specific group of files like doc and html templates
+                TAR_FILES=""
                 for SOURCE_FILE in $(eval echo "${PARAM_1}" | sort) ; do
-                    FILENAME=$(basename "${SOURCE_FILE}")
+                    FNAME=$(basename "${SOURCE_FILE}")
                     # ignore directorys here
                     if [ -e "${SOURCE_FILE}" -a ! -d "${SOURCE_FILE}" ] ; then
-                        cmp "${SOURCE_FILE}" "${FS_TARGET_DIR}${DESTINATION_FILE}/${FILENAME}" > /dev/null 2>&1
+                        cmp "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" > /dev/null 2>&1
                         if [ $? -ne 0 ] ; then
-                            cp -fL "${SOURCE_FILE}" "${FS_TARGET_DIR}${DESTINATION_FILE}/${FILENAME}" || exit_failure "failed to copy ${DESTINATION_FILE}/${FILENAME}"
+                            cp -fL "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" || exit_failure "failed to copy ${DESTINATION_FILE}/${FNAME}"
                         fi
-                        md5sum "${FS_TARGET_DIR}${DESTINATION_FILE}/${FILENAME}" | sed "s|${FS_TARGET_DIR}/||" >> "${FS_TARGET_DIR}/md5sums"
-                        LINE="${TYPE} ${DESTINATION_FILE}/${FILENAME} ${FS_TARGET_DIR}${DESTINATION_FILE} ${PERMISSON} ${OWNER} ${GROUP}"
+                        md5sum "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" | sed "s|${TARGET_DIR}/||" >> "${TARGET_DIR}/md5sums"
+                        LINE="${TYPE} ${DESTINATION_FILE}/${FNAME} ${TARGET_DIR}${DESTINATION_FILE} ${PERMISSON} ${OWNER} ${GROUP}"
+                        TAR_FILES="${TAR_FILES} ./rootfs${DESTINATION_FILE}/${FNAME}"
                     fi
                 done
             ;;
@@ -189,8 +196,7 @@ process_filesystem_list()
 
         case ${ACTION} in
             "create_tar")
-                tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --add-file="./rootfs/${DESTINATION_FILE}" --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
-                #echo ${TAR_FILES} | xargs tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
+                echo "./rootfs/${TAR_FILES}" | xargs tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
             ;;
             "create_list")
                 echo ${LINE} >> "${FS_OUTFILE}"
@@ -202,8 +208,7 @@ process_filesystem_list()
         esac
 
     done
-    test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --add-file="./rootfs/md5sums" --numeric-owner --mode=644 --owner=0 --group=0
-    #test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=644 --owner=0 --group=0
+    test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=644 --owner=0 --group=0 "./rootfs/md5sums"
     IFS=$OLDIFS
 }
 
