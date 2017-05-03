@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container to demonstrate the mosquitto MQTT broker"
-CONTAINER_NAME="Mosquitto_MQTT_Broker"
+CONTAINER_NAME="container_mosquitto_mqtt_broker"
 ROOTFS_LIST="mosquitto_mqtt_broker.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"

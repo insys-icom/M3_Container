@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container like the router firmware can create it"
-CONTAINER_NAME="default_container"
+CONTAINER_NAME="container_default"
 ROOTFS_LIST="default.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"

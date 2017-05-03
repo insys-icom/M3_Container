@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container to demonstrate a modbus to MQTT gateway"
-CONTAINER_NAME="Modbus_to_MQTT_Gateway_Demo"
+CONTAINER_NAME="container_modbus_to_mqtt_gateway"
 ROOTFS_LIST="modbus_mqtt_gateway.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"

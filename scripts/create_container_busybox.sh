@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container with only busybox in it"
-CONTAINER_NAME="busybox_container"
+CONTAINER_NAME="container_busybox"
 ROOTFS_LIST="busybox.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"

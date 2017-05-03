@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container with the Internet Relay Chat server (ngircd)"
-CONTAINER_NAME="irc_container"
+CONTAINER_NAME="container_irc"
 ROOTFS_LIST="irc.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"

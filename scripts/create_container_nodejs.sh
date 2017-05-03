@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container with a Node.js environment"
-CONTAINER_NAME="nodejs_container"
+CONTAINER_NAME="container_nodejs"
 ROOTFS_LIST="nodejs.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"

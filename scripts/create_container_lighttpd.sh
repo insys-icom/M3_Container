@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container with lighttpd in it"
-CONTAINER_NAME="lighttpd_container"
+CONTAINER_NAME="container_lighttpd"
 ROOTFS_LIST="lighttpd.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
