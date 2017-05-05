@@ -1,26 +1,24 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/pcre/pcre/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpcre%2F&ts=1465978062&use_mirror=netassist"
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/pcre/pcre/8.38/pcre-8.38.tar.bz2?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fpcre%2F&ts=1465978062&use_mirror=netassist"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="00aabbfe56d5a48b270f999b508c5ad2"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR="pcre-8.38"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="00aabbfe56d5a48b270f999b508c5ad2"
+
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"

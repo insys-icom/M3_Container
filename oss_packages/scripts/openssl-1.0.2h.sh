@@ -1,26 +1,24 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://www.openssl.org/source/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://www.openssl.org/source/openssl-1.0.2h.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="9392e65072ce4b614c1392eefc1f23d0"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR="openssl-1.0.2h"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="9392e65072ce4b614c1392eefc1f23d0"
+
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -32,7 +30,7 @@ configure()
     export CROSS_COMPILE="${M3_CROSS_COMPILE}"
     export CFLAGS_APPEND="${M3_CFLAGS} ${M3_LDFLAGS}"
 
-    ./Configure linux-armv4 -no-err -no-camellia -no-seed -no-hw -no-ssl2 -no-ssl3 --prefix="${STAGING_DIR}" shared  
+    ./Configure linux-armv4 -no-err -no-camellia -no-seed -no-hw -no-ssl2 -no-ssl3 --prefix="${STAGING_DIR}" shared
     sed 's/ -O3 / $(CFLAGS_APPEND) /' -i Makefile
     make depend
 }

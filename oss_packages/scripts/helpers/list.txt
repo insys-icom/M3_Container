@@ -49,8 +49,8 @@ openssh-7.3p1.sh
 openvpn-2.3.11.sh
 rsync-3.1.2.sh
 socat-2.0.0-b9.sh
-strace-4.12.sh
-stunnel-5.32.sh
+strace-4.16.sh
+stunnel-5.41.sh
 tcpdump-4.7.4.sh
 timezone2016e.sh
 bftpd-4.4.sh

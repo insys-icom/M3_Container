@@ -1,12 +1,5 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://busybox.net/downloads/busybox-1.24.2.tar.bz2"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="2eaae519cac1143bcf583636a745381f"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR_ORIG="busybox-1.24.2"
 PKG_DIR="${PKG_DIR_ORIG}_mini"
@@ -14,14 +7,19 @@ PKG_DIR="${PKG_DIR_ORIG}_mini"
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR_ORIG}.tar.bz2"
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
-SCRIPTSDIR=$(dirname $0)
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="2eaae519cac1143bcf583636a745381f"
+
+
+
+SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-
+TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"

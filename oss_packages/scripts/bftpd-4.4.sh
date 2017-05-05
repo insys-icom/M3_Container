@@ -1,25 +1,24 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="http://downloads.sourceforge.net/project/bftpd/bftpd/${PKG_DIR}/${PKG_ARCHIVE_FILE}?r=&ts=1474881057&use_mirror=netcologne"
-PKG_DOWNLOAD="http://downloads.sourceforge.net/project/bftpd/bftpd/bftpd-4.4/bftpd-4.4.tar.gz?r=&ts=1474881057&use_mirror=netcologne"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="dbd6740895e04f083b393b1167a11936"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR="bftpd"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}-4.4.tar.gz"
+
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="dbd6740895e04f083b393b1167a11936"
+
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
