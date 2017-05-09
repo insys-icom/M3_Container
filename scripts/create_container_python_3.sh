@@ -19,7 +19,7 @@ PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2h.sh"
 PACKAGES="${PACKAGES} readline-6.3.sh"
 PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
-PACKAGES="${PACKAGES} python-3.6.0.sh"
+PACKAGES="${PACKAGES} python-3.6.1.sh"
 PACKAGES="${PACKAGES} get_pip.sh"
 
 SCRIPTSDIR="$(dirname $0)"

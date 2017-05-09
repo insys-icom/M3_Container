@@ -7,6 +7,7 @@ PKG_DIR="Python-3.6.1"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
+# project site: https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
