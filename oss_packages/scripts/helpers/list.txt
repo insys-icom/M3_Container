@@ -10,7 +10,7 @@ lzo-2.09.sh
 c-ares-1.12.0.sh
 openssl-1.0.2h.sh
 sqlite-src-3110100.sh
-curl-7.49.1.sh
+curl-7.54.0.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.1.4.sh
@@ -43,8 +43,7 @@ mosquitto-1.4.10.sh
 nano-2.6.0.sh
 net-snmp-5.7.3.sh
 ngircd-24.sh
-node-v6.10.1.sh
-node-v7.4.0.sh
+node-v7.10.0.sh
 openssh-7.3p1.sh
 openvpn-2.3.11.sh
 rsync-3.1.2.sh
@@ -58,7 +57,7 @@ wget-1.19.sh
 
 php-7.0.8.sh
 python-2.7.13.sh
-python-3.6.0.sh
+python-3.6.1.sh
 modbus_to_mqtt_gateway-1.0.sh
 app_handler-1.0.sh
 web_interface_modbus_to_mqtt_gateway-1.0.sh

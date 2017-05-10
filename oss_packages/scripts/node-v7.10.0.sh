@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="node-v6.10.1"
+PKG_DIR="node-v7.10.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
+# https://nodejs.org/dist/v7.10.0/node-v7.10.0.tar.gz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="9078d08b2716abc02fdc3e29dda29fe2"
+PKG_CHECKSUM="3c8c8f61a898c3c7292ff58a4e27fa33"
 
 
 
@@ -38,7 +39,7 @@ configure()
     export CC_host="gcc"
     export CXX_host="g++"
 
-    ./configure --without-snapshot --prefix="/" --dest-cpu=arm --dest-os=linux \
+    ./configure --without-snapshot --prefix="/" --dest-cpu=arm --dest-os=linux --cross-compiling \
         --shared-openssl --shared-openssl-includes="${STAGING_INCLUDE}" --shared-openssl-libpath="${STAGING_LIB}" \
         --shared-zlib --shared-zlib-includes="${STAGING_INCLUDE}" --shared-zlib-libpath="${STAGING_LIB}" \
         --shared-http-parser --shared-http-parser-includes="${STAGING_INCLUDE}" --shared-http-parser-libpath="${STAGING_LIB}" \
@@ -46,6 +47,7 @@ configure()
         --shared-cares --shared-cares-includes="${STAGING_INCLUDE}" --shared-cares-libpath="${STAGING_LIB}"
 
     # do no link against not used libs for host compiler
+    FILES="${FILES} ${PKG_BUILD_DIR}/out/deps/v8/src/mkpeephole.host.mk"
     FILES="${FILES} ${PKG_BUILD_DIR}/out/tools/icu/icupkg.host.mk"
     FILES="${FILES} ${PKG_BUILD_DIR}/out/tools/icu/iculslocs.host.mk"
     FILES="${FILES} ${PKG_BUILD_DIR}/out/tools/icu/genrb.host.mk"
