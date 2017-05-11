@@ -1,12 +1,5 @@
 #!/bin/sh
 
-# print error message and exit
-exit_message()
-{
-    echo $*
-    exit 1
-}
-
 echo "This script will "
 echo " - erase already created containers in \"images\""
 echo " - erase everything in the directories \"rootfs_staging\" and \"working\""
@@ -23,6 +16,7 @@ SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
 . ${TOPDIR}/scripts/common_settings.sh
 LIST_FILE="${OSS_PACKAGES_SCRIPTS}/helpers/list.txt"
+source ${TOPDIR}/scripts/helpers.sh
 
 # clean up
 rm -Rf "${TOPDIR}/images/"*
@@ -42,7 +36,7 @@ while read BUILDSCRIPT ; do
     echo "###########################################################################"
 
     # process build script
-    "${OSS_PACKAGES_SCRIPTS}/${BUILDSCRIPT}" all || exit_message "Failed to execute ${BUILDSCRIPT} all"
+    "${OSS_PACKAGES_SCRIPTS}/${BUILDSCRIPT}" all || exit_failure "Failed to execute ${BUILDSCRIPT} all"
 done < "$(ls ${LIST_FILE})"
 
 # create all containers
@@ -50,9 +44,8 @@ cd "${SCRIPTSDIR}/rootfs_lists"
 for LIST in *.txt ; do
     NAME="container_$(echo $LIST | cut -d'.' -f1)"
     DATE="$(date +\"%F\")"
-    "${TOPDIR}"/scripts/mk_container.sh -n "${NAME}" -l "${LIST}" -v "${DATE}" || exit_message "Failed to create ${NAME}.tar"
+    "${TOPDIR}"/scripts/mk_container.sh -n "${NAME}" -l "${LIST}" -v "${DATE}" || exit_failure "Failed to create ${NAME}.tar"
 done
 
-# upload all created containers
-
-# upload all open source project archives
+# execute an upload script in case it exists
+[ -e ~/m3_upload.sh ] && ~/m3_upload.sh
