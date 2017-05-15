@@ -14,7 +14,7 @@ read text
 
 SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
-. ${TOPDIR}/scripts/common_settings.sh
+source ${TOPDIR}/scripts/common_settings.sh
 LIST_FILE="${OSS_PACKAGES_SCRIPTS}/helpers/list.txt"
 source ${TOPDIR}/scripts/helpers.sh
 
