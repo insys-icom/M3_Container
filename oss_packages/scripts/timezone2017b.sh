@@ -1,19 +1,21 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="timezone2016e"
+PKG_DIR="timezone2017b"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_DATA_FILE="tzdata2016e.tar.gz"
-PKG_ARCHIVE_CODE_FILE="tzcode2016e.tar.gz"
+PKG_ARCHIVE_DATA_FILE="tzdata2017b.tar.gz"
+PKG_ARCHIVE_CODE_FILE="tzcode2017b.tar.gz"
 
 # download link for the sources to be stored in dl directory
+# https://www.iana.org/time-zones/repository/releases/tzdata2017b.tar.gz
+# https://www.iana.org/time-zones/repository/releases/tzcode2017b.tar.gz
 PKG_DOWNLOAD_DATA="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_DATA_FILE}"
 PKG_DOWNLOAD_CODE="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_CODE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM_DATA="43f9f929a8baf0dd2f17efaea02c2d2a"
-PKG_CHECKSUM_CODE="6e6d3f0046a9383aafba8c2e0708a3a3"
+PKG_CHECKSUM_DATA="50dc0dc50c68644c1f70804f2e7a1625"
+PKG_CHECKSUM_CODE="afaf15deb13759e8b543d86350385b16"
 
 
 

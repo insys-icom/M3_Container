@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="expat-2.2.0"
+PKG_DIR="git-2.13.0"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# https://sourceforge.net/projects/expat/files/expat/2.2.0/expat-2.2.0.tar.bz2/download
+# https://github.com/git/git/archive/v2.13.0.tar.gz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="2f47841c829facb346eb6e3fab5212e2"
+PKG_CHECKSUM="d0f14da0ef1d22f1ce7f7876fadcb39f"
 
 
 
@@ -30,15 +30,21 @@ configure()
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}"
     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix=""
+
+    export ac_cv_c_regex_with_reg_startend=no
+    export ac_cv_fread_reads_directories=yes
+    export ac_cv_snprintf_returns_bogus=no
+    export NO_PERL=1
+
+    autoreconf -i -v -f
+    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}" --prefix="" --without-tcltk
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make -k "${M3_MAKEFLAGS}"
 }
 
 install_staging()
