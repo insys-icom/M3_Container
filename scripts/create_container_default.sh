@@ -13,7 +13,7 @@ PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} mcip-tool-v1.sh"
 PACKAGES="${PACKAGES} pcre-8.38.sh"
 PACKAGES="${PACKAGES} metalog-3.sh"
-PACKAGES="${PACKAGES} timezone2016e.sh"
+PACKAGES="${PACKAGES} timezone2017b.sh"
 
 SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
