@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="8d6d78ce60ca52350ec04fcbd711ce9b"
+PKG_CHECKSUM="9ad0172731e0f16623937804643b5bd8"
 
 
 
