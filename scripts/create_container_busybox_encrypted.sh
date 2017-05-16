@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="An encrypted container with only busybox in it"
-CONTAINER_NAME="busybox_container_encrypted"
+CONTAINER_NAME="container_busybox_encrypted"
 ROOTFS_LIST="busybox.txt"
 KEYFILE="busybox_encrypted.key"
 

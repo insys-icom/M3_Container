@@ -1,24 +1,24 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://dist.libuv.org/dist/v1.9.1/libuv-v1.9.1.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="654bf6783ac7fc10435c84ec86720a6e"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR="libuv-v1.9.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="654bf6783ac7fc10435c84ec86720a6e"
+
+
+
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"

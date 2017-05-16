@@ -1,19 +1,19 @@
 #!/bin/sh
 
 DESCRIPTION="A container to demonstrate the mosquitto MQTT broker"
-CONTAINER_NAME="Mosquitto_MQTT_Broker"
+CONTAINER_NAME="container_mosquitto_mqtt_broker"
 ROOTFS_LIST="mosquitto_mqtt_broker.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
 PACKAGES="${PACKAGES} busybox-1.24.2.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
-PACKAGES="${PACKAGES} dropbear-2016.73.sh"
-PACKAGES="${PACKAGES} timezone2016e.sh"
+PACKAGES="${PACKAGES} dropbear-2016.74.sh"
+PACKAGES="${PACKAGES} timezone2017b.sh"
 PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} pcre-8.38.sh"
 PACKAGES="${PACKAGES} metalog-3.sh"
-PACKAGES="${PACKAGES} openssl-1.0.2h.sh"
+PACKAGES="${PACKAGES} openssl-1.0.2k.sh"
 PACKAGES="${PACKAGES} libxml2-2.9.4.sh"
 PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"

@@ -1,24 +1,25 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://nodejs.org/dist/v6.9.4/node-v6.9.4.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="3795199b5950b25179248847b1a5fc86"
-
 # name of directory after extracting the archive in working directory
-PKG_DIR="node-v6.9.4"
+PKG_DIR="node-v7.10.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
+# download link for the sources to be stored in dl directory
+# https://nodejs.org/dist/v7.10.0/node-v7.10.0.tar.gz
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="3c8c8f61a898c3c7292ff58a4e27fa33"
+
+
+
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -38,7 +39,7 @@ configure()
     export CC_host="gcc"
     export CXX_host="g++"
 
-    ./configure --without-snapshot --prefix="/" --dest-cpu=arm --dest-os=linux \
+    ./configure --without-snapshot --prefix="/" --dest-cpu=arm --dest-os=linux --cross-compiling \
         --shared-openssl --shared-openssl-includes="${STAGING_INCLUDE}" --shared-openssl-libpath="${STAGING_LIB}" \
         --shared-zlib --shared-zlib-includes="${STAGING_INCLUDE}" --shared-zlib-libpath="${STAGING_LIB}" \
         --shared-http-parser --shared-http-parser-includes="${STAGING_INCLUDE}" --shared-http-parser-libpath="${STAGING_LIB}" \
@@ -46,6 +47,7 @@ configure()
         --shared-cares --shared-cares-includes="${STAGING_INCLUDE}" --shared-cares-libpath="${STAGING_LIB}"
 
     # do no link against not used libs for host compiler
+    FILES="${FILES} ${PKG_BUILD_DIR}/out/deps/v8/src/mkpeephole.host.mk"
     FILES="${FILES} ${PKG_BUILD_DIR}/out/tools/icu/icupkg.host.mk"
     FILES="${FILES} ${PKG_BUILD_DIR}/out/tools/icu/iculslocs.host.mk"
     FILES="${FILES} ${PKG_BUILD_DIR}/out/tools/icu/genrb.host.mk"

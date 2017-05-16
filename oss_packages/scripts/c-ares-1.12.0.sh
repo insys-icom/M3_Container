@@ -1,24 +1,24 @@
 #! /bin/sh
 
-# download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://c-ares.haxx.se/download/c-ares-1.12.0.tar.gz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="2ca44be1715cd2c5666a165d35788424"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR="c-ares-1.12.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="2ca44be1715cd2c5666a165d35788424"
+
+
+
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -35,7 +35,7 @@ configure()
 compile()
 {
     copy_overlay
-    cd "${PKG_BUILD_DIR}"    
+    cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }

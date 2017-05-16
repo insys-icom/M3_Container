@@ -17,6 +17,7 @@
 #    <uid>        user id (0=root)
 #    <gid>        group id (0=root)
 #    <hard links> space separated list of other links to file
+#    <wildcard>   copies all files of a directory non-recursively and does not strip the files
 #
 #
 #     !!! DO NOT USE TABULATORS !!!

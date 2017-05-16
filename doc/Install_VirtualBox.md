@@ -41,7 +41,7 @@ First steps within the SDK
     </pre>
     Configure the default gateway:
     <pre>
-        m3sdk user # echo 'routes_enp0s3="default gw 192.168.2.1"' > /etc/conf.d/net
+        m3sdk user # echo 'routes_enp0s3="default gw 192.168.2.1"' >> /etc/conf.d/net
     </pre>
     Configure a DNS server address:
     <pre>

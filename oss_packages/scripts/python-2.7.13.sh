@@ -1,26 +1,24 @@
 #!/bin/sh
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tar.xz"
-
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="53b43534153bb2a0363f08bae8b9d990"
-
 # name of directory after extracting the archive in working directory
 PKG_DIR="Python-2.7.13"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
+# download link for the sources to be stored in dl directory
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="53b43534153bb2a0363f08bae8b9d990"
+
+
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
-
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
-
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"

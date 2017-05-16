@@ -138,6 +138,12 @@ process_filesystem_list()
         OWNER="${PARAM_3}"
         GROUP="${PARAM_4}"
 
+        # we have to keep the "." in front of the path inside the tar file
+        # we could have cut off the leading /, but we didn't and now we need to keep it for compatibility
+        # in update.c we extract "./usr/share/version", which would fail otherwise
+        TAR_FILES=".${DESTINATION_FILE}"
+
+        # remove symbolic links, because overwriting them will overwrite the link target
         test -L "${TARGET_DIR}${DESTINATION_FILE}" && rm "${TARGET_DIR}${DESTINATION_FILE}"
 
         case ${TYPE} in
@@ -145,7 +151,8 @@ process_filesystem_list()
                 cmp "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}" > /dev/null 2>&1
                 if [ $? -ne 0 ] ; then
                     cp -fL "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}" || exit_failure "failed to copy ${DESTINATION_FILE}"
-                    chmod 0644 "${TARGET_DIR}${DESTINATION_FILE}" # make strip possible for ro files, permissions will be set inside the tar
+                    # make strip possible for ro files, permissions will be set inside the tar
+                    chmod 0644 "${TARGET_DIR}${DESTINATION_FILE}"
                     do_strip "${TARGET_DIR}${DESTINATION_FILE}"
                 fi
                 md5sum "${TARGET_DIR}${DESTINATION_FILE}" | sed "s|${TARGET_DIR}/||" >> "${TARGET_DIR}/md5sums"
@@ -163,6 +170,24 @@ process_filesystem_list()
                 test -d "${TARGET_DIR}${DESTINATION_FILE}" && rm -rf "${TARGET_DIR}${DESTINATION_FILE}"
                 ln -s "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}" || exit_failure "failed to create symbolic link ${DESTINATION_FILE}"
             ;;
+            "wildcard")
+                # wildcard is a dedicated target, because this feature is not available in the original initramfs list format
+                # we do not strip here, because it should only be used for specific group of files like doc and html templates
+                TAR_FILES=""
+                for SOURCE_FILE in $(eval echo "${PARAM_1}" | sort) ; do
+                    FNAME=$(basename "${SOURCE_FILE}")
+                    # ignore directorys here
+                    if [ -e "${SOURCE_FILE}" -a ! -d "${SOURCE_FILE}" ] ; then
+                        cmp "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" > /dev/null 2>&1
+                        if [ $? -ne 0 ] ; then
+                            cp -fL "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" || exit_failure "failed to copy ${DESTINATION_FILE}/${FNAME}"
+                        fi
+                        md5sum "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" | sed "s|${TARGET_DIR}/||" >> "${TARGET_DIR}/md5sums"
+                        LINE="${TYPE} ${DESTINATION_FILE}/${FNAME} ${TARGET_DIR}${DESTINATION_FILE} ${PERMISSON} ${OWNER} ${GROUP}"
+                        TAR_FILES="${TAR_FILES} ./rootfs${DESTINATION_FILE}/${FNAME}"
+                    fi
+                done
+            ;;
             *)
                 echo "Warning: Don't know how to make a ${TYPE}"
                 # exit 1
@@ -171,7 +196,7 @@ process_filesystem_list()
 
         case ${ACTION} in
             "create_tar")
-                tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --add-file="./rootfs/${DESTINATION_FILE}" --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
+                echo "./rootfs/${TAR_FILES}" | xargs tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
             ;;
             "create_list")
                 echo ${LINE} >> "${FS_OUTFILE}"
@@ -183,7 +208,7 @@ process_filesystem_list()
         esac
 
     done
-    test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --add-file="./rootfs/md5sums" --numeric-owner --mode=644 --owner=0 --group=0
+    test "create_tar" = "${ACTION}" && tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=644 --owner=0 --group=0 "./rootfs/md5sums"
     IFS=$OLDIFS
 }
 
