@@ -39,7 +39,7 @@ lighttpd-1.4.39.sh
 lua-5.3.3.sh
 mcip-tool-v1.sh
 metalog-3.sh
-mosquitto-1.4.10.sh
+mosquitto-1.4.12.sh
 nano-2.6.0.sh
 net-snmp-5.7.3.sh
 ngircd-24.sh
