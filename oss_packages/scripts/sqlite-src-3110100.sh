@@ -100,14 +100,6 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 # API_ARMOR and SQLITE_DEBUG is for development only
 
-unpack()
-{
-    unzip -o -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
-    [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
-
-    copy_overlay
-}
-
 configure()
 {
     cd "${PKG_BUILD_DIR}"
