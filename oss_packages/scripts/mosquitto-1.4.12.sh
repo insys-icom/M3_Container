@@ -34,6 +34,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
 
+    export CC="${M3_CROSS_COMPILE}gcc"
     export CXX=$CC
     export CROSS_COMPILE=""
     export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
