@@ -208,8 +208,8 @@ file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/
 file /lib/libmosquitto.so.1                                 ${STAGING_DIR}/usr/local/lib/libmosquitto.so.1                  0755 0 0
 slink /lib/libmosquitto.so                                  /lib/libmosquitto.so.1                                          0755 0 0
 file /lib/libcares.so.2.2.0                                 ${STAGING_DIR}/lib/libcares.so.2.2.0                            0755 0 0
-slink /lib/libcares.so.2.                                   /lib/libcares.so.2.2.0                                          0755 0 0
-slink /lib/libcares.so                                      /lib/libcares.so.2                                              0755 0 0
+slink /lib/libcares.so.2                                    /lib/libcares.so.2.2.0                                          0755 0 0
+slink /lib/libcares.so                                      /lib/libcares.so.2.2.0                                          0755 0 0
 file /lib/libmodbus.so.5.1.0                                ${STAGING_DIR}/lib/libmodbus.so.5.1.0                           0755 0 0
 slink /lib/libmodbus.so.5                                   /lib/libmodbus.so.5.1.0                                         0755 0 0
 slink /lib/libmodbus.so                                     /lib/libmodbus.so.5                                             0755 0 0
