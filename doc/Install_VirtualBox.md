@@ -47,6 +47,10 @@ First steps within the SDK
     <pre>
         m3sdk user # echo "nameserver 192.168.2.1" > /etc/resolv.conf
     </pre>
+    Restart the net configuration
+    <pre>
+        m3sdk user # /etc/init.d/net.enp0s3 restart
+    </pre>
     Test the internet connection
     <pre>
         m3sdk user # ping -c 4 insys-icom.de
