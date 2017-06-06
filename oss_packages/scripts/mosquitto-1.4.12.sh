@@ -1,17 +1,17 @@
-#!/bin/sh
+#! /bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="web_interface_broker-1.0"
+PKG_DIR="mosquitto-1.4.12"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="none"
+PKG_ARCHIVE_FILE="mosquitto-1.4.12.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="none"
+# http://mosquitto.org/files/source/mosquitto-1.4.12.tar.gz
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="none"
-
+PKG_CHECKSUM="bca295b68f4a411c6f15406bac86c48a"
 
 
 SCRIPTSDIR="$(dirname $0)"
@@ -26,8 +26,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}"
+    true
 }
 
 compile()
@@ -35,20 +34,21 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
 
-    mv configuration_mqtt_broker.c configuration.c
-    rm configuration_modbus_mqtt.c
+    export CC="${M3_CROSS_COMPILE}gcc"
+    export CXX=$CC
+    export CROSS_COMPILE=""
+    export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
+    export LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB} -lcrypto -lssl -lcares"
 
-    mv settings_defines_mqtt_broker.h settings_defines.h
-    rm settings_defines_modbus_mqtt.h
-
-    make clean
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make WITH_UUID=no "${M3_MAKEFLAGS}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
+    export CROSS_COMPILE=""
+    export STRIP=armv7a-hardfloat-linux-gnueabi-strip
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 

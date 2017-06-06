@@ -6,8 +6,8 @@ PROJECT_NAME = $(notdir $(PWD))
 
 include $(TOPDIR)/scripts/common_settings.mk
 
-CFLAGS = -Wall -I$(STAGING_DIR)/include -I$(STAGING_DIR)/usr/local/include $(OPTIMIZE_CFLAGS)
-LDFLAGS = $(OPTIMIZE_LDFLAGS) -L$(STAGING_DIR)/lib -L$(STAGING_DIR)/usr/local/lib -lssl -lcrypto -lmosquitto -lmodbus -lcares
+CFLAGS = -Wall -I$(STAGING_DIR)/include $(OPTIMIZE_CFLAGS)
+LDFLAGS = $(OPTIMIZE_LDFLAGS)
 
 BUILD_DIR := $(TOPDIR)/working/$(PROJECT_NAME)
 STAGING_DIR := $(TOPDIR)/rootfs_staging/
@@ -51,7 +51,7 @@ $(BUILD_DIR)/$(PROJECT_NAME): $(OBJS)
 # avoid rm -rf
 clean:
 	$(VERB)rm -f $(OBJS) $(TARGETS) $(BUILD_DIRS)
-	-$(VERB)rmdir $(dir $(BUILD_DIRS))
+	#-$(VERB)rmdir $(dir $(BUILD_DIRS))
 
 .PHONY: install
 install: $(TARGETS)

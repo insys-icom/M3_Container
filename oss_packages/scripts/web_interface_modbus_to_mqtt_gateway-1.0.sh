@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="web_interface-1.0"
+PKG_DIR="web_interface_gateway-1.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="none"

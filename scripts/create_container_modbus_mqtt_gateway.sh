@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DESCRIPTION="A container to demonstrate a modbus to MQTT gateway"
-CONTAINER_NAME="container_modbus_to_mqtt_gateway"
+CONTAINER_NAME="container_modbus_mqtt_gateway"
 ROOTFS_LIST="modbus_mqtt_gateway.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
@@ -22,7 +22,7 @@ PACKAGES="${PACKAGES} web_interface_modbus_to_mqtt_gateway-1.0.sh"
 PACKAGES="${PACKAGES} app_handler-1.0.sh"
 PACKAGES="${PACKAGES} c-ares-1.12.0.sh"
 PACKAGES="${PACKAGES} libmodbus-3.1.4.sh"
-PACKAGES="${PACKAGES} mosquitto-1.4.10.sh"
+PACKAGES="${PACKAGES} mosquitto-1.4.12.sh"
 PACKAGES="${PACKAGES} modbus_to_mqtt_gateway-1.0.sh"
 
 SCRIPTSDIR="$(dirname $0)"
