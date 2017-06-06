@@ -797,7 +797,7 @@ file /lib/python2.7/json/tests/test_tool.pyc ${STAGING_DIR}/usr/local/lib/python
 file /lib/python2.7/json/tests/test_unicode.pyc ${STAGING_DIR}/usr/local/lib/python2.7/json/tests/test_unicode.pyc 644 0 0
 file /lib/python2.7/json/tool.pyc ${STAGING_DIR}/usr/local/lib/python2.7/json/tool.pyc 644 0 0
 file /lib/python2.7/keyword.pyc ${STAGING_DIR}/usr/local/lib/python2.7/keyword.pyc 644 0 0
-file /lib/python2.7/lib-dynload/Python-2.7.10-py2.7.egg-info ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/Python-2.7.10-py2.7.egg-info 644 0 0
+#file /lib/python2.7/lib-dynload/Python-2.7.10-py2.7.egg-info ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/Python-2.7.10-py2.7.egg-info 644 0 0
 file /lib/python2.7/lib-dynload/_bisect.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_bisect.so 755 0 0
 file /lib/python2.7/lib-dynload/_codecs_cn.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_codecs_cn.so 755 0 0
 file /lib/python2.7/lib-dynload/_codecs_hk.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_codecs_hk.so 755 0 0
@@ -875,9 +875,9 @@ file /lib/python2.7/lib-tk/tkSimpleDialog.pyc ${STAGING_DIR}/usr/local/lib/pytho
 file /lib/python2.7/lib-tk/ttk.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib-tk/ttk.pyc 644 0 0
 file /lib/python2.7/lib-tk/turtle.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib-tk/turtle.pyc 644 0 0
 file /lib/python2.7/lib2to3/Grammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar.txt 644 0 0
-file /lib/python2.7/lib2to3/Grammar2.7.10.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.10.final.0.pickle 644 0 0
+#file /lib/python2.7/lib2to3/Grammar2.7.10.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.10.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/PatternGrammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar.txt 644 0 0
-file /lib/python2.7/lib2to3/PatternGrammar2.7.10.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.10.final.0.pickle 644 0 0
+#file /lib/python2.7/lib2to3/PatternGrammar2.7.10.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.10.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__init__.pyc 644 0 0
 file /lib/python2.7/lib2to3/__main__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__main__.pyc 644 0 0
 file /lib/python2.7/lib2to3/btm_matcher.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/btm_matcher.pyc 644 0 0
