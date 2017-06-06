@@ -6,11 +6,11 @@ The files within this repository help to create containers and ease cross compil
 The cross compiler and its toolchain must be for ARMv7 architecture with hardware floating point support (armv7-hf).
 There are several possibilities to get a cross toolchain:
 
-* Use the INSYS [SDK](https://www.insys-icom.de/data/smartbox/M3_SDK_2.ova) (recommended)
+* Use the [SDK](https://m3-container.net/M3_Container/SDK/M3_SDK.ova) (recommended)
 * In case you use Gentoo on your host: install a cross compiler using "crossdev"
 * Get another toolchain (e.g. Ubuntu, Linaro, buildroot ...)
 
-It is recommended to use the INSYS SDK. It's a virtual Machine ([VirtualBox](https://virtualbox.org)) with a tiny Gentoo Linux distribution and the crossdev target armv7-hf. More detailed instructions are [here](Install_VirtualBox.md "doc/Install_VirtualBox.md").
+It is recommended to use the prepared SDK. It's a virtual Machine ([VirtualBox](https://virtualbox.org)) with a tiny Gentoo Linux distribution and the crossdev target armv7-hf. More detailed instructions are [here](Install_VirtualBox.md "doc/Install_VirtualBox.md").
 
 
 2 Get build scripts into the SDK
