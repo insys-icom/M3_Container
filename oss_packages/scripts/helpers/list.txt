@@ -56,7 +56,7 @@ bftpd-4.4.sh
 wget-1.19.sh
 git-2.13.0.sh
 
-php-7.0.8.sh
+php-7.1.6.sh
 python-2.7.13.sh
 python-3.6.1.sh
 modbus_to_mqtt_gateway-1.0.sh
