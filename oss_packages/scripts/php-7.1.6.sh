@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="php-7.0.8"
+PKG_DIR="php-7.1.6"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
+# http://de2.php.net/get/php-7.1.6.tar.xz/from/this/mirror
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="c4438583c95d3ddf746929d7fcb61045"
+PKG_CHECKSUM="eafc7a79cc8cc62c9292c96f9c9ccf90"
 
 
 
