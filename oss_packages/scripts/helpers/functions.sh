@@ -71,21 +71,6 @@ check_source()
             echo "md5sum check OK"
         fi
     fi
-
-    # Optional archive test, can be commented out if desired
-    if [ "${PKG_ARCHIVE##*.}" = "zip" ]; then
-        unzip -t ${PKG_ARCHIVE} > /dev/null
-        ret=$?
-    else
-        tar -tf ${PKG_ARCHIVE} > /dev/null
-        ret=$?
-    fi
-
-    if [ $ret -ne 0 ]; then
-        exit_failure "archive check failed"
-    else
-        echo "archive check OK"
-    fi
 }
 
 # check dependencies of project
