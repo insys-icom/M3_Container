@@ -15,6 +15,7 @@ http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.1.4.sh
 libpcap-1.7.4.sh
+libcap-2.25.sh
 libuv-1.9.1.sh
 libxml2-2.9.4.sh
 ncurses-6.0.sh
