@@ -37,19 +37,13 @@ TARGETS := $(BUILD_DIR)/$(PROJECT_NAME)
 all: web_interface_forte web_interface_modbus_mqtt_gateway web_interface_mosquitto_mqtt_broker
 
 web_interface_forte: $(OBJS)
-	cp configuration_forte.c configuration.c
-	cp settings_defines_forte.h settings_defines.h
-	$(VERB)$(CC) -o $@ $(OBJS) $(LDFLAGS)	
+	$(CC) -o $@ $(OBJS) $(LDFLAGS)	
 	
 web_interface_modbus_mqtt_gateway: $(OBJS)
-	cp configuration_modbus_mqtt.c configuration.c
-	cp settings_defines_modbus_mqtt.h settings_defines.h
-	$(VERB)$(CC) -o $@ $(OBJS) $(LDFLAGS)
+	$(CC) -o $@ $(OBJS) $(LDFLAGS)
 
 web_interface_mosquitto_mqtt_broker: $(OBJS)
-	cp configuration_mqtt_broker.c configuration.c
-	cp settings_defines_mqtt_broker.h settings_defines.h
-	$(VERB)$(CC) -o $@ $(OBJS) $(LDFLAGS)
+	$(CC) -o $@ $(OBJS) $(LDFLAGS)
 
 .PHONY: clean
 clean:
