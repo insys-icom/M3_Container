@@ -7,10 +7,11 @@ PKG_DIR="get-pip.py"
 PKG_ARCHIVE_FILE="${PKG_DIR}"
 
 # download link for the sources to be stored in dl directory
+# https://bootstrap.pypa.io/get-pip.py version 9.0.1
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="none"
+PKG_CHECKSUM="3b74f5cd0740a05802a23b019ce579a3"
 
 
 
@@ -23,12 +24,6 @@ PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
-
-check_source()
-{
-    echo -en "\nSource check is disabled as this script will download the latest available version of get-pip.py.\n"
-    true
-}
 
 unpack()
 {
