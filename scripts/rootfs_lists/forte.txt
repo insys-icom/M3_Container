@@ -100,6 +100,7 @@ slink /etc/pam.d/login                local                                     
 slink /etc/pam.d/sshd                 login                                          0777 0 0
 
 file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
+file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6.0.21             0755 0 0
 file /lib/libnss_files.so.2           ${SYSROOT_DIR}/lib/libnss_files.so.2           0755 0 0
 file /lib/libnss_dns.so.2             ${SYSROOT_DIR}/lib/libnss_dns.so.2             0755 0 0
 file /lib/libc.so.6                   ${SYSROOT_DIR}/lib/libc-2.22.so                0755 0 0
@@ -143,6 +144,12 @@ file /lib/libpaho-mqtt3cs.so.1.0.4    ${STAGING_DIR}/lib/libpaho-mqtt3cs.so.1.0.
 slink /lib/libpaho-mqtt3cs.so.1       /lib/libpaho-mqtt3cs.so.1.0.3                  0777 0 0
 slink /lib/libpaho-mqtt3cs.so         /lib/libpaho-mqtt3cs.so.1                      0777 0 0
 
+# Modbus
+file /lib/libmodbus.so.5.0.5          ${STAGING_DIR}/lib/libmodbus.so.5.0.5          0644 0 0
+slink /lib/libmodbus.so.5             /lib/libmodbus.so.5.0.5                        0777 0 0
+slink /lib/libmodbus.so               /lib/libmodbus.so.5                            0777 0 0
+
+
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme_default.txt        0644 0 0
 slink /root/.nanorc                   /etc/nanorc                                    0777 0 0
 
@@ -163,7 +170,7 @@ slink /var/run                         /tmp/run                                 
 # additionally
 
 # web_interface
-file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/forte_webinterface 0755 0 0
+file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface_forte 0755 0 0
 
 # slinks für web.cgi
 slink /var/www/localhost/htdocs/web_s_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
@@ -206,7 +213,7 @@ file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                               0755 0 0
 
 # download-files
-file /var/www/localhost/htdocs/download/insys.zip ${SKELETON_DIR}/var/web/forte/download/insys.zip                                 0755 1001 1001          
+file /var/www/localhost/htdocs/download/insys.zip ${SKELETON_DIR}/var/web/forte/download/insys.zip                                 0755 1001 1001
 
 # app_handler
 file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-1.0                                     0755 0 0
@@ -233,7 +240,7 @@ file /lib/libcrypto.so.1.0.0           ${STAGING_DIR}/lib/libcrypto.so.1.0.0    
 file /bin/lighttpd                         ${STAGING_DIR}/usr/local/sbin/armv7a-hardfloat-linux-gnueabi-lighttpd           0755 0 0
 file /etc/lighttpd.conf                    ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_forte.conf                         0644 0 0
 file /etc/cgi.conf                         ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_cgi.conf                           0644 0 0
-file /usr/application/lighttpd_login       ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_login                              0755 1001 1001
+file /etc/lighttpd_login                   ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_login                              0755 1001 1001
 file /usr/local/lib/mod_access.so          ${STAGING_DIR}/usr/local/lib/mod_access.so           0755 0 0
 file /usr/local/lib/mod_accesslog.so       ${STAGING_DIR}/usr/local/lib/mod_accesslog.so        0755 0 0
 file /usr/local/lib/mod_alias.so           ${STAGING_DIR}/usr/local/lib/mod_alias.so            0755 0 0
