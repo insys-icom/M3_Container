@@ -29,9 +29,9 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}" 
-	export M3_MAKEFLAGS="-j1"
+    export LDFLAGS="${M3_LDFLAGS}"
     
+	#setup
 	echo "----------------------------------------------------------------------------"
 	echo " Automatically set up development environment for POSIX-platform"
 	echo "----------------------------------------------------------------------------"
@@ -50,16 +50,16 @@ configure()
 	if [ -d "$forte_bin_dir" ]; then
 	  
 	  cd "${PKG_BUILD_DIR}/bin/posix"
-
+	  
 	  cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=DEBUG -DFORTE_ARCHITECTURE=Posix -DFORTE_LOGLEVEL=LOGDEBUG -DFORTE_TESTS=OFF \
-			-DCMAKE_AR=${AR} -DCMAKE_CXX_COMPILER=${M3_CROSS_COMPILE}g++ \
-			-DCMAKE_CXX_FLAGS="${CFLAGS} -std=gnu++14 -w -s -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
-			-DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc -DCMAKE_C_FLAGS="${CFLAGS}" \
-			-DCMAKE_LINKER=${M3_CROSS_COMPILE}ld -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" -DCMAKE_MODULE_LINKER_FLAGS="${LDFLAGS}" -DCMAKE_STATIC_LINKER_FLAGS="" \
-			-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" -DCMAKE_NM=${NM} -DCMAKE_OBJCOPY=${M3_CROSS_COMPILE}objcopy \
-			-DCMAKE_OBJDUMP=${M3_CROSS_COMPILE}objdump -DCMAKE_RANLIB=${RANLIB} -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
-			-DFORTE_COM_ETH=ON -DFORTE_COM_FBDK=ON -DFORTE_COM_LOCAL=ON -DFORTE_COM_MODBUS=ON -DFORTE_COM_MODBUS_LIB_DIR="${STAGING_DIR}" \
-			-DFORTE_COM_PAHOMQTT=ON -DFORTE_COM_RAW=ON -DFORTE_COM_SER=ON -DFORTE_COM_PAHOMQTT_DIR=${STAGING_LIB} \
+			-DCMAKE_AR=/usr/bin/armv7a-hardfloat-linux-gnueabi-ar -DCMAKE_CXX_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-g++ \
+			-DCMAKE_CXX_FLAGS="-std=gnu++14 -w -s -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+			-DCMAKE_C_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-gcc \
+			-DCMAKE_LINKER=/usr/bin/armv7a-hardfloat-linux-gnueabi-ld -DCMAKE_NM=/usr/bin/armv7a-hardfloat-linux-gnueabi-nm -DCMAKE_OBJCOPY=/usr/bin/armv7a-hardfloat-linux-gnueabi-objcopy \
+			-DCMAKE_OBJDUMP=/usr/bin/armv7a-hardfloat-linux-gnueabi-objdump -DCMAKE_RANLIB=/usr/bin/armv7a-hardfloat-linux-gnueabi-ranlib \
+			-DCMAKE_STRIP=/usr/bin/armv7a-hardfloat-linux-gnueabi-strip \
+			-DFORTE_COM_ETH=ON -DFORTE_COM_FBDK=ON -DFORTE_COM_LOCAL=ON -DFORTE_COM_MODBUS=OFF -DFORTE_COM_PAHOMQTT=ON -DFORTE_COM_RAW=ON -DFORTE_COM_SER=ON \
+			-DFORTE_COM_PAHOMQTT_DIR=${STAGING_LIB} \
 			-DFORTE_MODULE_CONVERT=ON -DFORTE_MODULE_I2C-Dev=ON -DFORTE_MODULE_IEC61131=ON -DFORTE_MODULE_INSYS_Functionblocks=ON -DFORTE_MODULE_RECONFIGURATION=ON -DFORTE_MODULE_UTILS=ON \
 			-DCMAKE_INSTALL_PREFIX=${STAGING_DIR} ../../
 			#OPC UA is available at version 1.9
@@ -74,11 +74,9 @@ configure()
 }
 
 compile()
-{  	
-	cd "${PKG_BUILD_DIR}/bin/posix/src"
-	export M3_MAKEFLAGS="-j1"
-	
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+{  
+	cd "${PKG_BUILD_DIR}/bin/posix"
+    make -j1 ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
 }
 
 install_staging()
