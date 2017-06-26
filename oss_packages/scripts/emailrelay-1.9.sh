@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openvpn-2.3.11"
+PKG_DIR="emailrelay-1.9"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
+# https://sourceforge.net/projects/emailrelay/files/emailrelay/1.9/emailrelay-1.9-src.tar.gz/download
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="fe17a25235d65e60af8986c6c78c4650"
+PKG_CHECKSUM="0892fbf993407c6b5a16f96e23299b62"
 
 
 
@@ -27,21 +28,18 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB}"
-    export OPENSSL_SSL_LIBS="-lssl -L${STAGING_LIB}"
-    export OPENSSL_SSL_CFLAGS="-I${STAGING_INCLUDE}"
-    export OPENSSL_CRYPTO_CFLAGS="-I${STAGING_INCLUDE}"
-    export OPENSSL_CRYPTO_LIBS="-lcrypto -L${STAGING_LIB}"
-    export IPROUTE=/sbin/iproute
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-plugin-auth-pam --disable-plugins --disable-debug --enable-password-save --enable-iproute2 --enable-small
+    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
+    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
+    export CPPFLAGS="-I${STAGING_INCLUDE}"
+
+    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}" --prefix="" --enable-ipv6 --enable-small-exceptions --with-zlib --with-openssl
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
