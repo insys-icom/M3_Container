@@ -149,7 +149,7 @@ slink /var/run                         /tmp/run                                 
 # additionally
 
 # web_interface
-file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface_broker-1.0 0755 0 0
+file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface_mosquitto_mqtt_broker 0755 0 0
 
 # slinks für web.cgi
 slink /var/www/localhost/htdocs/web_s_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
