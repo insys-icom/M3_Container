@@ -1,9 +1,9 @@
-#!/bin/sh
+#! /bin/sh
 
 # name of directory after extracting the archive in working directory
 PKG_DIR="web_interface-1.0"
 
-TARGET="web_interface_modbus_mqtt_gateway"
+TARGET="web_interface_forte"
 
 SCRIPTSDIR="$(dirname $0)"
 HELPERSDIR="${SCRIPTSDIR}/helpers"
@@ -18,10 +18,10 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
 	copy_overlay
-    cd "${PKG_BUILD_DIR}"
-    
-	ln -sf configuration_modbus_mqtt.c configuration.c
-	ln -sf settings_defines_modbus_mqtt.h settings_defines.h
+	cd "${PKG_BUILD_DIR}"
+	
+	ln -sf configuration_forte.c configuration.c
+	ln -sf settings_defines_forte.h settings_defines.h
 }
 
 compile()
