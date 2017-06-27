@@ -7,6 +7,7 @@ PKG_DIR="libmodbus-3.1.4"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
+# http://libmodbus.org/releases/libmodbus-3.1.4.tar.gz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
@@ -29,14 +30,14 @@ configure()
     cd "${PKG_BUILD_DIR}"
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
-    ac_cv_func_malloc_0_nonnull=yes ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-largefile --disable-tests --without-documentation
+    ac_cv_func_malloc_0_nonnull=yes ./configure --target="${M3_TARGET}" --host="${M3_TARGET}" --prefix="" --disable-largefile --disable-tests --without-documentation
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 

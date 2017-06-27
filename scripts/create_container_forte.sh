@@ -3,7 +3,7 @@
 DESCRIPTION="A container with the 4DIAC-Runtime called FORTE"
 CONTAINER_NAME="container_forte"
 ROOTFS_LIST="forte.txt"
-
+exit 0
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
 PACKAGES="${PACKAGES} busybox-1.24.2.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
@@ -18,7 +18,7 @@ PACKAGES="${PACKAGES} libxml2-2.9.4.sh"
 PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} lighttpd-1.4.39.sh"
-PACKAGES="${PACKAGES} web_interface_forte.sh"
+PACKAGES="${PACKAGES} web_interface_forte-1.0.sh"
 PACKAGES="${PACKAGES} app_handler-1.0.sh"
 PACKAGES="${PACKAGES} c-ares-1.12.0.sh"
 PACKAGES="${PACKAGES} libmodbus-3.0.6.sh"

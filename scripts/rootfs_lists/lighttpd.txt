@@ -81,7 +81,7 @@ file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt            
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
-file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit_lighttpd.conf        0644 0 0
+file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit_lighttpd.conf 0644 0 0
 file /etc/mcip.conf                   ${SKELETON_DIR}/etc/mcip.conf                  0644 0 0
 file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf               0644 0 0
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0

@@ -65,7 +65,7 @@ file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt            
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
-file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit_irc.conf             0644 0 0
+file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit_irc.conf 0644 0 0
 file /etc/ngircd.conf                 ${SKELETON_DIR}/etc/ngircd.conf                0644 65533 65533
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
 file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0

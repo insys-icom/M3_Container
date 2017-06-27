@@ -161,7 +161,7 @@ slink /usr/sbin                       ../bin                                    
 file /usr/share/version                ${SKELETON_DIR}/usr/share/version             0644 0 0
 file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
 file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
-file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_mosquitto_mqtt_broker.html 0644 0 0
+file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_forte.html  0644 0 0
 
 slink /var/lock                        /tmp/lock                                     0777 0 0
 slink /var/run                         /tmp/run                                      0777 0 0

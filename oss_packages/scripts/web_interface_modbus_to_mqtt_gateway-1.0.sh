@@ -17,24 +17,23 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-	copy_overlay
+    copy_overlay
     cd "${PKG_BUILD_DIR}"
-    
-	ln -sf configuration_modbus_mqtt.c configuration.c
-	ln -sf settings_defines_modbus_mqtt.h settings_defines.h
+
+    ln -sf configuration_modbus_mqtt.c configuration.c
+    ln -sf settings_defines_modbus_mqtt.h settings_defines.h
 }
 
 compile()
 {
     cd "${PKG_BUILD_DIR}"
-
-    make ${M3_MAKEFLAGS} ${TARGET} || exit_failure "failed to build ${TARGET}"
+    make "${M3_MAKEFLAGS}" "${TARGET}" || exit_failure "failed to build ${TARGET}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    cp ${TARGET} "${STAGING_DIR}/bin"
+    cp "${TARGET}" "${STAGING_DIR}/bin"
 }
 
 . ${HELPERSDIR}/call_functions.sh

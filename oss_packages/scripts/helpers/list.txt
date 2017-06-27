@@ -13,11 +13,13 @@ sqlite-src-3110100.sh
 curl-7.54.0.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
+libmodbus-3.0.6.sh
 libmodbus-3.1.4.sh
 libpcap-1.7.4.sh
 libcap-2.25.sh
 libuv-1.9.1.sh
 libxml2-2.9.4.sh
+libmrx_control-1.0.sh
 ncurses-6.0.sh
 nettle-3.2.sh
 pcre-8.38.sh
@@ -56,11 +58,16 @@ timezone2017b.sh
 bftpd-4.4.sh
 wget-1.19.sh
 git-2.13.0.sh
+open62541.sh
+paho.mqtt.c.sh
+# forte-1.8.4.sh
+libFORTEControls-1.0.sh
 
 php-7.1.6.sh
 python-2.7.13.sh
 python-3.6.1.sh
 modbus_to_mqtt_gateway-1.0.sh
 app_handler-1.0.sh
+web_interface_forte-1.0.sh
 web_interface_modbus_to_mqtt_gateway-1.0.sh
 web_interface_mosquitto_mqtt_broker-1.0.sh
