@@ -213,7 +213,7 @@ file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                               0755 0 0
 
 # download-files
-file /var/www/localhost/htdocs/download/insys.zip ${SKELETON_DIR}/var/web/forte/download/insys.zip                                 0755 1001 1001
+#file /var/www/localhost/htdocs/download/insys.zip ${SKELETON_DIR}/var/web/forte/download/insys.zip                                 0755 1001 1001
 
 # app_handler
 file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-1.0                                     0755 0 0
