@@ -50,8 +50,9 @@ configure()
         cd "${PKG_BUILD_DIR}/bin/posix"
         # use old libmodbus 3.0.6
         cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=DEBUG -DFORTE_ARCHITECTURE=Posix -DFORTE_LOGLEVEL=LOGDEBUG -DFORTE_TESTS=OFF \
+        -DFORTE_COM_MODBUS_LIB_DIR:PATH="${PKG_BUILD_DIR}/../libmodbus-3.0.6/install" \
         -DCMAKE_AR=/usr/bin/armv7a-hardfloat-linux-gnueabi-ar -DCMAKE_CXX_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-g++ \
-        -DCMAKE_CXX_FLAGS="-std=gnu++14 -w -s -I${PKG_BUILD_DIR}/../libmodbus-3.0.6/install/include -L${PKG_BUILD_DIR}/../libmodbus-3.0.6/install -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+        -DCMAKE_CXX_FLAGS="-std=gnu++14 -w -s -I${PKG_BUILD_DIR}/../libmodbus-3.0.6/install -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
         -DCMAKE_C_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-gcc \
         -DCMAKE_LINKER=/usr/bin/armv7a-hardfloat-linux-gnueabi-ld -DCMAKE_NM=/usr/bin/armv7a-hardfloat-linux-gnueabi-nm -DCMAKE_OBJCOPY=/usr/bin/armv7a-hardfloat-linux-gnueabi-objcopy \
         -DCMAKE_OBJDUMP=/usr/bin/armv7a-hardfloat-linux-gnueabi-objdump -DCMAKE_RANLIB=/usr/bin/armv7a-hardfloat-linux-gnueabi-ranlib \
@@ -60,7 +61,7 @@ configure()
         -DFORTE_COM_PAHOMQTT_DIR="${STAGING_LIB}" \
         -DFORTE_MODULE_CONVERT=ON -DFORTE_MODULE_I2C-Dev=ON -DFORTE_MODULE_IEC61131=ON -DFORTE_MODULE_INSYS_Functionblocks=ON -DFORTE_MODULE_RECONFIGURATION=ON -DFORTE_MODULE_UTILS=ON \
         -DCMAKE_INSTALL_PREFIX="${STAGING_DIR}" ../../
-        #OPC UA is available at version 1.9
+        #OPC UA will be available in forte version 1.9
         #-DFORTE_COM_OPC_UA=ON -DFORTE_COM_OPC_UCA_LIB=libopen62541.so -DFORTE_COM_OPC_UCA_DIR=${OPC_UA_DIR}
     else
         echo "unable to create ${forte_bin_dir}"

@@ -145,7 +145,7 @@ slink /lib/libpaho-mqtt3cs.so.1       /lib/libpaho-mqtt3cs.so.1.0.3             
 slink /lib/libpaho-mqtt3cs.so         /lib/libpaho-mqtt3cs.so.1                      0777 0 0
 
 # Modbus
-file /lib/libmodbus.so.5.0.5          ${STAGING_DIR}/lib/libmodbus.so.5.0.5          0644 0 0
+file /lib/libmodbus.so.5.0.5          ${BUILD_DIR}/libmodbus-3.0.6/install/lib/libmodbus.so.5.0.5 0644 0 0
 slink /lib/libmodbus.so.5             /lib/libmodbus.so.5.0.5                        0777 0 0
 slink /lib/libmodbus.so               /lib/libmodbus.so.5                            0777 0 0
 

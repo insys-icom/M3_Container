@@ -60,8 +60,8 @@ wget-1.19.sh
 git-2.13.0.sh
 open62541.sh
 paho.mqtt.c.sh
-# forte-1.8.4.sh
 libFORTEControls-1.0.sh
+forte-1.8.4.sh
 
 php-7.1.6.sh
 python-2.7.13.sh

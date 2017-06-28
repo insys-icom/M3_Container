@@ -3,7 +3,7 @@
 DESCRIPTION="A container with the 4DIAC-Runtime called FORTE"
 CONTAINER_NAME="container_forte"
 ROOTFS_LIST="forte.txt"
-exit 0
+
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
 PACKAGES="${PACKAGES} busybox-1.24.2.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
