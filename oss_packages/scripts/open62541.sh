@@ -31,15 +31,19 @@ configure()
     export CFLAGS="${M3_CFLAGS}"
     export LDFLAGS="${M3_LDFLAGS}"
     export CROSS_COMPILE="${M3_CROSS_COMPILE}"
-    LANG=en_US.utf8 cmake -DCMAKE_C_COMPILER="${CROSS_COMPILE}"gcc -DCMAKE_CXX_COMPILER="${CROSS_COMPILE}"g++ \
+    export LANG=en_US.utf8
+    cmake -DCMAKE_C_COMPILER="${CROSS_COMPILE}"gcc -DCMAKE_CXX_COMPILER="${CROSS_COMPILE}"g++ \
           -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Debug -DUA_ENABLE_AMALGAMATION=ON \
           -DCMAKE_INSTALL_PREFIX="${STAGING_DIR}"
+    export LANG=
 }
 
 compile()
 {
     cd "${PKG_BUILD_DIR}"
+    export LANG=en_US.utf8
     make -j "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    export LANG=
 }
 
 install_staging()
