@@ -6,6 +6,8 @@ Etherpad is "a highly customizable Open Source online editor providing collabora
 This document will describe how to install Ethernet within a container.
 
 ## Install and configure a container with NodeJS
+Make sure the time and date of the router is up to date. This is important for certificates to become valid.
+
 Upload and configure the [NodeJS container](https://m3-container.net/M3_Container/images/container_nodejs.tar) on your router. Bridge the container to an IP net that has access to the internet. Enter the container and set up networking there. Enter a reachable address for the DNS server, most likely this will be the routers IP address:
 <pre>
 root@container_nodejs ~  $ <b>echo "nameserver \<IP address of nameserver\>" > /etc/resolv.conf</b>
@@ -28,6 +30,11 @@ root@container_nodejs ~  $ <b>ping etherpad.org</b>
 </pre>
 
 ## Install Etherpad
+Update the packet manager tool npm:
+<pre>
+root@container_nodejs ~  $ <b>npm i -g npm</b>
+</pre>
+
 Get the latest Etherpad files into your container:
 <pre>
 root@container_nodejs ~  $ <b>wget https://github.com/ether/etherpad-lite/zipball/master</b>

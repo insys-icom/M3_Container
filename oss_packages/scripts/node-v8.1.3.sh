@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="node-v8.0.0"
+PKG_DIR="node-v8.1.3"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# https://nodejs.org/dist/v8.0.0/node-v8.0.0.tar.gz
+# https://nodejs.org/dist/v8.1.3/node-v8.1.3.tar.gz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="a69cbfbaa82bdcc513c501833dd9e509"
+PKG_CHECKSUM="804f6e145292cb9ddc2e742db96fb553"
 
 
 
