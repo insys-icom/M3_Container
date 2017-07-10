@@ -49,4 +49,10 @@ install_staging()
     cp "${PKG_INSTALL_DIR}/usr/local/include/lz4.h"* "${STAGING_DIR}/include"
 }
 
+uninstall_staging()
+{
+    rm -rf "${STAGING_DIR}/lib/liblz4.so"*
+    rm -rf "${STAGING_DIR}/include/lz4.h"
+}
+
 . ${HELPERSDIR}/call_functions.sh
