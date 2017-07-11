@@ -5,6 +5,7 @@ busybox-1.24.2.sh
 
 zlib-1.2.11.sh
 xz-5.2.2.sh
+lz4-1.7.5.sh
 bzip2-1.0.6.sh
 lzo-2.09.sh
 c-ares-1.12.0.sh
@@ -34,7 +35,7 @@ finit-1.10.sh
 gdbm-1.12.sh
 get_pip.sh
 gmp-6.1.1.sh
-gnuplot-5.0.5.sh
+gnuplot-5.0.6.sh
 i2c-tools-3.1.2.sh
 iperf-2.0.9.sh
 iptables-1.6.0.sh
@@ -48,7 +49,7 @@ net-snmp-5.7.3.sh
 ngircd-24.sh
 node-v8.1.3.sh
 openssh-7.3p1.sh
-openvpn-2.3.17.sh
+openvpn-2.4.3.sh
 rsync-3.1.2.sh
 socat-2.0.0-b9.sh
 strace-4.16.sh
