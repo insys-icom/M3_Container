@@ -39,7 +39,7 @@ gnuplot-5.0.6.sh
 i2c-tools-3.1.2.sh
 iperf-2.0.9.sh
 iptables-1.6.0.sh
-iputils-s20151218
+iputils-s20151218.sh
 lighttpd-1.4.39.sh
 lua-5.3.3.sh
 mcip-tool-v1.sh
