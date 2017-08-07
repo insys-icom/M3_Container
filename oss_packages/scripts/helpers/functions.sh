@@ -105,6 +105,7 @@ unpack()
         fi
 
         if [ "${PKG_ARCHIVE##*.}" = "tar" -o \
+             "${PKG_ARCHIVE##*.}" = "tgz" -o \
              "${PKG_ARCHIVE##*.}" = "gz" -o \
              "${PKG_ARCHIVE##*.}" = "xz" -o \
              "${PKG_ARCHIVE##*.}" = "bz2" -o \
