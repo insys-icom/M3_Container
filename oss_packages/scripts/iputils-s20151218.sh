@@ -39,6 +39,7 @@ compile()
     export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
     export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
     cd "${PKG_BUILD_DIR}"
+    make clean
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
 }
 
