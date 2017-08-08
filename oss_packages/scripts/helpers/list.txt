@@ -21,6 +21,7 @@ libcap-2.25.sh
 libuv-1.9.1.sh
 libxml2-2.9.4.sh
 libmrx_control-1.0.sh
+libnet-1.2-rc3.sh
 ncurses-6.0.sh
 nettle-3.2.sh
 pcre-8.38.sh
@@ -57,6 +58,7 @@ httping-2.5.sh
 strace-4.16.sh
 stunnel-5.41.sh
 tcpdump-4.7.4.sh
+arping-2.19.sh
 timezone2017b.sh
 bftpd-4.4.sh
 wget-1.19.sh
