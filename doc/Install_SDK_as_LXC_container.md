@@ -32,15 +32,15 @@ Start the virtual machine with the SDK and log in as root. Change to the / direc
 	m3sdk / # tar zcf rootfs.tar.gz bin etc home lib media mnt opt root sbin usr var
 	</pre>
 
-On the host system (not within the SDK) prepare the place for the root file system of the new LXC container. Depending on your linux distribution the place to install LXC container may be different. It's assumed, all containers are located in "/etc/lxc":
+On the host system (not within the SDK) prepare the place for the root file system of the new LXC container. Depending on your linux distribution the place to install LXC container may be different. It's assumed, all containers are located in "/var/lib/lxc". Create a directory for the new container:
 	<pre>
-	root@host # mkdir -p /etc/lxc/m3sdk/rootfs
+	root@host # mkdir -p /var/lib/lxc/m3sdk/rootfs
 	</pre>
 	
 Transfer the packed content of the SDK to the new directory of the host system and extract it:
     <pre>
-	root@host # scp root@IP-address-of-SDK:/rootfs.tar.gz /etc/lxc/m3sdk/rootfs	
-    root@host # cd /etc/lxc/m3sdk/rootfs
+	root@host # scp root@IP-address-of-SDK:/rootfs.tar.gz /var/lib/lxc/m3sdk/rootfs	
+    root@host # cd /var/lib/lxc/m3sdk/rootfs
     root@host rootfs # tar xf rootfs.tar.gz
     </pre>
     
@@ -56,7 +56,7 @@ There are minor changes to be made in the rootfs of the LXC container.
 
 To automatically log in as "user" when the LXC container gets started enter this as the first line in "/etc/inittab":
     <pre>
-    root@host rootfs # nano /etc/lxc/m3sdk/rootfs/etc/inittab
+    root@host rootfs # nano /var/lib/lxc/m3sdk/rootfs/etc/inittab
     1:12345:respawn:/sbin/agetty -a user --noclear 115200 console linux
     </pre>
     
@@ -70,7 +70,7 @@ Get the user and group ID (UID, GID) of the user in the LXC container to the sam
     
 Modify the UID and GID of the user "user" of the LXC container:
     <pre>
-    root@host rootfs # nano /etc/lxc/m3sdk/rootfs/etc/passwd
+    root@host rootfs # nano /var/lib/lxc/m3sdk/rootfs/etc/passwd
     ...    
     user:x:1001:1005::/home/user:/bin/bash
     ...
@@ -78,22 +78,22 @@ Modify the UID and GID of the user "user" of the LXC container:
     
 Stop the start of networking, as there is no different netspace. Stop starting the VirtualBox Guest additions and sshd. This only avoids error messages when starting the LXC container:
     <pre>
-    root@host rootfs # rm /etc/lxc/m3sdk/rootfs/etc/runlevels/default/*
-    root@host rootfs # rm /etc/lxc/m3sdk/rootfs/etc/runlevels/boot/net.lo
+    root@host rootfs # rm /var/lib/lxc/m3sdk/rootfs/etc/runlevels/default/*
+    root@host rootfs # rm /var/lib/lxc/m3sdk/rootfs/etc/runlevels/boot/net.lo
     </pre>
    
     
 Create a configuration file for LXC
 ---
-To start an LXC container a config file is needed. It is located in "/etc/lxc/m3sdk/"
+To start an LXC container a config file is needed. It is located in "/var/lib/lxc/m3sdk/"
     <pre>
-    root@host rootfs # nano /etc/lxc/m3sdk/config
+    root@host rootfs # nano /var/lib/lxc/m3sdk/config
     </pre>
     
 Fill the configuration with this lines:
     <pre>
     lxc.network.type = none
-    lxc.rootfs = /etc/lxc/m3sdk/rootfs
+    lxc.rootfs = /var/lib/lxc/m3sdk/rootfs
     lxc.haltsignal = SIGUSR1
     lxc.utsname = m3sdk
     lxc.tty = 10
@@ -117,17 +117,17 @@ Starting and stopping a container may require root permissions on the host syste
     <pre>
     $ su root
     Passwort: 
-    root@host ~ # lxc-start -P /etc/lxc -n m3sdk
+    root@host ~ # lxc-start -F -P /var/lib/lxc -n m3sdk
     </pre>
 
 Optionally open another console in the SDK:
     <pre>
-    root@host ~ # lxc-console -P /etc/lxc -n m3sdk
+    root@host ~ # lxc-console -P /var/lib/lxc -n m3sdk
     </pre>
 
 The container will start immediately in the terminal, where the command has been entered. The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
     <pre>
     $ su root
     Passwort: 
-    root@host ~ # lxc-stop -P /etc/lxc -n m3sdk -k
+    root@host ~ # lxc-stop -P /var/lib/lxc -n m3sdk -k
     </pre>
