@@ -9,7 +9,7 @@ lz4-1.7.5.sh
 bzip2-1.0.6.sh
 lzo-2.09.sh
 c-ares-1.12.0.sh
-openssl-1.0.2k.sh
+openssl-1.0.2l.sh
 sqlite-src-3110100.sh
 curl-7.54.1.sh
 http-parser-v2.7.1.sh
