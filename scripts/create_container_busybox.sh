@@ -5,7 +5,7 @@ CONTAINER_NAME="container_busybox"
 ROOTFS_LIST="busybox.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.24.2.sh"
+PACKAGES="${PACKAGES} busybox-1.27.2.sh"
 
 SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
