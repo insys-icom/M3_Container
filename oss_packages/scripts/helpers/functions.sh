@@ -10,7 +10,7 @@ download()
     [ "${PKG_DOWNLOAD}" = "none" ] && return
 
     if [ ! -e "${DOWNLOADS_DIR}" ]; then
-        mkdir -p ${DOWNLOADS_DIR}
+        mkdir -p "${DOWNLOADS_DIR}"
     fi
 
     if [ "${PKG_DOWNLOAD}" = "none" ]; then
@@ -86,7 +86,7 @@ copy_overlay()
         for SFILE in $(find "${PKG_SRC_DIR}" -type f) ; do
             WFILE=$(echo ${SFILE} | sed "s#${SOURCES_DIR}#${BUILD_DIR}#")
             WDIR=$(dirname "${WFILE}")
-            test -d "${WDIR}" || mkdir -p "${WDIR}"
+            [ -d "${WDIR}" ] || mkdir -p "${WDIR}"
             rm -f "${WFILE}"
             cp -a "${SFILE}" "${WFILE}"
         done
@@ -98,6 +98,9 @@ copy_overlay()
 # extract the project sources into working directory
 unpack()
 {
+    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
+    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
+
     if [ ! "${PKG_ARCHIVE_FILE}" = "none" ]; then
         if [ "${PKG_ARCHIVE##*.}" = "zip" ]; then
             unzip -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
@@ -110,7 +113,7 @@ unpack()
              "${PKG_ARCHIVE##*.}" = "xz" -o \
              "${PKG_ARCHIVE##*.}" = "bz2" -o \
              "${PKG_ARCHIVE##*.}" = "xz" ]; then
-            tar -C ${BUILD_DIR} -xf ${PKG_ARCHIVE} || exit_failure "unable to extract ${PKG_ARCHIVE}"
+            tar -C "${BUILD_DIR}" -xf "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
             [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
         fi
      fi
