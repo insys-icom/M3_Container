@@ -1,0 +1,1445 @@
+# This file contains a list of all files which will be copied to rootfs_target
+#
+# This container will only use applets from busybox, nothing else
+#
+# Syntax:
+#    # is a comment, these lines will be ignored
+#    file <name> <location> <mode> <uid> <gid> [<hard links>]
+#    dir <name> <mode> <uid> <gid>
+#    slink <name> <target> <mode> <uid> <gid>
+#    pipe <name> <mode> <uid> <gid>
+#    sock <name> <mode> <uid> <gid>
+#
+#    <name>       name of the file in the containers root file system
+#    <location>   location of the file where it should be copied from
+#    <target>     link target
+#    <mode>       mode/permissions of the file as octect
+#    <uid>        user id (0=root)
+#    <gid>        group id (0=root)
+#    <hard links> space separated list of other links to file
+#    <wildcard>   copies all files of a directory non-recursively and does not strip the files
+#
+#
+#     !!! DO NOT USE TABULATORS !!!
+#
+#
+#############################
+# all necessary directories #
+#############################
+dir /                           0755 0 0
+dir /bin                        0755 0 0
+dir /data                       0755 0 0
+dir /devices                    0755 0 0
+dir /devices/cli_no_auth        0755 0 0
+dir /etc                        0755 0 0
+dir /etc/dropbear               0755 0 0
+dir /etc/pam.d                  0755 0 0
+dir /home                       0755 0 0
+dir /lib                        0755 0 0
+dir /lib/finit                  0755 0 0
+dir /lib/finit/plugins          0755 0 0
+dir /lib/security               0755 0 0
+dir /licence                    0755 0 0
+dir /proc                       0755 0 0
+dir /root                       0700 0 0
+dir /root/.ssh                  0700 0 0
+dir /shared                     0755 0 0
+dir /sys                        0755 0 0
+dir /tmp                        0777 0 0
+dir /usr                        0755 0 0
+dir /usr/local                  0755 0 0
+dir /usr/share                  0755 0 0
+dir /usr/share/zoneinfo         0755 0 0
+dir /var                        0755 0 0
+dir /var/log                    0755 0 0
+
+###############
+# basic files #
+###############
+
+file /bin/busybox                     ${STAGING_DIR}/bin/busybox                     4755 0 0
+file /bin/dropbearmulti               ${STAGING_DIR}/bin/dropbearmulti               0755 0 0
+slink /bin/dropbear                   dropbearmulti                                  0777 0 0
+slink /bin/scp                        dropbearmulti                                  0777 0 0
+slink /bin/dropbearkey                dropbearmulti                                  0777 0 0
+slink /bin/dropbearconvert            dropbearmulti                                  0777 0 0
+slink /bin/dbclient                   dropbearmulti                                  0777 0 0
+file /bin/init                        ${STAGING_DIR}/sbin/finit                      0755 0 0
+file /bin/initctl                     ${STAGING_DIR}/sbin/initctl                    0755 0 0
+file /bin/start_net.sh                ${SKELETON_DIR}/bin/start_net.sh               0755 0 0
+file /bin/reboot                      ${STAGING_DIR}/sbin/reboot                     0755 0 0
+file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
+file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
+file /bin/minetestserver              ${STAGING_DIR}/usr/local/bin/minetestserver    0755 0 0
+file /bin/minetest.sh                 ${SKELETON_DIR}/bin/minetest.sh                0755 0 0
+
+file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
+file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
+file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
+file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
+file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit_minetest.conf  0644 0 0
+file /etc/mcip.conf                   ${SKELETON_DIR}/etc/mcip.conf                  0644 0 0
+file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
+file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
+file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
+file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0640 0 0
+file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                     0640 0 0
+file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
+file /etc/protocols                   ${SKELETON_DIR}/etc/protocols                  0644 0 0
+file /etc/minetest.conf               ${SKELETON_DIR}/etc/minetest.conf              0640 0 0
+file /etc/pam.d/local                 ${SKELETON_DIR}/etc/pam.d/local                0644 0 0
+file /etc/pam.d/other                 ${SKELETON_DIR}/etc/pam.d/other                0644 0 0
+slink /etc/pam.d/login                local                                          0777 0 0
+slink /etc/pam.d/sshd                 login                                          0777 0 0
+
+file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
+file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6.0.21             0755 0 0
+file /lib/libnss_files.so.2           ${SYSROOT_DIR}/lib/libnss_files.so.2           0755 0 0
+file /lib/libnss_dns.so.2             ${SYSROOT_DIR}/lib/libnss_dns.so.2             0755 0 0
+file /lib/libc.so.6                   ${SYSROOT_DIR}/lib/libc-2.22.so                0755 0 0
+file /lib/ld-2.22.so                  ${SYSROOT_DIR}/lib/ld-2.22.so                  0755 0 0
+file /lib/libcrypt.so.1               ${SYSROOT_DIR}/lib/libcrypt-2.22.so            0755 0 0
+file /lib/libutil.so.1                ${SYSROOT_DIR}/lib/libutil-2.22.so             0755 0 0
+file /lib/libresolv.so.2              ${SYSROOT_DIR}/lib/libresolv-2.22.so           0755 0 0
+file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib/libdl-2.22.so               0755 0 0
+file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib/libpthread-2.22.so          0755 0 0
+file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm-2.22.so                0755 0 0
+file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt-2.22.so               0755 0 0
+slink /lib/ld-linux-armhf.so.3        ld-2.22.so                                     0777 0 0
+file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1.2.11              0644 0 0
+file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
+file /lib/libgmp.so.10                ${STAGING_DIR}/lib/libgmp.so.10.3.1            0755 0 0
+file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4.4.0            0644 0 0
+
+file /lib/finit/plugins/initctl.so    ${STAGING_DIR}/lib/finit/plugins/initctl.so    0644 0 0
+file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0
+file /lib/security/pam_deny.so        ${STAGING_DIR}/lib/security/pam_deny.so        0644 0 0
+file /lib/security/pam_permit.so      ${STAGING_DIR}/lib/security/pam_permit.so      0644 0 0
+file /lib/security/pam_exec.so        ${STAGING_DIR}/lib/security/pam_exec.so        0644 0 0
+file /lib/security/pam_unix.so        ${STAGING_DIR}/lib/security/pam_unix.so        0644 0 0
+file /lib/security/pam_warn.so        ${STAGING_DIR}/lib/security/pam_warn.so        0644 0 0
+file /lib/libpam_misc.so.0            ${STAGING_DIR}/lib/libpam_misc.so.0            0644 0 0
+file /lib/libpam.so.0                 ${STAGING_DIR}/lib/libpam.so.0                 0644 0 0
+file /lib/libssl.so.1.0.0             ${STAGING_DIR}/lib/libssl.so.1.0.0             0644 0 0
+file /lib/libcrypto.so.1.0.0          ${STAGING_DIR}/lib/libcrypto.so.1.0.0          0644 0 0
+file /lib/libsqlite3.so.0.8.6         ${STAGING_DIR}/lib/libsqlite3.so.0.8.6         0755 0 0
+slink /lib/libsqlite3.so              libsqlite3.so.0.8.6                            0777 0 0
+slink /lib/libsqlite3.so.0            libsqlite3.so.0.8.6                            0777 0 0
+
+file /root/readme.txt                 ${SKELETON_DIR}/root/readme_default.txt        0644 0 0
+
+slink /run tmp/run 0777 0 0
+slink /sbin bin 0777 0 0
+slink /usr/bin ../bin 0777 0 0
+slink /usr/sbin ../bin 0777 0 0
+
+file /usr/share/version                ${SKELETON_DIR}/usr/share/version             0644 0 0
+file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
+file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
+file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_minetest.html 0644 0 0
+
+slink /var/lock                        /tmp/lock                                     0777 0 0
+slink /var/run                         /tmp/run                                      0777 0 0
+
+#############################
+# files needed for minetest #
+#############################
+# create these lines automatically by executing the next line in "working/minetest-stable-0.4/install/usr/local/builtin/"
+#../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./install/usr/local | grep -v 'client' | grep -v 'fonts' | grep -v 'unix' | sed 's|./install/|${STAGING_DIR}/|' | sort > ../list.txt
+# remove not needed files
+dir /builtin 755 0 0
+dir /builtin/async 755 0 0
+dir /builtin/common 755 0 0
+dir /builtin/fstk 755 0 0
+dir /builtin/game 755 0 0
+dir /builtin/mainmenu 755 0 0
+dir /builtin/profiler 755 0 0
+dir /doc 755 0 0
+dir /games 755 0 0
+dir /games/minetest_game 755 0 0
+dir /games/minetest_game/menu 755 0 0
+dir /games/minetest_game/mods 755 0 0
+dir /games/minetest_game/mods/beds 755 0 0
+dir /games/minetest_game/mods/beds/textures 755 0 0
+dir /games/minetest_game/mods/boats 755 0 0
+dir /games/minetest_game/mods/boats/models 755 0 0
+dir /games/minetest_game/mods/boats/textures 755 0 0
+dir /games/minetest_game/mods/bones 755 0 0
+dir /games/minetest_game/mods/bones/textures 755 0 0
+dir /games/minetest_game/mods/bucket 755 0 0
+dir /games/minetest_game/mods/bucket/textures 755 0 0
+dir /games/minetest_game/mods/carts 755 0 0
+dir /games/minetest_game/mods/carts/models 755 0 0
+dir /games/minetest_game/mods/carts/sounds 755 0 0
+dir /games/minetest_game/mods/carts/textures 755 0 0
+dir /games/minetest_game/mods/creative 755 0 0
+dir /games/minetest_game/mods/creative/textures 755 0 0
+dir /games/minetest_game/mods/default 755 0 0
+dir /games/minetest_game/mods/default/models 755 0 0
+dir /games/minetest_game/mods/default/schematics 755 0 0
+dir /games/minetest_game/mods/default/sounds 755 0 0
+dir /games/minetest_game/mods/default/textures 755 0 0
+dir /games/minetest_game/mods/doors 755 0 0
+dir /games/minetest_game/mods/doors/models 755 0 0
+dir /games/minetest_game/mods/doors/sounds 755 0 0
+dir /games/minetest_game/mods/doors/textures 755 0 0
+dir /games/minetest_game/mods/dye 755 0 0
+dir /games/minetest_game/mods/dye/textures 755 0 0
+dir /games/minetest_game/mods/farming 755 0 0
+dir /games/minetest_game/mods/farming/textures 755 0 0
+dir /games/minetest_game/mods/fire 755 0 0
+dir /games/minetest_game/mods/fire/sounds 755 0 0
+dir /games/minetest_game/mods/fire/textures 755 0 0
+dir /games/minetest_game/mods/flowers 755 0 0
+dir /games/minetest_game/mods/flowers/schematics 755 0 0
+dir /games/minetest_game/mods/flowers/textures 755 0 0
+dir /games/minetest_game/mods/give_initial_stuff 755 0 0
+dir /games/minetest_game/mods/killme 755 0 0
+dir /games/minetest_game/mods/player_api 755 0 0
+dir /games/minetest_game/mods/player_api/models 755 0 0
+dir /games/minetest_game/mods/player_api/sounds 755 0 0
+dir /games/minetest_game/mods/player_api/textures 755 0 0
+dir /games/minetest_game/mods/screwdriver 755 0 0
+dir /games/minetest_game/mods/screwdriver/textures 755 0 0
+dir /games/minetest_game/mods/sethome 755 0 0
+dir /games/minetest_game/mods/sfinv 755 0 0
+dir /games/minetest_game/mods/stairs 755 0 0
+dir /games/minetest_game/mods/stairs/models 755 0 0
+dir /games/minetest_game/mods/tnt 755 0 0
+dir /games/minetest_game/mods/tnt/sounds 755 0 0
+dir /games/minetest_game/mods/tnt/textures 755 0 0
+dir /games/minetest_game/mods/vessels 755 0 0
+dir /games/minetest_game/mods/vessels/textures 755 0 0
+dir /games/minetest_game/mods/walls 755 0 0
+dir /games/minetest_game/mods/wool 755 0 0
+dir /games/minetest_game/mods/wool/textures 755 0 0
+dir /games/minetest_game/mods/xpanes 755 0 0
+dir /games/minetest_game/mods/xpanes/textures 755 0 0
+dir /games/minimal 755 0 0
+dir /games/minimal/menu 755 0 0
+dir /games/minimal/mods 755 0 0
+dir /games/minimal/mods/bucket 755 0 0
+dir /games/minimal/mods/bucket/textures 755 0 0
+dir /games/minimal/mods/default 755 0 0
+dir /games/minimal/mods/default/sounds 755 0 0
+dir /games/minimal/mods/default/textures 755 0 0
+dir /games/minimal/mods/experimental 755 0 0
+dir /games/minimal/mods/experimental/textures 755 0 0
+dir /games/minimal/mods/give_initial_stuff 755 0 0
+dir /games/minimal/mods/legacy 755 0 0
+dir /games/minimal/mods/legacy/textures 755 0 0
+dir /games/minimal/mods/stairs 755 0 0
+dir /games/minimal/mods/test 755 0 0
+dir /mods 755 0 0
+dir /textures 755 0 0
+file /bin/minetestserver ${STAGING_DIR}/usr/local/bin/minetestserver 755 0 0
+file /builtin/async/init.lua ${STAGING_DIR}/usr/local/builtin/async/init.lua 644 0 0
+file /builtin/common/after.lua ${STAGING_DIR}/usr/local/builtin/common/after.lua 644 0 0
+file /builtin/common/async_event.lua ${STAGING_DIR}/usr/local/builtin/common/async_event.lua 644 0 0
+file /builtin/common/chatcommands.lua ${STAGING_DIR}/usr/local/builtin/common/chatcommands.lua 644 0 0
+file /builtin/common/filterlist.lua ${STAGING_DIR}/usr/local/builtin/common/filterlist.lua 644 0 0
+file /builtin/common/misc_helpers.lua ${STAGING_DIR}/usr/local/builtin/common/misc_helpers.lua 644 0 0
+file /builtin/common/serialize.lua ${STAGING_DIR}/usr/local/builtin/common/serialize.lua 644 0 0
+file /builtin/common/strict.lua ${STAGING_DIR}/usr/local/builtin/common/strict.lua 644 0 0
+file /builtin/common/vector.lua ${STAGING_DIR}/usr/local/builtin/common/vector.lua 644 0 0
+file /builtin/fstk/buttonbar.lua ${STAGING_DIR}/usr/local/builtin/fstk/buttonbar.lua 644 0 0
+file /builtin/fstk/dialog.lua ${STAGING_DIR}/usr/local/builtin/fstk/dialog.lua 644 0 0
+file /builtin/fstk/tabview.lua ${STAGING_DIR}/usr/local/builtin/fstk/tabview.lua 644 0 0
+file /builtin/fstk/ui.lua ${STAGING_DIR}/usr/local/builtin/fstk/ui.lua 644 0 0
+file /builtin/game/auth.lua ${STAGING_DIR}/usr/local/builtin/game/auth.lua 644 0 0
+file /builtin/game/chatcommands.lua ${STAGING_DIR}/usr/local/builtin/game/chatcommands.lua 644 0 0
+file /builtin/game/constants.lua ${STAGING_DIR}/usr/local/builtin/game/constants.lua 644 0 0
+file /builtin/game/deprecated.lua ${STAGING_DIR}/usr/local/builtin/game/deprecated.lua 644 0 0
+file /builtin/game/detached_inventory.lua ${STAGING_DIR}/usr/local/builtin/game/detached_inventory.lua 644 0 0
+file /builtin/game/falling.lua ${STAGING_DIR}/usr/local/builtin/game/falling.lua 644 0 0
+file /builtin/game/features.lua ${STAGING_DIR}/usr/local/builtin/game/features.lua 644 0 0
+file /builtin/game/forceloading.lua ${STAGING_DIR}/usr/local/builtin/game/forceloading.lua 644 0 0
+file /builtin/game/init.lua ${STAGING_DIR}/usr/local/builtin/game/init.lua 644 0 0
+file /builtin/game/item.lua ${STAGING_DIR}/usr/local/builtin/game/item.lua 644 0 0
+file /builtin/game/item_entity.lua ${STAGING_DIR}/usr/local/builtin/game/item_entity.lua 644 0 0
+file /builtin/game/misc.lua ${STAGING_DIR}/usr/local/builtin/game/misc.lua 644 0 0
+file /builtin/game/privileges.lua ${STAGING_DIR}/usr/local/builtin/game/privileges.lua 644 0 0
+file /builtin/game/register.lua ${STAGING_DIR}/usr/local/builtin/game/register.lua 644 0 0
+file /builtin/game/statbars.lua ${STAGING_DIR}/usr/local/builtin/game/statbars.lua 644 0 0
+file /builtin/game/static_spawn.lua ${STAGING_DIR}/usr/local/builtin/game/static_spawn.lua 644 0 0
+file /builtin/game/voxelarea.lua ${STAGING_DIR}/usr/local/builtin/game/voxelarea.lua 644 0 0
+file /builtin/init.lua ${STAGING_DIR}/usr/local/builtin/init.lua 644 0 0
+file /builtin/mainmenu/common.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/common.lua 644 0 0
+file /builtin/mainmenu/dlg_config_world.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/dlg_config_world.lua 644 0 0
+file /builtin/mainmenu/dlg_create_world.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/dlg_create_world.lua 644 0 0
+file /builtin/mainmenu/dlg_delete_mod.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/dlg_delete_mod.lua 644 0 0
+file /builtin/mainmenu/dlg_delete_world.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/dlg_delete_world.lua 644 0 0
+file /builtin/mainmenu/dlg_rename_modpack.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/dlg_rename_modpack.lua 644 0 0
+file /builtin/mainmenu/dlg_settings_advanced.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/dlg_settings_advanced.lua 644 0 0
+file /builtin/mainmenu/gamemgr.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/gamemgr.lua 644 0 0
+file /builtin/mainmenu/generate_from_settingtypes.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/generate_from_settingtypes.lua 644 0 0
+file /builtin/mainmenu/init.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/init.lua 644 0 0
+file /builtin/mainmenu/init_simple.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/init_simple.lua 644 0 0
+file /builtin/mainmenu/modmgr.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/modmgr.lua 644 0 0
+file /builtin/mainmenu/store.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/store.lua 644 0 0
+file /builtin/mainmenu/tab_credits.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_credits.lua 644 0 0
+file /builtin/mainmenu/tab_local.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_local.lua 644 0 0
+file /builtin/mainmenu/tab_mods.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_mods.lua 644 0 0
+file /builtin/mainmenu/tab_online.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_online.lua 644 0 0
+file /builtin/mainmenu/tab_settings.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_settings.lua 644 0 0
+file /builtin/mainmenu/tab_simple_main.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_simple_main.lua 644 0 0
+file /builtin/mainmenu/tab_texturepacks.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/tab_texturepacks.lua 644 0 0
+file /builtin/mainmenu/textures.lua ${STAGING_DIR}/usr/local/builtin/mainmenu/textures.lua 644 0 0
+file /builtin/profiler/init.lua ${STAGING_DIR}/usr/local/builtin/profiler/init.lua 644 0 0
+file /builtin/profiler/instrumentation.lua ${STAGING_DIR}/usr/local/builtin/profiler/instrumentation.lua 644 0 0
+file /builtin/profiler/reporter.lua ${STAGING_DIR}/usr/local/builtin/profiler/reporter.lua 644 0 0
+file /builtin/profiler/sampling.lua ${STAGING_DIR}/usr/local/builtin/profiler/sampling.lua 644 0 0
+file /builtin/settingtypes.txt ${STAGING_DIR}/usr/local/builtin/settingtypes.txt 644 0 0
+file /doc/README.txt ${STAGING_DIR}/usr/local/doc/README.txt 644 0 0
+file /doc/lua_api.txt ${STAGING_DIR}/usr/local/doc/lua_api.txt 644 0 0
+file /doc/menu_lua_api.txt ${STAGING_DIR}/usr/local/doc/menu_lua_api.txt 644 0 0
+file /doc/texture_packs.txt ${STAGING_DIR}/usr/local/doc/texture_packs.txt 644 0 0
+file /doc/world_format.txt ${STAGING_DIR}/usr/local/doc/world_format.txt 644 0 0
+file /games/minetest_game/.luacheckrc ${STAGING_DIR}/usr/local/games/minetest_game/.luacheckrc 644 0 0
+file /games/minetest_game/.travis.yml ${STAGING_DIR}/usr/local/games/minetest_game/.travis.yml 644 0 0
+file /games/minetest_game/LICENSE.txt ${STAGING_DIR}/usr/local/games/minetest_game/LICENSE.txt 644 0 0
+file /games/minetest_game/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/README.txt 644 0 0
+file /games/minetest_game/game.conf ${STAGING_DIR}/usr/local/games/minetest_game/game.conf 644 0 0
+file /games/minetest_game/game_api.txt ${STAGING_DIR}/usr/local/games/minetest_game/game_api.txt 644 0 0
+file /games/minetest_game/menu/header.png ${STAGING_DIR}/usr/local/games/minetest_game/menu/header.png 644 0 0
+file /games/minetest_game/menu/icon.png ${STAGING_DIR}/usr/local/games/minetest_game/menu/icon.png 644 0 0
+file /games/minetest_game/minetest.conf ${STAGING_DIR}/usr/local/games/minetest_game/minetest.conf 644 0 0
+file /games/minetest_game/minetest.conf.example ${STAGING_DIR}/usr/local/games/minetest_game/minetest.conf.example 644 0 0
+file /games/minetest_game/mods/beds/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/README.txt 644 0 0
+file /games/minetest_game/mods/beds/api.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/api.lua 644 0 0
+file /games/minetest_game/mods/beds/beds.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/beds.lua 644 0 0
+file /games/minetest_game/mods/beds/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/depends.txt 644 0 0
+file /games/minetest_game/mods/beds/functions.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/functions.lua 644 0 0
+file /games/minetest_game/mods/beds/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/init.lua 644 0 0
+file /games/minetest_game/mods/beds/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/license.txt 644 0 0
+file /games/minetest_game/mods/beds/spawns.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/spawns.lua 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_fancy.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_fancy.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_foot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_foot.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_head.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_head.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_side1.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_side1.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_side2.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_side2.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_side_bottom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_side_bottom.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_side_bottom_r.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_side_bottom_r.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_side_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_side_top.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_side_top_r.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_side_top_r.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_top1.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_top1.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_top2.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_top2.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_top_bottom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_top_bottom.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_bed_top_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_bed_top_top.png 644 0 0
+file /games/minetest_game/mods/beds/textures/beds_transparent.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/beds/textures/beds_transparent.png 644 0 0
+file /games/minetest_game/mods/boats/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/README.txt 644 0 0
+file /games/minetest_game/mods/boats/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/depends.txt 644 0 0
+file /games/minetest_game/mods/boats/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/init.lua 644 0 0
+file /games/minetest_game/mods/boats/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/license.txt 644 0 0
+file /games/minetest_game/mods/boats/models/boats_boat.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/models/boats_boat.obj 644 0 0
+file /games/minetest_game/mods/boats/textures/boats_inventory.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/textures/boats_inventory.png 644 0 0
+file /games/minetest_game/mods/boats/textures/boats_wield.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/boats/textures/boats_wield.png 644 0 0
+file /games/minetest_game/mods/bones/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/README.txt 644 0 0
+file /games/minetest_game/mods/bones/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/depends.txt 644 0 0
+file /games/minetest_game/mods/bones/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/init.lua 644 0 0
+file /games/minetest_game/mods/bones/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/license.txt 644 0 0
+file /games/minetest_game/mods/bones/textures/bones_bottom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/textures/bones_bottom.png 644 0 0
+file /games/minetest_game/mods/bones/textures/bones_front.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/textures/bones_front.png 644 0 0
+file /games/minetest_game/mods/bones/textures/bones_rear.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/textures/bones_rear.png 644 0 0
+file /games/minetest_game/mods/bones/textures/bones_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/textures/bones_side.png 644 0 0
+file /games/minetest_game/mods/bones/textures/bones_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bones/textures/bones_top.png 644 0 0
+file /games/minetest_game/mods/bucket/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/README.txt 644 0 0
+file /games/minetest_game/mods/bucket/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/depends.txt 644 0 0
+file /games/minetest_game/mods/bucket/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/init.lua 644 0 0
+file /games/minetest_game/mods/bucket/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/license.txt 644 0 0
+file /games/minetest_game/mods/bucket/textures/bucket.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/textures/bucket.png 644 0 0
+file /games/minetest_game/mods/bucket/textures/bucket_lava.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/textures/bucket_lava.png 644 0 0
+file /games/minetest_game/mods/bucket/textures/bucket_river_water.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/textures/bucket_river_water.png 644 0 0
+file /games/minetest_game/mods/bucket/textures/bucket_water.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/bucket/textures/bucket_water.png 644 0 0
+file /games/minetest_game/mods/carts/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/README.txt 644 0 0
+file /games/minetest_game/mods/carts/cart_entity.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/cart_entity.lua 644 0 0
+file /games/minetest_game/mods/carts/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/depends.txt 644 0 0
+file /games/minetest_game/mods/carts/functions.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/functions.lua 644 0 0
+file /games/minetest_game/mods/carts/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/init.lua 644 0 0
+file /games/minetest_game/mods/carts/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/license.txt 644 0 0
+file /games/minetest_game/mods/carts/models/carts_cart.b3d ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/models/carts_cart.b3d 644 0 0
+file /games/minetest_game/mods/carts/models/carts_cart.blend ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/models/carts_cart.blend 644 0 0
+file /games/minetest_game/mods/carts/rails.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/rails.lua 644 0 0
+file /games/minetest_game/mods/carts/sounds/carts_cart_moving.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/sounds/carts_cart_moving.1.ogg 644 0 0
+file /games/minetest_game/mods/carts/sounds/carts_cart_moving.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/sounds/carts_cart_moving.2.ogg 644 0 0
+file /games/minetest_game/mods/carts/sounds/carts_cart_moving.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/sounds/carts_cart_moving.3.ogg 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_cart.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_cart.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_cart_front.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_cart_front.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_cart_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_cart_side.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_cart_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_cart_top.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_crossing.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_crossing.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_crossing_brk.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_crossing_brk.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_crossing_pwr.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_crossing_pwr.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_curved.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_curved.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_curved_brk.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_curved_brk.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_curved_pwr.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_curved_pwr.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_straight.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_straight.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_straight_brk.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_straight_brk.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_straight_pwr.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_straight_pwr.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_t_junction.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_t_junction.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_t_junction_brk.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_t_junction_brk.png 644 0 0
+file /games/minetest_game/mods/carts/textures/carts_rail_t_junction_pwr.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/carts/textures/carts_rail_t_junction_pwr.png 644 0 0
+file /games/minetest_game/mods/creative/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/creative/README.txt 644 0 0
+file /games/minetest_game/mods/creative/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/creative/depends.txt 644 0 0
+file /games/minetest_game/mods/creative/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/creative/init.lua 644 0 0
+file /games/minetest_game/mods/creative/inventory.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/creative/inventory.lua 644 0 0
+file /games/minetest_game/mods/creative/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/creative/license.txt 644 0 0
+file /games/minetest_game/mods/creative/textures/creative_trash_icon.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/creative/textures/creative_trash_icon.png 644 0 0
+file /games/minetest_game/mods/default/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/README.txt 644 0 0
+file /games/minetest_game/mods/default/aliases.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/aliases.lua 644 0 0
+file /games/minetest_game/mods/default/crafting.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/crafting.lua 644 0 0
+file /games/minetest_game/mods/default/craftitems.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/craftitems.lua 644 0 0
+file /games/minetest_game/mods/default/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/depends.txt 644 0 0
+file /games/minetest_game/mods/default/functions.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/functions.lua 644 0 0
+file /games/minetest_game/mods/default/furnace.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/furnace.lua 644 0 0
+file /games/minetest_game/mods/default/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/init.lua 644 0 0
+file /games/minetest_game/mods/default/item_entity.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/item_entity.lua 644 0 0
+file /games/minetest_game/mods/default/legacy.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/legacy.lua 644 0 0
+file /games/minetest_game/mods/default/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/license.txt 644 0 0
+file /games/minetest_game/mods/default/mapgen.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/mapgen.lua 644 0 0
+file /games/minetest_game/mods/default/models/chest_open.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/models/chest_open.obj 644 0 0
+file /games/minetest_game/mods/default/models/torch_ceiling.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/models/torch_ceiling.obj 644 0 0
+file /games/minetest_game/mods/default/models/torch_floor.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/models/torch_floor.obj 644 0 0
+file /games/minetest_game/mods/default/models/torch_wall.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/models/torch_wall.obj 644 0 0
+file /games/minetest_game/mods/default/nodes.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/nodes.lua 644 0 0
+file /games/minetest_game/mods/default/schematics/acacia_bush.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/acacia_bush.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/acacia_log.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/acacia_log.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/acacia_tree.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/acacia_tree.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/acacia_tree_from_sapling.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/acacia_tree_from_sapling.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/apple_log.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/apple_log.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/apple_tree.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/apple_tree.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/apple_tree_from_sapling.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/apple_tree_from_sapling.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/aspen_log.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/aspen_log.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/aspen_tree.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/aspen_tree.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/aspen_tree_from_sapling.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/aspen_tree_from_sapling.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/bush.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/bush.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/corals.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/corals.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/jungle_log.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/jungle_log.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/jungle_tree.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/jungle_tree.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/jungle_tree_from_sapling.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/jungle_tree_from_sapling.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/large_cactus.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/large_cactus.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/papyrus.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/papyrus.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/pine_log.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/pine_log.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/pine_tree.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/pine_tree.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/pine_tree_from_sapling.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/pine_tree_from_sapling.mts 644 0 0
+file /games/minetest_game/mods/default/schematics/snowy_pine_tree_from_sapling.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/schematics/snowy_pine_tree_from_sapling.mts 644 0 0
+file /games/minetest_game/mods/default/sounds/default_break_glass.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_break_glass.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_break_glass.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_break_glass.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_break_glass.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_break_glass.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_chest_close.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_chest_close.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_chest_open.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_chest_open.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_cool_lava.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_cool_lava.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_cool_lava.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_cool_lava.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_cool_lava.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_cool_lava.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_choppy.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_choppy.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_cracky.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_cracky.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_crumbly.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_crumbly.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_dig_immediate.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_dig_immediate.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_metal.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_metal.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_oddly_breakable_by_hand.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_oddly_breakable_by_hand.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dig_snappy.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dig_snappy.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dirt_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dirt_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dirt_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dirt_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dug_metal.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dug_metal.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dug_metal.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dug_metal.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dug_node.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dug_node.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_dug_node.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_dug_node.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_glass_footstep.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_glass_footstep.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_grass_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_grass_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_grass_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_grass_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_grass_footstep.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_grass_footstep.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_gravel_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_gravel_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_gravel_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_gravel_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_gravel_footstep.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_gravel_footstep.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_gravel_footstep.4.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_gravel_footstep.4.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_hard_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_hard_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_hard_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_hard_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_hard_footstep.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_hard_footstep.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_item_smoke.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_item_smoke.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_metal_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_metal_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_metal_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_metal_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_metal_footstep.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_metal_footstep.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node_hard.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node_hard.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node_hard.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node_hard.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node_metal.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node_metal.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_place_node_metal.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_place_node_metal.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_sand_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_sand_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_sand_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_sand_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_snow_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_snow_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_snow_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_snow_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_snow_footstep.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_snow_footstep.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_tool_breaks.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_tool_breaks.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_tool_breaks.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_tool_breaks.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_tool_breaks.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_tool_breaks.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_water_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_water_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_water_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_water_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_water_footstep.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_water_footstep.3.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_water_footstep.4.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_water_footstep.4.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_wood_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_wood_footstep.1.ogg 644 0 0
+file /games/minetest_game/mods/default/sounds/default_wood_footstep.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/sounds/default_wood_footstep.2.ogg 644 0 0
+file /games/minetest_game/mods/default/textures/bubble.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/bubble.png 644 0 0
+file /games/minetest_game/mods/default/textures/crack_anylength.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/crack_anylength.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_bush_sapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_bush_sapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_bush_stem.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_bush_stem.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_leaves.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_leaves.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_leaves_simple.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_leaves_simple.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_sapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_sapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_tree.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_tree.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_tree_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_tree_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_acacia_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_acacia_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_apple.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_apple.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_aspen_leaves.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_aspen_leaves.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_aspen_sapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_aspen_sapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_aspen_tree.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_aspen_tree.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_aspen_tree_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_aspen_tree_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_aspen_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_aspen_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_book.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_book.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_book_written.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_book_written.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_bookshelf.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_bookshelf.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_bookshelf_slot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_bookshelf_slot.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_bronze_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_bronze_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_bronze_ingot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_bronze_ingot.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_bush_sapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_bush_sapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_bush_stem.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_bush_stem.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_cactus_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_cactus_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_cactus_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_cactus_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_chest_front.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_chest_front.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_chest_inside.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_chest_inside.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_chest_lock.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_chest_lock.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_chest_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_chest_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_chest_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_chest_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_clay.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_clay.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_clay_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_clay_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_clay_lump.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_clay_lump.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_cloud.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_cloud.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_coal_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_coal_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_coal_lump.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_coal_lump.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_cobble.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_cobble.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_copper_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_copper_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_copper_ingot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_copper_ingot.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_copper_lump.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_copper_lump.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_coral_brown.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_coral_brown.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_coral_orange.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_coral_orange.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_coral_skeleton.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_coral_skeleton.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_cobble.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_cobble.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_sand.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_sand.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_sandstone.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_sandstone.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_sandstone_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_sandstone_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_sandstone_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_sandstone_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_stone.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_stone.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_stone_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_stone_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_desert_stone_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_desert_stone_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_diamond.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_diamond.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_diamond_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_diamond_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dirt.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dirt.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass_1.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass_1.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass_2.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass_2.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass_3.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass_3.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass_4.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass_4.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass_5.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass_5.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_grass_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_grass_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_dry_shrub.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_dry_shrub.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_fence_acacia_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_fence_acacia_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_fence_aspen_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_fence_aspen_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_fence_junglewood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_fence_junglewood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_fence_overlay.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_fence_overlay.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_fence_pine_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_fence_pine_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_fence_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_fence_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_flint.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_flint.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_footprint.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_footprint.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_bottom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_bottom.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_fire_bg.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_fire_bg.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_fire_fg.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_fire_fg.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_front.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_front.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_front_active.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_front_active.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_furnace_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_furnace_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_glass.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_glass_detail.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_glass_detail.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_gold_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_gold_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_gold_ingot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_gold_ingot.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_gold_lump.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_gold_lump.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass_1.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass_1.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass_2.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass_2.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass_3.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass_3.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass_4.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass_4.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass_5.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass_5.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_grass_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_grass_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_gravel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_gravel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_ice.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_ice.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_iron_lump.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_iron_lump.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_item_smoke.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_item_smoke.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_junglegrass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_junglegrass.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_jungleleaves.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_jungleleaves.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_jungleleaves_simple.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_jungleleaves_simple.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_junglesapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_junglesapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_jungletree.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_jungletree.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_jungletree_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_jungletree_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_junglewood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_junglewood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_key.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_key.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_key_skeleton.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_key_skeleton.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_ladder_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_ladder_steel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_ladder_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_ladder_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_lava.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_lava.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_lava_flowing_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_lava_flowing_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_lava_source_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_lava_source_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_leaves.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_leaves.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_leaves_simple.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_leaves_simple.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mese_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mese_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mese_crystal.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mese_crystal.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mese_crystal_fragment.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mese_crystal_fragment.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mese_post_light_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mese_post_light_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mese_post_light_side_dark.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mese_post_light_side_dark.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mese_post_light_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mese_post_light_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_meselamp.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_meselamp.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_coal.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_coal.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_copper.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_copper.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_diamond.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_diamond.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_gold.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_gold.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_iron.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_iron.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_mese.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_mese.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mineral_tin.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mineral_tin.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_mossycobble.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_mossycobble.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_obsidian.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_obsidian.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_obsidian_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_obsidian_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_obsidian_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_obsidian_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_obsidian_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_obsidian_glass.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_obsidian_glass_detail.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_obsidian_glass_detail.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_obsidian_shard.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_obsidian_shard.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_paper.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_paper.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_papyrus.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_papyrus.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_pine_needles.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_pine_needles.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_pine_sapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_pine_sapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_pine_tree.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_pine_tree.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_pine_tree_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_pine_tree_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_pine_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_pine_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_rainforest_litter.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_rainforest_litter.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_rainforest_litter_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_rainforest_litter_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_river_water.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_river_water.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_river_water_flowing_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_river_water_flowing_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_river_water_source_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_river_water_source_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sand.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sand.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sandstone.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sandstone.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sandstone_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sandstone_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sandstone_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sandstone_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sapling.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sapling.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sign_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sign_steel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sign_wall_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sign_wall_steel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sign_wall_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sign_wall_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_sign_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_sign_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_silver_sand.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_silver_sand.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_silver_sandstone.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_silver_sandstone.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_silver_sandstone_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_silver_sandstone_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_silver_sandstone_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_silver_sandstone_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_snow.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_snow.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_snow_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_snow_side.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_snowball.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_snowball.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_steel_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_steel_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_steel_ingot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_steel_ingot.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_stick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_stick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_stone.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_stone.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_stone_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_stone_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_stone_brick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_stone_brick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tin_block.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tin_block.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tin_ingot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tin_ingot.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tin_lump.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tin_lump.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_bronzeaxe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_bronzeaxe.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_bronzepick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_bronzepick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_bronzeshovel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_bronzeshovel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_bronzesword.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_bronzesword.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_diamondaxe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_diamondaxe.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_diamondpick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_diamondpick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_diamondshovel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_diamondshovel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_diamondsword.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_diamondsword.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_meseaxe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_meseaxe.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_mesepick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_mesepick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_meseshovel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_meseshovel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_mesesword.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_mesesword.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_steelaxe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_steelaxe.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_steelpick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_steelpick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_steelshovel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_steelshovel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_steelsword.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_steelsword.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_stoneaxe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_stoneaxe.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_stonepick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_stonepick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_stoneshovel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_stoneshovel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_stonesword.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_stonesword.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_woodaxe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_woodaxe.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_woodpick.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_woodpick.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_woodshovel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_woodshovel.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tool_woodsword.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tool_woodsword.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_torch_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_torch_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_torch_on_ceiling_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_torch_on_ceiling_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_torch_on_floor.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_torch_on_floor.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_torch_on_floor_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_torch_on_floor_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tree.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tree.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_tree_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_tree_top.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_water.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_water.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_water_flowing_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_water_flowing_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_water_source_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_water_source_animated.png 644 0 0
+file /games/minetest_game/mods/default/textures/default_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/default_wood.png 644 0 0
+file /games/minetest_game/mods/default/textures/gui_formbg.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/gui_formbg.png 644 0 0
+file /games/minetest_game/mods/default/textures/gui_furnace_arrow_bg.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/gui_furnace_arrow_bg.png 644 0 0
+file /games/minetest_game/mods/default/textures/gui_furnace_arrow_fg.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/gui_furnace_arrow_fg.png 644 0 0
+file /games/minetest_game/mods/default/textures/gui_hb_bg.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/gui_hb_bg.png 644 0 0
+file /games/minetest_game/mods/default/textures/heart.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/heart.png 644 0 0
+file /games/minetest_game/mods/default/textures/wieldhand.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/textures/wieldhand.png 644 0 0
+file /games/minetest_game/mods/default/tools.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/tools.lua 644 0 0
+file /games/minetest_game/mods/default/torch.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/torch.lua 644 0 0
+file /games/minetest_game/mods/default/trees.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/default/trees.lua 644 0 0
+file /games/minetest_game/mods/doors/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/README.txt 644 0 0
+file /games/minetest_game/mods/doors/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/depends.txt 644 0 0
+file /games/minetest_game/mods/doors/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/init.lua 644 0 0
+file /games/minetest_game/mods/doors/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/license.txt 644 0 0
+file /games/minetest_game/mods/doors/models/door_a.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/models/door_a.obj 644 0 0
+file /games/minetest_game/mods/doors/models/door_b.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/models/door_b.obj 644 0 0
+file /games/minetest_game/mods/doors/models/doors_fencegate_closed.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/models/doors_fencegate_closed.obj 644 0 0
+file /games/minetest_game/mods/doors/models/doors_fencegate_open.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/models/doors_fencegate_open.obj 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_door_close.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_door_close.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_door_open.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_door_open.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_fencegate_close.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_fencegate_close.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_fencegate_open.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_fencegate_open.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_glass_door_close.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_glass_door_close.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_glass_door_open.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_glass_door_open.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_steel_door_close.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_steel_door_close.ogg 644 0 0
+file /games/minetest_game/mods/doors/sounds/doors_steel_door_open.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/sounds/doors_steel_door_open.ogg 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_blank.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_blank.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_door_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_door_glass.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_door_obsidian_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_door_obsidian_glass.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_door_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_door_steel.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_door_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_door_wood.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_item_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_item_glass.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_item_obsidian_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_item_obsidian_glass.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_item_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_item_steel.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_item_wood.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_item_wood.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_trapdoor.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_trapdoor.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_trapdoor_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_trapdoor_side.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_trapdoor_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_trapdoor_steel.png 644 0 0
+file /games/minetest_game/mods/doors/textures/doors_trapdoor_steel_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/doors/textures/doors_trapdoor_steel_side.png 644 0 0
+file /games/minetest_game/mods/dye/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/README.txt 644 0 0
+file /games/minetest_game/mods/dye/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/depends.txt 644 0 0
+file /games/minetest_game/mods/dye/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/init.lua 644 0 0
+file /games/minetest_game/mods/dye/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/license.txt 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_black.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_black.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_blue.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_blue.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_brown.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_brown.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_cyan.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_cyan.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_dark_green.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_dark_green.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_dark_grey.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_dark_grey.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_green.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_green.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_grey.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_grey.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_magenta.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_magenta.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_orange.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_orange.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_pink.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_pink.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_red.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_red.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_violet.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_violet.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_white.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_white.png 644 0 0
+file /games/minetest_game/mods/dye/textures/dye_yellow.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/dye/textures/dye_yellow.png 644 0 0
+file /games/minetest_game/mods/farming/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/README.txt 644 0 0
+file /games/minetest_game/mods/farming/api.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/api.lua 644 0 0
+file /games/minetest_game/mods/farming/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/depends.txt 644 0 0
+file /games/minetest_game/mods/farming/hoes.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/hoes.lua 644 0 0
+file /games/minetest_game/mods/farming/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/init.lua 644 0 0
+file /games/minetest_game/mods/farming/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/license.txt 644 0 0
+file /games/minetest_game/mods/farming/nodes.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/nodes.lua 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_bread.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_bread.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_1.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_1.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_2.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_2.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_3.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_3.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_4.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_4.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_5.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_5.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_6.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_6.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_7.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_7.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_8.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_8.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_cotton_seed.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_cotton_seed.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_desert_sand_soil.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_desert_sand_soil.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_desert_sand_soil_wet.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_desert_sand_soil_wet.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_desert_sand_soil_wet_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_desert_sand_soil_wet_side.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_flour.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_flour.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_soil.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_soil.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_soil_wet.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_soil_wet.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_soil_wet_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_soil_wet_side.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_straw.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_straw.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_string.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_string.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_tool_bronzehoe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_tool_bronzehoe.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_tool_diamondhoe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_tool_diamondhoe.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_tool_mesehoe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_tool_mesehoe.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_tool_steelhoe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_tool_steelhoe.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_tool_stonehoe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_tool_stonehoe.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_tool_woodhoe.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_tool_woodhoe.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_1.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_1.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_2.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_2.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_3.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_3.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_4.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_4.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_5.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_5.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_6.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_6.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_7.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_7.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_8.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_8.png 644 0 0
+file /games/minetest_game/mods/farming/textures/farming_wheat_seed.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/farming/textures/farming_wheat_seed.png 644 0 0
+file /games/minetest_game/mods/fire/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/README.txt 644 0 0
+file /games/minetest_game/mods/fire/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/depends.txt 644 0 0
+file /games/minetest_game/mods/fire/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/init.lua 644 0 0
+file /games/minetest_game/mods/fire/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/license.txt 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_extinguish_flame.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_extinguish_flame.1.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_extinguish_flame.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_extinguish_flame.2.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_extinguish_flame.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_extinguish_flame.3.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_fire.1.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_fire.1.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_fire.2.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_fire.2.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_fire.3.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_fire.3.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_flint_and_steel.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_flint_and_steel.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_large.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_large.ogg 644 0 0
+file /games/minetest_game/mods/fire/sounds/fire_small.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/sounds/fire_small.ogg 644 0 0
+file /games/minetest_game/mods/fire/textures/fire_basic_flame.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/textures/fire_basic_flame.png 644 0 0
+file /games/minetest_game/mods/fire/textures/fire_basic_flame_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/textures/fire_basic_flame_animated.png 644 0 0
+file /games/minetest_game/mods/fire/textures/fire_flint_steel.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/fire/textures/fire_flint_steel.png 644 0 0
+file /games/minetest_game/mods/flowers/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/README.txt 644 0 0
+file /games/minetest_game/mods/flowers/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/depends.txt 644 0 0
+file /games/minetest_game/mods/flowers/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/init.lua 644 0 0
+file /games/minetest_game/mods/flowers/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/license.txt 644 0 0
+file /games/minetest_game/mods/flowers/mapgen.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/mapgen.lua 644 0 0
+file /games/minetest_game/mods/flowers/schematics/waterlily.mts ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/schematics/waterlily.mts 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_dandelion_white.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_dandelion_white.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_dandelion_yellow.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_dandelion_yellow.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_geranium.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_geranium.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_mushroom_brown.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_mushroom_brown.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_mushroom_red.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_mushroom_red.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_rose.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_rose.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_tulip.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_tulip.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_viola.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_viola.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_waterlily.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_waterlily.png 644 0 0
+file /games/minetest_game/mods/flowers/textures/flowers_waterlily_bottom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/flowers/textures/flowers_waterlily_bottom.png 644 0 0
+file /games/minetest_game/mods/give_initial_stuff/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/give_initial_stuff/README.txt 644 0 0
+file /games/minetest_game/mods/give_initial_stuff/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/give_initial_stuff/depends.txt 644 0 0
+file /games/minetest_game/mods/give_initial_stuff/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/give_initial_stuff/init.lua 644 0 0
+file /games/minetest_game/mods/give_initial_stuff/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/give_initial_stuff/license.txt 644 0 0
+file /games/minetest_game/mods/killme/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/killme/init.lua 644 0 0
+file /games/minetest_game/mods/player_api/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/README.txt 644 0 0
+file /games/minetest_game/mods/player_api/api.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/api.lua 644 0 0
+file /games/minetest_game/mods/player_api/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/init.lua 644 0 0
+file /games/minetest_game/mods/player_api/models/character.b3d ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/models/character.b3d 644 0 0
+file /games/minetest_game/mods/player_api/models/character.blend ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/models/character.blend 644 0 0
+file /games/minetest_game/mods/player_api/models/character.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/models/character.png 644 0 0
+file /games/minetest_game/mods/player_api/sounds/player_damage.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/sounds/player_damage.ogg 644 0 0
+file /games/minetest_game/mods/player_api/textures/gui_hotbar.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/textures/gui_hotbar.png 644 0 0
+file /games/minetest_game/mods/player_api/textures/gui_hotbar_selected.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/textures/gui_hotbar_selected.png 644 0 0
+file /games/minetest_game/mods/player_api/textures/player.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/textures/player.png 644 0 0
+file /games/minetest_game/mods/player_api/textures/player_back.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/player_api/textures/player_back.png 644 0 0
+file /games/minetest_game/mods/screwdriver/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/screwdriver/README.txt 644 0 0
+file /games/minetest_game/mods/screwdriver/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/screwdriver/init.lua 644 0 0
+file /games/minetest_game/mods/screwdriver/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/screwdriver/license.txt 644 0 0
+file /games/minetest_game/mods/screwdriver/textures/screwdriver.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/screwdriver/textures/screwdriver.png 644 0 0
+file /games/minetest_game/mods/sethome/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/sethome/README.txt 644 0 0
+file /games/minetest_game/mods/sethome/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/sethome/init.lua 644 0 0
+file /games/minetest_game/mods/sethome/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/sethome/license.txt 644 0 0
+file /games/minetest_game/mods/sfinv/README.md ${STAGING_DIR}/usr/local/games/minetest_game/mods/sfinv/README.md 644 0 0
+file /games/minetest_game/mods/sfinv/api.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/sfinv/api.lua 644 0 0
+file /games/minetest_game/mods/sfinv/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/sfinv/depends.txt 644 0 0
+file /games/minetest_game/mods/sfinv/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/sfinv/init.lua 644 0 0
+file /games/minetest_game/mods/stairs/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/README.txt 644 0 0
+file /games/minetest_game/mods/stairs/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/depends.txt 644 0 0
+file /games/minetest_game/mods/stairs/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/init.lua 644 0 0
+file /games/minetest_game/mods/stairs/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/license.txt 644 0 0
+file /games/minetest_game/mods/stairs/models/stairs_stair.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/models/stairs_stair.obj 644 0 0
+file /games/minetest_game/mods/stairs/models/stairs_stair_inner.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/models/stairs_stair_inner.obj 644 0 0
+file /games/minetest_game/mods/stairs/models/stairs_stair_outer.obj ${STAGING_DIR}/usr/local/games/minetest_game/mods/stairs/models/stairs_stair_outer.obj 644 0 0
+file /games/minetest_game/mods/tnt/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/README.txt 644 0 0
+file /games/minetest_game/mods/tnt/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/depends.txt 644 0 0
+file /games/minetest_game/mods/tnt/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/init.lua 644 0 0
+file /games/minetest_game/mods/tnt/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/license.txt 644 0 0
+file /games/minetest_game/mods/tnt/sounds/tnt_explode.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/sounds/tnt_explode.ogg 644 0 0
+file /games/minetest_game/mods/tnt/sounds/tnt_gunpowder_burning.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/sounds/tnt_gunpowder_burning.ogg 644 0 0
+file /games/minetest_game/mods/tnt/sounds/tnt_ignite.ogg ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/sounds/tnt_ignite.ogg 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_blast.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_blast.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_boom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_boom.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_bottom.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_bottom.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_crossing_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_crossing_animated.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_curved_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_curved_animated.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_straight_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_straight_animated.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_t_junction_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_burning_t_junction_animated.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_crossing.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_crossing.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_curved.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_curved.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_inventory.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_inventory.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_straight.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_straight.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_gunpowder_t_junction.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_gunpowder_t_junction.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_side.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_side.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_smoke.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_smoke.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_top.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_top_burning.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_top_burning.png 644 0 0
+file /games/minetest_game/mods/tnt/textures/tnt_top_burning_animated.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/tnt/textures/tnt_top_burning_animated.png 644 0 0
+file /games/minetest_game/mods/vessels/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/README.txt 644 0 0
+file /games/minetest_game/mods/vessels/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/depends.txt 644 0 0
+file /games/minetest_game/mods/vessels/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/init.lua 644 0 0
+file /games/minetest_game/mods/vessels/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/license.txt 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_drinking_glass.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_drinking_glass.png 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_drinking_glass_inv.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_drinking_glass_inv.png 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_glass_bottle.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_glass_bottle.png 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_glass_fragments.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_glass_fragments.png 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_shelf.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_shelf.png 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_shelf_slot.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_shelf_slot.png 644 0 0
+file /games/minetest_game/mods/vessels/textures/vessels_steel_bottle.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/vessels/textures/vessels_steel_bottle.png 644 0 0
+file /games/minetest_game/mods/walls/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/walls/README.txt 644 0 0
+file /games/minetest_game/mods/walls/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/walls/depends.txt 644 0 0
+file /games/minetest_game/mods/walls/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/walls/init.lua 644 0 0
+file /games/minetest_game/mods/walls/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/walls/license.txt 644 0 0
+file /games/minetest_game/mods/wool/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/README.txt 644 0 0
+file /games/minetest_game/mods/wool/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/depends.txt 644 0 0
+file /games/minetest_game/mods/wool/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/init.lua 644 0 0
+file /games/minetest_game/mods/wool/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/license.txt 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_black.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_black.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_blue.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_blue.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_brown.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_brown.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_cyan.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_cyan.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_dark_green.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_dark_green.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_dark_grey.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_dark_grey.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_green.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_green.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_grey.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_grey.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_magenta.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_magenta.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_orange.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_orange.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_pink.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_pink.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_red.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_red.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_violet.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_violet.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_white.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_white.png 644 0 0
+file /games/minetest_game/mods/wool/textures/wool_yellow.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/wool/textures/wool_yellow.png 644 0 0
+file /games/minetest_game/mods/xpanes/README.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/README.txt 644 0 0
+file /games/minetest_game/mods/xpanes/depends.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/depends.txt 644 0 0
+file /games/minetest_game/mods/xpanes/init.lua ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/init.lua 644 0 0
+file /games/minetest_game/mods/xpanes/license.txt ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/license.txt 644 0 0
+file /games/minetest_game/mods/xpanes/textures/xpanes_bar.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/textures/xpanes_bar.png 644 0 0
+file /games/minetest_game/mods/xpanes/textures/xpanes_bar_top.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/textures/xpanes_bar_top.png 644 0 0
+file /games/minetest_game/mods/xpanes/textures/xpanes_pane_half.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/textures/xpanes_pane_half.png 644 0 0
+file /games/minetest_game/mods/xpanes/textures/xpanes_space.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/textures/xpanes_space.png 644 0 0
+file /games/minetest_game/mods/xpanes/textures/xpanes_white.png ${STAGING_DIR}/usr/local/games/minetest_game/mods/xpanes/textures/xpanes_white.png 644 0 0
+file /games/minetest_game/settingtypes.txt ${STAGING_DIR}/usr/local/games/minetest_game/settingtypes.txt 644 0 0
+file /games/minimal/game.conf ${STAGING_DIR}/usr/local/games/minimal/game.conf 644 0 0
+file /games/minimal/menu/background.png ${STAGING_DIR}/usr/local/games/minimal/menu/background.png 644 0 0
+file /games/minimal/menu/icon.png ${STAGING_DIR}/usr/local/games/minimal/menu/icon.png 644 0 0
+file /games/minimal/mods/bucket/depends.txt ${STAGING_DIR}/usr/local/games/minimal/mods/bucket/depends.txt 644 0 0
+file /games/minimal/mods/bucket/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/bucket/init.lua 644 0 0
+file /games/minimal/mods/bucket/textures/bucket.png ${STAGING_DIR}/usr/local/games/minimal/mods/bucket/textures/bucket.png 644 0 0
+file /games/minimal/mods/bucket/textures/bucket_lava.png ${STAGING_DIR}/usr/local/games/minimal/mods/bucket/textures/bucket_lava.png 644 0 0
+file /games/minimal/mods/bucket/textures/bucket_water.png ${STAGING_DIR}/usr/local/games/minimal/mods/bucket/textures/bucket_water.png 644 0 0
+file /games/minimal/mods/default/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/default/init.lua 644 0 0
+file /games/minimal/mods/default/mapgen.lua ${STAGING_DIR}/usr/local/games/minimal/mods/default/mapgen.lua 644 0 0
+file /games/minimal/mods/default/sounds/default_grass_footstep.1.ogg ${STAGING_DIR}/usr/local/games/minimal/mods/default/sounds/default_grass_footstep.1.ogg 644 0 0
+file /games/minimal/mods/default/textures/bubble.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/bubble.png 644 0 0
+file /games/minimal/mods/default/textures/crack_anylength.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/crack_anylength.png 644 0 0
+file /games/minimal/mods/default/textures/default_apple.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_apple.png 644 0 0
+file /games/minimal/mods/default/textures/default_book.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_book.png 644 0 0
+file /games/minimal/mods/default/textures/default_bookshelf.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_bookshelf.png 644 0 0
+file /games/minimal/mods/default/textures/default_brick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_brick.png 644 0 0
+file /games/minimal/mods/default/textures/default_cactus_side.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_cactus_side.png 644 0 0
+file /games/minimal/mods/default/textures/default_cactus_top.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_cactus_top.png 644 0 0
+file /games/minimal/mods/default/textures/default_chest.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_chest.png 644 0 0
+file /games/minimal/mods/default/textures/default_clay.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_clay.png 644 0 0
+file /games/minimal/mods/default/textures/default_clay_brick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_clay_brick.png 644 0 0
+file /games/minimal/mods/default/textures/default_clay_lump.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_clay_lump.png 644 0 0
+file /games/minimal/mods/default/textures/default_cloud.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_cloud.png 644 0 0
+file /games/minimal/mods/default/textures/default_coal_lump.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_coal_lump.png 644 0 0
+file /games/minimal/mods/default/textures/default_cobble.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_cobble.png 644 0 0
+file /games/minimal/mods/default/textures/default_dirt.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_dirt.png 644 0 0
+file /games/minimal/mods/default/textures/default_fence.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_fence.png 644 0 0
+file /games/minimal/mods/default/textures/default_furnace_fire_bg.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_furnace_fire_bg.png 644 0 0
+file /games/minimal/mods/default/textures/default_furnace_fire_fg.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_furnace_fire_fg.png 644 0 0
+file /games/minimal/mods/default/textures/default_furnace_front.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_furnace_front.png 644 0 0
+file /games/minimal/mods/default/textures/default_furnace_front_active.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_furnace_front_active.png 644 0 0
+file /games/minimal/mods/default/textures/default_furnace_side.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_furnace_side.png 644 0 0
+file /games/minimal/mods/default/textures/default_glass.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_glass.png 644 0 0
+file /games/minimal/mods/default/textures/default_grass.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_grass.png 644 0 0
+file /games/minimal/mods/default/textures/default_grass_footsteps.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_grass_footsteps.png 644 0 0
+file /games/minimal/mods/default/textures/default_grass_side.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_grass_side.png 644 0 0
+file /games/minimal/mods/default/textures/default_gravel.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_gravel.png 644 0 0
+file /games/minimal/mods/default/textures/default_iron_lump.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_iron_lump.png 644 0 0
+file /games/minimal/mods/default/textures/default_junglegrass.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_junglegrass.png 644 0 0
+file /games/minimal/mods/default/textures/default_ladder.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_ladder.png 644 0 0
+file /games/minimal/mods/default/textures/default_lava.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_lava.png 644 0 0
+file /games/minimal/mods/default/textures/default_lava_flowing_animated.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_lava_flowing_animated.png 644 0 0
+file /games/minimal/mods/default/textures/default_lava_source_animated.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_lava_source_animated.png 644 0 0
+file /games/minimal/mods/default/textures/default_leaves.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_leaves.png 644 0 0
+file /games/minimal/mods/default/textures/default_mese.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_mese.png 644 0 0
+file /games/minimal/mods/default/textures/default_mineral_coal.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_mineral_coal.png 644 0 0
+file /games/minimal/mods/default/textures/default_mineral_iron.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_mineral_iron.png 644 0 0
+file /games/minimal/mods/default/textures/default_mossycobble.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_mossycobble.png 644 0 0
+file /games/minimal/mods/default/textures/default_nc_back.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_nc_back.png 644 0 0
+file /games/minimal/mods/default/textures/default_nc_front.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_nc_front.png 644 0 0
+file /games/minimal/mods/default/textures/default_nc_rb.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_nc_rb.png 644 0 0
+file /games/minimal/mods/default/textures/default_nc_side.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_nc_side.png 644 0 0
+file /games/minimal/mods/default/textures/default_paper.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_paper.png 644 0 0
+file /games/minimal/mods/default/textures/default_papyrus.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_papyrus.png 644 0 0
+file /games/minimal/mods/default/textures/default_rail.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_rail.png 644 0 0
+file /games/minimal/mods/default/textures/default_rail_crossing.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_rail_crossing.png 644 0 0
+file /games/minimal/mods/default/textures/default_rail_curved.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_rail_curved.png 644 0 0
+file /games/minimal/mods/default/textures/default_rail_t_junction.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_rail_t_junction.png 644 0 0
+file /games/minimal/mods/default/textures/default_river_water.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_river_water.png 644 0 0
+file /games/minimal/mods/default/textures/default_sand.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_sand.png 644 0 0
+file /games/minimal/mods/default/textures/default_sandstone.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_sandstone.png 644 0 0
+file /games/minimal/mods/default/textures/default_sapling.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_sapling.png 644 0 0
+file /games/minimal/mods/default/textures/default_scorched_stuff.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_scorched_stuff.png 644 0 0
+file /games/minimal/mods/default/textures/default_sign_wall.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_sign_wall.png 644 0 0
+file /games/minimal/mods/default/textures/default_steel_block.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_steel_block.png 644 0 0
+file /games/minimal/mods/default/textures/default_steel_ingot.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_steel_ingot.png 644 0 0
+file /games/minimal/mods/default/textures/default_stick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_stick.png 644 0 0
+file /games/minimal/mods/default/textures/default_stone.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_stone.png 644 0 0
+file /games/minimal/mods/default/textures/default_tnt_bottom.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tnt_bottom.png 644 0 0
+file /games/minimal/mods/default/textures/default_tnt_side.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tnt_side.png 644 0 0
+file /games/minimal/mods/default/textures/default_tnt_top.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tnt_top.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_mesepick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_mesepick.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_steelaxe.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_steelaxe.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_steelpick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_steelpick.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_steelshovel.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_steelshovel.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_steelsword.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_steelsword.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_stoneaxe.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_stoneaxe.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_stonepick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_stonepick.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_stoneshovel.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_stoneshovel.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_stonesword.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_stonesword.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_woodaxe.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_woodaxe.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_woodpick.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_woodpick.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_woodshovel.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_woodshovel.png 644 0 0
+file /games/minimal/mods/default/textures/default_tool_woodsword.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tool_woodsword.png 644 0 0
+file /games/minimal/mods/default/textures/default_torch.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_torch.png 644 0 0
+file /games/minimal/mods/default/textures/default_torch_on_ceiling.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_torch_on_ceiling.png 644 0 0
+file /games/minimal/mods/default/textures/default_torch_on_floor.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_torch_on_floor.png 644 0 0
+file /games/minimal/mods/default/textures/default_tree.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tree.png 644 0 0
+file /games/minimal/mods/default/textures/default_tree_top.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_tree_top.png 644 0 0
+file /games/minimal/mods/default/textures/default_water.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_water.png 644 0 0
+file /games/minimal/mods/default/textures/default_wood.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/default_wood.png 644 0 0
+file /games/minimal/mods/default/textures/heart.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/heart.png 644 0 0
+file /games/minimal/mods/default/textures/player.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/player.png 644 0 0
+file /games/minimal/mods/default/textures/player_back.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/player_back.png 644 0 0
+file /games/minimal/mods/default/textures/treeprop.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/treeprop.png 644 0 0
+file /games/minimal/mods/default/textures/wieldhand.png ${STAGING_DIR}/usr/local/games/minimal/mods/default/textures/wieldhand.png 644 0 0
+file /games/minimal/mods/experimental/depends.txt ${STAGING_DIR}/usr/local/games/minimal/mods/experimental/depends.txt 644 0 0
+file /games/minimal/mods/experimental/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/experimental/init.lua 644 0 0
+file /games/minimal/mods/experimental/textures/experimental_dummyball.png ${STAGING_DIR}/usr/local/games/minimal/mods/experimental/textures/experimental_dummyball.png 644 0 0
+file /games/minimal/mods/experimental/textures/experimental_tester_tool_1.png ${STAGING_DIR}/usr/local/games/minimal/mods/experimental/textures/experimental_tester_tool_1.png 644 0 0
+file /games/minimal/mods/give_initial_stuff/depends.txt ${STAGING_DIR}/usr/local/games/minimal/mods/give_initial_stuff/depends.txt 644 0 0
+file /games/minimal/mods/give_initial_stuff/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/give_initial_stuff/init.lua 644 0 0
+file /games/minimal/mods/legacy/depends.txt ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/depends.txt 644 0 0
+file /games/minimal/mods/legacy/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/init.lua 644 0 0
+file /games/minimal/mods/legacy/textures/apple_iron.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/apple_iron.png 644 0 0
+file /games/minimal/mods/legacy/textures/cooked_rat.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/cooked_rat.png 644 0 0
+file /games/minimal/mods/legacy/textures/dungeon_master.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/dungeon_master.png 644 0 0
+file /games/minimal/mods/legacy/textures/fireball.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/fireball.png 644 0 0
+file /games/minimal/mods/legacy/textures/firefly.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/firefly.png 644 0 0
+file /games/minimal/mods/legacy/textures/oerkki1.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/oerkki1.png 644 0 0
+file /games/minimal/mods/legacy/textures/oerkki1_damaged.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/oerkki1_damaged.png 644 0 0
+file /games/minimal/mods/legacy/textures/rat.png ${STAGING_DIR}/usr/local/games/minimal/mods/legacy/textures/rat.png 644 0 0
+file /games/minimal/mods/stairs/depends.txt ${STAGING_DIR}/usr/local/games/minimal/mods/stairs/depends.txt 644 0 0
+file /games/minimal/mods/stairs/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/stairs/init.lua 644 0 0
+file /games/minimal/mods/test/init.lua ${STAGING_DIR}/usr/local/games/minimal/mods/test/init.lua 644 0 0
+file /minetest.conf.example ${STAGING_DIR}/usr/local/minetest.conf.example 644 0 0
+file /mods/mods_here.txt ${STAGING_DIR}/usr/local/mods/mods_here.txt 644 0 0
+file /textures/texture_packs_here.txt ${STAGING_DIR}/usr/local/textures/texture_packs_here.txt 644 0 0
+
+##################
+# timzeone files #
+##################
+file /usr/share/zoneinfo/GMT            ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT               0644 0 0
+file /usr/share/zoneinfo/GMT-1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+1             0644 0 0
+file /usr/share/zoneinfo/GMT-10         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+10            0644 0 0
+file /usr/share/zoneinfo/GMT-11         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+11            0644 0 0
+file /usr/share/zoneinfo/GMT-12         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+12            0644 0 0
+file /usr/share/zoneinfo/GMT-2          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+2             0644 0 0
+file /usr/share/zoneinfo/GMT-3          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+3             0644 0 0
+file /usr/share/zoneinfo/GMT-4          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+4             0644 0 0
+file /usr/share/zoneinfo/GMT-5          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+5             0644 0 0
+file /usr/share/zoneinfo/GMT-6          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+6             0644 0 0
+file /usr/share/zoneinfo/GMT-7          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+7             0644 0 0
+file /usr/share/zoneinfo/GMT-8          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+8             0644 0 0
+file /usr/share/zoneinfo/GMT-9          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+9             0644 0 0
+file /usr/share/zoneinfo/GMT+1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-1             0644 0 0
+file /usr/share/zoneinfo/GMT+10         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-10            0644 0 0
+file /usr/share/zoneinfo/GMT+11         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-11            0644 0 0
+file /usr/share/zoneinfo/GMT+12         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-12            0644 0 0
+file /usr/share/zoneinfo/GMT+13         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-13            0644 0 0
+file /usr/share/zoneinfo/GMT+14         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-14            0644 0 0
+file /usr/share/zoneinfo/GMT+2          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-2             0644 0 0
+file /usr/share/zoneinfo/GMT+3          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-3             0644 0 0
+file /usr/share/zoneinfo/GMT+4          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-4             0644 0 0
+file /usr/share/zoneinfo/GMT+5          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-5             0644 0 0
+file /usr/share/zoneinfo/GMT+6          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-6             0644 0 0
+file /usr/share/zoneinfo/GMT+7          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-7             0644 0 0
+file /usr/share/zoneinfo/GMT+8          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-8             0644 0 0
+file /usr/share/zoneinfo/GMT+9          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-9             0644 0 0
+file /usr/share/zoneinfo/UTC            ${STAGING_DIR}/usr/share/zoneinfo/Etc/UTC               0644 0 0
+file /usr/share/zoneinfo/Andorra        ${STAGING_DIR}/usr/share/zoneinfo/Europe/Andorra        0644 0 0
+file /usr/share/zoneinfo/Athens         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Athens         0644 0 0
+file /usr/share/zoneinfo/Belfast        ${STAGING_DIR}/usr/share/zoneinfo/Europe/Belfast        0644 0 0
+file /usr/share/zoneinfo/Belgrade       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Belgrade       0644 0 0
+file /usr/share/zoneinfo/Berlin         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Berlin         0644 0 0
+file /usr/share/zoneinfo/Bratislava     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Bratislava     0644 0 0
+file /usr/share/zoneinfo/Brussels       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Brussels       0644 0 0
+file /usr/share/zoneinfo/Bucharest      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Bucharest      0644 0 0
+file /usr/share/zoneinfo/Budapest       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Budapest       0644 0 0
+file /usr/share/zoneinfo/Busingen       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Busingen       0644 0 0
+file /usr/share/zoneinfo/Chisinau       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Chisinau       0644 0 0
+file /usr/share/zoneinfo/Copenhagen     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Copenhagen     0644 0 0
+file /usr/share/zoneinfo/Dublin         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Dublin         0644 0 0
+file /usr/share/zoneinfo/Gibraltar      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Gibraltar      0644 0 0
+file /usr/share/zoneinfo/Guernsey       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Guernsey       0644 0 0
+file /usr/share/zoneinfo/Helsinki       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Helsinki       0644 0 0
+file /usr/share/zoneinfo/Isle_of_Man    ${STAGING_DIR}/usr/share/zoneinfo/Europe/Isle_of_Man    0644 0 0
+file /usr/share/zoneinfo/Istanbul       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Istanbul       0644 0 0
+file /usr/share/zoneinfo/Jersey         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Jersey         0644 0 0
+file /usr/share/zoneinfo/Kaliningrad    ${STAGING_DIR}/usr/share/zoneinfo/Europe/Kaliningrad    0644 0 0
+file /usr/share/zoneinfo/Kiev           ${STAGING_DIR}/usr/share/zoneinfo/Europe/Kiev           0644 0 0
+file /usr/share/zoneinfo/Lisbon         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Lisbon         0644 0 0
+file /usr/share/zoneinfo/Ljubljana      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Ljubljana      0644 0 0
+file /usr/share/zoneinfo/London         ${STAGING_DIR}/usr/share/zoneinfo/Europe/London         0644 0 0
+file /usr/share/zoneinfo/Luxembourg     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Luxembourg     0644 0 0
+file /usr/share/zoneinfo/Madrid         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Madrid         0644 0 0
+file /usr/share/zoneinfo/Malta          ${STAGING_DIR}/usr/share/zoneinfo/Europe/Malta          0644 0 0
+file /usr/share/zoneinfo/Mariehamn      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Mariehamn      0644 0 0
+file /usr/share/zoneinfo/Minsk          ${STAGING_DIR}/usr/share/zoneinfo/Europe/Minsk          0644 0 0
+file /usr/share/zoneinfo/Monaco         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Monaco         0644 0 0
+file /usr/share/zoneinfo/Moscow         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Moscow         0644 0 0
+file /usr/share/zoneinfo/Nicosia        ${STAGING_DIR}/usr/share/zoneinfo/Europe/Nicosia        0644 0 0
+file /usr/share/zoneinfo/Oslo           ${STAGING_DIR}/usr/share/zoneinfo/Europe/Oslo           0644 0 0
+file /usr/share/zoneinfo/Paris          ${STAGING_DIR}/usr/share/zoneinfo/Europe/Paris          0644 0 0
+file /usr/share/zoneinfo/Podgorica      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Podgorica      0644 0 0
+file /usr/share/zoneinfo/Prague         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Prague         0644 0 0
+file /usr/share/zoneinfo/Regensburg     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Berlin         0644 0 0
+file /usr/share/zoneinfo/Riga           ${STAGING_DIR}/usr/share/zoneinfo/Europe/Riga           0644 0 0
+file /usr/share/zoneinfo/Rome           ${STAGING_DIR}/usr/share/zoneinfo/Europe/Rome           0644 0 0
+file /usr/share/zoneinfo/Samara         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Samara         0644 0 0
+file /usr/share/zoneinfo/San_Marino     ${STAGING_DIR}/usr/share/zoneinfo/Europe/San_Marino     0644 0 0
+file /usr/share/zoneinfo/Sarajevo       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Sarajevo       0644 0 0
+file /usr/share/zoneinfo/Simferopol     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Simferopol     0644 0 0
+file /usr/share/zoneinfo/Skopje         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Skopje         0644 0 0
+file /usr/share/zoneinfo/Sofia          ${STAGING_DIR}/usr/share/zoneinfo/Europe/Sofia          0644 0 0
+file /usr/share/zoneinfo/Stockholm      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Stockholm      0644 0 0
+file /usr/share/zoneinfo/Tallinn        ${STAGING_DIR}/usr/share/zoneinfo/Europe/Tallinn        0644 0 0
+file /usr/share/zoneinfo/Tirane         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Tirane         0644 0 0
+file /usr/share/zoneinfo/Tiraspol       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Tiraspol       0644 0 0
+file /usr/share/zoneinfo/Uzhgorod       ${STAGING_DIR}/usr/share/zoneinfo/Europe/Uzhgorod       0644 0 0
+file /usr/share/zoneinfo/Vaduz          ${STAGING_DIR}/usr/share/zoneinfo/Europe/Vaduz          0644 0 0
+file /usr/share/zoneinfo/Vatican        ${STAGING_DIR}/usr/share/zoneinfo/Europe/Vatican        0644 0 0
+file /usr/share/zoneinfo/Vienna         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Vienna         0644 0 0
+file /usr/share/zoneinfo/Vilnius        ${STAGING_DIR}/usr/share/zoneinfo/Europe/Vilnius        0644 0 0
+file /usr/share/zoneinfo/Volgograd      ${STAGING_DIR}/usr/share/zoneinfo/Europe/Volgograd      0644 0 0
+file /usr/share/zoneinfo/Warsaw         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Warsaw         0644 0 0
+file /usr/share/zoneinfo/Zagreb         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Zagreb         0644 0 0
+file /usr/share/zoneinfo/Zaporozhye     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Zaporozhye     0644 0 0
+file /usr/share/zoneinfo/Zurich         ${STAGING_DIR}/usr/share/zoneinfo/Europe/Zurich         0644 0 0
+slink /etc/localtime                    /usr/share/zoneinfo/Regensburg                          0644 0 0
+
+#################
+# busybox links #
+#################
+# create these lines automatically by executing the next line in "working/busybox-X.Y.Z/build/system"
+# sh scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d _install | grep slink | sed 's|_install|${SKELETON_DIR}|' | sort
+# do not add init and reboot, they are for container users
+slink /bin/ar busybox 777 0 0
+slink /bin/ash busybox 777 0 0
+slink /bin/awk busybox 777 0 0
+slink /bin/base64 busybox 777 0 0
+slink /bin/basename busybox 777 0 0
+slink /bin/bash busybox 777 0 0
+slink /bin/bbconfig busybox 777 0 0
+slink /bin/bunzip2 busybox 777 0 0
+slink /bin/[ busybox 777 0 0
+slink /bin/[[ busybox 777 0 0
+slink /bin/bzcat busybox 777 0 0
+slink /bin/bzip2 busybox 777 0 0
+slink /bin/cal busybox 777 0 0
+slink /bin/cat busybox 777 0 0
+slink /bin/chgrp busybox 777 0 0
+slink /bin/chmod busybox 777 0 0
+slink /bin/chown busybox 777 0 0
+slink /bin/chrt busybox 777 0 0
+slink /bin/cksum busybox 777 0 0
+slink /bin/clear busybox 777 0 0
+slink /bin/cmp busybox 777 0 0
+slink /bin/comm busybox 777 0 0
+slink /bin/cp busybox 777 0 0
+slink /bin/cpio busybox 777 0 0
+slink /bin/crontab busybox 777 0 0
+slink /bin/cryptpw busybox 777 0 0
+slink /bin/cttyhack busybox 777 0 0
+slink /bin/cut busybox 777 0 0
+slink /bin/date busybox 777 0 0
+slink /bin/dc busybox 777 0 0
+slink /bin/dd busybox 777 0 0
+slink /bin/df busybox 777 0 0
+slink /bin/diff busybox 777 0 0
+slink /bin/dirname busybox 777 0 0
+slink /bin/dmesg busybox 777 0 0
+slink /bin/dnsdomainname busybox 777 0 0
+slink /bin/dos2unix busybox 777 0 0
+slink /bin/dpkg busybox 777 0 0
+slink /bin/dpkg-deb busybox 777 0 0
+slink /bin/du busybox 777 0 0
+slink /bin/dumpleases busybox 777 0 0
+slink /bin/echo busybox 777 0 0
+slink /bin/ed busybox 777 0 0
+slink /bin/egrep busybox 777 0 0
+slink /bin/env busybox 777 0 0
+slink /bin/envdir busybox 777 0 0
+slink /bin/envuidgid busybox 777 0 0
+slink /bin/expand busybox 777 0 0
+slink /bin/expr busybox 777 0 0
+slink /bin/factor busybox 777 0 0
+slink /bin/fallocate busybox 777 0 0
+slink /bin/false busybox 777 0 0
+slink /bin/fatattr busybox 777 0 0
+slink /bin/fdflush busybox 777 0 0
+slink /bin/fgrep busybox 777 0 0
+slink /bin/find busybox 777 0 0
+slink /bin/flock busybox 777 0 0
+slink /bin/fold busybox 777 0 0
+slink /bin/free busybox 777 0 0
+slink /bin/fsync busybox 777 0 0
+slink /bin/ftpget busybox 777 0 0
+slink /bin/ftpput busybox 777 0 0
+slink /bin/fuser busybox 777 0 0
+slink /bin/getopt busybox 777 0 0
+slink /bin/grep busybox 777 0 0
+slink /bin/groups busybox 777 0 0
+slink /bin/gunzip busybox 777 0 0
+slink /bin/gzip busybox 777 0 0
+slink /bin/hd busybox 777 0 0
+slink /bin/head busybox 777 0 0
+slink /bin/hexdump busybox 777 0 0
+slink /bin/hostid busybox 777 0 0
+slink /bin/hostname busybox 777 0 0
+slink /bin/id busybox 777 0 0
+slink /bin/install busybox 777 0 0
+slink /bin/ionice busybox 777 0 0
+slink /bin/iostat busybox 777 0 0
+slink /bin/ipcalc busybox 777 0 0
+slink /bin/killall busybox 777 0 0
+slink /bin/kill busybox 777 0 0
+slink /bin/less busybox 777 0 0
+slink /bin/ln busybox 777 0 0
+slink /bin/logger busybox 777 0 0
+slink /bin/login busybox 777 0 0
+slink /bin/logname busybox 777 0 0
+slink /bin/ls busybox 777 0 0
+slink /bin/lsof busybox 777 0 0
+slink /bin/lsscsi busybox 777 0 0
+slink /bin/lsusb busybox 777 0 0
+slink /bin/lzcat busybox 777 0 0
+slink /bin/lzma busybox 777 0 0
+slink /bin/lzop busybox 777 0 0
+slink /bin/lzopcat busybox 777 0 0
+slink /bin/makemime busybox 777 0 0
+slink /bin/md5sum busybox 777 0 0
+slink /bin/microcom busybox 777 0 0
+slink /bin/mkdir busybox 777 0 0
+slink /bin/mkfifo busybox 777 0 0
+slink /bin/mknod busybox 777 0 0
+slink /bin/mktemp busybox 777 0 0
+slink /bin/more busybox 777 0 0
+slink /bin/mount busybox 777 0 0
+slink /bin/mountpoint busybox 777 0 0
+slink /bin/mpstat busybox 777 0 0
+slink /bin/mv busybox 777 0 0
+slink /bin/nc busybox 777 0 0
+slink /bin/netstat busybox 777 0 0
+slink /bin/nice busybox 777 0 0
+slink /bin/nl busybox 777 0 0
+slink /bin/nmeter busybox 777 0 0
+slink /bin/nohup busybox 777 0 0
+slink /bin/nproc busybox 777 0 0
+slink /bin/nsenter busybox 777 0 0
+slink /bin/nslookup busybox 777 0 0
+slink /bin/od busybox 777 0 0
+slink /bin/passwd busybox 777 0 0
+slink /bin/paste busybox 777 0 0
+slink /bin/patch busybox 777 0 0
+slink /bin/pgrep busybox 777 0 0
+slink /bin/pidof busybox 777 0 0
+slink /bin/ping6 busybox 777 0 0
+slink /bin/ping busybox 777 0 0
+slink /bin/pipe_progress busybox 777 0 0
+slink /bin/pkill busybox 777 0 0
+slink /bin/pmap busybox 777 0 0
+slink /bin/printenv busybox 777 0 0
+slink /bin/printf busybox 777 0 0
+slink /bin/ps busybox 777 0 0
+slink /bin/pscan busybox 777 0 0
+slink /bin/pstree busybox 777 0 0
+slink /bin/pwd busybox 777 0 0
+slink /bin/pwdx busybox 777 0 0
+slink /bin/readlink busybox 777 0 0
+slink /bin/realpath busybox 777 0 0
+slink /bin/reformime busybox 777 0 0
+slink /bin/renice busybox 777 0 0
+slink /bin/reset busybox 777 0 0
+slink /bin/resize busybox 777 0 0
+slink /bin/rev busybox 777 0 0
+slink /bin/rm busybox 777 0 0
+slink /bin/rmdir busybox 777 0 0
+slink /bin/rpm2cpio busybox 777 0 0
+slink /bin/rpm busybox 777 0 0
+slink /bin/run-parts busybox 777 0 0
+slink /bin/runsv busybox 777 0 0
+slink /bin/runsvdir busybox 777 0 0
+slink /bin/rx busybox 777 0 0
+slink /bin/script busybox 777 0 0
+slink /bin/scriptreplay busybox 777 0 0
+slink /bin/sed busybox 777 0 0
+slink /bin/seq busybox 777 0 0
+slink /bin/setarch busybox 777 0 0
+slink /bin/setpriv busybox 777 0 0
+slink /bin/setserial busybox 777 0 0
+slink /bin/setsid busybox 777 0 0
+slink /bin/setuidgid busybox 777 0 0
+slink /bin/sha1sum busybox 777 0 0
+slink /bin/sha256sum busybox 777 0 0
+slink /bin/sha3sum busybox 777 0 0
+slink /bin/sha512sum busybox 777 0 0
+slink /bin/sh busybox 777 0 0
+slink /bin/shred busybox 777 0 0
+slink /bin/shuf busybox 777 0 0
+slink /bin/sleep busybox 777 0 0
+slink /bin/smemcap busybox 777 0 0
+slink /bin/softlimit busybox 777 0 0
+slink /bin/sort busybox 777 0 0
+slink /bin/split busybox 777 0 0
+slink /bin/ssl_client busybox 777 0 0
+slink /bin/stat busybox 777 0 0
+slink /bin/strings busybox 777 0 0
+slink /bin/stty busybox 777 0 0
+slink /bin/su busybox 777 0 0
+slink /bin/sum busybox 777 0 0
+slink /bin/sv busybox 777 0 0
+slink /bin/svc busybox 777 0 0
+slink /bin/sync busybox 777 0 0
+slink /bin/tac busybox 777 0 0
+slink /bin/tail busybox 777 0 0
+slink /bin/tar busybox 777 0 0
+slink /bin/tcpsvd busybox 777 0 0
+slink /bin/tee busybox 777 0 0
+slink /bin/telnet busybox 777 0 0
+slink /bin/test busybox 777 0 0
+slink /bin/tftp busybox 777 0 0
+slink /bin/time busybox 777 0 0
+slink /bin/timeout busybox 777 0 0
+slink /bin/top busybox 777 0 0
+slink /bin/touch busybox 777 0 0
+slink /bin/traceroute6 busybox 777 0 0
+slink /bin/traceroute busybox 777 0 0
+slink /bin/tr busybox 777 0 0
+slink /bin/true busybox 777 0 0
+slink /bin/truncate busybox 777 0 0
+slink /bin/tty busybox 777 0 0
+slink /bin/ttysize busybox 777 0 0
+slink /bin/udhcpc6 busybox 777 0 0
+slink /bin/udpsvd busybox 777 0 0
+slink /bin/umount busybox 777 0 0
+slink /bin/uname busybox 777 0 0
+slink /bin/uncompress busybox 777 0 0
+slink /bin/unexpand busybox 777 0 0
+slink /bin/uniq busybox 777 0 0
+slink /bin/unix2dos busybox 777 0 0
+slink /bin/unlink busybox 777 0 0
+slink /bin/unlzop busybox 777 0 0
+slink /bin/unshare busybox 777 0 0
+slink /bin/unxz busybox 777 0 0
+slink /bin/unzip busybox 777 0 0
+slink /bin/uptime busybox 777 0 0
+slink /bin/usleep busybox 777 0 0
+slink /bin/uudecode busybox 777 0 0
+slink /bin/uuencode busybox 777 0 0
+slink /bin/vi busybox 777 0 0
+slink /bin/vlock busybox 777 0 0
+slink /bin/watch busybox 777 0 0
+slink /bin/wc busybox 777 0 0
+slink /bin/wget busybox 777 0 0
+slink /bin/which busybox 777 0 0
+slink /bin/whoami busybox 777 0 0
+slink /bin/whois busybox 777 0 0
+slink /bin/xargs busybox 777 0 0
+slink /bin/xxd busybox 777 0 0
+slink /bin/xzcat busybox 777 0 0
+slink /bin/yes busybox 777 0 0
+slink /bin/zcat busybox 777 0 0
+slink /linuxrc bin/busybox 777 0 0
+slink /sbin/addgroup ../bin/busybox 777 0 0
+slink /sbin/adduser ../bin/busybox 777 0 0
+slink /sbin/adjtimex ../bin/busybox 777 0 0
+slink /sbin/arp ../bin/busybox 777 0 0
+slink /sbin/arping ../bin/busybox 777 0 0
+slink /sbin/blockdev ../bin/busybox 777 0 0
+slink /sbin/brctl ../bin/busybox 777 0 0
+slink /sbin/chat ../bin/busybox 777 0 0
+slink /sbin/chpasswd ../bin/busybox 777 0 0
+slink /sbin/chroot ../bin/busybox 777 0 0
+slink /sbin/crond ../bin/busybox 777 0 0
+slink /sbin/delgroup ../bin/busybox 777 0 0
+slink /sbin/deluser ../bin/busybox 777 0 0
+slink /sbin/devmem ../bin/busybox 777 0 0
+slink /sbin/dhcprelay ../bin/busybox 777 0 0
+slink /sbin/dnsd ../bin/busybox 777 0 0
+slink /sbin/ether-wake ../bin/busybox 777 0 0
+slink /sbin/fakeidentd ../bin/busybox 777 0 0
+slink /sbin/fdisk ../bin/busybox 777 0 0
+slink /sbin/flash_eraseall ../bin/busybox 777 0 0
+slink /sbin/flash_lock ../bin/busybox 777 0 0
+slink /sbin/flash_unlock ../bin/busybox 777 0 0
+slink /sbin/fsfreeze ../bin/busybox 777 0 0
+slink /sbin/fstrim ../bin/busybox 777 0 0
+slink /sbin/ftpd ../bin/busybox 777 0 0
+slink /sbin/getty ../bin/busybox 777 0 0
+slink /sbin/halt ../bin/busybox 777 0 0
+slink /sbin/httpd ../bin/busybox 777 0 0
+slink /sbin/hwclock ../bin/busybox 777 0 0
+slink /sbin/i2cdetect ../bin/busybox 777 0 0
+slink /sbin/i2cdump ../bin/busybox 777 0 0
+slink /sbin/i2cget ../bin/busybox 777 0 0
+slink /sbin/i2cset ../bin/busybox 777 0 0
+slink /sbin/ifconfig ../bin/busybox 777 0 0
+slink /sbin/ifdown ../bin/busybox 777 0 0
+slink /sbin/ifenslave ../bin/busybox 777 0 0
+slink /sbin/ifup ../bin/busybox 777 0 0
+slink /sbin/inetd ../bin/busybox 777 0 0
+#slink /sbin/init ../bin/busybox 777 0 0
+slink /sbin/inotifyd ../bin/busybox 777 0 0
+slink /sbin/ipaddr ../bin/busybox 777 0 0
+slink /sbin/ip ../bin/busybox 777 0 0
+slink /sbin/iplink ../bin/busybox 777 0 0
+slink /sbin/ipneigh ../bin/busybox 777 0 0
+slink /sbin/iproute ../bin/busybox 777 0 0
+slink /sbin/iprule ../bin/busybox 777 0 0
+slink /sbin/iptunnel ../bin/busybox 777 0 0
+slink /sbin/killall5 ../bin/busybox 777 0 0
+slink /sbin/logread ../bin/busybox 777 0 0
+slink /sbin/losetup ../bin/busybox 777 0 0
+slink /sbin/mkdosfs ../bin/busybox 777 0 0
+slink /sbin/mkfs.vfat ../bin/busybox 777 0 0
+slink /sbin/mkswap ../bin/busybox 777 0 0
+slink /sbin/nbd-client ../bin/busybox 777 0 0
+slink /sbin/ntpd ../bin/busybox 777 0 0
+slink /sbin/partprobe ../bin/busybox 777 0 0
+slink /sbin/pivot_root ../bin/busybox 777 0 0
+slink /sbin/popmaildir ../bin/busybox 777 0 0
+slink /sbin/poweroff ../bin/busybox 777 0 0
+slink /sbin/rdate ../bin/busybox 777 0 0
+slink /sbin/rdev ../bin/busybox 777 0 0
+slink /sbin/readprofile ../bin/busybox 777 0 0
+#slink /sbin/reboot ../bin/busybox 777 0 0
+slink /sbin/route ../bin/busybox 777 0 0
+slink /sbin/sendmail ../bin/busybox 777 0 0
+slink /sbin/slattach ../bin/busybox 777 0 0
+slink /sbin/start-stop-daemon ../bin/busybox 777 0 0
+slink /sbin/sulogin ../bin/busybox 777 0 0
+slink /sbin/svlogd ../bin/busybox 777 0 0
+slink /sbin/swapoff ../bin/busybox 777 0 0
+slink /sbin/swapon ../bin/busybox 777 0 0
+slink /sbin/sysctl ../bin/busybox 777 0 0
+slink /sbin/syslogd ../bin/busybox 777 0 0
+slink /sbin/telnetd ../bin/busybox 777 0 0
+slink /sbin/tftpd ../bin/busybox 777 0 0
+slink /sbin/tunctl ../bin/busybox 777 0 0
+slink /sbin/udhcpc ../bin/busybox 777 0 0
+slink /sbin/udhcpd ../bin/busybox 777 0 0
+slink /sbin/uevent ../bin/busybox 777 0 0
+slink /sbin/vconfig ../bin/busybox 777 0 0
