@@ -42,7 +42,6 @@ iperf-2.0.9.sh
 iptables-1.6.0.sh
 iputils-s20151218.sh
 lighttpd-1.4.39.sh
-lua-5.3.3.sh
 mcip-tool-v1.sh
 metalog-3.sh
 mosquitto-1.4.12.sh
@@ -67,6 +66,9 @@ open62541.sh
 paho.mqtt.c.sh
 libFORTEControls-1.0.sh
 forte-1.8.4.sh
+lua-5.3.3.sh
+irrlicht-1.8.4.sh
+minetest-stable-0.4.sh
 
 php-7.1.6.sh
 python-2.7.13.sh
