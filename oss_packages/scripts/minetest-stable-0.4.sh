@@ -45,7 +45,7 @@ compile()
         -DRUN_IN_PLACE=TRUE \
         -DBUILD_CLIENT=FALSE \
         -DBUILD_SERVER=TRUE \
-        -DENABLE_SOUND=TRUE \
+        -DENABLE_SOUND=FALSE \
         -DENABLE_CURSES=FALSE \
         -DENABLE_FREETYPE=FALSE \
         -DENABLE_GETTEXT=FALSE \
@@ -54,11 +54,8 @@ compile()
         -DENABLE_POSTGRESQL=FALSE \
         -DENABLE_REDIS=FALSE \
         -DENABLE_SPATIAL=FALSE \
-        -DENABLE_SOUND=FALSE \
         -DENABLE_LUAJIT=FALSE \
         -DDOXYGEN_EXECUTABLE=true \
-        -DIRRLICHT_INCLUDE_DIR=false \
-        -DRUN_IN_PLACE=true \
         -DIRRLICHT_INCLUDE_DIR="${PKG_BUILD_DIR}/../irrlicht-1.8.4/include"
 
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
