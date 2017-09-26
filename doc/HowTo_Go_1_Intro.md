@@ -5,11 +5,11 @@
 ### Introduction
 Go (golang) is a very intuitive programming language, which is comparable
 to C and creates statically linked binaries for several 
-architectures. Go ist designed for efficient, high performing and low latency 
+architectures. Go is designed for efficient, high performing and low latency 
 server applications. With Go you can create ARM binaries which run inside a 
 container without any dependencies. Build, copy and run. 
 
-For more informations about Go, visit [www.golang.org](https://golang.org/ "Go").     
+For more information about Go, visit [www.golang.org](https://golang.org/ "Go").     
 
 ### Setup Development Environment
 Download and setup Go on your computer. You can find binaries for Windows,
@@ -52,7 +52,7 @@ C:\> <b>cd Users\maxmuster\go</b>
 C:\Users\maxmuster\go> <b>mkdir src\maxmuster.de\hello</b>
 </pre>
 
-Open your favorite text editor, copy and paste the following source code and
+Open your favourite text editor, copy and paste the following source code and
 save the file inside the previously created source directory. Name the source 
 file: hello.go
 ```go

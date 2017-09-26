@@ -41,7 +41,7 @@ To create a container with the Mosquitto MQTT broker service please follow these
 </pre>
 
 #### 3. Import the container
-Now start up your MRX device and log in to the webinterface.<br> 
+Now start up your MRX device and log in to the web interface.<br> 
 Go to */Administration/Container*, click the *choose file* button and select the created container (see *~/M3_Container/images/* in your git repository).<br>
 After that, click *OK* to start the upload. Then configure *Bridge to Net* and *IP address* of the container.
 
@@ -242,4 +242,4 @@ root@container-1234 ~  $ <b>./mqttpub</b>
 
 Your subscriber should show the same output as the previous run on your
 local machine. You're running a MQTT client, written with Go, 
-inside your container sucessfully. Done!
+inside your container successfully. Done!

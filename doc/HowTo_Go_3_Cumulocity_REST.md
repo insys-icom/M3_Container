@@ -154,7 +154,7 @@ func main() {
 ### Run this application inside your container
 You need to build a ARM
 binary as described in the Quick Start Guide. In case of a Mac OS X based
-developement workstation run:
+development workstation run:
 <pre>
 $ <b>env GOOS=linux GOARCH=arm GOARM=7 go build -v /Users/maxmuster/go/src/github.com/maxmuster.de/cumulocity/cumulocity.go</b>
 $ <b>scp cumulocity root@&lt;your-container-ip-address&gt;:~/</b>
@@ -162,7 +162,7 @@ $ <b>ssh root@&lt;your-container-ip-address&gt;</b>
 password: *****
 root@container-1234 ~  $ <b>./cumulocity</b>
 2016/09/21 21:20:48 MyWeatherMeasurementDemo JSON data: {"source":{"id":"*****"},"time":"2016-09-21T21:20:48.98678944+02:00","type":"MyWeatherMeasurementDemo","WeatherData":{"Weather Station Regensburg":{"unit":"°C","value":10.8}}}
-Succesfully added the measurement to Cumulocity.
+Successfully added the measurement to Cumulocity.
 </pre>
 
 > **IMPORTANT**
