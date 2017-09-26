@@ -31,7 +31,7 @@ mcip.sh
 dnsmasq-2.76.sh
 dropbear-2017.75.sh
 ebtables-v2.0.10-4.sh
-expat-2.2.0.sh
+expat-2.2.4.sh
 finit-1.10.sh
 gdbm-1.12.sh
 get_pip.sh
