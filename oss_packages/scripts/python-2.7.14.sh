@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-2.7.13"
+PKG_DIR="Python-2.7.14"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
+# https://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="53b43534153bb2a0363f08bae8b9d990"
+PKG_CHECKSUM="1f6db41ad91d9eb0a6f0c769b8613c5b"
 
 
 

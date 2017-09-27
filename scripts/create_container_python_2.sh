@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} ncurses-6.0.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2l.sh"
 PACKAGES="${PACKAGES} readline-6.3.sh"
 PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
-PACKAGES="${PACKAGES} python-2.7.13.sh"
+PACKAGES="${PACKAGES} python-2.7.14.sh"
 
 SCRIPTSDIR="$(dirname $0)"
 TOPDIR="$(realpath ${SCRIPTSDIR}/..)"

@@ -71,7 +71,7 @@ libFORTEControls-1.0.sh
 forte-1.8.4.sh
 
 php-7.1.6.sh
-python-2.7.13.sh
+python-2.7.14.sh
 python-3.6.2.sh
 modbus_to_mqtt_gateway-1.0.sh
 app_handler-1.0.sh
