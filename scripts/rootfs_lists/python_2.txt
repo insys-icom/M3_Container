@@ -834,13 +834,13 @@ file /lib/python2.7/lib2to3/fixes/fix_xrange.pyc ${STAGING_DIR}/usr/local/lib/py
 file /lib/python2.7/lib2to3/fixes/fix_xreadlines.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/fixes/fix_xreadlines.pyc 644 0 0
 file /lib/python2.7/lib2to3/fixes/fix_zip.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/fixes/fix_zip.pyc 644 0 0
 file /lib/python2.7/lib2to3/fixes/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/fixes/__init__.pyc 644 0 0
-file /lib/python2.7/lib2to3/Grammar2.7.10.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.10.final.0.pickle 644 0 0
+file /lib/python2.7/lib2to3/Grammar2.7.12.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.12.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/Grammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar.txt 644 0 0
 file /lib/python2.7/lib2to3/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__init__.pyc 644 0 0
 file /lib/python2.7/lib2to3/__main__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__main__.pyc 644 0 0
 file /lib/python2.7/lib2to3/main.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/main.pyc 644 0 0
 file /lib/python2.7/lib2to3/patcomp.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/patcomp.pyc 644 0 0
-file /lib/python2.7/lib2to3/PatternGrammar2.7.10.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.10.final.0.pickle 644 0 0
+file /lib/python2.7/lib2to3/PatternGrammar2.7.12.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.12.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/PatternGrammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar.txt 644 0 0
 file /lib/python2.7/lib2to3/pgen2/conv.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/pgen2/conv.pyc 644 0 0
 file /lib/python2.7/lib2to3/pgen2/driver.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/pgen2/driver.pyc 644 0 0
