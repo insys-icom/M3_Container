@@ -117,10 +117,10 @@ Starting and stopping a container may require root permissions on the host syste
     <pre>
     $ su root
     Passwort: 
-    root@host ~ # lxc-start -F -P /var/lib/lxc -n m3sdk
+    root@host ~ # lxc-start -P /var/lib/lxc -n m3sdk
     </pre>
 
-Optionally open another console in the SDK:
+Open a console of the SDK:
     <pre>
     root@host ~ # lxc-console -P /var/lib/lxc -n m3sdk
     </pre>
