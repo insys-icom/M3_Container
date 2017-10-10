@@ -111,7 +111,7 @@ file /lib/ld-2.22.so                  ${SYSROOT_DIR}/lib/ld-2.22.so             
 file /lib/libcrypt.so.1               ${SYSROOT_DIR}/lib/libcrypt-2.22.so            0755 0 0
 file /lib/libutil.so.1                ${SYSROOT_DIR}/lib/libutil-2.22.so             0755 0 0
 file /lib/libresolv.so.2              ${SYSROOT_DIR}/lib/libresolv-2.22.so           0755 0 0
-file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.6            0755 0 0
+file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.9            0755 0 0
 file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib/libdl-2.22.so               0755 0 0
 file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib/libpthread-2.22.so          0755 0 0
 file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm-2.22.so                0755 0 0
@@ -226,7 +226,7 @@ file /lib/libcrypto.so.1.0.0           ${STAGING_DIR}/lib/libcrypto.so.1.0.0    
 ##################
 # lighttpd files #
 ##################
-file /bin/lighttpd                         ${STAGING_DIR}/usr/local/sbin/armv7a-hardfloat-linux-gnueabi-lighttpd            0755 0 0
+file /bin/lighttpd                         ${STAGING_DIR}/usr/local/sbin/lighttpd               0755 0 0
 file /etc/lighttpd.conf                    ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_modbus_to_mqtt_gateway.conf         0644 0 0
 file /etc/cgi.conf                         ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_cgi.conf                            0644 0 0
 file /usr/application/lighttpd_login       ${SKELETON_DIR}/etc/lighttpd.conf.d/lighttpd_login                               0755 1001 1001
@@ -234,9 +234,10 @@ file /usr/local/lib/mod_access.so          ${STAGING_DIR}/usr/local/lib/mod_acce
 file /usr/local/lib/mod_accesslog.so       ${STAGING_DIR}/usr/local/lib/mod_accesslog.so        0755 0 0
 file /usr/local/lib/mod_alias.so           ${STAGING_DIR}/usr/local/lib/mod_alias.so            0755 0 0
 file /usr/local/lib/mod_auth.so            ${STAGING_DIR}/usr/local/lib/mod_auth.so             0755 0 0
+file /usr/local/lib/mod_authn_file.so      ${STAGING_DIR}/usr/local/lib/mod_authn_file.so       0755 0 0
 file /usr/local/lib/mod_cgi.so             ${STAGING_DIR}/usr/local/lib/mod_cgi.so              0755 0 0
-file /usr/local/lib/mod_cml.so             ${STAGING_DIR}/usr/local/lib/mod_cml.so              0755 0 0
 file /usr/local/lib/mod_compress.so        ${STAGING_DIR}/usr/local/lib/mod_compress.so         0755 0 0
+file /usr/local/lib/mod_deflate.so         ${STAGING_DIR}/usr/local/lib/mod_deflate.so          0755 0 0
 file /usr/local/lib/mod_dirlisting.so      ${STAGING_DIR}/usr/local/lib/mod_dirlisting.so       0755 0 0
 file /usr/local/lib/mod_evasive.so         ${STAGING_DIR}/usr/local/lib/mod_evasive.so          0755 0 0
 file /usr/local/lib/mod_evhost.so          ${STAGING_DIR}/usr/local/lib/mod_evhost.so           0755 0 0
@@ -245,8 +246,6 @@ file /usr/local/lib/mod_extforward.so      ${STAGING_DIR}/usr/local/lib/mod_extf
 file /usr/local/lib/mod_fastcgi.so         ${STAGING_DIR}/usr/local/lib/mod_fastcgi.so          0755 0 0
 file /usr/local/lib/mod_flv_streaming.so   ${STAGING_DIR}/usr/local/lib/mod_flv_streaming.so    0755 0 0
 file /usr/local/lib/mod_indexfile.so       ${STAGING_DIR}/usr/local/lib/mod_indexfile.so        0755 0 0
-file /usr/local/lib/mod_magnet.so          ${STAGING_DIR}/usr/local/lib/mod_magnet.so           0755 0 0
-file /usr/local/lib/mod_mysql_vhost.so     ${STAGING_DIR}/usr/local/lib/mod_mysql_vhost.so      0755 0 0
 file /usr/local/lib/mod_proxy.so           ${STAGING_DIR}/usr/local/lib/mod_proxy.so            0755 0 0
 file /usr/local/lib/mod_redirect.so        ${STAGING_DIR}/usr/local/lib/mod_redirect.so         0755 0 0
 file /usr/local/lib/mod_rewrite.so         ${STAGING_DIR}/usr/local/lib/mod_rewrite.so          0755 0 0
@@ -259,6 +258,7 @@ file /usr/local/lib/mod_ssi.so             ${STAGING_DIR}/usr/local/lib/mod_ssi.
 file /usr/local/lib/mod_staticfile.so      ${STAGING_DIR}/usr/local/lib/mod_staticfile.so       0755 0 0
 file /usr/local/lib/mod_status.so          ${STAGING_DIR}/usr/local/lib/mod_status.so           0755 0 0
 file /usr/local/lib/mod_trigger_b4_dl.so   ${STAGING_DIR}/usr/local/lib/mod_trigger_b4_dl.so    0755 0 0
+file /usr/local/lib/mod_uploadprogress.so  ${STAGING_DIR}/usr/local/lib/mod_uploadprogress.so   0755 0 0
 file /usr/local/lib/mod_userdir.so         ${STAGING_DIR}/usr/local/lib/mod_userdir.so          0755 0 0
 file /usr/local/lib/mod_usertrack.so       ${STAGING_DIR}/usr/local/lib/mod_usertrack.so        0755 0 0
 file /usr/local/lib/mod_webdav.so          ${STAGING_DIR}/usr/local/lib/mod_webdav.so           0755 0 0

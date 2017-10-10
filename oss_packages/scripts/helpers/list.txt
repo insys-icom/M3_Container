@@ -24,7 +24,7 @@ libmrx_control-1.0.sh
 libnet-1.2-rc3.sh
 ncurses-6.0.sh
 nettle-3.2.sh
-pcre-8.38.sh
+pcre-8.41.sh
 readline-6.3.sh
 mcip.sh
 
@@ -41,7 +41,7 @@ i2c-tools-3.1.2.sh
 iperf-2.0.9.sh
 iptables-1.6.0.sh
 iputils-s20151218.sh
-lighttpd-1.4.39.sh
+lighttpd-1.4.45.sh
 irrlicht-1.8.4.sh
 minetest-stable-0.4.sh
 lua-5.3.3.sh

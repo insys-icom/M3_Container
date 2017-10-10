@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pcre-8.38"
+PKG_DIR="lighttpd-1.4.45"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+# http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.45.tar.xz
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="00aabbfe56d5a48b270f999b508c5ad2"
+PKG_CHECKSUM="a128e1eda76899ce3fd115efae5fe631"
 
 
 
@@ -27,9 +28,10 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-pcregrep-jit --enable-shared=yes --enable-utf --disable-cpp --prefix=""
+    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
+    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lpcre"
+    export PCRECONFIG="${STAGING_DIR}/bin/pcre-config"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --with-openssl --with-zlib --without-bzip2 --with-webdav-props --with-webdav-locks --without-lua --with-pcre --disable-lfs --with-gdbm --without-webdav-locks
 }
 
 compile()
