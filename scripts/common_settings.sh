@@ -1,7 +1,6 @@
-#! /bin/sh
-
+#!/bin/sh
 # use all CPU cores of host
-export CPU_THREADS=$(grep processor /proc/cpuinfo | wc -l)
+export CPU_THREADS="$(grep processor /proc/cpuinfo | wc -l)"
 
 # create optimized build
 M3_CFLAGS="-Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections"
