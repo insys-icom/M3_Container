@@ -29,8 +29,8 @@ PACKAGES="${PACKAGES} tcpdump-4.7.4.sh"
 PACKAGES="${PACKAGES} iptables-1.6.0.sh"
 PACKAGES="${PACKAGES} httping-2.5.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

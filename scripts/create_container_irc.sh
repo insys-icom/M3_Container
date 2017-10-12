@@ -13,8 +13,8 @@ PACKAGES="${PACKAGES} openssl-1.0.2l.sh"
 PACKAGES="${PACKAGES} timezone2017b.sh"
 PACKAGES="${PACKAGES} ngircd-24.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

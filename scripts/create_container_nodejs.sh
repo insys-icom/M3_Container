@@ -20,8 +20,8 @@ PACKAGES="${PACKAGES} libuv-1.9.1.sh"
 PACKAGES="${PACKAGES} curl-7.54.1.sh"
 PACKAGES="${PACKAGES} node-v8.2.1.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

@@ -15,8 +15,8 @@ PACKAGES="${PACKAGES} pcre-8.41.sh"
 PACKAGES="${PACKAGES} metalog-3.sh"
 PACKAGES="${PACKAGES} timezone2017b.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

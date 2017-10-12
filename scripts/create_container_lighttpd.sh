@@ -21,8 +21,8 @@ PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} lighttpd-1.4.45.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

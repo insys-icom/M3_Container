@@ -12,8 +12,8 @@ echo "Continue? <y/n>"
 read text
 ! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 source ${TOPDIR}/scripts/common_settings.sh
 LIST_FILE="${OSS_PACKAGES_SCRIPTS}/helpers/list.txt"
 source ${TOPDIR}/scripts/helpers.sh
@@ -37,13 +37,13 @@ while read BUILDSCRIPT ; do
 
     # process build script
     "${OSS_PACKAGES_SCRIPTS}/${BUILDSCRIPT}" all || exit_failure "Failed to execute ${BUILDSCRIPT} all"
-done < "$(ls ${LIST_FILE})"
+done < $(ls ${LIST_FILE})
 
 # create all containers
 cd "${SCRIPTSDIR}/rootfs_lists"
 for LIST in *.txt ; do
     NAME="container_$(echo $LIST | cut -d'.' -f1)"
-    DATE="$(date +\"%F\")"
+    DATE=$(date +\"%F\")
     "${TOPDIR}"/scripts/mk_container.sh -n "${NAME}" -l "${LIST}" -v "${DATE}" || exit_failure "Failed to create ${NAME}.tar"
 done
 

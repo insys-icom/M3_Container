@@ -18,8 +18,8 @@ PACKAGES="${PACKAGES} expat-2.2.4.sh"
 PACKAGES="${PACKAGES} curl-7.54.1.sh"
 PACKAGES="${PACKAGES} git-2.13.0.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

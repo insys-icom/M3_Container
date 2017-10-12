@@ -22,8 +22,8 @@ PACKAGES="${PACKAGES} readline-6.3.sh"
 PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
 PACKAGES="${PACKAGES} python-2.7.14.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

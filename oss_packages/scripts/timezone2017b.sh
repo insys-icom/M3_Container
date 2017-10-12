@@ -19,9 +19,9 @@ PKG_CHECKSUM_CODE="afaf15deb13759e8b543d86350385b16"
 
 
 
-SCRIPTSDIR="$(dirname $0)"
+SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
-TOPDIR="$(realpath ${SCRIPTSDIR}/../..)"
+TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${HELPERSDIR}/functions.sh
 PKG_ARCHIVE_DATA="${DOWNLOADS_DIR}/${PKG_ARCHIVE_DATA_FILE}"
@@ -37,7 +37,7 @@ download()
 
     if [ -e "${PKG_ARCHIVE_DATA}" ]; then
         # check the size of the file is not zero
-        SIZE="$(stat -c%s ${PKG_ARCHIVE_DATA})"
+        SIZE=$(stat -c%s ${PKG_ARCHIVE_DATA})
         if ! [ "${SIZE}" = "0" ] ; then
             echo "downloadfile \"${PKG_ARCHIVE_DATA}\" already exists"
         else
@@ -56,7 +56,7 @@ download()
 
     if [ -e "${PKG_ARCHIVE_CODE}" ]; then
         # check the size of the file is not zero
-        SIZE="$(stat -c%s ${PKG_ARCHIVE_CODE})"
+        SIZE=$(stat -c%s ${PKG_ARCHIVE_CODE})
         if ! [ "${SIZE}" = "0" ] ; then
             echo "downloadfile \"${PKG_ARCHIVE_CODE}\" already exists"
         else

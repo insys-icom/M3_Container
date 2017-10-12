@@ -8,8 +8,8 @@ KEYFILE="busybox_encrypted.key"
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
 PACKAGES="${PACKAGES} busybox-1.27.2.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

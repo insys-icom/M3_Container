@@ -21,7 +21,7 @@ download()
         return
     elif [ -e "${PKG_ARCHIVE}" ] ; then
         # check the size of the file is not zero
-        SIZE="$(stat -c%s ${PKG_ARCHIVE})"
+        SIZE=$(stat -c%s ${PKG_ARCHIVE})
         if ! [ "${SIZE}" = "0" ] ; then
             echo "downloadfile \"${PKG_ARCHIVE}\" already exists"
             return

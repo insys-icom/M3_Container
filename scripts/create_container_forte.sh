@@ -27,8 +27,8 @@ PACKAGES="${PACKAGES} libFORTEControls-1.0.sh"
 PACKAGES="${PACKAGES} paho.mqtt.c.sh"
 PACKAGES="${PACKAGES} forte-1.8.4.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
@@ -49,8 +49,8 @@ echo "Continue? <y/n>"
 read text
 ! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 
 # compile the needed packages

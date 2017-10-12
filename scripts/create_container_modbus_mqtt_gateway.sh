@@ -25,8 +25,8 @@ PACKAGES="${PACKAGES} libmodbus-3.1.4.sh"
 PACKAGES="${PACKAGES} mosquitto-1.4.12.sh"
 PACKAGES="${PACKAGES} modbus_to_mqtt_gateway-1.0.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

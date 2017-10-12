@@ -22,8 +22,8 @@ PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
 PACKAGES="${PACKAGES} python-3.6.3.sh"
 PACKAGES="${PACKAGES} get_pip.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 

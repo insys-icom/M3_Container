@@ -11,15 +11,15 @@ PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2017.75.sh"
 PACKAGES="${PACKAGES} timezone2017b.sh"
 PACKAGES="${PACKAGES} mcip.sh"
-PACKAGES="${PACKAGES} gmp-6.1.1.sh"
+PACKAGES="${PACKAGES} gmp-6.1.2.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2l.sh"
 PACKAGES="${PACKAGES} curl-7.54.1.sh"
 PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
 PACKAGES="${PACKAGES} irrlicht-1.8.4.sh"
 PACKAGES="${PACKAGES} minetest-stable-0.4.sh"
 
-SCRIPTSDIR="$(dirname $0)"
-TOPDIR="$(realpath ${SCRIPTSDIR}/..)"
+SCRIPTSDIR=$(dirname $0)
+TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/common_settings.sh
 . ${TOPDIR}/scripts/helpers.sh
 
