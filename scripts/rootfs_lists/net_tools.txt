@@ -98,7 +98,7 @@ file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt            
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
-file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit_irc.conf 0644 0 0
+file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf.d/finit.conf    0644 0 0
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
 file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
 file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
@@ -129,7 +129,7 @@ file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1.2.11         
 file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.9            0755 0 0
 file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
 file /lib/liblzo2.so.2                ${STAGING_DIR}/lib/liblzo2.so.2.0.0            0644 0 0
-file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1.7.5             0644 0 0
+file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1.8.0             0644 0 0
 file /lib/libnet.so.9                 ${STAGING_DIR}/lib/libnet.so.9.0.0             0644 0 0
 file /lib/libpcap.so.1                ${STAGING_DIR}/lib/libpcap.so.1.7.4            0644 0 0
 

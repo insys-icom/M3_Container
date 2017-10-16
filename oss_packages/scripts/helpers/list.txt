@@ -5,7 +5,7 @@ busybox-1.27.2.sh
 
 zlib-1.2.11.sh
 xz-5.2.2.sh
-lz4-1.7.5.sh
+lz4-1.8.0.sh
 bzip2-1.0.6.sh
 lzo-2.10.sh
 c-ares-1.12.0.sh
