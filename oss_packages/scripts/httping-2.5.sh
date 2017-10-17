@@ -37,7 +37,7 @@ configure()
 
     # fake translation files
     touch nl.mo ru.mo
-    ./configure --target="${M3_TARGET}" --host="${M3_TARGET}" --prefix="" --with-openssl --with-tfo
+    ./configure --with-openssl --with-tfo
 }
 
 compile()
