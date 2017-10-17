@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} lighttpd-1.4.45.sh"
 PACKAGES="${PACKAGES} web_interface_mosquitto_mqtt_broker-1.0.sh"
 PACKAGES="${PACKAGES} app_handler-1.0.sh"
-PACKAGES="${PACKAGES} c-ares-1.12.0.sh"
+PACKAGES="${PACKAGES} c-ares-1.13.0.sh"
 PACKAGES="${PACKAGES} libmodbus-3.1.4.sh"
 PACKAGES="${PACKAGES} mosquitto-1.4.12.sh"
 

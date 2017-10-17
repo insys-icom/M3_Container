@@ -8,7 +8,7 @@ xz-5.2.2.sh
 lz4-1.8.0.sh
 bzip2-1.0.6.sh
 lzo-2.10.sh
-c-ares-1.12.0.sh
+c-ares-1.13.0.sh
 openssl-1.0.2l.sh
 sqlite-src-3110100.sh
 curl-7.54.1.sh
