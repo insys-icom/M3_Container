@@ -8,7 +8,7 @@ Java is a famous programming language. Compiled Java code can run on any platfor
 To be able to start Java applications there must be a Java Virtual Machine and a set of class libraries. In this HowTo the Oracle Java SE will be used. Due to the "Oracle Binary Code License Agreement" it's not allowed to offer an already prepared container image. Creating a container with Oracle Java is quite easy:
 
 - Get a working container on the M3 device:
-	- Eighter create a default container on the device
+	- Either create a default container on the device
 	- or install an already prepared ([default](https://m3-container.net/M3_Container/images/container_default.tar)) container from [https://m3-container.net](https://m3-container.net/M3_Container/images)
 - [Download](http://www.oracle.com/technetwork/java/javase/downloads) Java SE JDK
 - Copy the needed parts of Java into the container
@@ -17,7 +17,7 @@ To be able to start Java applications there must be a Java Virtual Machine and a
 Use the web interface of your M3 device:
 
 - Menu "Administration -> Container": 
-	- Eigther click the <b>magic wand</b> to create a new container
+	- Either click the <b>magic wand</b> to create a new container
 	- or upload a container from [https://m3-container.net](https://m3-container.net/M3_Container/images)
 - Click the <b>pencil</b> to get to the settings of the new container
 - Select a <b>net interface</b> to which the containers network interface should be bridged
