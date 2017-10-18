@@ -11,7 +11,8 @@ lzo-2.10.sh
 c-ares-1.13.0.sh
 openssl-1.0.2l.sh
 sqlite-src-3110100.sh
-curl-7.54.1.sh
+nghttp2-1.26.0.sh
+curl-7.56.0.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.0.6.sh

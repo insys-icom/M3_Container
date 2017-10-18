@@ -17,7 +17,8 @@ PACKAGES="${PACKAGES} openssl-1.0.2l.sh"
 PACKAGES="${PACKAGES} c-ares-1.13.0.sh"
 PACKAGES="${PACKAGES} http-parser-v2.7.1.sh"
 PACKAGES="${PACKAGES} libuv-1.9.1.sh"
-PACKAGES="${PACKAGES} curl-7.54.1.sh"
+PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
+PACKAGES="${PACKAGES} curl-7.56.0.sh"
 PACKAGES="${PACKAGES} node-v8.2.1.sh"
 
 SCRIPTSDIR=$(dirname $0)
