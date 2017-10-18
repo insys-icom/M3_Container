@@ -14,9 +14,8 @@ PKG_DOWNLOAD_DATA="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCH
 PKG_DOWNLOAD_CODE="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_CODE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM_DATA="0330ccd16140d3b6438a18dae9b34b93"
-PKG_CHECKSUM_CODE="ffb82ab0b588138759902b4627a6a80d"
-
+PKG_CHECKSUM_DATA="50dc0dc50c68644c1f70804f2e7a1625"
+PKG_CHECKSUM_CODE="afaf15deb13759e8b543d86350385b16"
 
 
 SCRIPTSDIR=$(dirname $0)
