@@ -3,27 +3,27 @@
 # name of directory after extracting the archive in working directory
 PKG_DIR="timezone2017b"
 
-# name of the archive in dl directory
+# name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_DATA_FILE="tzdata2017b.tar.gz"
 PKG_ARCHIVE_CODE_FILE="tzcode2017b.tar.gz"
 
-# download link for the sources to be stored in dl directory
-# https://www.iana.org/time-zones/repository/releases/tzdata2017b.tar.gz
-# https://www.iana.org/time-zones/repository/releases/tzcode2017b.tar.gz
+# download link for the sources to be stored in dl directory (use "none" if empty)
+# PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
+# PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_CODE_FILE}"
 PKG_DOWNLOAD_DATA="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_DATA_FILE}"
 PKG_DOWNLOAD_CODE="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_CODE_FILE}"
 
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM_DATA="50dc0dc50c68644c1f70804f2e7a1625"
-PKG_CHECKSUM_CODE="afaf15deb13759e8b543d86350385b16"
+# md5 checksum of archive in dl directory (use "none" if empty)
+PKG_CHECKSUM_DATA="0330ccd16140d3b6438a18dae9b34b93"
+PKG_CHECKSUM_CODE="ffb82ab0b588138759902b4627a6a80d"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${HELPERSDIR}/functions.sh
+. "${TOPDIR}/scripts/common_settings.sh"
+. "${HELPERSDIR}/functions.sh"
 PKG_ARCHIVE_DATA="${DOWNLOADS_DIR}/${PKG_ARCHIVE_DATA_FILE}"
 PKG_ARCHIVE_CODE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_CODE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
@@ -136,13 +136,13 @@ check_source()
     if [ $data_fail -eq 1 -o $code_fail -eq 1 ]; then
         exit_failure "check_source failed"
     fi
-}
+ }
 
 unpack()
 {
-    mkdir -p ${PKG_BUILD_DIR} 2> /dev/null
-    tar -C ${PKG_BUILD_DIR} -xf ${PKG_ARCHIVE_DATA} || exit_failure "unable to extract ${PKG_ARCHIVE}"
-    tar -C ${PKG_BUILD_DIR} -xf ${PKG_ARCHIVE_CODE} || exit_failure "unable to extract ${PKG_ARCHIVE}"
+    mkdir ${PKG_BUILD_DIR} 2> /dev/null
+    tar -C ${PKG_BUILD_DIR} -xf ${PKG_ARCHIVE_DATA} || exit_failure "unable to extract ${PKG_ARCHIVE_DATA}"
+    tar -C ${PKG_BUILD_DIR} -xf ${PKG_ARCHIVE_CODE} || exit_failure "unable to extract ${PKG_ARCHIVE_CODE}"
     copy_overlay
 }
 
@@ -155,15 +155,15 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    #export CROSS_COMPILE="${M3_CROSS_COMPILE}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    cp -r "${PKG_INSTALL_DIR}/usr/local/etc/zoneinfo" "${STAGING_DIR}/usr/share"
+    test -d "${STAGING_DIR}/usr/share/" || mkdir -p "${STAGING_DIR}/usr/share/"
+    cp -r "${PKG_INSTALL_DIR}/usr/local/etc/zoneinfo/" "${STAGING_DIR}/usr/share/" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
