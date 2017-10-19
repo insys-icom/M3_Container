@@ -57,10 +57,4 @@ install_staging()
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
-# Only needed if the installation into ${PKG_INSTALL_DIR} is not used, see compile(). Otherwwise delete it!
-uninstall_staging()
-{
-    rm -vf "${STAGING_DIR}/path/to/file"
-}
-
 . ${HELPERSDIR}/call_functions.sh
