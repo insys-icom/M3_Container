@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="minetest-stable-0.4"
+PKG_DIR="minetest-0.4.16"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
 # https://github.com/minetest/minetest/archive/stable-0.4.zip
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="e12f275f3dfabca80b641d612cf0bbdc"
+PKG_CHECKSUM="70e40bc170e8f8a5aa7c35102a314b76"
 
 
 
