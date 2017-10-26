@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="open62541-0.2-rc2"
+PKG_DIR="open62541-0.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# https://github.com/open62541/open62541/archive/0.2-rc2.tar.gz
+# PKG_DOWNLOAD="https://github.com/open62541/open62541/archive/0.2-rc2.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="cf45f8793e97907de671f5f86dadcd29"
+PKG_CHECKSUM="7c3fedab541e6df22de06c47cb4768fc"
 
 
 
