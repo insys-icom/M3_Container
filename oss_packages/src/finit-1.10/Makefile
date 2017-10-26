@@ -54,7 +54,8 @@ FINIT_FIFO ?= /dev/initctl
 FINIT_CONF ?= $(sysconfdir)/finit.conf
 FINIT_RCSD ?= $(sysconfdir)/finit.d
 
-CFLAGS     += -W -Wall -Werror -Os
+# CFLAGS     += -W -Wall -Werror -Os
+CFLAGS     += -W -Wall -Os
 # Disable annoying gcc warning for "warn_unused_result", see GIT 37af997
 CPPFLAGS   += -U_FORTIFY_SOURCE
 # Todo mei Grampf
