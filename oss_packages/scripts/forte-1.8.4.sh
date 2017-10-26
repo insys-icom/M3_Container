@@ -46,7 +46,7 @@ configure()
     cmake -G "Unix Makefiles" \
           -DCMAKE_BUILD_TYPE=DEBUG \
           -DCMAKE_INSTALL_PREFIX="${STAGING_DIR}" ../../ \
-          -DCMAKE_CXX_FLAGS="-std=gnu++14 -w -s  -fno-permissive -I${PKG_BUILD_DIR}/../libmodbus-3.0.6/install -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+          -DCMAKE_CXX_FLAGS="-std=gnu++14 -w -s -I${PKG_BUILD_DIR}/../libmodbus-3.0.6/install -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
           -DCMAKE_C_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-gcc \
           -DCMAKE_AR=/usr/bin/armv7a-hardfloat-linux-gnueabi-ar \
           -DCMAKE_CXX_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-g++ \
