@@ -93,7 +93,7 @@ slink /etc/pam.d/login                local                                     
 slink /etc/pam.d/sshd                 login                                          0777 0 0
 
 file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
-file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6.0.21             0755 0 0
+file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
 file /lib/libnss_files.so.2           ${SYSROOT_DIR}/lib/libnss_files.so.2           0755 0 0
 file /lib/libnss_dns.so.2             ${SYSROOT_DIR}/lib/libnss_dns.so.2             0755 0 0
 file /lib/libc.so.6                   ${SYSROOT_DIR}/lib/libc-2.22.so                0755 0 0

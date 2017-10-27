@@ -95,7 +95,7 @@ file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib/libdl-2.22.so          
 file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib/libpthread-2.22.so          0755 0 0
 file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm-2.22.so                0755 0 0
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt-2.22.so               0755 0 0
-file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6.0.21             0755 0 0
+file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
 slink /lib/ld-linux-armhf.so.3        ld-2.22.so                                     0777 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1.2.11              0644 0 0
 file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.9            0755 0 0
