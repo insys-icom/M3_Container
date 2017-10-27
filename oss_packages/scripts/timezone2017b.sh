@@ -45,7 +45,7 @@ download()
         fi
     else
         echo "downloading to ${PKG_ARCHIVE_DATA}"
-        wget -4 "${PKG_DOWNLOAD_DATA}" -O "${PKG_ARCHIVE_DATA}"
+        wget -4 "${PKG_DOWNLOAD_DATA}" -O "${PKG_ARCHIVE_DATA}" -o /dev/null
         ret=$?
         if [ $ret -ne 0 ] ; then
             echo "Failed to download ${PKG_DOWNLOAD_DATA}"
@@ -64,7 +64,7 @@ download()
         fi
     else
         echo "downloading to ${PKG_ARCHIVE_CODE}"
-        wget -4 "${PKG_DOWNLOAD_CODE}" -O "${PKG_ARCHIVE_CODE}"
+        wget -4 "${PKG_DOWNLOAD_CODE}" -O "${PKG_ARCHIVE_CODE}" -o /dev/null
         ret=$?
         if [ $ret -ne 0 ] ; then
             echo "Failed to download ${PKG_DOWNLOAD_CODE}"

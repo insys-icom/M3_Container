@@ -31,7 +31,7 @@ download()
         return
     fi
     echo "downloading to ${PKG_ARCHIVE}"
-    wget -4 "${PKG_DOWNLOAD}" -O "${PKG_ARCHIVE}"
+    wget -4 "${PKG_DOWNLOAD}" -O "${PKG_ARCHIVE}" -o /dev/null
     ret=$?
     if [ $ret -ne 0 ] ; then
         exit_failure "Failed to download ${PKG_DOWNLOAD}"
