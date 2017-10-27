@@ -17,7 +17,7 @@ Change into the 4diac-folder and run the 4diac executable. Set the workspace to 
 ### Download demo projects
 In order to access router functionalities like I/Os, sending Emails and MQTT messages, reading CPU and RAM usage through the command-line interface - router specific interface function blocks need to be added. Some sample applications are provided to demonstrate working with the router specific function blocks.
 
-(Download)[] the demo projects archive and save locally. Within the 4diac-IDE select File>Open projects. The following window appears:</br>
+(Download)[http://m3-container.net/M3_Container/closed_sources/INSYS_Demo.tar] the demo projects archive and save locally. Within the 4diac-IDE select File>Open projects. The following window appears:</br>
 
 <img src="assets/archive_import.png" alt="Import archive" width="800"</br>
 
