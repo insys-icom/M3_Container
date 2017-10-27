@@ -47,23 +47,21 @@ dir /shared                     0755 0 0
 dir /sys                        0755 0 0
 dir /tmp                        0777 0 0
 dir /usr                        0755 0 0
+dir /usr/application            0755 1000 1000
+dir /usr/application/settings   0755 0 0
 dir /usr/local                  0755 0 0
 dir /usr/local/lib              0755 0 0
 dir /usr/share                  0755 0 0
-# dir /usr/share/nano           0755 0 0
 dir /usr/share/zoneinfo         0755 0 0
 dir /var                        0755 0 0
 dir /var/log                    0755 0 0
+dir /var/log/application        0755 0 0
+dir /var/log/web_interface      0755 1001 1001
 dir /var/www                    0755 0 0
 dir /var/www/localhost          0755 0 0
 dir /var/www/localhost/htdocs   0755 0 0
-
-dir /var/log/application                0755 0 0
-dir /var/log/web_interface              0755 1001 1001
 dir /var/www/localhost/htdocs/doc       0755 0 0
 dir /var/www/localhost/htdocs/icons     0755 0 0
-dir /usr/application                    0755 1000 1000
-dir /usr/application/settings           0755 0 0
 
 ###############
 # basic files #
@@ -146,30 +144,23 @@ file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_modbus_
 slink /var/lock                        /tmp/lock                                     0777 0 0
 slink /var/run                         /tmp/run                                      0777 0 0
 
-
-# additionally
-
-# web_interface
+# web interface
 file /var/www/localhost/htdocs/web.cgi                      ${STAGING_DIR}/bin/web_interface_modbus_mqtt_gateway 0755 0 0
-
-# slinks für web.cgi
-slink /var/www/localhost/htdocs/web_s_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_configuration.cgi     /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_info.cgi              /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_log.cgi               /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_network.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_overview.cgi          /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_s_restart.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-
-slink /var/www/localhost/htdocs/web_c_authentication.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_configuration.cgi     /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_network.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_new_config.cgi        /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_restart_app.cgi       /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_restart_device.cgi    /var/www/localhost/htdocs/web.cgi 0777 0 0
-
-slink /var/www/localhost/htdocs/web_c_lang_de.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
-slink /var/www/localhost/htdocs/web_c_lang_en.cgi           /var/www/localhost/htdocs/web.cgi 0777 0 0
+slink /var/www/localhost/htdocs/web_s_authentication.cgi    web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_s_configuration.cgi     web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_s_info.cgi              web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_s_log.cgi               web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_s_network.cgi           web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_s_overview.cgi          web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_s_restart.cgi           web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_authentication.cgi    web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_configuration.cgi     web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_network.cgi           web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_new_config.cgi        web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_restart_app.cgi       web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_restart_device.cgi    web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_lang_de.cgi           web.cgi     0777 0 0
+slink /var/www/localhost/htdocs/web_c_lang_en.cgi           web.cgi     0777 0 0
 
 # icons
 file /var/www/localhost/htdocs/icons/de.png                 ${SKELETON_DIR}/var/web/icons/de.png                        0755 0 0
@@ -193,12 +184,12 @@ file /var/www/localhost/htdocs/doc/d_overview.html          ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/doc/d_support.html           ${SKELETON_DIR}/var/web/modbus_to_mqtt_gateway/d_support.html       0755 0 0
 
 # css-styles
-file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/web/css/style.css                                   0755 0 0
-file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                                0755 0 0
+file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/web/css/style.css                               0755 0 0
+file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                            0755 0 0
 
 # app_handler
-file /usr/sbin/app_handler                       ${STAGING_DIR}/bin/app_handler-1.0                                                 0755 0 0
-file /etc/app_handler.conf                       ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_modbus_to_mqtt_gateway.conf     0755 0 0
+file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-1.0                                                 0755 0 0
+file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_modbus_to_mqtt_gateway.conf     0755 0 0
 
 # application
 file /usr/application/modbus_to_mqtt_gateway                ${STAGING_DIR}/bin/modbus_to_mqtt_gateway-1.0                                          0755 1000 1000
@@ -206,22 +197,20 @@ file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/
 
 # libraries
 file /lib/libmosquitto.so.1                                 ${STAGING_DIR}/usr/local/lib/libmosquitto.so.1                  0755 0 0
-slink /lib/libmosquitto.so                                  /lib/libmosquitto.so.1                                          0755 0 0
+slink /lib/libmosquitto.so                                  libmosquitto.so.1                                               0755 0 0
 file /lib/libcares.so.2.2.0                                 ${STAGING_DIR}/lib/libcares.so.2.2.0                            0755 0 0
-slink /lib/libcares.so.2                                    /lib/libcares.so.2.2.0                                          0755 0 0
-slink /lib/libcares.so                                      /lib/libcares.so.2.2.0                                          0755 0 0
+slink /lib/libcares.so.2                                    libcares.so.2.2.0                                               0755 0 0
+slink /lib/libcares.so                                      libcares.so.2                                                   0755 0 0
 file /lib/libmodbus.so.5.1.0                                ${STAGING_DIR}/lib/libmodbus.so.5.1.0                           0755 0 0
-slink /lib/libmodbus.so.5                                   /lib/libmodbus.so.5.1.0                                         0755 0 0
-slink /lib/libmodbus.so                                     /lib/libmodbus.so.5                                             0755 0 0
-
+slink /lib/libmodbus.so.5                                   libmodbus.so.5.1.0                                              0755 0 0
+slink /lib/libmodbus.so                                     libmodbus.so.5                                                  0755 0 0
 
 ############################
 # openssl files            #
 ############################
-
-file /bin/openssl                      ${STAGING_DIR}/bin/openssl                    0755 0 0
-file /lib/libssl.so.1.0.0              ${STAGING_DIR}/lib/libssl.so.1.0.0            0644 0 0
-file /lib/libcrypto.so.1.0.0           ${STAGING_DIR}/lib/libcrypto.so.1.0.0         0644 0 0
+file /bin/openssl                          ${STAGING_DIR}/bin/openssl                           0755 0 0
+file /lib/libssl.so.1.0.0                  ${STAGING_DIR}/lib/libssl.so.1.0.0                   0644 0 0
+file /lib/libcrypto.so.1.0.0               ${STAGING_DIR}/lib/libcrypto.so.1.0.0                0644 0 0
 
 ##################
 # lighttpd files #
@@ -266,11 +255,10 @@ file /usr/local/lib/mod_webdav.so          ${STAGING_DIR}/usr/local/lib/mod_webd
 ############################
 # sqlite3 files            #
 ############################
-
-file /bin/sqlite3                      ${STAGING_DIR}/bin/sqlite3                    0755 0 0
-file /lib/libsqlite3.so.0.8.6          ${STAGING_DIR}/lib/libsqlite3.so.0.8.6        0755 0 0
-slink /lib/libsqlite3.so               libsqlite3.so.0.8.6                           0777 0 0
-slink /lib/libsqlite3.so.0             libsqlite3.so.0.8.6                           0777 0 0
+file /bin/sqlite3                      ${STAGING_DIR}/bin/sqlite3                               0755 0 0
+file /lib/libsqlite3.so.0.8.6          ${STAGING_DIR}/lib/libsqlite3.so.0.8.6                   0755 0 0
+slink /lib/libsqlite3.so.0             libsqlite3.so.0.8.6                                      0777 0 0
+slink /lib/libsqlite3.so               libsqlite3.so.0                                          0777 0 0
 
 ##################
 # timzeone files #
