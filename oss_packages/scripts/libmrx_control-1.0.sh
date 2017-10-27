@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/closed_sources/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="1aebcd4010fcb0cf277df5e451ea22d7"
+PKG_CHECKSUM="fd1621554ea934687abc7daa3e59eeaf"
 
 
 
