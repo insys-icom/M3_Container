@@ -26,13 +26,12 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}"
+    true
 }
 
 compile()
 {
-    copy_overlay
+    true
 }
 
 install_staging()
