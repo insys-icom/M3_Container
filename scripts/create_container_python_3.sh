@@ -18,7 +18,7 @@ PACKAGES="${PACKAGES} expat-2.2.4.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2l.sh"
 PACKAGES="${PACKAGES} readline-6.3.sh"
-PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
+PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} python-3.6.3.sh"
 PACKAGES="${PACKAGES} get_pip.sh"
 

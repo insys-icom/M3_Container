@@ -15,7 +15,7 @@ PACKAGES="${PACKAGES} gmp-6.1.2.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2l.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
 PACKAGES="${PACKAGES} curl-7.56.0.sh"
-PACKAGES="${PACKAGES} sqlite-src-3110100.sh"
+PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} irrlicht-1.8.4.sh"
 PACKAGES="${PACKAGES} minetest-0.4.16.sh"
 
