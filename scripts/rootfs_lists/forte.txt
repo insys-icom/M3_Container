@@ -59,6 +59,7 @@ dir /var/www/localhost/htdocs   0755 0 0
 dir /var/www/localhost/htdocs/doc       0755 0 0
 dir /var/www/localhost/htdocs/download  0755 1001 1001
 dir /var/www/localhost/htdocs/icons     0755 0 0
+dir /var/www/localhost/htdocs/img       0755 0 0
 
 ###############
 # basic files #
@@ -190,6 +191,20 @@ file /var/www/localhost/htdocs/icons/top_bar.jpg            ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/icons/wait.gif               ${SKELETON_DIR}/var/web/icons/wait.gif            0755 0 0
 file /var/www/localhost/htdocs/icons/favicon.png            ${SKELETON_DIR}/var/web/icons/favicon.png         0755 0 0
 file /var/www/localhost/htdocs/icons/gear_wheel.gif         ${SKELETON_DIR}/var/web/icons/gear_wheel.gif      0755 0 0
+
+# a few pictures
+file /var/www/localhost/htdocs/img/cli_fb.jpg               ${SKELETON_DIR}/var/web/forte/img/cli_fb.jpg            0644 0 0
+file /var/www/localhost/htdocs/img/cli_fb.png               ${SKELETON_DIR}/var/web/forte/img/cli_fb.png            0644 0 0
+file /var/www/localhost/htdocs/img/email_example_fb.png     ${SKELETON_DIR}/var/web/forte/img/email_example_fb.png  0644 0 0
+file /var/www/localhost/htdocs/img/email_fb.png             ${SKELETON_DIR}/var/web/forte/img/email_fb.png          0644 0 0
+file /var/www/localhost/htdocs/img/input_fb.png             ${SKELETON_DIR}/var/web/forte/img/input_fb.png          0644 0 0
+file /var/www/localhost/htdocs/img/led_fb.png               ${SKELETON_DIR}/var/web/forte/img/led_fb.png            0644 0 0
+file /var/www/localhost/htdocs/img/mq_pub_fb.png            ${SKELETON_DIR}/var/web/forte/img/mq_pub_fb.png         0644 0 0
+file /var/www/localhost/htdocs/img/mq_pub_fb_example.png    ${SKELETON_DIR}/var/web/forte/img/mq_pub_fb_example.png 0644 0 0
+file /var/www/localhost/htdocs/img/mq_sub_example_fb.png    ${SKELETON_DIR}/var/web/forte/img/mq_sub_example_fb.png 0644 0 0
+file /var/www/localhost/htdocs/img/mq_sub_fb.png            ${SKELETON_DIR}/var/web/forte/img/mq_sub_fb.png         0644 0 0
+file /var/www/localhost/htdocs/img/output_fb.png            ${SKELETON_DIR}/var/web/forte/img/output_fb.png         0644 0 0
+file /var/www/localhost/htdocs/img/reboot_fb.png            ${SKELETON_DIR}/var/web/forte/img/reboot_fb.png         0644 0 0
 
 # language files
 file /var/www/localhost/htdocs/doc/e                        ${SKELETON_DIR}/var/web/forte/e                   0755 0 0
