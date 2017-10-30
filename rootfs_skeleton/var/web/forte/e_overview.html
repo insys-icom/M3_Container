@@ -1,7 +1,7 @@
-<h3>FORTE on a icom OS Smart Device (e.g. MRX/MRO)</h3>
-This is a demonstration container running the <a target="_blank" href="https://eclipse.org/4diac/">4DIAC</a> runtime environment called <a target="_blank" href="https://eclipse.org/4diac/en_rte.php">FORTE</a>. This container can be programmed with the corresponding <a href="https://eclipse.org/4diac/en_dow.php">IDE</a> to set up a Soft-PLC on the icom OS smart device. To afford you the use of the device functionality the following functionblocks were created:
+<h2>FORTE RTE for icom OS Smart Devices (e.g. MRX/MRO)</h2>
+This is a demonstration container running the <a target="_blank" href="https://eclipse.org/4diac/">4DIAC</a> runtime environment called <a target="_blank" href="https://eclipse.org/4diac/en_rte.php">FORTE</a>. This container can be programmed with the corresponding <a href="https://eclipse.org/4diac/en_dow.php">IDE</a> to set up a Soft-PLC on the icom OS smart device. To support device functionality and interaction the following functionblocks were created:
 <ul>
-	<li>a general cli block to send single commands to the command line interface</li>
+<li>a general cli block to send single commands to the command line interface</li>
 <li>an output block to control the outputs (if you are using at least one MRcard SI)</li>
 <li>an input block to get the status of digital inputs</li>
 <li>an email block to send messages via email</li>
@@ -16,14 +16,46 @@ This is a demonstration container running the <a target="_blank" href="https://e
 <li>Unzip the folder</li>
 <li>Move folder to "Path to your 4DIAC-IDE"/typelibrary</li>
 </ol>
-<br>
-<h3>Setup</h3>
+
+<h2>Setup</h2>
 <div style="border: 3px black solid;padding: 10px;width: 150px;height: 70px;margin-right:30;float: left;text-align: center;line-height: 20px;">Development PC<br><br>with IDE</div>
 <div style="font-size: 30px;float: left;vertical-align: center;font-weight: bold;line-height: 75px;">&rarr;</div>
 <div style="color: #00a5db; border:3px #00a5db solid;padding: 10px;width: 100px;height: 70px;margin-left: 30px;margin-right: 30px;float: left;text-align: center;line-height: 20px;">INSYS icom SmartBox Container with FORTE</div>
-<br><br><br><br><br><br><br><br>
-For more information and support see the <a target="_blank" href="https://eclipse.org/4diac/en_help.php">4DIAC documentation</a>.<br>
-<br>
+<br><br><br><br><br><br>
+For more information and support see the <a target="_blank" href="https://eclipse.org/4diac/en_help.php">4DIAC documentation</a>.<br><br />
+
+<h2>Function Blocks</h2>
+Available function blocks for controlling the MRX/MRO (CLI (Command Line Interface), Info_LED, Digital I/O) and sending messages (Email, SMS, MQTT Publish/Subscribe)
+
+<h3>CLI - Function Block</h3><br />
+<img src="img/cli_fb.png" alt="CLI Function Block" style="height:130px"><br />
+Specify the Command that shall be sent to the CLI. For further information about CLI commands, please see your routers online documentation under <i>Help>Documentation>CLI.</i><br /><br />
+
+<h3>MRX Digital I/O - Function Blocks</h3>
+<img src="img/input_fb.png" alt="MRX Digital Input Function Block" style="height:150px">
+<img src="img/output_fb.png" alt="MRX Digital Output Function Block" style="height:152px"><br />
+
+<h3>Email & SMS - Function Block</h3>
+<img src="img/email_fb.png" alt="Email Function Block" style="height:150px">
+<img src="img/email_example_fb.png" alt="Email Function Block" style="height:150px"><br />
+Attention: For the SMS Function Block to work, an active SIM-card needs to be present in the wireless router.
+
+<h3>MQTT Publish/Subscribe</h3>
+<img src="img/mq_sub_fb.png" alt="MQTT Subscriber Function Block" style="height:150px">
+<img src="img/mq_sub_example_fb.png" alt="MQTT Subscriber Function Block" style="height:150px"><br />
+
+<img src="img/mq_pub_fb.png" alt="MQTT Publisher Function Block" style="height:150px">
+<img src="img/mq_pub_fb_example.png" alt="MQTT Publisher Function Block" style="height:150px"><br />
+Attention: When using the raw[] layer in your ID, the RD_1 of your subscriber and the SD_1 of your publishers must be connected to a STRING type data. Also, you can only use PUBLISHER_1 and SUSBCRIBER_1, not others function blocks wit more inputs or outputs. However, it is possible to have multiple instance of Publisher and Subscriber in your application if the client_id remains identical.
+
+
+<h3>Info-LED - Function Block</h3>
+Available <b>MODEs</b>: "on"/"off"/"flashing"<br />
+<img src="img/led_fb.png" alt="MRX Info LED Function Block" style="height:140px"><br />
+
+<h3>Restart - Function Block</h3>
+<img src="img/reboot_fb.png" alt="MRX Reboot Function Block" style="height:100px"><br />
+<br />
 <b>Beware:</b>
 <ul>
 <li>Firmware version of icom OS must be 2.x or higher.<br></li>
