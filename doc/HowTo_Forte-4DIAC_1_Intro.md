@@ -15,27 +15,34 @@ Download and unpack the latest stable release of the [4diac-IDE](http://www.ecli
 Change into the 4diac-folder and <b>run the 4DIAC-IDE</b> executable. Set the workspace to suggested folder and check if the 4diac-IDE starts without errors.
 
 ### Download demo projects
-In order to access router functionalities like I/Os, sending Emails and MQTT messages, reading CPU and RAM usage through the command-line interface - router specific interface function blocks need to be added. Some sample applications are provided to demonstrate working with the router specific function blocks.
+In order to access router functionalities like I/Os, sending emails and MQTT messages, reading CPU and RAM usage through the CLI (Command Line Interface), router specific interface function blocks need to be added. Some sample applications are provided to demonstrate how to work with the router specific function blocks.
 
 Download the demo project archive [INSYS_Demo.tar](http://m3-container.net/M3_Container/closed_sources/INSYS_Demo.tar). Within the 4diac-IDE select <b>File -> Open projects</b>:</br>
 
-<img src="assets/archive_import.png" alt="Import archive" width="800"</br>
+<img src="assets/archive_import.png" alt="Import archive" width="800"></br>
 
 Select the archive with demo projects and import the eclipse project and click finish.
 
 The INSYS_Demo project should appear within the *System Explorer*:</br>
 
-<img src="assets/system_explorer_demo_project.png" alt="System explorer" width="280"</br>
+<img src="assets/system_explorer_demo_project.png" alt="System explorer" width="280"></br>
 
-Before you can start playing with the demo projects and create your own distributed applications, at least one device with the forte runtime-environment is necessary which we will install in the next step.
+Before you can start playing with the demo projects and create your own distributed applications, at least one device with the forte runtime environment is necessary.
 
 
 ## Install and configure a container with 4diac-RTE (forte)
-In order to execute your modelled control applications across various devices, on every involved device a runtime needs to be present. The 4diac runtime environment (RTE) is called forte and a prebuilt container for INSYS routers is available: [container_forte.tar](http://m3-container.net/M3_Container/images/container_forte.tar).
+In order to execute your modelled control applications across various devices, on every involved device a runtime needs to be present. The 4diac runtime environment (RTE) is called forte and a pre built container for INSYS routers is available.
 
-- Download the container to your local machine and upload the forte container onto your router via its web interface: <b>Administration -> Container -> Import container</b>.
-- Bridge the container to an IP net that has access to the internet and give the container an IP address that is not already used in the selected IP net. 
-- Log in to the container and set up the networking there. Enter a reachable address for the DNS server, most likely this will be the routers IP address:
+- Download the [container_forte.tar](http://m3-container.net/M3_Container/images/container_forte.tar) to your local machine and upload the forte container onto your router via its web interface: <b>Administration -> Container -> Import container</b>.
+- Bridge the container to an IP net that has access to your PC and give the container an IP address that is not already used in the selected IP net.
+
+The next steps are optional, but recommended. They configure DNS and gateway, so the applications in the container access other nets (like the internet).
+
+- Log in to the container and set up the networking there. Adjust the IP address to the one the container has been given. User name and password are both <b>root</b>.
+<pre>
+joe@pc ~  $ <b>ssh root@192.168.1.3</b>
+</pre>
+- Enter a reachable address for the DNS server, most likely this will be the routers IP address:
 <pre>
 root@container_forte ~  $ <b>echo "nameserver \<IP address of nameserver\>" > /etc/resolv.conf</b>
 </pre>
