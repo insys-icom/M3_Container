@@ -31,7 +31,7 @@ configure()
     ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
                 CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
                 LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lfreetype" \
-                FREETYPE_CFLAGS="-I${STAGING_INCLUDE}/freetype2" \
+                FREETYPE_CFLAGS="-I${STAGING_INCLUDE}/freetype2 -lpng" \
                 FREETYPE_LIBS="-L${STAGING_LIB}" \
                 --target="${M3_TARGET}" \
                 --host="${M3_TARGET}" \

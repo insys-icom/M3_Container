@@ -33,7 +33,6 @@ configure()
                 LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
                 --target="${M3_TARGET}" \
                 --host="${M3_TARGET}" \
-
                 --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
