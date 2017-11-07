@@ -44,7 +44,7 @@ iptables-1.6.1.sh
 iputils-s20151218.sh
 lighttpd-1.4.45.sh
 irrlicht-1.8.4.sh
-minetest-0.4.16.sh
+#minetest-0.4.16.sh
 lua-5.3.3.sh
 mcip-tool-v1.sh
 metalog-3.sh
