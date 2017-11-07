@@ -35,9 +35,13 @@ configure()
         png_LIBS="-L${STAGING_LIB}" \
         pixman_CFLAGS="-I${STAGING_INCLUDE}/pixman-1" \
         pixman_LIBS="-L${STAGING_LIB}" \
-        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -Wno-implicit-fallthrough -Wno-int-in-bool-context -I${STAGING_INCLUDE}" \
         CPPFLAGS="-L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lpng -lpixman-1" \
+        FONTCONFIG_CFLAGS="-I${STAGING_INCLUDE}/fontconfig" \
+        FONTCONFIG_LIBS="-L${STAGING_LIB}" \
+        FREETYPE_CFLAGS="-I${STAGING_INCLUDE}/freetype2" \
+        FREETYPE_LIBS="-L${STAGING_LIB}" \
         --with-sysroot="${STAGING_DIR}" \
         --libdir="${STAGING_DIR}" \
         --enable-png=yes \
