@@ -38,6 +38,7 @@ compile()
     cmake . -DCMAKE_SYSTEM_NAME=Linux \
         -DCMAKE_C_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-gcc \
         -DCMAKE_CXX_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-g++ \
+        -DCMAKE_CXX_FLAGS="-lssl -lcrypto -lnghttp2 -L${STAGING_LIB}" \
         -DCMAKE_FIND_ROOT_PATH="${STAGING_DIR}" \
         -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
         -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
