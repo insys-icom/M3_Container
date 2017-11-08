@@ -31,16 +31,18 @@ configure()
     ac_cv_lib_png_png_write_png=yes \
     ac_cv_lib_cairo_cairo_create=yes \
     ac_cv_lib_uuid_uuid_make=yes \
+    ac_cv_lib_vncclient_rfbInitClient=yes \
+    ac_cv_lib_ssl_SSL_CTX_new=yes \
     ./configure \
         CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         CPPFLAGS="-I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -ldl" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -ldl -lssl" \
+        VNC_LIBS="${STAGING_LIB}" \
         PKG_CONFIG_LIBDIR="${STAGING_LIB}" \
         LIBS="-Wl,--no-as-neede -ldl" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
         --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
-
 }
 
 compile()
