@@ -27,14 +27,10 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    cd "${PKG_BUILD_DIR}/games"
-    git clone https://github.com/minetest/minetest_game.git
-}
-
-compile()
-{
-    copy_overlay
     cd "${PKG_BUILD_DIR}"
+    # create a symlink to the previously fetched minetest-game directory in working
+    ln -fs ../minetest_game-"${PKG_DIR#*-}" games/minetest-game
+    
     cmake . -DCMAKE_SYSTEM_NAME=Linux \
         -DCMAKE_C_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-gcc \
         -DCMAKE_CXX_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-g++ \
@@ -58,7 +54,12 @@ compile()
         -DENABLE_LUAJIT=FALSE \
         -DDOXYGEN_EXECUTABLE=true \
         -DIRRLICHT_INCLUDE_DIR="${PKG_BUILD_DIR}/../irrlicht-1.8.4/include"
+}
 
+compile()
+{
+    copy_overlay
+    cd "${PKG_BUILD_DIR}"    
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }
