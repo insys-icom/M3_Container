@@ -833,13 +833,13 @@ file /lib/python2.7/lib2to3/fixes/fix_xrange.pyc ${STAGING_DIR}/usr/local/lib/py
 file /lib/python2.7/lib2to3/fixes/fix_xreadlines.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/fixes/fix_xreadlines.pyc 644 0 0
 file /lib/python2.7/lib2to3/fixes/fix_zip.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/fixes/fix_zip.pyc 644 0 0
 file /lib/python2.7/lib2to3/fixes/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/fixes/__init__.pyc 644 0 0
-file /lib/python2.7/lib2to3/Grammar2.7.12.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.12.final.0.pickle 644 0 0
+file /lib/python2.7/lib2to3/Grammar2.7.12.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.1?.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/Grammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar.txt 644 0 0
 file /lib/python2.7/lib2to3/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__init__.pyc 644 0 0
 file /lib/python2.7/lib2to3/__main__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__main__.pyc 644 0 0
 file /lib/python2.7/lib2to3/main.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/main.pyc 644 0 0
 file /lib/python2.7/lib2to3/patcomp.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/patcomp.pyc 644 0 0
-file /lib/python2.7/lib2to3/PatternGrammar2.7.12.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.12.final.0.pickle 644 0 0
+file /lib/python2.7/lib2to3/PatternGrammar2.7.12.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.1?.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/PatternGrammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar.txt 644 0 0
 file /lib/python2.7/lib2to3/pgen2/conv.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/pgen2/conv.pyc 644 0 0
 file /lib/python2.7/lib2to3/pgen2/driver.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/pgen2/driver.pyc 644 0 0
@@ -907,7 +907,7 @@ file /lib/python2.7/lib-dynload/_multiprocessing.so ${STAGING_DIR}/usr/local/lib
 file /lib/python2.7/lib-dynload/operator.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/operator.so 755 0 0
 file /lib/python2.7/lib-dynload/parser.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/parser.so 755 0 0
 file /lib/python2.7/lib-dynload/pyexpat.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/pyexpat.so 755 0 0
-file /lib/python2.7/lib-dynload/Python-2.7.12-py2.7.egg-info ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/Python-2.7.12-py2.7.egg-info 644 0 0
+file /lib/python2.7/lib-dynload/Python-2.7.12-py2.7.egg-info ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/Python-2.7.1?-py2.7.egg-info 644 0 0
 file /lib/python2.7/lib-dynload/_random.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_random.so 755 0 0
 file /lib/python2.7/lib-dynload/readline.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/readline.so 755 0 0
 file /lib/python2.7/lib-dynload/resource.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/resource.so 755 0 0
