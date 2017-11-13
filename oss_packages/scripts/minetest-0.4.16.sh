@@ -28,9 +28,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    # create a symlink to the previously fetched minetest-game directory in working
-    ln -fs ../minetest_game-"${PKG_DIR#*-}" games/minetest-game
-    
+
     cmake . -DCMAKE_SYSTEM_NAME=Linux \
         -DCMAKE_C_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-gcc \
         -DCMAKE_CXX_COMPILER=/usr/bin/armv7a-hardfloat-linux-gnueabi-g++ \
