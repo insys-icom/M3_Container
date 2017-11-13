@@ -101,7 +101,6 @@ file /lib/ld-linux-armhf.so.3         ${SYSROOT_DIR}/lib/ld-linux-armhf.so.3    
 file /lib/libcrypt.so.1               ${SYSROOT_DIR}/lib/libcrypt.so.1               0755 0 0
 file /lib/libutil.so.1                ${SYSROOT_DIR}/lib/libutil.so.1                0755 0 0
 file /lib/libresolv.so.2              ${SYSROOT_DIR}/lib/libresolv.so.2              0755 0 0
-file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1                0755 0 0
 file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib/libdl.so.2                  0755 0 0
 file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib/libpthread.so.0             0755 0 0
 file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm.so.6                   0755 0 0

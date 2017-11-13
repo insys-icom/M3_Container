@@ -18,6 +18,7 @@ PACKAGES="${PACKAGES} curl-7.56.0.sh"
 PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} irrlicht-1.8.4.sh"
 PACKAGES="${PACKAGES} minetest-0.4.16.sh"
+PACKAGES="${PACKAGES} minetest_game-0.4.16.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
