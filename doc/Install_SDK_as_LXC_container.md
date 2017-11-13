@@ -65,17 +65,17 @@ Starting and stopping a container may require root permissions on the host syste
 <pre>
 user@host ~ # <b>su root</b>
 Password:
-root@host ~ # <b>lxc-start -n m3sdk</b>
+root@host ~ # <b>lxc-start -P /var/lib/lxc -n m3sdk</b>
 </pre>
 
 Open a console to (automatically) login to the LXC container:
 <pre>
-root@host ~ # <b>lxc-console -n m3sdk</b>
+root@host ~ # <b>lxc-console -P /var/lib/lxc -n m3sdk</b>
 </pre>
 
 The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
 <pre>
 user@host ~ # <b>su root</b>
 Password:
-root@host ~ # <b>lxc-stop -n m3sdk -k</b>
+root@host ~ # <b>lxc-stop -P /var/lib/lxc -n m3sdk -k</b>
 </pre>
