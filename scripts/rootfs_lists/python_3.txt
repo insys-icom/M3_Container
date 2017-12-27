@@ -171,11 +171,12 @@ file /bin/get-pip.py                   ${STAGING_DIR}/bin/get-pip.py            
 ############################
 # create these lines automatically by executing the next line in "rootfs_staging/usr/local/"
 # ../../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep -v '/share/' | grep -v '/include/' | sed 's| ./| ${STAGING_DIR}/usr/local/|' | sort > ../list.txt
-
-
-
-
 # eventually remove not needed files manually to shrink the installation
+
+
+
+
+
 dir /lib/python3.6 755 0 0
 dir /lib/python3.6/asyncio 755 0 0
 dir /lib/python3.6/collections 755 0 0
