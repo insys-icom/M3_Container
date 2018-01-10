@@ -68,12 +68,12 @@ Password:
 root@host ~ # <b>lxc-start -P /var/lib/lxc -n m3sdk</b>
 </pre>
 
-Open a console to (automatically) login to the LXC container:
+Open a console to the LXC container:
 <pre>
 root@host ~ # <b>lxc-console -P /var/lib/lxc -n m3sdk</b>
 </pre>
 
-The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
+Login as <b>"user"</b> with the password <b>"user"</b>. The password for the user "root" is "root". The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
 <pre>
 user@host ~ # <b>su root</b>
 Password:
