@@ -6,18 +6,18 @@
 This document will describe how to install Alpine Linux within a container and will show some of the first steps in it.
 
 ## Install and configure the container
-Download the [Alpine Linux container](https://m3-container.net/M3_Container/images_static/Alpine_3.7.tar) and store it on your PC. 
+Download the [Alpine Linux container](https://m3-container.net/M3_Container/images_static/Alpine_3.7.tar) and store it on your PC.
 
-- Open a browser and enter the IP address <b>"192.168.1.1"</b> of web interface of the [M3 device in default settings](http://192.168.1.1/cgi_s_administration.container). 
+- Open a browser and enter the IP address <b>"192.168.1.1"</b> of web interface of the [M3 device in default settings](http://192.168.1.1/cgi_s_administration.container).
 - Click <b>"import container"</b> to upload the stored container to the M3 device. The new container will appear in the list.
 - Click the <b>"wand" icon</b> to create a configuration for this container.
 - Click the <b>"pen" icon</b> in order to enter the configuration for the container.
-- Select the <b>"IP net1"</b> to witch the containers Ethernet interface should be bridged
+- Select the <b>"IP net1"</b> to which the containers Ethernet interface should be bridged
 - Enter a free IPv4 address, e.g. <b>192.168.1.3</b> and its net mask <b>24</b>
 - Click to <b>"save settings"</b>
 - Activate the profile by clicking the blinking <b>"gear" icon</b>
 
-This will start a Alpine Linux in the new container. 
+This will start a Alpine Linux in the new container.
 
 ## Login to the container and configure networking
 Alpine Linux will start an SSH server that can be used to login. Open a terminal or a putty and enter the configured IP address of the container:
@@ -37,7 +37,7 @@ Configure networking now. In case this container should not be able to access ma
 container1:~# <b>vi /etc/network/interfaces</b>
 </pre>
 
-The editor vi has two modes: 
+The editor vi has two modes:
 
 - command mode: save or to exit the edited file. Press <b>"i"</b> ("insert") to change to edit mode.
 - edit mode: actually change text. Press <b>\<ESC\></b> to leave edit mode.
