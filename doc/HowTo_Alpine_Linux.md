@@ -40,7 +40,7 @@ container1:~# <b>vi /etc/network/interfaces</b>
 The editor vi has two modes: 
 
 - command mode: save or to exit the edited file. Press <b>"i"</b> ("insert") to change to edit mode.
-- edit mode: actually change the text. Press <b>\<ESC\></b> to leave edit mode.
+- edit mode: actually change text. Press <b>\<ESC\></b> to leave edit mode.
 
 Enter "edit mode" \<i\> and move with the cursor keys down to the lines starting with the single comment character <b>"#"</b>. Remove the comment characters from the lines and change the IP addresses to the ones you need. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first \<ESC\> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
 
@@ -56,9 +56,37 @@ When the IP settings are different now the networking can be restarted with:
 container1:~# <b>/etc/init.d/networking restart</b>
 </pre>
 
-The M3 device will most likely always act as the gateway to the internet. In case this has not been configured yet, it should be done now. To test if the container can reach its targets you can use the tool <b>"ping"</b> in the container:
+The M3 device will most likely always act as the gateway to the internet. If this has not been configured yet, it should be done now. Test if the container can reach its targets you can use the tool <b>"ping"</b> in the container:
 
 <pre>
 container1:~# <b>ping insys-icom.com</b>
 </pre>
 
+## Install additional programs
+Alpine Linux comes with a packet management tool called <b>"apk"</b>. It should be updated:
+<pre>
+container1:~# <b>apk update</b>
+</pre>
+
+After that packages from a huge [pool](https://pkgs.alpinelinux.org/packages) can be installed, for instance the web server "lighttpd":
+<pre>
+container1:~# <b>apk add lighttpd</b>
+</pre>
+
+Start the service:
+<pre>
+container1:~# <b>rc-service lighttpd start</b>
+</pre>
+
+Start the service automatically after the container starts:
+<pre>
+container1:~# <b>rc-update add lighttpd default</b>
+</pre>
+
+Create a small web page the web server can deliver:
+<pre>
+container1:~# <b>echo "\<html\>\<body\>Hello world!\</body\>\</html\>" \> /var/www/localhost/htdocs/index.html</b>
+</pre>
+This site should now be accessible with a web browser: [http://192.168.1.3](http://192.168.1.3)
+
+The [web site](https://wiki.alpinelinux.org/wiki/Main_Page) of Alpine Linux offers a lot of additional useful documentation like [Tutorials](https://wiki.alpinelinux.org/wiki/Tutorials_and_Howtos) or [FAQs](https://wiki.alpinelinux.org/wiki/Alpine_Linux:FAQ)
