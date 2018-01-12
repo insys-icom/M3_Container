@@ -1,7 +1,7 @@
 # Container "Alpine Linux"
 
 ## Introduction
-[Alpine Linux](https://www.alpinelinux.org) is a very small Linux distribution based on musl libc and busybox. This container is thought for users, that want to build containers with very small footprint without compiling and building on themselves. This solution is in between a full blown Debian container and a container built from scratch.
+[Alpine Linux](https://www.alpinelinux.org) is a very small Linux distribution based on musl libc and busybox. This container is thought for users, that want to build containers with very small footprint without compiling and building on their own. This solution is in between a full blown Debian container and a container built from scratch.
 
 This document will describe how to install Alpine Linux within a container and will show some of the first steps in it.
 
