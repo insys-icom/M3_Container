@@ -27,14 +27,14 @@ joe@pc ~  $ <b>ssh root@192.168.1.3</b>
 
 When using putty enter the IP address and click connect. The user name is <b>"root"</b>, the password is also <b>"root"</b>.
 
-The first thing you should do is to <b>change the password</b> of the user "root"! This container will behave like a real PC that nasty people want to enter and install their bot net client on it to use it for their nasty goals:
+The first thing to do is to <b>change the password</b> of the user "root"! This container will behave like a real PC that nasty people want to enter and install their bot net client on it to use it for their nasty goals:
 <pre>
 container1:~# <b>passwd</b>
 </pre>
 
-Configure networking now. In case this container should not be able to access machines except from its current IP net 192.168.1.0/24 but should be able to access the internet, the configuration file for the networking interface has to be modified. Use the tiny editor "vi" to edit the file:
+Configure networking now. The IP address has already been set by the configuration of the M3 device. What still is missing is the default gateway Use the tiny editor "vi" to edit the file:
 <pre>
-container1:~# <b>vi /etc/network/interfaces</b>
+container1:~# <b>vi /etc/local.d/routing.start</b>
 </pre>
 
 The editor vi has two modes:
@@ -42,21 +42,19 @@ The editor vi has two modes:
 - command mode: save or to exit the edited file. Press <b>"i"</b> ("insert") to change to edit mode.
 - edit mode: actually change text. Press <b>\<ESC\></b> to leave edit mode.
 
-Enter "edit mode" \<i\> and move with the cursor keys down to the lines starting with the single comment character <b>"#"</b>. Remove the comment characters from the lines and change the IP addresses to the ones you need. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first \<ESC\> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
+In this HowTo the M3 device itself should act as the gateway, which is already configured. In this case there is nothing to do here. Otherwise enter "edit mode" \<i\> and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first \<ESC\> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
 
-In case the IPv4 address is now different it's good advice to also change the IPv4 address in the M3 web interface configuration. Otherwise it may be difficult to remember the real IPv4 address the container assigns to itself after starting. It might also be necessary to change the IP net interface, when the container should be bridged to another IP net interface of the M3.
+When the IP address of the gateway has changed, the new default route can be set:
+<pre>
+container1:~# <b>/etc/init.d/local restart</b>
+</pre>
 
 To be able to resolve domain names the IP address of the DNS server has to be set:
 <pre>
-container1:~# <b>echo "nameserver 192.168.1.1" \> /etc/resolv.conf</b>
+container1:~# <b>vi /etc/resolv.conf</b>
 </pre>
 
-When the IP settings are different now the networking can be restarted with:
-<pre>
-container1:~# <b>/etc/init.d/networking restart</b>
-</pre>
-
-The M3 device will most likely always act as the gateway to the internet. If this has not been configured yet, it should be done now. Test if the container can reach its targets you can use the tool <b>"ping"</b> in the container:
+The M3 device will most likely always act as the gateway to the internet. If this has not been configured yet (WAN chains, IP routes, IP netfilters like NAT), it should be done now. Please consult the documentation of the M3 devices. Test if the container can reach its targets you can use the tool <b>"ping"</b> in the container:
 
 <pre>
 container1:~# <b>ping insys-icom.com</b>

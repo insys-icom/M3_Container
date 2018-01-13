@@ -28,15 +28,6 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-
-#use --with-png=DIR to
-#indicate the header file is in DIR/include/png.h and the library
-#in DIR/lib/libpng.a.  A copy of libpng may be obtained from:
-#http://www.libpng.org/pub/png/libpng.html
-
-
-
-
     ./autogen.sh \
                 CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
                 LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
