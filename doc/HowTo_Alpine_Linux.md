@@ -10,12 +10,12 @@ Download the [Alpine Linux container](https://m3-container.net/M3_Container/imag
 
 - Open a browser and enter the IP address <b>"192.168.1.1"</b> of web interface of the [M3 device in default settings](http://192.168.1.1/cgi_s_administration.container).
 - Click <b>"import container"</b> to upload the stored container to the M3 device. The new container will appear in the list.
-- Click the <b>"wand" icon</b> to create a configuration for this container.
-- Click the <b>"pen" icon</b> in order to enter the configuration for the container.
+- Click <img src="assets/icons/magic_wand.png" alt="the wand icon" width="15"> to create a configuration for this container.
+- Click <img src="assets/icons/pen.png" alt="the pen icon" width="15"> to enter the configuration for the container.
 - Select the <b>"IP net1"</b> to which the containers Ethernet interface should be bridged
 - Enter a free IPv4 address, e.g. <b>192.168.1.3</b> and its net mask <b>24</b>
-- Click to <b>"save settings"</b>
-- Activate the profile by clicking the blinking <b>"gear" icon</b>
+- Click to <b>"Save settings"</b>
+- Click the blinking <img src="assets/icons/gear.png" alt="the gear icon" width="15"> to activate the profile
 
 This will start a Alpine Linux in the new container.
 
@@ -87,4 +87,4 @@ container1:~# <b>echo "\<html\>\<body\>Hello world!\</body\>\</html\>" \> /var/w
 </pre>
 This site should now be accessible with a web browser: [http://192.168.1.3](http://192.168.1.3)
 
-The [web site](https://wiki.alpinelinux.org/wiki/Main_Page) of Alpine Linux offers a lot of additional useful documentation like [Tutorials](https://wiki.alpinelinux.org/wiki/Tutorials_and_Howtos) or [FAQs](https://wiki.alpinelinux.org/wiki/Alpine_Linux:FAQ)
+The [website](https://wiki.alpinelinux.org/wiki/Main_Page) of Alpine Linux offers a lot of additional useful documentation like [Tutorials](https://wiki.alpinelinux.org/wiki/Tutorials_and_Howtos) or [FAQs](https://wiki.alpinelinux.org/wiki/Alpine_Linux:FAQ)

@@ -19,13 +19,13 @@ In order to access router functionalities like I/Os, sending emails and MQTT mes
 
 Download the demo project archive [INSYS_Demo.tar](http://m3-container.net/M3_Container/closed_sources/INSYS_Demo.tar). Within the 4diac-IDE select <b>File -> Open projects</b>:</br>
 
-<img src="assets/archive_import.png" alt="Import archive" width="800"></br>
+<img src="assets/forte/archive_import.png" alt="Import archive" width="800"></br>
 
 Select the archive with demo projects and import the eclipse project and click finish.
 
 The INSYS_Demo project should appear within the *System Explorer*:</br>
 
-<img src="assets/system_explorer_demo_project.png" alt="System explorer" width="280"></br>
+<img src="assets/forte/system_explorer_demo_project.png" alt="System explorer" width="280"></br>
 
 Before you can start playing with the demo projects and create your own distributed applications, at least one device with the forte runtime environment is necessary.
 
@@ -63,7 +63,7 @@ root@container_forte ~  $ <b>/bin/start_net</b>
 To verify the correct installation of 4diac and the forte container on your router, we will deploy the *blinky_led* demo application.
 The application will toggle your routers Info-LED with the specified interval when running.
 
-<img src="assets/blinky_led.png" alt="blinky led application" height="160"/></b>
+<img src="assets/forte/blinky_led.png" alt="blinky led application" height="160"/></b>
 
 Find the <b>System Explorer</b> tab on the left side of the IDE and double click on <b>System Configuration</b> configure your local resource. You currently might have only one forte container (the green one in the picture below) on your router, which is sufficient if you only want to work with a single device for now. For more sophisticated projects you can instantiate multiple forte containers on your router to simulate a distributed system.
 
@@ -71,17 +71,17 @@ Change the IP address to your containers IP address with a double click on the I
 
 On the device multiple so called <b>embedded resources</b> are present. It allows you to deploy multiple applications to a single device and run them in parallel. For the *blinky_led* application we only use the embedded resource <b>blinky_led</b> for now:
 
-<img src="assets/system_configuration.png" alt="System configuration" height="1000"/></br>
+<img src="assets/forte/system_configuration.png" alt="System configuration" height="1000"/></br>
 
 After configuring the application, switch to the <b>deployment console</b>. If the console is not visible by default, click on the symbol in the upper right corner with the pop up description <b>Open Perspective</b> Alternatively you can open it via the menu <b>Window -> Perspective -> Open Perspective -> Deployment</b>.
 
-<img src="assets/show_perspective.png" alt="Drawing" width="170"/></br>
+<img src="assets/forte/show_perspective.png" alt="Drawing" width="170"/></br>
 
 In the tab <b>Download Selection</b> activate the checkbox <b>blinky_led</b>. Right click on it and select <b>CLEAN Resource</b> in order to remove all programs that might already be on the embedded resource.
 
 Afterwards download the blinky application to the embedded resource on your forte device with a click on the button <b>Download</b>. The download has been successful if no errors are shown in the <b>Deployment Console</b>.
 
-<img src="assets/deployment_console.png" alt="Deployment console" height="1000"/></br>
+<img src="assets/forte/deployment_console.png" alt="Deployment console" height="1000"/></br>
 
 Check the Info-LED on your router, it should now blink with the specified interval in the application.
 
@@ -91,8 +91,8 @@ Check the Info-LED on your router, it should now blink with the specified interv
 Therefore go back to the <b>System perspective</b> (top right in IDE). Right click on <b>INSYS_Demo system</b> and select <b>Monitor System</b>. A small green circle appears next to the system. Right click into every function block of the blinky application and select <b>Watch All</b>. Next to the function blocks the current values are be shown.
 
 Important: Before downloading or cleaning the embedded resource, exit the system monitoring first, or communication with the container will fail!
-<img src="assets/monitor_system.png" alt="Monitor system" height="1000"/></br>
+<img src="assets/forte/monitor_system.png" alt="Monitor system" height="1000"/></br>
 
-<img src="assets/watch_all.png" alt="Watch all - Function Blocks" height="1000"/></br>
+<img src="assets/forte/watch_all.png" alt="Watch all - Function Blocks" height="1000"/></br>
 
-<img src="assets/monitoring.png" alt="Monitoring Function Blocks" height="1000"/></br>
+<img src="assets/forte/monitoring.png" alt="Monitoring Function Blocks" height="1000"/></br>
