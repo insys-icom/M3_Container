@@ -34,7 +34,7 @@ container1:~# <b>passwd</b>
 
 Configure networking now. The IP address has already been set by the configuration of the M3 device. What still is missing is the default gateway Use the tiny editor "vi" to edit the file:
 <pre>
-container1:~# <b>vi /etc/local.d/routing.start</b>
+container1:~# <b>vi /etc/local.d/routes.start</b>
 </pre>
 
 The editor vi has two modes:
