@@ -42,14 +42,14 @@ The editor vi has two modes:
 - command mode: save or to exit the edited file. Press <b>"i"</b> ("insert") to change to edit mode.
 - edit mode: actually change text. Press <b>\<ESC\></b> to leave edit mode.
 
-In this HowTo the M3 device itself should act as the gateway, which is already configured. In this case there is nothing to do here. Otherwise enter "edit mode" \<i\> and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first \<ESC\> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
+In this document the M3 device itself should act as the gateway, which is already configured. In this case there is nothing to do here. Otherwise enter "edit mode" \<i\> and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first \<ESC\> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
 
 When the IP address of the gateway has changed, the new default route can be set:
 <pre>
 container1:~# <b>/etc/init.d/local restart</b>
 </pre>
 
-To be able to resolve domain names the IP address of the DNS server has to be set:
+To be able to resolve domain names the IP address of the DNS server must be set:
 <pre>
 container1:~# <b>vi /etc/resolv.conf</b>
 </pre>
