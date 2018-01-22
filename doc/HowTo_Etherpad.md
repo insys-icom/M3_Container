@@ -1,7 +1,7 @@
 # Container Application "Etherpad Lite"
 
 ## Introduction
-Etherpad is "a highly customizable Open Source online editor providing collaborative editing in really real-time" ([cited from http://etherpad.org](http://etherpad.org)). It's an application written for NodeJS. This editor runs within a browser and allows concurrent editing in real time by several users.  
+Etherpad is "a highly customizable Open Source online editor providing collaborative editing in really real-time" ([cited from http://etherpad.org](http://etherpad.org)). It's an application written for NodeJS. This editor runs within a browser and allows concurrent editing in real time by several users.
 
 This document will describe how to install Ethernet within a container.
 
@@ -10,14 +10,14 @@ Make sure the time and date of the router is up to date. This is important for c
 
 Upload and configure the [NodeJS container](https://m3-container.net/M3_Container/images/container_nodejs.tar) on your router. Bridge the container to an IP net that has access to the internet. Enter the container and set up networking there. Enter a reachable address for the DNS server, most likely this will be the routers IP address:
 <pre>
-root@container_nodejs ~  $ <b>echo "nameserver \<IP address of nameserver\>" > /etc/resolv.conf</b>
+root@container_nodejs ~  $ <b>echo "nameserver `<IP address of nameserver>`" > /etc/resolv.conf</b>
 </pre>
 
 Edit the script that will set the default gateway after starting the container:
 <pre>
 root@container_nodejs ~  $ <b>vi /bin/start_net</b>
 </pre>
-Press \<i\> to enter the editing mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys \<ESC\>\<:\>\<x\>.
+Press `<i> to enter the editing mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys <ESC><:><x>.`
 
 Execute the script, so the default route gets set:
 <pre>
@@ -72,9 +72,9 @@ In case you want to start Etherpad automatically after the container start enter
 root@container_nodejs ~  $ <b>vi /etc/finit.conf</b>
 </pre>
 
-Again enter the editing mode of vi with \<i\> and append this line:
+Again enter the editing mode of vi with `<i>` and append this line:
 <pre>
 service /root/ether-etherpad-lite-9f51432/bin/run.sh --root
 </pre>
 
-Store and exit vi with the keys \<ESC\>\<:\>\<x\>.
+Store and exit vi with the keys `<ESC><:><x>`.

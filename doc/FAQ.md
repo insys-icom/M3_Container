@@ -4,7 +4,7 @@
 [What's the deal will all these names: M3, MRX, MRO?](#generic_1)<br>
 [Can I develop containers on Windows or MAC OS?](#generic_2)<br>
 [I imported a container on my device - how can I access it?](#generic_3)<br>
-[Why can't I ping my new container](#generic_4)<br>
+[Why can't I ping my new container?](#generic_4)<br>
 
 ## SDK:
 [The VM is slow/uncomfortable/etc, do I have to use it?](#sdk_1)<br>

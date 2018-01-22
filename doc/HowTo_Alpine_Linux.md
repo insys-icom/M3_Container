@@ -40,9 +40,9 @@ container1:~# <b>vi /etc/local.d/routes.start</b>
 The editor vi has two modes:
 
 - command mode: save or to exit the edited file. Press <b>"i"</b> ("insert") to change to edit mode.
-- edit mode: actually change text. Press <b>\<ESC\></b> to leave edit mode.
+- edit mode: actually change text. Press <b>`<ESC>`</b> to leave edit mode.
 
-In this document the M3 device itself should act as the gateway, which is already configured. In this case there is nothing to do here. Otherwise enter "edit mode" \<i\> and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first \<ESC\> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
+In this document the M3 device itself should act as the gateway, which is already configured. In this case there is nothing to do here. Otherwise enter "edit mode" `<i>` and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC\>:x</b> (first `<ESC>` to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
 
 When the IP address of the gateway has changed, the new default route can be set:
 <pre>
@@ -83,7 +83,7 @@ container1:~# <b>rc-update add lighttpd default</b>
 
 Create a small web page the web server can deliver:
 <pre>
-container1:~# <b>echo "\<html\>\<body\>Hello world!\</body\>\</html\>" \> /var/www/localhost/htdocs/index.html</b>
+container1:~# <b>echo "`<html><body>Hello world!</body></html>" > `/var/www/localhost/htdocs/index.html</b>
 </pre>
 This site should now be accessible with a web browser: [http://192.168.1.3](http://192.168.1.3)
 
