@@ -19,7 +19,7 @@ PACKAGES="${PACKAGES} openssl-1.0.2n.sh"
 PACKAGES="${PACKAGES} libxml2-2.9.4.sh"
 PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"
-PACKAGES="${PACKAGES} lighttpd-1.4.48.sh"
+PACKAGES="${PACKAGES} lighttpd-1.4.45.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)

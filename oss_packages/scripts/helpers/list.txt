@@ -42,7 +42,7 @@ i2c-tools-3.1.2.sh
 iperf-2.0.9.sh
 iptables-1.6.1.sh
 iputils-s20151218.sh
-lighttpd-1.4.48.sh
+lighttpd-1.4.45.sh
 irrlicht-1.8.4.sh
 minetest_game-0.4.16.sh
 minetest-0.4.16.sh
