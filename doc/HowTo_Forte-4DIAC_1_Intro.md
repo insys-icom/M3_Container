@@ -44,13 +44,13 @@ joe@pc ~  $ <b>ssh root@192.168.1.3</b>
 </pre>
 - Enter a reachable address for the DNS server, most likely this will be the routers IP address:
 <pre>
-root@container_forte ~  $ <b>echo "nameserver `<IP address of nameserver>`" > /etc/resolv.conf</b>
+root@container_forte ~  $ <b>echo "nameserver ```<IP address of nameserver>```" > /etc/resolv.conf</b>
 </pre>
 - Edit the script that will set the default gateway after starting the container:
 <pre>
 root@container_forte ~  $ <b>vi /bin/start_net</b>
 </pre>
-- Press <b>`<i>`</b> to enter the edit mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys <b>`<ESC><:><x>`</b>.
+- Press <b>```<i>```</b> to enter the edit mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys <b>```<ESC><:><x>```</b>.
 - Execute the script, so the default route gets set:
 <pre>
 root@container_forte ~  $ <b>/bin/start_net</b>

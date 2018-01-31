@@ -8,7 +8,7 @@ The SDK in form of a VirtualBox image is the most reliable and portable way to p
 
 * Working within a VM most of the times is quite uncomfortable. There never are the right tools like editors. In case of the SDK there is not even an X server installed.
 
-The solution is LXC 
+The solution is LXC
 ---
 The same mechanism used within the M3 platform devices can be used on every modern Linux machine. Let the SDK run in an LXC container. Share all files in your users home directory of the host with the LXC container. That way you can edit the source files with your hosts editors and tools and use the SDK from within the LXC container to compile them.
 
@@ -30,38 +30,38 @@ Installation
 	<pre>
 	user@host ~ # <b>su root</b>
 	Password:
-	root@host ~ # <b>tar xf `<path of the downloaded SDK archive>` -C /var/lib/lxc</b>
+	root@host ~ # <b>tar xf ```<path of the downloaded SDK archive>``` -C /var/lib/lxc</b>
 	</pre>
-    
+
 3. Find out the normal users UID and GID. It's assumed that they are 1001 and 1005:
 	<pre>
-    root@host ~ # <b>id `<your_user_name>` -u</b>
+    root@host ~ # <b>id ```<your_user_name>``` -u</b>
     1001
-    root@host ~ # <b>id `<your_user_name>` -g</b>
+    root@host ~ # <b>id ```<your_user_name>``` -g</b>
     1005
     </pre>
 
 4. Modify the UID and GID of the user "user" of the LXC container:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd/</b>
-    ...    
-    user`:x:`<b>1001</b>:<b>1005</b>::/home/user:/bin/bash
+    ...
+    user```:x:```<b>1001</b>:<b>1005</b>::/home/user:/bin/bash
     ...
     </pre>
-    
+
 5. Mount the normal users home directory of the host into the LXC container. After starting the LXC container all files of the normal user on the host are the same in the container. To do that modify the configuration file of the LXC container:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/config</b>
     </pre>
 Replace the the line with user <b>moros</b> with the real user name of your host system:
     <pre>
-    lxc.mount.entry = /home/<b>`<your_user_name>`</b> home/user defaults rw,bind 0 0
+    lxc.mount.entry = /home/<b>```<your_user_name>```</b> home/user defaults rw,bind 0 0
     </pre>
 Mount as much directories as you wish, as long the mount points in the LXC container exist.
 
 Start the LXC container
 ---
-Starting and stopping a container may require root permissions on the host system. 
+Starting and stopping a container may require root permissions on the host system.
 <pre>
 user@host ~ # <b>su root</b>
 Password:
