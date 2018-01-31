@@ -10,7 +10,7 @@ Make sure the time and date of the router is up to date. This is important for c
 
 Upload and configure the [NodeJS container](https://m3-container.net/M3_Container/images/container_nodejs.tar) on your router. Bridge the container to an IP net that has access to the internet. Enter the container and set up networking there. Enter a reachable address for the DNS server, most likely this will be the routers IP address:
 <pre>
-root@container_nodejs ~  $ <b>echo "nameserver ```<IP address of nameserver>```" > /etc/resolv.conf</b>
+root@container_nodejs ~  $ <b>echo "nameserver *IP_ADDRESS_OF_NAMESERVER*" > /etc/resolv.conf</b>
 </pre>
 
 Edit the script that will set the default gateway after starting the container:
