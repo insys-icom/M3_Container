@@ -5,7 +5,7 @@ STRIP := $(VERB)$(CROSS_COMPILE)strip
 CP = $(VERB)cp
 RM = $(VERB)rm
 
-CPU_THREADS=$(shell grep processor /proc/cpuinfo | wc -l)
+CPU_THREADS=$(grep processor /proc/cpuinfo | wc -l)
 
 OPTIMIZE_CFLAGS = -Os -funwind-tables -mthumb -march=armv7-a  -mtune=cortex-a8 -flto=$(CPU_THREADS) -fuse-linker-plugin -ffunction-sections -fdata-sections
 OPTIMIZE_LDFLAGS = -Wl,--as-needed -funwind-tables -Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=$(CPU_THREADS) -fuse-linker-plugin -Wl,--gc-sections
