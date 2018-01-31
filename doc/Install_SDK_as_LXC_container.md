@@ -30,14 +30,14 @@ Installation
 	<pre>
 	user@host ~ # <b>su root</b>
 	Password:
-	root@host ~ # <b>tar xf ```<path of the downloaded SDK archive>``` -C /var/lib/lxc</b>
+	root@host ~ # <b>tar xf *PATH_OF_THE_DOWNLOADES_SDK_ARCHIVE* -C /var/lib/lxc</b>
 	</pre>
 
 3. Find out the normal users UID and GID. It's assumed that they are 1001 and 1005:
 	<pre>
-    root@host ~ # <b>id ```<your_user_name>``` -u</b>
+    root@host ~ # <b>id *YOUR_USER_NAME* -u</b>
     1001
-    root@host ~ # <b>id ```<your_user_name>``` -g</b>
+    root@host ~ # <b>id *YOUR_USER_NAME* -g</b>
     1005
     </pre>
 
@@ -45,7 +45,7 @@ Installation
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd/</b>
     ...
-    user```:x:```<b>1001</b>:<b>1005</b>::/home/user:/bin/bash
+    user:x:<b>1001</b>:<b>1005</b>::/home/user:/bin/bash
     ...
     </pre>
 
@@ -55,7 +55,7 @@ Installation
     </pre>
 Replace the the line with user <b>moros</b> with the real user name of your host system:
     <pre>
-    lxc.mount.entry = /home/<b>```<your_user_name>```</b> home/user defaults rw,bind 0 0
+    lxc.mount.entry = /home/<b>*YOUR_USER_NAME*</b> home/user defaults rw,bind 0 0
     </pre>
 Mount as much directories as you wish, as long the mount points in the LXC container exist.
 

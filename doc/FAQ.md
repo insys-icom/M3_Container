@@ -56,7 +56,11 @@ Be aware that there are problems/limitations:
 
 - The performance is very bad.
 - Due to it's bad performance timing problems can occur, especially with parallel compiling.
-- VirtualBox does not allow to follow symlinks as a security measure to avoid, that users leave the Shared Folder. You must allow following symlinks. Stop the SDK and use ```> VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1```
+- VirtualBox does not allow to follow symlinks as a security measure to avoid, that users leave the Shared Folder. You must allow following symlinks. Stop the SDK and use the command
+<pre>
+VBoxManage setextradata "VM_NAME" VBoxInternal2/SharedFoldersEnableSymlinksCreate/"SHARED" 1
+</pre>
+
 - Depending on the file system of the shared folder there can be problems with permissions, or the ownership (UID, GID) of the shared files. That might make it necessary to mount the shared folder manually in the SDK:<br>
 "$ mount -t vboxsf -o uid=1000,gid=1000 folder_to_share /mnt/mount_point_in_SDK".
 

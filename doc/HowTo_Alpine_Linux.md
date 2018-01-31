@@ -83,8 +83,16 @@ container1:~# <b>rc-update add lighttpd default</b>
 
 Create a small web page the web server can deliver:
 <pre>
-container1:~# <b>echo "\<html>\<body>Hello world!\</body>\</html>" > /var/www/localhost/htdocs/index.html</b>
+container1:~# <b>vi /var/www/localhost/htdocs/index.html</b>
 </pre>
+
+Create a little web site like this:
+```
+<html>
+	<body>Hello world!</body>
+</html>"
+```
+
 This site should now be accessible with a web browser: [http://192.168.1.3](http://192.168.1.3)
 
 The [website](https://wiki.alpinelinux.org/wiki/Main_Page) of Alpine Linux offers a lot of additional useful documentation like [Tutorials](https://wiki.alpinelinux.org/wiki/Tutorials_and_Howtos) or [FAQs](https://wiki.alpinelinux.org/wiki/Alpine_Linux:FAQ)

@@ -17,7 +17,7 @@ Edit the script that will set the default gateway after starting the container:
 <pre>
 root@container_nodejs ~  $ <b>vi /bin/start_net</b>
 </pre>
-Press ```<i> to enter the editing mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys <ESC><:><x>.```
+Press "i" to enter the editing mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys \<ESC> : x.
 
 Execute the script, so the default route gets set:
 <pre>
@@ -72,9 +72,9 @@ In case you want to start Etherpad automatically after the container start enter
 root@container_nodejs ~  $ <b>vi /etc/finit.conf</b>
 </pre>
 
-Again enter the editing mode of vi with ```<i>``` and append this line:
+Again enter the editing mode of vi with "i" and append this line:
 <pre>
 service /root/ether-etherpad-lite-9f51432/bin/run.sh --root
 </pre>
 
-Store and exit vi with the keys ```<ESC><:><x>```.
+Store and exit vi with the keys *ESC : x*.
