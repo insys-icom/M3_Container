@@ -9,7 +9,7 @@ This document will describe how to install Alpine Linux within a container and w
 Download the [Alpine Linux container](https://m3-container.net/M3_Container/images_static/Alpine_3.7.tar) and store it on your PC.
 
 - Open a browser and enter the IP address <b>"192.168.1.1"</b> of web interface of the [M3 device in default settings](http://192.168.1.1/cgi_s_administration.container).
-- Click <b>"import container"</b> to upload the stored container to the M3 device. The new container will appear in the list.
+- Click in menu <b>"Administration"</b> on the button <b>"import container"</b> to upload the stored container to the M3 device. The new container will appear in the list.
 - Click <img src="assets/icons/magic_wand.png" alt="the wand icon" width="15"> to create a configuration for this container.
 - Click <img src="assets/icons/pen.png" alt="the pen icon" width="15"> to enter the configuration for the container.
 - Select the <b>"IP net1"</b> to which the containers Ethernet interface should be bridged
