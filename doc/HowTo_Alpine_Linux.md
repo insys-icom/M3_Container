@@ -90,7 +90,7 @@ Create a little web site like this:
 ```
 <html>
 	<body>Hello world!</body>
-</html>"
+</html>
 ```
 
 This site should now be accessible with a web browser: [http://192.168.1.3](http://192.168.1.3)
