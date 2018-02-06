@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="timezone2017b"
+PKG_DIR="timezone2018c"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_DATA_FILE="tzdata2017b.tar.gz"
-PKG_ARCHIVE_CODE_FILE="tzcode2017b.tar.gz"
+PKG_ARCHIVE_DATA_FILE="tzdata2018c.tar.gz"
+PKG_ARCHIVE_CODE_FILE="tzcode2018c.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
 # PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
@@ -14,8 +14,8 @@ PKG_DOWNLOAD_DATA="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCH
 PKG_DOWNLOAD_CODE="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_CODE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM_DATA="50dc0dc50c68644c1f70804f2e7a1625"
-PKG_CHECKSUM_CODE="afaf15deb13759e8b543d86350385b16"
+PKG_CHECKSUM_DATA="c412b1531adef1be7a645ab734f86acc"
+PKG_CHECKSUM_CODE="e6e0d4b2ce3fa6906f303157bed2612e"
 
 
 SCRIPTSDIR=$(dirname $0)
@@ -162,7 +162,7 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     test -d "${STAGING_DIR}/usr/share/" || mkdir -p "${STAGING_DIR}/usr/share/"
-    cp -r "${PKG_INSTALL_DIR}/usr/local/etc/zoneinfo/" "${STAGING_DIR}/usr/share/" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    cp -r "${PKG_INSTALL_DIR}/usr/share/zoneinfo/" "${STAGING_DIR}/usr/share/" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
