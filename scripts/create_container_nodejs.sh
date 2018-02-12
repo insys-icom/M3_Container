@@ -5,7 +5,7 @@ CONTAINER_NAME="container_nodejs"
 ROOTFS_LIST="nodejs.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.27.2.sh"
+PACKAGES="${PACKAGES} busybox-1.28.0.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2017.75.sh"
@@ -18,7 +18,7 @@ PACKAGES="${PACKAGES} c-ares-1.13.0.sh"
 PACKAGES="${PACKAGES} http-parser-v2.7.1.sh"
 PACKAGES="${PACKAGES} libuv-1.9.1.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
-PACKAGES="${PACKAGES} curl-7.57.0.sh"
+PACKAGES="${PACKAGES} curl-7.58.0.sh"
 PACKAGES="${PACKAGES} node-v8.2.1.sh"
 
 SCRIPTSDIR=$(dirname $0)

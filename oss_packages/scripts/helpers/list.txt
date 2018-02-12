@@ -1,7 +1,7 @@
 # This lists all open source projects to be compiled in the correct order, so all dependencies should be met
 
 Linux-PAM-1.2.1.sh
-busybox-1.27.2.sh
+busybox-1.28.0.sh
 
 zlib-1.2.11.sh
 xz-5.2.2.sh
@@ -12,7 +12,7 @@ c-ares-1.13.0.sh
 openssl-1.0.2n.sh
 sqlite-src-3200100.sh
 nghttp2-1.26.0.sh
-curl-7.57.0.sh
+curl-7.58.0.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.0.6.sh

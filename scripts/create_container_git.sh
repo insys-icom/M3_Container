@@ -5,7 +5,7 @@ CONTAINER_NAME="container_git"
 ROOTFS_LIST="git.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.27.2.sh"
+PACKAGES="${PACKAGES} busybox-1.28.0.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2017.75.sh"
@@ -16,7 +16,7 @@ PACKAGES="${PACKAGES} metalog-3.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2n.sh"
 PACKAGES="${PACKAGES} expat-2.2.4.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
-PACKAGES="${PACKAGES} curl-7.57.0.sh"
+PACKAGES="${PACKAGES} curl-7.58.0.sh"
 PACKAGES="${PACKAGES} git-2.13.0.sh"
 
 SCRIPTSDIR=$(dirname $0)

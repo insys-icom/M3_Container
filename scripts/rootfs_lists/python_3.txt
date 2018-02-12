@@ -1199,6 +1199,7 @@ slink /etc/localtime                    /usr/share/zoneinfo/Regensburg          
 # sh scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d _install | grep slink | sed 's|_install|${SKELETON_DIR}|' | sort
 # do not add init and reboot, they are for container users
 slink /bin/ar busybox 777 0 0
+slink /bin/arch busybox 777 0 0
 slink /bin/ash busybox 777 0 0
 slink /bin/awk busybox 777 0 0
 slink /bin/base64 busybox 777 0 0
@@ -1269,6 +1270,7 @@ slink /bin/gzip busybox 777 0 0
 slink /bin/hd busybox 777 0 0
 slink /bin/head busybox 777 0 0
 slink /bin/hexdump busybox 777 0 0
+slink /bin/hexedit busybox 777 0 0
 slink /bin/hostid busybox 777 0 0
 slink /bin/hostname busybox 777 0 0
 slink /bin/id busybox 777 0 0
@@ -1312,6 +1314,7 @@ slink /bin/nohup busybox 777 0 0
 slink /bin/nproc busybox 777 0 0
 slink /bin/nsenter busybox 777 0 0
 slink /bin/nslookup busybox 777 0 0
+slink /bin/nuke busybox 777 0 0
 slink /bin/od busybox 777 0 0
 slink /bin/passwd busybox 777 0 0
 slink /bin/paste busybox 777 0 0
@@ -1336,6 +1339,7 @@ slink /bin/reformime busybox 777 0 0
 slink /bin/renice busybox 777 0 0
 slink /bin/reset busybox 777 0 0
 slink /bin/resize busybox 777 0 0
+slink /bin/resume busybox 777 0 0
 slink /bin/rev busybox 777 0 0
 slink /bin/rm busybox 777 0 0
 slink /bin/rmdir busybox 777 0 0
@@ -1350,6 +1354,7 @@ slink /bin/scriptreplay busybox 777 0 0
 slink /bin/sed busybox 777 0 0
 slink /bin/seq busybox 777 0 0
 slink /bin/setarch busybox 777 0 0
+slink /bin/setfattr busybox 777 0 0
 slink /bin/setpriv busybox 777 0 0
 slink /bin/setserial busybox 777 0 0
 slink /bin/setsid busybox 777 0 0
@@ -1424,6 +1429,7 @@ slink /bin/xxd busybox 777 0 0
 slink /bin/xzcat busybox 777 0 0
 slink /bin/yes busybox 777 0 0
 slink /bin/zcat busybox 777 0 0
+# slink /init kinit 0755 0 0
 slink /linuxrc bin/busybox 777 0 0
 slink /sbin/addgroup ../bin/busybox 777 0 0
 slink /sbin/adduser ../bin/busybox 777 0 0
@@ -1489,6 +1495,7 @@ slink /sbin/rdev ../bin/busybox 777 0 0
 slink /sbin/readprofile ../bin/busybox 777 0 0
 #slink /sbin/reboot ../bin/busybox 777 0 0
 slink /sbin/route ../bin/busybox 777 0 0
+slink /sbin/run-init ../bin/busybox 777 0 0
 slink /sbin/sendmail ../bin/busybox 777 0 0
 slink /sbin/slattach ../bin/busybox 777 0 0
 slink /sbin/start-stop-daemon ../bin/busybox 777 0 0
