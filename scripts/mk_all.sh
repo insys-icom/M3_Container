@@ -35,6 +35,9 @@ while read BUILDSCRIPT ; do
     printf "executing \"%s$BUILDSCRIPT all\"\n"
     echo "###########################################################################"
 
+    # set terminal title
+    echo -ne "\033]0;$BUILDSCRIPT\007"
+
     # process build script
     "${OSS_PACKAGES_SCRIPTS}/${BUILDSCRIPT}" all || exit_failure "Failed to execute ${BUILDSCRIPT} all"
 done < $(ls ${LIST_FILE})
@@ -43,9 +46,14 @@ done < $(ls ${LIST_FILE})
 cd "${SCRIPTSDIR}/rootfs_lists"
 for LIST in *.txt ; do
     NAME="container_$(echo $LIST | cut -d'.' -f1)"
+    echo -ne "\033]0;creating $NAME\007"
     DATE=$(date +\"%F\")
     "${TOPDIR}"/scripts/mk_container.sh -n "${NAME}" -l "${LIST}" -v "${DATE}" || exit_failure "Failed to create ${NAME}.tar"
 done
 
 # execute an upload script in case it exists
+echo -ne "\033]0;Uploading containers\007"
 [ -e ~/m3_upload.sh ] && ~/m3_upload.sh
+
+# reset terminal title
+echo -ne "\033]0;M3SDK\007"
