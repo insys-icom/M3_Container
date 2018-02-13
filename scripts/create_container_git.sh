@@ -14,10 +14,10 @@ PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} pcre-8.41.sh"
 PACKAGES="${PACKAGES} metalog-3.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2n.sh"
-PACKAGES="${PACKAGES} expat-2.2.4.sh"
+PACKAGES="${PACKAGES} expat-2.2.5.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
 PACKAGES="${PACKAGES} curl-7.58.0.sh"
-PACKAGES="${PACKAGES} git-2.13.0.sh"
+PACKAGES="${PACKAGES} git-2.16.1.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)

@@ -32,7 +32,7 @@ mcip.sh
 dnsmasq-2.78.sh
 dropbear-2017.75.sh
 ebtables-v2.0.10-4.sh
-expat-2.2.4.sh
+expat-2.2.5.sh
 finit-1.10.sh
 gdbm-1.12.sh
 get_pip.sh
@@ -66,7 +66,7 @@ arping-2.19.sh
 timezone2018c.sh
 bftpd-4.4.sh
 wget-1.19.sh
-git-2.13.0.sh
+git-2.16.1.sh
 open62541.sh
 paho.mqtt.c.sh
 libFORTEControls-1.0.sh
