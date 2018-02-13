@@ -101,6 +101,7 @@ file /etc/inittab                     ${SKELETON_DIR}/etc/inittab               
 file /etc/finit.conf                  ${SKELETON_DIR}/etc/finit.conf                 0644 0 0
 file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf               0644 0 0
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
+file /etc/openvpn.conf                ${SKELETON_DIR}/etc/openvpn.conf               0644 0 0
 file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
 file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
 file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0640 0 0
