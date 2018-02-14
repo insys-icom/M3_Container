@@ -8,7 +8,7 @@ void *web_s_configuration(void) {
 		{	"BIND_ADDRESS", 		"bind_address", 	""	},
 		{	"PORT",					"port", 	""	},
 	};
-	
+
 	visited("configuration");
 
 	/* Initialize settings from settings.h */
@@ -25,14 +25,13 @@ void *web_s_configuration(void) {
 	start_box();
 	fprintf(output, "<h3>MQTT - Broker</h3>\n");
 
-	fprintf(output, "%s", settings[SETTING_BIND_ADDRESS].name);
+	fprintf(output, "<table><tr><td>%s</td><td>", settings[SETTING_BIND_ADDRESS].name);
 	print_input("text", settings[SETTING_BIND_ADDRESS].input_name, settings[SETTING_BIND_ADDRESS].value, "float: right; margin-right: 500px;", "");
-	fprintf(output, "<br><br>");
+	fprintf(output, "</td></tr>");
 
-	fprintf(output, "%s", settings[SETTING_PORT].name);
+	fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_PORT].name);
 	print_input("text", settings[SETTING_PORT].input_name, settings[SETTING_PORT].value, "float: right; margin-right: 500px;", "");
-	fprintf(output, "<br><br>");
-
+	fprintf(output, "</td><tr></table>");
 	end_box(); /* box */
 
 	/* Button */
@@ -49,7 +48,7 @@ void *web_c_configuration(void) {
 	FILE *config;
 
 	char line[200];
-	
+
 	/* Open config file for rewrite */
 	config = fopen("/tmp/new_config", "w+");
 	fputs("##### Container Configuration #####\n", config);

@@ -33,23 +33,23 @@ void *web_s_configuration(void) {
   start_box();
   fprintf(output, "<h3>%s</h3>\n", get_text("MODBUS_DEVICE"));
 
-  fprintf(output, "%s", settings[SETTING_POLLING_TIME].name);
+  fprintf(output, "<table><tr><td>%s</td><td>", settings[SETTING_POLLING_TIME].name);
   print_input("text", settings[SETTING_POLLING_TIME].input_name, settings[SETTING_POLLING_TIME].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MODBUS_ADDRESS].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MODBUS_ADDRESS].name);
   print_input("text", settings[SETTING_MODBUS_ADDRESS].input_name, settings[SETTING_MODBUS_ADDRESS].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MODBUS_PORT].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MODBUS_PORT].name);
   print_input("text", settings[SETTING_MODBUS_PORT].input_name, settings[SETTING_MODBUS_PORT].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MODBUS_REGISTER].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MODBUS_REGISTER].name);
   print_input("text", settings[SETTING_MODBUS_REGISTER].input_name, settings[SETTING_MODBUS_REGISTER].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MODBUS_REGISTER_TYPE].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MODBUS_REGISTER_TYPE].name);
   fprintf(output, "<select name=\"%s\" style=\"float: right; margin-right: 500px;\">", settings[SETTING_MODBUS_REGISTER_TYPE].input_name);
 	  val = settings[SETTING_MODBUS_REGISTER_TYPE].value;
 	  print_option("Coil", 				"0", val);
@@ -61,13 +61,13 @@ void *web_s_configuration(void) {
 	  print_option("None", 				"6", val);
 	  val = NULL;
   fprintf(output, "</select>");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MODBUS_DESIRED_BIT].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MODBUS_DESIRED_BIT].name);
   print_input("text", settings[SETTING_MODBUS_DESIRED_BIT].input_name, settings[SETTING_MODBUS_DESIRED_BIT].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MODBUS_DATA_TYPE].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MODBUS_DATA_TYPE].name);
   fprintf(output, "<select name=\"%s\" style=\"float: right; margin-right: 500px;\">\n", settings[SETTING_MODBUS_DATA_TYPE].input_name);
 	  val = settings[SETTING_MODBUS_DATA_TYPE].value;
 	  print_option("Bitcoil", "0", val);
@@ -78,26 +78,24 @@ void *web_s_configuration(void) {
 	  print_option("float 32", 		"5", val);
 	  val = NULL;
   fprintf(output, "</select>\n");
-  fprintf(output, "<br><br>");
-
+  fprintf(output, "</td></tr></table>");
   end_box(); /* box */
 
   /* MQTT */
   start_box();
   fprintf(output, "<h3>MQTT</h3>\n");
 
-  fprintf(output, "%s", settings[SETTING_MOSQUITTO_ADDRESS].name);
+  fprintf(output, "<table><tr><td>%s</td><td>", settings[SETTING_MOSQUITTO_ADDRESS].name);
   print_input("text", settings[SETTING_MOSQUITTO_ADDRESS].input_name, settings[SETTING_MOSQUITTO_ADDRESS].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MOSQUITTO_PORT].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MOSQUITTO_PORT].name);
   print_input("text", settings[SETTING_MOSQUITTO_PORT].input_name, settings[SETTING_MOSQUITTO_PORT].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
+  fprintf(output, "</td></tr>");
 
-  fprintf(output, "%s", settings[SETTING_MOSQUITTO_TOPIC].name);
+  fprintf(output, "<tr><td>%s</td><td>", settings[SETTING_MOSQUITTO_TOPIC].name);
   print_input("text", settings[SETTING_MOSQUITTO_TOPIC].input_name, settings[SETTING_MOSQUITTO_TOPIC].value, "float: right; margin-right: 500px;", "");
-  fprintf(output, "<br><br>");
-
+  fprintf(output, "</td></tr></table>");
   end_box(); /* box */
 
   /* Button */

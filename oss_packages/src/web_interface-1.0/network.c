@@ -18,14 +18,14 @@ void *web_s_network(void) {
 
     start_box();
     /* Gateway */
-    fprintf(output, "%s", get_text("GATEWAY"));
+    fprintf(output, "<table><tr><td>%s</td><td>", get_text("GATEWAY"));
     print_input("text", "Gateway", gw, "float: right; margin-right: 500px;", "");
-    fprintf(output, "<br><br>");
+    fprintf(output, "</td><tr>");
 
     /* DNS */
-    fprintf(output, "%s", get_text("DNS"));
+    fprintf(output, "<tr><td>%s</td><td>", get_text("DNS"));
     print_input("text", "DNS", dns, "float: right; margin-right: 500px;", "");
-
+    fprintf(output, "</td><tr></table>");
     end_box();
 
     /* Submit */

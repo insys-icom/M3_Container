@@ -54,14 +54,14 @@ void *web_s_authentication(void) {
 
     start_box();
     /* Username */
-    fprintf(output, "%s", get_text("USERNAME"));
+    fprintf(output, "<table><tr><td>%s</td><td>", get_text("USERNAME"));
     print_input("text", "Username", username, "float: right; margin-right: 500px;", "");
-    fprintf(output, "<br><br>");
+    fprintf(output, "</td></tr>");
 
     /* Password */
-    fprintf(output, "%s", get_text("USER_PASSWORD"));
+    fprintf(output, "<tr><td>%s</td><td>", get_text("USER_PASSWORD"));
     print_input("password", "Password", password, "float: right; margin-right: 500px;", "");
-
+    fprintf(output, "</td></tr></table>");
     end_box();
 
     /* Submit */
@@ -88,7 +88,7 @@ void *web_c_authentication(void) {
         perror("Error getting username");
         web_s_authentication();
         return NULL;
-    } 
+    }
 
     /* Check forbidden characters */
     if(check_forbidden_characters(usr, forbidden) == FAIL || check_forbidden_characters(pw, forbidden) == FAIL) {
