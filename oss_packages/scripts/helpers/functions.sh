@@ -95,6 +95,13 @@ copy_overlay()
     fi
 }
 
+# delete package build directory (under working)
+del_working()
+{
+    echo "Deleting ${PKG_BUILD_DIR}"
+    rm -rf "${PKG_BUILD_DIR}" || exit_failure "Failed to delete {PKG_BUILD_DIR}"
+}
+
 # extract the project sources into working directory
 unpack()
 {
@@ -103,7 +110,7 @@ unpack()
 
     if [ ! "${PKG_ARCHIVE_FILE}" = "none" ]; then
         if [ "${PKG_ARCHIVE##*.}" = "zip" ]; then
-            unzip -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
+            unzip -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "Unable to extract ${PKG_ARCHIVE}"
             [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
         fi
 
@@ -113,10 +120,10 @@ unpack()
              "${PKG_ARCHIVE##*.}" = "xz" -o \
              "${PKG_ARCHIVE##*.}" = "bz2" -o \
              "${PKG_ARCHIVE##*.}" = "xz" ]; then
-            tar -C "${BUILD_DIR}" -xf "${PKG_ARCHIVE}" || exit_failure "unable to extract ${PKG_ARCHIVE}"
+            tar -C "${BUILD_DIR}" -xf "${PKG_ARCHIVE}" || exit_failure "Unable to extract ${PKG_ARCHIVE}"
             [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
         fi
-     fi
+    fi
 
     copy_overlay
 }
@@ -141,6 +148,7 @@ all()
     download
     check_source
     check_deps
+    del_working
     unpack
     configure
     compile

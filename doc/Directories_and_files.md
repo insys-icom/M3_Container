@@ -1,4 +1,4 @@
-This repository offers the directory structure and scripts to create new containers.
+This repository offers the directory structure and scripts to create new containers with the M3SDK.
 
 Overview of the directories
 ===========================

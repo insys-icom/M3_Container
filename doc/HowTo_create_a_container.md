@@ -32,19 +32,22 @@ If building an open source project using one of these scripts fails, a missing d
 3.  "check_sources"<br>
     The MD5 checksum of the downloaded sources are checked. The variable "PKG_CHECKSUM" in the beginning of a build script must contain the expected MD5 sum. The variable "PKG_ARCHIVE_FILE" contains the file name that must be located in "./oss_sources/dl/". This check is highly recommended to avoid using defective or incomplete source archives. If you do not want to check the sources, you will have to set PKG_CHECKSUM="none" 
 
-4.  "unpack"<br>
+4.  "del_working"<br>
+	The directory with an eventually already unpacked (next step) archive in "./working" will be deleted. This is a precaution for the next step, so that only the archives files exist.
+
+5.  "unpack"<br>
     The archive must get unpacked to "./working" for the following steps. In the beginning of the build script the variable "PKG_DIR" defines the directory within "./working" where the sources will be extracted to. This directory name should be named similar to the build script and the open source project.
-    
-5.  "configure"<br>
+
+6.  "configure"<br>
     This function prepares the sources for the next step - compilation. If the directory named after $PKG_DIR in the directory "./oss_packages/src/" exists, and the function "copy_overlay" is called, all files in that directory are copied into the working directory. This will replace the files of the original project if there already are files with the same name. This way the sources can be modified. Important: Never change files in the working directory manually as long as you are not perfectly aware of this mechanism! When there is no such directory the source stay unmodified. Most of the time the "configure" function of a build script will call ".configure" in the working directory and prepare the sources for compilation. This is the chance to modify compile options or the feature set for the packet. Depending on the packet the configure function will contain different lines. Use the existing build scripts to get inspired.
     
-6. "compile"<br>
+7. "compile"<br>
     This function also can start with the function "copy_overlay" as described in the paragraph above. This can modify the sources after "configuring" them. Most of the time the compile function will result binaries in a new directory called "./working/PKG_DIR/install". The binaries are still unstripped.
     
-7. "install_staging"<br>
+8. "install_staging"<br>
     This function will copy files to the directory "./rootfs_staging". This directory is a collection of unmodified files, to offer them to other build scripts which need a link to these files within their "configure" step. A example for such a dependency are open source libraries. Build scripts of a library (e.g. openssl) install the header files and the binary library to "./rootfs_staging". Build scripts (e.g.) stunnel) need these header files to get configured. All files copied to "./rootfs_staging" are still unstripped.
     
-8. "uninstall_staging"<br>
+9. "uninstall_staging"<br>
     This function reverts "install_staging". It removes all files copied to "./rootfs_staging". This would be necessary if a newer version of a library had no longer a certain header file.
 
 After compiling all needed open source binaries the own closed sources should be compiled. As this is an optional step and every closed source project can have different requirements for their compilation this is all left in the hand of the developer. It is recommended to have Makefiles or scripts similar to build scripts above. The final files should be copied to rootfs_staging.

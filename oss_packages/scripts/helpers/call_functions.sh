@@ -6,9 +6,10 @@
 print_help()
 {
     echo "Possible actions are:"
-    echo "  all (means \"download check_source unpack configure compile install_staging\")"
+    echo "  all (means \"download check_source del_working unpack configure compile install_staging\")"
     echo "  download"
     echo "  check_source"
+    echo "  del_working"
     echo "  unpack"
     echo "  configure"
     echo "  compile"
