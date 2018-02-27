@@ -72,7 +72,7 @@ paho.mqtt.c.sh
 libFORTEControls-1.0.sh
 forte-1.8.4.sh
 
-php-7.1.6.sh
+php-7.1.14.sh
 python-2.7.14.sh
 python-3.6.4.sh
 modbus_to_mqtt_gateway-1.0.sh

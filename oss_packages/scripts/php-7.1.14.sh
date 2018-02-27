@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="php-7.1.6"
+PKG_DIR="php-7.1.14"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# http://de2.php.net/get/php-7.1.6.tar.xz/from/this/mirror
+# http://de2.php.net/get/php-7.1.14.tar.xz/from/this/mirror
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="eafc7a79cc8cc62c9292c96f9c9ccf90"
+PKG_CHECKSUM="6c00d9c11db8d05bb86d1244ca9098d0"
 
 
 
@@ -28,9 +28,23 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=x86_64-unknown-linux-gnu --without-iconv -disable-xmlreader --disable-xmlwriter --disable-phar --disable-fileinfo --enable-opcache=no --disable-phpdbg --enable-soap --enable-sockets --with-config-file-path=/etc/ --prefix="${PKG_INSTALL_DIR}"
+    CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+    LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        ./configure \
+            --target=${M3_TARGET} \
+            --host=${M3_TARGET} \
+            --build=x86_64-unknown-linux-gnu \
+            --without-iconv \
+            --disable-xmlreader \
+            --disable-xmlwriter \
+            --disable-phar \
+            --disable-fileinfo \
+            --enable-opcache=no \
+            --disable-phpdbg \
+            --enable-soap \
+            --enable-sockets \
+            --with-config-file-path=/etc/ \
+            --prefix="${PKG_INSTALL_DIR}"  || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
