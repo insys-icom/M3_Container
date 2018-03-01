@@ -77,7 +77,7 @@ The /scripts/mk_all.sh is doing exactly that: It deletes all files that have bee
 Have a look at ./closed_packages/hello_world. Use this as a template for your own application. Do not forget to enter your binary in the rootfs list (./scripts/rootfs_lists/default.txt), so your application will be included next time you pack a container.
 
 ### <a name="programming_3">Where do I get a build script for the open source project X version Y?</a>
-Make one yourself and share it via GitHub! This applies also in case a build script exists, but there is a newer version of the project or you need modified compile options. Go to github, fork the repository, add or change build scripts and add a new pull request on github. Begin with the already existing template "./oss_sources/scripts/template.sh".
+Make one yourself and share it via GitHub! This applies also in case a build script exists, but there is a newer version of the project or you need modified compile options. Go to github, fork the repository, add or change build scripts and add a new pull request on github. Begin with the already existing template "./oss_packages/scripts/template.sh".
 
 ### <a name="programming_4">Why is there no /dev in my container rootfs?</a>
 The router firmware will check if /dev exists within the rootfs of the container. If that is not the case, the router will create the directory and all necessary device nodes on its own. This is to enable non-root users to pack a container. Dealing with /dev and its device nodes require root permissions. This should not be necessary for packing a container.
