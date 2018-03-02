@@ -55,7 +55,7 @@ net-snmp-5.7.3.sh
 ngircd-24.sh
 node-v8.2.1.sh
 openssh-7.3p1.sh
-openvpn-2.4.4.sh
+openvpn-2.4.5.sh
 rsync-3.1.2.sh
 socat-2.0.0-b9.sh
 httping-2.5.sh
