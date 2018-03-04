@@ -12,7 +12,7 @@ To exchange files from the host with the SDK a VirtualBox feature called "shared
 Install the SDK
 ---
 * Get and install [VirtualBox](https://virtualbox.org)
-* Get the [SDK](https:/m3-container.net/M3_Container/SDK/M3_SDK.ova)
+* Get the [SDK](https://m3-container.net/M3_Container/SDK/M3_SDK.ova)
 * Start VirtualBox GUI and "Import Appliance", use the SDK image to import. IMPORTANT: Generate a new MAC address!
 * Configure the VM:
     * Reserve at least 1 GByte RAM to the VM.
