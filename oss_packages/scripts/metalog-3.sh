@@ -27,11 +27,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}"
-    export PCRE_CFLAGS="-I${STAGING_INCLUDE}"
-    export PCRE_LIBS="-L${STAGING_LIB} -lpcre"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --with-unicode
+    ./configure CFLAGS="${M3_CFLAGS}" \
+                LDFLAGS="${M3_LDFLAGS}" \
+                PCRE_CFLAGS="-I${STAGING_INCLUDE}" \
+                PCRE_LIBS="-L${STAGING_LIB} -lpcre" \
+                --target=${M3_TARGET} \
+                --host=${M3_TARGET} \
+                --prefix="" \
+                --with-unicode || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -39,7 +42,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
