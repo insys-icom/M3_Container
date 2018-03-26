@@ -11,7 +11,7 @@ PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2017.75.sh"
 PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} mcip-tool-v1.sh"
-PACKAGES="${PACKAGES} pcre-8.41.sh"
+PACKAGES="${PACKAGES} pcre-8.42.sh"
 PACKAGES="${PACKAGES} metalog-3.sh"
 PACKAGES="${PACKAGES} timezone2018c.sh"
 

@@ -116,7 +116,7 @@ file /lib/security/pam_unix.so        ${STAGING_DIR}/lib/security/pam_unix.so   
 file /lib/security/pam_warn.so        ${STAGING_DIR}/lib/security/pam_warn.so        0644 0 0
 file /lib/libpam_misc.so.0            ${STAGING_DIR}/lib/libpam_misc.so.0            0644 0 0
 file /lib/libpam.so.0                 ${STAGING_DIR}/lib/libpam.so.0                 0644 0 0
-file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1.2.9            0755 0 0
+file /lib/libpcre.so.1                ${STAGING_DIR}/lib/libpcre.so.1                0755 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme_default.txt        0644 0 0
 
