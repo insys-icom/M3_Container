@@ -340,7 +340,7 @@ slink /bin/xxd busybox 777 0 0
 slink /bin/xzcat busybox 777 0 0
 slink /bin/yes busybox 777 0 0
 slink /bin/zcat busybox 777 0 0
-# slink /init kinit 0755 0 0
+slink /init kinit 0755 0 0
 slink /linuxrc bin/busybox 777 0 0
 slink /sbin/addgroup ../bin/busybox 777 0 0
 slink /sbin/adduser ../bin/busybox 777 0 0
@@ -380,7 +380,7 @@ slink /sbin/ifdown ../bin/busybox 777 0 0
 slink /sbin/ifenslave ../bin/busybox 777 0 0
 slink /sbin/ifup ../bin/busybox 777 0 0
 slink /sbin/inetd ../bin/busybox 777 0 0
-#slink /sbin/init ../bin/busybox 777 0 0
+slink /sbin/init ../bin/busybox 777 0 0
 slink /sbin/inotifyd ../bin/busybox 777 0 0
 slink /sbin/ipaddr ../bin/busybox 777 0 0
 slink /sbin/ip ../bin/busybox 777 0 0
@@ -404,7 +404,7 @@ slink /sbin/poweroff ../bin/busybox 777 0 0
 slink /sbin/rdate ../bin/busybox 777 0 0
 slink /sbin/rdev ../bin/busybox 777 0 0
 slink /sbin/readprofile ../bin/busybox 777 0 0
-#slink /sbin/reboot ../bin/busybox 777 0 0
+slink /sbin/reboot ../bin/busybox 777 0 0
 slink /sbin/route ../bin/busybox 777 0 0
 slink /sbin/run-init ../bin/busybox 777 0 0
 slink /sbin/sendmail ../bin/busybox 777 0 0
