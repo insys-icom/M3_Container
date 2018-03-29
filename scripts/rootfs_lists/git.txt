@@ -61,7 +61,7 @@ file /bin/start_net.sh                ${SKELETON_DIR}/bin/start_net.sh          
 file /bin/reboot                      ${STAGING_DIR}/sbin/reboot                     0755 0 0
 file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
 file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
-file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_ssh.sh            0755 0 0
+file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_git.sh            0755 0 0
 
 file /bin/git                         ${STAGING_DIR}/bin/git                         0755 0 0
 file /bin/xmlwf                       ${STAGING_DIR}/bin/xmlwf                       0755 0 0
