@@ -79,6 +79,7 @@ file /bin/reboot                      ${STAGING_DIR}/sbin/reboot                
 file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
 file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
 file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
+file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_ssh.sh            0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group.d/group_forte        0644 0 0

@@ -93,6 +93,7 @@ slink /bin/iptables-save              /bin/xtables-multi                        
 slink /bin/ip6tables                  /bin/xtables-multi                             0755 0 0
 slink /bin/ip6tables-restore          /bin/xtables-multi                             0755 0 0
 slink /bin/ip6tables-save             /bin/xtables-multi                             0755 0 0
+file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_ssh.sh            0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0

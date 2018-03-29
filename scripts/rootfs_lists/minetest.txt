@@ -72,6 +72,7 @@ file /bin/console                     ${STAGING_DIR}/usr/bin/console            
 file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
 file /bin/minetestserver              ${STAGING_DIR}/usr/local/bin/minetestserver    0755 0 0
 file /bin/minetest.sh                 ${SKELETON_DIR}/bin/minetest.sh                0755 0 0
+file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_ssh.sh            0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0

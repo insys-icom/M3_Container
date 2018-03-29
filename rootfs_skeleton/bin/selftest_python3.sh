@@ -6,9 +6,7 @@ echo -en "
 #!/bin/python
 try:
     import ssl
-except ImportError:
-    pass
-else:
+except:
     if ssl.RAND_status() is 1:
         exit(0)
     else:
