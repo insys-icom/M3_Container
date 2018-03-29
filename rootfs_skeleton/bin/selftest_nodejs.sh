@@ -17,7 +17,7 @@ http.createServer(function (req, res) {
 # retrive http index site
 cd /tmp
 rm -Rf index.html
-wget http://@localhost
+wget http://localhost
 [ $? != 0 ] && exit 1
 
 # kill the webserver
