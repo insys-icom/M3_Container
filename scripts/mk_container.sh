@@ -108,7 +108,7 @@ do_strip()
 process_filesystem_list()
 {
     ACTION="${1}"
-    FILESYSTEM_LIST="${SCRIPTSDIR}/rootfs_lists/${2}"
+    FILESYSTEM_LIST="${2}"
     FS_OUTFILE="${3}"
 
     echo "-> Creating archive $FS_OUTFILE containing the root file system"
