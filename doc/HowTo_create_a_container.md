@@ -54,7 +54,7 @@ After compiling all needed open source binaries the own closed sources should be
 
 The final step is packaging everything to an update packet that can be stored and installed on a router. This is done by "./scripts/mk_container.sh":
 <pre>
-$ ./scripts/mk_container.sh -l scripts/rootfs_lists/default.txt -n "My_first_container" -v 1.0
+$ ./scripts/mk_container.sh -l default.txt -n "My_first_container" -v 1.0
 </pre>
 
 The script packs all files and stores the resulting update packet in "./images". To be able to do that the script will create the directory "./working/rootfs_target/rootfs". A list with copy instructions is used to define the files that should be copied into the final container. This list is located in ./scripts/rootfs_lists/. Every line contains a file, directory or symlink to be copied or created. Each entry must be given the read/write/execute permissions and the ownership. This way a container can be created by a normal user, no root permission are necessary.
