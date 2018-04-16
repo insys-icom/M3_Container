@@ -138,9 +138,8 @@ slink /var/run                         /tmp/run                                 
 # files needed for Python  #
 ############################
 file /bin/xmlwf                        ${STAGING_DIR}/bin/xmlwf                      0755 0 0
-file /lib/libexpat.so.1.6.7            ${STAGING_DIR}/lib/libexpat.so.1.6.7          0755 0 0
+file /lib/libexpat.so.1                ${STAGING_DIR}/lib/libexpat.so.1.6.7          0755 0 0
 slink /lib/libexpat.so                 libexpat.so.1.6.6                             0777 0 0
-slink /lib/libexpat.so.1               libexpat.so.1.6.6                             0777 0 0
 
 file /bin/gdbm_dump                    ${STAGING_DIR}/bin/gdbm_dump                  0755 0 0
 file /bin/gdbm_load                    ${STAGING_DIR}/bin/gdbm_load                  0755 0 0
