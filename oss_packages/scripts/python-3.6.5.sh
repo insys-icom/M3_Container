@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.6.4"
+PKG_DIR="Python-3.6.5"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz
+# https://www.python.org/ftp/python/3.6.4/Python-3.6.5.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="1325134dd525b4a2c3272a1a0214dd54"
+PKG_CHECKSUM="9f49654a4d6f733ff3284ab9d227e9fd"
 
 # Variable for the install path used in script
 PYTHON_VERSION="python3.6"
