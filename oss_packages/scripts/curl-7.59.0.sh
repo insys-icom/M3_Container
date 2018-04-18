@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="curl-7.58.0"
+PKG_DIR="curl-7.59.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="fa049f9f90c1ae473a2a7bcfa14de976"
+PKG_CHECKSUM="a2192804f7c2636a09320416afcf888e"
 
 
 
@@ -38,6 +38,7 @@ configure()
                 --with-nghttp2="${STAGING_DIR}" \
                 --with-ssl="${STAGING_DIR}" \
                 --with-zlib="${STAGING_DIR}" \
+                --with-ca-bundle="${STAGING_DIR}/usr/share/cacert.pem" \
                 --prefix="" \
                 --enable-shared \
                 --enable-http \

@@ -16,7 +16,8 @@ PACKAGES="${PACKAGES} metalog-3.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2o.sh"
 PACKAGES="${PACKAGES} expat-2.2.5.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
-PACKAGES="${PACKAGES} curl-7.58.0.sh"
+PACKAGES="${PACKAGES} cacert_20180307.sh"
+PACKAGES="${PACKAGES} curl-7.59.0.sh"
 PACKAGES="${PACKAGES} git-2.16.1.sh"
 
 SCRIPTSDIR=$(dirname $0)

@@ -258,6 +258,7 @@ file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm.so.6              
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt.so.1                  0755 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
+file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4.5.0            0644 0 0
 
 file /lib/finit/plugins/initctl.so    ${STAGING_DIR}/lib/finit/plugins/initctl.so    0644 0 0
 file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0
@@ -280,6 +281,7 @@ file /usr/share/version                ${SKELETON_DIR}/usr/share/version        
 file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
 file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
 file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_git.html    0644 0 0
+file /usr/share/cacert.pem             ${SKELETON_DIR}/usr/share/cacert.pem          0644 0 0
 
 file /usr/share/zoneinfo/GMT            ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT               0644 0 0
 file /usr/share/zoneinfo/GMT-1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+1             0644 0 0

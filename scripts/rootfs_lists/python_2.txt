@@ -130,6 +130,7 @@ file /usr/share/version                ${SKELETON_DIR}/usr/share/version        
 file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
 file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
 file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_python_2.7.html 0644 0 0
+file /usr/share/cacert.pem             ${SKELETON_DIR}/usr/share/cacert.pem          0644 0 0
 
 slink /var/lock                        /tmp/lock                                     0777 0 0
 slink /var/run                         /tmp/run                                      0777 0 0
@@ -155,6 +156,8 @@ slink /lib/libffi.so.6                 libffi.so.6.0.4                          
 file /bin/openssl                      ${STAGING_DIR}/bin/openssl                    0755 0 0
 file /lib/libssl.so.1.0.0              ${STAGING_DIR}/lib/libssl.so.1.0.0            0644 0 0
 file /lib/libcrypto.so.1.0.0           ${STAGING_DIR}/lib/libcrypto.so.1.0.0         0644 0 0
+
+file /lib/libcurl.so.4                 ${STAGING_DIR}/lib/libcurl.so.4.5.0            0644 0 0
 
 file /lib/libhistory.so.6.3            ${STAGING_DIR}//lib/libhistory.so.6.3         0755 0 0
 slink /lib/libhistory.so               libhistory.so.6                               0777 0 0
