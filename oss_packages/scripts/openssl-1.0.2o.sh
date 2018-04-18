@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openssl-1.0.2n"
+PKG_DIR="openssl-1.0.2o"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="13bdc1b1d1ff39b6fd42a255e74676a4"
+PKG_CHECKSUM="44279b8557c3247cbe324e2322ecd114"
 
 
 
@@ -28,7 +28,6 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-
     CROSS_COMPILE="${M3_CROSS_COMPILE}" \
     ./Configure linux-armv4 \
                 -no-err \
@@ -53,7 +52,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    # ossl buildsys sucks, do not make parallel builds
+    # do not make parallel builds
     make AR="${AR} r" \
          RANLIB="${RANLIB}" \
          NM="${NM}" \
