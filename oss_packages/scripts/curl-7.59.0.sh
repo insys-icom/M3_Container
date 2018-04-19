@@ -38,7 +38,7 @@ configure()
                 --with-nghttp2="${STAGING_DIR}" \
                 --with-ssl="${STAGING_DIR}" \
                 --with-zlib="${STAGING_DIR}" \
-                --with-ca-bundle="${STAGING_DIR}/usr/share/cacert.pem" \
+                --with-ca-bundle="/usr/share/cacert.pem" \
                 --prefix="" \
                 --enable-shared \
                 --enable-http \
