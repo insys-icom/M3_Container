@@ -18,7 +18,7 @@ PACKAGES="${PACKAGES} expat-2.2.5.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
 PACKAGES="${PACKAGES} cacert_20180307.sh"
 PACKAGES="${PACKAGES} curl-7.59.0.sh"
-PACKAGES="${PACKAGES} git-2.16.1.sh"
+PACKAGES="${PACKAGES} git-2.17.0.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)

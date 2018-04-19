@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="git-2.16.1"
+PKG_DIR="git-2.17.0"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# https://github.com/git/git/archive/v2.16.1.tar.gz
+# https://github.com/git/git/archive/v2.17.0.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="37467da8e79e72f28598d667f219f75e"
+PKG_CHECKSUM="371985891f467969802fe1c7584a45bf"
 
 
 

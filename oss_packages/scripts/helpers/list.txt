@@ -67,7 +67,7 @@ arping-2.19.sh
 timezone2018c.sh
 bftpd-4.4.sh
 wget-1.19.sh
-git-2.16.1.sh
+git-2.17.0.sh
 open62541.sh
 paho.mqtt.c.sh
 libFORTEControls-1.0.sh
