@@ -44,6 +44,7 @@ compile()
 
 install_staging()
 {
+    mkdir -p "${STAGING_DIR}/usr/share"
     cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 

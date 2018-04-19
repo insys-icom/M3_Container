@@ -98,7 +98,6 @@ copy_overlay()
 # delete package build directory (under working)
 del_working()
 {
-    echo "Deleting ${PKG_BUILD_DIR}"
     rm -rf "${PKG_BUILD_DIR}" || exit_failure "Failed to delete {PKG_BUILD_DIR}"
 }
 
