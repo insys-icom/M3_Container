@@ -13,7 +13,7 @@ openssl-1.0.2o.sh
 sqlite-src-3200100.sh
 nghttp2-1.26.0.sh
 cacert_20180307.sh
-curl-7.58.0.sh
+curl-7.59.0.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.0.6.sh
