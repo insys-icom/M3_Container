@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openssh-7.6p1"
+PKG_DIR="openssh-7.7p1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# https://ftp.spline.de/pub/OpenBSD/OpenSSH/portable/openssh-7.6p1.tar.gz
+# https://ftp.spline.de/pub/OpenBSD/OpenSSH/portable/openssh-7.7p1.tar.gz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="06a88699018e5fef13d4655abfed1f63"
+PKG_CHECKSUM="68ba883aff6958297432e5877e9a0fe2"
 
 
 
