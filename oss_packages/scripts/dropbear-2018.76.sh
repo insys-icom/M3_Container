@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dropbear-2017.75"
+PKG_DIR="dropbear-2018.76"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory
-# https://matt.ucc.asn.au/dropbear/dropbear-2017.75.tar.bz2
+# https://matt.ucc.asn.au/dropbear/dropbear-2018.76.tar.bz2
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="e57e9b9d25705dcb073ba15c416424fd"
+PKG_CHECKSUM="c3912f7fcdcc57c99937e4a79480d2c2"
 
 
 
