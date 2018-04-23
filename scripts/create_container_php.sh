@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} libxml2-2.9.4.sh"
 PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} php-7.1.14.sh"
-PACKAGES="${PACKAGES} lighttpd-1.4.45.sh"
+PACKAGES="${PACKAGES} lighttpd-1.4.49.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)

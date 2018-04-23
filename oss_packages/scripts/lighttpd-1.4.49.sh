@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="lighttpd-1.4.48"
+PKG_DIR="lighttpd-1.4.49"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.48.tar.xz
+# http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.49.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="1e3a9eb5078f481e3a8a1d0aaac8c3c8"
+PKG_CHECKSUM="aaf8165379351c3766e5ad1e5c9dbe8b"
 
 
 
