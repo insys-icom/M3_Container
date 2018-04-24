@@ -57,7 +57,7 @@ configure()
 compile()
 {
     copy_overlay
-    cd "${PKG_BUILD_DIR}"    
+    cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install
 }

@@ -43,13 +43,14 @@ configure()
         set(CMAKE_INSTALL_PREFIX="")
         ' > cross_compile_file.txt
 
-    cmake -DCMAKE_TOOLCHAIN_FILE=cross_compile_file.txt
+    cmake -DCMAKE_TOOLCHAIN_FILE=cross_compile_file.txt || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     cd "${PKG_BUILD_DIR}"
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
