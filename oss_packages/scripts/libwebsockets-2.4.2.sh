@@ -28,22 +28,17 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-
-    echo '
-        set(CMAKE_C_COMPILER ${M3_CROSS_COMPILE}gcc)
-        set(CMAKE_C_FLAGS="${CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}")
-        set(CMAKE_AR=${AR})
-        set(CMAKE_LINKER=${M3_CROSS_COMPILE}ld)
-        set(CMAKE_STRIP=${M3_CROSS_COMPILE}strip)
-        set(CMAKE_NM=${NM})
-        set(CMAKE_RANLIB=${RANLIB})
-        set(CMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}")
-        set(CMAKE_EXE_LINKER_FLAGS="${M3_LDFLAGS}")
-        set(CMAKE_MODULE_LINKER_FLAGS="${M3_LDFLAGS}")
-        set(CMAKE_INSTALL_PREFIX="")
-        ' > cross_compile_file.txt
-
-    cmake -DCMAKE_TOOLCHAIN_FILE=cross_compile_file.txt || exit_failure "failed to configure ${PKG_DIR}"
+    cmake \
+        -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
+        -DCMAKE_C_FLAGS="${CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+        -DCMAKE_AR=${AR} \
+        -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
+        -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
+        -DCMAKE_NM=${NM} \
+        -DCMAKE_RANLIB=${RANLIB} \
+        -DCMAKE_INSTALL_PREFIX="" \
+        -DLWS_WITH_HTTP2=1 \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
