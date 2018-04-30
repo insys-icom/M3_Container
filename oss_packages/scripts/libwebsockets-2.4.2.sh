@@ -40,6 +40,7 @@ configure()
         -DLWS_WITH_HTTP2=1 \
         -DLWS_IPV6=ON \
         -DLWS_UNIX_SOCK=ON \
+        -DLWS_WITH_LEJP=ON \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
