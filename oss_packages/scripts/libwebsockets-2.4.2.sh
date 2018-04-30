@@ -38,6 +38,8 @@ configure()
         -DCMAKE_RANLIB=${RANLIB} \
         -DCMAKE_INSTALL_PREFIX="" \
         -DLWS_WITH_HTTP2=1 \
+        -DLWS_IPV6=ON \
+        -DLWS_UNIX_SOCK=ON \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
