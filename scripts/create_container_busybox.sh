@@ -1,4 +1,4 @@
-#!/bin/sh
+meta#!/bin/sh
 
 DESCRIPTION="A container with only busybox in it"
 CONTAINER_NAME="container_busybox"

@@ -12,7 +12,7 @@ PACKAGES="${PACKAGES} dropbear-2018.76.sh"
 PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} mcip-tool-v1.sh"
 PACKAGES="${PACKAGES} pcre-8.42.sh"
-PACKAGES="${PACKAGES} metalog-3.sh"
+PACKAGES="${PACKAGES} metalog-20180510.sh"
 PACKAGES="${PACKAGES} timezone2018c.sh"
 
 SCRIPTSDIR=$(dirname $0)

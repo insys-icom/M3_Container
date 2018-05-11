@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="metalog-3"
+PKG_DIR="metalog-20180510"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
+# PKG_DOWNLOAD="https://github.com/hvisage/metalog/archive/metalog-2018510.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="6fe404e49764fa24108fd090417bacb5"
+PKG_CHECKSUM="1bf37717ae60ad01307f8edb2b22cafa"
 
 
 
@@ -27,6 +28,8 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
+    # do run this outside of first for the original packet on github:
+    # autoreconf -i -f
     ./configure CFLAGS="${M3_CFLAGS}" \
                 LDFLAGS="${M3_LDFLAGS}" \
                 PCRE_CFLAGS="-I${STAGING_INCLUDE}" \
