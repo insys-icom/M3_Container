@@ -230,7 +230,7 @@ compress_best()
     normal_size=$(stat -c %s "${2}.6")
     extreme_size=$(stat -c %s "${2}.6e")
     if [ ${normal_size} -gt ${extreme_size} ] ; then
-        echo "-> Compressing with xz -6e (${normal_size} instead of ${extreme_size}) bytes without -e"
+        echo "-> Compressing with xz -6e (${normal_size} instead of ${extreme_size} bytes without -e)"
         rm -f "${2}.6"
         mv "${2}.6e" "${2}"
     else
