@@ -52,7 +52,7 @@ for PACKAGE in ${PACKAGES} ; do
     echo "* downloading, checking, configuring, compiling and installing ${PACKAGE%.sh}"
     echo "*************************************************************************************"
     echo ""
-    ${OSS_PACKAGES_SCRIPTS}/${PACKAGE}          all || exit
+    ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} all || exit
 done
 
 # package container

@@ -13,7 +13,7 @@ PACKAGES="${PACKAGES} libcap-2.25.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2o.sh"
 PACKAGES="${PACKAGES} timezone2018c.sh"
-PACKAGES="${PACKAGES} iperf-2.0.9.sh"
+PACKAGES="${PACKAGES} iperf-3.5.sh"
 PACKAGES="${PACKAGES} iputils-s20151218.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
 PACKAGES="${PACKAGES} cacert_20180307.sh"
@@ -61,7 +61,7 @@ for PACKAGE in ${PACKAGES} ; do
     echo "* downloading, checking, configuring, compiling and installing ${PACKAGE%.sh}"
     echo "*************************************************************************************"
     echo ""
-    ${OSS_PACKAGES_SCRIPTS}/${PACKAGE}          all || exit
+    ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} all || exit
 done
 
 # package container
