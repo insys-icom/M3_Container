@@ -19,7 +19,7 @@ PACKAGES="${PACKAGES} http-parser-v2.7.1.sh"
 PACKAGES="${PACKAGES} libuv-1.9.1.sh"
 PACKAGES="${PACKAGES} nghttp2-1.26.0.sh"
 PACKAGES="${PACKAGES} cacert_20180307.sh"
-PACKAGES="${PACKAGES} curl-7.59.0.sh"
+PACKAGES="${PACKAGES} curl-7.60.0.sh"
 PACKAGES="${PACKAGES} node-v8.2.1.sh"
 
 SCRIPTSDIR=$(dirname $0)
