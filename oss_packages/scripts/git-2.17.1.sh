@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="git-2.17.0"
+PKG_DIR="git-2.17.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# https://github.com/git/git/archive/v2.17.0.tar.xz
+# https://github.com/git/git/archive/v2.17.1.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="371985891f467969802fe1c7584a45bf"
+PKG_CHECKSUM="5179245515c637357b4a134e8d4e9a6f"
 
 
 
@@ -46,7 +46,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make -k "${M3_MAKEFLAGS}" || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make -k "${M3_MAKEFLAGS}" DESTDIR="${PKG_INSTALL_DIR}" -i install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
