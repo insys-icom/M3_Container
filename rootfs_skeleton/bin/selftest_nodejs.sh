@@ -17,8 +17,7 @@ http.createServer(function (req, res) {
 # retrive http index site
 cd /tmp
 rm -Rf index.html
-IP="::1"
-wget http://"${IP}"
+wget "http://[::1]"
 [ $? != 0 ] && exit 1
 
 # kill the webserver
