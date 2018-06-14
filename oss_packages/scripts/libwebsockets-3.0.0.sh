@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="libwebsockets-2.4.2"
+PKG_DIR="libwebsockets-3.0.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://github.com/warmcat/libwebsockets/archive/v2.4.2.tar.gz"
+# PKG_DOWNLOAD="https://github.com/warmcat/libwebsockets/archive/v3.0.0.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="b64300541128baa18828620187453efb"
+PKG_CHECKSUM="2a78c8c49bbbfe67c24637398d989958"
 
 
 
@@ -41,6 +41,8 @@ configure()
         -DLWS_IPV6=ON \
         -DLWS_UNIX_SOCK=ON \
         -DLWS_WITH_LEJP=ON \
+        -DLWS_WITH_LEJP_CONF=ON \
+        -DLWS_WITHOUT_TESTAPPS=ON \
         -DLWS_WITHOUT_DAEMONIZE=OFF \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
