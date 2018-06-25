@@ -29,8 +29,7 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     cmake \
-        -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
-        -DCMAKE_C_FLAGS="${CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+        -DCMAKE_CXX_FLAGS="${CFLAGS} -Wno-implicit-fallthrough -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
         -DCMAKE_AR=${AR} \
         -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
         -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
@@ -38,7 +37,7 @@ configure()
         -DCMAKE_RANLIB=${RANLIB} \
         -DCMAKE_INSTALL_PREFIX="" \
         -DRAPIDJSON_BUILD_DOC=OFF \
-        -DRAPIDJSON_BUILD_EXAMPLES=OFF \
+        -DRAPIDJSON_BUILD_EXAMPLES=ON \
         -DRAPIDJSON_BUILD_TESTS=OFF \
         -DRAPIDJSON_BUILD_THIRDPARTY_GTEST=OFF \
         || exit_failure "failed to configure ${PKG_DIR}"
