@@ -27,12 +27,9 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    ########################
-    # compile gmp first!
-    ########################
     cd "${PKG_BUILD_DIR}"
     ./configure CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
-                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lgmp" \
+                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
                 --target="${M3_TARGET}" \
                 --host="${M3_TARGET}" \
                 --prefix="" \
@@ -40,8 +37,8 @@ configure()
                 --disable-static \
                 --enable-arm-neon \
                 --with-lib-path="${STAGING_LIB}" \
+                --enable-mini-gmp \
                 --with-include-path="${STAGING_INCLUDE}" || exit_failure "failed to configure ${PKG_DIR}"
-#                 --enable-mini-gmp
 }
 
 compile()

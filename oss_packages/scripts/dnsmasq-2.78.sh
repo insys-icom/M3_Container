@@ -27,9 +27,6 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    echo "############################################################"
-    echo "This needs nettle, so build that first!"
-    echo "############################################################"
     true
 }
 
@@ -41,10 +38,11 @@ compile()
         make ${M3_MAKEFLAGS} \
         PREFIX=/ \
         CC="${M3_CROSS_COMPILE}gcc" \
-        "CFLAGS=${M3_CFLAGS} -I${STAGING_INCLUDE}" \
-        "LDFLAGS=${M3_LDFLAGS} -L${STAGING_LIB}" \
-        'COPTS= -DNO_AUTH -DNO_CONNTRACK -DNO_DBUS -DNO_IDN -DNO_LUASCRIPT -DHAVE_DNSSEC -DHAVE_DNSSEC_STATIC -DNO_GMP' \
-        CONFFILE=/etc/dnsmasq.conf all
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        COPTS=' -DNO_AUTH -DNO_CONNTRACK -DNO_DBUS -DNO_IDN -DNO_LUASCRIPT -DNO_DNSSEC -DNO_DNSSEC_STATIC -DNO_GMP' \
+        CONFFILE="/etc/dnsmasq.conf" \
+        all
 
     if [ $? -ne 0 ]; then
         echo "############################################################"

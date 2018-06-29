@@ -29,7 +29,7 @@ pcre-8.42.sh
 readline-6.3.sh
 mcip.sh
 
-dnsmasq-2.78.sh
+dnsmasq-2.79.sh
 dropbear-2018.76.sh
 ebtables-v2.0.10-4.sh
 expat-2.2.5.sh
