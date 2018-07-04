@@ -42,8 +42,8 @@ configure()
         -DLWS_UNIX_SOCK=ON \
         -DLWS_WITH_LEJP=ON \
         -DLWS_WITH_LEJP_CONF=ON \
-        -DLWS_WITHOUT_TESTAPPS=ON \
-        -DLWS_WITHOUT_DAEMONIZE=OFF \
+        -DLWS_WITHOUT_TESTAPPS=OFF \
+        -DLWS_WITHOUT_DAEMONIZE=ON \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
