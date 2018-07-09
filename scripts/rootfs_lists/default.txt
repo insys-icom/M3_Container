@@ -69,6 +69,7 @@ slink /bin/get-input                  /bin/mcip-tool                            
 slink /bin/get-pulses                 /bin/mcip-tool                                 0777 0 0
 slink /bin/set-output                 /bin/mcip-tool                                 0777 0 0
 slink /bin/cli-cmd                    /bin/mcip-tool                                 0777 0 0
+slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_ssh.sh            0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
