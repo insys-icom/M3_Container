@@ -1,12 +1,16 @@
 Introduction
 ---
-The SDK (Software Development Kit) is a VirtualBox image. The SDK should be an independent reference building machine. It should not interfere with users host system. 
+The SDK (Software Development Kit) is a VirtualBox image. The SDK should be an independent reference building machine. It should not interfere with users host system.
 
-The VM consists of a minimal Gentoo Linux installation without graphical user interface support. Installed is crossdev with the armv7-hf cross compiler toolchain. 
+The VM consists of a minimal Gentoo Linux installation without graphical user interface support. Installed is crossdev with the armv7-hf cross compiler toolchain.
 
 The SDK is supposed to have access to the internet in order to be able to clone this repository and to get the open-source-packages needed to fill the containers. Therefore one Ethernet interface must be bridged to the SDK.
 
-To exchange files from the host with the SDK a VirtualBox feature called "shared folder" can be used. 
+To exchange files from the host with the SDK a VirtualBox feature called "shared folder" can be used, but be warned:
+
+Caveat 1: The performance of the "shared folder" feature might be very slow, especially when compiling projects with a huge amount of files.
+
+Caveat 2: Compiling projects that rely on symlinks (e.g. "busybox") will fail, when the host operating system lack support symlinks (like "Windows" lacks). In this case the project files must be compiled within the SDK without the use of this "shared folder" feature.
 
 
 Install the SDK
@@ -34,7 +38,7 @@ First steps within the SDK
     	user@m3sdk ~ $ su root
     	Password: root
     </pre>
-* Configure networking. It's assumed you bridged an Ethernet interface to the SDK, your LAN is the 192.168.2.0/24 and your gateway has the IP address 192.168.2.1/24. 
+* Configure networking. It's assumed you bridged an Ethernet interface to the SDK, your LAN is the 192.168.2.0/24 and your gateway has the IP address 192.168.2.1/24.
     Configure a free IP address of your LAN to the Ethernet interface within the SDK:
     <pre>
         m3sdk user # /root/set_ip.sh 192.168.2.3/24
@@ -55,7 +59,7 @@ First steps within the SDK
     <pre>
         m3sdk user # ping -c 4 insys-icom.de
     </pre>
-    
+
 * Exit the VM as root and continue to work as "user" from now on. Clone this repository into the SDK:
     <pre>
         m3sdk user # exit
@@ -96,13 +100,17 @@ If downloading the sources fails (no internet connection, wrong default route, n
 
 Using shared folders with SDK
 ---
-In order to exchange file between SDK and host system more comfortably VirtualBox comes with a feature called "Shared folders". Via VirtualBox GUI you can define one ore more directories, that can be mounted by the SDK. The files within the directory will stay on your host system. They can be read and modified within the SDK. 
+In order to exchange file between SDK and host system more comfortably VirtualBox comes with a feature called "Shared folders". Via VirtualBox GUI you can define one ore more directories, that can be mounted by the SDK. The files within the directory will stay on your host system. They can be read and modified within the SDK.
 
 This is useful to get easy access to the update packages with the final container. It's also very comfortable to edit the sources of your own applications with the graphical editor you are used to and share these files with the SDK, which can use them to compile and package them.
 
-To add a "shard folder": 
+Caveat 1: The "shared folder" feature doesn't perform very well. Compiling projects with a huge amount of files can be very slow.
 
-* Create a new directory on your host, that should be shared with the SDK. 
+Caveat 2: Using "shared folders" might not be able to compile projects that relay on Linux symlinks (like "busybox"), when the host operating system (like "Windows") doesn't support symlinks. In that case the only way is to compile the project completely within the virtual machine. That means that the project files to be compiled must be transfered into a directory of the SDK (via scp, ftp or http).
+
+To add a "shard folder":
+
+* Create a new directory on your host, that should be shared with the SDK.
 
 * Use the VirtualBox GUI and select "Shared Folder". Add the shared folder by using the symbol. Select the directory to be shared. Enter the directory name. It's assumed for this example that it's named "images". Do _not_ tick the checkbox "mount automatically" or the "read-only" checkbox.
 
@@ -114,24 +122,24 @@ To add a "shard folder":
     Password: user
     m3sdk@user ~ $ rm -Rf ./M3_Container/images/*
     </pre>
-    
-* Become "root" 
+
+* Become "root"
     <pre>
     user@m3sdk ~ $ su root
     Password: root
     </pre>
-    
+
 * Create the script that will mount the shared folder with read/write permissions and the correct UID/GID whenever the SDK starts.
     <pre>
     m3sdk user $ nano /etc/local.d/vboxsf_mount.start
     </pre>
-    
+
 * Enter these lines into the script:
     <pre>
     #!/bin/sh
     mount -t vboxsf -o rw,uid=1000 images /home/user/M3_Container/images
     </pre>
-  
+
 * Give the script the correct permisssions and add it to the system start, so the mounting happens every time the SDK starts:
     <pre>
     m3sdk user $ chmod 755 /etc/local.d/vboxsf_mount.start

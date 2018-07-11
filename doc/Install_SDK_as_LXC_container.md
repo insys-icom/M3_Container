@@ -1,18 +1,21 @@
 Introduction
 ---
-The SDK in form of a VirtualBox image is the most reliable and portable way to produce new containers. It still has a few disadvantages:
+The SDK in form of a VirtualBox image is the most reliable and portable way to produce new containers. Unfortunately it has a few disadvantages:
 
 * The overall performance within a virtual machine (VM) is never that high than the one on the host machine.
 
-* Exchanging files between the VM and the host system is not always that easy, it's quite slow and takes a huge amount of CPU power.
+* Exchanging files between the VM and the host system can be a quite a hassle.
 
-* Working within a VM most of the times is quite uncomfortable. There never are the right tools like editors. In case of the SDK there is not even an X server installed.
+* Working within a VM can be quite uncomfortable (lack of GUI, familiar editor, tools..).
 
 The solution is LXC
 ---
-The same mechanism used within the M3 platform devices can be used on every modern Linux machine. Let the SDK run in an LXC container. Share all files in your users home directory of the host with the LXC container. That way you can edit the source files with your hosts editors and tools and use the SDK from within the LXC container to compile them.
+The same mechanism used within the M3 platform devices can be used on every modern Linux machine.
+Let the SDK run in an LXC container.
+Share all files in your users home directory of the host with the LXC container.
+That way you can edit the source files with your hosts editors and tools and use the SDK from within the LXC container to compile them.
 
-Using the SDK as an LXC container will result in a huge performance improvement when compiling. The pain with the file exchange will go away and starting up the SDK will happen almost instantly.
+Using the SDK as an LXC container will result in a huge performance improvement when compiling compared to a SDK as a virtual machine. The pain with the file exchange will go away and starting up the SDK will happen almost instantly.
 
 Preconditions:
 
@@ -24,7 +27,7 @@ Read more on the [LXC website](https://linuxcontainers.org/lxc/getting-started)
 
 Installation
 ---
-1. Download the [archive with the SDK](https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz)
+1. Download the [SDK as LXC container](https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz)
 
 2. Become root and extract the archive. It's assumed that the all LXC containers are installed in /var/lib/lxc
 	<pre>
