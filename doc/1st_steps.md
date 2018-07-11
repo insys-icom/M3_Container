@@ -13,8 +13,8 @@ There are several possibilities to get a cross toolchain:
 
 It is recommended to use the prepared SDK. It's a tiny Gentoo Linux with installed crossdev target armv7-hf. More detailed instructions:
 
-* Install the SDK as [LXC container](Install_SDK_as_LXC_container.md "doc/Install_SDK_as_LXC_container.md")
-* Install the SDK as [VirtualBox image](Install_VirtualBox.md "doc/Install_VirtualBox.md")
+* Install the SDK as [LXC container]("doc/Install_SDK_as_LXC_container.md")
+* Install the SDK as [VirtualBox image]("doc/Install_VirtualBox.md")
 
 
 2 Get build scripts into the SDK
