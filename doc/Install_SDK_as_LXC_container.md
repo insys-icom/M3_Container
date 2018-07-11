@@ -1,11 +1,13 @@
 Introduction
 ---
+This guide will describe how to install the SDK as an LXC container on a Linux machine.
+
+Why not using the SDK as a VirtualBox image?
+---
 The SDK in form of a VirtualBox image is the most reliable and portable way to produce new containers. Unfortunately it has a few disadvantages:
 
 * The overall performance within a virtual machine (VM) is never that high than the one on the host machine.
-
 * Exchanging files between the VM and the host system can be a quite a hassle.
-
 * Working within a VM can be quite uncomfortable (lack of GUI, familiar editor, tools..).
 
 The solution is LXC
