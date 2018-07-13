@@ -1,13 +1,15 @@
 # HowTo create a new container
 
-For all following it is assumed that you
+For the following it's assumed that you
 
 * started and configured the SDK to have internet access
 * logged into the SDK as "user" (password is also "user")
-* changed to the root directory of the git repository, which is most likely "~/M3_Container".
+* changed to the root directory of the git repository, which is most likely "/home/user/M3_Container"
 
 ## For beginners: The comfortable way
-There already are a few recipes for complete containers in "./scripts/create_container_XYZ.sh". These scripts will try to download the sources, configure and compile them and pack a complete container without interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to build are satisfied. This scripts can be used as a template for own containers.
+There already are a few recipes for creating complete containers in "./scripts/", like "create_container_default.sh". These scripts will try to download the sources, configure and compile them and pack a complete container without any more interaction with the user. They always build the complete content of a container in the correct order, so all dependencies of the projects to be built are satisfied. This scripts can be used as a template for own containers.
+
+This is an example, that will create a small container with an SSH server:
 <pre>
 user@m3sdk ~/M3_Container $ <b>./scripts/create_container_default.sh</b>
 </pre>

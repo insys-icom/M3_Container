@@ -1,6 +1,6 @@
 Introduction
 ---
-The SDK (Software Development Kit) is a VirtualBox image. The SDK should be an independent reference building machine. It should not interfere with users host system.
+The SDK (Software Development Kit) is a VirtualBox image. The SDK should be an independent reference building machine. It should not interfere with the users host system.
 
 The VM consists of a minimal Gentoo Linux installation without graphical user interface support. Installed is crossdev with the armv7-hf cross compiler toolchain.
 
@@ -8,9 +8,10 @@ The SDK is supposed to have access to the internet in order to be able to clone 
 
 To exchange files from the host with the SDK a VirtualBox feature called "shared folder" can be used, but be warned:
 
-Caveat 1: The performance of the "shared folder" feature might be very slow, especially when compiling projects with a huge amount of files.
+* Caveat 1: The performance of the "shared folder" feature might be very slow, especially when compiling projects with a huge amount of files.
+* Caveat 2: Compiling projects that rely on symlinks (e.g. "busybox") will fail, when the host operating system doesn't support symlinks (like "Windows" lacks). In this case the project files must be compiled within the SDK without the use of this "shared folder" feature.
 
-Caveat 2: Compiling projects that rely on symlinks (e.g. "busybox") will fail, when the host operating system lack support symlinks (like "Windows" lacks). In this case the project files must be compiled within the SDK without the use of this "shared folder" feature.
+The SDK has been kept as small as possible, but naturally it can be adjusted by simply adding new packets like X and a window manager (for a GUI), editors, additional compilers (e.g. LaTeX, haskell, go-lang) or other applications by using the Gentoo package manager [portage](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Portage).
 
 
 Install the SDK
