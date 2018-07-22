@@ -42,8 +42,17 @@ compile()
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    cd "${PKG_BUILD_DIR}/install"
+    cp -r ./lib/libffi.so* ${STAGING_LIB}
+    cp -r ./lib/${PKG_DIR}/include/* ${STAGING_INCLUDE}
+}
+
+uninstall_staging()
+{
+    cd "${PKG_BUILD_DIR}/install"
+    rm ${STAGING_LIB}/libffi*
+    rm ${STAGING_INCLUDE}/ffi.h
+    rm ${STAGING_INCLUDE}/ffitarget.h
 }
 
 . ${HELPERSDIR}/call_functions.sh

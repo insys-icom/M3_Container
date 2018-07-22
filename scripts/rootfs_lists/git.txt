@@ -259,7 +259,7 @@ file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm.so.6              
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt.so.1                  0755 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
-file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4.5.0            0644 0 0
+file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4                0644 0 0
 
 file /lib/finit/plugins/initctl.so    ${STAGING_DIR}/lib/finit/plugins/initctl.so    0644 0 0
 file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0

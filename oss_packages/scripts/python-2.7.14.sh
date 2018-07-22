@@ -30,13 +30,23 @@ configure()
     copy_overlay
 
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_DIR}/usr/include/ncurses -I${STAGING_DIR}/usr/include/ncursesw"
-    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    export ac_cv_file__dev_ptc=no
-    export ac_cv_file__dev_ptmx=no
-    export CXX
-
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --build=i686-pc-linux-gnu --with-fpectl --enable-ipv6 --with-threads --enable-unicode --with-computed-gotos --with-system-expat --with-lto --enable-shared
+    CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_DIR}/include/ncurses -I${STAGING_DIR}/include/ncursesw" \
+    LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+    ac_cv_file__dev_ptc=no \
+    ac_cv_file__dev_ptmx=no \
+    CXX=""\
+    ./configure \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET} \
+        --build=i686-pc-linux-gnu \
+        --with-fpectl \
+        --enable-ipv6 \
+        --with-threads \
+        --enable-unicode \
+        --with-computed-gotos \
+        --with-system-expat \
+        --with-lto \
+        --enable-shared || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -46,7 +56,7 @@ compile()
     cd "${PKG_BUILD_DIR}"
     touch Include/graminit.h Python/graminit.c
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

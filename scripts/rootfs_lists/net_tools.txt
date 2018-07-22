@@ -145,8 +145,8 @@ file /lib/security/pam_unix.so        ${STAGING_DIR}/lib/security/pam_unix.so   
 file /lib/security/pam_warn.so        ${STAGING_DIR}/lib/security/pam_warn.so        0644 0 0
 file /lib/libpam_misc.so.0            ${STAGING_DIR}/lib/libpam_misc.so.0            0644 0 0
 file /lib/libpam.so.0                 ${STAGING_DIR}/lib/libpam.so.0                 0644 0 0
-file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4.5.0            0644 0 0
-file /lib/libnghttp2.so.14            ${STAGING_DIR}/lib/libnghttp2.so.14.14.0       0644 0 0
+file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4                0644 0 0
+file /lib/libnghttp2.so.14            ${STAGING_DIR}/lib/libnghttp2.so.14            0644 0 0
 file /bin/openssl                     ${STAGING_DIR}/bin/openssl                     0755 0 0
 file /lib/libssl.so.1.0.0             ${STAGING_DIR}/lib/libssl.so.1.0.0             0644 0 0
 file /lib/libcrypto.so.1.0.0          ${STAGING_DIR}/lib/libcrypto.so.1.0.0          0644 0 0

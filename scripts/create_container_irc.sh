@@ -10,7 +10,7 @@ PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2o.sh"
-PACKAGES="${PACKAGES} timezone2018c.sh"
+PACKAGES="${PACKAGES} timezone2018e.sh"
 PACKAGES="${PACKAGES} ngircd-24.sh"
 
 SCRIPTSDIR=$(dirname $0)
