@@ -47,7 +47,7 @@ lighttpd-1.4.49.sh
 irrlicht-1.8.4.sh
 minetest_game-0.4.16.sh
 minetest-0.4.16.sh
-lua-5.3.3.sh
+lua-5.3.5.sh
 mcip-tool-v2.sh
 metalog-20180510.sh
 mosquitto-1.4.12.sh
