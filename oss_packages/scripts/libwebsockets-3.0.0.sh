@@ -30,7 +30,7 @@ configure()
     cd "${PKG_BUILD_DIR}"
     cmake \
         -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
-        -DCMAKE_C_FLAGS="${CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+        -DCMAKE_C_FLAGS="${M3_CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
         -DCMAKE_AR=${AR} \
         -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
         -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
