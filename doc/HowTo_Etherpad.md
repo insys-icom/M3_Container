@@ -8,20 +8,10 @@ This document will describe how to install Ethernet within a container.
 ## Install and configure a container with NodeJS
 Make sure the time and date of the router is up to date. This is important for certificates to become valid.
 
-Upload and configure the [NodeJS container](https://m3-container.net/M3_Container/images/container_nodejs.tar) on your router. Bridge the container to an IP net that has access to the internet. Enter the container and set up networking there. Enter a reachable address for the DNS server, most likely this will be the routers IP address:
+Upload and configure the [NodeJS container](https://m3-container.net/M3_Container/images/container_nodejs.tar) on your router. Bridge the container to an IP net that has access to the internet and set the gateway IP address. If the DNS server IP address is not the same as the IP address of the gateway, enter the container and set it:
 <pre>
+user@ps ~  $ <b>ssh root@192.168.1.1</b>
 root@container_nodejs ~  $ <b>echo "nameserver *IP_ADDRESS_OF_NAMESERVER*" > /etc/resolv.conf</b>
-</pre>
-
-Edit the script that will set the default gateway after starting the container:
-<pre>
-root@container_nodejs ~  $ <b>vi /bin/start_net</b>
-</pre>
-Press "i" to enter the editing mode of vi and exchange the IP address of the default gateway, most likely this will also be the routers IP address. Store and exit vi with the keys \<ESC> : x.
-
-Execute the script, so the default route gets set:
-<pre>
-root@container_nodejs ~  $ <b>/bin/start_net</b>
 </pre>
 
 Test the internet connection:
