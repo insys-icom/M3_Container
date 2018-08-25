@@ -54,7 +54,7 @@ mosquitto-1.4.12.sh
 nano-2.9.8.sh
 net-snmp-5.7.3.sh
 ngircd-24.sh
-node-v8.2.1.sh
+node-v10.9.0-linux-armv7l.sh
 openssh-7.7p1.sh
 openvpn-2.4.6.sh
 rsync-3.1.2.sh

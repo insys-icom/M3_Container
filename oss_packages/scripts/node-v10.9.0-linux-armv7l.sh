@@ -38,14 +38,14 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    cp -a bin/npm "${STAGING_DIR}/bin"
+    cp -a bin/node "${STAGING_DIR}/bin"
     cp -a lib/* "${STAGING_LIB}"
 }
 
 uninstall_staging()
 {
     cd "${STAGING_DIR}"
-    rm -Rf bin/npm
+    rm -Rf bin/node
     rm -Rf "${STAGING_LIB}/node_modules}"
 }
 

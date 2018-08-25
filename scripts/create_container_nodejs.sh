@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} libuv-1.9.1.sh"
 PACKAGES="${PACKAGES} nghttp2-1.32.0.sh"
 PACKAGES="${PACKAGES} cacert_20180722.sh"
 PACKAGES="${PACKAGES} curl-7.61.0.sh"
-PACKAGES="${PACKAGES} node-v8.2.1.sh"
+PACKAGES="${PACKAGES} node-v10.9.0-linux-armv7l.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
