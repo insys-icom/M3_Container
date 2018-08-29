@@ -256,13 +256,16 @@ slink /etc/localtime                    /usr/share/zoneinfo/Regensburg          
 
 slink /var/lock                        /tmp/lock                                     0777 0 0
 slink /var/run                         /tmp/run                                      0777 0 0
-
+#
 #################
 # busybox links #
 #################
 # create these lines automatically by executing the next line in "working/busybox-X.Y.Z/build/system"
 # sh ../../../linux-4.4.4/scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d _install | grep slink | sed 's|_install|${SKELETON_DIR}|' | sort
-# do not add init and reboot, they are for container users
+# do not add init, kinit, ping, ping6, traceroute6, arping and reboot, they are for container users
+# slink /init kinit 0755 0 0
+slink /bin/[ busybox 777 0 0
+slink /bin/[[ busybox 777 0 0
 slink /bin/ar busybox 777 0 0
 slink /bin/arch busybox 777 0 0
 slink /bin/ash busybox 777 0 0
@@ -272,8 +275,6 @@ slink /bin/basename busybox 777 0 0
 slink /bin/bash busybox 777 0 0
 slink /bin/bbconfig busybox 777 0 0
 slink /bin/bunzip2 busybox 777 0 0
-slink /bin/[ busybox 777 0 0
-slink /bin/[[ busybox 777 0 0
 slink /bin/bzcat busybox 777 0 0
 slink /bin/bzip2 busybox 777 0 0
 slink /bin/cal busybox 777 0 0
@@ -343,8 +344,8 @@ slink /bin/install busybox 777 0 0
 slink /bin/ionice busybox 777 0 0
 slink /bin/iostat busybox 777 0 0
 slink /bin/ipcalc busybox 777 0 0
-slink /bin/killall busybox 777 0 0
 slink /bin/kill busybox 777 0 0
+slink /bin/killall busybox 777 0 0
 slink /bin/less busybox 777 0 0
 slink /bin/ln busybox 777 0 0
 slink /bin/logger busybox 777 0 0
@@ -386,8 +387,8 @@ slink /bin/paste busybox 777 0 0
 slink /bin/patch busybox 777 0 0
 slink /bin/pgrep busybox 777 0 0
 slink /bin/pidof busybox 777 0 0
-#slink /bin/ping6 busybox 777 0 0
 #slink /bin/ping busybox 777 0 0
+#slink /bin/ping6 busybox 777 0 0
 slink /bin/pipe_progress busybox 777 0 0
 slink /bin/pkill busybox 777 0 0
 slink /bin/pmap busybox 777 0 0
@@ -408,8 +409,8 @@ slink /bin/resume busybox 777 0 0
 slink /bin/rev busybox 777 0 0
 slink /bin/rm busybox 777 0 0
 slink /bin/rmdir busybox 777 0 0
-slink /bin/rpm2cpio busybox 777 0 0
 slink /bin/rpm busybox 777 0 0
+slink /bin/rpm2cpio busybox 777 0 0
 slink /bin/run-parts busybox 777 0 0
 slink /bin/runsv busybox 777 0 0
 slink /bin/runsvdir busybox 777 0 0
@@ -424,11 +425,11 @@ slink /bin/setpriv busybox 777 0 0
 slink /bin/setserial busybox 777 0 0
 slink /bin/setsid busybox 777 0 0
 slink /bin/setuidgid busybox 777 0 0
+slink /bin/sh busybox 777 0 0
 slink /bin/sha1sum busybox 777 0 0
 slink /bin/sha256sum busybox 777 0 0
 slink /bin/sha3sum busybox 777 0 0
 slink /bin/sha512sum busybox 777 0 0
-slink /bin/sh busybox 777 0 0
 slink /bin/shred busybox 777 0 0
 slink /bin/shuf busybox 777 0 0
 slink /bin/sleep busybox 777 0 0
@@ -444,6 +445,7 @@ slink /bin/su busybox 777 0 0
 slink /bin/sum busybox 777 0 0
 slink /bin/sv busybox 777 0 0
 slink /bin/svc busybox 777 0 0
+slink /bin/svok busybox 777 0 0
 slink /bin/sync busybox 777 0 0
 slink /bin/tac busybox 777 0 0
 slink /bin/tail busybox 777 0 0
@@ -457,9 +459,9 @@ slink /bin/time busybox 777 0 0
 slink /bin/timeout busybox 777 0 0
 slink /bin/top busybox 777 0 0
 slink /bin/touch busybox 777 0 0
-#slink /bin/traceroute6 busybox 777 0 0
-slink /bin/traceroute busybox 777 0 0
 slink /bin/tr busybox 777 0 0
+slink /bin/traceroute busybox 777 0 0
+#slink /bin/traceroute6 busybox 777 0 0
 slink /bin/true busybox 777 0 0
 slink /bin/truncate busybox 777 0 0
 slink /bin/tty busybox 777 0 0
@@ -494,7 +496,6 @@ slink /bin/xxd busybox 777 0 0
 slink /bin/xzcat busybox 777 0 0
 slink /bin/yes busybox 777 0 0
 slink /bin/zcat busybox 777 0 0
-#slink /init kinit 0755 0 0
 slink /linuxrc bin/busybox 777 0 0
 slink /sbin/addgroup ../bin/busybox 777 0 0
 slink /sbin/adduser ../bin/busybox 777 0 0
@@ -514,6 +515,7 @@ slink /sbin/dhcprelay ../bin/busybox 777 0 0
 slink /sbin/dnsd ../bin/busybox 777 0 0
 slink /sbin/ether-wake ../bin/busybox 777 0 0
 slink /sbin/fakeidentd ../bin/busybox 777 0 0
+slink /sbin/fbsplash ../bin/busybox 777 0 0
 slink /sbin/fdisk ../bin/busybox 777 0 0
 slink /sbin/flash_eraseall ../bin/busybox 777 0 0
 slink /sbin/flash_lock ../bin/busybox 777 0 0
@@ -536,8 +538,8 @@ slink /sbin/ifup ../bin/busybox 777 0 0
 slink /sbin/inetd ../bin/busybox 777 0 0
 #slink /sbin/init ../bin/busybox 777 0 0
 slink /sbin/inotifyd ../bin/busybox 777 0 0
-slink /sbin/ipaddr ../bin/busybox 777 0 0
 slink /sbin/ip ../bin/busybox 777 0 0
+slink /sbin/ipaddr ../bin/busybox 777 0 0
 slink /sbin/iplink ../bin/busybox 777 0 0
 slink /sbin/ipneigh ../bin/busybox 777 0 0
 slink /sbin/iproute ../bin/busybox 777 0 0
@@ -570,6 +572,7 @@ slink /sbin/swapoff ../bin/busybox 777 0 0
 slink /sbin/swapon ../bin/busybox 777 0 0
 slink /sbin/sysctl ../bin/busybox 777 0 0
 slink /sbin/syslogd ../bin/busybox 777 0 0
+slink /sbin/tc ../bin/busybox 777 0 0
 slink /sbin/telnetd ../bin/busybox 777 0 0
 slink /sbin/tftpd ../bin/busybox 777 0 0
 slink /sbin/tunctl ../bin/busybox 777 0 0

@@ -1,7 +1,7 @@
 # This lists all open source projects to be compiled in the correct order, so all dependencies should be met
 
 Linux-PAM-1.2.1.sh
-busybox-1.28.0.sh
+busybox-1.29.2.0.sh
 
 zlib-1.2.11.sh
 xz-5.2.2.sh
@@ -47,8 +47,8 @@ iptables-1.6.1.sh
 iputils-s20151218.sh
 lighttpd-1.4.49.sh
 irrlicht-1.8.4.sh
-minetest_game-0.4.16.sh
-minetest-0.4.16.sh
+minetest_game-0.4.17.sh
+minetest-0.4.17.1.sh
 lua-5.3.5.sh
 mcip-tool-v2.sh
 metalog-20180510.sh

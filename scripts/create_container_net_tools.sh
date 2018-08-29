@@ -5,7 +5,7 @@ CONTAINER_NAME="container_net_tools"
 ROOTFS_LIST="net_tools.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.28.0.sh"
+PACKAGES="${PACKAGES} busybox-1.29.2.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} libpcap-1.7.4.sh"

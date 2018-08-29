@@ -5,7 +5,7 @@ CONTAINER_NAME="container_python_2"
 ROOTFS_LIST="python_2.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.28.0.sh"
+PACKAGES="${PACKAGES} busybox-1.29.2.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"

@@ -5,7 +5,7 @@ CONTAINER_NAME="container_minetest"
 ROOTFS_LIST="minetest.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.28.0.sh"
+PACKAGES="${PACKAGES} busybox-1.29.2.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"
@@ -20,8 +20,8 @@ PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} libpng-1.6.34.sh"
 PACKAGES="${PACKAGES} freetype-2.8.1.sh"
 PACKAGES="${PACKAGES} irrlicht-1.8.4.sh"
-PACKAGES="${PACKAGES} minetest-0.4.16.sh"
-PACKAGES="${PACKAGES} minetest_game-0.4.16.sh"
+PACKAGES="${PACKAGES} minetest-0.4.17.1.sh"
+PACKAGES="${PACKAGES} minetest_game-0.4.17.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
