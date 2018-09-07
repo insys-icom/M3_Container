@@ -9,11 +9,11 @@ lz4-1.8.0.sh
 bzip2-1.0.6.sh
 lzo-2.10.sh
 c-ares-1.13.0.sh
-openssl-1.0.2o.sh
+openssl-1.0.2p.sh
 sqlite-src-3200100.sh
 nghttp2-1.32.0.sh
 cacert_20180722.sh
-curl-7.61.0.sh
+curl-7.61.1.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.0.6.sh

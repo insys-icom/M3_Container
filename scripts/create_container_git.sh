@@ -13,11 +13,11 @@ PACKAGES="${PACKAGES} timezone2018e.sh"
 PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} pcre-8.42.sh"
 PACKAGES="${PACKAGES} metalog-20180510.sh"
-PACKAGES="${PACKAGES} openssl-1.0.2o.sh"
+PACKAGES="${PACKAGES} openssl-1.0.2p.sh"
 PACKAGES="${PACKAGES} expat-2.2.5.sh"
 PACKAGES="${PACKAGES} nghttp2-1.32.0.sh"
 PACKAGES="${PACKAGES} cacert_20180722.sh"
-PACKAGES="${PACKAGES} curl-7.61.0.sh"
+PACKAGES="${PACKAGES} curl-7.61.1.sh"
 PACKAGES="${PACKAGES} git-2.18.0.sh"
 
 SCRIPTSDIR=$(dirname $0)
