@@ -51,7 +51,7 @@ minetest_game-0.4.17.sh
 minetest-0.4.17.1.sh
 lua-5.3.5.sh
 mcip-tool-v2.sh
-metalog-20180510.sh
+metalog-20181125.sh
 mosquitto-1.4.12.sh
 nano-3.1.sh
 net-snmp-5.7.3.sh
