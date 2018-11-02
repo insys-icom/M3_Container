@@ -95,6 +95,7 @@ file /bin/git-rebase                   ${STAGING_DIR}/libexec/git-core/git-rebas
 file /bin/git-rebase--am               ${STAGING_DIR}/libexec/git-core/git-rebase--am                0755 0 0
 file /bin/git-rebase--interactive      ${STAGING_DIR}/libexec/git-core/git-rebase--interactive       0755 0 0
 file /bin/git-rebase--merge            ${STAGING_DIR}/libexec/git-core/git-rebase--merge             0755 0 0
+file /bin/git-rebase--preserve-merges  ${STAGING_DIR}/libexec/git-core/git-rebase--preserve-merges   0755 0 0
 file /bin/git-remote-testsvn           ${STAGING_DIR}/libexec/git-core/git-remote-testsvn            0755 0 0
 file /bin/git-request-pull             ${STAGING_DIR}/libexec/git-core/git-request-pull              0755 0 0
 file /bin/git-send-email               ${STAGING_DIR}/libexec/git-core/git-send-email                0755 0 0
