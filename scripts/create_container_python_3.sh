@@ -23,7 +23,7 @@ PACKAGES="${PACKAGES} sqlite-src-3200100.sh"
 PACKAGES="${PACKAGES} libffi-3.2.1.sh"
 PACKAGES="${PACKAGES} libuuid-1.0.3.sh"
 PACKAGES="${PACKAGES} ncurses-6.1.sh"
-PACKAGES="${PACKAGES} python-3.7.0.sh"
+PACKAGES="${PACKAGES} python-3.7.1.sh"
 PACKAGES="${PACKAGES} get-pip-10.0.1.sh"
 PACKAGES="${PACKAGES} cacert_20180722.sh"
 
