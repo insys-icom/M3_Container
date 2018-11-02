@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="busybox-1.29.2"
+PKG_DIR="busybox-1.29.3"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="46617af37a39579711d8b36f189cdf1e"
+PKG_CHECKSUM="0a367e19cdfd157e8258d87f893ee516"
 
 
 

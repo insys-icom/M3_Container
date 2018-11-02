@@ -71,6 +71,13 @@ file /bin/start_net.sh                ${SKELETON_DIR}/bin/start_net.sh          
 file /bin/reboot                      ${STAGING_DIR}/sbin/reboot                     0755 0 0
 file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
 file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
+file /bin/mcip-tool                   ${STAGING_DIR}/bin/mcip-tool                   0755 0 0
+slink /bin/sms-tool                   /bin/mcip-tool                                 0777 0 0
+slink /bin/get-input                  /bin/mcip-tool                                 0777 0 0
+slink /bin/get-pulses                 /bin/mcip-tool                                 0777 0 0
+slink /bin/set-output                 /bin/mcip-tool                                 0777 0 0
+slink /bin/cli-cmd                    /bin/mcip-tool                                 0777 0 0
+slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 file /bin/minetestserver              ${STAGING_DIR}/usr/local/bin/minetestserver    0755 0 0
 file /bin/minetest.sh                 ${SKELETON_DIR}/bin/minetest.sh                0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_minetest.sh       0755 0 0

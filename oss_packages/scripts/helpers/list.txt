@@ -1,7 +1,7 @@
 # This lists all open source projects to be compiled in the correct order, so all dependencies should be met
 
 Linux-PAM-1.2.1.sh
-busybox-1.29.2.sh
+busybox-1.29.3.sh
 
 zlib-1.2.11.sh
 xz-5.2.2.sh
