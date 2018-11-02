@@ -53,7 +53,7 @@ lua-5.3.5.sh
 mcip-tool-v2.sh
 metalog-20180510.sh
 mosquitto-1.4.12.sh
-nano-2.9.8.sh
+nano-3.1.sh
 net-snmp-5.7.3.sh
 ngircd-24.sh
 node-v10.9.0-linux-armv7l.sh
