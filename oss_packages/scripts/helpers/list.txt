@@ -1,7 +1,7 @@
 # This lists all open source projects to be compiled in the correct order, so all dependencies should be met
 
 Linux-PAM-1.2.1.sh
-busybox-1.29.2.sh
+busybox-1.29.3.sh
 
 zlib-1.2.11.sh
 xz-5.2.2.sh
@@ -9,11 +9,11 @@ lz4-1.8.0.sh
 bzip2-1.0.6.sh
 lzo-2.10.sh
 c-ares-1.13.0.sh
-openssl-1.0.2o.sh
+openssl-1.0.2p.sh
 sqlite-src-3200100.sh
 nghttp2-1.32.0.sh
-cacert_20180722.sh
-curl-7.61.0.sh
+cacert_20181017.sh
+curl-7.61.1.sh
 http-parser-v2.7.1.sh
 libffi-3.2.1.sh
 libmodbus-3.0.6.sh
@@ -51,9 +51,9 @@ minetest_game-0.4.17.sh
 minetest-0.4.17.1.sh
 lua-5.3.5.sh
 mcip-tool-v2.sh
-metalog-20180510.sh
+metalog-20181125.sh
 mosquitto-1.4.12.sh
-nano-2.9.8.sh
+nano-3.1.sh
 net-snmp-5.7.3.sh
 ngircd-24.sh
 node-v10.9.0-linux-armv7l.sh
@@ -69,7 +69,7 @@ arping-2.19.sh
 timezone2018e.sh
 bftpd-4.4.sh
 wget-1.19.sh
-git-2.18.0.sh
+git-2.19.1.sh
 open62541.sh
 paho.mqtt.c.sh
 libFORTEControls-1.0.sh
@@ -77,7 +77,7 @@ forte-1.8.4.sh
 
 php-7.1.16.sh
 python-2.7.14.sh
-python-3.7.0.sh
+python-3.7.1.sh
 modbus_to_mqtt_gateway-1.0.sh
 app_handler-1.0.sh
 web_interface_forte-1.0.sh

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="lighttpd-1.4.49"
+PKG_DIR="lighttpd-1.4.51"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.49.tar.xz
+# http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.51.tar.xz
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="aaf8165379351c3766e5ad1e5c9dbe8b"
+PKG_CHECKSUM="6e68c19601af332fa3c5f174245f59bf"
 
 
 
@@ -30,11 +30,16 @@ configure()
     cd "${PKG_BUILD_DIR}"
     ./configure \
         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lpcre" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         PCRECONFIG="${STAGING_DIR}/bin/pcre-config" \
+        XML_CFLAGS="-I${STAGING_INCLUDE}/libxml2" \
+        XML_LIBS="-L${STAGING_LIB}" \
+        SQLITE_CFLAGS="-I${STAGING_INCLUDE}" \
+        SQLITE_LIBS="-L${STAGING_LIB}" \
         --target=${M3_TARGET} \
         --host=${M3_TARGET} \
         --with-openssl \
+        --with-libxml \
         --with-zlib \
         --without-bzip2 \
         --with-webdav-props \

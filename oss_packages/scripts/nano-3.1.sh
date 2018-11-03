@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nano-2.9.8"
+PKG_DIR="nano-3.1"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# PKG_DOWNLOAD="https://www.nano-editor.org/dist/v2.9/nano-2.9.8.tar.gz"
+# PKG_DOWNLOAD="https://www.nano-editor.org/dist/v3/nano-3.1.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="fd58e87c20abbf029e5c4b153c89232a"
+PKG_CHECKSUM="e5cbe298e4362fabb7e55173862b9a3d"
 
 
 
