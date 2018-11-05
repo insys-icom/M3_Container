@@ -46,6 +46,9 @@ dir /usr/share                  0755 0 0
 dir /usr/share/zoneinfo         0755 0 0
 dir /var                        0755 0 0
 dir /var/log                    0755 0 0
+dir /var/spool                  0755 0 0
+dir /var/spool/cron             0755 0 0
+dir /var/spool/cron/crontabs    0755 0 0
 
 file /bin/busybox                     ${STAGING_DIR}/bin/busybox                     4755 0 0
 file /bin/dropbearmulti               ${STAGING_DIR}/bin/dropbearmulti               0755 0 0

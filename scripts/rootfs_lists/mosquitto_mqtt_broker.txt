@@ -57,6 +57,9 @@ dir /var                        0755 0 0
 dir /var/log                    0755 0 0
 dir /var/log/application        0755 0 0
 dir /var/log/web_interface      0755 1001 1001
+dir /var/spool                  0755 0 0
+dir /var/spool/cron             0755 0 0
+dir /var/spool/cron/crontabs    0755 0 0
 dir /var/www                    0755 0 0
 dir /var/www/localhost          0755 0 0
 dir /var/www/localhost/htdocs   0755 0 0
