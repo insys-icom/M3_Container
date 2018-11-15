@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} http-parser-v2.7.1.sh"
 PACKAGES="${PACKAGES} libuv-1.9.1.sh"
 PACKAGES="${PACKAGES} nghttp2-1.32.0.sh"
 PACKAGES="${PACKAGES} cacert_20181017.sh"
-PACKAGES="${PACKAGES} curl-7.61.1.sh"
+PACKAGES="${PACKAGES} curl-7.62.0.sh"
 PACKAGES="${PACKAGES} node-v10.9.0-linux-armv7l.sh"
 
 SCRIPTSDIR=$(dirname $0)
