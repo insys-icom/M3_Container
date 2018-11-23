@@ -4,13 +4,14 @@
 PKG_DIR="bftpd"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}-4.4.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}-5.0.tar.gz"
 
 # download link for the sources to be stored in dl directory
+# PKG_DOWNLOAD="https://sourceforge.net/projects/bftpd/files/bftpd/bftpd-5.0/bftpd-5.0.tar.gz/download
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="dbd6740895e04f083b393b1167a11936"
+PKG_CHECKSUM="175bc0c3e62e5c13e4a05ad28c26225e"
 
 
 
@@ -27,20 +28,20 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CPPFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    export CC="${M3_CROSS_COMPILE}gcc"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --enable-pam --enable-libz
+    CPPFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+    LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+    CC="${M3_CROSS_COMPILE}gcc" \
+        ./configure --target=${M3_TARGET} --host=${M3_TARGET} --enable-pam --enable-libz
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    export CPPFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
-    export CC="${M3_CROSS_COMPILE}gcc"
-    make ${M3_MAKEFLAGS} LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" || exit_failure "failed to build ${PKG_DIR}"
+    CPPFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+    LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+    CC="${M3_CROSS_COMPILE}gcc" \
+        make ${M3_MAKEFLAGS} LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" || exit_failure "failed to build ${PKG_DIR}"
 }
 
 install_staging()
