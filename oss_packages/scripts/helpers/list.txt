@@ -57,7 +57,7 @@ nano-3.1.sh
 net-snmp-5.7.3.sh
 ngircd-24.sh
 node-v10.9.0-linux-armv7l.sh
-openssh-7.7p1.sh
+openssh-7.9p1.sh
 openvpn-2.4.6.sh
 rsync-3.1.2.sh
 socat-2.0.0-b9.sh
