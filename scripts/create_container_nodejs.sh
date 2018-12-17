@@ -19,7 +19,7 @@ PACKAGES="${PACKAGES} c-ares-1.13.0.sh"
 PACKAGES="${PACKAGES} http-parser-v2.7.1.sh"
 PACKAGES="${PACKAGES} libuv-1.9.1.sh"
 PACKAGES="${PACKAGES} nghttp2-1.32.0.sh"
-PACKAGES="${PACKAGES} cacert_20181017.sh"
+PACKAGES="${PACKAGES} cacert_20181205.sh"
 PACKAGES="${PACKAGES} curl-7.63.0.sh"
 PACKAGES="${PACKAGES} node-v10.9.0-linux-armv7l.sh"
 
