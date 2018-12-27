@@ -268,9 +268,9 @@ dir /lib/python3.7/xmlrpc 755 0 0
 dir /lib/python3.7/xml/sax 755 0 0
 file /bin/2to3-3.7 ${STAGING_DIR}/usr/local/bin/2to3-3.7 755 0 0
 file /bin/pydoc3.7 ${STAGING_DIR}/usr/local/bin/pydoc3.7 755 0 0
-file /bin/python3.7 ${STAGING_DIR}/usr/local/bin/python3.7 755 0 0
-file /bin/python3.7m ${STAGING_DIR}/usr/local/bin/python3.7m 755 0 0
 file /bin/python3.7m-config ${STAGING_DIR}/usr/local/bin/python3.7m-config 755 0 0
+file /bin/python3.7m ${STAGING_DIR}/usr/local/bin/python3.7m 755 0 0
+file /bin/python3.7 ${STAGING_DIR}/usr/local/bin/python3.7 755 0 0
 file /bin/pyvenv-3.7 ${STAGING_DIR}/usr/local/bin/pyvenv-3.7 755 0 0
 file /lib/libpython3.7m.so.1.0 ${STAGING_DIR}/usr/local/lib/libpython3.7m.so.1.0 555 0 0
 file /lib/libpython3.so ${STAGING_DIR}/usr/local/lib/libpython3.so 555 0 0
@@ -676,8 +676,8 @@ file /lib/python3.7/encodings/utf_8.py ${STAGING_DIR}/usr/local/lib/python3.7/en
 file /lib/python3.7/encodings/utf_8_sig.py ${STAGING_DIR}/usr/local/lib/python3.7/encodings/utf_8_sig.py 644 0 0
 file /lib/python3.7/encodings/uu_codec.py ${STAGING_DIR}/usr/local/lib/python3.7/encodings/uu_codec.py 644 0 0
 file /lib/python3.7/encodings/zlib_codec.py ${STAGING_DIR}/usr/local/lib/python3.7/encodings/zlib_codec.py 644 0 0
-file /lib/python3.7/ensurepip/_bundled/pip-10.0.1-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/_bundled/pip-10.0.1-py2.py3-none-any.whl 644 0 0
-file /lib/python3.7/ensurepip/_bundled/setuptools-39.0.1-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/_bundled/setuptools-39.0.1-py2.py3-none-any.whl 644 0 0
+file /lib/python3.7/ensurepip/_bundled/pip-18.1-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/_bundled/pip-18.1-py2.py3-none-any.whl 644 0 0
+file /lib/python3.7/ensurepip/_bundled/setuptools-40.6.2-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/_bundled/setuptools-40.6.2-py2.py3-none-any.whl 644 0 0
 file /lib/python3.7/ensurepip/__init__.py ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/__init__.py 644 0 0
 file /lib/python3.7/ensurepip/__main__.py ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/__main__.py 644 0 0
 file /lib/python3.7/ensurepip/_uninstall.py ${STAGING_DIR}/usr/local/lib/python3.7/ensurepip/_uninstall.py 644 0 0
@@ -1142,7 +1142,6 @@ file /lib/python3.7/xml/sax/xmlreader.py ${STAGING_DIR}/usr/local/lib/python3.7/
 file /lib/python3.7/zipapp.py ${STAGING_DIR}/usr/local/lib/python3.7/zipapp.py 644 0 0
 file /lib/python3.7/zipfile.py ${STAGING_DIR}/usr/local/lib/python3.7/zipfile.py 644 0 0
 slink /bin/2to3 2to3-3.7 777 0 0
-slink /bin/pydoc pydoc3.7 777 0 0
 slink /bin/pydoc3 pydoc3.7 777 0 0
 slink /bin/python python3.7 777 0 0
 slink /bin/python3.7-config python3.7m-config 777 0 0
