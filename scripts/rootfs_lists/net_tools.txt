@@ -98,6 +98,7 @@ slink /bin/iptables-save              /bin/xtables-multi                        
 slink /bin/ip6tables                  /bin/xtables-multi                             0755 0 0
 slink /bin/ip6tables-restore          /bin/xtables-multi                             0755 0 0
 slink /bin/ip6tables-save             /bin/xtables-multi                             0755 0 0
+file /bin/brctl                       ${STAGING_DIR}/sbin/brctl                      0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_net_tools.sh      0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
@@ -506,7 +507,7 @@ slink /sbin/adjtimex ../bin/busybox 777 0 0
 slink /sbin/arp ../bin/busybox 777 0 0
 #slink /sbin/arping ../bin/busybox 777 0 0
 slink /sbin/blockdev ../bin/busybox 777 0 0
-slink /sbin/brctl ../bin/busybox 777 0 0
+#slink /sbin/brctl ../bin/busybox 777 0 0
 slink /sbin/chat ../bin/busybox 777 0 0
 slink /sbin/chpasswd ../bin/busybox 777 0 0
 slink /sbin/chroot ../bin/busybox 777 0 0

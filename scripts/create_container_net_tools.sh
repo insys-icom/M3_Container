@@ -30,6 +30,7 @@ PACKAGES="${PACKAGES} stunnel-5.42.sh"
 PACKAGES="${PACKAGES} tcpdump-4.7.4.sh"
 PACKAGES="${PACKAGES} iptables-1.6.1.sh"
 PACKAGES="${PACKAGES} httping-2.5.sh"
+PACKAGES="${PACKAGES} bridge-utils-1.6.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
