@@ -67,7 +67,7 @@ strace-4.16.sh
 stunnel-5.42.sh
 tcpdump-4.7.4.sh
 arping-2.19.sh
-timezone2018e.sh
+timezone2018i.sh
 bftpd-5.0.sh
 wget-1.19.sh
 git-2.19.1.sh

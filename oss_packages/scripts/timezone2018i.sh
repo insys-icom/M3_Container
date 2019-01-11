@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="timezone2018e"
+PKG_DIR="timezone2018i"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_DATA_FILE="tzdata2018e.tar.gz"
-PKG_ARCHIVE_CODE_FILE="tzcode2018e.tar.gz"
+PKG_ARCHIVE_DATA_FILE="tzdata2018i.tar.gz"
+PKG_ARCHIVE_CODE_FILE="tzcode2018i.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
 # PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
@@ -14,8 +14,8 @@ PKG_DOWNLOAD_DATA="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCH
 PKG_DOWNLOAD_CODE="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_CODE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM_DATA="97d654f4d7253173b3eeb76a836dd65e"
-PKG_CHECKSUM_CODE="c4d7df0fff7ba5588b32c5f27e2caf97"
+PKG_CHECKSUM_DATA="b3f0a1a789480a036e58466cd0702477"
+PKG_CHECKSUM_CODE="6a6d98be8fa2fa3485e25343e79188b4"
 
 
 SCRIPTSDIR=$(dirname $0)

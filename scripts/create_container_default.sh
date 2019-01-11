@@ -14,7 +14,7 @@ PACKAGES="${PACKAGES} mcip-tool-v2.sh"
 PACKAGES="${PACKAGES} mcip-tool-v2.sh"
 PACKAGES="${PACKAGES} pcre-8.42.sh"
 PACKAGES="${PACKAGES} metalog-20181125.sh"
-PACKAGES="${PACKAGES} timezone2018e.sh"
+PACKAGES="${PACKAGES} timezone2018i.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
