@@ -25,7 +25,7 @@ libxml2-2.9.4.sh
 libmrx_control-1.0.sh
 libnet-1.2-rc3.sh
 libuuid-1.0.3.sh
-libpng-1.6.34.sh
+libpng-1.6.36.sh
 freetype-2.8.1.sh
 ncurses-6.1.sh
 pcre-8.42.sh
