@@ -5,48 +5,48 @@ Platform               :=$(TargetCPU)-$(OS)
 ConfigurationName      :=Release
 IntermediateDirectory  :=../temp/$(TargetCPU)
 OutDir                 := $(IntermediateDirectory)
-LinkerName             :=g++
-SharedObjectLinkerName :=g++ -shared -fPIC
+LinkerName             :=armv7a-hardfloat-linux-gnueabi-g++
+SharedObjectLinkerName :=armv7a-hardfloat-linux-gnueabi-g++ -shared -fPIC
 DebugSwitch            :=-gstab
 IncludeSwitch          :=-I
 LibrarySwitch          :=-l
-OutputSwitch           :=-o 
+OutputSwitch           :=-o
 LibraryPathSwitch      :=-L
 PreprocessorSwitch     :=-D
-SourceSwitch           :=-c 
+SourceSwitch           :=-c
 OutputFile             :=../bin/$(Platform)/libsnap7.so
-PreprocessOnlySwitch   :=-E 
+PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="filelist.txt"
 MakeDirCommand         :=mkdir -p
 LinkOptions            :=  -O3
-IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)../../src/sys $(IncludeSwitch)../../src/core $(IncludeSwitch)../../src/lib 
-Libs                   := $(LibrarySwitch)pthread $(LibrarySwitch)rt 
-LibPath                := $(LibraryPathSwitch). 
+IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch)../../src/sys $(IncludeSwitch)../../src/core $(IncludeSwitch)../../src/lib
+Libs                   := $(LibrarySwitch)pthread $(LibrarySwitch)rt
+LibPath                := $(LibraryPathSwitch).
 LibInstall             := /usr/lib
 
 ##
 ## Common variables (CXXFLAGS varies across platforms)
 ##
-AR       := ar rcus
-CXX      := g++
-CC       := gcc
-CFLAGS   := 
+AR       := armv7a-hardfloat-linux-gnueabi-ar armv7a-hardfloat-linux-gnueabi-rcus
+CXX      := armv7a-hardfloat-linux-gnueabi-g++
+CC       := armv7a-hardfloat-linux-gnueabi-gcc
+CFLAGS   :=
 
 ##
 ## User defined environment variables
 ##
 Objects0=$(IntermediateDirectory)/sys_snap_msgsock.o $(IntermediateDirectory)/sys_snap_sysutils.o $(IntermediateDirectory)/sys_snap_tcpsrvr.o $(IntermediateDirectory)/sys_snap_threads.o $(IntermediateDirectory)/core_s7_client.o $(IntermediateDirectory)/core_s7_isotcp.o $(IntermediateDirectory)/core_s7_partner.o $(IntermediateDirectory)/core_s7_peer.o $(IntermediateDirectory)/core_s7_server.o $(IntermediateDirectory)/core_s7_text.o \
-	$(IntermediateDirectory)/core_s7_micro_client.o $(IntermediateDirectory)/lib_snap7_libmain.o 
+	$(IntermediateDirectory)/core_s7_micro_client.o $(IntermediateDirectory)/lib_snap7_libmain.o
 
-Objects=$(Objects0) 
+Objects=$(Objects0)
 
 ##
-## Main Build Targets 
+## Main Build Targets
 ##
 .PHONY: all clean install PreBuild PostBuild
 all: $(OutputFile)
 
-$(OutputFile): $(IntermediateDirectory)/.d $(Objects) 
+$(OutputFile): $(IntermediateDirectory)/.d $(Objects)
 	@$(MakeDirCommand) $(@D)
 	@$(MakeDirCommand) $(IntermediateDirectory)
 	@echo $(Objects0)  > $(ObjectsFileList)
@@ -63,7 +63,7 @@ PostBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/sys_snap_msgsock.o: 
+$(IntermediateDirectory)/sys_snap_msgsock.o:
 	$(CXX) $(SourceSwitch) "../../src/sys/snap_msgsock.cpp" $(CXXFLAGS) -o $(IntermediateDirectory)/sys_snap_msgsock.o $(IncludePath)
 
 $(IntermediateDirectory)/sys_snap_sysutils.o:
