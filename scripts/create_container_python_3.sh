@@ -27,7 +27,7 @@ PACKAGES="${PACKAGES} libuuid-1.0.3.sh"
 PACKAGES="${PACKAGES} ncurses-6.1.sh"
 PACKAGES="${PACKAGES} python-3.7.2.sh"
 PACKAGES="${PACKAGES} get-pip-10.0.1.sh"
-PACKAGES="${PACKAGES} cacert_20181205.sh"
+PACKAGES="${PACKAGES} cacert_20190123.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
