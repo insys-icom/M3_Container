@@ -18,7 +18,7 @@ PACKAGES="${PACKAGES} ncurses-6.1.sh"
 PACKAGES="${PACKAGES} nano-3.1.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2q.sh"
 PACKAGES="${PACKAGES} libxml2-2.9.4.sh"
-PACKAGES="${PACKAGES} sqlite-src-3260000.sh"
+PACKAGES="${PACKAGES} sqlite-src-3270000.sh"
 PACKAGES="${PACKAGES} gdbm-1.12.sh"
 PACKAGES="${PACKAGES} lighttpd-1.4.51.sh"
 

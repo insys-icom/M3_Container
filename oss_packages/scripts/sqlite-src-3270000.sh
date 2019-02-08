@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="sqlite-src-3260000"
+PKG_DIR="sqlite-src-3270000"
 
 # name of the archive in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://www.sqlite.org/2018/${PKG_ARCHIVE_FILE}
+# PKG_DOWNLOAD="https://www.sqlite.org/2019/${PKG_ARCHIVE_FILE}
 PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="dfc2ae0e9b810e9e3db553f71ea832ad"
+PKG_CHECKSUM="e0fb6e677048c95637fd10408a811011"
 
 
 
