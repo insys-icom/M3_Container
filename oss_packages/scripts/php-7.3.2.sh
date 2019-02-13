@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="php-7.1.16"
+PKG_DIR="php-7.3.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# http://de2.php.net/get/php-7.1.16.tar.xz/from/this/mirror
+# http://de2.php.net/get/php-7.3.2.tar.xz/from/this/mirror
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="537bf278c8f4d3afa163bab90af868a4"
+PKG_CHECKSUM="92a237d2f4075eb00dd2b1f36e71ae4c"
 
 
 
@@ -46,7 +46,7 @@ configure()
         --with-openssl="${STAGING_DIR}" \
         --with-openssl-dir="${STAGING_INCLUDE}" \
         --with-config-file-path=/etc/ \
-        --prefix="${PKG_INSTALL_DIR}"  || exit_failure "failed to configure ${PKG_DIR}"
+        --prefix="${PKG_INSTALL_DIR}" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
