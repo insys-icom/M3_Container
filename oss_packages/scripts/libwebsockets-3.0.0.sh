@@ -37,6 +37,8 @@ configure()
         -DCMAKE_NM=${NM} \
         -DCMAKE_RANLIB=${RANLIB} \
         -DCMAKE_INSTALL_PREFIX="" \
+        -DLWS_OPENSSL_INCLUDE_DIRS="${STAGING_INCLUDE}" \
+        -DLWS_OPENSSL_LIBRARIES="${STAGING_LIB}/libssl.so;${STAGING_LIB}/libcrypto.so" \
         -DLWS_WITH_HTTP2=1 \
         -DLWS_IPV6=ON \
         -DLWS_UNIX_SOCK=ON \
