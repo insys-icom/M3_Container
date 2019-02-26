@@ -11,6 +11,7 @@ PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2q.sh"
 PACKAGES="${PACKAGES} timezone2018i.sh"
+PACKAGES="${PACKAGES} mcip.sh"
 PACKAGES="${PACKAGES} mcip-tool-v2.sh"
 PACKAGES="${PACKAGES} ngircd-24.sh"
 
