@@ -20,7 +20,7 @@ PACKAGES="${PACKAGES} libffi-3.2.1.sh"
 PACKAGES="${PACKAGES} ncurses-6.1.sh"
 PACKAGES="${PACKAGES} openssl-1.0.2r.sh"
 PACKAGES="${PACKAGES} readline-6.3.sh"
-PACKAGES="${PACKAGES} sqlite-src-3270100.sh"
+PACKAGES="${PACKAGES} sqlite-src-3270200.sh"
 PACKAGES="${PACKAGES} python-2.7.14.sh"
 
 SCRIPTSDIR=$(dirname $0)
