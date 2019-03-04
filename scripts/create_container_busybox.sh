@@ -1,11 +1,11 @@
-meta#!/bin/sh
+#!/bin/sh
 
 DESCRIPTION="A container with only busybox in it"
 CONTAINER_NAME="container_busybox"
 ROOTFS_LIST="busybox.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.29.3.sh"
+PACKAGES="${PACKAGES} busybox-1.30.1.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)

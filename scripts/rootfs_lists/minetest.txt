@@ -1239,6 +1239,7 @@ slink /bin/base64 busybox 777 0 0
 slink /bin/basename busybox 777 0 0
 slink /bin/bash busybox 777 0 0
 slink /bin/bbconfig busybox 777 0 0
+slink /bin/bc busybox 777 0 0
 slink /bin/bunzip2 busybox 777 0 0
 slink /bin/bzcat busybox 777 0 0
 slink /bin/bzip2 busybox 777 0 0
@@ -1517,6 +1518,7 @@ slink /sbin/mkdosfs ../bin/busybox 777 0 0
 slink /sbin/mkfs.vfat ../bin/busybox 777 0 0
 slink /sbin/mkswap ../bin/busybox 777 0 0
 slink /sbin/nbd-client ../bin/busybox 777 0 0
+slink /sbin/nologin ../bin/busybox 777 0 0
 slink /sbin/ntpd ../bin/busybox 777 0 0
 slink /sbin/partprobe ../bin/busybox 777 0 0
 slink /sbin/pivot_root ../bin/busybox 777 0 0

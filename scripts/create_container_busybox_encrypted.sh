@@ -6,7 +6,7 @@ ROOTFS_LIST="busybox.txt"
 KEYFILE="busybox_encrypted.key"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.29.3.sh"
+PACKAGES="${PACKAGES} busybox-1.30.1.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)

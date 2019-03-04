@@ -5,7 +5,7 @@ CONTAINER_NAME="container_modbus_mqtt_gateway"
 ROOTFS_LIST="modbus_mqtt_gateway.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.29.3.sh"
+PACKAGES="${PACKAGES} busybox-1.30.1.sh"
 PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"
