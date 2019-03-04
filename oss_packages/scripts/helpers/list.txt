@@ -9,7 +9,7 @@ lz4-1.8.0.sh
 bzip2-1.0.6.sh
 lzo-2.10.sh
 c-ares-1.13.0.sh
-openssl-1.0.2q.sh
+openssl-1.0.2r.sh
 sqlite-src-3270100.sh
 nghttp2-1.32.0.sh
 cacert_20190123.sh

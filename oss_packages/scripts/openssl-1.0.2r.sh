@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openssl-1.0.2q"
+PKG_DIR="openssl-1.0.2r"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="7563e1ce046cb21948eeb6ba1a0eb71c"
+PKG_CHECKSUM="0d2baaf04c56d542f6cc757b9c2a2aac"
 
 
 
