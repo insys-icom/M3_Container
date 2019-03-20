@@ -28,9 +28,12 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
+    copy_overlay
+    ac_cv_lib_curl_curl_easy_perform=yes \
     ./configure \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        LIBS="-lnghttp2 -L${STAGING_LIB}" \
         --target=${M3_TARGET} \
         --host=${M3_TARGET} \
         --build=x86_64-unknown-linux-gnu \
@@ -43,15 +46,19 @@ configure()
         --disable-phpdbg \
         --enable-soap \
         --enable-sockets \
+        --with-zlib="${STAGING_DIR}" \
+        --with-zlib-dir="${STAGING_INCLUDE}" \
+        --with-curl="${STAGING_DIR}" \
         --with-openssl="${STAGING_DIR}" \
         --with-openssl-dir="${STAGING_INCLUDE}" \
+        --with-libxml-dir="${STAGING_INCLUDE}" \
+        --with-pcre-dir="${STAGING_INCLUDE}" \
         --with-config-file-path=/etc/ \
         --prefix="${PKG_INSTALL_DIR}" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
-    copy_overlay
     cd "${PKG_BUILD_DIR}"
     make -i DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to build ${PKG_DIR}"
 }

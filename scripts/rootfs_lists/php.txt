@@ -87,6 +87,7 @@ slink /bin/get-pulses                 /bin/mcip-tool                            
 slink /bin/set-output                 /bin/mcip-tool                                 0777 0 0
 slink /bin/cli-cmd                    /bin/mcip-tool                                 0777 0 0
 slink /bin/container                  /bin/mcip-tool                                 0777 0 0
+file /bin/curl                        ${STAGING_DIR}/bin/curl                        0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_php.sh            0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
@@ -123,6 +124,8 @@ file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm.so.6              
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt.so.1                  0755 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
+file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4                0644 0 0
+file /lib/libnghttp2.so.14            ${STAGING_DIR}/lib/libnghttp2.so.14            0644 0 0
 
 file /lib/finit/plugins/initctl.so    ${STAGING_DIR}/lib/finit/plugins/initctl.so    0644 0 0
 file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0
@@ -146,6 +149,7 @@ file /usr/share/version                ${SKELETON_DIR}/usr/share/version        
 file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
 file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
 file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_lighttpd_php.html 0644 0 0
+file /usr/share/cacert.pem             ${STAGING_DIR}/usr/share/cacert.pem           0644 0 0
 
 slink /var/tmp                         /tmp                                          0777 0 0
 slink /var/lock                        /tmp/lock                                     0777 0 0
