@@ -2342,7 +2342,9 @@ EOF
 	esac # case $deplib
 	if test "$found" = yes || test -f "$lib"; then :
 	else
-	  $echo "$modename: cannot find the library \`$lib' or unhandled argument \`$deplib'" 1>&2
+	  # ignore any errors; without this adding /lib/libnghttp2.la gets searched - and not found
+	  continue
+	  #$echo "$modename: cannot find the library \`$lib' or unhandled argument \`$deplib'" 1>&2
 	  exit $EXIT_FAILURE
 	fi
 
