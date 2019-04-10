@@ -32,14 +32,14 @@ Installation
 1. Download the [SDK as LXC container](https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz)
 
 2. Become root and extract the archive. It's assumed that the all LXC containers are installed in /var/lib/lxc
-	<pre>
-	user@host ~ # <b>su root</b>
-	Password:
-	root@host ~ # <b>tar xf *PATH_OF_THE_DOWNLOADES_SDK_ARCHIVE* -C /var/lib/lxc</b>
-	</pre>
+    <pre>
+    user@host ~ # <b>su root</b>
+    Password:
+    root@host ~ # <b>tar xf *PATH_OF_THE_DOWNLOADES_SDK_ARCHIVE* -C /var/lib/lxc</b>
+    </pre>
 
 3. Find out the normal users UID and GID. It's assumed that they are 1001 and 1005:
-	<pre>
+    <pre>
     root@host ~ # <b>id *YOUR_USER_NAME* -u</b>
     1001
     root@host ~ # <b>id *YOUR_USER_NAME* -g</b>
@@ -48,7 +48,7 @@ Installation
 
 4. Modify the UID and GID of the user "user" of the LXC container:
     <pre>
-    root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd/</b>
+    root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd</b>
     ...
     user:x:<b>1001</b>:<b>1005</b>::/home/user:/bin/bash
     ...
