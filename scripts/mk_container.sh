@@ -174,7 +174,7 @@ process_filesystem_list()
                 # wildcard is a dedicated target, because this feature is not available in the original initramfs list format
                 # we do not strip here, because it should only be used for specific group of files like doc and html templates
                 TAR_FILES=""
-                for SOURCE_FILE in $(eval echo "${PARAM_1}" | sort) ; do
+                for SOURCE_FILE in $(eval echo "${PARAM_1}")* ; do
                     FNAME=$(basename "${SOURCE_FILE}")
                     # ignore directorys here
                     if [ -e "${SOURCE_FILE}" -a ! -d "${SOURCE_FILE}" ] ; then
