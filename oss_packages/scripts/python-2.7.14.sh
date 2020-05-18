@@ -32,6 +32,7 @@ configure()
     cd "${PKG_BUILD_DIR}"
     CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_DIR}/include/ncurses -I${STAGING_DIR}/include/ncursesw" \
     LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+    CPPFLAGS="-I${STAGING_INCLUDE} -I${STAGING_DIR}/include/ncurses -I${STAGING_DIR}/include/ncursesw" \
     ac_cv_file__dev_ptc=no \
     ac_cv_file__dev_ptmx=no \
     CXX=""\
