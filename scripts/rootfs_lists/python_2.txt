@@ -207,19 +207,9 @@ slink /lib/terminfo                    ../share/terminfo                        
 ############################
 # Python files             #
 ############################
-# create these lines automatically by executing the next line in "working/Python-2.7.14"
+# create these lines automatically by executing the next line in "working/Python-2.7.18"
 #../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./install/usr/local | grep -v '.pyo ' | grep -v '.py ' | grep -v '/test/' | grep -v '/include/' | sed  's|./install/|${STAGING_DIR}/|' | sort > ../list.txt
 # eventually remove not needed files manually (like /lib/python2.7/test)
-
-
-
-
-# ${STAGING_DIR}/usr/local
-# Last modified: 1589477623.4272481920
-# This is a very simple, default initramfs
-# file /kinit usr/kinit/kinit 0755 0 0
-# slink /init kinit 0755 0 0
-#####################
 dir /lib/pkgconfig 755 0 0
 dir /lib/python2.7 755 0 0
 dir /lib/python2.7/bsddb 755 0 0
@@ -445,6 +435,7 @@ file /lib/python2.7/distutils/spawn.pyc ${STAGING_DIR}/usr/local/lib/python2.7/d
 file /lib/python2.7/distutils/sysconfig.pyc ${STAGING_DIR}/usr/local/lib/python2.7/distutils/sysconfig.pyc 644 0 0
 file /lib/python2.7/distutils/tests/Setup.sample ${STAGING_DIR}/usr/local/lib/python2.7/distutils/tests/Setup.sample 644 0 0
 file /lib/python2.7/distutils/tests/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/distutils/tests/__init__.pyc 644 0 0
+file /lib/python2.7/distutils/tests/includetest.rst ${STAGING_DIR}/usr/local/lib/python2.7/distutils/tests/includetest.rst 644 0 0
 file /lib/python2.7/distutils/tests/setuptools_build_ext.pyc ${STAGING_DIR}/usr/local/lib/python2.7/distutils/tests/setuptools_build_ext.pyc 644 0 0
 file /lib/python2.7/distutils/tests/setuptools_extension.pyc ${STAGING_DIR}/usr/local/lib/python2.7/distutils/tests/setuptools_extension.pyc 644 0 0
 file /lib/python2.7/distutils/tests/support.pyc ${STAGING_DIR}/usr/local/lib/python2.7/distutils/tests/support.pyc 644 0 0
@@ -642,8 +633,8 @@ file /lib/python2.7/encodings/uu_codec.pyc ${STAGING_DIR}/usr/local/lib/python2.
 file /lib/python2.7/encodings/zlib_codec.pyc ${STAGING_DIR}/usr/local/lib/python2.7/encodings/zlib_codec.pyc 644 0 0
 file /lib/python2.7/ensurepip/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/__init__.pyc 644 0 0
 file /lib/python2.7/ensurepip/__main__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/__main__.pyc 644 0 0
-file /lib/python2.7/ensurepip/_bundled/pip-9.0.1-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/_bundled/pip-9.0.1-py2.py3-none-any.whl 644 0 0
-file /lib/python2.7/ensurepip/_bundled/setuptools-28.8.0-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/_bundled/setuptools-28.8.0-py2.py3-none-any.whl 644 0 0
+file /lib/python2.7/ensurepip/_bundled/pip-19.2.3-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/_bundled/pip-19.2.3-py2.py3-none-any.whl 644 0 0
+file /lib/python2.7/ensurepip/_bundled/setuptools-41.2.0-py2.py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/_bundled/setuptools-41.2.0-py2.py3-none-any.whl 644 0 0
 file /lib/python2.7/ensurepip/_uninstall.pyc ${STAGING_DIR}/usr/local/lib/python2.7/ensurepip/_uninstall.pyc 644 0 0
 file /lib/python2.7/filecmp.pyc ${STAGING_DIR}/usr/local/lib/python2.7/filecmp.pyc 644 0 0
 file /lib/python2.7/fileinput.pyc ${STAGING_DIR}/usr/local/lib/python2.7/fileinput.pyc 644 0 0
@@ -815,7 +806,6 @@ file /lib/python2.7/json/tests/test_tool.pyc ${STAGING_DIR}/usr/local/lib/python
 file /lib/python2.7/json/tests/test_unicode.pyc ${STAGING_DIR}/usr/local/lib/python2.7/json/tests/test_unicode.pyc 644 0 0
 file /lib/python2.7/json/tool.pyc ${STAGING_DIR}/usr/local/lib/python2.7/json/tool.pyc 644 0 0
 file /lib/python2.7/keyword.pyc ${STAGING_DIR}/usr/local/lib/python2.7/keyword.pyc 644 0 0
-file /lib/python2.7/lib-dynload/Python-2.7.14-py2.7.egg-info ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/Python-2.7.14-py2.7.egg-info 644 0 0
 file /lib/python2.7/lib-dynload/_bisect.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_bisect.so 755 0 0
 file /lib/python2.7/lib-dynload/_codecs_cn.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_codecs_cn.so 755 0 0
 file /lib/python2.7/lib-dynload/_codecs_hk.so ${STAGING_DIR}/usr/local/lib/python2.7/lib-dynload/_codecs_hk.so 755 0 0
@@ -896,9 +886,7 @@ file /lib/python2.7/lib-tk/tkSimpleDialog.pyc ${STAGING_DIR}/usr/local/lib/pytho
 file /lib/python2.7/lib-tk/ttk.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib-tk/ttk.pyc 644 0 0
 file /lib/python2.7/lib-tk/turtle.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib-tk/turtle.pyc 644 0 0
 file /lib/python2.7/lib2to3/Grammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar.txt 644 0 0
-file /lib/python2.7/lib2to3/Grammar2.7.14.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/Grammar2.7.14.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/PatternGrammar.txt ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar.txt 644 0 0
-file /lib/python2.7/lib2to3/PatternGrammar2.7.14.final.0.pickle ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/PatternGrammar2.7.14.final.0.pickle 644 0 0
 file /lib/python2.7/lib2to3/__init__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__init__.pyc 644 0 0
 file /lib/python2.7/lib2to3/__main__.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/__main__.pyc 644 0 0
 file /lib/python2.7/lib2to3/btm_matcher.pyc ${STAGING_DIR}/usr/local/lib/python2.7/lib2to3/btm_matcher.pyc 644 0 0
@@ -1161,11 +1149,11 @@ file /lib/python2.7/xml/sax/xmlreader.pyc ${STAGING_DIR}/usr/local/lib/python2.7
 file /lib/python2.7/xmllib.pyc ${STAGING_DIR}/usr/local/lib/python2.7/xmllib.pyc 644 0 0
 file /lib/python2.7/xmlrpclib.pyc ${STAGING_DIR}/usr/local/lib/python2.7/xmlrpclib.pyc 644 0 0
 file /lib/python2.7/zipfile.pyc ${STAGING_DIR}/usr/local/lib/python2.7/zipfile.pyc 644 0 0
-slink /bin/python2 python2.7 777 0 0
 slink /bin/python python2 777 0 0
+slink /bin/python2 python2.7 777 0 0
 slink /lib/libpython2.7.so libpython2.7.so.1.0 777 0 0
-slink /lib/pkgconfig/python2.pc python-2.7.pc 777 0 0
 slink /lib/pkgconfig/python.pc python2.pc 777 0 0
+slink /lib/pkgconfig/python2.pc python-2.7.pc 777 0 0
 
 
 ##################

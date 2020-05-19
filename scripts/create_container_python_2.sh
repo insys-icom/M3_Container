@@ -25,7 +25,7 @@ PACKAGES="${PACKAGES} libffi-3.2.1.sh"
 PACKAGES="${PACKAGES} ncurses-6.1.sh"
 PACKAGES="${PACKAGES} readline-6.3.sh"
 PACKAGES="${PACKAGES} sqlite-src-3270200.sh"
-PACKAGES="${PACKAGES} python-2.7.14.sh"
+PACKAGES="${PACKAGES} python-2.7.18.sh"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
