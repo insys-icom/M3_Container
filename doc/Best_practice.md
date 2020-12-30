@@ -3,7 +3,7 @@ These recommendations should help to improve the quality of your developed conta
 * Look after RAM
     - look out for memory leaks (use free, top, cat /proc/meminfo)
     - evaluate if huge applications are apropriate
-    - ensure to close file descriptors (check in /proc/<PID>/fd)
+    - ensure to close file descriptors (check in /proc/\<PID\>/fd)
 * Look after flash memory
     - keep a container as small as possible
     - avoid writing to flash whenever possible, because amount of writes is limited regarding lifetime of flash, use TMPFS, Redis-DB
@@ -28,7 +28,7 @@ These recommendations should help to improve the quality of your developed conta
 * Look after reproducibility of binaries and containers
     - automate builds e.g. with Makefiles or scripts
     - use repositories
-    - use a separate instance of M3_Container for every projet to avoid dependencies
+    - use a separate instance of M3_Container for every project to avoid dependencies
 * Test early and in parallel to development
     - ensure to be able to update the container
     - watch the behaviour in endurance tests
