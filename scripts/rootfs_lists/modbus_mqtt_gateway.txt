@@ -199,7 +199,7 @@ file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                            0755 0 0
 
 # app_handler
-file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-1.0                                                 0755 0 0
+file /bin/app_handler                                       ${STAGING_DIR}/bin/app_handler-1.0                                                 0755 0 0
 file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_modbus_to_mqtt_gateway.conf     0755 0 0
 
 # application

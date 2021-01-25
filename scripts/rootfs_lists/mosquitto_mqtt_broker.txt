@@ -199,13 +199,13 @@ file /var/www/localhost/htdocs/style.css                    ${SKELETON_DIR}/var/
 file /var/www/localhost/htdocs/style_fw.css                 ${SKELETON_DIR}/var/web/css/style_fw.css                           0755 0 0
 
 # app_handler
-file /usr/sbin/app_handler                                  ${STAGING_DIR}/bin/app_handler-1.0                                                     0755 0 0
+file /bin/app_handler                                       ${STAGING_DIR}/bin/app_handler-1.0                                                     0755 0 0
 file /etc/app_handler.conf                                  ${SKELETON_DIR}/etc/app_handler.conf.d/app_handler_mosquitto_mqtt_broker.conf          0755 0 0
 
 # application
 file /usr/application/mosquitto                             ${STAGING_DIR}/usr/local/sbin/mosquitto                                                0755 1000 1000
 file /usr/application/configuration.config                  ${SKELETON_DIR}/etc/configuration.config.d/configuration_mosquitto_mqtt_broker.config  0755 1000 1000
-file /usr/sbin/mosquitto_passwd                             ${STAGING_DIR}/usr/local/bin/mosquitto_passwd                                          0755 1000 1000
+file /usr/mosquitto_passwd                                  ${STAGING_DIR}/usr/local/bin/mosquitto_passwd                                          0755 1000 1000
 
 ############################
 # openssl files            #
