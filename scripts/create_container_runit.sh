@@ -6,7 +6,6 @@ ROOTFS_LIST="lighttpd_runit.txt"
 
 PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
 PACKAGES="${PACKAGES} busybox-1.30.1.sh"
-PACKAGES="${PACKAGES} finit-1.10.sh"
 PACKAGES="${PACKAGES} zlib-1.2.11.sh"
 PACKAGES="${PACKAGES} dropbear-2018.76.sh"
 PACKAGES="${PACKAGES} timezone2018i.sh"
