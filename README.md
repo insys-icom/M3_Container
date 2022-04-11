@@ -1,4 +1,4 @@
-[Projects web site:](https://m3-container.net)
+Projects [web site](https://m3-container.net)
 
 This repository contains scripts to create containers and ease cross compiling.
 

@@ -2,22 +2,12 @@ Introduction
 ---
 This guide will describe how to install the SDK as an LXC container on a Linux machine.
 
-Why not using the SDK as a VirtualBox image?
----
-The SDK in form of a VirtualBox image is the most reliable and portable way to produce new containers. Unfortunately it has a few disadvantages:
-
-* The overall performance within a virtual machine (VM) is never that high than the one on the host machine.
-* Exchanging files between the VM and the host system can be a quite a hassle.
-* Working within a VM can be quite uncomfortable (lack of GUI, familiar editor, tools..).
 
 The solution is LXC
 ---
-The same mechanism used within the M3 platform devices can be used on every modern Linux machine.
-Let the SDK run in an LXC container.
+Let the SDK run in an LXC container on your Linux host PC.
 Share all files in your users home directory of the host with the LXC container.
 That way you can edit the source files with your hosts editors and tools and use the SDK from within the LXC container to compile them.
-
-Using the SDK as an LXC container will result in a huge performance improvement when compiling compared to a SDK as a virtual machine. The pain with the file exchange will go away and starting up the SDK will happen almost instantly.
 
 Preconditions:
 
@@ -38,7 +28,7 @@ Installation
     root@host ~ # <b>tar xf *PATH_OF_THE_DOWNLOADES_SDK_ARCHIVE* -C /var/lib/lxc</b>
     </pre>
 
-3. Find out the normal users UID and GID. It's assumed that they are 1001 and 1005:
+3. Find out the your users UID and GID. For most installations they are 1000 and 1000. If that is the case, you can skip this.
     <pre>
     root@host ~ # <b>id *YOUR_USER_NAME* -u</b>
     1001
@@ -46,7 +36,7 @@ Installation
     1005
     </pre>
 
-4. Modify the UID and GID of the user "user" of the LXC container:
+    Modify the UID and GID of the user "user" of the LXC container. In this example is UID 1001 and GID 1005:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd</b>
     ...
@@ -54,7 +44,7 @@ Installation
     ...
     </pre>
 
-5. Mount the normal users home directory of the host into the LXC container. After starting the LXC container all files of the normal user on the host are the same in the container. To do that modify the configuration file of the LXC container:
+4. Mount the normal users home directory of the host into the LXC container. After starting the LXC container all files of the normal user on the host are the same in the container. To do that modify the configuration file of the LXC container:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/config</b>
     </pre>
@@ -66,21 +56,21 @@ Mount as much directories as you wish, as long the mount points in the LXC conta
 
 Start the LXC container
 ---
-Starting and stopping a container may require root permissions on the host system.
+Starting and stopping a container may require root permissions on the host system. This will start the container and immediatelly auto log in as "user". Most of the time you only need a single terminal within the SDK.
 <pre>
 user@host ~ # <b>su root</b>
 Password:
-root@host ~ # <b>lxc-start -P /var/lib/lxc -n m3sdk</b>
+root@host ~ # <b>lxc-start m3sdk -F</b>
 </pre>
 
-Open a console to the LXC container:
+If you really need another console to the LXC container:
 <pre>
-root@host ~ # <b>lxc-console -P /var/lib/lxc -n m3sdk</b>
+root@host ~ # <b>lxc-console m3sdk</b>
 </pre>
 
 Login as <b>"user"</b> with the password <b>"user"</b>. The password for the user "root" is "root". The prompt changes to "user@m3sdk ~ $". Stopping a container must be done from another terminal:
 <pre>
 user@host ~ # <b>su root</b>
 Password:
-root@host ~ # <b>lxc-stop -P /var/lib/lxc -n m3sdk -k</b>
+root@host ~ # <b>lxc-stop m3sdk</b>
 </pre>
