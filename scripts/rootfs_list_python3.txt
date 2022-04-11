@@ -1,0 +1,1288 @@
+# This file contains a list of all files which will be copied to rootfs_target
+#
+# This container will only use applets from busybox, nothing else
+#
+# Syntax:
+#    # is a comment, these lines will be ignored
+#    file <name> <location> <mode> <uid> <gid> [<hard links>]
+#    dir <name> <mode> <uid> <gid>
+#    slink <name> <target> <mode> <uid> <gid>
+#    pipe <name> <mode> <uid> <gid>
+#    sock <name> <mode> <uid> <gid>
+#
+#    <name>       name of the file in the containers root file system
+#    <location>   location of the file where it should be copied from
+#    <target>     link target
+#    <mode>       mode/permissions of the file as octect
+#    <uid>        user id (0=root)
+#    <gid>        group id (0=root)
+#    <hard links> space separated list of other links to file
+#    <wildcard>   copies all files of a directory non-recursively and does not strip the files
+#
+#
+#     !!! DO NOT USE TABULATORS !!!
+#
+#
+#############################
+# all necessary directories #
+#############################
+dir /                           0755 0 0
+dir /bin                        0755 0 0
+dir /data                       0755 0 0
+dir /data/etc                   0755 0 0
+dir /devices                    0755 0 0
+dir /devices/cli_no_auth        0755 0 0
+dir /etc                        0755 0 0
+dir /etc/httpd                  0755 0 0
+dir /etc/dropbear               0755 0 0
+dir /etc/pam.d                  0755 0 0
+dir /home                       0755 0 0
+dir /lib                        0755 0 0
+dir /lib/security               0755 0 0
+dir /licence                    0755 0 0
+dir /proc                       0755 0 0
+dir /root                       0700 0 0
+dir /root/.ssh                  0700 0 0
+dir /shared                     0755 0 0
+dir /sys                        0755 0 0
+dir /tmp                        0777 0 0
+dir /usr                        0755 0 0
+dir /usr/local                  0755 0 0
+dir /usr/share                  0755 0 0
+dir /usr/share/nano             0755 0 0
+dir /usr/share/terminfo         0755 0 0
+dir /usr/share/terminfo/x       0755 0 0
+dir /usr/share/zoneinfo         0755 0 0
+dir /var                        0755 0 0
+dir /var/log                    0755 0 0
+dir /var/spool                  0755 0 0
+dir /var/spool/cron             0755 0 0
+dir /var/spool/cron/crontabs    0755 0 0
+
+###############
+# basic files #
+###############
+
+file /bin/busybox                     ${STAGING_DIR}/bin/busybox                     4755 0 0
+file /bin/dropbearmulti               ${STAGING_DIR}/bin/dropbearmulti               0755 0 0
+slink /bin/dropbear                   dropbearmulti                                  0777 0 0
+slink /bin/scp                        dropbearmulti                                  0777 0 0
+slink /bin/ssh                        dropbearmulti                                  0777 0 0
+slink /bin/dropbearkey                dropbearmulti                                  0777 0 0
+slink /bin/dropbearconvert            dropbearmulti                                  0777 0 0
+slink /bin/dbclient                   dropbearmulti                                  0777 0 0
+file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
+file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
+file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_python3.sh        0755 0 0
+file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh              0755 0 0
+file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
+file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
+file /bin/mcip-tool                   ${STAGING_DIR}/bin/mcip-tool                   0755 0 0
+
+file /bin/get-pip.py                  ${STAGING_DIR}/bin/get-pip-22.0.4.py           0755 0 0
+file /bin/sqlite3                     ${STAGING_DIR}/bin/sqlite3                     0755 0 0
+
+file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
+file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
+file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
+file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
+file /etc/mcip.conf                   ${SKELETON_DIR}/etc/mcip.conf                  0644 0 0
+file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf               0644 0 0
+file /etc/nanorc                      ${SKELETON_DIR}/etc/nanorc                     0644 0 0
+file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
+file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
+file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
+file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0640 0 0
+file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                     0640 0 0
+file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
+file /etc/protocols                   ${SKELETON_DIR}/etc/protocols                  0644 0 0
+file /etc/pam.d/local                 ${SKELETON_DIR}/etc/pam.d/local                0644 0 0
+file /etc/pam.d/other                 ${SKELETON_DIR}/etc/pam.d/other                0644 0 0
+slink /etc/pam.d/login                local                                          0777 0 0
+slink /etc/pam.d/sshd                 login                                          0777 0 0
+
+file /etc/pip.conf                    ${SKELETON_DIR}/etc/pip.conf                   0644 0 0
+
+file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
+file /lib/libnss_files.so.2           ${SYSROOT_DIR}/lib/libnss_files.so.2           0755 0 0
+file /lib/libnss_dns.so.2             ${SYSROOT_DIR}/lib/libnss_dns.so.2             0755 0 0
+file /lib/libc.so.6                   ${SYSROOT_DIR}/lib/libc.so.6                   0755 0 0
+file /lib/ld-linux-armhf.so.3         ${SYSROOT_DIR}/lib/ld-linux-armhf.so.3         0755 0 0
+file /lib/libcrypt.so.1               ${SYSROOT_DIR}/lib/libcrypt.so.1               0755 0 0
+file /lib/libutil.so.1                ${SYSROOT_DIR}/lib/libutil.so.1                0755 0 0
+file /lib/libresolv.so.2              ${SYSROOT_DIR}/lib/libresolv.so.2              0755 0 0
+file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib/libdl.so.2                  0755 0 0
+file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib/libpthread.so.0             0755 0 0
+file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm.so.6                   0755 0 0
+file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt.so.1                  0755 0 0
+file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
+file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1                 0644 0 0
+file /lib/libmcip.so                  ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
+file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
+file /lib/libsqlite3.so.0             ${STAGING_DIR}/lib/libsqlite3.so.0             0644 0 0
+file /lib/libexpat.so.1                ${STAGING_DIR}/lib/libexpat.so.1              0755 0 0
+slink /lib/libexpat.so                 libexpat.so.1                                 0777 0 0
+file /lib/libuuid.so.1                 ${STAGING_DIR}/lib/libuuid.so.1               0755 0 0
+file /lib/libffi.so.8                  ${STAGING_DIR}/lib/libffi.so.8                0755 0 0
+
+file /lib/libformw.so.6               ${STAGING_DIR}/lib/libformw.so.6               0755 0 0
+file /lib/libmenuw.so.6               ${STAGING_DIR}/lib/libmenuw.so.6               0755 0 0
+file /lib/libncursesw.so.6            ${STAGING_DIR}/lib/libncursesw.so.6            0755 0 0
+file /lib/libpanelw.so.6              ${STAGING_DIR}/lib/libpanelw.so.6              0755 0 0
+file /lib/libtinfow.so.6              ${STAGING_DIR}/lib/libtinfow.so.6              0755 0 0
+
+file /bin/nano                         ${STAGING_DIR}/usr/local/bin/nano               0755 0 0
+file /etc/nanorc                       ${SKELETON_DIR}/etc/nanorc                      0644 0 0
+file /usr/share/nano/asm.nanorc        ${STAGING_DIR}/usr/local/share/nano/asm.nanorc        0644 0 0
+file /usr/share/nano/autoconf.nanorc   ${STAGING_DIR}/usr/local/share/nano/autoconf.nanorc   0644 0 0
+file /usr/share/nano/awk.nanorc        ${STAGING_DIR}/usr/local/share/nano/awk.nanorc        0644 0 0
+file /usr/share/nano/c.nanorc          ${STAGING_DIR}/usr/local/share/nano/c.nanorc          0644 0 0
+file /usr/share/nano/changelog.nanorc  ${STAGING_DIR}/usr/local/share/nano/changelog.nanorc  0644 0 0
+file /usr/share/nano/cmake.nanorc      ${STAGING_DIR}/usr/local/share/nano/cmake.nanorc      0644 0 0
+file /usr/share/nano/css.nanorc        ${STAGING_DIR}/usr/local/share/nano/css.nanorc        0644 0 0
+file /usr/share/nano/default.nanorc    ${STAGING_DIR}/usr/local/share/nano/default.nanorc    0644 0 0
+file /usr/share/nano/elisp.nanorc      ${STAGING_DIR}/usr/local/share/nano/elisp.nanorc      0644 0 0
+file /usr/share/nano/email.nanorc      ${STAGING_DIR}/usr/local/share/nano/email.nanorc      0644 0 0
+file /usr/share/nano/go.nanorc         ${STAGING_DIR}/usr/local/share/nano/go.nanorc         0644 0 0
+file /usr/share/nano/groff.nanorc      ${STAGING_DIR}/usr/local/share/nano/groff.nanorc      0644 0 0
+file /usr/share/nano/guile.nanorc      ${STAGING_DIR}/usr/local/share/nano/guile.nanorc      0644 0 0
+file /usr/share/nano/html.nanorc       ${STAGING_DIR}/usr/local/share/nano/html.nanorc       0644 0 0
+file /usr/share/nano/java.nanorc       ${STAGING_DIR}/usr/local/share/nano/java.nanorc       0644 0 0
+file /usr/share/nano/javascript.nanorc ${STAGING_DIR}/usr/local/share/nano/javascript.nanorc 0644 0 0
+file /usr/share/nano/json.nanorc       ${STAGING_DIR}/usr/local/share/nano/json.nanorc       0644 0 0
+file /usr/share/nano/lua.nanorc        ${STAGING_DIR}/usr/local/share/nano/lua.nanorc        0644 0 0
+file /usr/share/nano/makefile.nanorc   ${STAGING_DIR}/usr/local/share/nano/makefile.nanorc   0644 0 0
+file /usr/share/nano/man.nanorc        ${STAGING_DIR}/usr/local/share/nano/man.nanorc        0644 0 0
+file /usr/share/nano/markdown.nanorc   ${STAGING_DIR}/usr/local/share/nano/markdown.nanorc   0644 0 0
+file /usr/share/nano/nanohelp.nanorc   ${STAGING_DIR}/usr/local/share/nano/nanohelp.nanorc   0644 0 0
+file /usr/share/nano/nanorc.nanorc     ${STAGING_DIR}/usr/local/share/nano/nanorc.nanorc     0644 0 0
+file /usr/share/nano/nftables.nanorc   ${STAGING_DIR}/usr/local/share/nano/nftables.nanorc   0644 0 0
+file /usr/share/nano/objc.nanorc       ${STAGING_DIR}/usr/local/share/nano/objc.nanorc       0644 0 0
+file /usr/share/nano/ocaml.nanorc      ${STAGING_DIR}/usr/local/share/nano/ocaml.nanorc      0644 0 0
+file /usr/share/nano/patch.nanorc      ${STAGING_DIR}/usr/local/share/nano/patch.nanorc      0644 0 0
+file /usr/share/nano/perl.nanorc       ${STAGING_DIR}/usr/local/share/nano/perl.nanorc       0644 0 0
+file /usr/share/nano/php.nanorc        ${STAGING_DIR}/usr/local/share/nano/php.nanorc        0644 0 0
+file /usr/share/nano/po.nanorc         ${STAGING_DIR}/usr/local/share/nano/po.nanorc         0644 0 0
+file /usr/share/nano/python.nanorc     ${STAGING_DIR}/usr/local/share/nano/python.nanorc     0644 0 0
+file /usr/share/nano/ruby.nanorc       ${STAGING_DIR}/usr/local/share/nano/ruby.nanorc       0644 0 0
+file /usr/share/nano/rust.nanorc       ${STAGING_DIR}/usr/local/share/nano/rust.nanorc       0644 0 0
+file /usr/share/nano/sh.nanorc         ${STAGING_DIR}/usr/local/share/nano/sh.nanorc         0644 0 0
+file /usr/share/nano/sql.nanorc        ${STAGING_DIR}/usr/local/share/nano/sql.nanorc        0644 0 0
+file /usr/share/nano/tcl.nanorc        ${STAGING_DIR}/usr/local/share/nano/tcl.nanorc        0644 0 0
+file /usr/share/nano/tex.nanorc        ${STAGING_DIR}/usr/local/share/nano/tex.nanorc        0644 0 0
+file /usr/share/nano/texinfo.nanorc    ${STAGING_DIR}/usr/local/share/nano/texinfo.nanorc    0644 0 0
+file /usr/share/nano/xml.nanorc        ${STAGING_DIR}/usr/local/share/nano/xml.nanorc        0644 0 0
+file /usr/share/nano/yaml.nanorc       ${STAGING_DIR}/usr/local/share/nano/yaml.nanorc       0644 0 0
+
+file /usr/share/terminfo/x/xterm       ${STAGING_DIR}/usr/share/terminfo/x/xterm             0644 0 0
+file /usr/share/terminfo/x/xterm-utf8  ${STAGING_DIR}/usr/share/terminfo/x/xterm-utf8        0644 0 0
+slink /lib/terminfo                    /usr/share/terminfo                                   0777 0 0
+
+file /bin/openssl                     ${STAGING_DIR}/bin/openssl                     0755 0 0
+file /lib/libssl.so.1.1               ${STAGING_DIR}/lib/libssl.so                   0644 0 0
+file /lib/libcrypto.so.1.1            ${STAGING_DIR}/lib/libcrypto.so                0644 0 0
+
+file /lib/security/pam_listfile.so    ${STAGING_DIR}/lib/security/pam_listfile.so    0644 0 0
+file /lib/security/pam_deny.so        ${STAGING_DIR}/lib/security/pam_deny.so        0644 0 0
+file /lib/security/pam_permit.so      ${STAGING_DIR}/lib/security/pam_permit.so      0644 0 0
+file /lib/security/pam_exec.so        ${STAGING_DIR}/lib/security/pam_exec.so        0644 0 0
+file /lib/security/pam_unix.so        ${STAGING_DIR}/lib/security/pam_unix.so        0644 0 0
+file /lib/security/pam_warn.so        ${STAGING_DIR}/lib/security/pam_warn.so        0644 0 0
+file /lib/libpam_misc.so.0            ${STAGING_DIR}/lib/libpam_misc.so.0            0644 0 0
+file /lib/libpam.so.0                 ${STAGING_DIR}/lib/libpam.so.0                 0644 0 0
+
+file /root/readme.txt                 ${SKELETON_DIR}/root/readme.txt                0644 0 0
+slink /root/.nanorc                   /etc/nanorc                                    0777 0 0
+
+slink /run                            tmp/run                                        0777 0 0
+slink /sbin                           bin                                            0777 0 0
+slink /usr/bin                        ../bin                                         0777 0 0
+slink /usr/sbin                       ../bin                                         0777 0 0
+
+file /usr/share/version                ${SKELETON_DIR}/usr/share/version             0644 0 0
+file /usr/share/build                  ${SKELETON_DIR}/usr/share/build               0644 0 0
+file /usr/share/downloadable           ${SKELETON_DIR}/usr/share/downloadable        0644 0 0
+file /usr/share/content.html           ${SKELETON_DIR}/usr/share/content_python3.html   0644 0 0
+
+slink /var/lock                        /tmp/lock                                     0777 0 0
+slink /var/run                         /tmp/run                                      0777 0 0
+
+
+############################
+# Python files             #
+############################
+# create these lines automatically by executing the next line in "rootfs_staging/usr/local/"
+# ../../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep -v '/share/' | grep -v '/include/' | sed 's| ./| ${STAGING_DIR}/usr/local/|' | sort > ../list.txt
+# eventually remove not needed files manually to shrink the installation
+dir /lib/python3.10 755 0 0
+dir /lib/python3.10/asyncio 755 0 0
+dir /lib/python3.10/collections 755 0 0
+dir /lib/python3.10/concurrent 755 0 0
+dir /lib/python3.10/concurrent/futures 755 0 0
+dir /lib/python3.10/ctypes 755 0 0
+dir /lib/python3.10/ctypes/macholib 755 0 0
+dir /lib/python3.10/curses 755 0 0
+dir /lib/python3.10/dbm 755 0 0
+dir /lib/python3.10/distutils 755 0 0
+dir /lib/python3.10/distutils/command 755 0 0
+dir /lib/python3.10/email 755 0 0
+dir /lib/python3.10/email/mime 755 0 0
+dir /lib/python3.10/encodings 755 0 0
+dir /lib/python3.10/html 755 0 0
+dir /lib/python3.10/http 755 0 0
+dir /lib/python3.10/importlib 755 0 0
+dir /lib/python3.10/importlib/metadata 755 0 0
+dir /lib/python3.10/json 755 0 0
+dir /lib/python3.10/lib-dynload 755 0 0
+dir /lib/python3.10/logging 755 0 0
+dir /lib/python3.10/multiprocessing 755 0 0
+dir /lib/python3.10/multiprocessing/dummy 755 0 0
+dir /lib/python3.10/pydoc_data 755 0 0
+dir /lib/python3.10/site-packages 755 0 0
+dir /lib/python3.10/sqlite3 755 0 0
+dir /lib/python3.10/urllib 755 0 0
+dir /lib/python3.10/venv 755 0 0
+dir /lib/python3.10/venv/scripts 755 0 0
+dir /lib/python3.10/venv/scripts/common 755 0 0
+dir /lib/python3.10/venv/scripts/posix 755 0 0
+dir /lib/python3.10/wsgiref 755 0 0
+dir /lib/python3.10/xml 755 0 0
+dir /lib/python3.10/xml/dom 755 0 0
+dir /lib/python3.10/xml/etree 755 0 0
+dir /lib/python3.10/xml/parsers 755 0 0
+dir /lib/python3.10/xml/sax 755 0 0
+dir /lib/python3.10/xmlrpc 755 0 0
+dir /lib/python3.10/zoneinfo 755 0 0
+file /bin/python3.10 ${STAGING_DIR}/usr/local/bin/python3.10 755 0 0
+file /bin/python3.10-config ${STAGING_DIR}/usr/local/bin/python3.10-config 755 0 0
+file /lib/libpython3.10.so.1.0 ${STAGING_DIR}/usr/local/lib/libpython3.10.so.1.0 755 0 0
+file /lib/libpython3.so ${STAGING_DIR}/usr/local/lib/libpython3.so 755 0 0
+file /lib/python3.10/LICENSE.txt ${STAGING_DIR}/usr/local/lib/python3.10/LICENSE.txt 644 0 0
+file /lib/python3.10/__future__.py ${STAGING_DIR}/usr/local/lib/python3.10/__future__.py 644 0 0
+file /lib/python3.10/__phello__.foo.py ${STAGING_DIR}/usr/local/lib/python3.10/__phello__.foo.py 644 0 0
+file /lib/python3.10/_aix_support.py ${STAGING_DIR}/usr/local/lib/python3.10/_aix_support.py 644 0 0
+file /lib/python3.10/_bootsubprocess.py ${STAGING_DIR}/usr/local/lib/python3.10/_bootsubprocess.py 644 0 0
+file /lib/python3.10/_collections_abc.py ${STAGING_DIR}/usr/local/lib/python3.10/_collections_abc.py 644 0 0
+file /lib/python3.10/_compat_pickle.py ${STAGING_DIR}/usr/local/lib/python3.10/_compat_pickle.py 644 0 0
+file /lib/python3.10/_compression.py ${STAGING_DIR}/usr/local/lib/python3.10/_compression.py 644 0 0
+file /lib/python3.10/_markupbase.py ${STAGING_DIR}/usr/local/lib/python3.10/_markupbase.py 644 0 0
+file /lib/python3.10/_osx_support.py ${STAGING_DIR}/usr/local/lib/python3.10/_osx_support.py 644 0 0
+file /lib/python3.10/_py_abc.py ${STAGING_DIR}/usr/local/lib/python3.10/_py_abc.py 644 0 0
+file /lib/python3.10/_pydecimal.py ${STAGING_DIR}/usr/local/lib/python3.10/_pydecimal.py 644 0 0
+file /lib/python3.10/_pyio.py ${STAGING_DIR}/usr/local/lib/python3.10/_pyio.py 644 0 0
+file /lib/python3.10/_sitebuiltins.py ${STAGING_DIR}/usr/local/lib/python3.10/_sitebuiltins.py 644 0 0
+file /lib/python3.10/_strptime.py ${STAGING_DIR}/usr/local/lib/python3.10/_strptime.py 644 0 0
+file /lib/python3.10/_sysconfigdata__linux_arm-linux-gnueabihf.py ${STAGING_DIR}/usr/local/lib/python3.10/_sysconfigdata__linux_arm-linux-gnueabihf.py 644 0 0
+file /lib/python3.10/_threading_local.py ${STAGING_DIR}/usr/local/lib/python3.10/_threading_local.py 644 0 0
+file /lib/python3.10/_weakrefset.py ${STAGING_DIR}/usr/local/lib/python3.10/_weakrefset.py 644 0 0
+file /lib/python3.10/abc.py ${STAGING_DIR}/usr/local/lib/python3.10/abc.py 644 0 0
+file /lib/python3.10/aifc.py ${STAGING_DIR}/usr/local/lib/python3.10/aifc.py 644 0 0
+file /lib/python3.10/antigravity.py ${STAGING_DIR}/usr/local/lib/python3.10/antigravity.py 644 0 0
+file /lib/python3.10/argparse.py ${STAGING_DIR}/usr/local/lib/python3.10/argparse.py 644 0 0
+file /lib/python3.10/ast.py ${STAGING_DIR}/usr/local/lib/python3.10/ast.py 644 0 0
+file /lib/python3.10/asynchat.py ${STAGING_DIR}/usr/local/lib/python3.10/asynchat.py 644 0 0
+file /lib/python3.10/asyncio/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/__init__.py 644 0 0
+file /lib/python3.10/asyncio/__main__.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/__main__.py 644 0 0
+file /lib/python3.10/asyncio/base_events.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/base_events.py 644 0 0
+file /lib/python3.10/asyncio/base_futures.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/base_futures.py 644 0 0
+file /lib/python3.10/asyncio/base_subprocess.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/base_subprocess.py 644 0 0
+file /lib/python3.10/asyncio/base_tasks.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/base_tasks.py 644 0 0
+file /lib/python3.10/asyncio/constants.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/constants.py 644 0 0
+file /lib/python3.10/asyncio/coroutines.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/coroutines.py 644 0 0
+file /lib/python3.10/asyncio/events.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/events.py 644 0 0
+file /lib/python3.10/asyncio/exceptions.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/exceptions.py 644 0 0
+file /lib/python3.10/asyncio/format_helpers.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/format_helpers.py 644 0 0
+file /lib/python3.10/asyncio/futures.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/futures.py 644 0 0
+file /lib/python3.10/asyncio/locks.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/locks.py 644 0 0
+file /lib/python3.10/asyncio/log.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/log.py 644 0 0
+file /lib/python3.10/asyncio/mixins.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/mixins.py 644 0 0
+file /lib/python3.10/asyncio/proactor_events.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/proactor_events.py 644 0 0
+file /lib/python3.10/asyncio/protocols.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/protocols.py 644 0 0
+file /lib/python3.10/asyncio/queues.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/queues.py 644 0 0
+file /lib/python3.10/asyncio/runners.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/runners.py 644 0 0
+file /lib/python3.10/asyncio/selector_events.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/selector_events.py 644 0 0
+file /lib/python3.10/asyncio/sslproto.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/sslproto.py 644 0 0
+file /lib/python3.10/asyncio/staggered.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/staggered.py 644 0 0
+file /lib/python3.10/asyncio/streams.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/streams.py 644 0 0
+file /lib/python3.10/asyncio/subprocess.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/subprocess.py 644 0 0
+file /lib/python3.10/asyncio/tasks.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/tasks.py 644 0 0
+file /lib/python3.10/asyncio/threads.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/threads.py 644 0 0
+file /lib/python3.10/asyncio/transports.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/transports.py 644 0 0
+file /lib/python3.10/asyncio/trsock.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/trsock.py 644 0 0
+file /lib/python3.10/asyncio/unix_events.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/unix_events.py 644 0 0
+file /lib/python3.10/asyncio/windows_events.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/windows_events.py 644 0 0
+file /lib/python3.10/asyncio/windows_utils.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncio/windows_utils.py 644 0 0
+file /lib/python3.10/asyncore.py ${STAGING_DIR}/usr/local/lib/python3.10/asyncore.py 644 0 0
+file /lib/python3.10/base64.py ${STAGING_DIR}/usr/local/lib/python3.10/base64.py 755 0 0
+file /lib/python3.10/bdb.py ${STAGING_DIR}/usr/local/lib/python3.10/bdb.py 644 0 0
+file /lib/python3.10/binhex.py ${STAGING_DIR}/usr/local/lib/python3.10/binhex.py 644 0 0
+file /lib/python3.10/bisect.py ${STAGING_DIR}/usr/local/lib/python3.10/bisect.py 644 0 0
+file /lib/python3.10/bz2.py ${STAGING_DIR}/usr/local/lib/python3.10/bz2.py 644 0 0
+file /lib/python3.10/cProfile.py ${STAGING_DIR}/usr/local/lib/python3.10/cProfile.py 755 0 0
+file /lib/python3.10/calendar.py ${STAGING_DIR}/usr/local/lib/python3.10/calendar.py 644 0 0
+file /lib/python3.10/cgi.py ${STAGING_DIR}/usr/local/lib/python3.10/cgi.py 755 0 0
+file /lib/python3.10/cgitb.py ${STAGING_DIR}/usr/local/lib/python3.10/cgitb.py 644 0 0
+file /lib/python3.10/chunk.py ${STAGING_DIR}/usr/local/lib/python3.10/chunk.py 644 0 0
+file /lib/python3.10/cmd.py ${STAGING_DIR}/usr/local/lib/python3.10/cmd.py 644 0 0
+file /lib/python3.10/code.py ${STAGING_DIR}/usr/local/lib/python3.10/code.py 644 0 0
+file /lib/python3.10/codecs.py ${STAGING_DIR}/usr/local/lib/python3.10/codecs.py 644 0 0
+file /lib/python3.10/codeop.py ${STAGING_DIR}/usr/local/lib/python3.10/codeop.py 644 0 0
+file /lib/python3.10/collections/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/collections/__init__.py 644 0 0
+file /lib/python3.10/collections/abc.py ${STAGING_DIR}/usr/local/lib/python3.10/collections/abc.py 644 0 0
+file /lib/python3.10/colorsys.py ${STAGING_DIR}/usr/local/lib/python3.10/colorsys.py 644 0 0
+file /lib/python3.10/compileall.py ${STAGING_DIR}/usr/local/lib/python3.10/compileall.py 644 0 0
+file /lib/python3.10/concurrent/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/concurrent/__init__.py 644 0 0
+file /lib/python3.10/concurrent/futures/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/concurrent/futures/__init__.py 644 0 0
+file /lib/python3.10/concurrent/futures/_base.py ${STAGING_DIR}/usr/local/lib/python3.10/concurrent/futures/_base.py 644 0 0
+file /lib/python3.10/concurrent/futures/process.py ${STAGING_DIR}/usr/local/lib/python3.10/concurrent/futures/process.py 644 0 0
+file /lib/python3.10/concurrent/futures/thread.py ${STAGING_DIR}/usr/local/lib/python3.10/concurrent/futures/thread.py 644 0 0
+file /lib/python3.10/configparser.py ${STAGING_DIR}/usr/local/lib/python3.10/configparser.py 644 0 0
+file /lib/python3.10/contextlib.py ${STAGING_DIR}/usr/local/lib/python3.10/contextlib.py 644 0 0
+file /lib/python3.10/contextvars.py ${STAGING_DIR}/usr/local/lib/python3.10/contextvars.py 644 0 0
+file /lib/python3.10/copy.py ${STAGING_DIR}/usr/local/lib/python3.10/copy.py 644 0 0
+file /lib/python3.10/copyreg.py ${STAGING_DIR}/usr/local/lib/python3.10/copyreg.py 644 0 0
+file /lib/python3.10/crypt.py ${STAGING_DIR}/usr/local/lib/python3.10/crypt.py 644 0 0
+file /lib/python3.10/csv.py ${STAGING_DIR}/usr/local/lib/python3.10/csv.py 644 0 0
+file /lib/python3.10/ctypes/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/__init__.py 644 0 0
+file /lib/python3.10/ctypes/_aix.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/_aix.py 644 0 0
+file /lib/python3.10/ctypes/_endian.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/_endian.py 644 0 0
+file /lib/python3.10/ctypes/macholib/README.ctypes ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/README.ctypes 644 0 0
+file /lib/python3.10/ctypes/macholib/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/__init__.py 644 0 0
+file /lib/python3.10/ctypes/macholib/dyld.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/dyld.py 644 0 0
+file /lib/python3.10/ctypes/macholib/dylib.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/dylib.py 644 0 0
+file /lib/python3.10/ctypes/macholib/fetch_macholib ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/fetch_macholib 755 0 0
+file /lib/python3.10/ctypes/macholib/fetch_macholib.bat ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/fetch_macholib.bat 644 0 0
+file /lib/python3.10/ctypes/macholib/framework.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/macholib/framework.py 644 0 0
+file /lib/python3.10/ctypes/util.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/util.py 644 0 0
+file /lib/python3.10/ctypes/wintypes.py ${STAGING_DIR}/usr/local/lib/python3.10/ctypes/wintypes.py 644 0 0
+file /lib/python3.10/curses/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/curses/__init__.py 644 0 0
+file /lib/python3.10/curses/ascii.py ${STAGING_DIR}/usr/local/lib/python3.10/curses/ascii.py 644 0 0
+file /lib/python3.10/curses/has_key.py ${STAGING_DIR}/usr/local/lib/python3.10/curses/has_key.py 644 0 0
+file /lib/python3.10/curses/panel.py ${STAGING_DIR}/usr/local/lib/python3.10/curses/panel.py 644 0 0
+file /lib/python3.10/curses/textpad.py ${STAGING_DIR}/usr/local/lib/python3.10/curses/textpad.py 644 0 0
+file /lib/python3.10/dataclasses.py ${STAGING_DIR}/usr/local/lib/python3.10/dataclasses.py 644 0 0
+file /lib/python3.10/datetime.py ${STAGING_DIR}/usr/local/lib/python3.10/datetime.py 644 0 0
+file /lib/python3.10/dbm/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/dbm/__init__.py 644 0 0
+file /lib/python3.10/dbm/dumb.py ${STAGING_DIR}/usr/local/lib/python3.10/dbm/dumb.py 644 0 0
+file /lib/python3.10/dbm/gnu.py ${STAGING_DIR}/usr/local/lib/python3.10/dbm/gnu.py 644 0 0
+file /lib/python3.10/dbm/ndbm.py ${STAGING_DIR}/usr/local/lib/python3.10/dbm/ndbm.py 644 0 0
+file /lib/python3.10/decimal.py ${STAGING_DIR}/usr/local/lib/python3.10/decimal.py 644 0 0
+file /lib/python3.10/difflib.py ${STAGING_DIR}/usr/local/lib/python3.10/difflib.py 644 0 0
+file /lib/python3.10/dis.py ${STAGING_DIR}/usr/local/lib/python3.10/dis.py 644 0 0
+file /lib/python3.10/distutils/README ${STAGING_DIR}/usr/local/lib/python3.10/distutils/README 644 0 0
+file /lib/python3.10/distutils/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/__init__.py 644 0 0
+file /lib/python3.10/distutils/_msvccompiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/_msvccompiler.py 644 0 0
+file /lib/python3.10/distutils/archive_util.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/archive_util.py 644 0 0
+file /lib/python3.10/distutils/bcppcompiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/bcppcompiler.py 644 0 0
+file /lib/python3.10/distutils/ccompiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/ccompiler.py 644 0 0
+file /lib/python3.10/distutils/cmd.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/cmd.py 644 0 0
+file /lib/python3.10/distutils/command/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/__init__.py 644 0 0
+file /lib/python3.10/distutils/command/bdist.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/bdist.py 644 0 0
+file /lib/python3.10/distutils/command/bdist_dumb.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/bdist_dumb.py 644 0 0
+file /lib/python3.10/distutils/command/bdist_msi.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/bdist_msi.py 644 0 0
+file /lib/python3.10/distutils/command/bdist_rpm.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/bdist_rpm.py 644 0 0
+file /lib/python3.10/distutils/command/build.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/build.py 644 0 0
+file /lib/python3.10/distutils/command/build_clib.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/build_clib.py 644 0 0
+file /lib/python3.10/distutils/command/build_ext.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/build_ext.py 644 0 0
+file /lib/python3.10/distutils/command/build_py.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/build_py.py 644 0 0
+file /lib/python3.10/distutils/command/build_scripts.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/build_scripts.py 644 0 0
+file /lib/python3.10/distutils/command/check.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/check.py 644 0 0
+file /lib/python3.10/distutils/command/clean.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/clean.py 644 0 0
+file /lib/python3.10/distutils/command/command_template ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/command_template 644 0 0
+file /lib/python3.10/distutils/command/config.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/config.py 644 0 0
+file /lib/python3.10/distutils/command/install.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/install.py 644 0 0
+file /lib/python3.10/distutils/command/install_data.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/install_data.py 644 0 0
+file /lib/python3.10/distutils/command/install_egg_info.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/install_egg_info.py 644 0 0
+file /lib/python3.10/distutils/command/install_headers.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/install_headers.py 644 0 0
+file /lib/python3.10/distutils/command/install_lib.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/install_lib.py 644 0 0
+file /lib/python3.10/distutils/command/install_scripts.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/install_scripts.py 644 0 0
+file /lib/python3.10/distutils/command/register.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/register.py 644 0 0
+file /lib/python3.10/distutils/command/sdist.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/sdist.py 644 0 0
+file /lib/python3.10/distutils/command/upload.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/command/upload.py 644 0 0
+file /lib/python3.10/distutils/config.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/config.py 644 0 0
+file /lib/python3.10/distutils/core.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/core.py 644 0 0
+file /lib/python3.10/distutils/cygwinccompiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/cygwinccompiler.py 644 0 0
+file /lib/python3.10/distutils/debug.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/debug.py 644 0 0
+file /lib/python3.10/distutils/dep_util.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/dep_util.py 644 0 0
+file /lib/python3.10/distutils/dir_util.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/dir_util.py 644 0 0
+file /lib/python3.10/distutils/dist.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/dist.py 644 0 0
+file /lib/python3.10/distutils/errors.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/errors.py 644 0 0
+file /lib/python3.10/distutils/extension.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/extension.py 644 0 0
+file /lib/python3.10/distutils/fancy_getopt.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/fancy_getopt.py 644 0 0
+file /lib/python3.10/distutils/file_util.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/file_util.py 644 0 0
+file /lib/python3.10/distutils/filelist.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/filelist.py 644 0 0
+file /lib/python3.10/distutils/log.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/log.py 644 0 0
+file /lib/python3.10/distutils/msvc9compiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/msvc9compiler.py 644 0 0
+file /lib/python3.10/distutils/msvccompiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/msvccompiler.py 644 0 0
+file /lib/python3.10/distutils/spawn.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/spawn.py 644 0 0
+file /lib/python3.10/distutils/sysconfig.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/sysconfig.py 644 0 0
+file /lib/python3.10/distutils/text_file.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/text_file.py 644 0 0
+file /lib/python3.10/distutils/unixccompiler.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/unixccompiler.py 644 0 0
+file /lib/python3.10/distutils/util.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/util.py 644 0 0
+file /lib/python3.10/distutils/version.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/version.py 644 0 0
+file /lib/python3.10/distutils/versionpredicate.py ${STAGING_DIR}/usr/local/lib/python3.10/distutils/versionpredicate.py 644 0 0
+file /lib/python3.10/doctest.py ${STAGING_DIR}/usr/local/lib/python3.10/doctest.py 644 0 0
+file /lib/python3.10/email/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/email/__init__.py 644 0 0
+file /lib/python3.10/email/_encoded_words.py ${STAGING_DIR}/usr/local/lib/python3.10/email/_encoded_words.py 644 0 0
+file /lib/python3.10/email/_header_value_parser.py ${STAGING_DIR}/usr/local/lib/python3.10/email/_header_value_parser.py 644 0 0
+file /lib/python3.10/email/_parseaddr.py ${STAGING_DIR}/usr/local/lib/python3.10/email/_parseaddr.py 644 0 0
+file /lib/python3.10/email/_policybase.py ${STAGING_DIR}/usr/local/lib/python3.10/email/_policybase.py 644 0 0
+file /lib/python3.10/email/architecture.rst ${STAGING_DIR}/usr/local/lib/python3.10/email/architecture.rst 644 0 0
+file /lib/python3.10/email/base64mime.py ${STAGING_DIR}/usr/local/lib/python3.10/email/base64mime.py 644 0 0
+file /lib/python3.10/email/charset.py ${STAGING_DIR}/usr/local/lib/python3.10/email/charset.py 644 0 0
+file /lib/python3.10/email/contentmanager.py ${STAGING_DIR}/usr/local/lib/python3.10/email/contentmanager.py 644 0 0
+file /lib/python3.10/email/encoders.py ${STAGING_DIR}/usr/local/lib/python3.10/email/encoders.py 644 0 0
+file /lib/python3.10/email/errors.py ${STAGING_DIR}/usr/local/lib/python3.10/email/errors.py 644 0 0
+file /lib/python3.10/email/feedparser.py ${STAGING_DIR}/usr/local/lib/python3.10/email/feedparser.py 644 0 0
+file /lib/python3.10/email/generator.py ${STAGING_DIR}/usr/local/lib/python3.10/email/generator.py 644 0 0
+file /lib/python3.10/email/header.py ${STAGING_DIR}/usr/local/lib/python3.10/email/header.py 644 0 0
+file /lib/python3.10/email/headerregistry.py ${STAGING_DIR}/usr/local/lib/python3.10/email/headerregistry.py 644 0 0
+file /lib/python3.10/email/iterators.py ${STAGING_DIR}/usr/local/lib/python3.10/email/iterators.py 644 0 0
+file /lib/python3.10/email/message.py ${STAGING_DIR}/usr/local/lib/python3.10/email/message.py 644 0 0
+file /lib/python3.10/email/mime/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/__init__.py 644 0 0
+file /lib/python3.10/email/mime/application.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/application.py 644 0 0
+file /lib/python3.10/email/mime/audio.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/audio.py 644 0 0
+file /lib/python3.10/email/mime/base.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/base.py 644 0 0
+file /lib/python3.10/email/mime/image.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/image.py 644 0 0
+file /lib/python3.10/email/mime/message.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/message.py 644 0 0
+file /lib/python3.10/email/mime/multipart.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/multipart.py 644 0 0
+file /lib/python3.10/email/mime/nonmultipart.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/nonmultipart.py 644 0 0
+file /lib/python3.10/email/mime/text.py ${STAGING_DIR}/usr/local/lib/python3.10/email/mime/text.py 644 0 0
+file /lib/python3.10/email/parser.py ${STAGING_DIR}/usr/local/lib/python3.10/email/parser.py 644 0 0
+file /lib/python3.10/email/policy.py ${STAGING_DIR}/usr/local/lib/python3.10/email/policy.py 644 0 0
+file /lib/python3.10/email/quoprimime.py ${STAGING_DIR}/usr/local/lib/python3.10/email/quoprimime.py 644 0 0
+file /lib/python3.10/email/utils.py ${STAGING_DIR}/usr/local/lib/python3.10/email/utils.py 644 0 0
+file /lib/python3.10/encodings/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/__init__.py 644 0 0
+file /lib/python3.10/encodings/aliases.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/aliases.py 644 0 0
+file /lib/python3.10/encodings/ascii.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/ascii.py 644 0 0
+file /lib/python3.10/encodings/base64_codec.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/base64_codec.py 644 0 0
+file /lib/python3.10/encodings/big5.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/big5.py 644 0 0
+file /lib/python3.10/encodings/big5hkscs.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/big5hkscs.py 644 0 0
+file /lib/python3.10/encodings/bz2_codec.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/bz2_codec.py 644 0 0
+file /lib/python3.10/encodings/charmap.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/charmap.py 644 0 0
+file /lib/python3.10/encodings/cp037.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp037.py 644 0 0
+file /lib/python3.10/encodings/cp1006.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1006.py 644 0 0
+file /lib/python3.10/encodings/cp1026.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1026.py 644 0 0
+file /lib/python3.10/encodings/cp1125.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1125.py 644 0 0
+file /lib/python3.10/encodings/cp1140.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1140.py 644 0 0
+file /lib/python3.10/encodings/cp1250.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1250.py 644 0 0
+file /lib/python3.10/encodings/cp1251.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1251.py 644 0 0
+file /lib/python3.10/encodings/cp1252.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1252.py 644 0 0
+file /lib/python3.10/encodings/cp1253.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1253.py 644 0 0
+file /lib/python3.10/encodings/cp1254.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1254.py 644 0 0
+file /lib/python3.10/encodings/cp1255.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1255.py 644 0 0
+file /lib/python3.10/encodings/cp1256.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1256.py 644 0 0
+file /lib/python3.10/encodings/cp1257.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1257.py 644 0 0
+file /lib/python3.10/encodings/cp1258.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp1258.py 644 0 0
+file /lib/python3.10/encodings/cp273.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp273.py 644 0 0
+file /lib/python3.10/encodings/cp424.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp424.py 644 0 0
+file /lib/python3.10/encodings/cp437.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp437.py 644 0 0
+file /lib/python3.10/encodings/cp500.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp500.py 644 0 0
+file /lib/python3.10/encodings/cp720.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp720.py 644 0 0
+file /lib/python3.10/encodings/cp737.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp737.py 644 0 0
+file /lib/python3.10/encodings/cp775.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp775.py 644 0 0
+file /lib/python3.10/encodings/cp850.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp850.py 644 0 0
+file /lib/python3.10/encodings/cp852.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp852.py 644 0 0
+file /lib/python3.10/encodings/cp855.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp855.py 644 0 0
+file /lib/python3.10/encodings/cp856.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp856.py 644 0 0
+file /lib/python3.10/encodings/cp857.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp857.py 644 0 0
+file /lib/python3.10/encodings/cp858.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp858.py 644 0 0
+file /lib/python3.10/encodings/cp860.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp860.py 644 0 0
+file /lib/python3.10/encodings/cp861.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp861.py 644 0 0
+file /lib/python3.10/encodings/cp862.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp862.py 644 0 0
+file /lib/python3.10/encodings/cp863.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp863.py 644 0 0
+file /lib/python3.10/encodings/cp864.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp864.py 644 0 0
+file /lib/python3.10/encodings/cp865.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp865.py 644 0 0
+file /lib/python3.10/encodings/cp866.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp866.py 644 0 0
+file /lib/python3.10/encodings/cp869.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp869.py 644 0 0
+file /lib/python3.10/encodings/cp874.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp874.py 644 0 0
+file /lib/python3.10/encodings/cp875.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp875.py 644 0 0
+file /lib/python3.10/encodings/cp932.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp932.py 644 0 0
+file /lib/python3.10/encodings/cp949.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp949.py 644 0 0
+file /lib/python3.10/encodings/cp950.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/cp950.py 644 0 0
+file /lib/python3.10/encodings/euc_jis_2004.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/euc_jis_2004.py 644 0 0
+file /lib/python3.10/encodings/euc_jisx0213.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/euc_jisx0213.py 644 0 0
+file /lib/python3.10/encodings/euc_jp.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/euc_jp.py 644 0 0
+file /lib/python3.10/encodings/euc_kr.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/euc_kr.py 644 0 0
+file /lib/python3.10/encodings/gb18030.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/gb18030.py 644 0 0
+file /lib/python3.10/encodings/gb2312.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/gb2312.py 644 0 0
+file /lib/python3.10/encodings/gbk.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/gbk.py 644 0 0
+file /lib/python3.10/encodings/hex_codec.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/hex_codec.py 644 0 0
+file /lib/python3.10/encodings/hp_roman8.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/hp_roman8.py 644 0 0
+file /lib/python3.10/encodings/hz.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/hz.py 644 0 0
+file /lib/python3.10/encodings/idna.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/idna.py 644 0 0
+file /lib/python3.10/encodings/iso2022_jp.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_jp.py 644 0 0
+file /lib/python3.10/encodings/iso2022_jp_1.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_jp_1.py 644 0 0
+file /lib/python3.10/encodings/iso2022_jp_2.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_jp_2.py 644 0 0
+file /lib/python3.10/encodings/iso2022_jp_2004.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_jp_2004.py 644 0 0
+file /lib/python3.10/encodings/iso2022_jp_3.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_jp_3.py 644 0 0
+file /lib/python3.10/encodings/iso2022_jp_ext.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_jp_ext.py 644 0 0
+file /lib/python3.10/encodings/iso2022_kr.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso2022_kr.py 644 0 0
+file /lib/python3.10/encodings/iso8859_1.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_1.py 644 0 0
+file /lib/python3.10/encodings/iso8859_10.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_10.py 644 0 0
+file /lib/python3.10/encodings/iso8859_11.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_11.py 644 0 0
+file /lib/python3.10/encodings/iso8859_13.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_13.py 644 0 0
+file /lib/python3.10/encodings/iso8859_14.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_14.py 644 0 0
+file /lib/python3.10/encodings/iso8859_15.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_15.py 644 0 0
+file /lib/python3.10/encodings/iso8859_16.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_16.py 644 0 0
+file /lib/python3.10/encodings/iso8859_2.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_2.py 644 0 0
+file /lib/python3.10/encodings/iso8859_3.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_3.py 644 0 0
+file /lib/python3.10/encodings/iso8859_4.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_4.py 644 0 0
+file /lib/python3.10/encodings/iso8859_5.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_5.py 644 0 0
+file /lib/python3.10/encodings/iso8859_6.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_6.py 644 0 0
+file /lib/python3.10/encodings/iso8859_7.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_7.py 644 0 0
+file /lib/python3.10/encodings/iso8859_8.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_8.py 644 0 0
+file /lib/python3.10/encodings/iso8859_9.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/iso8859_9.py 644 0 0
+file /lib/python3.10/encodings/johab.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/johab.py 644 0 0
+file /lib/python3.10/encodings/koi8_r.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/koi8_r.py 644 0 0
+file /lib/python3.10/encodings/koi8_t.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/koi8_t.py 644 0 0
+file /lib/python3.10/encodings/koi8_u.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/koi8_u.py 644 0 0
+file /lib/python3.10/encodings/kz1048.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/kz1048.py 644 0 0
+file /lib/python3.10/encodings/latin_1.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/latin_1.py 644 0 0
+file /lib/python3.10/encodings/mac_arabic.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_arabic.py 644 0 0
+file /lib/python3.10/encodings/mac_croatian.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_croatian.py 644 0 0
+file /lib/python3.10/encodings/mac_cyrillic.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_cyrillic.py 644 0 0
+file /lib/python3.10/encodings/mac_farsi.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_farsi.py 644 0 0
+file /lib/python3.10/encodings/mac_greek.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_greek.py 644 0 0
+file /lib/python3.10/encodings/mac_iceland.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_iceland.py 644 0 0
+file /lib/python3.10/encodings/mac_latin2.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_latin2.py 644 0 0
+file /lib/python3.10/encodings/mac_roman.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_roman.py 644 0 0
+file /lib/python3.10/encodings/mac_romanian.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_romanian.py 644 0 0
+file /lib/python3.10/encodings/mac_turkish.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mac_turkish.py 644 0 0
+file /lib/python3.10/encodings/mbcs.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/mbcs.py 644 0 0
+file /lib/python3.10/encodings/oem.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/oem.py 644 0 0
+file /lib/python3.10/encodings/palmos.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/palmos.py 644 0 0
+file /lib/python3.10/encodings/ptcp154.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/ptcp154.py 644 0 0
+file /lib/python3.10/encodings/punycode.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/punycode.py 644 0 0
+file /lib/python3.10/encodings/quopri_codec.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/quopri_codec.py 644 0 0
+file /lib/python3.10/encodings/raw_unicode_escape.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/raw_unicode_escape.py 644 0 0
+file /lib/python3.10/encodings/rot_13.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/rot_13.py 755 0 0
+file /lib/python3.10/encodings/shift_jis.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/shift_jis.py 644 0 0
+file /lib/python3.10/encodings/shift_jis_2004.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/shift_jis_2004.py 644 0 0
+file /lib/python3.10/encodings/shift_jisx0213.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/shift_jisx0213.py 644 0 0
+file /lib/python3.10/encodings/tis_620.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/tis_620.py 644 0 0
+file /lib/python3.10/encodings/undefined.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/undefined.py 644 0 0
+file /lib/python3.10/encodings/unicode_escape.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/unicode_escape.py 644 0 0
+file /lib/python3.10/encodings/utf_16.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_16.py 644 0 0
+file /lib/python3.10/encodings/utf_16_be.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_16_be.py 644 0 0
+file /lib/python3.10/encodings/utf_16_le.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_16_le.py 644 0 0
+file /lib/python3.10/encodings/utf_32.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_32.py 644 0 0
+file /lib/python3.10/encodings/utf_32_be.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_32_be.py 644 0 0
+file /lib/python3.10/encodings/utf_32_le.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_32_le.py 644 0 0
+file /lib/python3.10/encodings/utf_7.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_7.py 644 0 0
+file /lib/python3.10/encodings/utf_8.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_8.py 644 0 0
+file /lib/python3.10/encodings/utf_8_sig.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/utf_8_sig.py 644 0 0
+file /lib/python3.10/encodings/uu_codec.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/uu_codec.py 644 0 0
+file /lib/python3.10/encodings/zlib_codec.py ${STAGING_DIR}/usr/local/lib/python3.10/encodings/zlib_codec.py 644 0 0
+file /lib/python3.10/enum.py ${STAGING_DIR}/usr/local/lib/python3.10/enum.py 644 0 0
+file /lib/python3.10/filecmp.py ${STAGING_DIR}/usr/local/lib/python3.10/filecmp.py 644 0 0
+file /lib/python3.10/fileinput.py ${STAGING_DIR}/usr/local/lib/python3.10/fileinput.py 644 0 0
+file /lib/python3.10/fnmatch.py ${STAGING_DIR}/usr/local/lib/python3.10/fnmatch.py 644 0 0
+file /lib/python3.10/fractions.py ${STAGING_DIR}/usr/local/lib/python3.10/fractions.py 644 0 0
+file /lib/python3.10/ftplib.py ${STAGING_DIR}/usr/local/lib/python3.10/ftplib.py 644 0 0
+file /lib/python3.10/functools.py ${STAGING_DIR}/usr/local/lib/python3.10/functools.py 644 0 0
+file /lib/python3.10/genericpath.py ${STAGING_DIR}/usr/local/lib/python3.10/genericpath.py 644 0 0
+file /lib/python3.10/getopt.py ${STAGING_DIR}/usr/local/lib/python3.10/getopt.py 644 0 0
+file /lib/python3.10/getpass.py ${STAGING_DIR}/usr/local/lib/python3.10/getpass.py 644 0 0
+file /lib/python3.10/gettext.py ${STAGING_DIR}/usr/local/lib/python3.10/gettext.py 644 0 0
+file /lib/python3.10/glob.py ${STAGING_DIR}/usr/local/lib/python3.10/glob.py 644 0 0
+file /lib/python3.10/graphlib.py ${STAGING_DIR}/usr/local/lib/python3.10/graphlib.py 644 0 0
+file /lib/python3.10/gzip.py ${STAGING_DIR}/usr/local/lib/python3.10/gzip.py 644 0 0
+file /lib/python3.10/hashlib.py ${STAGING_DIR}/usr/local/lib/python3.10/hashlib.py 644 0 0
+file /lib/python3.10/heapq.py ${STAGING_DIR}/usr/local/lib/python3.10/heapq.py 644 0 0
+file /lib/python3.10/hmac.py ${STAGING_DIR}/usr/local/lib/python3.10/hmac.py 644 0 0
+file /lib/python3.10/html/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/html/__init__.py 644 0 0
+file /lib/python3.10/html/entities.py ${STAGING_DIR}/usr/local/lib/python3.10/html/entities.py 644 0 0
+file /lib/python3.10/html/parser.py ${STAGING_DIR}/usr/local/lib/python3.10/html/parser.py 644 0 0
+file /lib/python3.10/http/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/http/__init__.py 644 0 0
+file /lib/python3.10/http/client.py ${STAGING_DIR}/usr/local/lib/python3.10/http/client.py 644 0 0
+file /lib/python3.10/http/cookiejar.py ${STAGING_DIR}/usr/local/lib/python3.10/http/cookiejar.py 644 0 0
+file /lib/python3.10/http/cookies.py ${STAGING_DIR}/usr/local/lib/python3.10/http/cookies.py 644 0 0
+file /lib/python3.10/http/server.py ${STAGING_DIR}/usr/local/lib/python3.10/http/server.py 644 0 0
+file /lib/python3.10/imaplib.py ${STAGING_DIR}/usr/local/lib/python3.10/imaplib.py 644 0 0
+file /lib/python3.10/imghdr.py ${STAGING_DIR}/usr/local/lib/python3.10/imghdr.py 644 0 0
+file /lib/python3.10/imp.py ${STAGING_DIR}/usr/local/lib/python3.10/imp.py 644 0 0
+file /lib/python3.10/importlib/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/__init__.py 644 0 0
+file /lib/python3.10/importlib/_abc.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/_abc.py 644 0 0
+file /lib/python3.10/importlib/_adapters.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/_adapters.py 644 0 0
+file /lib/python3.10/importlib/_bootstrap.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/_bootstrap.py 644 0 0
+file /lib/python3.10/importlib/_bootstrap_external.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/_bootstrap_external.py 644 0 0
+file /lib/python3.10/importlib/_common.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/_common.py 644 0 0
+file /lib/python3.10/importlib/abc.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/abc.py 644 0 0
+file /lib/python3.10/importlib/machinery.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/machinery.py 644 0 0
+file /lib/python3.10/importlib/metadata/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/__init__.py 644 0 0
+file /lib/python3.10/importlib/metadata/_adapters.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/_adapters.py 644 0 0
+file /lib/python3.10/importlib/metadata/_collections.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/_collections.py 644 0 0
+file /lib/python3.10/importlib/metadata/_functools.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/_functools.py 644 0 0
+file /lib/python3.10/importlib/metadata/_itertools.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/_itertools.py 644 0 0
+file /lib/python3.10/importlib/metadata/_meta.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/_meta.py 644 0 0
+file /lib/python3.10/importlib/metadata/_text.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/metadata/_text.py 644 0 0
+file /lib/python3.10/importlib/readers.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/readers.py 644 0 0
+file /lib/python3.10/importlib/resources.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/resources.py 644 0 0
+file /lib/python3.10/importlib/util.py ${STAGING_DIR}/usr/local/lib/python3.10/importlib/util.py 644 0 0
+file /lib/python3.10/inspect.py ${STAGING_DIR}/usr/local/lib/python3.10/inspect.py 644 0 0
+file /lib/python3.10/io.py ${STAGING_DIR}/usr/local/lib/python3.10/io.py 644 0 0
+file /lib/python3.10/ipaddress.py ${STAGING_DIR}/usr/local/lib/python3.10/ipaddress.py 644 0 0
+file /lib/python3.10/json/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/json/__init__.py 644 0 0
+file /lib/python3.10/json/decoder.py ${STAGING_DIR}/usr/local/lib/python3.10/json/decoder.py 644 0 0
+file /lib/python3.10/json/encoder.py ${STAGING_DIR}/usr/local/lib/python3.10/json/encoder.py 644 0 0
+file /lib/python3.10/json/scanner.py ${STAGING_DIR}/usr/local/lib/python3.10/json/scanner.py 644 0 0
+file /lib/python3.10/json/tool.py ${STAGING_DIR}/usr/local/lib/python3.10/json/tool.py 644 0 0
+file /lib/python3.10/keyword.py ${STAGING_DIR}/usr/local/lib/python3.10/keyword.py 644 0 0
+file /lib/python3.10/lib-dynload/_asyncio.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_asyncio.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_bisect.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_bisect.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_blake2.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_blake2.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_codecs_cn.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_codecs_cn.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_codecs_hk.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_codecs_hk.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_codecs_iso2022.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_codecs_iso2022.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_codecs_jp.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_codecs_jp.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_codecs_kr.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_codecs_kr.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_codecs_tw.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_codecs_tw.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_contextvars.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_contextvars.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_crypt.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_crypt.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_csv.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_csv.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_ctypes.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_ctypes.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_ctypes_test.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_ctypes_test.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_curses.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_curses.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_curses_panel.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_curses_panel.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_datetime.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_datetime.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_decimal.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_decimal.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_elementtree.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_elementtree.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_hashlib.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_hashlib.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_heapq.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_heapq.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_json.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_json.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_lsprof.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_lsprof.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_lzma.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_lzma.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_md5.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_md5.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_multibytecodec.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_multibytecodec.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_multiprocessing.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_multiprocessing.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_opcode.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_opcode.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_pickle.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_pickle.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_posixshmem.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_posixshmem.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_posixsubprocess.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_posixsubprocess.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_queue.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_queue.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_random.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_random.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_sha1.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sha1.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_sha256.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sha256.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_sha3.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sha3.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_sha512.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sha512.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_socket.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_socket.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_ssl.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_ssl.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_statistics.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_statistics.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_struct.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_struct.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_testbuffer.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_testbuffer.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_testcapi.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_testcapi.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_testimportmultiple.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_testimportmultiple.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_testinternalcapi.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_testinternalcapi.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_testmultiphase.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_testmultiphase.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_uuid.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_uuid.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_xxsubinterpreters.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_xxsubinterpreters.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_xxtestfuzz.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_xxtestfuzz.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_zoneinfo.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_zoneinfo.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/array.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/array.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/audioop.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/audioop.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/binascii.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/binascii.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/cmath.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/cmath.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/fcntl.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/fcntl.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/grp.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/grp.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/math.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/math.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/mmap.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/mmap.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/ossaudiodev.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/ossaudiodev.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/pyexpat.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/pyexpat.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/resource.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/resource.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/select.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/select.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/spwd.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/spwd.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/syslog.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/syslog.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/termios.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/termios.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/unicodedata.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/unicodedata.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/xxlimited.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/xxlimited.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/xxlimited_35.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/xxlimited_35.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/linecache.py ${STAGING_DIR}/usr/local/lib/python3.10/linecache.py 644 0 0
+file /lib/python3.10/locale.py ${STAGING_DIR}/usr/local/lib/python3.10/locale.py 644 0 0
+file /lib/python3.10/logging/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/logging/__init__.py 644 0 0
+file /lib/python3.10/logging/config.py ${STAGING_DIR}/usr/local/lib/python3.10/logging/config.py 644 0 0
+file /lib/python3.10/logging/handlers.py ${STAGING_DIR}/usr/local/lib/python3.10/logging/handlers.py 644 0 0
+file /lib/python3.10/lzma.py ${STAGING_DIR}/usr/local/lib/python3.10/lzma.py 644 0 0
+file /lib/python3.10/mailbox.py ${STAGING_DIR}/usr/local/lib/python3.10/mailbox.py 644 0 0
+file /lib/python3.10/mailcap.py ${STAGING_DIR}/usr/local/lib/python3.10/mailcap.py 644 0 0
+file /lib/python3.10/mimetypes.py ${STAGING_DIR}/usr/local/lib/python3.10/mimetypes.py 644 0 0
+file /lib/python3.10/modulefinder.py ${STAGING_DIR}/usr/local/lib/python3.10/modulefinder.py 644 0 0
+file /lib/python3.10/multiprocessing/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/__init__.py 644 0 0
+file /lib/python3.10/multiprocessing/connection.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/connection.py 644 0 0
+file /lib/python3.10/multiprocessing/context.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/context.py 644 0 0
+file /lib/python3.10/multiprocessing/dummy/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/dummy/__init__.py 644 0 0
+file /lib/python3.10/multiprocessing/dummy/connection.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/dummy/connection.py 644 0 0
+file /lib/python3.10/multiprocessing/forkserver.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/forkserver.py 644 0 0
+file /lib/python3.10/multiprocessing/heap.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/heap.py 644 0 0
+file /lib/python3.10/multiprocessing/managers.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/managers.py 644 0 0
+file /lib/python3.10/multiprocessing/pool.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/pool.py 644 0 0
+file /lib/python3.10/multiprocessing/popen_fork.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/popen_fork.py 644 0 0
+file /lib/python3.10/multiprocessing/popen_forkserver.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/popen_forkserver.py 644 0 0
+file /lib/python3.10/multiprocessing/popen_spawn_posix.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/popen_spawn_posix.py 644 0 0
+file /lib/python3.10/multiprocessing/popen_spawn_win32.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/popen_spawn_win32.py 644 0 0
+file /lib/python3.10/multiprocessing/process.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/process.py 644 0 0
+file /lib/python3.10/multiprocessing/queues.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/queues.py 644 0 0
+file /lib/python3.10/multiprocessing/reduction.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/reduction.py 644 0 0
+file /lib/python3.10/multiprocessing/resource_sharer.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/resource_sharer.py 644 0 0
+file /lib/python3.10/multiprocessing/resource_tracker.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/resource_tracker.py 644 0 0
+file /lib/python3.10/multiprocessing/shared_memory.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/shared_memory.py 644 0 0
+file /lib/python3.10/multiprocessing/sharedctypes.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/sharedctypes.py 644 0 0
+file /lib/python3.10/multiprocessing/spawn.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/spawn.py 644 0 0
+file /lib/python3.10/multiprocessing/synchronize.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/synchronize.py 644 0 0
+file /lib/python3.10/multiprocessing/util.py ${STAGING_DIR}/usr/local/lib/python3.10/multiprocessing/util.py 644 0 0
+file /lib/python3.10/netrc.py ${STAGING_DIR}/usr/local/lib/python3.10/netrc.py 644 0 0
+file /lib/python3.10/nntplib.py ${STAGING_DIR}/usr/local/lib/python3.10/nntplib.py 644 0 0
+file /lib/python3.10/ntpath.py ${STAGING_DIR}/usr/local/lib/python3.10/ntpath.py 644 0 0
+file /lib/python3.10/nturl2path.py ${STAGING_DIR}/usr/local/lib/python3.10/nturl2path.py 644 0 0
+file /lib/python3.10/numbers.py ${STAGING_DIR}/usr/local/lib/python3.10/numbers.py 644 0 0
+file /lib/python3.10/opcode.py ${STAGING_DIR}/usr/local/lib/python3.10/opcode.py 644 0 0
+file /lib/python3.10/operator.py ${STAGING_DIR}/usr/local/lib/python3.10/operator.py 644 0 0
+file /lib/python3.10/optparse.py ${STAGING_DIR}/usr/local/lib/python3.10/optparse.py 644 0 0
+file /lib/python3.10/os.py ${STAGING_DIR}/usr/local/lib/python3.10/os.py 644 0 0
+file /lib/python3.10/pathlib.py ${STAGING_DIR}/usr/local/lib/python3.10/pathlib.py 644 0 0
+file /lib/python3.10/pdb.py ${STAGING_DIR}/usr/local/lib/python3.10/pdb.py 755 0 0
+file /lib/python3.10/pickle.py ${STAGING_DIR}/usr/local/lib/python3.10/pickle.py 644 0 0
+file /lib/python3.10/pickletools.py ${STAGING_DIR}/usr/local/lib/python3.10/pickletools.py 644 0 0
+file /lib/python3.10/pipes.py ${STAGING_DIR}/usr/local/lib/python3.10/pipes.py 644 0 0
+file /lib/python3.10/pkgutil.py ${STAGING_DIR}/usr/local/lib/python3.10/pkgutil.py 644 0 0
+file /lib/python3.10/platform.py ${STAGING_DIR}/usr/local/lib/python3.10/platform.py 755 0 0
+file /lib/python3.10/plistlib.py ${STAGING_DIR}/usr/local/lib/python3.10/plistlib.py 644 0 0
+file /lib/python3.10/poplib.py ${STAGING_DIR}/usr/local/lib/python3.10/poplib.py 644 0 0
+file /lib/python3.10/posixpath.py ${STAGING_DIR}/usr/local/lib/python3.10/posixpath.py 644 0 0
+file /lib/python3.10/pprint.py ${STAGING_DIR}/usr/local/lib/python3.10/pprint.py 644 0 0
+file /lib/python3.10/profile.py ${STAGING_DIR}/usr/local/lib/python3.10/profile.py 755 0 0
+file /lib/python3.10/pstats.py ${STAGING_DIR}/usr/local/lib/python3.10/pstats.py 644 0 0
+file /lib/python3.10/pty.py ${STAGING_DIR}/usr/local/lib/python3.10/pty.py 644 0 0
+file /lib/python3.10/py_compile.py ${STAGING_DIR}/usr/local/lib/python3.10/py_compile.py 644 0 0
+file /lib/python3.10/pyclbr.py ${STAGING_DIR}/usr/local/lib/python3.10/pyclbr.py 644 0 0
+file /lib/python3.10/pydoc.py ${STAGING_DIR}/usr/local/lib/python3.10/pydoc.py 755 0 0
+file /lib/python3.10/pydoc_data/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/pydoc_data/__init__.py 644 0 0
+file /lib/python3.10/pydoc_data/_pydoc.css ${STAGING_DIR}/usr/local/lib/python3.10/pydoc_data/_pydoc.css 644 0 0
+file /lib/python3.10/pydoc_data/topics.py ${STAGING_DIR}/usr/local/lib/python3.10/pydoc_data/topics.py 644 0 0
+file /lib/python3.10/queue.py ${STAGING_DIR}/usr/local/lib/python3.10/queue.py 644 0 0
+file /lib/python3.10/quopri.py ${STAGING_DIR}/usr/local/lib/python3.10/quopri.py 755 0 0
+file /lib/python3.10/random.py ${STAGING_DIR}/usr/local/lib/python3.10/random.py 644 0 0
+file /lib/python3.10/re.py ${STAGING_DIR}/usr/local/lib/python3.10/re.py 644 0 0
+file /lib/python3.10/reprlib.py ${STAGING_DIR}/usr/local/lib/python3.10/reprlib.py 644 0 0
+file /lib/python3.10/rlcompleter.py ${STAGING_DIR}/usr/local/lib/python3.10/rlcompleter.py 644 0 0
+file /lib/python3.10/runpy.py ${STAGING_DIR}/usr/local/lib/python3.10/runpy.py 644 0 0
+file /lib/python3.10/sched.py ${STAGING_DIR}/usr/local/lib/python3.10/sched.py 644 0 0
+file /lib/python3.10/secrets.py ${STAGING_DIR}/usr/local/lib/python3.10/secrets.py 644 0 0
+file /lib/python3.10/selectors.py ${STAGING_DIR}/usr/local/lib/python3.10/selectors.py 644 0 0
+file /lib/python3.10/shelve.py ${STAGING_DIR}/usr/local/lib/python3.10/shelve.py 644 0 0
+file /lib/python3.10/shlex.py ${STAGING_DIR}/usr/local/lib/python3.10/shlex.py 644 0 0
+file /lib/python3.10/shutil.py ${STAGING_DIR}/usr/local/lib/python3.10/shutil.py 644 0 0
+file /lib/python3.10/signal.py ${STAGING_DIR}/usr/local/lib/python3.10/signal.py 644 0 0
+file /lib/python3.10/site-packages/README.txt ${STAGING_DIR}/usr/local/lib/python3.10/site-packages/README.txt 644 0 0
+file /lib/python3.10/site.py ${STAGING_DIR}/usr/local/lib/python3.10/site.py 644 0 0
+file /lib/python3.10/smtpd.py ${STAGING_DIR}/usr/local/lib/python3.10/smtpd.py 755 0 0
+file /lib/python3.10/smtplib.py ${STAGING_DIR}/usr/local/lib/python3.10/smtplib.py 755 0 0
+file /lib/python3.10/sndhdr.py ${STAGING_DIR}/usr/local/lib/python3.10/sndhdr.py 644 0 0
+file /lib/python3.10/socket.py ${STAGING_DIR}/usr/local/lib/python3.10/socket.py 755 0 0
+file /lib/python3.10/socketserver.py ${STAGING_DIR}/usr/local/lib/python3.10/socketserver.py 644 0 0
+file /lib/python3.10/sqlite3/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/sqlite3/__init__.py 644 0 0
+file /lib/python3.10/sqlite3/dbapi2.py ${STAGING_DIR}/usr/local/lib/python3.10/sqlite3/dbapi2.py 644 0 0
+file /lib/python3.10/sqlite3/dump.py ${STAGING_DIR}/usr/local/lib/python3.10/sqlite3/dump.py 644 0 0
+file /lib/python3.10/sre_compile.py ${STAGING_DIR}/usr/local/lib/python3.10/sre_compile.py 644 0 0
+file /lib/python3.10/sre_constants.py ${STAGING_DIR}/usr/local/lib/python3.10/sre_constants.py 644 0 0
+file /lib/python3.10/sre_parse.py ${STAGING_DIR}/usr/local/lib/python3.10/sre_parse.py 644 0 0
+file /lib/python3.10/ssl.py ${STAGING_DIR}/usr/local/lib/python3.10/ssl.py 644 0 0
+file /lib/python3.10/stat.py ${STAGING_DIR}/usr/local/lib/python3.10/stat.py 644 0 0
+file /lib/python3.10/statistics.py ${STAGING_DIR}/usr/local/lib/python3.10/statistics.py 644 0 0
+file /lib/python3.10/string.py ${STAGING_DIR}/usr/local/lib/python3.10/string.py 644 0 0
+file /lib/python3.10/stringprep.py ${STAGING_DIR}/usr/local/lib/python3.10/stringprep.py 644 0 0
+file /lib/python3.10/struct.py ${STAGING_DIR}/usr/local/lib/python3.10/struct.py 644 0 0
+file /lib/python3.10/subprocess.py ${STAGING_DIR}/usr/local/lib/python3.10/subprocess.py 644 0 0
+file /lib/python3.10/sunau.py ${STAGING_DIR}/usr/local/lib/python3.10/sunau.py 644 0 0
+file /lib/python3.10/symtable.py ${STAGING_DIR}/usr/local/lib/python3.10/symtable.py 644 0 0
+file /lib/python3.10/sysconfig.py ${STAGING_DIR}/usr/local/lib/python3.10/sysconfig.py 644 0 0
+file /lib/python3.10/tabnanny.py ${STAGING_DIR}/usr/local/lib/python3.10/tabnanny.py 755 0 0
+file /lib/python3.10/tarfile.py ${STAGING_DIR}/usr/local/lib/python3.10/tarfile.py 755 0 0
+file /lib/python3.10/telnetlib.py ${STAGING_DIR}/usr/local/lib/python3.10/telnetlib.py 644 0 0
+file /lib/python3.10/tempfile.py ${STAGING_DIR}/usr/local/lib/python3.10/tempfile.py 644 0 0
+file /lib/python3.10/textwrap.py ${STAGING_DIR}/usr/local/lib/python3.10/textwrap.py 644 0 0
+file /lib/python3.10/this.py ${STAGING_DIR}/usr/local/lib/python3.10/this.py 644 0 0
+file /lib/python3.10/threading.py ${STAGING_DIR}/usr/local/lib/python3.10/threading.py 644 0 0
+file /lib/python3.10/timeit.py ${STAGING_DIR}/usr/local/lib/python3.10/timeit.py 755 0 0
+file /lib/python3.10/token.py ${STAGING_DIR}/usr/local/lib/python3.10/token.py 644 0 0
+file /lib/python3.10/tokenize.py ${STAGING_DIR}/usr/local/lib/python3.10/tokenize.py 644 0 0
+file /lib/python3.10/trace.py ${STAGING_DIR}/usr/local/lib/python3.10/trace.py 755 0 0
+file /lib/python3.10/traceback.py ${STAGING_DIR}/usr/local/lib/python3.10/traceback.py 644 0 0
+file /lib/python3.10/tracemalloc.py ${STAGING_DIR}/usr/local/lib/python3.10/tracemalloc.py 644 0 0
+file /lib/python3.10/tty.py ${STAGING_DIR}/usr/local/lib/python3.10/tty.py 644 0 0
+file /lib/python3.10/turtle.py ${STAGING_DIR}/usr/local/lib/python3.10/turtle.py 644 0 0
+file /lib/python3.10/types.py ${STAGING_DIR}/usr/local/lib/python3.10/types.py 644 0 0
+file /lib/python3.10/typing.py ${STAGING_DIR}/usr/local/lib/python3.10/typing.py 644 0 0
+file /lib/python3.10/urllib/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/urllib/__init__.py 644 0 0
+file /lib/python3.10/urllib/error.py ${STAGING_DIR}/usr/local/lib/python3.10/urllib/error.py 644 0 0
+file /lib/python3.10/urllib/parse.py ${STAGING_DIR}/usr/local/lib/python3.10/urllib/parse.py 644 0 0
+file /lib/python3.10/urllib/request.py ${STAGING_DIR}/usr/local/lib/python3.10/urllib/request.py 644 0 0
+file /lib/python3.10/urllib/response.py ${STAGING_DIR}/usr/local/lib/python3.10/urllib/response.py 644 0 0
+file /lib/python3.10/urllib/robotparser.py ${STAGING_DIR}/usr/local/lib/python3.10/urllib/robotparser.py 644 0 0
+file /lib/python3.10/uu.py ${STAGING_DIR}/usr/local/lib/python3.10/uu.py 755 0 0
+file /lib/python3.10/uuid.py ${STAGING_DIR}/usr/local/lib/python3.10/uuid.py 644 0 0
+file /lib/python3.10/venv/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/venv/__init__.py 644 0 0
+file /lib/python3.10/venv/__main__.py ${STAGING_DIR}/usr/local/lib/python3.10/venv/__main__.py 644 0 0
+file /lib/python3.10/venv/scripts/common/Activate.ps1 ${STAGING_DIR}/usr/local/lib/python3.10/venv/scripts/common/Activate.ps1 644 0 0
+file /lib/python3.10/venv/scripts/common/activate ${STAGING_DIR}/usr/local/lib/python3.10/venv/scripts/common/activate 644 0 0
+file /lib/python3.10/venv/scripts/posix/activate.csh ${STAGING_DIR}/usr/local/lib/python3.10/venv/scripts/posix/activate.csh 644 0 0
+file /lib/python3.10/venv/scripts/posix/activate.fish ${STAGING_DIR}/usr/local/lib/python3.10/venv/scripts/posix/activate.fish 644 0 0
+file /lib/python3.10/warnings.py ${STAGING_DIR}/usr/local/lib/python3.10/warnings.py 644 0 0
+file /lib/python3.10/wave.py ${STAGING_DIR}/usr/local/lib/python3.10/wave.py 644 0 0
+file /lib/python3.10/weakref.py ${STAGING_DIR}/usr/local/lib/python3.10/weakref.py 644 0 0
+file /lib/python3.10/webbrowser.py ${STAGING_DIR}/usr/local/lib/python3.10/webbrowser.py 755 0 0
+file /lib/python3.10/wsgiref/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/wsgiref/__init__.py 644 0 0
+file /lib/python3.10/wsgiref/handlers.py ${STAGING_DIR}/usr/local/lib/python3.10/wsgiref/handlers.py 644 0 0
+file /lib/python3.10/wsgiref/headers.py ${STAGING_DIR}/usr/local/lib/python3.10/wsgiref/headers.py 644 0 0
+file /lib/python3.10/wsgiref/simple_server.py ${STAGING_DIR}/usr/local/lib/python3.10/wsgiref/simple_server.py 644 0 0
+file /lib/python3.10/wsgiref/util.py ${STAGING_DIR}/usr/local/lib/python3.10/wsgiref/util.py 644 0 0
+file /lib/python3.10/wsgiref/validate.py ${STAGING_DIR}/usr/local/lib/python3.10/wsgiref/validate.py 644 0 0
+file /lib/python3.10/xdrlib.py ${STAGING_DIR}/usr/local/lib/python3.10/xdrlib.py 644 0 0
+file /lib/python3.10/xml/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/__init__.py 644 0 0
+file /lib/python3.10/xml/dom/NodeFilter.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/NodeFilter.py 644 0 0
+file /lib/python3.10/xml/dom/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/__init__.py 644 0 0
+file /lib/python3.10/xml/dom/domreg.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/domreg.py 644 0 0
+file /lib/python3.10/xml/dom/expatbuilder.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/expatbuilder.py 644 0 0
+file /lib/python3.10/xml/dom/minicompat.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/minicompat.py 644 0 0
+file /lib/python3.10/xml/dom/minidom.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/minidom.py 644 0 0
+file /lib/python3.10/xml/dom/pulldom.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/pulldom.py 644 0 0
+file /lib/python3.10/xml/dom/xmlbuilder.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/dom/xmlbuilder.py 644 0 0
+file /lib/python3.10/xml/etree/ElementInclude.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/etree/ElementInclude.py 644 0 0
+file /lib/python3.10/xml/etree/ElementPath.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/etree/ElementPath.py 644 0 0
+file /lib/python3.10/xml/etree/ElementTree.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/etree/ElementTree.py 644 0 0
+file /lib/python3.10/xml/etree/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/etree/__init__.py 644 0 0
+file /lib/python3.10/xml/etree/cElementTree.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/etree/cElementTree.py 644 0 0
+file /lib/python3.10/xml/parsers/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/parsers/__init__.py 644 0 0
+file /lib/python3.10/xml/parsers/expat.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/parsers/expat.py 644 0 0
+file /lib/python3.10/xml/sax/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/sax/__init__.py 644 0 0
+file /lib/python3.10/xml/sax/_exceptions.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/sax/_exceptions.py 644 0 0
+file /lib/python3.10/xml/sax/expatreader.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/sax/expatreader.py 644 0 0
+file /lib/python3.10/xml/sax/handler.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/sax/handler.py 644 0 0
+file /lib/python3.10/xml/sax/saxutils.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/sax/saxutils.py 644 0 0
+file /lib/python3.10/xml/sax/xmlreader.py ${STAGING_DIR}/usr/local/lib/python3.10/xml/sax/xmlreader.py 644 0 0
+file /lib/python3.10/xmlrpc/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/xmlrpc/__init__.py 644 0 0
+file /lib/python3.10/xmlrpc/client.py ${STAGING_DIR}/usr/local/lib/python3.10/xmlrpc/client.py 644 0 0
+file /lib/python3.10/xmlrpc/server.py ${STAGING_DIR}/usr/local/lib/python3.10/xmlrpc/server.py 644 0 0
+file /lib/python3.10/zipapp.py ${STAGING_DIR}/usr/local/lib/python3.10/zipapp.py 644 0 0
+file /lib/python3.10/zipfile.py ${STAGING_DIR}/usr/local/lib/python3.10/zipfile.py 644 0 0
+file /lib/python3.10/zipimport.py ${STAGING_DIR}/usr/local/lib/python3.10/zipimport.py 644 0 0
+file /lib/python3.10/zoneinfo/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/zoneinfo/__init__.py 644 0 0
+file /lib/python3.10/zoneinfo/_common.py ${STAGING_DIR}/usr/local/lib/python3.10/zoneinfo/_common.py 644 0 0
+file /lib/python3.10/zoneinfo/_tzpath.py ${STAGING_DIR}/usr/local/lib/python3.10/zoneinfo/_tzpath.py 644 0 0
+file /lib/python3.10/zoneinfo/_zoneinfo.py ${STAGING_DIR}/usr/local/lib/python3.10/zoneinfo/_zoneinfo.py 644 0 0
+slink /bin/python3 python3.10 777 0 0
+slink /bin/python python3.10 777 0 0
+slink /lib/libpython3.10.so libpython3.10.so.1.0 777 0 0
+
+
+#############################
+# additional Python modules #
+#############################
+# in rootfs_staging ausführen:
+# ../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/lib/python3.10/site-packages' | sed 's| ./lib/python3.10/site-packages/| ${STAGING_DIR}/lib/python3.10/site-packages/|' | sort > ../list.txt
+dir /lib/python3.10/site-packages 755 0 0
+dir /lib/python3.10/site-packages/certifi 755 0 0
+dir /lib/python3.10/site-packages/charset_normalizer 755 0 0
+dir /lib/python3.10/site-packages/charset_normalizer/assets 755 0 0
+dir /lib/python3.10/site-packages/charset_normalizer/cli 755 0 0
+dir /lib/python3.10/site-packages/idna 755 0 0
+dir /lib/python3.10/site-packages/requests 755 0 0
+dir /lib/python3.10/site-packages/urllib3 755 0 0
+dir /lib/python3.10/site-packages/urllib3/contrib 755 0 0
+dir /lib/python3.10/site-packages/urllib3/contrib/_securetransport 755 0 0
+dir /lib/python3.10/site-packages/urllib3/packages 755 0 0
+dir /lib/python3.10/site-packages/urllib3/packages/backports 755 0 0
+dir /lib/python3.10/site-packages/urllib3/packages/ssl_match_hostname 755 0 0
+dir /lib/python3.10/site-packages/urllib3/util 755 0 0
+file /lib/python3.10/site-packages/certifi/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/certifi/__init__.py 644 0 0
+file /lib/python3.10/site-packages/certifi/core.py ${STAGING_DIR}/lib/python3.10/site-packages/certifi/core.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/__init__.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/api.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/api.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/assets/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/assets/__init__.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/cd.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/cd.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/cli/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/cli/__init__.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/cli/normalizer.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/cli/normalizer.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/constant.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/constant.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/legacy.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/legacy.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/md.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/md.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/models.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/models.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/py.typed ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/py.typed 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/utils.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/utils.py 644 0 0
+file /lib/python3.10/site-packages/charset_normalizer/version.py ${STAGING_DIR}/lib/python3.10/site-packages/charset_normalizer/version.py 644 0 0
+file /lib/python3.10/site-packages/idna/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/__init__.py 644 0 0
+file /lib/python3.10/site-packages/idna/codec.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/codec.py 644 0 0
+file /lib/python3.10/site-packages/idna/compat.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/compat.py 644 0 0
+file /lib/python3.10/site-packages/idna/core.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/core.py 644 0 0
+file /lib/python3.10/site-packages/idna/idnadata.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/idnadata.py 644 0 0
+file /lib/python3.10/site-packages/idna/intranges.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/intranges.py 644 0 0
+file /lib/python3.10/site-packages/idna/package_data.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/package_data.py 644 0 0
+file /lib/python3.10/site-packages/idna/py.typed ${STAGING_DIR}/lib/python3.10/site-packages/idna/py.typed 644 0 0
+file /lib/python3.10/site-packages/idna/uts46data.py ${STAGING_DIR}/lib/python3.10/site-packages/idna/uts46data.py 644 0 0
+file /lib/python3.10/site-packages/requests/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/__init__.py 644 0 0
+file /lib/python3.10/site-packages/requests/__version__.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/__version__.py 644 0 0
+file /lib/python3.10/site-packages/requests/_internal_utils.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/_internal_utils.py 644 0 0
+file /lib/python3.10/site-packages/requests/adapters.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/adapters.py 644 0 0
+file /lib/python3.10/site-packages/requests/api.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/api.py 644 0 0
+file /lib/python3.10/site-packages/requests/auth.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/auth.py 644 0 0
+file /lib/python3.10/site-packages/requests/certs.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/certs.py 644 0 0
+file /lib/python3.10/site-packages/requests/compat.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/compat.py 644 0 0
+file /lib/python3.10/site-packages/requests/cookies.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/cookies.py 644 0 0
+file /lib/python3.10/site-packages/requests/exceptions.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/exceptions.py 644 0 0
+file /lib/python3.10/site-packages/requests/help.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/help.py 644 0 0
+file /lib/python3.10/site-packages/requests/hooks.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/hooks.py 644 0 0
+file /lib/python3.10/site-packages/requests/models.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/models.py 644 0 0
+file /lib/python3.10/site-packages/requests/packages.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/packages.py 644 0 0
+file /lib/python3.10/site-packages/requests/sessions.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/sessions.py 644 0 0
+file /lib/python3.10/site-packages/requests/status_codes.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/status_codes.py 644 0 0
+file /lib/python3.10/site-packages/requests/structures.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/structures.py 644 0 0
+file /lib/python3.10/site-packages/requests/utils.py ${STAGING_DIR}/lib/python3.10/site-packages/requests/utils.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/_collections.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/_collections.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/_version.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/_version.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/connection.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/connection.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/connectionpool.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/connectionpool.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/_appengine_environ.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/_appengine_environ.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/_securetransport/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/_securetransport/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/_securetransport/bindings.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/_securetransport/bindings.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/_securetransport/low_level.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/_securetransport/low_level.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/appengine.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/appengine.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/ntlmpool.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/ntlmpool.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/pyopenssl.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/pyopenssl.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/securetransport.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/securetransport.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/contrib/socks.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/contrib/socks.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/exceptions.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/exceptions.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/fields.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/fields.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/filepost.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/filepost.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/packages/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/packages/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/packages/backports/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/packages/backports/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/packages/backports/makefile.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/packages/backports/makefile.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/packages/six.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/packages/six.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/packages/ssl_match_hostname/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/packages/ssl_match_hostname/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/packages/ssl_match_hostname/_implementation.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/packages/ssl_match_hostname/_implementation.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/poolmanager.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/poolmanager.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/request.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/request.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/response.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/response.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/__init__.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/connection.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/connection.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/proxy.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/proxy.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/queue.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/queue.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/request.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/request.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/response.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/response.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/retry.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/retry.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/ssl_.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/ssl_.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/ssltransport.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/ssltransport.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/timeout.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/timeout.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/url.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/url.py 644 0 0
+file /lib/python3.10/site-packages/urllib3/util/wait.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/wait.py 644 0 0
+
+
+##################
+# timzeone files #
+##################
+file /usr/share/zoneinfo/GMT            ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT               0644 0 0
+file /usr/share/zoneinfo/GMT-1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+1             0644 0 0
+file /usr/share/zoneinfo/GMT-10         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+10            0644 0 0
+file /usr/share/zoneinfo/GMT-11         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+11            0644 0 0
+file /usr/share/zoneinfo/GMT-12         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+12            0644 0 0
+file /usr/share/zoneinfo/GMT-2          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+2             0644 0 0
+file /usr/share/zoneinfo/GMT-3          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+3             0644 0 0
+file /usr/share/zoneinfo/GMT-4          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+4             0644 0 0
+file /usr/share/zoneinfo/GMT-5          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+5             0644 0 0
+file /usr/share/zoneinfo/GMT-6          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+6             0644 0 0
+file /usr/share/zoneinfo/GMT-7          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+7             0644 0 0
+file /usr/share/zoneinfo/GMT-8          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+8             0644 0 0
+file /usr/share/zoneinfo/GMT-9          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+9             0644 0 0
+file /usr/share/zoneinfo/GMT+1          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-1             0644 0 0
+file /usr/share/zoneinfo/GMT+10         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-10            0644 0 0
+file /usr/share/zoneinfo/GMT+11         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-11            0644 0 0
+file /usr/share/zoneinfo/GMT+12         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-12            0644 0 0
+file /usr/share/zoneinfo/GMT+13         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-13            0644 0 0
+file /usr/share/zoneinfo/GMT+14         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-14            0644 0 0
+file /usr/share/zoneinfo/GMT+2          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-2             0644 0 0
+file /usr/share/zoneinfo/GMT+3          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-3             0644 0 0
+file /usr/share/zoneinfo/GMT+4          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-4             0644 0 0
+file /usr/share/zoneinfo/GMT+5          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-5             0644 0 0
+file /usr/share/zoneinfo/GMT+6          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-6             0644 0 0
+file /usr/share/zoneinfo/GMT+7          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-7             0644 0 0
+file /usr/share/zoneinfo/GMT+8          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-8             0644 0 0
+file /usr/share/zoneinfo/GMT+9          ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-9             0644 0 0
+file /usr/share/zoneinfo/UTC            ${STAGING_DIR}/usr/share/zoneinfo/Etc/UTC               0644 0 0
+file /usr/share/zoneinfo/Regensburg     ${STAGING_DIR}/usr/share/zoneinfo/Europe/Berlin         0644 0 0
+slink /etc/localtime                    /usr/share/zoneinfo/Regensburg                          0644 0 0
+
+
+#################
+# busybox links #
+#################
+# create these lines automatically by executing the next line in "./" (root dir of M3_Container)
+# sh ./scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d working/busybox-1.34.1/build/_install | grep slink | sed 's|_install|${SKELETON_DIR}|' | sort
+slink /bin/arch busybox 777 0 0
+slink /bin/ascii busybox 777 0 0
+slink /bin/ash busybox 777 0 0
+slink /bin/awk busybox 777 0 0
+slink /bin/base32 busybox 777 0 0
+slink /bin/base64 busybox 777 0 0
+slink /bin/basename busybox 777 0 0
+slink /bin/bash busybox 777 0 0
+slink /bin/bbconfig busybox 777 0 0
+slink /bin/bunzip2 busybox 777 0 0
+slink /bin/[ busybox 777 0 0
+slink /bin/[[ busybox 777 0 0
+slink /bin/bzcat busybox 777 0 0
+slink /bin/bzip2 busybox 777 0 0
+slink /bin/cal busybox 777 0 0
+slink /bin/cat busybox 777 0 0
+slink /bin/chgrp busybox 777 0 0
+slink /bin/chmod busybox 777 0 0
+slink /bin/chown busybox 777 0 0
+slink /bin/chpst busybox 777 0 0
+slink /bin/chrt busybox 777 0 0
+slink /bin/cksum busybox 777 0 0
+slink /bin/clear busybox 777 0 0
+slink /bin/cmp busybox 777 0 0
+slink /bin/comm busybox 777 0 0
+slink /bin/cp busybox 777 0 0
+slink /bin/crc32 busybox 777 0 0
+slink /bin/crontab busybox 777 0 0
+slink /bin/cryptpw busybox 777 0 0
+slink /bin/cttyhack busybox 777 0 0
+slink /bin/cut busybox 777 0 0
+slink /bin/date busybox 777 0 0
+slink /bin/dc busybox 777 0 0
+slink /bin/dd busybox 777 0 0
+slink /bin/df busybox 777 0 0
+slink /bin/diff busybox 777 0 0
+slink /bin/dirname busybox 777 0 0
+slink /bin/dmesg busybox 777 0 0
+slink /bin/dnsdomainname busybox 777 0 0
+slink /bin/dos2unix busybox 777 0 0
+slink /bin/du busybox 777 0 0
+slink /bin/dumpleases busybox 777 0 0
+slink /bin/echo busybox 777 0 0
+slink /bin/ed busybox 777 0 0
+slink /bin/egrep busybox 777 0 0
+slink /bin/env busybox 777 0 0
+slink /bin/envdir busybox 777 0 0
+slink /bin/envuidgid busybox 777 0 0
+slink /bin/expand busybox 777 0 0
+slink /bin/expr busybox 777 0 0
+slink /bin/factor busybox 777 0 0
+slink /bin/fallocate busybox 777 0 0
+slink /bin/false busybox 777 0 0
+slink /bin/fatattr busybox 777 0 0
+slink /bin/fdflush busybox 777 0 0
+slink /bin/fgrep busybox 777 0 0
+slink /bin/find busybox 777 0 0
+slink /bin/flock busybox 777 0 0
+slink /bin/fold busybox 777 0 0
+slink /bin/free busybox 777 0 0
+slink /bin/fsync busybox 777 0 0
+slink /bin/ftpget busybox 777 0 0
+slink /bin/ftpput busybox 777 0 0
+slink /bin/fuser busybox 777 0 0
+slink /bin/getopt busybox 777 0 0
+slink /bin/grep busybox 777 0 0
+slink /bin/groups busybox 777 0 0
+slink /bin/gunzip busybox 777 0 0
+slink /bin/gzip busybox 777 0 0
+slink /bin/hd busybox 777 0 0
+slink /bin/head busybox 777 0 0
+slink /bin/hexdump busybox 777 0 0
+slink /bin/hexedit busybox 777 0 0
+slink /bin/hostid busybox 777 0 0
+slink /bin/hostname busybox 777 0 0
+slink /bin/id busybox 777 0 0
+slink /bin/install busybox 777 0 0
+slink /bin/ionice busybox 777 0 0
+slink /bin/iostat busybox 777 0 0
+slink /bin/ipcalc busybox 777 0 0
+slink /bin/killall busybox 777 0 0
+slink /bin/kill busybox 777 0 0
+slink /bin/less busybox 777 0 0
+slink /bin/ln busybox 777 0 0
+slink /bin/logger busybox 777 0 0
+slink /bin/login busybox 777 0 0
+slink /bin/logname busybox 777 0 0
+slink /bin/ls busybox 777 0 0
+slink /bin/lsof busybox 777 0 0
+slink /bin/lsscsi busybox 777 0 0
+slink /bin/lzcat busybox 777 0 0
+slink /bin/lzop busybox 777 0 0
+slink /bin/md5sum busybox 777 0 0
+slink /bin/microcom busybox 777 0 0
+slink /bin/mkdir busybox 777 0 0
+slink /bin/mkfifo busybox 777 0 0
+slink /bin/mknod busybox 777 0 0
+slink /bin/mktemp busybox 777 0 0
+slink /bin/more busybox 777 0 0
+slink /bin/mpstat busybox 777 0 0
+slink /bin/mv busybox 777 0 0
+slink /bin/nc busybox 777 0 0
+slink /bin/netstat busybox 777 0 0
+slink /bin/nice busybox 777 0 0
+slink /bin/nmeter busybox 777 0 0
+slink /bin/nohup busybox 777 0 0
+slink /bin/nproc busybox 777 0 0
+slink /bin/nsenter busybox 777 0 0
+slink /bin/nslookup busybox 777 0 0
+slink /bin/od busybox 777 0 0
+slink /bin/passwd busybox 777 0 0
+slink /bin/paste busybox 777 0 0
+slink /bin/patch busybox 777 0 0
+slink /bin/pgrep busybox 777 0 0
+slink /bin/pidof busybox 777 0 0
+slink /bin/ping6 busybox 777 0 0
+slink /bin/ping busybox 777 0 0
+slink /bin/pkill busybox 777 0 0
+slink /bin/pmap busybox 777 0 0
+slink /bin/printenv busybox 777 0 0
+slink /bin/printf busybox 777 0 0
+slink /bin/ps busybox 777 0 0
+slink /bin/pscan busybox 777 0 0
+slink /bin/pstree busybox 777 0 0
+slink /bin/pwd busybox 777 0 0
+slink /bin/pwdx busybox 777 0 0
+slink /bin/readlink busybox 777 0 0
+slink /bin/realpath busybox 777 0 0
+slink /bin/renice busybox 777 0 0
+slink /bin/reset busybox 777 0 0
+slink /bin/rev busybox 777 0 0
+slink /bin/rm busybox 777 0 0
+slink /bin/rmdir busybox 777 0 0
+slink /bin/runsv busybox 777 0 0
+slink /bin/runsvdir busybox 777 0 0
+slink /bin/script busybox 777 0 0
+slink /bin/scriptreplay busybox 777 0 0
+slink /bin/sed busybox 777 0 0
+slink /bin/seq busybox 777 0 0
+slink /bin/setarch busybox 777 0 0
+slink /bin/setfattr busybox 777 0 0
+slink /bin/setpriv busybox 777 0 0
+slink /bin/setserial busybox 777 0 0
+slink /bin/setsid busybox 777 0 0
+slink /bin/setuidgid busybox 777 0 0
+slink /bin/sha1sum busybox 777 0 0
+slink /bin/sha256sum busybox 777 0 0
+slink /bin/sha3sum busybox 777 0 0
+slink /bin/sha512sum busybox 777 0 0
+slink /bin/sh busybox 777 0 0
+slink /bin/shuf busybox 777 0 0
+slink /bin/sleep busybox 777 0 0
+slink /bin/smemcap busybox 777 0 0
+slink /bin/softlimit busybox 777 0 0
+slink /bin/sort busybox 777 0 0
+slink /bin/split busybox 777 0 0
+slink /bin/ssl_client busybox 777 0 0
+slink /bin/stat busybox 777 0 0
+slink /bin/strings busybox 777 0 0
+slink /bin/stty busybox 777 0 0
+slink /bin/su busybox 777 0 0
+slink /bin/sum busybox 777 0 0
+slink /bin/sv busybox 777 0 0
+slink /bin/svc busybox 777 0 0
+slink /bin/svok busybox 777 0 0
+slink /bin/sync busybox 777 0 0
+slink /bin/tac busybox 777 0 0
+slink /bin/tail busybox 777 0 0
+slink /bin/tar busybox 777 0 0
+slink /bin/tcpsvd busybox 777 0 0
+slink /bin/tee busybox 777 0 0
+slink /bin/telnet busybox 777 0 0
+slink /bin/test busybox 777 0 0
+slink /bin/tftp busybox 777 0 0
+slink /bin/time busybox 777 0 0
+slink /bin/timeout busybox 777 0 0
+slink /bin/top busybox 777 0 0
+slink /bin/touch busybox 777 0 0
+slink /bin/traceroute6 busybox 777 0 0
+slink /bin/traceroute busybox 777 0 0
+slink /bin/tr busybox 777 0 0
+slink /bin/true busybox 777 0 0
+slink /bin/truncate busybox 777 0 0
+slink /bin/tty busybox 777 0 0
+slink /bin/ttysize busybox 777 0 0
+slink /bin/udhcpc6 busybox 777 0 0
+slink /bin/udpsvd busybox 777 0 0
+slink /bin/uname busybox 777 0 0
+slink /bin/unexpand busybox 777 0 0
+slink /bin/uniq busybox 777 0 0
+slink /bin/unix2dos busybox 777 0 0
+slink /bin/unlink busybox 777 0 0
+slink /bin/unzip busybox 777 0 0
+slink /bin/uptime busybox 777 0 0
+slink /bin/usleep busybox 777 0 0
+slink /bin/uudecode busybox 777 0 0
+slink /bin/uuencode busybox 777 0 0
+slink /bin/vi busybox 777 0 0
+slink /bin/vlock busybox 777 0 0
+slink /bin/watch busybox 777 0 0
+slink /bin/wc busybox 777 0 0
+slink /bin/wget busybox 777 0 0
+slink /bin/whoami busybox 777 0 0
+slink /bin/whois busybox 777 0 0
+slink /bin/xargs busybox 777 0 0
+slink /bin/xxd busybox 777 0 0
+slink /bin/xzcat busybox 777 0 0
+slink /bin/yes busybox 777 0 0
+slink /bin/zcat busybox 777 0 0
+# slink /init kinit 0755 0 0
+slink /sbin/addgroup ../bin/busybox 777 0 0
+slink /sbin/adduser ../bin/busybox 777 0 0
+slink /sbin/adjtimex ../bin/busybox 777 0 0
+slink /sbin/arp ../bin/busybox 777 0 0
+slink /sbin/arping ../bin/busybox 777 0 0
+slink /sbin/blockdev ../bin/busybox 777 0 0
+slink /sbin/brctl ../bin/busybox 777 0 0
+slink /sbin/chat ../bin/busybox 777 0 0
+slink /sbin/chpasswd ../bin/busybox 777 0 0
+slink /sbin/chroot ../bin/busybox 777 0 0
+slink /sbin/crond ../bin/busybox 777 0 0
+slink /sbin/delgroup ../bin/busybox 777 0 0
+slink /sbin/deluser ../bin/busybox 777 0 0
+slink /sbin/devmem ../bin/busybox 777 0 0
+slink /sbin/dhcprelay ../bin/busybox 777 0 0
+slink /sbin/dnsd ../bin/busybox 777 0 0
+slink /sbin/ether-wake ../bin/busybox 777 0 0
+slink /sbin/fakeidentd ../bin/busybox 777 0 0
+slink /sbin/ftpd ../bin/busybox 777 0 0
+slink /sbin/getty ../bin/busybox 777 0 0
+slink /sbin/halt ../bin/busybox 777 0 0
+slink /sbin/httpd ../bin/busybox 777 0 0
+slink /sbin/i2cdetect ../bin/busybox 777 0 0
+slink /sbin/i2cdump ../bin/busybox 777 0 0
+slink /sbin/i2cget ../bin/busybox 777 0 0
+slink /sbin/i2cset ../bin/busybox 777 0 0
+slink /sbin/i2ctransfer ../bin/busybox 777 0 0
+slink /sbin/ifconfig ../bin/busybox 777 0 0
+slink /sbin/ifenslave ../bin/busybox 777 0 0
+slink /sbin/init ../bin/busybox 777 0 0
+slink /sbin/inotifyd ../bin/busybox 777 0 0
+slink /sbin/ipaddr ../bin/busybox 777 0 0
+slink /sbin/ip ../bin/busybox 777 0 0
+slink /sbin/iplink ../bin/busybox 777 0 0
+slink /sbin/ipneigh ../bin/busybox 777 0 0
+slink /sbin/iproute ../bin/busybox 777 0 0
+slink /sbin/iprule ../bin/busybox 777 0 0
+slink /sbin/iptunnel ../bin/busybox 777 0 0
+slink /sbin/killall5 ../bin/busybox 777 0 0
+slink /sbin/losetup ../bin/busybox 777 0 0
+slink /sbin/nbd-client ../bin/busybox 777 0 0
+slink /sbin/ntpd ../bin/busybox 777 0 0
+slink /sbin/rdate ../bin/busybox 777 0 0
+slink /sbin/rdev ../bin/busybox 777 0 0
+slink /sbin/readprofile ../bin/busybox 777 0 0
+slink /sbin/reboot ../bin/busybox 777 0 0
+slink /sbin/route ../bin/busybox 777 0 0
+slink /sbin/slattach ../bin/busybox 777 0 0
+slink /sbin/start-stop-daemon ../bin/busybox 777 0 0
+slink /sbin/sulogin ../bin/busybox 777 0 0
+slink /sbin/svlogd ../bin/busybox 777 0 0
+slink /sbin/sysctl ../bin/busybox 777 0 0
+slink /sbin/telnetd ../bin/busybox 777 0 0
+slink /sbin/tftpd ../bin/busybox 777 0 0
+slink /sbin/tunctl ../bin/busybox 777 0 0
+slink /sbin/udhcpc ../bin/busybox 777 0 0
+slink /sbin/udhcpd ../bin/busybox 777 0 0
+slink /sbin/uevent ../bin/busybox 777 0 0
+slink /sbin/vconfig ../bin/busybox 777 0 0

@@ -1,2 +1,18 @@
-::sysinit:/bin/start_net.sh
-::respawn:/bin/telnetd -l /bin/login -f /etc/banner.txt -F
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# <id>: leave blank
+# <runlevels>: leave blank
+# <action>: sysinit, wait, once, respawn, askfirst, shutdown, restart and ctrlaltdel.
+
+# create directories and device nodes
+::sysinit:/bin/bash /bin/prepare_fs.sh
+
+# start SSH server
+::respawn:/bin/dropbear -R -F -b /etc/banner.txt
+
+# start logger
+::respawn:/bin/metalog -N -C /etc/metalog.conf
+
+::restart:/sbin/init
+::shutdown:/sbin/halt
+::ctrlaltdel:/sbin/reboot

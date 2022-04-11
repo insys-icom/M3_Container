@@ -1,3 +1,4 @@
 root:x:0:root
-users:x:1000:user,mosquitto
-www-data:x:1001:www-data
+httpd:x:10:httpd
+users:x:1000:user
+nogroup:x:1001:nobody

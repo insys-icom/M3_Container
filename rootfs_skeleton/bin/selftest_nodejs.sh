@@ -14,6 +14,9 @@ http.createServer(function (req, res) {
 # run the webserver
 /bin/node /tmp/webserver.js &
 
+# wait a little while, so the server can get up
+sleep 3
+
 # retrive http index site
 cd /tmp
 rm -Rf index.html

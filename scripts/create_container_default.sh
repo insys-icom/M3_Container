@@ -1,20 +1,29 @@
 #!/bin/sh
 
-DESCRIPTION="A container like the router firmware can create it"
+DESCRIPTION="Container similar to the one, the router can create"
 CONTAINER_NAME="container_default"
-ROOTFS_LIST="default.txt"
+ROOTFS_LIST="rootfs_list_default.txt"
 
-PACKAGES="${PACKAGES} Linux-PAM-1.2.1.sh"
-PACKAGES="${PACKAGES} busybox-1.30.1.sh"
-PACKAGES="${PACKAGES} finit-1.10.sh"
-PACKAGES="${PACKAGES} zlib-1.2.11.sh"
-PACKAGES="${PACKAGES} dropbear-2018.76.sh"
-PACKAGES="${PACKAGES} mcip.sh"
-PACKAGES="${PACKAGES} mcip-tool-v2.sh"
-PACKAGES="${PACKAGES} mcip-tool-v2.sh"
-PACKAGES="${PACKAGES} pcre-8.42.sh"
-PACKAGES="${PACKAGES} metalog-20181125.sh"
-PACKAGES="${PACKAGES} timezone2018i.sh"
+PACKAGES_1="
+    Linux-PAM-1.5.2.sh
+    zlib-1.2.12.sh
+    lz4-1.9.3.sh
+    timezone2022a.sh
+    pcre2-10.39.sh
+    openssl-1.1.1n.sh
+"
+
+PACKAGES_2="
+    busybox-1.34.1.sh
+    mcip.sh
+    mcip-tool-v2.sh
+    dropbear-2020.81.sh
+    metalog-20220214.sh
+    dnsmasq-2.86.sh
+"
+
+PACKAGES_3="
+"
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
@@ -22,16 +31,13 @@ TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . ${TOPDIR}/scripts/helpers.sh
 
 echo " "
-echo "###################################################################################################"
-echo " This creates a default container similar to the one the router can create of its own."
-echo " Within the container will start an SSH server for logins. Both user name and password is \"root\"."
-echo "###################################################################################################"
-echo " "
 echo "It is necessary to build these Open Source projects in this order:"
-for PACKAGE in ${PACKAGES} ; do echo "- ${PACKAGE}"; done
+for PACKAGE in ${PACKAGES_1} ; do echo "- ${PACKAGE}"; done
+for PACKAGE in ${PACKAGES_2} ; do echo "- ${PACKAGE}"; done
+for PACKAGE in ${PACKAGES_3} ; do echo "- ${PACKAGE}"; done
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo " $ ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
+echo "    ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
 echo " where the options -n and -l are mandatory."
 echo " "
 echo "Continue? <y/n>"
@@ -39,20 +45,63 @@ echo "Continue? <y/n>"
 read text
 ! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
 
-# compile the needed packages
-for PACKAGE in ${PACKAGES} ; do
-    echo ""
-    echo "*************************************************************************************"
-    echo "* downloading, checking, configuring, compiling and installing ${PACKAGE%.sh}"
-    echo "*************************************************************************************"
-    echo ""
-    ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} all || exit
-done
+cd rootfs_staging
+mkdir -p bin etc include lib libexec sbin share ssl usr var
+cd ..
+
+# get rid of previous log file
+rm "${BUILD_DIR}/${PACKAGE}.log"
+
+# download all required packages
+echo " "
+echo "Downloading packages:"
+echo "--------------------------------------------"
+download() {
+    for PACKAGE in ${@} ; do
+        echo "    Downloading ${PACKAGE}"
+        ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} download > "${BUILD_DIR}/${PACKAGE}.log" 2>&1 || exit_failure "Could not download ${PACKAGE}"
+    done
+}
+download ${PACKAGES_1}
+download ${PACKAGES_2}
+download ${PACKAGES_3}
+
+# uninstall everything
+echo " "
+echo "Uninstalling packages:"
+echo "--------------------------------------------"
+uninstall() {
+    for PACKAGE in ${@} ; do
+        echo "    Uninstall ${PACKAGE}"
+        ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} uninstall_staging >> "${BUILD_DIR}/${PACKAGE}.log" 2>&1 || exit_failure "Could not download ${PACKAGE}"
+    done
+}
+uninstall ${PACKAGES_1}
+uninstall ${PACKAGES_2}
+uninstall ${PACKAGES_3}
+
+# compile
+compile() {
+    for PACKAGE in ${@} ; do
+        echo "    Compile ${PACKAGE}"
+        ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} all > "${BUILD_DIR}/${PACKAGE}.log" 2>&1 &
+    done
+}
+
+echo " "
+echo "Compiling in parallel:"
+echo "--------------------------------------------"
+compile ${PACKAGES_1}
+wait || exit_failure "Failed to build PACKAGES_1"
+echo "    ----------------------------------------"
+compile ${PACKAGES_2}
+wait || exit_failure "Failed to build PACKAGES_2"
+echo "    ----------------------------------------"
+compile ${PACKAGES_3}
+wait || exit_failure "Failed to build PACKAGES_3"
 
 # package container
 echo ""
-echo "*************************************************************************************"
-echo "* Packaging the container"
-echo "*************************************************************************************"
-echo ""
+echo "Packaging the container:"
+echo "--------------------------------------------"
 ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"

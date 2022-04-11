@@ -20,4 +20,4 @@ working/*
 
 # ignore single files
 rootfs_skeleton/usr/share/build
-scripts/cgi-bin/gitweb.conf
+

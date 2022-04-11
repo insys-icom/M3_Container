@@ -1,0 +1,335 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>M3-Container.net: Container for INSYS icom OS devices</title>
+	<style>
+		html {
+			font-family: sans-serif;
+			color: black;
+		}
+
+		a:link,
+		a:visited {
+			color:#3641d8de;
+			text-decoration:none;
+			border:none;
+		}
+
+		a:active,
+		a:hover {
+			color:#ff0000de;
+			text-decoration:none;
+			border:none;
+		}
+
+		body {
+			background: #f2f2f2;
+		}
+
+		h2 {
+			position: sticky;
+			top: 0;
+		}
+
+		h1,
+		h2 {
+			padding-top: 20px;
+			padding-bottom: 4px;
+		}
+
+		h1,
+		h2,
+		h3 {
+			background: #ffffffed;
+		}
+
+		.code {
+			font-family: monospace;
+			transition: background;
+			transition-duration: 1s;
+		}
+
+		.code:hover {
+			background: #e9e9e9;
+			transition: background;
+			transition-duration: 0.3s;
+		}
+
+		span.code {
+			background: lightgray;
+			padding: 3px;
+			margin: 1px;
+		}
+
+		div.code {
+			background: lightgray;
+			display: inline-block;
+			padding: 15px;
+			margin-left: 30px;
+			white-space: nowrap;
+			overflow-x: auto;
+			max-width: -webkit-fill-available;
+			border-top-left-radius: 30px;
+			border-bottom-right-radius: 30px;
+		}
+
+		.card {
+			background: white;
+			max-width: 1000px;
+			padding-bottom: 20px;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin: 0 auto;
+			margin-bottom: 20px;
+			box-shadow: 5px 5px 5px lightgray;
+			border-radius: 15px;
+		}
+
+		.card:nth-child(6n-5) {
+			border-left: 15px solid #1d5997;
+		}
+		.card:nth-child(6n-4) {
+			border-left: 15px solid #347e16;
+		}
+		.card:nth-child(6n-3) {
+			border-left: 15px solid #fcd75f;
+		}
+		.card:nth-child(6n-2) {
+			border-left: 15px solid #ff5f20;
+		}
+		.card:nth-child(6n-1) {
+			border-left: 15px solid #993300;
+		}
+		.card:nth-child(6n) {
+			border-left: 15px solid #bc44d4;
+		}
+	</style>
+</head>
+<body>
+
+<div class="card">
+	<h1 id="top">Containers for INSYS icom OS devices</h1>
+	<p><a href="https://www.insys-icom.com/en/products/router-gateways" target="_blank">INSYS icom OS devices</a> can
+		run <a href="https://www.insys-icom.com/en/products/edge-computing/individual-programming" target="_blank">containers</a>, which can add a lot of functionality!</p>
+
+	<h2 id="content">Content</h2>
+	<ul>
+		<li><a href="#getting">Getting containers</a></li>
+		<li>Available linux distributions
+			<ul>
+				<li><a href="#alpine">Alpine Linux</a></li>
+				<li><a href="#debian">Debian</a></li>
+			</ul>
+		</li>
+		<li>Available basic containers
+			<ul>
+				<li><a href="https://m3-container.net/M3_Container/images" target="_blank">Browse on your own</a></li>
+				<li><a href="#basic">Basic</a></li>
+				<li><a href="#python">Python 3</a></li>
+				<li><a href="#nodejs">NodeJS</a></li>
+			</ul>
+		</li>
+		<li>Container products
+			<ul>
+				<li><a href="#ids" target="_blank">iDS: icom Data Suite</a></li>
+			</ul>
+		</li>
+		<li><a href="#sdk">Software Development Kit (SDK)</a></li>
+		<li><a href="#scripts">Container baking scripts</a></li>
+	</ul>
+</div>
+
+<div class="card">
+	<h2 id="getting">Getting containers</h2>
+	<p>To get to your own container with your functionality, there are at least three possibities:</p>
+	<ol type="A">
+		<li><h3>Use a complete distribution</h3>
+			<p>There are containers with <a href="#alpine">Alpine Linux</a> and <a href="#debian">Debian</a>.
+				These are perfect for fast prototyping or a PoC (Proof of Concept), because you get results very fast
+				by using the provided package managers (apk, apt).
+			    The disadvantage is, that these containers get huge very fast because of all the dependencies of the pre compiled packages.</p>
+		</li>
+
+		<li><h3>Use a basic container</h3>
+			<p>This is a good option in case you want to implement scripts in one of the offered interpreted programming languages
+				(e.g. <a href="#python">Python</a>, <a href="#nodejs">NodeJS</a>, <a href="#basic">ash</a>), where no compiler is needed.
+				You can even develop within the running container on the device.
+				This is a good compromise between container size and functionality.
+				A disadvantage of this option is, that you do not have control over the basic container, so it could be problematic
+				to add further packets or modules or update the interpreter and its lib.
+			</p>
+		</li>
+
+		<li><h3>Create your own container</h3>
+			<p>This is the developers choice: Install the <a href="#sdk">SDK</a> (as <a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a>
+				or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared build scripts and create the containers from scratch.
+				This is also the way, how the basic containers are created. Creating containers with this means:
+			<ul>
+				<li>the resulting containers will have a minimal footprint</li>
+				<li>you are in charge of every single bit that gets included</li>
+				<li>you can reproduce the build of an container</li>
+				<li>this could be automated by integrating these scripts into your CI/CD pipeline</li>
+				<li>updating the individual components is easy</li>
+				<li>most likely this will create the most stable and secure containers:
+					What's not included, can't break -  what's not running, can't get hacked</li>
+			</ul>
+			</p>
+		</li>
+	</ol>
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="alpine">Alpine Linux</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Alpine.tar">Alpine.tar</a></p>
+
+	<p>A <a href="https://alpinelinux.org">Alpine Linux</a> container with only an SSH server for login.</p>
+
+	<p>Alpine Linux uses musl as standard C library instead of glibc, which most of the time leads to smaller binaries.
+		The SDK doesn't support musl, so it's not possible to use it to cross compile applications for Alpine Linux.</p>
+
+	<p>Alpine Linux does have a <a href="https://pkgs.alpinelinux.org/packages">huge catalogue</a> of precompiled applications and libraries.
+		Use the included package managing tool "apk" for updating, upgrading and installing additional packages,
+		so this container fits when you want to run standard software, e.g. Node-RED or a minetest server.</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="debian">Debian</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Debian.tar">Debian.tar</a></p>
+
+	<p>A <a href="https://www.debian.org">Debian</a> container with only an SSH server for login.</p>
+
+	<p>This container might be the easiest way to add functionality due to the huge popularity of Debian.
+		Despite being perfect for quic tests of PoC (Proof of Concept) this comes at the cost of a bit
+		container size, so it isn't recommended to use such containers in a productive environment.
+	</p>
+
+	<p>Use the included package managing tool "apt" for updating, upgrading and installing additional packages.
+		Before downloading such a container from the device it's recommended to delete as much files as possible,
+		e.g. all the cached downloaded packages and all the repository information.
+		This data will be outdated anyways and can be replaced with a fresh apt-get upgrade.
+	</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="basic">Basic container</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_default.tar">container_default.tar</a></p>
+
+	<p>A minimal container that brings a SSH server (for login).
+		This container is meant as an example or template for your own containers you want to create with the SDK and the provided scripts.
+		Also use this container for very simple applications, that can be implemented in ash, a minimal shell interpreter included in busybox.
+	</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="python">Python 3</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_python3.tar">container_python3.tar</a></p>
+
+	<p>A minimal container with Python 3 in it.
+		There are already a few modules installed (e.g. requests, certifi, urllib).
+		Additional packages can be installed using the included pip.
+	</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="nodejs">NodeJS</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_nodejs.tar">container_nodejs.tar</a></p>
+
+	<p>A minimal container with NodeJS in it.</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="ids">iDS: icom Data Suite</a></h2>
+
+	<p>Download: <a href="https://icom-data-suite.releasenotes.io/">iDS download site</a></p>
+
+	<p><a href="https://www.insys-icom.com/produkte/edge-computing/icom-data-suite">Product site</a></p>
+
+	<p>An IoT software, used for alarming and controlling your data with multiple industrial protocols.</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="sdk">Software Development Kit (SDK)</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz">M3_SDK_LXC.tar.gz</a></p>
+
+	<p>This SDK is just a suggestion, you can use whatever toolchain you prefer!</p>
+
+	<p>It contains tools to cross compile code for the armv7 architecture. It's avalable as
+		<a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC</a> or
+		<a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a> container.
+		It is meant to be used in combination with a bunch of <a href="#scripts">scripts</a>, so all the steps to create a container are completely automated.</p>
+
+		<p>This SDK comes with no IDE at all, it's meant to be used
+	<ul>
+		<li>via command line interface (CLI) or</li>
+		<li>integrated in your favourite IDE or editor or</li>
+		<li>by your CI/CD pipeline</li>
+	</ul></p>
+
+	<p></p>The idea is, that you continue to use all your existing tools on your PC like editors to create the content and applications.
+	The tools within the  SDK then are used to do all the necessary cross compiling and packaging, so you get a container.</p>
+
+	<p></p>Here are the <a href="https://github.com/insys-icom/M3_Container/blob/master/doc/1st_steps.md" target="_blank">first steps to create your own container</a>.</p>
+
+	<p>The SDK is a <a href="https://www.gentoo.org" target="_blank">Gentoo Linux</a> without any graphical UI (headless).
+		You can update it and install more packages with the typical Gentoo tools (emerge).
+		In case you have to use a none Linux system, you could create a virtual machine image on your own by downloading the LXC version of the SDK.
+		You would have to add a bootloader and a Linux kernel.
+	</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="scripts">Container baking scripts</a></h2>
+	<p>Having a container is nice, being able to reproduce its build in an automated way is better!</p>
+
+	<p>This <a href="https://github.com/insys-icom/M3_Container" target="_blank">git repository with scripts</a> can be the foundation of your own container projects.
+		Mount the clone of this repo into your installed SDK and build your first <a href="#basic">basic container</a>.
+		These scripts will download, check, configue, make, make install and package all necessary software.
+		Use the existing scripts as a template for your own containers.
+	</p>
+
+	<p>Hint! Use separate clones of the repos for separate container projects!
+		This allowes you to update different containers at different speed.
+		Also this scripts will change over time, when there are updates or new basic containers.
+	</p>
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card" style="color: darkgray; padding-top: 30px; padding-bottom: 50px; border-left-color: white;
+                         text-align: center; border-top-left-radius: 50px; border-bottom-right-radius: 50px;">
+
+	<div style="float: left; padding-left: 20px">
+		<p><a href="https://www.insys-icom.com/en/imprint/" target="_blank">Imprint</a></p>
+	</div>
+
+	<div style="float: right; text-align: right; padding-right: 20px">
+		<p><a href="#top">To the top</a></p>
+	</div>
+	No cookies here!
+	<!-- <div style="margin: 0 auto; width: 120px;">No cookies here!</div> -->
+</div>
+
+
+</body>
+</html>

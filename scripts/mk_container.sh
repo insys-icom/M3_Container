@@ -108,7 +108,7 @@ do_strip()
 process_filesystem_list()
 {
     ACTION="${1}"
-    FILESYSTEM_LIST="${SCRIPTSDIR}/rootfs_lists/${2}"
+    FILESYSTEM_LIST="${SCRIPTSDIR}/${2}"
     FS_OUTFILE="${3}"
 
     echo "-> Creating archive $FS_OUTFILE containing the root file system"
@@ -320,15 +320,21 @@ main()
     print_manifest_entry >> "${MANIFEST}"
     FILES="MANIFEST ${FILENAME}.tar.xz"
 
-    CONTAINER_FILENAME="${OUTPUT_DIR}/${FILENAME}.tar"
+    CONTAINER_FILENAME="${OUTPUT_DIR}/${FILENAME}_$(date +%Y-%m-%d_%H%M%S).tar"
     rm -f "${CONTAINER_FILENAME}"
     cd "${BUILD_DIR}/update"
     tar -chf "${CONTAINER_FILENAME}" ${FILES}
 
-    echo -en "\nFinal update packet with the container is stored in ${CONTAINER_FILENAME}\n"
+    # create symlink to latest image
+    rm -f "${OUTPUT_DIR}/${FILENAME}"
+    rm -f "${OUTPUT_DIR}/${FILENAME}.tar"
+    cd "${OUTPUT_DIR}"
+    ln -s $(basename ${CONTAINER_FILENAME}) "${FILENAME}.tar"
 
     # get rid of the working files
     rm -Rf "${BUILD_DIR}/update"
+
+    echo -en "\nFinal update packet with the container is stored in ${CONTAINER_FILENAME}\n"
 }
 
 main "${@}"

@@ -29,6 +29,7 @@ OSS_PACKAGES_SCRIPTS="${OSS_PACKAGES_DIR}/scripts"
 DOWNLOADS_DIR="${OSS_PACKAGES_DIR}/dl"
 SOURCES_DIR="${OSS_PACKAGES_DIR}/src"
 CLOSED_PACKAGES_DIR="${TOPDIR}/closed_packages"
+KEYS_DIR="${TOPDIR}/../Container_Sepia/keys"
 
 BUILD_DIR=$(realpath "${TOPDIR}/working/")
 STAGING_DIR="${TOPDIR}/rootfs_staging"
