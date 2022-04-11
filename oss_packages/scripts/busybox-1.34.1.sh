@@ -7,7 +7,8 @@ PKG_DIR="busybox-1.34.1"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://busybox.net/downloads/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="5ad7368a73d12b8c4f8881bf7afb3d82"

@@ -7,7 +7,8 @@ PKG_DIR="openssl-1.1.1n"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://www.openssl.org/source/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.openssl.org/source/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="2aad5635f9bb338bc2c6b7d19cbc9676"

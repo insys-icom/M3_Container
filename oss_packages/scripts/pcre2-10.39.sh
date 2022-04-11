@@ -7,7 +7,8 @@ PKG_DIR="pcre2-10.39"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/PhilipHazel/pcre2/releases/download/${PKG_DIR}/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/PhilipHazel/pcre2/releases/download/${PKG_DIR}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 
 # md5 checksum of archive in dl directory (use "none" if empty)

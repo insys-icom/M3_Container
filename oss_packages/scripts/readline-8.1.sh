@@ -7,7 +7,8 @@ PKG_DIR="readline-8.1"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="ftp://ftp.cwru.edu/pub/bash/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="e9557dd5b1409f5d7b37ef717c64518e"

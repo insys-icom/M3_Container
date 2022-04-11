@@ -7,7 +7,8 @@ PKG_DIR="lz4-1.9.3"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://github.com/lz4/lz4/archive/refs/tags/v${PKG_ARCHIVE_FILE##*-}"
+#PKG_DOWNLOAD="https://github.com/lz4/lz4/archive/refs/tags/v${PKG_ARCHIVE_FILE##*-}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="3a1ab1684e14fc1afc66228ce61b2db3"

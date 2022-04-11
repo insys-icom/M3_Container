@@ -7,7 +7,8 @@ PKG_DIR="metalog-metalog-20220214"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/hvisage/metalog/archive/refs/tags/${PKG_ARCHIVE_FILE#*-}"
+#PKG_DOWNLOAD="https://github.com/hvisage/metalog/archive/refs/tags/${PKG_ARCHIVE_FILE#*-}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="fdc00a7b41dbb7f18375352e4e3a37d5"

@@ -7,7 +7,8 @@ PKG_DIR="oath-toolkit-2.6.7"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://download.savannah.nongnu.org/releases/oath-toolkit/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://download.savannah.nongnu.org/releases/oath-toolkit/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="0a3c0d9e1f8095c88657bfea8ad5d59f"

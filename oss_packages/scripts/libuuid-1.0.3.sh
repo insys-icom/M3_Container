@@ -7,7 +7,8 @@ PKG_DIR="libuuid-1.0.3"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="http://sourceforge.net/projects/libuuid/files/${PKG_ARCHIVE_FILE}/download"
+#PKG_DOWNLOAD="http://sourceforge.net/projects/libuuid/files/${PKG_ARCHIVE_FILE}/download"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="d44d866d06286c08ba0846aba1086d68"

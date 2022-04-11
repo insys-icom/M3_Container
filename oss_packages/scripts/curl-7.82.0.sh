@@ -7,7 +7,8 @@ PKG_DIR="curl-7.82.0"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://curl.se/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://curl.se/download/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="877ca5b5ea2199d37ba357412e7d74be"

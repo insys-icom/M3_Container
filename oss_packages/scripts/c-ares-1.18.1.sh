@@ -7,7 +7,8 @@ PKG_DIR="c-ares-1.18.1"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="bf770c0d3131ec0dd0575a0d2dcab226"

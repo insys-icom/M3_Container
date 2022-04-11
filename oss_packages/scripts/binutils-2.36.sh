@@ -7,8 +7,8 @@ PKG_DIR="binutils-2.36"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://ftp.gnu.org/gnu/binutils/${PKG_ARCHIVE_FILE}"
-#PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://ftp.gnu.org/gnu/binutils/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="f6114b8c40096f9aa9f64fe1ab8ba087"

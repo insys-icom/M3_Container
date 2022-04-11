@@ -7,7 +7,8 @@ PKG_DIR="node-v16.14.2-linux-armv7l"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://nodejs.org/dist/v16.14.2/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://nodejs.org/dist/v16.14.2/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="c02ebe81e5cf7b3235051b4e271a512e"

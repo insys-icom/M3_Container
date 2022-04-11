@@ -7,7 +7,8 @@ PKG_DIR="cacert-2022-03-29.pem"
 PKG_ARCHIVE_FILE="${PKG_DIR}"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
+#PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="af0f78b955696d50e422ae468fe7f150"

@@ -7,7 +7,8 @@ PKG_DIR="zlib-1.2.12"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.zlib.net/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.zlib.net/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="5fc414a9726be31427b440b434d05f78"

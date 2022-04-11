@@ -7,7 +7,8 @@ PKG_DIR="xz-5.2.5"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="aa1621ec7013a19abab52a8aff04fe5b"

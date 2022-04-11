@@ -7,7 +7,8 @@ PKG_DIR="bzip2-1.0.8"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://sourceware.org/pub/bzip2/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://sourceware.org/pub/bzip2/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="00b516f4704d4a7cb50a1d97e6e8e15b"

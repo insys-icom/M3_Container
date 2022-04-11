@@ -7,7 +7,8 @@ PKG_DIR="shellinabox-2.20"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/shellinabox/shellinabox/archive/refs/tags/v${PKG_DIR##*-}.tar.gz"
+#PKG_DOWNLOAD="https://github.com/shellinabox/shellinabox/archive/refs/tags/v${PKG_DIR##*-}.tar.gz"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="5abe705d4e3092b667a187e10eb01ce7"

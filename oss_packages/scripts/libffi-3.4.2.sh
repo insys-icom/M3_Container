@@ -7,7 +7,8 @@ PKG_DIR="libffi-3.4.2"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://github.com/libffi/libffi/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/libffi/libffi/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="294b921e6cf9ab0fbaea4b639f8fdbe8"

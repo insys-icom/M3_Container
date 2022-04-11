@@ -7,7 +7,8 @@ PKG_DIR="Linux-PAM-1.5.2"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://github.com/linux-pam/linux-pam/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/linux-pam/linux-pam/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="895e8adfa14af334f679bbeb28503f66"

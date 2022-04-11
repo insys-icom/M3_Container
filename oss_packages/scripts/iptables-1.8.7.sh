@@ -7,7 +7,8 @@ PKG_DIR="iptables-1.8.7"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://www.netfilter.org/pub/iptables/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.netfilter.org/pub/iptables/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="602ba7e937c72fbb7b1c2b71c3b0004b"

@@ -7,7 +7,8 @@ PKG_DIR="libssh2-1.10.0"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://www.libssh2.org/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.libssh2.org/download/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="f604ba083fad23bf715a9ecccc9f57f4"

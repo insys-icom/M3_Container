@@ -10,7 +10,8 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://artfiles.org/apache.org/httpd/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="ff86e0e57e3172c21a3dc495909be002"
+#PKG_CHECKSUM="ff86e0e57e3172c21a3dc495909be002"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 
 

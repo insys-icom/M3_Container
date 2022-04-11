@@ -7,7 +7,8 @@ PKG_DIR="sqlite-src-3380200"
 PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="9320de772b8c339f5a46a9c254eb9925"

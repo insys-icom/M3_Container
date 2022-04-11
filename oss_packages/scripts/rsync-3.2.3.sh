@@ -7,8 +7,8 @@ PKG_DIR="rsync-3.2.3"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/${PKG_ARCHIVE_FILE}"
-# PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://download.samba.org/pub/rsync/src/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="209f8326f5137d8817a6276d9577a2f1"

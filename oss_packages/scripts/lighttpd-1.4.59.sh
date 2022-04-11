@@ -7,8 +7,8 @@ PKG_DIR="lighttpd-1.4.59"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
-# PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="a8838dac90fcddbcc05c0d1877bd8cdf"

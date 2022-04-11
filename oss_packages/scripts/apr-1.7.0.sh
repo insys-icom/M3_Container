@@ -7,7 +7,8 @@ PKG_DIR="apr-1.7.0"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://artfiles.org/apache.org/apr/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://artfiles.org/apache.org/apr/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="757239852b082b844e268a86f2806fd2"
