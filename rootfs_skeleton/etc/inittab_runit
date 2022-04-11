@@ -1,8 +1,0 @@
-# basic system initialization
-::sysinit:/bin/start_system.sh
-
-# init daemons which shall run as service from directory /var/service
-::respawn:/bin/runsvdir /var/service
-
-::restart:/sbin/init
-::respawn:/bin/telnetd -l /bin/login -f /etc/banner.txt -F
