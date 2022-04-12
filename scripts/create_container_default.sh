@@ -17,7 +17,7 @@ PACKAGES_2="
     busybox-1.34.1.sh
     mcip.sh
     mcip-tool-v2.sh
-    dropbear-2020.81.sh
+    dropbear-2022.82.sh
     metalog-20220214.sh
     dnsmasq-2.86.sh
 "

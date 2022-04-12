@@ -23,7 +23,7 @@ PACKAGES_1="
 PACKAGES_2="
     busybox-1.34.1.sh
     mcip.sh
-    dropbear-2020.81.sh
+    dropbear-2022.82.sh
     sqlite-src-3380200.sh
     metalog-20220214.sh
     ncurses-6.3.sh

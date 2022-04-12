@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dropbear-2020.81"
+PKG_DIR="dropbear-2022.82"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="a07438a6159a24c61f98f1bce2d479c0"
+PKG_CHECKSUM="7a4a5f2c6d23ff2e6627c97d7c1aeceb"
 
 
 
@@ -28,10 +27,20 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CROSS_COMPILE="${M3_CROSS_COMPILE}"
-    export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --disable-lastlog --disable-utmp --disable-utmpx --disable-wtmp --disable-wtmpx --enable-pam
+    ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" \
+        --disable-lastlog \
+        --disable-utmp \
+        --disable-utmpx \
+        --disable-wtmp \
+        --disable-wtmpx \
+        --enable-pam \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()

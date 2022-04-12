@@ -19,7 +19,7 @@ PACKAGES_1="
 PACKAGES_2="
     busybox-1.34.1.sh
     mcip.sh
-    dropbear-2020.81.sh
+    dropbear-2022.82.sh
     metalog-20220214.sh
     dnsmasq-2.86.sh
     libssh2-1.10.0.sh
