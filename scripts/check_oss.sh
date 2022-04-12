@@ -25,7 +25,6 @@ wget_check "expat"      "https://github.com/libexpat/libexpat"                  
 wget_check "c-ares"     "https://github.com/c-ares/c-ares"			            "1.18.1</span>" ""
 wget_check "libffi"     "https://github.com/libffi/libffi"                      "v3.4.2" ""
 wget_check "xz"         "https://tukaani.org/xz"  						        "5.2.5 was released on 2020-03-17" ""
-wget_check "ncurses"    "https://invisible-island.net/ncurses/announce-6.2.html#h2-release-notes" '<p>These notes are for <span class="main-name">ncurses</span> 6.2, released <strong>February 12, 2020</strong>.</p>'
 wget_check "python"     "https://www.python.org/downloads" 				        ">Download Python 3.10.4</a>" ""
 wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.0.4" ""
 wget_check "nghttp2"    "https://github.com/nghttp2/nghttp2"                    "nghttp2 v1.47.0" ""
@@ -33,3 +32,4 @@ wget_check "libssh2"    "https://github.com/libssh2/libssh2"				    "libssh2-1.1
 wget_check "curl"       "https://curl.haxx.se/download.html"                    "<b>curl 7.82.0</b>, Released on" ""
 wget_check "nano"       "https://www.nano-editor.org/download.php"              "nano-6.2.tar.xz" ""
 wget_check "node"       "https://nodejs.org/en/download"                        "Latest LTS Version: 16.14.2" ""
+wget_check "ncurses"    "https://invisible-island.net/ncurses/announce.html"    "<span class=\"main-name\">ncurses</span> 6.3, released" ""
