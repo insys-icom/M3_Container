@@ -130,9 +130,10 @@
 				<li><a href="#nodejs">NodeJS</a></li>
 			</ul>
 		</li>
-		<li>Container products
+		<li>Container products / applications
 			<ul>
 				<li><a href="#ids" target="_blank">iDS: icom Data Suite</a></li>
+				<li><a href="#nodered" target="_blank">Node-RED</a></li>
 			</ul>
 		</li>
 		<li><a href="#sdk">Software Development Kit (SDK)</a></li>
@@ -185,12 +186,12 @@
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Alpine.tar">Alpine.tar</a></p>
 
-	<p>A <a href="https://alpinelinux.org">Alpine Linux</a> container with only an SSH server for login.</p>
+	<p>A <a href="https://alpinelinux.org" target="_blank">Alpine Linux</a> container with only an SSH server for login.</p>
 
 	<p>Alpine Linux uses musl as standard C library instead of glibc, which most of the time leads to smaller binaries.
 		The SDK doesn't support musl, so it's not possible to use it to cross compile applications for Alpine Linux.</p>
 
-	<p>Alpine Linux does have a <a href="https://pkgs.alpinelinux.org/packages">huge catalogue</a> of precompiled applications and libraries.
+	<p>Alpine Linux does have a <a href="https://pkgs.alpinelinux.org/packages" target="_blank">huge catalogue</a> of precompiled applications and libraries.
 		Use the included package managing tool "apk" for updating, upgrading and installing additional packages,
 		so this container fits when you want to run standard software, e.g. Node-RED or a minetest server.</p>
 
@@ -202,7 +203,7 @@
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Debian.tar">Debian.tar</a></p>
 
-	<p>A <a href="https://www.debian.org">Debian</a> container with only an SSH server for login.</p>
+	<p>A <a href="https://www.debian.org" target="_blank">Debian</a> container with only an SSH server for login.</p>
 
 	<p>This container might be the easiest way to add functionality due to the huge popularity of Debian.
 		Despite being perfect for quic tests of PoC (Proof of Concept) this comes at the cost of a bit
@@ -257,11 +258,23 @@
 <div class="card">
 	<h2 id="ids">iDS: icom Data Suite</a></h2>
 
-	<p>Download: <a href="https://icom-data-suite.releasenotes.io/">iDS download site</a></p>
+	<p>Download: <a href="https://icom-data-suite.releasenotes.io" target="_blank">iDS download site</a></p>
 
-	<p><a href="https://www.insys-icom.com/produkte/edge-computing/icom-data-suite">Product site</a></p>
+	<p><a href="https://www.insys-icom.com/produkte/edge-computing/icom-data-suite" target="_blank">Product site</a></p>
 
 	<p>An IoT software, used for alarming and controlling your data with multiple industrial protocols.</p>
+
+	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
+</div>
+
+<div class="card">
+	<h2 id="nodered">Node-RED</a></h2>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Node-Red.tar">Node-RED.tar</a></p>
+
+	<p>This container is based on Alpine Linux.</p>
+
+	<p>Add more modules and connectors to it by using npm.</p>
 
 	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
 </div>
