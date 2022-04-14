@@ -18,20 +18,20 @@ PACKAGES_1="
     xz-5.2.5.sh
     cacert-2022-03-29.sh
     python_modules-2022-03-31.sh
+    mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.34.1.sh
-    mcip.sh
     dropbear-2022.82.sh
     sqlite-src-3380200.sh
     metalog-20220214.sh
     ncurses-6.3.sh
+    mcip-tool-v2.sh
 "
 
 PACKAGES_3="
     nano-6.2.sh
-    mcip-tool-v2.sh
     python-3.10.4.sh
     get-pip-22.0.4.sh
 "

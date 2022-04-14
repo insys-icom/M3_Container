@@ -11,11 +11,11 @@ PACKAGES_1="
     timezone2022a.sh
     pcre2-10.39.sh
     openssl-1.1.1n.sh
+    mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.34.1.sh
-    mcip.sh
     mcip-tool-v2.sh
     dropbear-2022.82.sh
     metalog-20220214.sh

@@ -14,21 +14,21 @@ PACKAGES_1="
     c-ares-1.18.1.sh
     cacert-2022-03-29.sh
     nghttp2-1.47.0.sh
+    mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.34.1.sh
-    mcip.sh
     dropbear-2022.82.sh
     metalog-20220214.sh
     dnsmasq-2.86.sh
     libssh2-1.10.0.sh
     ncurses-6.3.sh
+    mcip-tool-v2.sh
 "
 
 PACKAGES_3="
     curl-7.82.0.sh
-    mcip-tool-v2.sh
     nano-6.2.sh
     node-v16.14.2-linux-armv7l.sh
 "
