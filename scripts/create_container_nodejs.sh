@@ -9,7 +9,7 @@ PACKAGES_1="
     zlib-1.2.12.sh
     lz4-1.9.3.sh
     timezone2022a.sh
-    pcre2-10.39.sh
+    pcre2-10.40.sh
     openssl-1.1.1n.sh
     c-ares-1.18.1.sh
     cacert-2022-03-29.sh
