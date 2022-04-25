@@ -14,6 +14,7 @@ Download the [Alpine Linux container](https://m3-container.net/M3_Container/imag
 - Click <img src="assets/icons/pen.png" alt="the pen icon" width="15"> to enter the configuration for the container.
 - Select the <b>"IP net1"</b> to which the containers Ethernet interface should be bridged
 - Enter a free IPv4 address, e.g. <b>192.168.1.3</b> and its net mask <b>24</b>
+- Enter the IP address of the gateway
 - Click to <b>"Save settings"</b>
 - Click the blinking <img src="assets/icons/gear.png" alt="the gear icon" width="15"> to activate the profile
 
@@ -32,29 +33,13 @@ The first thing to do is to <b>change the password</b> of the user "root"! This 
 container1:~# <b>passwd</b>
 </pre>
 
-Configure networking now. The IP address has already been set by the configuration of the M3 device. What still is missing is the default gateway Use the tiny editor "vi" to edit the file:
-<pre>
-container1:~# <b>vi /etc/local.d/routes.start</b>
-</pre>
-
-The editor vi has two modes:
-
-- command mode: save or to exit the edited file. Press <b>"i"</b> ("insert") to change to edit mode.
-- edit mode: actually change text. Press <b>\<ESC></b> to leave edit mode.
-
-In this document the M3 device itself should act as the gateway, which is already configured. In this case there is nothing to do here. Otherwise press "i" to enter "edit mode" and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC>:x</b> (first \<ESC> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
-
-When the IP address of the gateway has changed, the new default route can be set:
-<pre>
-container1:~# <b>/etc/init.d/local restart</b>
-</pre>
-
-To be able to resolve domain names the IP address of the DNS server must be set:
+The IP address and the optional default gateway have already been set by the configuration of the M3 device. What still is missing is the DNS server. Use the tiny editor "vi" to edit the file:
 <pre>
 container1:~# <b>vi /etc/resolv.conf</b>
 </pre>
 
-The M3 device will most likely always act as the gateway to the internet. If this has not been configured yet (WAN chains, IP routes, IP netfilters like NAT), it should be done now. Please consult the documentation of the M3 devices. Test if the container can reach its targets you can use the tool <b>"ping"</b> in the container:
+Press "i" to enter "edit mode" and change the IP address to the one of the correct gateway. Leave edit mode to store and exit the editor with the keys <b>\<ESC>:x</b> (first \<ESC> to return to command mode, then the ":" to introduce a command, finally "x" as the command to store and exit vi).
+Test if the container can reach its targets you can use the tool <b>"ping"</b> in the container:
 
 <pre>
 container1:~# <b>ping insys-icom.com</b>

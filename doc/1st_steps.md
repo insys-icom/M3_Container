@@ -7,14 +7,11 @@ The cross compiler and its toolchain must be for ARMv7 architecture with hardwar
 There are several possibilities to get a cross toolchain:
 
 * Use the [SDK as LXC container](https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz) on a Linux host machine (recommended).
-* Use the [SDK as VirtualBox image](https://m3-container.net/M3_Container/SDK/M3_SDK.ova) on any host machine supporting VirtualBox (like "Windows").
+* Use the [SDK as Docker image](https://hub.docker.com/r/insysicom/m3sdk_v5)
 * In case you use Gentoo on your host: install a cross compiler using "crossdev".
 * Get another toolchain (e.g. Ubuntu, Linaro, buildroot ...).
 
-It is recommended to use the prepared SDK. It's a tiny Gentoo Linux with installed crossdev target armv7-hf. More detailed instructions:
-
-* Install the SDK as [LXC container](Install_SDK_as_LXC_container.md)
-* Install the SDK as [VirtualBox image](Install_VirtualBox.md)
+It is recommended to use the prepared SDK. It's a tiny Gentoo Linux with installed crossdev target armv7-hf. More detailed instructions how to install the SDK as [LXC container](Install_SDK_as_LXC_container.md)
 
 
 2 Get build scripts into the SDK

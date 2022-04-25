@@ -36,7 +36,7 @@ Installation
     1005
     </pre>
 
-    Modify the UID and GID of the user "user" of the LXC container. In this example is UID 1001 and GID 1005:
+    Modify the UID and GID of the user "user" of the LXC container, so it is the same as the users UID and GID of your host computers user. In this example UID is 1001 and GID is 1005:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd</b>
     ...
