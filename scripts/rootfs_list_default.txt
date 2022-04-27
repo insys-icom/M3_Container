@@ -75,6 +75,12 @@ file /bin/dnsmasq                     ${STAGING_DIR}/sbin/dnsmasq               
 file /bin/mcip                        ${STAGING_DIR}/usr/bin/mcip                    0755 0 0
 file /bin/console                     ${STAGING_DIR}/usr/bin/console                 0755 0 0
 file /bin/mcip-tool                   ${STAGING_DIR}/bin/mcip-tool                   0755 0 0
+slink /bin/sms-tool                   /bin/mcip-tool                                 0777 0 0
+slink /bin/get-input                  /bin/mcip-tool                                 0777 0 0
+slink /bin/get-pulses                 /bin/mcip-tool                                 0777 0 0
+slink /bin/set-output                 /bin/mcip-tool                                 0777 0 0
+slink /bin/cli-cmd                    /bin/mcip-tool                                 0777 0 0
+slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 
 slink /etc/hosts                      /data/etc/hosts                                0644 0 0
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
@@ -109,7 +115,7 @@ file /lib/libm.so.6                   ${SYSROOT_DIR}/lib/libm.so.6              
 file /lib/librt.so.1                  ${SYSROOT_DIR}/lib/librt.so.1                  0755 0 0
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1                 0644 0 0
-file /lib/libmcip.so                  ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
+file /lib/libmcip.so.1                ${STAGING_DIR}/lib/libmcip.so                  0644 0 0
 file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
 
 file /bin/openssl                     ${STAGING_DIR}/bin/openssl                     0755 0 0
