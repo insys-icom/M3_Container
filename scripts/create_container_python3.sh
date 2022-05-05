@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DESCRIPTION="Container running Pyhton 3"
+DESCRIPTION="Container running Python 3"
 CONTAINER_NAME="container_python3"
 ROOTFS_LIST="rootfs_list_python3.txt"
 
