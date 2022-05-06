@@ -674,6 +674,7 @@ file /lib/python3.10/lib-dynload/_sha256.cpython-310-arm-linux-gnueabihf.so ${ST
 file /lib/python3.10/lib-dynload/_sha3.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sha3.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/_sha512.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sha512.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/_socket.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_socket.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/_sqlite3.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_sqlite3.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/_ssl.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_ssl.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/_statistics.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_statistics.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/_struct.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/_struct.cpython-310-arm-linux-gnueabihf.so 755 0 0
@@ -704,6 +705,7 @@ file /lib/python3.10/lib-dynload/termios.cpython-310-arm-linux-gnueabihf.so ${ST
 file /lib/python3.10/lib-dynload/unicodedata.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/unicodedata.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/xxlimited.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/xxlimited.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/lib-dynload/xxlimited_35.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/xxlimited_35.cpython-310-arm-linux-gnueabihf.so 755 0 0
+file /lib/python3.10/lib-dynload/zlib.cpython-310-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.10/lib-dynload/zlib.cpython-310-arm-linux-gnueabihf.so 755 0 0
 file /lib/python3.10/linecache.py ${STAGING_DIR}/usr/local/lib/python3.10/linecache.py 644 0 0
 file /lib/python3.10/locale.py ${STAGING_DIR}/usr/local/lib/python3.10/locale.py 644 0 0
 file /lib/python3.10/logging/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/logging/__init__.py 644 0 0
@@ -880,7 +882,6 @@ file /lib/python3.10/zoneinfo/_zoneinfo.py ${STAGING_DIR}/usr/local/lib/python3.
 slink /bin/python3 python3.10 777 0 0
 slink /bin/python python3.10 777 0 0
 slink /lib/libpython3.10.so libpython3.10.so.1.0 777 0 0
-
 
 #############################
 # additional Python modules #

@@ -38,6 +38,7 @@ configure()
     ac_cv_file__dev_ptmx=no \
     ax_cv_c_float_words_bigendian=no \
     CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_INCLUDE}/ncursesw" \
+    CPPFLAGS="${CFLAGS}" \
     LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
     CXX="" \
     ./configure \
@@ -52,7 +53,6 @@ configure()
         --enable-shared \
         --with-ssl-default-suites=openssl \
         --with-openssl="${STAGING_DIR}" \
-        --with-readline \
         --without-ensurepip || exit_failure "failed to configure ${PKG_DIR}"
 }
 
