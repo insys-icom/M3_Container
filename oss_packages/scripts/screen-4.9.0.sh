@@ -7,7 +7,8 @@ PKG_DIR="screen-4.9.0"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://ftp.gnu.org/gnu/screen/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://ftp.gnu.org/gnu/screen/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
 PKG_CHECKSUM="b1ef8ed89134d335e614016634982b6d"
