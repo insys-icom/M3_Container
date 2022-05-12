@@ -3,7 +3,7 @@
 # use wget to check for an updated packet
 wget_check() {
     wget "$2" "$4" -q -O - | grep -qzoP "$3"
-    [ "$?" != 0 ] && echo -en "Von $1 es gibt eine neue Version\n"
+    [ "$?" != 0 ] && echo -en "$1: new version available on $2\n"
 }
 
 # wget_check <URL to check> <text to parse in the retrieved HTML>  <additional wget parameter>
