@@ -7,7 +7,6 @@ PKG_DIR="socat-2.0.0-b9"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
@@ -28,9 +27,12 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS} -include stddef.h"
-    export LDFLAGS="${M3_LDFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-openssl --disable-readline --prefix=""
+    ./configure \
+        CFLAGS="${M3_CFLAGS} -include stddef.h" \
+        LDFLAGS="${M3_LDFLAGS}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -38,7 +40,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
 }
 
 install_staging()
