@@ -10,7 +10,7 @@ PACKAGES_1="
     lz4-1.9.3.sh
     timezone2022a.sh
     pcre2-10.40.sh
-    openssl-1.1.1n.sh
+    openssl-1.1.1o.sh
     mcip.sh
 "
 

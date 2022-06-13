@@ -8,7 +8,7 @@ wget_check() {
 
 # wget_check <URL to check> <text to parse in the retrieved HTML>  <additional wget parameter>
 wget_check "lz4"        "https://github.com/lz4/lz4" 					        ">LZ4 v1.9.3</span>" ""
-wget_check "openssl"    "https://www.openssl.org/source"                        "openssl-1.1.1n.tar.gz" ""
+wget_check "openssl"    "https://www.openssl.org/source"                        "openssl-1.1.1o.tar.gz" ""
 wget_check "pcre2"      "https://github.com/PhilipHazel/pcre2"			        ">pcre2-10.40</span>" ""
 wget_check "timezone"   "https://www.iana.org/time-zones"                       '\(Released 2022-03-15\)' ""
 wget_check "zlib"       "https://www.zlib.net"							        "zlib 1.2.12" ""
