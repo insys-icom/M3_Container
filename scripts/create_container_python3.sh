@@ -31,7 +31,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    nano-6.2.sh
+    nano-6.3.sh
     python-3.10.4.sh
     get-pip-22.0.4.sh
 "
