@@ -2,8 +2,8 @@
 
 SCRIPTSDIR=$(dirname $0)
 TOPDIR=$(realpath ${SCRIPTSDIR}/..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${TOPDIR}/scripts/helpers.sh
+. "${TOPDIR}"/scripts/common_settings.sh
+. "${TOPDIR}"/scripts/helpers.sh
 
 UPDATE_TAR="${BUILD_DIR}/update/rootfs.tar"
 UPDATE_TAR_XZ="${UPDATE_TAR}.xz"
