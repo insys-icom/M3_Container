@@ -7,7 +7,7 @@ echo -en "
 try:
     import ssl
 except:
-    if ssl.RAND_status() is 1:
+    if ssl.RAND_status() == 1:
         exit(0)
     else:
         exit(1)
