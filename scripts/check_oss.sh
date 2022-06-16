@@ -18,7 +18,7 @@ wget_check "metalog"    "https://github.com/hvisage/metalog" 			        ">metalo
 wget_check "dropbear"   "https://matt.ucc.asn.au/dropbear/dropbear.html"        "Latest is 2022.82" ""
 wget_check "dnsmasq"    "https://www.thekelleys.org.uk/dnsmasq"                 "LATEST_IS_2.86" ""
 wget_check "bzip2"      "https://www.sourceware.org/bzip2"			            "is bzip2 1.0.8" ""
-wget_check "sqlite-src" "https://www.sqlite.org/download.html"                  "sqlite-src-3380200.zip" ""
+wget_check "sqlite-src" "https://www.sqlite.org/download.html"                  "sqlite-src-3380500.zip" ""
 wget_check "cacert"     "https://curl.se/docs/caextract.html" 			        "Tue Apr 26 03:12:05 2022 GMT" ""
 wget_check "libuuid"    "http://sourceforge.net/projects/libuuid/files"	        "libuuid-1.0.3.tar.gz \(318.3 kB\)" ""
 wget_check "expat"      "https://github.com/libexpat/libexpat"                  '2.4.8</span>\n        <span title="Label: Latest"' ""
