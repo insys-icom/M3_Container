@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DESCRIPTION="Container similar to the one, the router can create"
 CONTAINER_NAME="container_default"
@@ -26,4 +26,4 @@ PACKAGES_3="
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
-. $(realpath $(dirname $0))/create.sh $1
+. $(realpath $(dirname ${BASH_SOURCE[0]}))/create.sh $1

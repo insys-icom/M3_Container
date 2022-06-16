@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DESCRIPTION="Container with NodeJS in it"
 CONTAINER_NAME="container_nodejs"
@@ -34,4 +34,4 @@ PACKAGES_3="
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
-. $(realpath $(dirname $0))/create.sh $1
+. $(realpath $(dirname ${BASH_SOURCE[0]}))/create.sh $1

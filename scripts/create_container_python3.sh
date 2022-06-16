@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DESCRIPTION="Container running Python 3"
 CONTAINER_NAME="container_python3"
@@ -37,4 +37,4 @@ PACKAGES_3="
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
-. $(realpath $(dirname $0))/create.sh $1
+. $(realpath $(dirname ${BASH_SOURCE[0]}))/create.sh $1
