@@ -28,7 +28,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-7.82.0.sh
+    curl-7.83.1.sh
     nano-6.3.sh
     node-v16.14.2-linux-armv7l.sh
 "

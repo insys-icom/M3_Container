@@ -29,7 +29,7 @@ wget_check "python"     "https://www.python.org/downloads" 				        ">Downloa
 wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.0.4" ""
 wget_check "nghttp2"    "https://github.com/nghttp2/nghttp2"                    "nghttp2 v1.47.0" ""
 wget_check "libssh2"    "https://github.com/libssh2/libssh2"				    "libssh2-1.10.0" ""
-wget_check "curl"       "https://curl.haxx.se/download.html"                    "<b>curl 7.82.0</b>, Released on" ""
+wget_check "curl"       "https://curl.haxx.se/download.html"                    "<b>curl 7.83.1</b>, Released on" ""
 wget_check "nano"       "https://www.nano-editor.org/download.php"              "nano-6.3.tar.xz" ""
 wget_check "node"       "https://nodejs.org/en/download"                        "Latest LTS Version: <strong>16.14.2</strong>" ""
 wget_check "ncurses"    "https://invisible-island.net/ncurses/announce.html"    "<span class=\"main-name\">ncurses</span> 6.3, released" ""
