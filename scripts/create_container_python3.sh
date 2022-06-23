@@ -11,7 +11,7 @@ PACKAGES_1="
     lz4-1.9.3.sh
     timezone2022a.sh
     pcre2-10.40.sh
-    openssl-1.1.1o.sh
+    openssl-1.1.1p.sh
     libuuid-1.0.3.sh
     expat-2.4.1.sh
     libffi-3.4.2.sh

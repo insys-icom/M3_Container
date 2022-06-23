@@ -10,7 +10,7 @@ PACKAGES_1="
     lz4-1.9.3.sh
     timezone2022a.sh
     pcre2-10.40.sh
-    openssl-1.1.1o.sh
+    openssl-1.1.1p.sh
     c-ares-1.18.1.sh
     cacert-2022-04-26.sh
     nghttp2-1.47.0.sh
