@@ -18,6 +18,7 @@ PACKAGES_1="
     xz-5.2.5.sh
     cacert-2022-04-26.sh
     python_modules-2022-03-31.sh
+    pyserial-3.5.sh
     mcip.sh
 "
 

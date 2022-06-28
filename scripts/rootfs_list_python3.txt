@@ -886,7 +886,7 @@ slink /lib/libpython3.10.so libpython3.10.so.1.0 777 0 0
 #############################
 # additional Python modules #
 #############################
-# in rootfs_staging ausführen:
+# execute in rootfs_staging:
 # ../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/lib/python3.10/site-packages' | sed 's| ./lib/python3.10/site-packages/| ${STAGING_DIR}/lib/python3.10/site-packages/|' | sort > ../list.txt
 dir /lib/python3.10/site-packages 755 0 0
 dir /lib/python3.10/site-packages/certifi 755 0 0
@@ -983,6 +983,42 @@ file /lib/python3.10/site-packages/urllib3/util/ssltransport.py ${STAGING_DIR}/l
 file /lib/python3.10/site-packages/urllib3/util/timeout.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/timeout.py 644 0 0
 file /lib/python3.10/site-packages/urllib3/util/url.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/url.py 644 0 0
 file /lib/python3.10/site-packages/urllib3/util/wait.py ${STAGING_DIR}/lib/python3.10/site-packages/urllib3/util/wait.py 644 0 0
+
+# pyserial
+# execute in rootfs_staging
+#../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/lib/python3.10/site-packages/serial/' | sed 's| ./lib/python3.10/site-packages/serial/| ${STAGING_DIR}/lib/python3.10/site-packages/serial/|' | sort> ../list.txt
+dir /lib/python3.10/site-packages/serial 755 0 0
+dir /lib/python3.10/site-packages/serial/threaded 755 0 0
+dir /lib/python3.10/site-packages/serial/tools 755 0 0
+dir /lib/python3.10/site-packages/serial/urlhandler 755 0 0
+file /lib/python3.10/site-packages/serial/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/__init__.py 644 0 0
+file /lib/python3.10/site-packages/serial/__main__.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/__main__.py 644 0 0
+file /lib/python3.10/site-packages/serial/rfc2217.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/rfc2217.py 644 0 0
+file /lib/python3.10/site-packages/serial/rs485.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/rs485.py 644 0 0
+file /lib/python3.10/site-packages/serial/serialcli.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/serialcli.py 644 0 0
+file /lib/python3.10/site-packages/serial/serialjava.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/serialjava.py 644 0 0
+file /lib/python3.10/site-packages/serial/serialposix.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/serialposix.py 644 0 0
+file /lib/python3.10/site-packages/serial/serialutil.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/serialutil.py 644 0 0
+file /lib/python3.10/site-packages/serial/serialwin32.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/serialwin32.py 644 0 0
+file /lib/python3.10/site-packages/serial/threaded/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/threaded/__init__.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/__init__.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/hexlify_codec.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/hexlify_codec.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/list_ports.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/list_ports.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/list_ports_common.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/list_ports_common.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/list_ports_linux.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/list_ports_linux.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/list_ports_osx.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/list_ports_osx.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/list_ports_posix.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/list_ports_posix.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/list_ports_windows.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/list_ports_windows.py 644 0 0
+file /lib/python3.10/site-packages/serial/tools/miniterm.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/tools/miniterm.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/__init__.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/__init__.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_alt.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_alt.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_cp2110.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_cp2110.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_hwgrep.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_hwgrep.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_loop.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_loop.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_rfc2217.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_rfc2217.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_socket.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_socket.py 644 0 0
+file /lib/python3.10/site-packages/serial/urlhandler/protocol_spy.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/urlhandler/protocol_spy.py 644 0 0
+file /lib/python3.10/site-packages/serial/win32.py ${STAGING_DIR}/lib/python3.10/site-packages/serial/win32.py 644 0 0
 
 
 ##################

@@ -26,6 +26,7 @@ wget_check "c-ares"     "https://github.com/c-ares/c-ares"			            "1.18.1
 wget_check "libffi"     "https://github.com/libffi/libffi"                      "v3.4.2" ""
 wget_check "xz"         "https://tukaani.org/xz"  						        "5.2.5 was released on 2020-03-17" ""
 wget_check "python"     "https://www.python.org/downloads" 				        ">Download Python 3.10.4</a>" ""
+wget_check "pyserial"   "https://pypi.org/project/pyserial/#files"              "pyserial-3.5.tar.gz" ""
 wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.0.4" ""
 wget_check "nghttp2"    "https://github.com/nghttp2/nghttp2"                    "nghttp2 v1.47.0" ""
 wget_check "libssh2"    "https://github.com/libssh2/libssh2"				    "libssh2-1.10.0" ""
