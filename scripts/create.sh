@@ -12,6 +12,7 @@ echo "It is necessary to build these Open Source projects in this order:"
 for PACKAGE in ${PACKAGES_1} ; do echo "- ${PACKAGE}"; done
 for PACKAGE in ${PACKAGES_2} ; do echo "- ${PACKAGE}"; done
 for PACKAGE in ${PACKAGES_3} ; do echo "- ${PACKAGE}"; done
+for PACKAGE in ${PACKAGES_4} ; do echo "- ${PACKAGE}"; done
 echo " "
 echo "These packages only have to be compiled once. After that you can package the container yourself with"
 echo "    ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
@@ -43,6 +44,7 @@ download() {
 download ${PACKAGES_1}
 download ${PACKAGES_2}
 download ${PACKAGES_3}
+download ${PACKAGES_4}
 
 # uninstall everything
 echo " "
@@ -57,6 +59,7 @@ uninstall() {
 uninstall ${PACKAGES_1}
 uninstall ${PACKAGES_2}
 uninstall ${PACKAGES_3}
+uninstall ${PACKAGES_4}
 
 # compile
 compile() {
@@ -77,6 +80,9 @@ wait || exit_failure "Failed to build PACKAGES_2"
 echo "    ----------------------------------------"
 compile ${PACKAGES_3}
 wait || exit_failure "Failed to build PACKAGES_3"
+echo "    ----------------------------------------"
+compile ${PACKAGES_4}
+wait || exit_failure "Failed to build PACKAGES_4"
 
 # package container
 if ! [ "$1" == "do_not_package" ] ; then

@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="libxml2-2.9.4"
+PKG_DIR="libxml2-v2.9.14"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://gitlab.gnome.org/GNOME/libxml2/-/archive/${PKG_ARCHIVE_FILE##*-}/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ae249165c173b1ff386ee8ad676815f5"
+PKG_CHECKSUM="c614d670cb6e0620d0dcba6dd5408c0e"
 
 
 
@@ -27,9 +28,17 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}"
-    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --prefix="" --without-python #--with-minimum
+    ./autogen.sh
+    ./configure \
+        CFLAGS="${M3_CFLAGS}" \
+        LDFLAGS="${M3_LDFLAGS}" \
+        Z_CFLAGS="-I${STAGING_INCLUDE}" \
+        Z_LIBS="-lz -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" \
+        --without-python \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -37,7 +46,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

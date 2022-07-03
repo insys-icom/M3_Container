@@ -1,0 +1,15 @@
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# <id>: leave blank
+# <runlevels>: leave blank
+# <action>: sysinit, wait, once, respawn, askfirst, shutdown, restart and ctrlaltdel.
+
+# create directories and device nodes
+::sysinit:/bin/bash /bin/prepare_fs.sh
+
+# init daemons starts all services from existing directories
+::respawn:/bin/runsvdir /etc/service
+
+::restart:/sbin/init
+::shutdown:/sbin/halt
+::ctrlaltdel:/sbin/reboot

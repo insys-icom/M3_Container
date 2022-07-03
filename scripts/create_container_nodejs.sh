@@ -13,7 +13,7 @@ PACKAGES_1="
     openssl-1.1.1p.sh
     c-ares-1.18.1.sh
     cacert-2022-04-26.sh
-    nghttp2-1.47.0.sh
+    nghttp2-1.48.0.sh
     mcip.sh
 "
 
@@ -28,7 +28,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-7.83.1.sh
+    curl-7.84.0.sh
     nano-6.3.sh
     node-v16.14.2-linux-armv7l.sh
 "

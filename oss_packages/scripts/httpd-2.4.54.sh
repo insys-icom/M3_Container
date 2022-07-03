@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="httpd-2.4.53"
+PKG_DIR="httpd-2.4.54"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://artfiles.org/apache.org/httpd/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="fbc10dfafdf8da2bdf8fc1c2a2e4e133"
+PKG_CHECKSUM="5830f69aeed1f4a00a563862aaf2c67d"
 
 
 
@@ -71,6 +71,7 @@ configure()
         --enable-rewrite \
         --enable-so \
         --enable-ssl \
+        --disable-md \
         --with-z="${STAGING_DIR}" \
         --with-ssl="${STAGING_DIR}" \
         --with-pcre="${STAGING_DIR}" \
