@@ -104,6 +104,18 @@
 		.card:nth-child(6n) {
 			border-left: 15px solid #bc44d4;
 		}
+
+		.logo {
+			padding: 0 0 0 0px;
+			position: sticky;
+		}
+
+		.logo img {
+			right: 0;
+			position: absolute;
+			top: 15px;
+			max-height: 100px;
+		}
 	</style>
 </head>
 <body>
@@ -187,7 +199,10 @@
 </div>
 
 <div class="card">
-	<h2 id="alpine">Alpine Linux</h2>
+	<div class="logo">
+		<h2 id="alpine">Alpine Linux</h2>
+		<img src="assets/alpinelinux-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Alpine.tar">Alpine.tar</a></p>
 
@@ -204,7 +219,10 @@
 </div>
 
 <div class="card">
-	<h2 id="debian">Debian</h2>
+	<div class="logo">
+		<h2 id="debian">Debian</h2>
+		<img src="assets/debian-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Debian.tar">Debian.tar</a></p>
 
@@ -225,7 +243,10 @@
 </div>
 
 <div class="card">
-	<h2 id="basic">Basic container</h2>
+	<div class="logo">
+		<h2 id="basic">Basic container</h2>
+		<img src="assets/insys-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_default.tar">container_default.tar</a></p>
 
@@ -238,7 +259,10 @@
 </div>
 
 <div class="card">
-	<h2 id="python">Python 3</h2>
+	<div class="logo">
+		<h2 id="python">Python 3</h2>
+		<img src="assets/python-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_python3.tar">container_python3.tar</a></p>
 
@@ -251,7 +275,10 @@
 </div>
 
 <div class="card">
-	<h2 id="nodejs">NodeJS</h2>
+	<div class="logo">
+		<h2 id="nodejs">NodeJS</h2>
+		<img src="assets/nodejs-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_nodejs.tar">container_nodejs.tar</a></p>
 
@@ -271,7 +298,10 @@
 </div>
 
 <div class="card">
-	<h2 id="ids">iDS: icom Data Suite</h2>
+	<div class="logo">
+		<h2 id="ids">iDS: icom Data Suite</h2>
+		<img src="assets/insys-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://icom-data-suite.releasenotes.io" target="_blank">iDS download site</a></p>
 
@@ -283,7 +313,10 @@
 </div>
 
 <div class="card">
-	<h2 id="anyviz">AnyViz Cloud Adapter</h2>
+	<div class="logo">
+		<h2 id="anyviz">AnyViz Cloud Adapter</h2>
+		<img src="assets/anyviz-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://download.anyviz.io/insys/anyvizcloudadapter.tar">AnyViz Cloud Adapter (Container)</a></p>
 
@@ -299,7 +332,10 @@
 </div>
 
 <div class="card">
-	<h2 id="nodered">Node-RED</h2>
+	<div class="logo">
+		<h2 id="nodered">Node-RED</h2>
+		<img src="assets/node-red-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Node-Red.tar">Node-RED.tar</a></p>
 
@@ -311,7 +347,10 @@
 </div>
 
 <div class="card">
-	<h2 id="sdk">Software Development Kit (SDK)</h2>
+	<div class="logo">
+		<h2 id="sdk">Software Development Kit (SDK)</h2>
+		<img src="assets/insys-logo.svg" width="150">
+	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz">M3_SDK_LXC.tar.gz</a></p>
 
@@ -344,7 +383,11 @@
 </div>
 
 <div class="card">
-	<h2 id="scripts">Scripts to create your own container</h2>
+	<div class="logo">
+		<h2 id="scripts">Scripts to create your own container</h2>
+		<img src="assets/insys-logo.svg" width="150">
+	</div>
+
 	<p>Having a container is nice, being able to reproduce its build in an automated way is better!</p>
 
 	<p>This <a href="https://github.com/insys-icom/M3_Container" target="_blank">git repository with scripts</a> can be the foundation of your own container projects.

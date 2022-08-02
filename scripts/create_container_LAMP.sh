@@ -22,7 +22,7 @@ PACKAGES_1="
 
 PACKAGES_2="
     busybox-1.34.1.sh
-    mcip-tool-v2.sh
+    mcip-tool-v4.sh
     dropbear-2022.82.sh
     metalog-20220214.sh
     apr-util-1.6.1.sh

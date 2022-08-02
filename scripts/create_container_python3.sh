@@ -28,7 +28,7 @@ PACKAGES_2="
     sqlite-src-3390000.sh
     metalog-20220214.sh
     ncurses-6.3.sh
-    mcip-tool-v2.sh
+    mcip-tool-v4.sh
 "
 
 PACKAGES_3="

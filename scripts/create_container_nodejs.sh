@@ -24,7 +24,7 @@ PACKAGES_2="
     dnsmasq-2.86.sh
     libssh2-1.10.0.sh
     ncurses-6.3.sh
-    mcip-tool-v2.sh
+    mcip-tool-v4.sh
 "
 
 PACKAGES_3="
