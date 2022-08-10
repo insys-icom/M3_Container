@@ -85,7 +85,7 @@ slink /bin/set-output                 /bin/mcip-tool                            
 slink /bin/cli-cmd                    /bin/mcip-tool                                 0777 0 0
 slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 
-file /bin/get-pip.py                  ${STAGING_DIR}/bin/get-pip-22.0.4.py           0755 0 0
+file /bin/get-pip.py                  ${STAGING_DIR}/bin/get-pip-22.2.2.py           0755 0 0
 file /bin/sqlite3                     ${STAGING_DIR}/bin/sqlite3                     0755 0 0
 
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
@@ -787,7 +787,7 @@ file /lib/python3.10/site.py ${STAGING_DIR}/usr/local/lib/python3.10/site.py 644
 file /lib/python3.10/smtpd.py ${STAGING_DIR}/usr/local/lib/python3.10/smtpd.py 755 0 0
 file /lib/python3.10/smtplib.py ${STAGING_DIR}/usr/local/lib/python3.10/smtplib.py 755 0 0
 file /lib/python3.10/sndhdr.py ${STAGING_DIR}/usr/local/lib/python3.10/sndhdr.py 644 0 0
-file /lib/python3.10/socket.py ${STAGING_DIR}/usr/local/lib/python3.10/socket.py 755 0 0
+file /lib/python3.10/socket.py ${STAGING_DIR}/usr/local/lib/python3.10/socket.py 644 0 0
 file /lib/python3.10/socketserver.py ${STAGING_DIR}/usr/local/lib/python3.10/socketserver.py 644 0 0
 file /lib/python3.10/sqlite3/__init__.py ${STAGING_DIR}/usr/local/lib/python3.10/sqlite3/__init__.py 644 0 0
 file /lib/python3.10/sqlite3/dbapi2.py ${STAGING_DIR}/usr/local/lib/python3.10/sqlite3/dbapi2.py 644 0 0
@@ -882,6 +882,7 @@ file /lib/python3.10/zoneinfo/_zoneinfo.py ${STAGING_DIR}/usr/local/lib/python3.
 slink /bin/python3 python3.10 777 0 0
 slink /bin/python python3.10 777 0 0
 slink /lib/libpython3.10.so libpython3.10.so.1.0 777 0 0
+
 
 #############################
 # additional Python modules #

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="get-pip-22.0.4.py"
+PKG_DIR="node-v16.16.0-linux-armv7l"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://bootstrap.pypa.io/get-pip.py"
+#PKG_DOWNLOAD="https://nodejs.org/dist/v16.14.2/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="45963799338eb0b5147499870269c4da"
+PKG_CHECKSUM="012cb5a786793a3cbcbddbfd33ecab13"
 
 
 
@@ -25,12 +25,6 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-unpack()
-{
-    # this is a special case: the downloaded file is not an archive. It is a python script that contains an base85 encoded zip. It just must be copied to the rootfs_staging
-    true
-}
-
 configure()
 {
     true
@@ -43,15 +37,16 @@ compile()
 
 install_staging()
 {
-    cp "${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}" "${STAGING_DIR}/bin"
-    chmod 755 "${STAGING_DIR}/bin/${PKG_ARCHIVE_FILE}"
-    echo -en "\nTo install pip execute \"/bin/get-pip.sh\" after logging into the container as root.\n"
-    echo -en "The container must have internet connection. The script will install pip, wheel and setuptools.\n"
+    cd "${PKG_BUILD_DIR}"
+    cp -a bin/node "${STAGING_DIR}/bin"
+    cp -a lib/* "${STAGING_LIB}"
 }
 
 uninstall_staging()
 {
-    rm "${STAGING_DIR}/bin/${PKG_ARCHIVE_FILE}"
+    cd "${STAGING_DIR}"
+    rm -Rf bin/node
+    rm -Rf "${STAGING_LIB}/node_modules}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
