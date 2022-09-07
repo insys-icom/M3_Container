@@ -8,7 +8,7 @@ PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.12.sh
     lz4-1.9.3.sh
-    timezone2022a.sh
+    timezone2022c.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh
     c-ares-1.18.1.sh

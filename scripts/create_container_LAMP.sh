@@ -7,7 +7,7 @@ ROOTFS_LIST="rootfs_list_LAMP.txt"
 PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.12.sh
-    timezone2022a.sh
+    timezone2022c.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh
     apr-1.7.0.sh

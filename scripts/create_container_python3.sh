@@ -9,7 +9,7 @@ PACKAGES_1="
     zlib-1.2.12.sh
     bzip2-1.0.8.sh
     lz4-1.9.3.sh
-    timezone2022a.sh
+    timezone2022c.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh
     libuuid-1.0.3.sh
