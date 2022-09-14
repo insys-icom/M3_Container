@@ -2,4 +2,4 @@
 export PS1="\[\033[0;32m\]\u@$(/bin/cat /usr/share/image_name) \[\033[1;34m\]\w \[\033[0m\] $ "
 export PATH="/bin:"
 export PYTHONHOME="/"
-#export PYTHONPATH="/lib/python3.10"
+export TERM="xterm"
