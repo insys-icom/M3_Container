@@ -12,7 +12,7 @@ PACKAGES_1="
     openssl-1.1.1q.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
-    nghttp2-1.48.0.sh
+    nghttp2-1.49.0.sh
     jansson-2.14.sh
     cacert-2022-07-19.sh
     mcip.sh
@@ -26,7 +26,7 @@ PACKAGES_2="
     dropbear-2022.82.sh
     metalog-20220214.sh
     apr-util-1.6.1.sh
-    sqlite-src-3390200.sh
+    sqlite-src-3390300.sh
     ncurses-6.3.sh
 "
 
@@ -36,7 +36,7 @@ PACKAGES_3="
 "
 
 PACKAGES_4="
-    php-8.1.9.sh
+    php-8.1.10.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

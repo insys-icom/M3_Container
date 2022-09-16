@@ -7,7 +7,7 @@ ROOTFS_LIST="rootfs_list_default.txt"
 PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.12.sh
-    lz4-1.9.3.sh
+    lz4-1.9.4.sh
     timezone2022c.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="node-v16.16.0-linux-armv7l"
+PKG_DIR="xz-5.2.6"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://nodejs.org/dist/v16.14.2/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="012cb5a786793a3cbcbddbfd33ecab13"
+PKG_CHECKSUM="d9cd5698e1ec06cf638c0d2d645e8175"
 
 
 
@@ -27,26 +27,24 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    true
+    cd "${PKG_BUILD_DIR}"
+    export CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize"
+    export LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize"
+    ./configure --target=${M3_TARGET} --host=${M3_TARGET} --disable-nls --enable-static --disable-lzmainfo --disable-lzmadec --disable-xzdec --disable-shared --disable-threads --enable-threads=no --enable-small --prefix=""
 }
 
 compile()
 {
-    true
+    copy_overlay
+    cd "${PKG_BUILD_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    cp -a bin/node "${STAGING_DIR}/bin"
-    cp -a lib/* "${STAGING_LIB}"
-}
-
-uninstall_staging()
-{
-    cd "${STAGING_DIR}"
-    rm -Rf bin/node
-    rm -Rf "${STAGING_LIB}/node_modules}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

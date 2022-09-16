@@ -623,6 +623,7 @@ dir /lib/node_modules/npm/node_modules/wrappy 755 0 0
 dir /lib/node_modules/npm/node_modules/write-file-atomic 755 0 0
 dir /lib/node_modules/npm/node_modules/write-file-atomic/lib 755 0 0
 dir /lib/node_modules/npm/node_modules/yallist 755 0 0
+file /lib/node_modules/corepack/CHANGELOG.md ${STAGING_DIR}/lib/node_modules/corepack/CHANGELOG.md 644 0 0
 file /lib/node_modules/corepack/LICENSE.md ${STAGING_DIR}/lib/node_modules/corepack/LICENSE.md 644 0 0
 file /lib/node_modules/corepack/README.md ${STAGING_DIR}/lib/node_modules/corepack/README.md 644 0 0
 file /lib/node_modules/corepack/dist/corepack.js ${STAGING_DIR}/lib/node_modules/corepack/dist/corepack.js 755 0 0
@@ -631,6 +632,7 @@ file /lib/node_modules/corepack/dist/npx.js ${STAGING_DIR}/lib/node_modules/core
 file /lib/node_modules/corepack/dist/pnpm.js ${STAGING_DIR}/lib/node_modules/corepack/dist/pnpm.js 755 0 0
 file /lib/node_modules/corepack/dist/pnpx.js ${STAGING_DIR}/lib/node_modules/corepack/dist/pnpx.js 755 0 0
 file /lib/node_modules/corepack/dist/vcc.js ${STAGING_DIR}/lib/node_modules/corepack/dist/vcc.js 644 0 0
+file /lib/node_modules/corepack/dist/vendors-_yarn_berry_cache_proxy-agent-npm-5_0_0-41772f4b01-9_zip_node_modules_proxy-agent_index_js.js ${STAGING_DIR}/lib/node_modules/corepack/dist/vendors-_yarn_berry_cache_proxy-agent-npm-5_0_0-41772f4b01-9_zip_node_modules_proxy-agent_index_js.js 644 0 0
 file /lib/node_modules/corepack/dist/yarn.js ${STAGING_DIR}/lib/node_modules/corepack/dist/yarn.js 755 0 0
 file /lib/node_modules/corepack/dist/yarnpkg.js ${STAGING_DIR}/lib/node_modules/corepack/dist/yarnpkg.js 755 0 0
 file /lib/node_modules/corepack/package.json ${STAGING_DIR}/lib/node_modules/corepack/package.json 644 0 0
@@ -652,9 +654,6 @@ file /lib/node_modules/corepack/shims/nodewin/pnpm.ps1 ${STAGING_DIR}/lib/node_m
 file /lib/node_modules/corepack/shims/nodewin/pnpx ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/pnpx 644 0 0
 file /lib/node_modules/corepack/shims/nodewin/pnpx.cmd ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/pnpx.cmd 644 0 0
 file /lib/node_modules/corepack/shims/nodewin/pnpx.ps1 ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/pnpx.ps1 644 0 0
-file /lib/node_modules/corepack/shims/nodewin/vcc ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/vcc 644 0 0
-file /lib/node_modules/corepack/shims/nodewin/vcc.cmd ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/vcc.cmd 644 0 0
-file /lib/node_modules/corepack/shims/nodewin/vcc.ps1 ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/vcc.ps1 644 0 0
 file /lib/node_modules/corepack/shims/nodewin/yarn ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/yarn 644 0 0
 file /lib/node_modules/corepack/shims/nodewin/yarn.cmd ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/yarn.cmd 644 0 0
 file /lib/node_modules/corepack/shims/nodewin/yarn.ps1 ${STAGING_DIR}/lib/node_modules/corepack/shims/nodewin/yarn.ps1 644 0 0
@@ -765,6 +764,7 @@ file /lib/node_modules/npm/docs/content/using-npm/config.md ${STAGING_DIR}/lib/n
 file /lib/node_modules/npm/docs/content/using-npm/developers.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/developers.md 644 0 0
 file /lib/node_modules/npm/docs/content/using-npm/logging.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/logging.md 644 0 0
 file /lib/node_modules/npm/docs/content/using-npm/orgs.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/orgs.md 644 0 0
+file /lib/node_modules/npm/docs/content/using-npm/package-spec.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/package-spec.md 644 0 0
 file /lib/node_modules/npm/docs/content/using-npm/registry.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/registry.md 644 0 0
 file /lib/node_modules/npm/docs/content/using-npm/removal.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/removal.md 644 0 0
 file /lib/node_modules/npm/docs/content/using-npm/scope.md ${STAGING_DIR}/lib/node_modules/npm/docs/content/using-npm/scope.md 644 0 0
@@ -845,6 +845,7 @@ file /lib/node_modules/npm/docs/output/using-npm/config.html ${STAGING_DIR}/lib/
 file /lib/node_modules/npm/docs/output/using-npm/developers.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/developers.html 644 0 0
 file /lib/node_modules/npm/docs/output/using-npm/logging.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/logging.html 644 0 0
 file /lib/node_modules/npm/docs/output/using-npm/orgs.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/orgs.html 644 0 0
+file /lib/node_modules/npm/docs/output/using-npm/package-spec.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/package-spec.html 644 0 0
 file /lib/node_modules/npm/docs/output/using-npm/registry.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/registry.html 644 0 0
 file /lib/node_modules/npm/docs/output/using-npm/removal.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/removal.html 644 0 0
 file /lib/node_modules/npm/docs/output/using-npm/scope.html ${STAGING_DIR}/lib/node_modules/npm/docs/output/using-npm/scope.html 644 0 0
@@ -953,6 +954,7 @@ file /lib/node_modules/npm/lib/utils/is-windows.js ${STAGING_DIR}/lib/node_modul
 file /lib/node_modules/npm/lib/utils/log-file.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/log-file.js 644 0 0
 file /lib/node_modules/npm/lib/utils/log-shim.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/log-shim.js 644 0 0
 file /lib/node_modules/npm/lib/utils/npm-usage.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/npm-usage.js 644 0 0
+file /lib/node_modules/npm/lib/utils/open-url-prompt.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/open-url-prompt.js 644 0 0
 file /lib/node_modules/npm/lib/utils/open-url.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/open-url.js 644 0 0
 file /lib/node_modules/npm/lib/utils/otplease.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/otplease.js 644 0 0
 file /lib/node_modules/npm/lib/utils/ping.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/ping.js 644 0 0
@@ -966,7 +968,9 @@ file /lib/node_modules/npm/lib/utils/tar.js ${STAGING_DIR}/lib/node_modules/npm/
 file /lib/node_modules/npm/lib/utils/timers.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/timers.js 644 0 0
 file /lib/node_modules/npm/lib/utils/update-notifier.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/update-notifier.js 644 0 0
 file /lib/node_modules/npm/lib/utils/validate-lockfile.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/validate-lockfile.js 644 0 0
+file /lib/node_modules/npm/lib/utils/web-auth.js ${STAGING_DIR}/lib/node_modules/npm/lib/utils/web-auth.js 644 0 0
 file /lib/node_modules/npm/lib/workspaces/get-workspaces.js ${STAGING_DIR}/lib/node_modules/npm/lib/workspaces/get-workspaces.js 644 0 0
+file /lib/node_modules/npm/lib/workspaces/update-workspaces.js ${STAGING_DIR}/lib/node_modules/npm/lib/workspaces/update-workspaces.js 644 0 0
 file /lib/node_modules/npm/man/man1/npm-access.1 ${STAGING_DIR}/lib/node_modules/npm/man/man1/npm-access.1 644 0 0
 file /lib/node_modules/npm/man/man1/npm-adduser.1 ${STAGING_DIR}/lib/node_modules/npm/man/man1/npm-adduser.1 644 0 0
 file /lib/node_modules/npm/man/man1/npm-audit.1 ${STAGING_DIR}/lib/node_modules/npm/man/man1/npm-audit.1 644 0 0
@@ -1042,6 +1046,7 @@ file /lib/node_modules/npm/man/man7/config.7 ${STAGING_DIR}/lib/node_modules/npm
 file /lib/node_modules/npm/man/man7/developers.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/developers.7 644 0 0
 file /lib/node_modules/npm/man/man7/logging.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/logging.7 644 0 0
 file /lib/node_modules/npm/man/man7/orgs.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/orgs.7 644 0 0
+file /lib/node_modules/npm/man/man7/package-spec.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/package-spec.7 644 0 0
 file /lib/node_modules/npm/man/man7/registry.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/registry.7 644 0 0
 file /lib/node_modules/npm/man/man7/removal.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/removal.7 644 0 0
 file /lib/node_modules/npm/man/man7/scope.7 ${STAGING_DIR}/lib/node_modules/npm/man/man7/scope.7 644 0 0
@@ -1223,6 +1228,7 @@ file /lib/node_modules/npm/node_modules/@npmcli/promise-spawn/LICENSE ${STAGING_
 file /lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/lib/index.js 644 0 0
 file /lib/node_modules/npm/node_modules/@npmcli/promise-spawn/package.json ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/package.json 644 0 0
 file /lib/node_modules/npm/node_modules/@npmcli/run-script/LICENSE ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/run-script/LICENSE 644 0 0
+file /lib/node_modules/npm/node_modules/@npmcli/run-script/lib/escape.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/escape.js 644 0 0
 file /lib/node_modules/npm/node_modules/@npmcli/run-script/lib/is-server-package.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/is-server-package.js 644 0 0
 file /lib/node_modules/npm/node_modules/@npmcli/run-script/lib/is-windows.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/is-windows.js 644 0 0
 file /lib/node_modules/npm/node_modules/@npmcli/run-script/lib/make-spawn-args.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/make-spawn-args.js 644 0 0
@@ -1765,6 +1771,7 @@ file /lib/node_modules/npm/node_modules/libnpmversion/lib/version.js ${STAGING_D
 file /lib/node_modules/npm/node_modules/libnpmversion/lib/write-json.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/libnpmversion/lib/write-json.js 644 0 0
 file /lib/node_modules/npm/node_modules/libnpmversion/package.json ${STAGING_DIR}/lib/node_modules/npm/node_modules/libnpmversion/package.json 644 0 0
 file /lib/node_modules/npm/node_modules/lru-cache/LICENSE ${STAGING_DIR}/lib/node_modules/npm/node_modules/lru-cache/LICENSE 644 0 0
+file /lib/node_modules/npm/node_modules/lru-cache/index.d.ts ${STAGING_DIR}/lib/node_modules/npm/node_modules/lru-cache/index.d.ts 644 0 0
 file /lib/node_modules/npm/node_modules/lru-cache/index.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/lru-cache/index.js 644 0 0
 file /lib/node_modules/npm/node_modules/lru-cache/package.json ${STAGING_DIR}/lib/node_modules/npm/node_modules/lru-cache/package.json 644 0 0
 file /lib/node_modules/npm/node_modules/make-fetch-happen/LICENSE ${STAGING_DIR}/lib/node_modules/npm/node_modules/make-fetch-happen/LICENSE 644 0 0
@@ -1812,6 +1819,7 @@ file /lib/node_modules/npm/node_modules/minipass-sized/index.js ${STAGING_DIR}/l
 file /lib/node_modules/npm/node_modules/minipass-sized/package-lock.json ${STAGING_DIR}/lib/node_modules/npm/node_modules/minipass-sized/package-lock.json 644 0 0
 file /lib/node_modules/npm/node_modules/minipass-sized/package.json ${STAGING_DIR}/lib/node_modules/npm/node_modules/minipass-sized/package.json 644 0 0
 file /lib/node_modules/npm/node_modules/minipass/LICENSE ${STAGING_DIR}/lib/node_modules/npm/node_modules/minipass/LICENSE 644 0 0
+file /lib/node_modules/npm/node_modules/minipass/index.d.ts ${STAGING_DIR}/lib/node_modules/npm/node_modules/minipass/index.d.ts 644 0 0
 file /lib/node_modules/npm/node_modules/minipass/index.js ${STAGING_DIR}/lib/node_modules/npm/node_modules/minipass/index.js 644 0 0
 file /lib/node_modules/npm/node_modules/minipass/package.json ${STAGING_DIR}/lib/node_modules/npm/node_modules/minipass/package.json 644 0 0
 file /lib/node_modules/npm/node_modules/minizlib/LICENSE ${STAGING_DIR}/lib/node_modules/npm/node_modules/minizlib/LICENSE 644 0 0
