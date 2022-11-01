@@ -6,15 +6,15 @@ ROOTFS_LIST="rootfs_list_LAMP.txt"
 
 PACKAGES_1="
     Linux-PAM-1.5.2.sh
-    zlib-1.2.12.sh
-    timezone2022c.sh
+    zlib-1.2.13.sh
+    timezone2022e.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
     nghttp2-1.49.0.sh
     jansson-2.14.sh
-    cacert-2022-07-19.sh
+    cacert-2022-10-11.sh
     mcip.sh
     expat-2.4.1.sh
     libxml2-v2.9.14.sh

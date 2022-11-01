@@ -6,9 +6,9 @@ ROOTFS_LIST="rootfs_list_default.txt"
 
 PACKAGES_1="
     Linux-PAM-1.5.2.sh
-    zlib-1.2.12.sh
+    zlib-1.2.13.sh
     lz4-1.9.4.sh
-    timezone2022c.sh
+    timezone2022e.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh
     mcip.sh
@@ -19,7 +19,7 @@ PACKAGES_2="
     mcip-tool-v4.sh
     dropbear-2022.82.sh
     metalog-20220214.sh
-    dnsmasq-2.86.sh
+    dnsmasq-2.87.sh
 "
 
 PACKAGES_3="

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.10.7"
+PKG_DIR="Python-3.10.8"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="b8094f007b3a835ca3be6bdf8116cccc"
+PKG_CHECKSUM="e92356b012ed4d0e09675131d39b1bde"
 
 # Variable for the install path used in script
 PYTHON_VERSION="python3.10"

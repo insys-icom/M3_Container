@@ -6,17 +6,17 @@ ROOTFS_LIST="rootfs_list_python3.txt"
 
 PACKAGES_1="
     Linux-PAM-1.5.2.sh
-    zlib-1.2.12.sh
+    zlib-1.2.13.sh
     bzip2-1.0.8.sh
     lz4-1.9.4.sh
-    timezone2022c.sh
+    timezone2022e.sh
     pcre2-10.40.sh
     openssl-1.1.1q.sh
     libuuid-1.0.3.sh
     expat-2.4.1.sh
     libffi-3.4.2.sh
     xz-5.2.6.sh
-    cacert-2022-07-19.sh
+    cacert-2022-10-11.sh
     python_modules-2022-03-31.sh
     pyserial-3.5.sh
     mcip.sh
@@ -33,7 +33,7 @@ PACKAGES_2="
 
 PACKAGES_3="
     nano-6.4.sh
-    python-3.10.7.sh
+    python-3.10.8.sh
     get-pip-22.2.2.sh
 "
 

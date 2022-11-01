@@ -1,19 +1,19 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="timezone2022c"
+PKG_DIR="timezone2022e"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_DATA_FILE="tzdata2022c.tar.gz"
-PKG_ARCHIVE_CODE_FILE="tzcode2022c.tar.gz"
+PKG_ARCHIVE_DATA_FILE="tzdata2022e.tar.gz"
+PKG_ARCHIVE_CODE_FILE="tzcode2022e.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
 PKG_DOWNLOAD_DATA="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_DATA_FILE}"
 PKG_DOWNLOAD_CODE="https://www.iana.org/time-zones/repository/releases/${PKG_ARCHIVE_CODE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM_DATA="4e3b2369b68e713ba5d3f7456f20bfdb"
-PKG_CHECKSUM_CODE="4b7f69ebf1e0d607b72bb4a0b98489fd"
+PKG_CHECKSUM_DATA="97bf180d57c3e51a49742d1d87ceed40"
+PKG_CHECKSUM_CODE="974f22d778fc300945a7df67ff3fbdb5"
 
 
 
