@@ -7,22 +7,34 @@ TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 . "${TOPDIR}"/scripts/common_settings.sh
 . "${TOPDIR}"/scripts/helpers.sh
 
-echo " "
-echo "It is necessary to build these Open Source projects in this order:"
-for PACKAGE in ${PACKAGES_1} ; do echo "- ${PACKAGE}"; done
-for PACKAGE in ${PACKAGES_2} ; do echo "- ${PACKAGE}"; done
-for PACKAGE in ${PACKAGES_3} ; do echo "- ${PACKAGE}"; done
-for PACKAGE in ${PACKAGES_4} ; do echo "- ${PACKAGE}"; done
-echo " "
-echo "These packages only have to be compiled once. After that you can package the container yourself with"
-echo "    ./scripts/mk_container.sh -n \"${CONTAINER_NAME}\" -l \"${ROOTFS_LIST}\" -d \"${DESCRIPTION}\" -v \"1.0\""
-echo " where the options -n and -l are mandatory."
-echo " "
-echo "Continue? <y/n>"
+package() {
+    echo ""
+    echo "Packaging the container:"
+    echo "--------------------------------------------"
+    ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"
+}
 
 if ! [ "$1" == "do_not_package" ] ; then
-    read text
-    ! [ "${text}" = "y" -o "${text}" = "yes" ] && exit 0
+    echo " "
+    echo "It is necessary to build these Open Source projects in this order:"
+    for PACKAGE in ${PACKAGES_1} ; do echo "- ${PACKAGE}"; done
+    for PACKAGE in ${PACKAGES_2} ; do echo "- ${PACKAGE}"; done
+    for PACKAGE in ${PACKAGES_3} ; do echo "- ${PACKAGE}"; done
+    for PACKAGE in ${PACKAGES_4} ; do echo "- ${PACKAGE}"; done
+    echo " "
+    echo "These packages only have to be compiled once. After that you can choose to only pack the container. Choose:"
+    echo "    b --- build all sources and pack the container"
+    echo "    p --- pack the container without building the sources"
+    echo "    c --- cancel, do nothing"
+    echo ""
+
+    read input
+    case "${input}" in
+        p)    package; exit 0;;
+        b|y)  echo "Building everything";;
+        c|*)  echo "Exiting"; exit 0;;
+    esac
+    #! [ "${input}" = "y" -o "${input}" = "yes" ] && exit 0
 fi
 cd "${TOPDIR}"/rootfs_staging
 mkdir -p bin etc include lib libexec sbin share ssl usr var
@@ -86,8 +98,5 @@ wait || exit_failure "Failed to build PACKAGES_4"
 
 # package container
 if ! [ "$1" == "do_not_package" ] ; then
-    echo ""
-    echo "Packaging the container:"
-    echo "--------------------------------------------"
-    ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"
+    package
 fi
