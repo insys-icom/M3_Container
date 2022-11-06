@@ -36,7 +36,7 @@ PACKAGES_3="
 "
 
 PACKAGES_4="
-    php-8.1.10.sh
+    php-8.1.12.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

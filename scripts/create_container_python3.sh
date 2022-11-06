@@ -33,8 +33,7 @@ PACKAGES_2="
 
 PACKAGES_3="
     nano-6.4.sh
-    python-3.10.8.sh
-    get-pip-22.2.2.sh
+    python-3.11.0.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

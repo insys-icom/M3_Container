@@ -1,6 +1,6 @@
-# # # # # ## # # # # # # # # # # # # # # # # ## # # # #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #                                                     #
-#            Welcome to the container!                #
+#         Welcome to the Python container!            #
 #            -------------------------                #
 #                                                     #
 #          Please change the root password:           #
@@ -9,4 +9,7 @@
 #          Read about the next steps:                 #
 #              $ cat readme.txt                       #
 #                                                     #
-# # # # # ## # # # # # # # # # # # # # # # # ## # # # #
+#          Install pip3:                              #
+#              $ python -m ensurepip                  #
+#                                                     #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # #

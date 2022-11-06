@@ -38,8 +38,8 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/lib/python3.10/site-packages"
-    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/lib/python3.10/site-packages/"
+    mkdir -p "${STAGING_DIR}/lib/python3.11/site-packages"
+    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/lib/python3.11/site-packages/"
 
 }
 

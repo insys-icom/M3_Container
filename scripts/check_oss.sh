@@ -25,9 +25,9 @@ wget_check "expat"      "https://github.com/libexpat/libexpat"                  
 wget_check "c-ares"     "https://github.com/c-ares/c-ares"                      "1.18.1</span>" ""
 wget_check "libffi"     "https://github.com/libffi/libffi"                      "v3.4.2" ""
 wget_check "xz"         "https://tukaani.org/xz"                                "5.2.6 was released on 2022-08-12." ""
-wget_check "python"     "https://www.python.org/downloads"                      ">Download Python 3.10.8</a>" ""
+wget_check "python"     "https://www.python.org/downloads"                      ">Download Python 3.11.0</a>" ""
 wget_check "pyserial"   "https://pypi.org/project/pyserial/#files"              "pyserial-3.5.tar.gz" ""
-wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.2.2" ""
+
 wget_check "nghttp2"    "https://github.com/nghttp2/nghttp2"                    "nghttp2 v1.49.0" ""
 wget_check "libssh2"    "https://github.com/libssh2/libssh2"                    "libssh2-1.10.0" ""
 wget_check "curl"       "https://curl.haxx.se/download.html"                    "<b>curl 7.85.0</b>, Released on" ""
@@ -38,5 +38,10 @@ wget_check "jansson"    "https://github.com/akheron/jansson"                    
 wget_check "apr"        "https://apr.apache.org"                                "APR 1.7.0, released" ""
 wget_check "apr-util"   "https://apr.apache.org"                                "APR-util 1.6.1, released" ""
 wget_check "httpd"      "https://httpd.apache.org"                              "Apache httpd 2.4.54 Released" ""
-wget_check "php"        "https://www.php.net/downloads"                         "Current Stable</span>\n    PHP 8.1.10" ""
+wget_check "php"        "https://www.php.net/downloads"                         "Current Stable</span>\n    PHP 8.1.12" ""
+
+# not needed any more, use ensurepip that comes with python:
+# wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.2.2" ""
+
+# a quite complicated search string:
 # wget_check "screen"     "https://ftp.gnu.org/gnu/screen"                        "screen-4.9.0.tar.gz.sig</a></td><td align=\"right\">2022-02-01 11:01  </td><td align=\"right\">659 </td><td>&nbsp;</td></tr>\n   <tr><th" ""
