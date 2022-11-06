@@ -9,7 +9,7 @@ PACKAGES_1="
     zlib-1.2.13.sh
     timezone2022e.sh
     pcre2-10.40.sh
-    openssl-1.1.1q.sh
+    openssl-1.1.1s.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
     nghttp2-1.49.0.sh
