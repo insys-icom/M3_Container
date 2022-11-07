@@ -17,7 +17,6 @@ wget_check "Linux-PAM"  "https://github.com/linux-pam/linux-pam"                
 wget_check "metalog"    "https://github.com/hvisage/metalog"                    ">metalog-20220214</span>" ""
 wget_check "dropbear"   "https://matt.ucc.asn.au/dropbear/dropbear.html"        "Latest is 2022.82" ""
 wget_check "dnsmasq"    "https://www.thekelleys.org.uk/dnsmasq"                 "LATEST_IS_2.87" ""
-wget_check "bzip2"      "https://www.sourceware.org/bzip2"                      "is bzip2 1.0.8" ""
 wget_check "sqlite-src" "https://www.sqlite.org/download.html"                  "sqlite-src-3390300.zip" ""
 wget_check "cacert"     "https://curl.se/docs/caextract.html"                   "Tue Oct 11 03:12:05 2022 GMT" ""
 wget_check "libuuid"    "http://sourceforge.net/projects/libuuid/files"         "libuuid-1.0.3.tar.gz \(318.3 kB\)" ""
@@ -41,6 +40,9 @@ wget_check "php"        "https://www.php.net/downloads"                         
 
 # not needed any more, use ensurepip that comes with python:
 # wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.2.2" ""
+
+# not needed any more, is included in busybox:
+# wget_check "bzip2"      "https://www.sourceware.org/bzip2"                      "is bzip2 1.0.8" ""
 
 # a quite complicated search string:
 # wget_check "screen"     "https://ftp.gnu.org/gnu/screen"                        "screen-4.9.0.tar.gz.sig</a></td><td align=\"right\">2022-02-01 11:01  </td><td align=\"right\">659 </td><td>&nbsp;</td></tr>\n   <tr><th" ""

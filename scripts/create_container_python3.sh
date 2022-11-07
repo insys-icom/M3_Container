@@ -7,7 +7,6 @@ ROOTFS_LIST="rootfs_list_python3.txt"
 PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.13.sh
-    bzip2-1.0.8.sh
     lz4-1.9.4.sh
     timezone2022e.sh
     pcre2-10.40.sh
