@@ -8,7 +8,7 @@ PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    timezone2022e.sh
+    timezone2022f.sh
     pcre2-10.40.sh
     openssl-1.1.1s.sh
     mcip.sh
@@ -17,7 +17,7 @@ PACKAGES_1="
 PACKAGES_2="
     busybox-1.34.1.sh
     mcip-tool-v4.sh
-    dropbear-2022.82.sh
+    dropbear-2022.83.sh
     metalog-20220214.sh
     dnsmasq-2.87.sh
 "

@@ -8,18 +8,18 @@ PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    timezone2022e.sh
+    timezone2022f.sh
     pcre2-10.40.sh
     openssl-1.1.1s.sh
     c-ares-1.18.1.sh
     cacert-2022-10-11.sh
-    nghttp2-1.49.0.sh
+    nghttp2-1.51.0.sh
     mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.34.1.sh
-    dropbear-2022.82.sh
+    dropbear-2022.83.sh
     metalog-20220214.sh
     dnsmasq-2.87.sh
     libssh2-1.10.0.sh
@@ -28,8 +28,8 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-7.85.0.sh
-    nano-6.4.sh
+    curl-7.86.0.sh
+    nano-7.0.sh
     node-v16.17.0-linux-armv7l.sh
 "
 
