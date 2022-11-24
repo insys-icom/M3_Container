@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="node-v16.17.0-linux-armv7l"
+PKG_DIR="node-v18.12.1-linux-armv7l"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="c6a5332d3897d9e15304dcd493ed641e"
+PKG_CHECKSUM="74a0350d24b16f3e4bda3e261648c8cc"
 
 
 

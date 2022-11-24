@@ -30,7 +30,7 @@ PACKAGES_2="
 PACKAGES_3="
     curl-7.86.0.sh
     nano-7.0.sh
-    node-v16.17.0-linux-armv7l.sh
+    node-v18.12.1-linux-armv7l.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
