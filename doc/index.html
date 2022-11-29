@@ -9,6 +9,10 @@
 			color: black;
 		}
 
+		body {
+			background: #f2f2f2;
+		}
+
 		a:link,
 		a:visited {
 			color:#3641d8de;
@@ -23,10 +27,6 @@
 			border:none;
 		}
 
-		body {
-			background: #f2f2f2;
-		}
-
 		h2 {
 			position: sticky;
 			top: 0;
@@ -34,8 +34,8 @@
 
 		h1,
 		h2 {
-			padding-top: 20px;
-			padding-bottom: 4px;
+			padding-top: 1em;
+			padding-bottom: 0.2em;
 		}
 
 		h1,
@@ -65,104 +65,121 @@
 		div.code {
 			background: lightgray;
 			display: inline-block;
-			padding: 15px;
-			margin-left: 30px;
+			padding: 0.75em;
+			margin-left: 1.5em;
 			white-space: nowrap;
 			overflow-x: auto;
 			max-width: -webkit-fill-available;
-			border-top-left-radius: 30px;
-			border-bottom-right-radius: 30px;
+			border-top-left-radius: 1.5em;
+			border-bottom-right-radius: 1.5em;
+		}
+
+		sheet {
+			position: absolute;
+			left: 18em;
+		}
+
+		nav {
+			position: fixed;
+			background: white;
+			text-align: left;
+			width: 17em;
+			margin-top: 1em;
+			padding-top: 0;
+			padding-bottom: 1em;
+			padding-left: 0.25em;
+			padding-right: 0;
+			box-shadow: 0.25em 0.25em 0.25em lightgray;
+			border-radius: 0.75em;
 		}
 
 		.card {
 			background: white;
-			max-width: 1000px;
-			padding-bottom: 20px;
-			padding-left: 20px;
-			padding-right: 20px;
-			margin: 0 auto;
-			margin-bottom: 20px;
-			box-shadow: 5px 5px 5px lightgray;
-			border-radius: 15px;
+			max-width: 50em;
+			margin: 1em;
+			padding-top: 0;
+			padding-bottom: 1em;
+			padding-left: 1em;
+			padding-right: 1em;
+			box-shadow: 0.25em 0.25em 0.25em lightgray;
+			border-radius: 0.75em;
 		}
 
-		.card:nth-child(6n-5) {
-			border-left: 15px solid #1d5997;
+		.card:nth-child(7n-6) {
+			border-left: 0.75em solid #1d5997;
 		}
-		.card:nth-child(6n-4) {
-			border-left: 15px solid #347e16;
+		.card:nth-child(7n-5) {
+			border-left: 0.75em solid #347e16;
 		}
-		.card:nth-child(6n-3) {
-			border-left: 15px solid #fcd75f;
+		.card:nth-child(7n-4) {
+			border-left: 0.75em solid #fcd75f;
 		}
-		.card:nth-child(6n-2) {
-			border-left: 15px solid #ff5f20;
+		.card:nth-child(7n-3) {
+			border-left: 0.75em solid #ff5f20;
 		}
-		.card:nth-child(6n-1) {
-			border-left: 15px solid #993300;
+		.card:nth-child(7n-2) {
+			border-left: 0.75em solid #96d67c;
 		}
-		.card:nth-child(6n) {
-			border-left: 15px solid #bc44d4;
+		.card:nth-child(7n-1) {
+			border-left: 0.75em solid #bc44d4;
+		}
+		.card:nth-child(7n) {
+			border-left: 0.75em solid #993300;
 		}
 
 		.logo {
-			padding: 0 0 0 0px;
+			padding: 0 0 0 0;
 			position: sticky;
 		}
 
 		.logo img {
 			right: 0;
 			position: absolute;
-			top: 15px;
-			max-height: 100px;
+			top: 0.75em;
+			max-height: 5em;
 		}
 	</style>
 </head>
-<body>
+
+<nav>
+	<br>
+	<a href="#top">Types of containers</a><br><br>
+	Linux distributions<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#alpine">Alpine Linux</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#debian">Debian</a><br>
+	<br>
+
+	Basic containers<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#basic">Basic container</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#python">Python 3</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#nodejs">NodeJS</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#LAMP">LAMP (Apache, SQLite3, PHP)</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#net-tools">Net tools</a><br>
+		<br>
+
+	Container products / applications<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ids">icom Data Suite (iDS)</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anyviz">AnyViz Cloud Adapter</a><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="#nodered">Node-RED</a><br>
+		<br>
+
+	<a href="#sdk">Software Development Kit (SDK)</a><br>
+	<a href="#scripts">Scripts to create your own container</a><br>
+</nav>
+
+<sheet>
 
 <div class="card">
 	<h1 id="top">Containers for INSYS icom OS devices</h1>
 	<p><a href="https://www.insys-icom.com/en/products/router-gateways" target="_blank">INSYS icom OS devices</a> can
-		run <a href="https://www.insys-icom.com/en/products/edge-computing/individual-programming" target="_blank">containers</a>, which allows you to run your own software on these devices!</p>
+		run <a href="https://www.insys-icom.com/en/products/edge-computing/individual-programming" target="_blank">containers</a>, which can add a lot of functionality!</p>
 
 	<p>Send your questions, whishes, bug reports or ideas to <a href="mailto: info@m3-container.net">info@m3-container.net</a></p>
-
-	<h2 id="content">Content</h2>
-	<ul>
-		<li><a href="#types">Types of containers</a></li>
-		<li>Getting containers</li>
-		<ul>
-			<li>Linux distributions
-				<ul>
-					<li><a href="#alpine">Alpine Linux</a></li>
-					<li><a href="#debian">Debian</a></li>
-				</ul>
-			</li>
-			<li>Basic containers
-				<ul>
-					<li><a href="https://m3-container.net/M3_Container/images" target="_blank">Browse on your own</a></li>
-					<li><a href="#basic">Basic container</a></li>
-					<li><a href="#python">Python 3</a></li>
-					<li><a href="#nodejs">NodeJS</a></li>
-					<li><a href="#LAMP">LAMP (Linux, Apache, SQLite3, PHP)</a></li>
-				</ul>
-			</li>
-			<li>Container products / applications
-				<ul>
-					<li><a href="#ids">icom Data Suite (iDS)</a></li>
-					<li><a href="#anyviz">AnyViz Cloud Adapter</a></li>
-					<li><a href="#nodered">Node-RED</a></li>
-				</ul>
-			</li>
-		</ul>
-		<li><a href="#sdk">Software Development Kit (SDK)</a></li>
-		<li><a href="#scripts">Scripts to create your own container</a></li>
-	</ul>
 </div>
 
 <div class="card">
 	<h2 id="types">Types of containers</h2>
-	<p>To get to your own container with your functionality, there are at least three possibities:</p>
+	<p>To get to your own container with your functionality, there are at least three entry levels:</p>
 	<ol type="A">
 		<li><h3>Use a complete distribution</h3>
 			<p>There are containers with <a href="#alpine">Alpine Linux</a> and <a href="#debian">Debian</a>.
@@ -183,7 +200,7 @@
 
 		<li><h3>Create your own container</h3>
 			<p>This is the developers choice: Install the <a href="#sdk">SDK</a> (as <a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a>
-				or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared build scripts and create the containers from scratch.
+				or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared <a href="#scripts">build scripts</a> and create the containers from scratch.
 				This is also the way, how the basic containers are created. Creating containers with this means:
 			<ul>
 				<li>the resulting containers will have a minimal footprint</li>
@@ -197,7 +214,6 @@
 			</p>
 		</li>
 	</ol>
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -216,8 +232,6 @@
 	<p>Alpine Linux does have a <a href="https://pkgs.alpinelinux.org/packages" target="_blank">huge catalogue</a> of precompiled applications and libraries.
 		Use the included package managing tool "apk" for updating, upgrading and installing additional packages,
 		so this container fits when you want to run standard software, e.g. Node-RED or a minetest server.</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -240,8 +254,6 @@
 		e.g. all the cached downloaded packages and all the repository information.
 		This data will be outdated anyways and can be replaced with a fresh apt-get upgrade.
 	</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -256,8 +268,6 @@
 		This container is meant as an example or template for your own containers you want to create with the <a href="#sdk">SDK</a> and the provided <a href="#scripts">scripts</a>.
 		Also use this container for very simple applications, that can be implemented in ash, a minimal shell interpreter included in busybox.
 	</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -272,8 +282,6 @@
 		There are already a few modules installed (e.g. requests, certifi, urllib).
 		Additional packages can be installed using the included pip.
 	</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top">To the top</a></p>
 </div>
 
 <div class="card">
@@ -285,8 +293,6 @@
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_nodejs.tar">container_nodejs.tar</a></p>
 
 	<p>A minimal container with NodeJS in it.</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -295,13 +301,23 @@
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_LAMP.tar">container_LAMP.tar</a></p>
 
 	<p>A container with a classic LAMP stack consisting of Linux, Apache web server, SQLite3 data base and PHP. Additionally it uses runit to start/stop processes.</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
 	<div class="logo">
-		<h2 id="ids">iDS: icom Data Suite</h2>
+		<h2 id="net-tools">Net tools</h2>
+		<img src="assets/insys-logo.svg" width="100">
+	</div>
+
+	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_net-tools.tar">container_net-tools.tar</a></p>
+
+	<p>A container with a few net tools like tcpdump, iperf, openvpn, httping, curl, iptables, stunnel.
+	   Use this container for debugging purposes! You can create a jump host in a remote network, bridge the nets to it and debug from there.</p>
+</div>
+
+<div class="card">
+	<div class="logo">
+		<h2 id="ids">icom Data Suite (iDS)</h2>
 		<img src="assets/insys-logo.svg" width="100">
 	</div>
 
@@ -310,8 +326,6 @@
 	<p>Product page: <a href="https://www.insys-icom.com/produkte/edge-computing/icom-data-suite" target="_blank">https://www.insys-icom.com/</a></p>
 
 	<p>An IoT software, used for alarming and controlling your data with multiple industrial protocols.</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -329,8 +343,6 @@
 	<p>AnyViz is probably the easiest way to monitor, operate and analyze machine and plant controls remotely.</p>
 
 	<p>With the container OPC-UA, Modbus, Siemens, Beckhoff, EtherNet/IP, BACnet and M-Bus devices can be connected to the cloud.</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -341,12 +353,8 @@
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Node-Red.tar">Node-RED.tar</a></p>
 
-	<p>This container is based on this <a href="#nodejs">NodeJS container</a>. Add more modules and connectors to it by using npm.</p>
-
-	<p>An alternative Node-RED container based on Alpine Linux can be installed with this <a href="https://docs.insys-icom.de/pages/en_m3_nodered_thingsboard_dataviz.html">guide</a>.
-	This one is a bit bigger, but it allows to install npm packages that need a compiler to get installed.</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
+	<p>This container is based on Alpine Linux. Add more modules and connectors to it by using npm.
+	Use this <a href="https://docs.insys-icom.de/pages/en_m3_nodered_thingsboard_dataviz.html">guide</a> to install packages with npm, that need a compiler to get installed.</p>
 </div>
 
 <div class="card">
@@ -381,8 +389,6 @@
 		In case you have to use a none Linux system, you could create a virtual machine image on your own by downloading the LXC version of the SDK.
 		You would have to add a bootloader and a Linux kernel.
 	</p>
-
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
 <div class="card">
@@ -403,23 +409,18 @@
 		This allowes you to update different containers at different speed.
 		Also this scripts will change over time, when there are updates or new basic containers.
 	</p>
-	<p style="text-align: right; padding-right: 20px"><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
 </div>
 
-<div class="card" style="color: darkgray; padding-top: 30px; padding-bottom: 50px; border-left-color: white;
-                         text-align: center; border-top-left-radius: 50px; border-bottom-right-radius: 50px;">
+<div class="card" style=" color: darkgray; margin-top: 20; padding-top: 1.5em; padding-bottom: 2.5em; border-left-color: white;
+                         text-align: center; border-top-left-radius: 2.5em; border-bottom-right-radius: 2.5em;">
 
-	<div style="float: left; padding-left: 20px">
+	<div style="float: left; padding-left: 1em">
 		<p><a href="https://www.insys-icom.com/en/imprint/" target="_blank">Imprint</a></p>
 	</div>
 
-	<div style="float: right; text-align: right; padding-right: 20px">
-		<p><a href="#top"><img src="assets/icons/up.png" alt="To the top"</img></a></p>
-	</div>
 	No cookies here!
-	<!-- <div style="margin: 0 auto; width: 120px;">No cookies here!</div> -->
+	<!-- <div style="margin: 0 auto; width: 6em;">No cookies here!</div> -->
 </div>
-
-
+</sheet>
 </body>
 </html>
