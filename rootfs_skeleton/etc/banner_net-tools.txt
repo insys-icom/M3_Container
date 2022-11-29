@@ -9,4 +9,14 @@
 #           Read about the next steps:                  #
 #               $ cat readme.txt                        #
 #                                                       #
+#                                                       #
+#   Additionally available net tools in here:           #
+#      - tcpdump                                        #
+#      - iperf                                          #
+#      - openvpn                                        #
+#      - httping                                        #
+#      - curl                                           #
+#      - iptables                                       #
+#      - stunnel                                        #
+#                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

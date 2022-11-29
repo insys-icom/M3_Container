@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="iperf-3.5"
+PKG_DIR="libpcap-1.10.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# https://github.com/esnet/iperf/archive/3.5.tar.gz
+# PKG_DOWNLOAD="https://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="423e3130cd00c475ae436c361c92f331"
+PKG_CHECKSUM="28e17495004036567c2cc884b51eba45"
 
 
 
@@ -28,15 +28,21 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CFLAGS="${M3_CFLAGS} -static-libstdc++ -L${STAGING_LIB} -I${STAGING_INCLUDE}"
-    LDFLAGS="${M3_LDFLAGS} -static-libstdc++ -L${STAGING_LIB}"
     ./configure \
-        CFLAGS="${M3_CFLAGS} -static-libstdc++ -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -static-libstdc++ -L${STAGING_LIB}" \
+        CFLAGS="${M3_CFLAGS}" \
+        CFLAGS="${M3_LDFLAGS}" \
         --target=${M3_TARGET} \
         --host=${M3_TARGET} \
+        --with-pcap=linux \
+        --without-libnl \
+        --enable-ipv6 \
+        --disable-netmap \
+        --disable-rdma \
+        --disable-bluetooth \
+        --disable-dbus \
+        --disable-usb \
+        --with-pcap=linux \
         --prefix="" \
-        --with-openssl="${STAGING_DIR}" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -44,13 +50,14 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make -k "${M3_MAKEFLAGS}" || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

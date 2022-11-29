@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="iputils-s20151218"
+PKG_DIR="iputils-20221126"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# http://www.skbuff.net/iputils/iputils-s20151218.tar.bz2
+# PKG_DOWNLOAD="https://github.com/iputils/iputils/archive/${PKG_ARCHIVE_FILE##*-}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="8aaa7395f27dff9f57ae016d4bc753ce"
+PKG_CHECKSUM="f2d296dc69135dcd2e95e3dd740fce94"
 
 
 
@@ -28,26 +28,29 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    sed -i "s@CC=gcc@CC="$M3_CROSS_COMPILE"gcc@" "${PKG_BUILD_DIR}/Makefile"
-    sed -i "s@USE_GCRYPT=yes@USE_GCRYPT=no@" "${PKG_BUILD_DIR}/Makefile"
-    sed -i "s@LIBC_INCLUDE=/usr/include@LIBC_INCLUDE=$STAGING_INCLUDE@" "${PKG_BUILD_DIR}/Makefile"
-    sed -i "s@CCOPTOPT=-O3@CCOPTOPT=-O2 -I"$STAGING_INCLUDE"@" "${PKG_BUILD_DIR}/Makefile"
+    ./configure
 }
 
 compile()
 {
-    export CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}"
     cd "${PKG_BUILD_DIR}"
     make clean
-    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    # add -fcommon to compile with modern gcc
+    make "CC=${M3_CROSS_COMPILE}gcc" \
+         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+         USE_IDN=no \
+         USE_NETTLE=no \
+         USE_CRYPTO=no \
+         USE_CAP=no \
+         ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    ! [ -e "${STAGING_DIR}"/usr/net_tools ] && mkdir "${STAGING_DIR}"/usr/net_tools
-    cp arping clockdiff ping ping6 rarpd rdisc tracepath tracepath6 traceroute6 "${STAGING_DIR}/usr/net_tools"
+    mkdir -p "${STAGING_DIR}"/usr/net_tools || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    cp -v arping clockdiff ping rarpd rdisc tracepath traceroute6 "${STAGING_DIR}/usr/net_tools" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 uninstall_staging()

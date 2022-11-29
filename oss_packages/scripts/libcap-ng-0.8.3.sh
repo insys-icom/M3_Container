@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="bridge-utils-1.6"
+PKG_DIR="libcap-ng-0.8.3"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://www.kernel.org/pub/linux/utils/net/bridge-utils/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://people.redhat.com/sgrubb/libcap-ng/libcap-ng-0.8.3.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="541ae1c50cc268056693608920e6c908"
+PKG_CHECKSUM="cdfc750af32f681293e43c5c1bd427c8"
 
 
 
@@ -28,13 +28,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    autoreconf -i -v -f
-    ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-                CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-                --target="${M3_TARGET}" \
-                --host="${M3_TARGET}" \
-                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
+    ./configure
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -47,12 +48,13 @@ compile()
 
 install_staging()
 {
-    cp "${PKG_BUILD_DIR}/install/sbin/brctl" "${STAGING_DIR}/sbin"
+    cd "${PKG_BUILD_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
-uninstall_staging()
-{
-    rm -vf "${STAGING_DIR}/sbin/brctl"
-}
+# uninstall_staging()
+# {
+#     rm -vf "${STAGING_DIR}/path/to/file"
+# }
 
 . ${HELPERSDIR}/call_functions.sh

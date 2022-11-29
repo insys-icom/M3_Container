@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="stunnel-5.42"
+PKG_DIR="tcpdump-4.99.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# PKG_DOWNLOAD="https://www.stunnel.org/downloads/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ad0a6c63b30ec40afc7a2326e9ce04e0"
+PKG_CHECKSUM="929a255c71a9933608bd7c31927760f7"
 
 
 
@@ -28,23 +28,28 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-                LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB}" \
-                --target="${M3_TARGET}" \
-                --host="${M3_TARGET}" \
-                --prefix="" \
-                --disable-systemd \
-                --disable-fips \
-                --disable-libwrap \
-                --with-ssl="${STAGING_DIR}" || exit_failure "failed to configure ${PKG_DIR}"
+    ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        ac_cv_linux_vers=2 \
+        td_cv_buggygetaddrinfo=no \
+        ac_cv_func_strlcpy=no \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --disable-smb \
+        --without-crypto \
+        --prefix="" \
+        --with-cap-ng \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} CROSS_COMPILE="${M3_CROSS_COMPILE}" || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

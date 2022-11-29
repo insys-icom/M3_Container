@@ -31,7 +31,7 @@ configure()
     ./configure \
         PKG_CONFIG=pkg-config \
         PKG_CONFIG_LIBDIR="${STAGING_LIB}/pkgconfig" \
-        LIBS="-lssh2 -lnghttp2" \
+        LIBS="-lssh2 -lnghttp2 -lcares" \
         CFLAGS="${M3_CFLAGS}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         CPPFLAGS="-I${STAGING_INCLUDE}" \
@@ -67,11 +67,8 @@ configure()
         --disable-ntlm-wb \
         --enable-tls-srp \
         --enable-cookies \
-        --disable-ares \
+        --enable-ares \
         --without-gnutls \
-        --without-polarssl \
-        --without-cyassl \
-        --without-axtls \
         --without-libidn2 \
         --without-winidn \
         --without-libgsasl \
@@ -84,7 +81,7 @@ compile()
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} \
          V=1 \
-         curl_LDFLAGS="-lssl -lcrypto -lnghttp2 -lssh2" \
+         curl_LDFLAGS="-lssl -lcrypto -lnghttp2 -lssh2 -lcares" \
          CFLAGS="${M3_CFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
          make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
