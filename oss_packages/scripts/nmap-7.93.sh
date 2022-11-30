@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openvpn-2.5.6"
+PKG_DIR="nmap-7.93"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://nmap.org/dist/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="434f02d3b371bf1dcd1e618e56969a4c"
+PKG_CHECKSUM="9027eac4b8ca57574012cb061ba9ce4d"
 
 
 
@@ -28,21 +28,20 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
-              LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-              IPROUTE="/sbin/iproute" \
-              OPENSSL_SSL_LIBS="-lssl -L${STAGING_LIB}" \
-              OPENSSL_SSL_CFLAGS="-I${STAGING_INCLUDE}" \
-              OPENSSL_CRYPTO_CFLAGS="-I${STAGING_INCLUDE}" \
-              OPENSSL_CRYPTO_LIBS="-lcrypto -L${STAGING_LIB}" \
-              --target=${M3_TARGET} \
-              --host=${M3_TARGET} \
-              --prefix="" \
-              --disable-plugin-auth-pam \
-              --disable-plugins \
-              --disable-debug \
-              --disable-lzo \
-              --enable-small || exit_failure "failed to configure ${PKG_DIR}"
+    ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --with-openssl="${STAGING_DIR}" \
+        --with-libpcre=included \
+        --with-libpcap=included \
+        --with-liblua=included \
+        --with-libssh2=included \
+        --without-ncat \
+        --prefix="" \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -55,7 +54,8 @@ compile()
 
 install_staging()
 {
-    cp -rv ${PKG_INSTALL_DIR}/* ${STAGING_DIR} || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    cd "${PKG_BUILD_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

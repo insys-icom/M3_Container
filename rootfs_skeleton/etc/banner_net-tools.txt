@@ -18,5 +18,7 @@
 #      - curl                                           #
 #      - iptables                                       #
 #      - stunnel                                        #
+#      - nmap                                           #
+#      - nping                                          #
 #                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
