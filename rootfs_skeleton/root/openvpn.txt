@@ -1,0 +1,59 @@
+OpenVPN can also run in bridge mode (layer 2 VPN).
+Most of the time the routed mode of OpenVPN (layer 3 VPN) is preferable.
+Bridging always seems to be very attractive - until more than 10
+devices participate. For debugging purposes only bridging is often very
+handy. For that in this container there is a prepared configuration
+
+Howto start OpenVPN-Bridge to act as an OpenVPN server:
+- Configure net interface to act as the one to listen for the OpenVPN clients
+- Configure eth1 as the common bridge network
+- Edit /etc/inittab and enable the server
+- Edit /etc/openvpn/server.ovpn and modify IP address pool for clients
+- Restart container
+
+Howto start OpenVPN-Bridge to act as an OpenVPN client:
+- Configure net interface to act as the one to connect the OpenVPN
+- Configure eth1 as the common bridge network
+- Edit /etc/inittab and enable the client
+- Edit /etc/openvpn/client.ovpn and modify IP address of remote server
+- Restart container
+
+A demo setup:
+=============
+The routers net1 is used as the "WAN".
+The routers net2 is used as the "LAN" that should be bridge to the other routers net2.
+
+The router acting as a OpenVPN server:
+--------------------------------------
+    net1: 192.168.1.1/24
+    net2: 192.168.7.1/24
+
+Container net-tools:
+    first net interface:
+        - bridge to net1
+        - IP: 192.168.1.5/24
+    second net interface:
+        - bridge to net2
+        - IP: 192.168.7.2/24
+
+The router acting as a OpenVPN client:
+--------------------------------------
+    net1: 192.168.1.1/24
+    net2: 192.168.7.4/24
+
+Container net-tools:
+    first net interface:
+        - bridge to net1
+        - IP: 192.168.1.8/24
+    second net interface:
+        - bridge to net2
+        - IP: 192.168.7.3/24
+
+The OpenVPN client will contact the OpenVPN server IP address 192.168.1.5.
+After the tunnel is established, the aquired tap-Interface is bridged to br0, in which
+net2 of the local router already has been inserted.
+
+As a test you can ping the IP address of the opposite
+routers net2 (192.168.7.1 and 192.168.7.4).
+
+For debugging watch /var/log/openvpn/current (e.g. with "cat <file>" or "tail -f <file>").

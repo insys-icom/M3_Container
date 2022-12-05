@@ -13,7 +13,7 @@
 #   Additionally available net tools in here:           #
 #      - tcpdump                                        #
 #      - iperf                                          #
-#      - openvpn                                        #
+#      - openvpn (read info in ~/openvpn.txt)           #
 #      - httping                                        #
 #      - curl                                           #
 #      - iptables                                       #

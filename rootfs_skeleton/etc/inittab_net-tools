@@ -16,6 +16,10 @@
 # start logger
 ::respawn:/bin/metalog -N -C /etc/metalog.conf
 
+# start OpenVPN as server or as client
+# ::respawn:/bin/openvpn /etc/openvpn/server.ovpn
+# ::respawn:/bin/openvpn /etc/openvpn/client.ovpn
+
 ::restart:/sbin/init
 ::shutdown:/sbin/halt
 ::ctrlaltdel:/sbin/reboot

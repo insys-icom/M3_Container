@@ -121,14 +121,21 @@ file /etc/pam.d/local                 ${SKELETON_DIR}/etc/pam.d/local           
 file /etc/pam.d/other                 ${SKELETON_DIR}/etc/pam.d/other                0644 0 0
 slink /etc/pam.d/login                local                                          0777 0 0
 slink /etc/pam.d/sshd                 login                                          0777 0 0
-
+file /etc/stunnel/stunnel.conf        ${STAGING_DIR}/etc/stunnel/stunnel.conf-sample 0644 0 0
 file /etc/openvpn/server.ovpn         ${KEYS_DIR}/openvpn/sepia/server.ovpn          0644 0 0
 file /etc/openvpn/cacert.pem          ${KEYS_DIR}/openvpn/sepia/cacert.pem           0644 0 0
 file /etc/openvpn/server.pem          ${KEYS_DIR}/openvpn/sepia/server.pem           0644 0 0
 file /etc/openvpn/server.key          ${KEYS_DIR}/openvpn/sepia/server.key           0644 0 0
 file /etc/openvpn/dhparams.pem        ${SKELETON_DIR}/etc/openvpn/dhparams.pem       0644 0 0
-
-file /etc/stunnel/stunnel.conf        ${STAGING_DIR}/etc/stunnel/stunnel.conf-sample 0644 0 0
+file /etc/openvpn/client.ovpn         ${SKELETON_DIR}/etc/openvpn/client.ovpn        0644 0 0
+file /etc/openvpn/server.ovpn         ${SKELETON_DIR}/etc/openvpn/server.ovpn        0644 0 0
+file /etc/openvpn/cacert.pem          ${SKELETON_DIR}/etc/openvpn/cacert.pem         0644 0 0
+file /etc/openvpn/server.pem          ${SKELETON_DIR}/etc/openvpn/server.pem         0644 0 0
+file /etc/openvpn/server.key          ${SKELETON_DIR}/etc/openvpn/server.key         0644 0 0
+file /etc/openvpn/client.pem          ${SKELETON_DIR}/etc/openvpn/client.pem         0644 0 0
+file /etc/openvpn/client.key          ${SKELETON_DIR}/etc/openvpn/client.key         0644 0 0
+file /etc/openvpn/up.sh               ${SKELETON_DIR}/etc/openvpn/up.sh              0755 nobody nogroup
+file /etc/openvpn/down.sh             ${SKELETON_DIR}/etc/openvpn/down.sh            0755 nobody nogroup
 
 file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
 file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
