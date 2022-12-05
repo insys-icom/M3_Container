@@ -37,6 +37,14 @@ wget_check "apr"        "https://apr.apache.org"                                
 wget_check "apr-util"   "https://apr.apache.org"                                "APR-util 1.6.1, released" ""
 wget_check "httpd"      "https://httpd.apache.org"                              "Apache httpd 2.4.54 Released" ""
 wget_check "php"        "https://www.php.net/downloads"                         "Current Stable</span>\n    PHP 8.1.12" ""
+wget_check "nmap"       "https://nmap.org/dist"                                 "The latest Nmap release is version 7.93" ""
+wget_check "openvpn"    "https://fossies.org/linux/openvpn/ChangeLog"           "openvpn-2.5.8/ChangeLog" ""
+wget_check "HTTPing"    "https://github.com/folkertvanheusden/HTTPing"          ">v2.9</span>" ""
+wget_check "libcap-ng"  "https://people.redhat.com/sgrubb/libcap-ng"            "Latest Release is 0.8.3" ""
+wget_check "libpcap"    "https://www.tcpdump.org/index.html#latest-releases"    ">libpcap-1.10.1.tar.gz</a>" ""
+wget_check "tcpdump"    "https://www.tcpdump.org/index.html#latest-releases"    ">tcpdump-4.99.1.tar.gz</a>" ""
+wget_check "stunnel"    "https://www.stunnel.org/downloads.html"                "stunnel-5.67.tar.gz" ""
+wget_check "iptables"   "https://git.netfilter.org/iptables"  "Age</th></tr>\n<tr><td><a href=\'/iptables/tag/\?h=v1.8.8\'>v1.8.8" ""
 
 # not needed any more, use ensurepip that comes with python:
 # wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.2.2" ""
@@ -46,3 +54,6 @@ wget_check "php"        "https://www.php.net/downloads"                         
 
 # a quite complicated search string:
 # wget_check "screen"     "https://ftp.gnu.org/gnu/screen"                        "screen-4.9.0.tar.gz.sig</a></td><td align=\"right\">2022-02-01 11:01  </td><td align=\"right\">659 </td><td>&nbsp;</td></tr>\n   <tr><th" ""
+
+# iperf doesn't make releases, sets only tags
+# wget_check "iperf"      "https://github.com/esnet/iperf/tags"  "" ""
