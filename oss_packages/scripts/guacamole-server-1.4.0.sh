@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="freetype-2.8.1"
+PKG_DIR="guacamole-server-1.4.0"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://download.savannah.gnu.org/releases/freetype/freetype-2.8.1.tar.bz2"
+#PKG_DOWNLOAD="https://apache.org/dyn/closer.lua/guacamole/1.4.0/source/${PKG_ARCHIVE_FILE}?action=download"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="bf0a210b6fe781228fa0e4a80691a521"
+PKG_CHECKSUM="b17c6152e96af0488ca4c0608e5ec3ae"
 
 
 
@@ -28,15 +28,25 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-                CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-                LIBPNG_CFLAGS="-I${STAGING_INCLUDE}" \
-                LIBPNG_LIBS="-L${STAGING_LIB}" \
-                --target="${M3_TARGET}" \
-                --host="${M3_TARGET}" \
-                --disable-largefile \
-                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
+    ac_cv_lib_png_png_write_png=yes \
+    ac_cv_lib_cairo_cairo_create=yes \
+    ac_cv_lib_uuid_uuid_make=yes \
+    ac_cv_lib_vncclient_rfbInitClient=yes \
+    ac_cv_lib_ssl_SSL_CTX_new=yes \
+    ./configure \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CPPFLAGS="-I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -ldl -lssl" \
+        VNC_LIBS="${STAGING_LIB}" \
+        PKG_CONFIG_LIBDIR="${STAGING_LIB}" \
+        LIBS="-Wl,--no-as-neede -ldl" \
+        --disable-kubernetes \
+        --disable-guacd \
+        --disable-guacenc \
+        --disable-guaclog \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()

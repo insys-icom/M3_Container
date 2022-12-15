@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pixman-0.34.0"
+PKG_DIR="freetype-2.12.1"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://www.cairographics.org/releases/pixman-0.34.0.tar.gz"
+# PKG_DOWNLOAD="https://download.savannah.gnu.org/releases/freetype/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="e80ebae4da01e77f68744319f01d52a3"
+PKG_CHECKSUM="7f7cd7c706d8e402354305c1c59e3ff2"
 
 
 
@@ -28,12 +28,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-                PNG_CFLAGS="-I${STAGING_INCLUDE}" \
-                PNG_LIBS="-L${STAGING_LIB}" \
-                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lpng" \
+    ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+                CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+                LIBPNG_CFLAGS="-I${STAGING_INCLUDE}" \
+                LIBPNG_LIBS="-L${STAGING_LIB}" \
                 --target="${M3_TARGET}" \
                 --host="${M3_TARGET}" \
+                --disable-largefile \
                 --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="guacamole-server-0.9.13-incubating"
+PKG_DIR="pixman-0.42.2"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="http://apache.org/dyn/closer.cgi?action=download&filename=incubator/guacamole/0.9.13-incubating/source/guacamole-server-0.9.13-incubating.tar.gz"
+# PKG_DOWNLOAD="https://www.cairographics.org/releases/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="fed1d18e6b18b114375bfabcf02f5607"
+PKG_CHECKSUM="a0f6ab8a1d8e0e2cd80e935525e2a864"
 
 
 
@@ -28,21 +28,13 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ac_cv_lib_png_png_write_png=yes \
-    ac_cv_lib_cairo_cairo_create=yes \
-    ac_cv_lib_uuid_uuid_make=yes \
-    ac_cv_lib_vncclient_rfbInitClient=yes \
-    ac_cv_lib_ssl_SSL_CTX_new=yes \
-    ./configure \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-        CPPFLAGS="-I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -ldl -lssl" \
-        VNC_LIBS="${STAGING_LIB}" \
-        PKG_CONFIG_LIBDIR="${STAGING_LIB}" \
-        LIBS="-Wl,--no-as-neede -ldl" \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
-        --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
+    ./configure CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+                PNG_CFLAGS="-I${STAGING_INCLUDE}" \
+                PNG_LIBS="-L${STAGING_LIB}" \
+                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lpng" \
+                --target="${M3_TARGET}" \
+                --host="${M3_TARGET}" \
+                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()

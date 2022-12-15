@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="fontconfig-2.12.6"
+PKG_DIR="fontconfig-2.14.1"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.5.tar.gz"
+# PKG_DOWNLOAD="https://www.freedesktop.org/software/fontconfig/release/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="733f5e2371ca77b69707bd7b30cc2163"
+PKG_CHECKSUM="d110d7a2636d420ae6ed9d2cf92002a4"
 
 
 
@@ -30,8 +30,8 @@ configure()
     cd "${PKG_BUILD_DIR}"
     ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
                 CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lfreetype" \
-                FREETYPE_CFLAGS="-I${STAGING_INCLUDE}/freetype2 -lpng" \
+                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lfreetype -lpng" \
+                FREETYPE_CFLAGS="-I${STAGING_INCLUDE}/freetype2" \
                 FREETYPE_LIBS="-L${STAGING_LIB}" \
                 --target="${M3_TARGET}" \
                 --host="${M3_TARGET}" \
