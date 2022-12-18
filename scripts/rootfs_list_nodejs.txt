@@ -75,6 +75,7 @@ slink /bin/cli-cmd                    /bin/mcip-tool                            
 slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 file /bin/curl                        ${STAGING_DIR}/bin/curl                        0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_nodejs.sh         0755 0 0
+file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh              0755 0 0
 
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
