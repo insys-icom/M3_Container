@@ -1,8 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>M3-Container.net: Container for INSYS icom OS devices</title>
+	<meta charset="utf-8">
+	<meta name="description" content="LXC containers as finished products or as base for own development">
+	<meta name="keywords" content="INSYS, icom, LXC, container, industry, Industrie, router">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Container for INSYS icom OS industry routers and gateways</title>
 	<style>
 		html {
 			font-family: sans-serif;
@@ -74,12 +78,12 @@
 			border-bottom-right-radius: 1.5em;
 		}
 
-		sheet {
+		.sheet {
 			position: absolute;
 			left: 18em;
 		}
 
-		nav {
+		.navi {
 			position: fixed;
 			background: white;
 			text-align: left;
@@ -141,7 +145,7 @@
 	</style>
 </head>
 
-<nav>
+<div class="navi">
 	<br>
 	<a href="#top">Types of containers</a><br><br>
 	Linux distributions<br>
@@ -165,16 +169,16 @@
 
 	<a href="#sdk">Software Development Kit (SDK)</a><br>
 	<a href="#scripts">Scripts to create your own container</a><br>
-</nav>
+</div>
 
-<sheet>
+<div class="sheet">
 
 <div class="card">
 	<h1 id="top">Containers for INSYS icom OS devices</h1>
 	<p><a href="https://www.insys-icom.com/en/products/router-gateways" target="_blank">INSYS icom OS devices</a> can
-		run <a href="https://www.insys-icom.com/en/products/edge-computing/individual-programming" target="_blank">containers</a>, which can add a lot of functionality!</p>
+		run <a href="https://www.insys-icom.com/en/products/edge-computing/individual-programming" target="_blank">LXC containers</a>, which can add a lot of functionality!</p>
 
-	<p>Send your questions, whishes, bug reports or ideas to <a href="mailto: info@m3-container.net">info@m3-container.net</a></p>
+	<p>Send your questions, whishes, bug reports or ideas to <a href="mailto:info@m3-container.net">info@m3-container.net</a></p>
 </div>
 
 <div class="card">
@@ -190,7 +194,7 @@
 
 		<li><h3>Use a basic container</h3>
 			<p>This is a good option in case you want to implement scripts in one of the offered interpreted programming languages
-				(e.g. <a href="#python">Python</a>, <a href="#nodejs">NodeJS</a>, <a href="#basic">ash</a>), where no compiler is needed.
+				(e.g. <a href="#python">Python</a>, <a href="#nodejs">NodeJS</a>, <a href="#basic">ash</a>, <a href="#LAMP">PHP</a>), where no compiler is needed.
 				You can even develop within the running container on the device.
 				This is a good compromise between container size and functionality.
 				A disadvantage of this option is, that you do not have control over the basic container, so it could be problematic
@@ -201,7 +205,7 @@
 		<li><h3>Create your own container</h3>
 			<p>This is the developers choice: Install the <a href="#sdk">SDK</a> (as <a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a>
 				or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared <a href="#scripts">build scripts</a> and create the containers from scratch.
-				This is also the way, how the basic containers are created. Creating containers with this means:
+				This is also the way, how the basic containers are created. Creating containers with this means:</p>
 			<ul>
 				<li>the resulting containers will have a minimal footprint</li>
 				<li>you are in charge of every single bit that gets included</li>
@@ -211,7 +215,6 @@
 				<li>most likely this will create the most stable and secure containers:
 					What's not included, can't break -  what's not running, can't get hacked</li>
 			</ul>
-			</p>
 		</li>
 	</ol>
 </div>
@@ -219,7 +222,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="alpine">Alpine Linux</h2>
-		<img src="assets/alpinelinux-logo.svg" width="150">
+		<img src="assets/alpinelinux-logo.svg" width="150" alt="alpinelinux-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Alpine.tar">Alpine.tar</a></p>
@@ -237,7 +240,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="debian">Debian</h2>
-		<img src="assets/debian-logo.svg" width="150">
+		<img src="assets/debian-logo.svg" width="150" alt="debian-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Debian.tar">Debian.tar</a></p>
@@ -259,7 +262,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="basic">Basic container</h2>
-		<img src="assets/insys-logo.svg" width="100">
+		<img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_default.tar">container_default.tar</a></p>
@@ -273,7 +276,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="python">Python 3</h2>
-		<img src="assets/python-logo.svg" width="150">
+		<img src="assets/python-logo.svg" width="150" alt="python-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_python3.tar">container_python3.tar</a></p>
@@ -287,7 +290,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="nodejs">NodeJS</h2>
-		<img src="assets/nodejs-logo.svg" width="100">
+		<img src="assets/nodejs-logo.svg" width="100" alt="nodejs-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_nodejs.tar">container_nodejs.tar</a></p>
@@ -306,7 +309,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="net-tools">Net tools</h2>
-		<img src="assets/insys-logo.svg" width="100">
+		<img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images/container_net-tools.tar">container_net-tools.tar</a></p>
@@ -318,7 +321,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="ids">icom Data Suite (iDS)</h2>
-		<img src="assets/insys-logo.svg" width="100">
+		<img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://icom-data-suite.releasenotes.io" target="_blank">iDS download site</a></p>
@@ -331,7 +334,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="anyviz">AnyViz Cloud Adapter</h2>
-		<img src="assets/anyviz-logo.svg" width="150">
+		<img src="assets/anyviz-logo.svg" width="150" alt="anyviz-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://download.anyviz.io/insys/anyvizcloudadapter.tar">AnyViz Cloud Adapter (Container)</a></p>
@@ -348,7 +351,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="nodered">Node-RED</h2>
-		<img src="assets/node-red-logo.svg" width="100">
+		<img src="assets/node-red-logo.svg" width="100" alt="node-red-logo.sv">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/images_static/Node-Red.tar">Node-RED.tar</a></p>
@@ -360,7 +363,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="sdk">Software Development Kit (SDK)</h2>
-		<img src="assets/insys-logo.svg" width="100">
+		<img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
 	</div>
 
 	<p>Download: <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz">M3_SDK_LXC.tar.gz</a></p>
@@ -372,17 +375,17 @@
 		<a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a> container.
 		It is meant to be used in combination with a bunch of <a href="#scripts">scripts</a>, so all the steps to create a container are completely automated.</p>
 
-		<p>This SDK comes with no IDE at all, it's meant to be used
+	<p>This SDK comes with no IDE at all, it's meant to be used</p>
 	<ul>
 		<li>via command line interface (CLI) or</li>
 		<li>integrated in your favourite IDE or editor or</li>
 		<li>by your CI/CD pipeline</li>
-	</ul></p>
+	</ul>
 
-	<p></p>The idea is, that you continue to use all your existing tools on your PC like editors to create the content and applications.
+	<p>The idea is, that you continue to use all your existing tools on your PC like editors to create the content and applications.
 	The tools within the  SDK then are used to do all the necessary cross compiling and packaging, so you get a container.</p>
 
-	<p></p>Here are the <a href="https://github.com/insys-icom/M3_Container/blob/master/doc/1st_steps.md" target="_blank">first steps to create your own container</a>.</p>
+	<p>Here are the <a href="https://github.com/insys-icom/M3_Container/blob/master/doc/1st_steps.md" target="_blank">first steps to create your own container</a>.</p>
 
 	<p>The SDK is a <a href="https://www.gentoo.org" target="_blank">Gentoo Linux</a> without any graphical UI (headless).
 		You can update it and install more packages with the typical Gentoo tools (emerge).
@@ -394,7 +397,7 @@
 <div class="card">
 	<div class="logo">
 		<h2 id="scripts">Scripts to create your own container</h2>
-		<img src="assets/insys-logo.svg" width="100">
+		<img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
 	</div>
 
 	<p>Having a container is nice, being able to reproduce its build in an automated way is better!</p>
@@ -411,7 +414,7 @@
 	</p>
 </div>
 
-<div class="card" style=" color: darkgray; margin-top: 20; padding-top: 1.5em; padding-bottom: 2.5em; border-left-color: white;
+<div class="card" style=" color: darkgray; margin-top: 1.5em; padding-top: 1.5em; padding-bottom: 2.5em; border-left-color: white;
                          text-align: center; border-top-left-radius: 2.5em; border-bottom-right-radius: 2.5em;">
 
 	<div style="float: left; padding-left: 1em">
@@ -421,6 +424,7 @@
 	No cookies here!
 	<!-- <div style="margin: 0 auto; width: 6em;">No cookies here!</div> -->
 </div>
-</sheet>
+
+</div>
 </body>
 </html>
