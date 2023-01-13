@@ -87,6 +87,7 @@ slink /bin/cli-cmd                    /bin/mcip-tool                            
 slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 
 file /bin/sqlite3                     ${STAGING_DIR}/bin/sqlite3                     0755 0 0
+slink /bin/pip                        /bin/pip3                                      0777 0 0
 
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner_python.txt          0644 0 0
