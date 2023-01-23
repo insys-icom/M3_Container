@@ -1,6 +1,7 @@
 # ignore complete directories
 closed_packages/*
 !closed_packages/.keep
+!closed_packages/container_pcap
 
 images/*
 !images/.keep
