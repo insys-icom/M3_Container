@@ -19,6 +19,7 @@ PACKAGES_1="
     libcap-ng-0.8.3.sh
     iptables-1.8.9.sh
     c-ares-1.19.0.sh
+    cJSON-1.7.15.sh
 "
 
 PACKAGES_2="
@@ -34,6 +35,7 @@ PACKAGES_2="
     HTTPing-2.9.sh
     libssh2-1.10.0.sh
     socat-2.0.0-b9.sh
+    mosquitto-2.0.15.sh
 "
 
 PACKAGES_3="

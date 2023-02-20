@@ -1,17 +1,18 @@
-#! /bin/sh
+#!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="mosquitto-1.4.12"
+PKG_DIR="mosquitto-2.0.15"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="mosquitto-1.4.12.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# http://mosquitto.org/files/source/mosquitto-1.4.12.tar.gz
+# PKG_DOWNLOAD="https://mosquitto.org/files/source/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="bca295b68f4a411c6f15406bac86c48a"
+PKG_CHECKSUM="22b7a8b05caa692cb22496b791529193"
+
 
 
 SCRIPTSDIR=$(dirname $0)
@@ -34,13 +35,12 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
 
-    export CC="${M3_CROSS_COMPILE}gcc"
-    export CXX=$CC
-    export CROSS_COMPILE=""
-    export CFLAGS="${M3_CFLAGS}  -L${STAGING_LIB} -I${STAGING_INCLUDE}"
-    export LDFLAGS="${M3_LDFLAGS}  -L${STAGING_LIB} -lcrypto -lssl -lcares"
-
-    make WITH_UUID=no "${M3_MAKEFLAGS}"
+    CC="${M3_CROSS_COMPILE}gcc" \
+    CXX=$CC \
+    CROSS_COMPILE="" \
+    CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+    LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lcrypto -lssl" \
+        make WITH_UUID=no WITH_EC=yes WITH_CJSON=yes WITH_SRV=no "${M3_MAKEFLAGS}" DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
