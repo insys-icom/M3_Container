@@ -8,9 +8,9 @@ PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    timezone2022f.sh
-    pcre2-10.40.sh
-    openssl-1.1.1s.sh
+    tzdb-2022g.sh
+    pcre2-10.42.sh
+    openssl-3.0.8.sh
     mcip.sh
 "
 
@@ -19,7 +19,7 @@ PACKAGES_2="
     mcip-tool-v4.sh
     dropbear-2022.83.sh
     metalog-20220214.sh
-    dnsmasq-2.87.sh
+    dnsmasq-2.89.sh
 "
 
 PACKAGES_3="

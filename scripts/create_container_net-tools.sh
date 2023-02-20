@@ -9,16 +9,16 @@ PACKAGES_1="
     zlib-1.2.13.sh
     lz4-1.9.4.sh
     lzo-2.10.sh
-    timezone2022f.sh
-    pcre2-10.40.sh
-    openssl-1.1.1s.sh
+    tzdb-2022g.sh
+    pcre2-10.42.sh
+    openssl-3.0.8.sh
     mcip.sh
-    cacert-2022-10-11.sh
-    nghttp2-1.51.0.sh
-    libpcap-1.10.1.sh
+    cacert-2023-01-10.sh
+    nghttp2-1.52.0.sh
+    libpcap-1.10.3.sh
     libcap-ng-0.8.3.sh
-    iptables-1.8.8.sh
-    c-ares-1.18.1.sh
+    iptables-1.8.9.sh
+    c-ares-1.19.0.sh
 "
 
 PACKAGES_2="
@@ -26,17 +26,18 @@ PACKAGES_2="
     mcip-tool-v4.sh
     dropbear-2022.83.sh
     metalog-20220214.sh
-    dnsmasq-2.87.sh
-    openvpn-2.5.8.sh
-    tcpdump-4.99.1.sh
+    dnsmasq-2.89.sh
+    openvpn-2.6.0.sh
+    tcpdump-4.99.3.sh
     iperf-3.12.sh
-    stunnel-5.67.sh
+    stunnel-5.68.sh
     HTTPing-2.9.sh
     libssh2-1.10.0.sh
+    socat-2.0.0-b9.sh
 "
 
 PACKAGES_3="
-    curl-7.86.0.sh
+    curl-7.88.1.sh
     nmap-7.93.sh
 "
 

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="node-v18.12.1-linux-armv7l"
+PKG_DIR="node-v18.14.1-linux-armv7l"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://nodejs.org/dist/v16.14.2/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://nodejs.org/dist/v18.14.1/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="74a0350d24b16f3e4bda3e261648c8cc"
+PKG_CHECKSUM="2d6cc751f30da292df3563481c688c1e"
 
 
 

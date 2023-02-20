@@ -30,7 +30,7 @@ configure()
     cd "${PKG_BUILD_DIR}"
     ./configure \
         CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
@@ -39,7 +39,8 @@ configure()
         --with-libpcap=included \
         --with-liblua=included \
         --with-libssh2=included \
-        --without-ncat \
+        --with-liblinear=included \
+        --with-libdnet=included \
         --prefix="" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }

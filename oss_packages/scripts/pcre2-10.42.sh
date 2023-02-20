@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="sqlite-src-3400000"
+PKG_DIR="pcre2-10.42"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/PhilipHazel/pcre2/releases/download/${PKG_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="75c08cee4012f70bb4706589619c0e63"
+PKG_CHECKSUM="a8e9ab2935d428a4807461f183034abe"
 
 
 
@@ -28,16 +28,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
+    ./configure CFLAGS="${M3_CFLAGS}" \
                 LDFLAGS="${M3_LDFLAGS}" \
                 --target=${M3_TARGET} \
                 --host=${M3_TARGET} \
-                --prefix="" \
-                --disable-largefile \
-                --enable-tempstore \
-                --disable-readline \
-                --disable-tcl \
-                --disable-load-extension || exit_failure "failed to configure ${PKG_DIR}"
+                --disable-pcregrep-jit \
+                --enable-shared=yes \
+                --enable-utf \
+                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()

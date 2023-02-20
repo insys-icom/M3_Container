@@ -8,32 +8,32 @@ PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    timezone2022f.sh
-    pcre2-10.40.sh
-    openssl-1.1.1s.sh
+    tzdb-2022g.sh
+    pcre2-10.42.sh
+    openssl-3.0.8.sh
     libuuid-1.0.3.sh
     expat-2.5.0.sh
     libffi-3.4.4.sh
     xz-5.2.6.sh
-    cacert-2022-10-11.sh
+    cacert-2023-01-10.sh
     python_modules-2022-03-31.sh
     pyserial-3.5.sh
-    pymodbus-3.1.1.sh
+    pymodbus-3.1.3.sh
     mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.34.1.sh
     dropbear-2022.83.sh
-    sqlite-src-3400000.sh
+    sqlite-src-3400100.sh
     metalog-20220214.sh
-    ncurses-6.3.sh
+    ncurses-6.4.sh
     mcip-tool-v4.sh
 "
 
 PACKAGES_3="
-    nano-7.0.sh
-    python-3.11.0.sh
+    nano-7.2.sh
+    python-3.11.2.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

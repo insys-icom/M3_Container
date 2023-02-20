@@ -8,12 +8,12 @@ PACKAGES_1="
     Linux-PAM-1.5.2.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    timezone2022f.sh
-    pcre2-10.40.sh
-    openssl-1.1.1s.sh
-    c-ares-1.18.1.sh
-    cacert-2022-10-11.sh
-    nghttp2-1.51.0.sh
+    tzdb-2022g.sh
+    pcre2-10.42.sh
+    openssl-3.0.8.sh
+    c-ares-1.19.0.sh
+    cacert-2023-01-10.sh
+    nghttp2-1.52.0.sh
     mcip.sh
 "
 
@@ -21,16 +21,16 @@ PACKAGES_2="
     busybox-1.34.1.sh
     dropbear-2022.83.sh
     metalog-20220214.sh
-    dnsmasq-2.87.sh
+    dnsmasq-2.89.sh
     libssh2-1.10.0.sh
-    ncurses-6.3.sh
+    ncurses-6.4.sh
     mcip-tool-v4.sh
 "
 
 PACKAGES_3="
-    curl-7.86.0.sh
-    nano-7.0.sh
-    node-v18.12.1-linux-armv7l.sh
+    curl-7.88.1.sh
+    nano-7.2.sh
+    node-v18.14.1-linux-armv7l.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
