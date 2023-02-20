@@ -1053,6 +1053,85 @@ file /lib/python3.11/site-packages/serial/urlhandler/protocol_spy.py ${STAGING_D
 file /lib/python3.11/site-packages/serial/win32.py ${STAGING_DIR}/lib/python3.11/site-packages/serial/win32.py 644 0 0
 
 
+# pymodbus
+# execute in rootfs_staging
+# ../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/lib/python3.11/site-packages/pymodbus/' | sed 's| ./lib/python3.11/site-packages/pymodbus/| ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/|' | sort> ../list.txt
+dir /lib/python3.11/site-packages/pymodbus 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/client 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/client/serial_asyncio 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/datastore 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/datastore/database 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/framer 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/repl 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/repl/client 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/repl/server 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/server 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/server/reactive 755 0 0
+dir /lib/python3.11/site-packages/pymodbus/server/simulator 755 0 0
+file /lib/python3.11/site-packages/pymodbus/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/bit_read_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/bit_read_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/bit_write_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/bit_write_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/base.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/base.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/mixin.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/mixin.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/serial.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/serial.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/serial_asyncio/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/serial_asyncio/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/sync_diag.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/sync_diag.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/tcp.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/tcp.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/tls.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/tls.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/client/udp.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/client/udp.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/constants.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/constants.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/context.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/context.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/database/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/database/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/database/redis_datastore.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/database/redis_datastore.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/database/sql_datastore.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/database/sql_datastore.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/remote.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/remote.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/simulator.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/simulator.py 755 0 0
+file /lib/python3.11/site-packages/pymodbus/datastore/store.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/datastore/store.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/device.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/device.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/diag_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/diag_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/events.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/events.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/exceptions.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/exceptions.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/factory.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/factory.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/file_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/file_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/framer/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/framer/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/framer/ascii_framer.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/framer/ascii_framer.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/framer/binary_framer.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/framer/binary_framer.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/framer/rtu_framer.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/framer/rtu_framer.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/framer/socket_framer.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/framer/socket_framer.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/framer/tls_framer.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/framer/tls_framer.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/interfaces.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/interfaces.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/logging.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/logging.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/mei_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/mei_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/other_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/other_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/payload.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/payload.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/pdu.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/pdu.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/register_read_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/register_read_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/register_write_message.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/register_write_message.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/client/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/client/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/client/completer.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/client/completer.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/client/helper.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/client/helper.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/client/main.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/client/main.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/client/mclient.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/client/mclient.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/server/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/server/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/server/cli.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/server/cli.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/repl/server/main.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/repl/server/main.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/async_io.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/async_io.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/reactive/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/reactive/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/reactive/default_config.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/reactive/default_config.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/reactive/main.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/reactive/main.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/simulator/__init__.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/simulator/__init__.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/simulator/custom_actions.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/simulator/custom_actions.py 755 0 0
+file /lib/python3.11/site-packages/pymodbus/server/simulator/http_server.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/simulator/http_server.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/server/simulator/main.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/server/simulator/main.py 755 0 0
+file /lib/python3.11/site-packages/pymodbus/transaction.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/transaction.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/utilities.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/utilities.py 644 0 0
+file /lib/python3.11/site-packages/pymodbus/version.py ${STAGING_DIR}/lib/python3.11/site-packages/pymodbus/version.py 644 0 0
+
+
 ##################
 # timzeone files #
 ##################

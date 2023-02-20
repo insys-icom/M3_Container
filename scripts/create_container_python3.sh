@@ -18,6 +18,7 @@ PACKAGES_1="
     cacert-2022-10-11.sh
     python_modules-2022-03-31.sh
     pyserial-3.5.sh
+    pymodbus-3.1.1.sh
     mcip.sh
 "
 

@@ -40,7 +40,6 @@ install_staging()
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}/lib/python3.11/site-packages"
     cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/lib/python3.11/site-packages/"
-
 }
 
 . ${HELPERSDIR}/call_functions.sh
