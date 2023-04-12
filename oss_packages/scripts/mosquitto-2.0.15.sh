@@ -40,7 +40,9 @@ compile()
     CROSS_COMPILE="" \
     CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
     LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lcrypto -lssl" \
-        make WITH_UUID=no WITH_EC=yes WITH_CJSON=yes WITH_SRV=no "${M3_MAKEFLAGS}" DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+        make WITH_UUID=no WITH_EC=yes WITH_CJSON=yes WITH_DOCS:=no WITH_WEBSOCKETS:=yes \
+        "${M3_MAKEFLAGS}" DESTDIR="${PKG_INSTALL_DIR}" install \
+        || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

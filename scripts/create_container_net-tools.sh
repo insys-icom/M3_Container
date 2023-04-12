@@ -35,12 +35,13 @@ PACKAGES_2="
     HTTPing-2.9.sh
     libssh2-1.10.0.sh
     socat-2.0.0-b9.sh
-    mosquitto-2.0.15.sh
+    libwebsockets-4.3.2.sh
 "
 
 PACKAGES_3="
     curl-7.88.1.sh
     nmap-7.93.sh
+    mosquitto-2.0.15.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

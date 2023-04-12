@@ -61,3 +61,5 @@ wget_check "mosquitto"  "https://mosquitto.org/download"                        
 
 # iperf doesn't make releases, sets only tags
 # wget_check "iperf"      "https://github.com/esnet/iperf/tags"  "" ""
+
+# wget_check "json-c"     "http://json-c.github.io/json-c/"                      '<a href="json-c-current-release/doc/html/index.html">json-c-0.16' ""
