@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Linux-PAM-1.5.2"
+PKG_DIR="Linux-PAM-1.5.3"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="895e8adfa14af334f679bbeb28503f66"
+PKG_CHECKSUM="a913bd5fbf9edeafaacf3eb1eb86fd83"
 
 
 

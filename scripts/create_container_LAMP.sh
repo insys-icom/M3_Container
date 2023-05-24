@@ -5,14 +5,14 @@ CONTAINER_NAME="container_LAMP"
 ROOTFS_LIST="rootfs_list_LAMP.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.5.2.sh
+    Linux-PAM-1.5.3.sh
     zlib-1.2.13.sh
-    tzdb-2022g.sh
+    tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.0.8.sh
+    openssl-3.1.0.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
-    nghttp2-1.52.0.sh
+    nghttp2-1.53.0.sh
     jansson-2.14.sh
     cacert-2023-01-10.sh
     mcip.sh
@@ -26,17 +26,17 @@ PACKAGES_2="
     dropbear-2022.83.sh
     metalog-20220214.sh
     apr-util-1.6.1.sh
-    sqlite-src-3400100.sh
+    sqlite-src-3420000.sh
     ncurses-6.4.sh
 "
 
 PACKAGES_3="
     nano-7.2.sh
-    httpd-2.4.55.sh
+    httpd-2.4.57.sh
 "
 
 PACKAGES_4="
-    php-8.2.3.sh
+    php-8.2.6.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

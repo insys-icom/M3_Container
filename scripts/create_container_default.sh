@@ -5,12 +5,12 @@ CONTAINER_NAME="container_default"
 ROOTFS_LIST="rootfs_list_default.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.5.2.sh
+    Linux-PAM-1.5.3.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    tzdb-2022g.sh
+    tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.0.8.sh
+    openssl-3.1.0.sh
     mcip.sh
 "
 

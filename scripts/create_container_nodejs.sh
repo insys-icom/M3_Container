@@ -5,15 +5,15 @@ CONTAINER_NAME="container_nodejs"
 ROOTFS_LIST="rootfs_list_nodejs.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.5.2.sh
+    Linux-PAM-1.5.3.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
-    tzdb-2022g.sh
+    tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.0.8.sh
-    c-ares-1.19.0.sh
+    openssl-3.1.0.sh
+    c-ares-1.19.1.sh
     cacert-2023-01-10.sh
-    nghttp2-1.52.0.sh
+    nghttp2-1.53.0.sh
     mcip.sh
 "
 
@@ -28,7 +28,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-7.88.1.sh
+    curl-8.1.1.sh
     nano-7.2.sh
     node-v18.14.1-linux-armv7l.sh
 "

@@ -5,20 +5,20 @@ CONTAINER_NAME="container_net-tools"
 ROOTFS_LIST="rootfs_list_net-tools.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.5.2.sh
+    Linux-PAM-1.5.3.sh
     zlib-1.2.13.sh
     lz4-1.9.4.sh
     lzo-2.10.sh
-    tzdb-2022g.sh
+    tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.0.8.sh
+    openssl-3.1.0.sh
     mcip.sh
     cacert-2023-01-10.sh
-    nghttp2-1.52.0.sh
-    libpcap-1.10.3.sh
+    nghttp2-1.53.0.sh
+    libpcap-1.10.4.sh
     libcap-ng-0.8.3.sh
     iptables-1.8.9.sh
-    c-ares-1.19.0.sh
+    c-ares-1.19.1.sh
     cJSON-1.7.15.sh
 "
 
@@ -28,10 +28,10 @@ PACKAGES_2="
     dropbear-2022.83.sh
     metalog-20220214.sh
     dnsmasq-2.89.sh
-    openvpn-2.6.0.sh
-    tcpdump-4.99.3.sh
+    openvpn-2.6.4.sh
+    tcpdump-4.99.4.sh
     iperf-3.12.sh
-    stunnel-5.68.sh
+    stunnel-5.69.sh
     HTTPing-2.9.sh
     libssh2-1.10.0.sh
     socat-2.0.0-b9.sh
@@ -39,8 +39,8 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-7.88.1.sh
-    nmap-7.93.sh
+    curl-8.1.1.sh
+    nmap-7.94.sh
     mosquitto-2.0.15.sh
 "
 

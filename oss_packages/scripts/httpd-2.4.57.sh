@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="httpd-2.4.55"
+PKG_DIR="httpd-2.4.57"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://artfiles.org/apache.org/httpd/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://dlcdn.apache.org/httpd/httpd-2.4.57.tar.gz"
+PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="b4413fc1c5f7138b67346bfc63b3d323"
+PKG_CHECKSUM="61035f41f8721eb1e45e2f5e697cbc13"
 
 
 

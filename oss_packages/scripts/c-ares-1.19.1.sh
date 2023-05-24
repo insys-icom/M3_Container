@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pymodbus-3.1.3"
+PKG_DIR="c-ares-1.19.1"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/67/96/36651fd37cd6adae9ed5885e9042d23f1320c3e513e09593248aee503b1e/pymodbus-3.1.3.tar.gz"
+#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="7187cac9be812ee80d614a1496424d77"
+PKG_CHECKSUM="dafc5825a92dc907e144570e4e75a908"
 
 
 
@@ -27,24 +27,26 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    true
+    cd "${PKG_BUILD_DIR}"
+    ./configure CFLAGS="${M3_CFLAGS}" \
+                LDFLAGS="${M3_LDFLAGS}" \
+                --target=${M3_TARGET} \
+                --host=${M3_TARGET} \
+                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
-    true
+    copy_overlay
+    cd "${PKG_BUILD_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/lib/python3.11/site-packages"
-    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/lib/python3.11/site-packages/"
-}
-
-uninstall_staging()
-{
-    rm -rf "${STAGING_DIR}/lib/python3.11/site-packages/pymodbus"*
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
