@@ -78,13 +78,12 @@
 			border-bottom-right-radius: 1.5em;
 		}
 
-		.sheet {
-			position: absolute;
-			left: 18em;
+		#content, html, body {
+			height: 100%;
 		}
 
-		.navi {
-			position: fixed;
+		#left {
+			float: left;
 			background: white;
 			text-align: left;
 			width: 17em;
@@ -95,6 +94,12 @@
 			padding-right: 0;
 			box-shadow: 0.25em 0.25em 0.25em lightgray;
 			border-radius: 0.75em;
+			overflow: auto;
+		}
+		#right {
+			float: left;
+			height: 100%;
+			overflow: auto;
 		}
 
 		.card {
@@ -145,7 +150,9 @@
 	</style>
 </head>
 
-<div class="navi">
+<div id="content">
+
+<div id="left">
 	<br>
 	<a href="#top">Types of containers</a><br><br>
 	Linux distributions<br>
@@ -169,10 +176,9 @@
 
 	<a href="#sdk">Software Development Kit (SDK)</a><br>
 	<a href="#scripts">Scripts to create your own container</a><br>
-</div>
+</div> <!-- end left -->
 
-<div class="sheet">
-
+<div id="right">
 <div class="card">
 	<h1 id="top">Containers for INSYS icom OS devices</h1>
 	<p><a href="https://www.insys-icom.com/en/products/router-gateways" target="_blank">INSYS icom OS devices</a> can
@@ -425,6 +431,8 @@
 	<!-- <div style="margin: 0 auto; width: 6em;">No cookies here!</div> -->
 </div>
 
-</div>
+</div> <!-- end right -->
+
+</div> <!-- end content -->
 </body>
 </html>
