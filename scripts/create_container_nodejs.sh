@@ -18,7 +18,7 @@ PACKAGES_1="
 "
 
 PACKAGES_2="
-    busybox-1.34.1.sh
+    busybox-1.36.1.sh
     dropbear-2022.83.sh
     metalog-20220214.sh
     dnsmasq-2.89.sh
