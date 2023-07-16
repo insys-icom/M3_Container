@@ -45,11 +45,11 @@ checksum()
 {
     GIVEN_SUM="$2"
     len="${#GIVEN_SUM}"
-    if [ "${len}" -eq "64" ] ; then
-        CALC_SUM=$(sha256sum $1 | cut -c -64)
+    if [ "${len}" -eq "32" ] ; then
+        CALC_SUM=$(md5sum $1 | cut -c -32)
         [ "${CALC_SUM}" = "${GIVEN_SUM}" ] && return 0
     else
-        CALC_SUM=$(md5sum $1 | cut -c -32)
+        CALC_SUM=$(sha256sum $1 | cut -c -64)
         [ "${CALC_SUM}" = "${GIVEN_SUM}" ] && return 0
     fi
 
