@@ -38,37 +38,44 @@ download()
     fi
 }
 
-# check md5 sum of a file
+# check sha256 or (obsolete) md5 sum of a file
 # $1 path to the file
-# $2 md5sum to compare with
-check_md5()
+# $2 given checksum to compare with
+checksum()
 {
-    CALC_SUM=$(md5sum $1 | cut -c -32)
-    [ "$2" = "${CALC_SUM}" ]
-    ret=$?
-    ! [ "${ret}" = "0" ] && echo "Checksum is ${CALC_SUM} but should be $2"
-    return "${ret}"
+    GIVEN_SUM="$2"
+    len="${#GIVEN_SUM}"
+    if [ "${len}" -eq "64" ] ; then
+        CALC_SUM=$(sha256sum $1 | cut -c -64)
+        [ "${CALC_SUM}" = "${GIVEN_SUM}" ] && return 0
+    else
+        CALC_SUM=$(md5sum $1 | cut -c -32)
+        [ "${CALC_SUM}" = "${GIVEN_SUM}" ] && return 0
+    fi
+
+    echo "Checksum is ${CALC_SUM} but should be $2"
+    return 1
 }
 
 # check source file in dl directory
 check_source()
 {
-    # MD5SUM test
+    # checksum test
     if [ -z "$PKG_ARCHIVE" -o -z "$PKG_ARCHIVE_FILE" ]; then
         echo "\$PKG_ARCHIVE/\$PKG_ARCHIVE_FILE is empty, skipping check_source()"
         return
     elif [ "${PKG_CHECKSUM}" = "none" ]; then
-        echo "\$PKG_CHECKSUM is set to none, skipping MD5SUM check"
+        echo "\$PKG_CHECKSUM is set to none, ignoring checksum"
         return
     elif [ -z "${PKG_CHECKSUM}" ]; then
-        exit_failure "\$PKG_CHECKSUM is not set, skipping MD5SUM check"
+        exit_failure "\$PKG_CHECKSUM is not set, ignoring checksum"
     else
-        check_md5 ${PKG_ARCHIVE} ${PKG_CHECKSUM}
+        checksum ${PKG_ARCHIVE} ${PKG_CHECKSUM}
         ret=$?
         if [ $ret -ne 0 ]; then
-          exit_failure "md5sum check failed"
+            exit_failure "Checksum is incorrect"
         else
-            echo "md5sum check OK"
+            echo "Checksum correct"
         fi
     fi
 }
