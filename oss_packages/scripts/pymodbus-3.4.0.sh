@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pyserial-3.5"
+PKG_DIR="pymodbus-3.4.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/1e/7d/ae3f0a63f41e4d2f6cb66a5b57197850f919f59e558159a4dd3a818f5082/pyserial-3.5.tar.gz"
+# PKG_DOWNLOAD="https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v${PKG_ARCHIVE_FILE##*-}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb"
+PKG_CHECKSUM="b1695fa8f6679407a9c2819c900581ac7ac56dfdd7b3162fc94850b257da23ac"
 
 
 
@@ -39,11 +39,12 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}/usr/local/lib/python3.11/site-packages"
-    cp -a "${PKG_BUILD_DIR}/serial" "${STAGING_DIR}/usr/local/lib/python3.11/site-packages/"
+    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/usr/local/lib/python3.11/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pyserial"*
+    rm -rf "${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus"*
 }
+
 . ${HELPERSDIR}/call_functions.sh

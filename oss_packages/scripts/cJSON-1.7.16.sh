@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="darkstat-3.0.719"
+PKG_DIR="cJSON-1.7.16"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD=""
+# PKG_DOWNLOAD="https://github.com/DaveGamble/cJSON/archive/refs/tags/v1.7.15.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="963145de05cb21f4d93a9c244beeaea0"
+PKG_CHECKSUM="451131a92c55efc5457276807fc0c4c2c2707c9ee96ef90c47d68852d5384c6c"
 
 
 
@@ -28,20 +28,23 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-
-    ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-                CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-                LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-                --target="${M3_TARGET}" \
-                --host="${M3_TARGET}" \
-                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
+    cmake \
+        -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
+        -DCMAKE_C_FLAGS="${M3_CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
+        -DCMAKE_AR=${AR} \
+        -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
+        -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
+        -DCMAKE_NM=${NM} \
+        -DCMAKE_RANLIB=${RANLIB} \
+        -DCMAKE_INSTALL_PREFIX="" \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make HOSTCC="gcc" HOSTCFLAGS="" ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 

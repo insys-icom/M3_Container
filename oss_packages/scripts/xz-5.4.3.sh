@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="metalog-metalog-20220214"
+PKG_DIR="xz-5.4.3"
 
-# name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+# name of the archive in dl directory
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
-# download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://github.com/hvisage/metalog/archive/refs/tags/${PKG_ARCHIVE_FILE#*-}"
+# download link for the sources to be stored in dl directory
+#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
-# md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="fdc00a7b41dbb7f18375352e4e3a37d5"
+# md5 checksum of archive in dl directory
+PKG_CHECKSUM="92177bef62c3824b4badc524f8abcce54a20b7dbcfb84cde0a2eb8b49159518c"
 
 
 
@@ -28,15 +28,22 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    autoreconf -i -f
-    ./configure CFLAGS="${M3_CFLAGS}" \
-                LDFLAGS="${M3_LDFLAGS}" \
-                PCRE2_CFLAGS="-I${STAGING_INCLUDE}" \
-                PCRE2_LIBS="-L${STAGING_LIB} -lpcre2-8" \
-                --target=${M3_TARGET} \
-                --host=${M3_TARGET} \
-                --prefix="" \
-                --with-unicode || exit_failure "failed to configure ${PKG_DIR}"
+    CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize" \
+    LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize" \
+        ./configure \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET} \
+        --disable-nls \
+        --enable-static \
+        --disable-lzmainfo \
+        --disable-lzmadec \
+        --disable-xzdec \
+        --disable-shared \
+        --disable-doc \
+        --disable-scripts \
+        --enable-small \
+        --prefix="" \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()

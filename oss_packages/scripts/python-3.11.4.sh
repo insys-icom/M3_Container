@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.11.2"
+PKG_DIR="Python-3.11.4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="a957cffb58a89303b62124896881950b"
+PKG_CHECKSUM="2f0e409df2ab57aa9fc4cbddfb976af44e4e55bf6f619eee6bc5c2297264a7f6"
 
 # Variable for the install path used in script
 PYTHON_VERSION="python3.11"
@@ -40,7 +40,7 @@ configure()
         --with-libc= \
         --without-ensurepip \
         --without-lto \
-        --with-doc-strings=no \
+        --without-doc-strings \
         --disable-test-modules \
         --without-static-libpython
 
@@ -66,16 +66,17 @@ configure()
         --host=${M3_TARGET} \
         --build=i686-pc-linux-gnu \
         --enable-ipv6 \
+        --enable-shared \
         --with-computed-gotos \
         --with-system-expat \
         --with-lto \
-        --with-doc-strings=no \
-        --enable-shared \
+        --without-doc-strings \
         --with-ssl-default-suites=openssl \
         --disable-test-modules \
         --with-openssl="${STAGING_DIR}" \
         --with-build-python="${PYTHON_HOST}/bin/python3" \
         --without-static-libpython \
+        --disable-test-modules \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 

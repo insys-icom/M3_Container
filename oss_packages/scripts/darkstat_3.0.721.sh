@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="libssh2-1.10.0"
+PKG_DIR="darkstat-3.0.721"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://www.libssh2.org/download/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://github.com/emikulic/darkstat/archive/refs/tags/3.0.721.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="f604ba083fad23bf715a9ecccc9f57f4"
+PKG_CHECKSUM="0b405a6c011240f577559d84db22684a6349b25067c3a800df12439783c25494"
 
 
 
@@ -28,18 +28,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
+    autoreconf -i -v -f
     ./configure \
         CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        LT_SYS_LIBRARY_PATH=-"${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
         --prefix="" \
-        --disable-largefile \
-        --disable-examples-build \
-        --with-libssl-prefix="${STAGING_DIR}" \
-        --with-libz-prefix="${STAGING_DIR}" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -47,12 +43,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-
-    # do not compile and install tests
-    echo "all:" > tests/Makefile
-    echo "install:" >> tests/Makefile
-
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make HOSTCC="gcc" HOSTCFLAGS="" ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 

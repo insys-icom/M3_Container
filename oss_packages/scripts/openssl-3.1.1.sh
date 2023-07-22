@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openssl-3.1.0"
+PKG_DIR="openssl-3.1.1"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="f6c520aa2206d4d1fa71ea30b5e9a56d"
+PKG_CHECKSUM="b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674"
 
 
 
@@ -43,7 +43,7 @@ configure()
     ./Configure ${OPENSSL_CONFIGURE_TARGET} \
         --cross-compile-prefix="${M3_CROSS_COMPILE}" \
         --prefix="/" \
-        --openssldir="/ssl" \
+        --openssldir="/etc/ssl" \
         no-camellia \
         no-seed \
         no-ssl \

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="readline-8.1"
+PKG_DIR="readline-8.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="e9557dd5b1409f5d7b37ef717c64518e"
+PKG_CHECKSUM="3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35"
 
 
 

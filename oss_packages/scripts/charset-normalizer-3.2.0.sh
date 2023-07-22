@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="cacert-2023-01-10.pem"
+PKG_DIR="charset-normalizer-3.2.0"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
+# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/2a/53/cf0a48de1bdcf6ff6e1c9a023f5f523dfe303e4024f216feac64b6eb7f67/charset-normalizer-3.2.0.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="e7cf471ba7c88f4e313f492a76e624b3"
+PKG_CHECKSUM="3bb3d25a8e6c0aedd251753a79ae98a093c7e7b471faa3aa9a93a81431987ace"
 
 
 
@@ -25,12 +25,7 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-unpack()
-{
-    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
-    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
-    cp "${PKG_ARCHIVE}" "${PKG_BUILD_DIR}"
-}
+PYTHON_VERSION="python3.11"
 
 configure()
 {
@@ -44,13 +39,14 @@ compile()
 
 install_staging()
 {
-    mkdir -p "${STAGING_DIR}/usr/share"
-    cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    cd "${PKG_BUILD_DIR}"
+    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
+    cp -a "${PKG_BUILD_DIR}/charset_normalizer" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -vf "${STAGING_DIR}/usr/share/cacert.pem"
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/charset_normalizer"
 }
 
 . ${HELPERSDIR}/call_functions.sh

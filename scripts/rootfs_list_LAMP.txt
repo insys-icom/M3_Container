@@ -41,6 +41,7 @@ dir /etc/service                0755 0 0
 dir /etc/service/metalog        0755 0 0
 dir /etc/service/httpd          0755 0 0
 dir /etc/service/dropbear       0755 0 0
+dir /etc/ssl                    0755 0 0
 dir /home                       0755 0 0
 dir /lib                        0755 0 0
 dir /lib/httpd                  0755 0 0
@@ -112,6 +113,7 @@ file /etc/pam.d/local                 ${SKELETON_DIR}/etc/pam.d/local           
 file /etc/pam.d/other                 ${SKELETON_DIR}/etc/pam.d/other                0644 0 0
 slink /etc/pam.d/login                local                                          0777 0 0
 slink /etc/pam.d/sshd                 login                                          0777 0 0
+slink /etc/ssl/cert.pem               /usr/share/cacert.pem                          0777 0 0
 
 file /etc/service/metalog/run         ${SKELETON_DIR}/etc/service/metalog/run        0755 0 0
 file /etc/service/dropbear/run        ${SKELETON_DIR}/etc/service/dropbear/run       0755 0 0

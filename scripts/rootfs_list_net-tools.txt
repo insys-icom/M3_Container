@@ -39,6 +39,7 @@ dir /etc/openvpn                0755 0 0
 dir /etc/openvpn/ccd            0755 0 0
 dir /etc/pam.d                  0755 0 0
 dir /etc/stunnel                0755 0 0
+dir /etc/ssl                    0755 0 0
 dir /home                       0755 0 0
 dir /lib                        0755 0 0
 dir /lib/security               0755 0 0
@@ -132,6 +133,7 @@ file /etc/pam.d/local                 ${SKELETON_DIR}/etc/pam.d/local           
 file /etc/pam.d/other                 ${SKELETON_DIR}/etc/pam.d/other                0644 0 0
 slink /etc/pam.d/login                local                                          0777 0 0
 slink /etc/pam.d/sshd                 login                                          0777 0 0
+slink /etc/ssl/cert.pem               /usr/share/cacert.pem                          0777 0 0
 file /etc/stunnel/stunnel.conf        ${STAGING_DIR}/etc/stunnel/stunnel.conf-sample 0644 0 0
 file /etc/openvpn/dhparams.pem        ${SKELETON_DIR}/etc/openvpn/dhparams.pem       0644 0 0
 file /etc/openvpn/client.ovpn         ${SKELETON_DIR}/etc/openvpn/client.ovpn        0644 0 0

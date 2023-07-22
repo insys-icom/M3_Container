@@ -36,6 +36,7 @@ dir /devices/cli_no_auth        0755 0 0
 dir /etc                        0755 0 0
 dir /etc/dropbear               0755 0 0
 dir /etc/pam.d                  0755 0 0
+dir /etc/ssl                    0755 0 0
 dir /home                       0755 0 0
 dir /lib                        0755 0 0
 dir /lib/security               0755 0 0
@@ -101,6 +102,7 @@ file /etc/pam.d/local                 ${SKELETON_DIR}/etc/pam.d/local           
 file /etc/pam.d/other                 ${SKELETON_DIR}/etc/pam.d/other                0644 0 0
 slink /etc/pam.d/login                local                                          0777 0 0
 slink /etc/pam.d/sshd                 login                                          0777 0 0
+slink /etc/ssl/cert.pem               /usr/share/cacert.pem                          0777 0 0
 
 file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
 file /lib/libnss_files.so.2           ${SYSROOT_DIR}/lib/libnss_files.so.2           0755 0 0
