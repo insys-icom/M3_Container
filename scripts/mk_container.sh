@@ -111,7 +111,7 @@ process_filesystem_list()
     FILESYSTEM_LIST="${SCRIPTSDIR}/${2}"
     FS_OUTFILE="${3}"
 
-    echo "-> Creating archive $FS_OUTFILE containing the root file system"
+    echo "  -> Creating archive $FS_OUTFILE containing the root file system"
     if ! [ -e "${FILESYSTEM_LIST}" ] ; then
         echo "   ERROR: the given list file \"${FILESYSTEM_LIST}\" does not exist"
         exit 1
@@ -212,50 +212,34 @@ process_filesystem_list()
     IFS=$OLDIFS
 }
 
-# try the normal and extreme compression, keep the best
-# in both cases compression level 6 is used, because 9 MiB of decompression RAM is enough
+# compression level 6 is used, because 9 MiB of decompression RAM is enough
 # and it will double with each higher compression level
 #
 # $1 file to compress
 # $2 compressed file
-compress_best()
+compress()
 {
     [ -z ${CPU_THREADS} ] && CPU_THREADS=2
-
-    xz -6 -T${CPU_THREADS} --keep --stdout "${1}" > "${2}.6" &
-    normal_pid="${!}"
-    xz -6e -T${CPU_THREADS} --keep --stdout "${1}" > "${2}.6e" &
-    extreme_pid="${!}"
-    wait ${normal_pid} ${extreme_pid}
-    normal_size=$(stat -c %s "${2}.6")
-    extreme_size=$(stat -c %s "${2}.6e")
-    if [ ${normal_size} -gt ${extreme_size} ] ; then
-        echo "-> Compressing with xz -6e (${normal_size} instead of ${extreme_size} bytes without -e)"
-        rm -f "${2}.6"
-        mv "${2}.6e" "${2}"
-    else
-        echo "-> Compressing with xz -6 (${extreme_size} instead of ${normal_size} bytes with -e)"
-        rm -f "${2}.6e"
-        mv "${2}.6" "${2}"
-    fi
+    xz -6 -T${CPU_THREADS} --keep --stdout "${1}" > "${2}"
+    echo "  -> Compressed image size: $(du -sh ${2} | cut -f1)"
 }
 
 # encrypt a packed rootfs with a random key.
 # The random key is encrypted with a locally stored RSA key pair and attached to the compressed root file system image
 encrypt()
 {
-    echo "-> Encypting compressed archive"
+    echo "  -> Encypting compressed archive"
 
     # abort in case there is no key to encrypt with
     if ! [ -e  "${SCRIPTSDIR}/keys/${KEY}" ] ; then
-        echo "-> Generating the public and private RSA key pair in file ${SCRIPTSDIR}/keys/${KEY}"
+        echo "  -> Generating the public and private RSA key pair in file ${SCRIPTSDIR}/keys/${KEY}"
         echo "   NEVER, EVER give this file to anyone!"
 
         # generate RSA key pair
         openssl genrsa -out "${SCRIPTSDIR}/keys/${KEY}" 2048 2> /dev/null
 
         # export public part of RSA key pair
-        echo "-> Export public key in separate file, load this file onto the router"
+        echo "  -> Export public key in separate file, load this file onto the router"
         openssl rsa -pubout -in "${SCRIPTSDIR}/keys/${KEY}" -out "${SCRIPTSDIR}/keys/${KEY}.router" -outform PEM 2> /dev/null
 
         # ATTENTION! Yes, it is true! Upload the _PUBLIC_ part of the key pair to the router
@@ -301,7 +285,7 @@ main()
     process_filesystem_list "create_tar" "${FILESYSTEM_LIST}" "${UPDATE_TAR}"
 
     # compress the tar with xz
-    compress_best "${UPDATE_TAR}" "${UPDATE_TAR_XZ}"
+    compress "${UPDATE_TAR}" "${UPDATE_TAR_XZ}"
     rm "${UPDATE_TAR}"
 
     # rename the image
@@ -313,7 +297,6 @@ main()
     fi
 
     # create a update packet consisting of the root FS of the container and the MANIFEST
-    echo "-> Creating MANIFEST"
     FILESIZE="$(stat -c %s "${BUILD_DIR}/update/${FILENAME}.tar.xz")"
     MD5SUM="$(md5sum "${BUILD_DIR}/update/${FILENAME}.tar.xz" | cut -b1-32)"
     MANIFEST="${BUILD_DIR}/update/MANIFEST"
@@ -334,7 +317,7 @@ main()
     # get rid of the working files
     rm -Rf "${BUILD_DIR}/update"
 
-    echo -en "\nFinal update packet with the container is stored in ${CONTAINER_FILENAME}\n"
+    echo -en "  -> Final update packet with the container is stored in ${CONTAINER_FILENAME}\n\n"
 }
 
 main "${@}"

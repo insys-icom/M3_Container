@@ -9,7 +9,7 @@ TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 
 package() {
     echo ""
-    echo "Packaging the container:"
+    echo "Packaging the container \"${CONTAINER_NAME}\":"
     echo "--------------------------------------------"
     ${TOPDIR}/scripts/mk_container.sh -n "${CONTAINER_NAME}" -l "${ROOTFS_LIST}" -d "${DESCRIPTION}" -v "1.0"
 }
