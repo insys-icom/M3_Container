@@ -57,6 +57,7 @@ dir /usr                        0755 0 0
 dir /usr/local                  0755 0 0
 dir /usr/share                  0755 0 0
 dir /usr/share/nano             0755 0 0
+dir /usr/share/nano/extra       0755 0 0
 dir /usr/share/terminfo         0755 0 0
 dir /usr/share/terminfo/x       0755 0 0
 dir /usr/share/zoneinfo         0755 0 0
