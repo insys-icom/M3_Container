@@ -44,6 +44,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
+    mkdir -p "${PKG_BUILD_DIR}/usr/bin"
     cp install/usr/bin/wg "${STAGING_DIR}/usr/bin" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
