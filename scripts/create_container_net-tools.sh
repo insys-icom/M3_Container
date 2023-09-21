@@ -20,6 +20,7 @@ PACKAGES_1="
     iptables-1.8.9.sh
     c-ares-1.19.1.sh
     cJSON-1.7.16.sh
+    wireguard-tools-v1.0.20210914.sh
 "
 
 PACKAGES_2="

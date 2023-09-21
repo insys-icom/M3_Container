@@ -14,6 +14,7 @@
 #      - tcpdump                                        #
 #      - iperf                                          #
 #      - openvpn (read info in ~/openvpn.txt)           #
+#      - wg (wireguard)                                 #
 #      - httping                                        #
 #      - curl                                           #
 #      - iptables                                       #
@@ -22,6 +23,6 @@
 #      - nping                                          #
 #      - ncat                                           #
 #      - socat                                          #
-#      - mosquitto                                      #
+#      - mosquitto (MQTT broker)                        #
 #                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
