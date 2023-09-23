@@ -154,8 +154,8 @@
 
 <div id="left">
     <br>
-    <a href="#top">Types of containers</a><br><br>
-    Linux distributions<br>
+    <a href="#top">Where to start</a><br><br>
+    Linux distribution containers<br>
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#alpine">Alpine Linux</a><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#debian">Debian</a><br>
     <br>
@@ -168,7 +168,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#net-tools">Net tools</a><br>
         <br>
 
-    Container products / applications<br>
+    Ready-to-use containers<br>
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#ids">icom Data Suite (iDS)</a><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anyviz">AnyViz Cloud Adapter</a><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<a href="#nodered">Node-RED</a><br>
@@ -188,39 +188,25 @@
 </div>
 
 <div class="card">
-    <h2 id="types">Types of containers</h2>
-    <p>To get to your own container with your functionality, there are at least three entry levels:</p>
+    <h2 id="types">Where to start</h2>
+    <p>Use this <a href="Poster_Container_en.pdf">poster (pdf)</a> to find your personal entry level to containers. There are at least four entry levels:</p>
     <ol type="A">
-        <li><h3>Use a complete distribution</h3>
-            <p>There are containers with <a href="#alpine">Alpine Linux</a> and <a href="#debian">Debian</a>.
-                These are perfect for fast prototyping or a PoC (Proof of Concept), because you get results very fast
-                by using the provided package managers (apk, apt).
-                The disadvantage is, that these containers get huge very fast because of all the dependencies of the pre compiled packages.</p>
+        <li><h3>Ready-to-use containers</h3>
+            <p>Products like our <a href="#ids">icom Data Suite (iDS)</a>, products from partners like <a href="#anyviz">AnyViz</a> or community based setups like <a href="#nodered">Node-RED</a> allow configuring instead of programming additional functionality.
         </li>
 
-        <li><h3>Use a basic container</h3>
-            <p>This is a good option in case you want to implement scripts in one of the offered interpreted programming languages
-                (e.g. <a href="#python">Python</a>, <a href="#nodejs">NodeJS</a>, <a href="#basic">ash</a>, <a href="#LAMP">PHP</a>), where no compiler is needed.
-                You can even develop within the running container on the device.
-                This is a good compromise between container size and functionality.
-                A disadvantage of this option is, that you do not have control over the basic container, so it could be problematic
-                to add further packets or modules or update the interpreter and its lib.
-            </p>
+        <li><h3>Well known Linux distributions</h3>
+            <p>Containers like <a href="#alpine">Alpine Linux</a> or <a href="#debian">Debian</a> come with their own package managers (apk, apt).
         </li>
 
-        <li><h3>Create your own container</h3>
+        <li><h3>Basic containers</h3>
+            <p>These very small containers come with script languages like <a href="#python">Python</a>, <a href="#nodejs">NodeJS</a>, <a href="#basic">ash</a>, <a href="#LAMP">PHP</a>).</p>
+        </li>
+
+        <li><h3>Develop your own container</h3>
             <p>This is the developers choice: Install the <a href="#sdk">SDK</a> (as <a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a>
-                or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared <a href="#scripts">build scripts</a> and create the containers from scratch.
-                This is also the way, how the basic containers are created. Creating containers with this means:</p>
-            <ul>
-                <li>the resulting containers will have a minimal footprint</li>
-                <li>you are in charge of every single bit that gets included</li>
-                <li>you can reproduce the build of an container</li>
-                <li>this could be automated by integrating these scripts into your CI/CD pipeline</li>
-                <li>updating the individual components is easy</li>
-                <li>most likely this will create the most stable and secure containers:
-                    What's not included, can't break -  what's not running, can't get hacked</li>
-            </ul>
+                or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared <a href="#scripts">build scripts</a> and create containers from scratch.
+                This is how the basic containers are created.</p>
         </li>
     </ol>
 </div>
