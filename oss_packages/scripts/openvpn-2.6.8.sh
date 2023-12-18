@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openvpn-2.6.5"
+PKG_DIR="openvpn-2.6.8"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="e34efdb9a3789a760cfc91d57349dfb1e31da169c98c06cb490c6a8a015638e2"
+PKG_CHECKSUM="5ede1565c8a6d880100f7f235317a7ee9eea83d5052db5547f13a9e76af7805d"
 
 
 

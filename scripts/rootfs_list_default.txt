@@ -84,7 +84,7 @@ slink /bin/set-output                 /bin/mcip-tool                            
 slink /bin/cli-cmd                    /bin/mcip-tool                                 0777 0 0
 slink /bin/container                  /bin/mcip-tool                                 0777 0 0
 
-slink /etc/hosts                      /data/etc/hosts                                0644 0 0
+file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner.txt                 0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0

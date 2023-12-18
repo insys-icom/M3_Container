@@ -11,7 +11,7 @@ PACKAGES_1="
     lzo-2.10.sh
     tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.1.1.sh
+    openssl-3.2.0.sh
     mcip.sh
     cacert-2023-05-30.sh
     nghttp2-1.55.1.sh
@@ -29,14 +29,14 @@ PACKAGES_2="
     dropbear-2022.83.sh
     metalog-20230719.sh
     dnsmasq-2.89.sh
-    openvpn-2.6.5.sh
+    openvpn-2.6.8.sh
     tcpdump-4.99.4.sh
     iperf-3.12.sh
     stunnel-5.70.sh
     HTTPing-2.9.sh
     libssh2-1.11.0.sh
     socat-2.0.0-b9.sh
-    libwebsockets-4.3.2.sh
+    libwebsockets-4.3.3.sh
 "
 
 PACKAGES_3="

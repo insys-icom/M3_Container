@@ -8,7 +8,7 @@ wget_check() {
 
 # wget_check <URL to check> <text to parse in the retrieved HTML>  <additional wget parameter>
 wget_check "lz4"        "https://github.com/lz4/lz4"                            ">LZ4 v1.9.4</span>" ""
-wget_check "openssl"    "https://www.openssl.org/source"                        "openssl-3.1.1.tar.gz" ""
+wget_check "openssl"    "https://www.openssl.org/source"                        "openssl-3.2.0.tar.gz" ""
 wget_check "pcre2"      "https://github.com/PhilipHazel/pcre2"                  ">PCRE2-10.42</span>" ""
 wget_check "timezone"   "https://www.iana.org/time-zones"                       "Released 2023-03-28" ""
 wget_check "zlib"       "https://www.zlib.net"                                  "zlib 1.2.13" ""
@@ -39,7 +39,7 @@ wget_check "apr-util"   "https://apr.apache.org"                                
 wget_check "httpd"      "https://httpd.apache.org"                              "Apache httpd 2.4.57 Released" ""
 wget_check "php"        "https://www.php.net/downloads"                         "Current Stable</span>\n    PHP 8.2.8" ""
 wget_check "nmap"       "https://nmap.org/dist"                                 "The latest Nmap release is version 7.94" ""
-wget_check "openvpn"    "https://fossies.org/linux/openvpn/ChangeLog"           "openvpn-2.6.5/ChangeLog" ""
+wget_check "openvpn"    "https://fossies.org/linux/openvpn/ChangeLog"           "openvpn-2.6.8/ChangeLog" ""
 wget_check "HTTPing"    "https://github.com/folkertvanheusden/HTTPing"          ">v2.9</span>" ""
 wget_check "libcap-ng"  "https://people.redhat.com/sgrubb/libcap-ng"            "Latest Release is 0.8.3" ""
 wget_check "libpcap"    "https://www.tcpdump.org/index.html#latest-releases"    ">libpcap-1.10.4.tar.gz</a>" ""

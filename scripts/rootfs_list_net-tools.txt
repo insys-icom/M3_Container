@@ -112,7 +112,7 @@ file /bin/mosquitto_rr                ${STAGING_DIR}/usr/local/bin/mosquitto_rr 
 file /bin/mosquitto_sub               ${STAGING_DIR}/usr/local/bin/mosquitto_sub     0755 0 0
 file /bin/wg                          ${STAGING_DIR}/usr/bin/wg                      0755 0 0
 
-slink /etc/hosts                      /data/etc/hosts                                0644 0 0
+file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner_net-tools.txt       0644 0 0
 file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
 file /etc/inittab                     ${SKELETON_DIR}/etc/inittab_net-tools          0644 0 0

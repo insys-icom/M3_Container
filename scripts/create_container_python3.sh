@@ -10,7 +10,7 @@ PACKAGES_1="
     lz4-1.9.4.sh
     tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.1.1.sh
+    openssl-3.2.0.sh
     libuuid-1.0.3.sh
     expat-2.5.0.sh
     libffi-3.4.4.sh

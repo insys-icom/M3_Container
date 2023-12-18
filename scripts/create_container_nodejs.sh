@@ -10,7 +10,7 @@ PACKAGES_1="
     lz4-1.9.4.sh
     tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.1.1.sh
+    openssl-3.2.0.sh
     c-ares-1.19.1.sh
     cacert-2023-05-30.sh
     nghttp2-1.55.1.sh

@@ -9,7 +9,7 @@ PACKAGES_1="
     zlib-1.2.13.sh
     tzdb-2023c.sh
     pcre2-10.42.sh
-    openssl-3.1.1.sh
+    openssl-3.2.0.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
     nghttp2-1.55.1.sh
