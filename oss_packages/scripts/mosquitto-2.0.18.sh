@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="mosquitto-2.0.15"
+PKG_DIR="mosquitto-2.0.18"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="22b7a8b05caa692cb22496b791529193"
+PKG_CHECKSUM="d665fe7d0032881b1371a47f34169ee4edab67903b2cd2b4c083822823f4448a"
 
 
 

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.4.3"
+PKG_DIR="stunnel-5.71"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://www.stunnel.org/downloads/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="92177bef62c3824b4badc524f8abcce54a20b7dbcfb84cde0a2eb8b49159518c"
+PKG_CHECKSUM="f023aae837c2d32deb920831a5ee1081e11c78a5d57340f8e6f0829f031017f5"
 
 
 
@@ -28,21 +28,16 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize" \
-    LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize" \
-        ./configure \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --disable-nls \
-        --enable-static \
-        --disable-lzmainfo \
-        --disable-lzmadec \
-        --disable-xzdec \
-        --disable-shared \
-        --disable-doc \
-        --disable-scripts \
-        --enable-small \
+    ./configure \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --prefix="" \
+        --disable-systemd \
+        --disable-fips \
+        --disable-libwrap \
+        --with-ssl="${STAGING_DIR}" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -51,13 +46,13 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

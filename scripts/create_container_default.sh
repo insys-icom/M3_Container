@@ -6,9 +6,9 @@ ROOTFS_LIST="rootfs_list_default.txt"
 
 PACKAGES_1="
     Linux-PAM-1.5.3.sh
-    zlib-1.2.13.sh
+    zlib-1.3.sh
     lz4-1.9.4.sh
-    tzdb-2023c.sh
+    tzdb-2023d.sh
     pcre2-10.42.sh
     openssl-3.2.0.sh
     mcip.sh

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="urllib3-2.0.4"
+PKG_DIR="c-ares-1.24.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/31/ab/46bec149bbd71a4467a3063ac22f4486ecd2ceb70ae8c70d5d8e4c2a7946/urllib3-2.0.4.tar.gz"
+#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="8d22f86aae8ef5e410d4f539fde9ce6b2113a001bb4d189e0aed70642d602b11"
+PKG_CHECKSUM="c517de6d5ac9cd55a9b72c1541c3e25b84588421817b5f092850ac09a8df5103"
 
 
 
@@ -25,28 +25,28 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-PYTHON_VERSION="python3.11"
-
 configure()
 {
-    true
+    cd "${PKG_BUILD_DIR}"
+    ./configure CFLAGS="${M3_CFLAGS}" \
+                LDFLAGS="${M3_LDFLAGS}" \
+                --target=${M3_TARGET} \
+                --host=${M3_TARGET} \
+                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
-    true
+    copy_overlay
+    cd "${PKG_BUILD_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/urllib3" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
-}
-
-uninstall_staging()
-{
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/urllib3"
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

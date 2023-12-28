@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nghttp2-1.55.1"
+PKG_DIR="libcap-ng-0.8.4"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://github.com/nghttp2/nghttp2/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://people.redhat.com/sgrubb/libcap-ng/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="19490b7c8c2ded1cf7c3e3a54ef4304e3a7876ae2d950d60a81d0dc6053be419"
+PKG_CHECKSUM="68581d3b38e7553cb6f6ddf7813b1fc99e52856f21421f7b477ce5abd2605a8a"
 
 
 
@@ -29,19 +29,12 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
         CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        OPENSSL_CFLAGS="-I${STAGING_INCLUDE}" \
-        OPENSSL_LIBS="-lssl -lcrypto -L${STAGING_LIB}" \
-        ZLIB_CFLAGS="-I${STAGING_INCLUDE}" \
-        ZLIB_LIBS="-lz -L${STAGING_LIB}" \
-        LIBCARES_CFLAGS="-I${STAGING_INCLUDE}" \
-        LIBCARES_LIBS="-lcares -L${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
         --prefix="" \
-        --enable-lib-only \
-        --enable-static \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -50,8 +43,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" \
-         install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
@@ -59,5 +51,10 @@ install_staging()
     cd "${PKG_BUILD_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
+
+# uninstall_staging()
+# {
+#     rm -vf "${STAGING_DIR}/path/to/file"
+# }
 
 . ${HELPERSDIR}/call_functions.sh

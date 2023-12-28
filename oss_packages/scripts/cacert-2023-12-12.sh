@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="c-ares-1.19.1"
+PKG_DIR="cacert-2023-12-12.pem"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="dafc5825a92dc907e144570e4e75a908"
+PKG_CHECKSUM="ccbdfc2fe1a0d7bbbb9cc15710271acf1bb1afe4c8f1725fe95c4c7733fcbe5a"
 
 
 
@@ -25,28 +25,32 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
+unpack()
+{
+    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
+    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
+    cp "${PKG_ARCHIVE}" "${PKG_BUILD_DIR}"
+}
+
 configure()
 {
-    cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS}" \
-                LDFLAGS="${M3_LDFLAGS}" \
-                --target=${M3_TARGET} \
-                --host=${M3_TARGET} \
-                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
+    true
 }
 
 compile()
 {
-    copy_overlay
-    cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    true
 }
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    mkdir -p "${STAGING_DIR}/usr/share"
+    cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+}
+
+uninstall_staging()
+{
+    rm -vf "${STAGING_DIR}/usr/share/cacert.pem"
 }
 
 . ${HELPERSDIR}/call_functions.sh

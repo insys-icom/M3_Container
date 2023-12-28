@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="zlib-1.2.13"
+PKG_DIR="node-v20.10.0-linux-armv7l"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://www.zlib.net/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://nodejs.org/dist/v20.20.0/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="9b8aa094c4e5765dabf4da391f00d15c"
+PKG_CHECKSUM="2e84bc3051554c123216122daa23e3933472992a6552963dbda3a18866c4b34a"
 
 
 
@@ -27,25 +27,26 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    cd "${PKG_BUILD_DIR}"
-    export CFLAGS="${M3_CFLAGS}"
-    export LDFLAGS="${M3_LDFLAGS}"
-    export CHOST="${M3_TARGET}"
-    ./configure --prefix=""
+    true
 }
 
 compile()
 {
-    copy_overlay
-    cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
-    make prefix="${PKG_INSTALL_DIR}" install
+    true
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make prefix="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    cp -a bin/node "${STAGING_DIR}/bin"
+    cp -a lib/* "${STAGING_LIB}"
+}
+
+uninstall_staging()
+{
+    cd "${STAGING_DIR}"
+    rm -Rf bin/node
+    rm -Rf "${STAGING_LIB}/node_modules}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

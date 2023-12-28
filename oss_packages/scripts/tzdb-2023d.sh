@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="tzdb-2023c"
+PKG_DIR="tzdb-2023d"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://data.iana.org/time-zones/releases/tzdb-2023c.tar.lz"
+#PKG_DOWNLOAD="https://data.iana.org/time-zones/releases/tzdb-2023d.tar.lz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="1bfcbe9e211a46df07c82c9dcbe092e9"
+PKG_CHECKSUM="533f5b86807c1a04cba4cf753a9c99d3e98f985980086c109ebe8c77b31bd38b"
 
 
 
