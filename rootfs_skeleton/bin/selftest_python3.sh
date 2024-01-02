@@ -4,14 +4,9 @@
 # print a small python script using SSL
 echo -en "
 #!/bin/python
-try:
-    import ssl
-except:
-    if ssl.RAND_status() == 1:
-        exit(0)
-    else:
-        exit(1)
+import ssl
 " > /tmp/selftest_python.py
 
 /bin/python /tmp/selftest_python.py
+[ "$?" == 0 ] && echo "Python selftest script successful!"
 exit $?
