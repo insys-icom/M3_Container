@@ -18,7 +18,7 @@ Installation
     <pre>
     user@host ~ # <b>su root</b>
     Password:
-    root@host ~ # <b>tar xf *PATH_OF_THE_DOWNLOADES_SDK_ARCHIVE* -C /var/lib/lxc</b>
+    root@host ~ # <b>tar xf *PATH_OF_THE_DOWNLOADED_SDK_ARCHIVE* -C /var/lib/lxc</b>
     </pre>
 
 3. Find out the UID and GID of the user on your host machine, with that you login normally. For most installations they are both 1000. In that case, you can skip this.
