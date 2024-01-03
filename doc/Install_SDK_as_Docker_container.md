@@ -49,6 +49,8 @@ Create the Docker image
     root@/home/joe/m3sdk # <b>docker build -t m3sdk .</b>
     </pre>
 
+6. Delete the downloaded and also the extracted tar archive, as they are not needed any longer
+
 Start the Docker container
 ---
 From now on you can start Docker containers. Optionally mount directories as volumes into the container. After starting your container, you will see these mounted directories, as you do on your host computer. That way you can work on the same files from within the container and on your host PC. This avoids the need to copy files into and from the LXC container.
