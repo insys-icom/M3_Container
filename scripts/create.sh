@@ -65,7 +65,7 @@ echo "--------------------------------------------"
 uninstall() {
     for PACKAGE in ${@} ; do
         echo "    Uninstall ${PACKAGE}"
-        ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} uninstall_staging >> "${BUILD_DIR}/${PACKAGE}.log" 2>&1 || exit_failure "Could not download ${PACKAGE}"
+        ${OSS_PACKAGES_SCRIPTS}/${PACKAGE} uninstall_staging >> "${BUILD_DIR}/${PACKAGE}.log" 2>&1 || exit_failure "Could not uninstall ${PACKAGE}"
     done
 }
 uninstall ${PACKAGES_1}
