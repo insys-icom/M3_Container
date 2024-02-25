@@ -119,12 +119,12 @@ unpack()
             unzip -d "${BUILD_DIR}" "${PKG_ARCHIVE}" || exit_failure "Unable to extract ${PKG_ARCHIVE}"
             [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
         fi
-
         if [ "${PKG_ARCHIVE##*.}" = "tar" -o \
              "${PKG_ARCHIVE##*.}" = "tgz" -o \
              "${PKG_ARCHIVE##*.}" = "gz" -o \
              "${PKG_ARCHIVE##*.}" = "xz" -o \
              "${PKG_ARCHIVE##*.}" = "bz2" -o \
+             "${PKG_ARCHIVE##*.}" = "lz" -o \
              "${PKG_ARCHIVE##*.}" = "xz" ]; then
             tar -C "${BUILD_DIR}" -xf "${PKG_ARCHIVE}" || exit_failure "Unable to extract ${PKG_ARCHIVE}"
             [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"

@@ -1,0 +1,11 @@
+dir /bin            0755 0 0
+dir /etc            0755 0 0
+dir /etc/dropbear   0755 0 0
+
+file /bin/dropbearmulti         ${STAGING_DIR}/bin/dropbearmulti 0755 0 0
+slink /bin/dropbear             dropbearmulti                    0777 0 0
+slink /bin/scp                  dropbearmulti                    0777 0 0
+slink /bin/ssh                  dropbearmulti                    0777 0 0
+slink /bin/dropbearkey          dropbearmulti                    0777 0 0
+slink /bin/dropbearconvert      dropbearmulti                    0777 0 0
+slink /bin/dbclient             dropbearmulti                    0777 0 0

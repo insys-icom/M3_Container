@@ -4,7 +4,8 @@ closed_packages/*
 !closed_packages/container_pcap
 
 images/*
-!images/.keep
+!images/amd64/.keep
+!images/armv7/.keep
 
 oss_packages/dl
 !oss_packages/dl/.keep
@@ -13,11 +14,12 @@ scripts/keys/*
 !scripts/keys/.keep
 
 rootfs_staging/*
-!rootfs_staging/.keep
+!rootfs_staging/amd64/.keep
+!rootfs_staging/armv7/.keep
 
 working/*
-!working/.keep
-
+!working/amd64/.keep
+!working/armv7/.keep
 
 # ignore single files
 rootfs_skeleton/usr/share/build

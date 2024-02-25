@@ -42,6 +42,7 @@ configure()
         -DLWS_WITH_HTTP2=1 \
         -DLWS_IPV6=ON \
         -DLWS_UNIX_SOCK=ON \
+        -DLWS_HAVE_LIBCAP=OFF \
         -DLWS_WITH_LEJP=ON \
         -DLWS_WITH_LEJP_CONF=ON \
         -DLWS_WITHOUT_TESTAPPS=ON \

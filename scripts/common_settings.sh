@@ -1,22 +1,46 @@
 #!/bin/sh
+
 # use all CPU cores of host
 export CPU_THREADS=$(grep processor /proc/cpuinfo | wc -l)
 
-# create optimized build
-M3_CFLAGS="-Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections"
-M3_LDFLAGS="-Wl,--as-needed -Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections"
+if [ "${ARCH}" == "amd64" ] ; then
+    M3_CFLAGS="-Os -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections -Wno-nonnull-compare"
+    M3_LDFLAGS="-Wl,--as-needed -Os -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections -Wno-nonnull-compare"
 
-# build with sanitizer
-# M3_CFLAGS="-Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8 -fno-common -fsanitize=address"
-# M3_LDFLAGS="-Wl,--as-needed -Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8 -fno-common -lstdc++ -fsanitize=address"
-#  -fsanitize=undefined is a bit too much
+    M3_TARGET=x86_64-pc-linux-gnu
+    M3_CROSS_COMPILE=${M3_TARGET}-
 
-# build for gdb / valgrind
-# M3_CFLAGS="-Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8"
-# M3_LDFLAGS="-Wl,--as-needed -Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8"
+    GCC_VERSION=$(ls /usr/lib/gcc/${M3_TARGET} | sort | tail -n 1)
+    GCC_LIB_DIR="/usr/lib/gcc/${M3_TARGET}/${GCC_VERSION}/"
+    SYSROOT_DIR="/lib64"
+    PATH="$PATH:/usr/x86_64-pc-linux-gnu/gcc-bin/${GCC_VERSION}"
 
-M3_TARGET=armv7a-hardfloat-linux-gnueabi
-M3_CROSS_COMPILE=${M3_TARGET}-
+    # prefere self compiled libs in rootfs_staging
+    LD_LIBRARY_PATH="${STAGING_LIB}"
+else
+    ARCH=armv7
+
+    # create optimized build
+    M3_CFLAGS="-Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections"
+    M3_LDFLAGS="-Wl,--as-needed -Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections"
+
+    # build with sanitizer
+    # M3_CFLAGS="-Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8 -fno-common -fsanitize=address"
+    # M3_LDFLAGS="-Wl,--as-needed -Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8 -fno-common -lstdc++ -fsanitize=address"
+    #  -fsanitize=undefined is a bit too much
+
+    # build for gdb / valgrind
+    # M3_CFLAGS="-Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8"
+    # M3_LDFLAGS="-Wl,--as-needed -Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8"
+
+    M3_TARGET=armv7a-hardfloat-linux-gnueabi
+    M3_CROSS_COMPILE=${M3_TARGET}-
+
+    GCC_VERSION=$(ls /usr/lib/gcc/armv7a-hardfloat-linux-gnueabi | sort  | tail -n 1)
+    GCC_LIB_DIR="/usr/lib/gcc/armv7a-hardfloat-linux-gnueabi/${GCC_VERSION}/"
+    SYSROOT_DIR="/usr/armv7a-hardfloat-linux-gnueabi"
+    PATH="$PATH:/usr/i686-pc-linux-gnu/armv7a-hardfloat-linux-gnueabi/gcc-bin/${GCC_VERSION}"
+fi
 
 export AR=$(which ${M3_CROSS_COMPILE}gcc-ar)
 export NM=$(which ${M3_CROSS_COMPILE}gcc-nm)
@@ -29,23 +53,18 @@ OSS_PACKAGES_SCRIPTS="${OSS_PACKAGES_DIR}/scripts"
 DOWNLOADS_DIR="${OSS_PACKAGES_DIR}/dl"
 SOURCES_DIR="${OSS_PACKAGES_DIR}/src"
 CLOSED_PACKAGES_DIR="${TOPDIR}/closed_packages"
-KEYS_DIR="${TOPDIR}/../Container_Sepia/keys"
-
-BUILD_DIR=$(realpath "${TOPDIR}/working/")
-STAGING_DIR="${TOPDIR}/rootfs_staging"
+BUILD_DIR="${TOPDIR}/working/${ARCH}"
+STAGING_DIR="${TOPDIR}/rootfs_staging/${ARCH}"
 STAGING_INCLUDE="${STAGING_DIR}/include"
 STAGING_LIB="${STAGING_DIR}/lib"
-
-FS_TARGET_DIR=$(realpath "${TOPDIR}/working/rootfs_target")
+FS_TARGET_DIR="${BUILD_DIR}/rootfs_target"
 TARGET_DIR="${FS_TARGET_DIR}/rootfs"
-SKELETON_DIR=$(realpath "${TOPDIR}/rootfs_skeleton")
-
-# use the latest available compiler version
-GCC_VERSION=$(ls /usr/lib/gcc/armv7a-hardfloat-linux-gnueabi | sort  | tail -n 1)
-GCC_LIB_DIR="/usr/lib/gcc/armv7a-hardfloat-linux-gnueabi/${GCC_VERSION}/"
-SYSROOT_DIR="/usr/armv7a-hardfloat-linux-gnueabi"
-PATH="$PATH:/usr/i686-pc-linux-gnu/armv7a-hardfloat-linux-gnueabi/gcc-bin/${GCC_VERSION}"
-
-OUTPUT_DIR=$(realpath "${TOPDIR}/images")
-
+SKELETON_DIR="${TOPDIR}/rootfs_skeleton"
+OUTPUT_DIR="${TOPDIR}/images/${ARCH}"
 UPDATE_TAR="${BUILD_DIR}/update/update.tar"
+
+exit_failure()
+{
+    echo $*
+    exit 1
+}

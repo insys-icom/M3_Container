@@ -1,4 +1,8 @@
 # define the prompt
-export PS1="\[\033[0;32m\]\u@$(/bin/cat /usr/share/image_name) \[\033[1;34m\]\w \[\033[0m\] $ "
-export PATH="/bin:"
-export TERM="xterm"
+if [ -e /usr/share/image_name ] ; then
+    HOSTNAME=$(/bin/cat /usr/share/image_name)
+else
+    HOSTNAME="container"
+fi
+export PS1="\[\033[0;32m\]\u@${HOSTNAME} \[\033[1;34m\]\w \[\033[0m\] $ "
+export PATH="/bin"
