@@ -133,6 +133,8 @@ include snippets/python_${ARCH}.txt
 #############################
 # additional Python modules #
 #############################
+dir /usr/local/lib/python3.11/site-packages 755 0 0
+
 # execute in rootfs_staging/$ARCH:
 # ../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/usr/local/lib/python3.11/site-packages/*/' | sed 's| ./usr/local/lib/python3.11/site-packages/| ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/|' | sort > ../list.txt
 dir /usr/local/lib/python3.11/site-packages/certifi 755 0 0
