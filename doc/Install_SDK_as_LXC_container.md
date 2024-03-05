@@ -29,7 +29,7 @@ Installation
     1005
     </pre>
 
-    Modify the UID and GID of the user "user" of the LXC container, so they the same as the users UID and GID of your host computers user. In this example UID is 1001 and GID is 1005:
+    Modify the UID and GID of the user "user" of the LXC container, so they are the same as the users UID and GID of your host computers user. In this example UID is 1001 and GID is 1005:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/passwd</b>
     ...
@@ -42,7 +42,7 @@ Installation
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/config</b>
     </pre>
 
-    Replace the the line with user <b>YOUR_USER_NAME</b> with the real user name of your host system, to replace the home directory in the SDK with your users home directory:
+    Replace the line with user <b>YOUR_USER_NAME</b> with the real user name of your host system, to replace the home directory in the SDK with your users home directory:
     <pre>
     lxc.mount.entry = /home/<b>*YOUR_USER_NAME*</b> home/user defaults rw,bind 0 0
     </pre>
@@ -50,7 +50,7 @@ Installation
 
 Start the LXC container
 ---
-Starting and stopping a container may require root permissions on the host system. This will start the container and immediatelly auto log in as "user". Most of the time you only need a single terminal within the SDK, so you could start the container in foreground:
+Starting and stopping a container may require root permissions on the host system. This will start the container and immediately auto log in as "user". Most of the time you only need a single terminal within the SDK, so you could start the container in foreground:
 <pre>
 user@host ~ # <b>su root</b>
 Password:
