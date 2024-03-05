@@ -1135,7 +1135,6 @@ file /usr/local/lib/python3.11/site-packages/urllib3/exceptions.py ${STAGING_DIR
 file /usr/local/lib/python3.11/site-packages/urllib3/fields.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/fields.py 644 0 0
 file /usr/local/lib/python3.11/site-packages/urllib3/filepost.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/filepost.py 644 0 0
 file /usr/local/lib/python3.11/site-packages/urllib3/poolmanager.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/poolmanager.py 644 0 0
-file /usr/local/lib/python3.11/site-packages/urllib3/py.typed ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/py.typed 644 0 0
 file /usr/local/lib/python3.11/site-packages/urllib3/response.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/response.py 644 0 0
 file /usr/local/lib/python3.11/site-packages/urllib3/util/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/__init__.py 644 0 0
 file /usr/local/lib/python3.11/site-packages/urllib3/util/connection.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/connection.py 644 0 0
