@@ -1,0 +1,35 @@
+
+dir /usr                        0755 0 0
+dir /usr/share                  0755 0 0
+dir /usr/share/zoneinfo         0755 0 0
+
+file /usr/share/zoneinfo/GMT           ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT        0644 0 0
+file /usr/share/zoneinfo/GMT-1         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+1      0644 0 0
+file /usr/share/zoneinfo/GMT-10        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+10     0644 0 0
+file /usr/share/zoneinfo/GMT-11        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+11     0644 0 0
+file /usr/share/zoneinfo/GMT-12        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+12     0644 0 0
+file /usr/share/zoneinfo/GMT-2         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+2      0644 0 0
+file /usr/share/zoneinfo/GMT-3         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+3      0644 0 0
+file /usr/share/zoneinfo/GMT-4         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+4      0644 0 0
+file /usr/share/zoneinfo/GMT-5         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+5      0644 0 0
+file /usr/share/zoneinfo/GMT-6         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+6      0644 0 0
+file /usr/share/zoneinfo/GMT-7         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+7      0644 0 0
+file /usr/share/zoneinfo/GMT-8         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+8      0644 0 0
+file /usr/share/zoneinfo/GMT-9         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT+9      0644 0 0
+file /usr/share/zoneinfo/GMT+1         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-1      0644 0 0
+file /usr/share/zoneinfo/GMT+10        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-10     0644 0 0
+file /usr/share/zoneinfo/GMT+11        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-11     0644 0 0
+file /usr/share/zoneinfo/GMT+12        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-12     0644 0 0
+file /usr/share/zoneinfo/GMT+13        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-13     0644 0 0
+file /usr/share/zoneinfo/GMT+14        ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-14     0644 0 0
+file /usr/share/zoneinfo/GMT+2         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-2      0644 0 0
+file /usr/share/zoneinfo/GMT+3         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-3      0644 0 0
+file /usr/share/zoneinfo/GMT+4         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-4      0644 0 0
+file /usr/share/zoneinfo/GMT+5         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-5      0644 0 0
+file /usr/share/zoneinfo/GMT+6         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-6      0644 0 0
+file /usr/share/zoneinfo/GMT+7         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-7      0644 0 0
+file /usr/share/zoneinfo/GMT+8         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-8      0644 0 0
+file /usr/share/zoneinfo/GMT+9         ${STAGING_DIR}/usr/share/zoneinfo/Etc/GMT-9      0644 0 0
+file /usr/share/zoneinfo/UTC           ${STAGING_DIR}/usr/share/zoneinfo/Etc/UTC        0644 0 0
+file /usr/share/zoneinfo/Regensburg    ${STAGING_DIR}/usr/share/zoneinfo/Europe/Berlin  0644 0 0
+slink /etc/localtime                   /usr/share/zoneinfo/Regensburg                   0644 0 0

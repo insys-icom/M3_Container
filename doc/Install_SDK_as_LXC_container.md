@@ -42,7 +42,7 @@ Installation
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/config</b>
     </pre>
 
-    Replace the line with user <b>YOUR_USER_NAME</b> with the real username of your host system, to replace the home directory in the SDK with your users home directory:
+    Replace the line with user <b>YOUR_USER_NAME</b> with the real user name of your host system, to replace the home directory in the SDK with your users home directory:
     <pre>
     lxc.mount.entry = /home/<b>*YOUR_USER_NAME*</b> home/user defaults rw,bind 0 0
     </pre>

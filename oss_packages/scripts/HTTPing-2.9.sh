@@ -29,6 +29,9 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
 
+    # avoid dependency to ncurses
+    rm -f test_ncurses.c test_ncurses2.c
+
     CC="${M3_CROSS_COMPILE}gcc" \
     CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
     LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \

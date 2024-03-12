@@ -1,0 +1,18 @@
+dir /bin 0755 0 0
+dir /etc 0755 0 0
+dir /lib 0755 0 0
+
+file /etc/mcip.conf     ${SKELETON_DIR}/etc/mcip.conf  0644 0 0
+
+file /lib/libmcip.so.1  ${STAGING_DIR}/lib/libmcip.so  0644 0 0
+
+file /bin/mcip          ${STAGING_DIR}/usr/bin/mcip    0755 0 0
+file /bin/console       ${STAGING_DIR}/usr/bin/console 0755 0 0
+file /bin/mcip-tool     ${STAGING_DIR}/bin/mcip-tool   0755 0 0
+slink /bin/sms-tool     /bin/mcip-tool                 0777 0 0
+slink /bin/get-input    /bin/mcip-tool                 0777 0 0
+slink /bin/get-pulses   /bin/mcip-tool                 0777 0 0
+slink /bin/set-output   /bin/mcip-tool                 0777 0 0
+slink /bin/cli-cmd      /bin/mcip-tool                 0777 0 0
+slink /bin/container    /bin/mcip-tool                 0777 0 0
+

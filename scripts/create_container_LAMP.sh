@@ -5,18 +5,18 @@ CONTAINER_NAME="container_LAMP"
 ROOTFS_LIST="rootfs_list_LAMP.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.5.3.sh
+    Linux-PAM-1.6.0.sh
     zlib-1.3.sh
-    tzdb-2023d.sh
-    pcre2-10.42.sh
-    openssl-3.2.0.sh
+    tzdb-2024a.sh
+    pcre2-10.43.sh
+    openssl-3.2.1.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
-    nghttp2-1.58.0.sh
+    nghttp2-1.59.0.sh
     jansson-2.14.sh
     cacert-2023-12-12.sh
     mcip.sh
-    expat-2.5.0.sh
+    expat-2.6.0.sh
     libxml2-v2.9.14.sh
 "
 
@@ -26,7 +26,7 @@ PACKAGES_2="
     dropbear-2022.83.sh
     metalog-20230719.sh
     apr-util-1.6.1.sh
-    sqlite-src-3440200.sh
+    sqlite-src-3450100.sh
     ncurses-6.4.sh
 "
 
@@ -36,8 +36,8 @@ PACKAGES_3="
 "
 
 PACKAGES_4="
-    php-8.3.1.sh
+    php-8.3.3.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
-. $(realpath $(dirname ${BASH_SOURCE[0]}))/create.sh $1
+. $(realpath $(dirname ${BASH_SOURCE[0]}))/create.sh "${@}"

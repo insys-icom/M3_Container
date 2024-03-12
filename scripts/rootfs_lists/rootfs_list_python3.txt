@@ -1,0 +1,391 @@
+# This file contains a list of all files which will be copied to rootfs_target
+#
+# This container will only use applets from busybox, nothing else
+#
+# Syntax:
+#    # is a comment, these lines will be ignored
+#    file <name> <location> <mode> <uid> <gid> [<hard links>]
+#    dir <name> <mode> <uid> <gid>
+#    slink <name> <target> <mode> <uid> <gid>
+#    pipe <name> <mode> <uid> <gid>
+#    sock <name> <mode> <uid> <gid>
+#
+#    <name>       name of the file in the containers root file system
+#    <location>   location of the file where it should be copied from
+#    <target>     link target
+#    <mode>       mode/permissions of the file as octect
+#    <uid>        user id (0=root)
+#    <gid>        group id (0=root)
+#    <hard links> space separated list of other links to file
+#    <wildcard>   copies all files of a directory non-recursively and does not strip the files
+#
+#
+#     !!! DO NOT USE TABULATORS !!!
+
+dir /                           0755 0 0
+dir /bin                        0755 0 0
+dir /data                       0755 0 0
+dir /data/etc                   0755 0 0
+dir /dev                        0755 0 0
+dir /devices                    0755 0 0
+dir /devices/cli_no_auth        0755 0 0
+dir /etc                        0755 0 0
+dir /etc/dropbear               0755 0 0
+dir /etc/ssl                    0755 0 0
+dir /home                       0755 0 0
+dir /lib                        0755 0 0
+dir /licence                    0755 0 0
+dir /proc                       0755 0 0
+dir /root                       0700 0 0
+dir /root/.ssh                  0700 0 0
+dir /shared                     0755 0 0
+dir /sys                        0755 0 0
+dir /tmp                        0777 0 0
+dir /usr                        0755 0 0
+dir /usr/local                  0755 0 0
+dir /usr/share                  0755 0 0
+dir /usr/share/terminfo         0755 0 0
+dir /usr/share/terminfo/x       0755 0 0
+dir /usr/share/zoneinfo         0755 0 0
+dir /var                        0755 0 0
+dir /var/log                    0755 0 0
+dir /var/spool                  0755 0 0
+dir /var/spool/cron             0755 0 0
+dir /var/spool/cron/crontabs    0755 0 0
+
+include snippets/busybox.txt
+include snippets/dropbear.txt
+include snippets/mcip-tool.txt
+include snippets/pam.txt
+include snippets/syslibs_${ARCH}.txt
+include snippets/nano.txt
+include snippets/timezone.txt
+
+file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
+file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
+file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_python3.sh        0755 0 0
+file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh              0755 0 0
+file /bin/sqlite3                     ${STAGING_DIR}/bin/sqlite3                     0755 0 0
+file /bin/openssl                     ${STAGING_DIR}/bin/openssl                     0755 0 0
+slink /bin/pip                        /bin/pip3                                      0777 0 0
+
+file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
+file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner_python.txt          0644 0 0
+file /etc/group                       ${SKELETON_DIR}/etc/group                      0644 0 0
+file /etc/inittab                     ${SKELETON_DIR}/etc/inittab                    0644 0 0
+file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf               0644 0 0
+file /etc/nanorc                      ${SKELETON_DIR}/etc/nanorc                     0644 0 0
+file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
+file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
+file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
+file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0640 0 0
+file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                     0640 0 0
+file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
+file /etc/protocols                   ${SKELETON_DIR}/etc/protocols                  0644 0 0
+slink /etc/ssl/cert.pem               /usr/share/cacert.pem                          0777 0 0
+file /etc/pip.conf                    ${SKELETON_DIR}/etc/pip.conf                   0644 0 0
+
+file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
+file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1                 0644 0 0
+file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
+file /lib/libsqlite3.so.0             ${STAGING_DIR}/lib/libsqlite3.so.0             0644 0 0
+file /lib/libexpat.so.1               ${STAGING_DIR}/lib/libexpat.so.1               0755 0 0
+slink /lib/libexpat.so                libexpat.so.1                                  0777 0 0
+file /lib/libuuid.so.1                ${STAGING_DIR}/lib/libuuid.so.1                0755 0 0
+file /lib/libffi.so.8                 ${STAGING_DIR}/lib/libffi.so.8                 0755 0 0
+file /lib/libssl.so.3                 ${STAGING_DIR}/lib/libssl.so                   0644 0 0
+file /lib/libcrypto.so.3              ${STAGING_DIR}/lib/libcrypto.so                0644 0 0
+
+file /lib/libformw.so.6               ${STAGING_DIR}/lib/libformw.so.6               0755 0 0
+file /lib/libmenuw.so.6               ${STAGING_DIR}/lib/libmenuw.so.6               0755 0 0
+file /lib/libncursesw.so.6            ${STAGING_DIR}/lib/libncursesw.so.6            0755 0 0
+file /lib/libpanelw.so.6              ${STAGING_DIR}/lib/libpanelw.so.6              0755 0 0
+file /lib/libtinfow.so.6              ${STAGING_DIR}/lib/libtinfow.so.6              0755 0 0
+
+file /usr/share/terminfo/x/xterm      ${STAGING_DIR}/usr/share/terminfo/x/xterm      0644 0 0
+file /usr/share/terminfo/x/xterm-utf8 ${STAGING_DIR}/usr/share/terminfo/x/xterm-utf8 0644 0 0
+slink /lib/terminfo                   /usr/share/terminfo                            0777 0 0
+
+file /root/readme.txt                 ${SKELETON_DIR}/root/readme.txt                0644 0 0
+
+slink /run                            tmp/run                                        0777 0 0
+slink /sbin                           bin                                            0777 0 0
+slink /usr/bin                        ../bin                                         0777 0 0
+slink /usr/sbin                       ../bin                                         0777 0 0
+
+file /usr/share/version               ${SKELETON_DIR}/usr/share/version              0644 0 0
+file /usr/share/build                 ${SKELETON_DIR}/usr/share/build                0644 0 0
+file /usr/share/downloadable          ${SKELETON_DIR}/usr/share/downloadable         0644 0 0
+file /usr/share/content.html          ${SKELETON_DIR}/usr/share/content_python3.html 0644 0 0
+file /usr/share/cacert.pem            ${STAGING_DIR}/usr/share/cacert.pem            0644 0 0
+
+slink /var/lock                       /tmp/lock                                      0777 0 0
+slink /var/run                        /tmp/run                                       0777 0 0
+
+############################
+# Python files             #
+############################
+# create these lines automatically by executing the next line in "rootfs_staging/usr/local/"
+# ../../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep -v '/share/' | grep -v '__pycache__' | grep -v 'tkinter' | grep -v 'lib2to3' | grep -v '/include/' | grep -v '/site-packages' | grep -v 'turtledemo' | sed 's| ./| ${STAGING_DIR}/usr/local/|' | sed 's|file /lib|file /usr/local/lib|' | sed 's|dir /lib|dir /usr/local/lib|' |  sort > ../list.txt
+
+include snippets/python_${ARCH}.txt
+
+
+#############################
+# additional Python modules #
+#############################
+dir /usr/local/lib/python3.11/site-packages 755 0 0
+
+# execute in rootfs_staging/$ARCH:
+# ../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/usr/local/lib/python3.11/site-packages/*/' | sed 's| ./usr/local/lib/python3.11/site-packages/| ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/|' | sort > ../list.txt
+dir /usr/local/lib/python3.11/site-packages/certifi 755 0 0
+dir /usr/local/lib/python3.11/site-packages/charset_normalizer 755 0 0
+dir /usr/local/lib/python3.11/site-packages/charset_normalizer/cli 755 0 0
+dir /usr/local/lib/python3.11/site-packages/idna 755 0 0
+dir /usr/local/lib/python3.11/site-packages/paho 755 0 0
+dir /usr/local/lib/python3.11/site-packages/paho/mqtt 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus.egg-info 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/client 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/datastore 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/framer 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/repl 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/repl/client 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/repl/server 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/server 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/server/reactive 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator 755 0 0
+dir /usr/local/lib/python3.11/site-packages/pymodbus/transport 755 0 0
+dir /usr/local/lib/python3.11/site-packages/requests 755 0 0
+dir /usr/local/lib/python3.11/site-packages/serial 755 0 0
+dir /usr/local/lib/python3.11/site-packages/serial/threaded 755 0 0
+dir /usr/local/lib/python3.11/site-packages/serial/tools 755 0 0
+dir /usr/local/lib/python3.11/site-packages/serial/urlhandler 755 0 0
+dir /usr/local/lib/python3.11/site-packages/test 755 0 0
+dir /usr/local/lib/python3.11/site-packages/urllib3 755 0 0
+dir /usr/local/lib/python3.11/site-packages/urllib3/contrib 755 0 0
+dir /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten 755 0 0
+dir /usr/local/lib/python3.11/site-packages/urllib3/util 755 0 0
+file /usr/local/lib/python3.11/site-packages/AUTHORS.rst ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/AUTHORS.rst 644 0 0
+file /usr/local/lib/python3.11/site-packages/CHANGELOG.rst ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/CHANGELOG.rst 644 0 0
+file /usr/local/lib/python3.11/site-packages/LICENSE ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/LICENSE 644 0 0
+file /usr/local/lib/python3.11/site-packages/MANIFEST.in ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/MANIFEST.in 644 0 0
+file /usr/local/lib/python3.11/site-packages/PKG-INFO ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/PKG-INFO 644 0 0
+file /usr/local/lib/python3.11/site-packages/README.rst ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/README.rst 644 0 0
+file /usr/local/lib/python3.11/site-packages/README.txt ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/README.txt 644 0 0
+file /usr/local/lib/python3.11/site-packages/certifi/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/certifi/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/certifi/core.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/certifi/core.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/__main__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/__main__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/api.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/api.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/cd.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/cd.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/cli/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/cli/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/cli/__main__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/cli/__main__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/constant.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/constant.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/legacy.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/legacy.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/md.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/md.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/models.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/models.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/py.typed ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/py.typed 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/utils.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/utils.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/charset_normalizer/version.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/charset_normalizer/version.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/codec.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/codec.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/compat.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/compat.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/core.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/core.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/idnadata.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/idnadata.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/intranges.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/intranges.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/package_data.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/package_data.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/py.typed ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/py.typed 644 0 0
+file /usr/local/lib/python3.11/site-packages/idna/uts46data.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/idna/uts46data.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/client.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/client.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/matcher.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/matcher.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/packettypes.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/packettypes.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/properties.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/properties.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/publish.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/publish.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/reasoncodes.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/reasoncodes.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/subscribe.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/subscribe.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/paho/mqtt/subscribeoptions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/paho/mqtt/subscribeoptions.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/PKG-INFO ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/PKG-INFO 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/SOURCES.txt ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/SOURCES.txt 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/dependency_links.txt ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/dependency_links.txt 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/entry_points.txt ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/entry_points.txt 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/requires.txt ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/requires.txt 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/top_level.txt ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/top_level.txt 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus.egg-info/zip-safe ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus.egg-info/zip-safe 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/bit_read_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/bit_read_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/bit_write_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/bit_write_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/base.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/base.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/mixin.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/mixin.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/serial.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/serial.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/tcp.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/tcp.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/tls.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/tls.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/client/udp.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/client/udp.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/constants.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/constants.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/datastore/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/datastore/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/datastore/context.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/datastore/context.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/datastore/remote.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/datastore/remote.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/datastore/simulator.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/datastore/simulator.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/datastore/store.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/datastore/store.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/device.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/device.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/diag_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/diag_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/events.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/events.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/exceptions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/exceptions.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/factory.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/factory.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/file_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/file_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/ascii_framer.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/ascii_framer.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/base.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/base.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/binary_framer.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/binary_framer.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/rtu_framer.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/rtu_framer.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/socket_framer.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/socket_framer.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/framer/tls_framer.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/framer/tls_framer.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/logging.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/logging.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/mei_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/mei_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/other_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/other_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/payload.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/payload.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/pdu.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/pdu.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/py.typed ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/py.typed 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/register_read_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/register_read_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/register_write_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/register_write_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/client/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/client/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/client/completer.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/client/completer.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/client/helper.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/client/helper.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/client/main.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/client/main.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/client/mclient.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/client/mclient.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/server/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/server/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/server/cli.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/server/cli.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/repl/server/main.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/repl/server/main.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/async_io.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/async_io.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/reactive/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/reactive/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/reactive/default_config.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/reactive/default_config.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/reactive/main.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/reactive/main.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/custom_actions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/custom_actions.py 755 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/http_server.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/http_server.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/main.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/main.py 755 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/setup.json ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/setup.json 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple120.png ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple120.png 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple152.png ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple152.png 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple60.png ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple60.png 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple76.png ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/apple76.png 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/favicon.ico ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/favicon.ico 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/calls ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/calls 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/log ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/log 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/pymodbus_icon_original.png ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/pymodbus_icon_original.png 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/registers ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/registers 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/server ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/generator/server 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/index.html ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/index.html 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/pymodbus.css ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/pymodbus.css 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/welcome.html ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/server/simulator/web/welcome.html 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/transaction.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/transaction.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/transport/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/transport/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/transport/serialtransport.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/transport/serialtransport.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/transport/stub.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/transport/stub.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/transport/transport.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/transport/transport.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pymodbus/utilities.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pymodbus/utilities.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/pyproject.toml ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pyproject.toml 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/__version__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/__version__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/_internal_utils.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/_internal_utils.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/adapters.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/adapters.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/api.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/api.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/auth.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/auth.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/certs.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/certs.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/compat.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/compat.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/cookies.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/cookies.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/exceptions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/exceptions.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/help.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/help.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/hooks.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/hooks.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/models.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/models.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/packages.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/packages.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/sessions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/sessions.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/status_codes.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/status_codes.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/structures.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/structures.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/requests/utils.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/requests/utils.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/__main__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/__main__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/rfc2217.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/rfc2217.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/rs485.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/rs485.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/serialcli.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/serialcli.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/serialjava.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/serialjava.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/serialposix.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/serialposix.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/serialutil.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/serialutil.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/serialwin32.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/serialwin32.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/threaded/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/threaded/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/hexlify_codec.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/hexlify_codec.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/list_ports.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/list_ports.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/list_ports_common.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/list_ports_common.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/list_ports_linux.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/list_ports_linux.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/list_ports_osx.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/list_ports_osx.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/list_ports_posix.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/list_ports_posix.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/list_ports_windows.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/list_ports_windows.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/tools/miniterm.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/tools/miniterm.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_alt.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_alt.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_cp2110.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_cp2110.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_hwgrep.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_hwgrep.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_loop.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_loop.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_rfc2217.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_rfc2217.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_socket.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_socket.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_spy.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/urlhandler/protocol_spy.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/serial/win32.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/serial/win32.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/setup.cfg ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/setup.cfg 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_device.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_device.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_events.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_events.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_exceptions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_exceptions.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_factory.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_factory.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_file_message.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_file_message.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_framers.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_framers.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_logging.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_logging.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_network.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_network.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_payload.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_payload.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_pdu.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_pdu.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_remote_datastore.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_remote_datastore.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_sparse_datastore.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_sparse_datastore.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_transaction.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_transaction.py 755 0 0
+file /usr/local/lib/python3.11/site-packages/test/test_utilities.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/test/test_utilities.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/_base_connection.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/_base_connection.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/_collections.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/_collections.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/_request_methods.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/_request_methods.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/_version.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/_version.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/connection.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/connection.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/connectionpool.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/connectionpool.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/connection.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/connection.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/emscripten_fetch_worker.js ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/emscripten_fetch_worker.js 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/fetch.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/fetch.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/request.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/request.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/response.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/emscripten/response.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/pyopenssl.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/pyopenssl.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/contrib/socks.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/contrib/socks.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/exceptions.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/exceptions.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/fields.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/fields.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/filepost.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/filepost.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/http2.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/http2.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/poolmanager.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/poolmanager.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/py.typed ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/py.typed 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/response.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/response.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/__init__.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/__init__.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/connection.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/connection.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/proxy.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/proxy.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/request.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/request.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/response.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/response.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/retry.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/retry.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/ssl_.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/ssl_.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/ssl_match_hostname.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/ssl_match_hostname.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/ssltransport.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/ssltransport.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/timeout.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/timeout.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/url.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/url.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/util.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/util.py 644 0 0
+file /usr/local/lib/python3.11/site-packages/urllib3/util/wait.py ${STAGING_DIR}/usr/local/lib/python3.11/site-packages/urllib3/util/wait.py 644 0 0
