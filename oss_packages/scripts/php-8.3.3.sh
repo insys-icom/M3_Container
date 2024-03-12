@@ -31,8 +31,7 @@ configure()
     copy_overlay
     ac_cv_lib_curl_curl_easy_perform=yes \
     ./configure \
-        PKG_CONFIG=pkg-config \
-        PKG_CONFIG_LIBDIR="${STAGING_LIB}/pkgconfig" \
+        PKG_CONFIG=/bin/false \
         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_INCLUDE}/apr-1" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         LIBS="-L${STAGING_LIB}" \
