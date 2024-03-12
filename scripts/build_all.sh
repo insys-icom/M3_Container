@@ -4,11 +4,11 @@ SCRIPTS=$(realpath $(dirname ${BASH_SOURCE[0]}))
 TOPDIR=$(realpath ${SCRIPTS}/..)
 ARCHITECTURES="amd64"
 
-#for ARCH in "${ARCHITECTURES}"; do
-#    rm -Rf "${TOPDIR}"/working/"${ARCH}"/*
-#    rm -Rf "${TOPDIR}"/images/"${ARCH}"/*
-#    rm -Rf "${TOPDIR}"/rootfs_staging/"${ARCH}"/*
-#done
+for ARCH in "${ARCHITECTURES}"; do
+    rm -Rf "${TOPDIR}"/working/"${ARCH}"/*
+    rm -Rf "${TOPDIR}"/images/"${ARCH}"/*
+    rm -Rf "${TOPDIR}"/rootfs_staging/"${ARCH}"/*
+done
 
 P_1=""
 P_2=""
@@ -70,7 +70,7 @@ PACKAGES_4="${P_4}"
 
 for ARCH in "${ARCHITECTURES}"; do
     # build all the OSS packages
-    #. "${SCRIPTS}"/create.sh do_not_package -a "${ARCH}"
+    . "${SCRIPTS}"/create.sh do_not_package -a "${ARCH}"
 
     # create all Update Packets
     for i in $(ls ${SCRIPTS}); do
