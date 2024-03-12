@@ -15,7 +15,7 @@ PACKAGES_1="
     expat-2.6.0.sh
     libffi-3.4.6.sh
     xz-5.4.6.sh
-    cacert-2023-12-12.sh
+    cacert-2024-03-11.sh
     certifi.sh
     charset-normalizer-3.3.2.sh
     idna-3.6.sh

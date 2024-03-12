@@ -12,7 +12,7 @@ PACKAGES_1="
     pcre2-10.43.sh
     openssl-3.2.1.sh
     c-ares-1.27.0.sh
-    cacert-2023-12-12.sh
+    cacert-2024-03-11.sh
     nghttp2-1.59.0.sh
     mcip.sh
 "

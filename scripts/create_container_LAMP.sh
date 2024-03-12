@@ -14,7 +14,7 @@ PACKAGES_1="
     libuuid-1.0.3.sh
     nghttp2-1.59.0.sh
     jansson-2.14.sh
-    cacert-2023-12-12.sh
+    cacert-2024-03-11.sh
     mcip.sh
     expat-2.6.0.sh
     libxml2-v2.9.14.sh
