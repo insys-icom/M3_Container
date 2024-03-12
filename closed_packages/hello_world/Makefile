@@ -4,13 +4,13 @@ TOPDIR = $(abspath $(PWD)/../..)
 # PWD does not append a final /, so we can use notdir to get the folder name we are in
 PROJECT_NAME = $(notdir $(PWD))
 
-include $(TOPDIR)/scripts/common_settings.mk
+include $(TOPDIR)/scripts/common_settings_armv7.mk
 
 CFLAGS = -Wall -I$(STAGING_DIR)/include $(OPTIMIZE_CFLAGS)
 LDFLAGS = $(OPTIMIZE_LDFLAGS)
 
-BUILD_DIR := $(TOPDIR)/working/$(PROJECT_NAME)
-STAGING_DIR := $(TOPDIR)/rootfs_staging/
+BUILD_DIR := $(TOPDIR)/working/$(ARCH)/$(PROJECT_NAME)
+STAGING_DIR := $(TOPDIR)/rootfs_staging/$(ARCH)/
 
 INCLUDES := $(wildcard *.h)
 
