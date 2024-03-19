@@ -67,7 +67,7 @@ file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_python3.sh   
 file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh              0755 0 0
 file /bin/sqlite3                     ${STAGING_DIR}/bin/sqlite3                     0755 0 0
 file /bin/openssl                     ${STAGING_DIR}/bin/openssl                     0755 0 0
-slink /bin/pip                        /bin/pip3                                      0777 0 0
+slink /bin/pip                        /usr/local/bin/pip3                            0777 0 0
 
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner_python.txt          0644 0 0
