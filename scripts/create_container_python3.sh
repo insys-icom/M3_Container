@@ -5,7 +5,7 @@ CONTAINER_NAME="container_python3"
 ROOTFS_LIST="rootfs_list_python3.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.6.0.sh
+    Linux-PAM-1.6.1.sh
     zlib-1.3.sh
     lz4-1.9.4.sh
     tzdb-2024a.sh
@@ -29,7 +29,7 @@ PACKAGES_1="
 
 PACKAGES_2="
     busybox-1.36.1.sh
-    dropbear-2022.83.sh
+    dropbear-2024.84.sh
     sqlite-src-3450100.sh
     metalog-20230719.sh
     ncurses-6.4.sh
