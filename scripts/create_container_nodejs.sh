@@ -11,9 +11,9 @@ PACKAGES_1="
     tzdb-2024a.sh
     pcre2-10.43.sh
     openssl-3.2.1.sh
-    c-ares-1.27.0.sh
+    c-ares-1.28.1.sh
     cacert-2024-03-11.sh
-    nghttp2-1.59.0.sh
+    nghttp2-1.61.0.sh
     mcip.sh
 "
 
@@ -27,7 +27,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-8.6.0.sh
+    curl-8.7.1.sh
     nano-7.2.sh
     node-v20.10.0-linux-armv7l.sh
 "

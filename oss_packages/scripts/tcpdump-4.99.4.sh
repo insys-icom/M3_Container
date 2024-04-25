@@ -4,14 +4,14 @@
 PKG_DIR="tcpdump-4.99.4"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
 #PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="d90471c90f780901e591807927ef0f07"
+PKG_CHECKSUM="93c46aafd8946c47136275a22dfdc9b5ca1c5c5018995b6ab8505f7006ac5ffc"
 
 
 

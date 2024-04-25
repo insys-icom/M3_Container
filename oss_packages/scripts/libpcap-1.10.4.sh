@@ -4,14 +4,14 @@
 PKG_DIR="libpcap-1.10.4"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
 # PKG_DOWNLOAD="https://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="0322e28dd76cda8066bb6d00fee5969b"
+PKG_CHECKSUM="ce62241f0dea7c8130df7b80d6b0ccb7b3f084a32fc891dffc01bf61b75cbb86"
 
 
 

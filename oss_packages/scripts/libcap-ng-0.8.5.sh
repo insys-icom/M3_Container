@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="c-ares-1.27.0"
+PKG_DIR="libcap-ng-0.8.5"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://people.redhat.com/sgrubb/libcap-ng/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="0a72be66959955c43e2af2fbd03418e82a2bd5464604ec9a62147e37aceb420b"
+PKG_CHECKSUM="3ba5294d1cbdfa98afaacfbc00b6af9ed2b83e8a21817185dfd844cc8c7ac6ff"
 
 
 
@@ -28,12 +28,14 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS}" \
-                LDFLAGS="${M3_LDFLAGS}" \
-                --disable-tests \
-                --target=${M3_TARGET} \
-                --host=${M3_TARGET} \
-                --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
+    ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
@@ -47,7 +49,12 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
+
+# uninstall_staging()
+# {
+#     rm -vf "${STAGING_DIR}/path/to/file"
+# }
 
 . ${HELPERSDIR}/call_functions.sh

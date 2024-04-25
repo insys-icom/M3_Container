@@ -12,11 +12,11 @@ PACKAGES_1="
     openssl-3.2.1.sh
     apr-1.7.0.sh
     libuuid-1.0.3.sh
-    nghttp2-1.59.0.sh
+    nghttp2-1.61.0.sh
     jansson-2.14.sh
     cacert-2024-03-11.sh
     mcip.sh
-    expat-2.6.0.sh
+    expat-2.6.2.sh
     libxml2-v2.9.14.sh
 "
 
@@ -36,7 +36,7 @@ PACKAGES_3="
 "
 
 PACKAGES_4="
-    php-8.3.3.sh
+    php-8.3.6.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

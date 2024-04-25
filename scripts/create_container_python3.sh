@@ -12,18 +12,18 @@ PACKAGES_1="
     pcre2-10.43.sh
     openssl-3.2.1.sh
     libuuid-1.0.3.sh
-    expat-2.6.0.sh
+    expat-2.6.2.sh
     libffi-3.4.6.sh
     xz-5.4.6.sh
     cacert-2024-03-11.sh
     certifi.sh
     charset-normalizer-3.3.2.sh
-    idna-3.6.sh
+    idna-3.7.sh
     requests-2.31.0.sh
     urllib3-2.2.1.sh
     paho.mqtt.eclipse-1.6.1.sh
     pyserial-3.5.sh
-    pymodbus-3.6.4.sh
+    pymodbus-3.6.8.sh
     mcip.sh
 "
 

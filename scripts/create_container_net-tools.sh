@@ -14,11 +14,11 @@ PACKAGES_1="
     openssl-3.2.1.sh
     mcip.sh
     cacert-2024-03-11.sh
-    nghttp2-1.59.0.sh
+    nghttp2-1.61.0.sh
     libpcap-1.10.4.sh
-    libcap-ng-0.8.4.sh
+    libcap-ng-0.8.5.sh
     iptables-1.8.10.sh
-    c-ares-1.27.0.sh
+    c-ares-1.28.1.sh
     cJSON-1.7.17.sh
     wireguard-tools-v1.0.20210914.sh
 "
@@ -29,7 +29,7 @@ PACKAGES_2="
     dropbear-2024.84.sh
     metalog-20230719.sh
     dnsmasq-2.90.sh
-    openvpn-2.6.9.sh
+    openvpn-2.6.10.sh
     tcpdump-4.99.4.sh
     iperf-3.12.sh
     stunnel-5.72.sh
@@ -40,7 +40,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-8.6.0.sh
+    curl-8.7.1.sh
     nmap-7.94.sh
     mosquitto-2.0.18.sh
 "
