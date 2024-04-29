@@ -2,7 +2,8 @@
 
 [ "$1" == "do_nothing" ] && return
 
-[ "ARCH" ] || ARCH="armv7"
+[ -n "${ARCH}" ] ||  ARCH="armv7"
+
 TASK=""
 DO_NOT_PACKAGE=0
 SCRIPTSDIR=$(dirname $0)
