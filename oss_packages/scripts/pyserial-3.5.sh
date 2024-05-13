@@ -25,6 +25,8 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
+PYTHON_VERSION="python3.12"
+
 configure()
 {
     true
@@ -38,12 +40,12 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/usr/local/lib/python3.11/site-packages"
-    cp -a "${PKG_BUILD_DIR}/serial" "${STAGING_DIR}/usr/local/lib/python3.11/site-packages/"
+    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
+    cp -a "${PKG_BUILD_DIR}/serial" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/python3.11/site-packages/pyserial"*
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/pyserial"*
 }
 . ${HELPERSDIR}/call_functions.sh

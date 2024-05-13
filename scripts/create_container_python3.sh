@@ -12,7 +12,6 @@ PACKAGES_1="
     pcre2-10.43.sh
     openssl-3.2.1.sh
     libuuid-1.0.3.sh
-    expat-2.6.2.sh
     libffi-3.4.6.sh
     xz-5.4.6.sh
     cacert-2024-03-11.sh
@@ -38,7 +37,7 @@ PACKAGES_2="
 
 PACKAGES_3="
     nano-7.2.sh
-    python-3.11.7.sh
+    python-3.12.3.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
