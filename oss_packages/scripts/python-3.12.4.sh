@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.12.3"
+PKG_DIR="Python-3.12.4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="56bfef1fdfc1221ce6720e43a661e3eb41785dd914ce99698d8c7896af4bdaa1"
+PKG_CHECKSUM="f6d419a6d8743ab26700801b4908d26d97e8b986e14f95de31b32de2b0e79554"
 
 
 
@@ -47,7 +47,8 @@ configure()
         --disable-test-modules \
         --disable-shared \
 		--without-readline \
-		--disable-optimizations
+		--disable-optimizations \
+        || exit_failure "failed to configure Python for host"
 
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build Python for host"
     make install || exit_failure "failed to install Python for host"

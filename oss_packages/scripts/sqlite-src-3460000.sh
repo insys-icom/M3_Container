@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="cJSON-1.7.17"
+PKG_DIR="sqlite-src-3460000"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://github.com/DaveGamble/cJSON/archive/refs/tags/v${PKG_DIR##*-}.tar.gz"
+#PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="c91d1eeb7175c50d49f6ba2a25e69b46bd05cffb798382c19bfb202e467ec51c"
+PKG_CHECKSUM="070362109beb6899f65797571b98b8824c8f437f5b2926f88ee068d98ef368ec"
 
 
 
@@ -28,15 +28,16 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    cmake \
-        -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
-        -DCMAKE_C_FLAGS="${M3_CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
-        -DCMAKE_AR=${AR} \
-        -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
-        -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
-        -DCMAKE_NM=${NM} \
-        -DCMAKE_RANLIB=${RANLIB} \
-        -DCMAKE_INSTALL_PREFIX="" \
+    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
+        LDFLAGS="${M3_LDFLAGS}" \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET} \
+        --prefix="" \
+        --disable-largefile \
+        --enable-tempstore \
+        --disable-readline \
+        --disable-tcl \
+        --disable-load-extension \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 

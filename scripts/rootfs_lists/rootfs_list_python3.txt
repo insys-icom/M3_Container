@@ -32,6 +32,7 @@ dir /devices/cli_no_auth        0755 0 0
 dir /etc                        0755 0 0
 dir /etc/dropbear               0755 0 0
 dir /etc/ssl                    0755 0 0
+dir /etc/ssl/certs              0755 0 0
 dir /home                       0755 0 0
 dir /lib                        0755 0 0
 dir /licence                    0755 0 0
@@ -83,6 +84,7 @@ file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                
 file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
 file /etc/protocols                   ${SKELETON_DIR}/etc/protocols                  0644 0 0
 slink /etc/ssl/cert.pem               /usr/share/cacert.pem                          0777 0 0
+slink /etc/ssl/certs/ca-certificates.crt /usr/share/cacert.pem                       0777 0 0
 file /etc/pip.conf                    ${SKELETON_DIR}/etc/pip.conf                   0644 0 0
 
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
@@ -123,7 +125,7 @@ slink /var/run                        /tmp/run                                  
 ############################
 # Python files             #
 ############################
-# create these lines automatically by executing the next line in "rootfs_staging/usr/local/"
+# create these lines automatically by executing the next line in "rootfs_staging/<arch>/usr/local/"
 # ../../../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep -v '/share/' | grep -v '__pycache__' | grep -v 'tkinter' | grep -v 'lib2to3' | grep -v '/include/' | grep -v '/site-packages' | grep -v 'turtledemo' | sed 's| ./| ${STAGING_DIR}/usr/local/|' | sed 's|file /lib|file /usr/local/lib|' | sed 's|dir /lib|dir /usr/local/lib|' |  sort > ../list.txt
 
 include snippets/python_${ARCH}.txt

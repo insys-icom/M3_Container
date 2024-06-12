@@ -15,9 +15,9 @@
 #      - iperf                                          #
 #      - openvpn (read info in ~/openvpn.txt)           #
 #      - wg (wireguard)                                 #
-#      - httping                                        #
 #      - curl                                           #
 #      - iptables                                       #
+#      - bftpd                                          #
 #      - stunnel                                        #
 #      - nmap                                           #
 #      - nping                                          #

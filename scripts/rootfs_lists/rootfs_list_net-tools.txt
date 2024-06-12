@@ -67,7 +67,6 @@ file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh         
 file /bin/dnsmasq                     ${STAGING_DIR}/sbin/dnsmasq                    0755 0 0
 
 file /bin/curl                        ${STAGING_DIR}/bin/curl                        0755 0 0
-file /bin/httping                     ${STAGING_DIR}/usr/bin/httping                 0755 0 0
 file /bin/openvpn                     ${STAGING_DIR}/sbin/openvpn                    0755 0 0
 file /bin/tcpdump                     ${STAGING_DIR}/bin/tcpdump                     0755 0 0
 file /bin/iperf                       ${STAGING_DIR}/bin/iperf3                      0755 0 0
@@ -91,6 +90,7 @@ file /bin/mosquitto_rr                ${STAGING_DIR}/usr/local/bin/mosquitto_rr 
 file /bin/mosquitto_sub               ${STAGING_DIR}/usr/local/bin/mosquitto_sub     0755 0 0
 file /bin/wg                          ${STAGING_DIR}/usr/bin/wg                      0755 0 0
 file /bin/openssl                     ${STAGING_DIR}/bin/openssl                     0755 0 0
+file /bin/bftpd                       ${STAGING_DIR}/bin/bftpd                       0755 0 0
 
 file /etc/hosts                       ${SKELETON_DIR}/etc/hosts                      0644 0 0
 file /etc/banner.txt                  ${SKELETON_DIR}/etc/banner_net-tools.txt       0644 0 0
@@ -118,6 +118,7 @@ file /etc/openvpn/client.pem          ${SKELETON_DIR}/etc/openvpn/client.pem    
 file /etc/openvpn/client.key          ${SKELETON_DIR}/etc/openvpn/client.key         0644 0 0
 file /etc/openvpn/up.sh               ${SKELETON_DIR}/etc/openvpn/up.sh              0755 nobody nogroup
 file /etc/openvpn/down.sh             ${SKELETON_DIR}/etc/openvpn/down.sh            0755 nobody nogroup
+file /etc/bftpd.conf                  ${SKELETON_DIR}/etc/bftpd.conf                 0755 0 0
 
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1                 0644 0 0

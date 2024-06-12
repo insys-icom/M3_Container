@@ -11,15 +11,15 @@ PACKAGES_1="
     zlib-1.3.sh
     lz4-1.9.4.sh
     tzdb-2024a.sh
-    pcre2-10.43.sh
-    openssl-3.2.1.sh
+    pcre2-10.44.sh
+    openssl-3.3.1.sh
     mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.36.1.sh
     mcip-tool-v4.sh
-    dropbear-2024.84.sh
+    dropbear-2024.85.sh
     metalog-20230719.sh
     dnsmasq-2.90.sh
 "

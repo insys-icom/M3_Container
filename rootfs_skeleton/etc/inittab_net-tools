@@ -13,6 +13,9 @@
 # start SSH server
 ::respawn:/bin/dropbear -R -F -b /etc/banner.txt
 
+# start FTP server
+::respawn:/bin/bftpd -D
+
 # start logger
 ::respawn:/bin/metalog -N -C /etc/metalog.conf
 

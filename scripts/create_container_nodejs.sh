@@ -9,26 +9,26 @@ PACKAGES_1="
     zlib-1.3.sh
     lz4-1.9.4.sh
     tzdb-2024a.sh
-    pcre2-10.43.sh
-    openssl-3.2.1.sh
-    c-ares-1.28.1.sh
+    pcre2-10.44.sh
+    openssl-3.3.1.sh
+    c-ares-1.30.0.sh
     cacert-2024-03-11.sh
-    nghttp2-1.61.0.sh
+    nghttp2-1.62.1.sh
     mcip.sh
 "
 
 PACKAGES_2="
     busybox-1.36.1.sh
-    dropbear-2024.84.sh
+    dropbear-2024.85.sh
     metalog-20230719.sh
     libssh2-1.11.0.sh
-    ncurses-6.4.sh
+    ncurses-6.5.sh
     mcip-tool-v4.sh
 "
 
 PACKAGES_3="
-    curl-8.7.1.sh
-    nano-7.2.sh
+    curl-8.8.0.sh
+    nano-8.0.sh
     node-v20.10.0-linux-armv7l.sh
 "
 

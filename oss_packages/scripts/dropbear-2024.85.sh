@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dropbear-2024.84"
+PKG_DIR="dropbear-2024.85"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="16e22b66b333d6b7e504c43679d04ed6ca30f2838db40a21f935c850dfc01009"
+PKG_CHECKSUM="86b036c433a69d89ce51ebae335d65c47738ccf90d13e5eb0fea832e556da502"
 
 
 
