@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="httpd-2.4.57"
+PKG_DIR="httpd-2.4.61"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://dlcdn.apache.org/httpd/httpd-2.4.57.tar.gz"
+#PKG_DOWNLOAD="https://dlcdn.apache.org/httpd/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="61035f41f8721eb1e45e2f5e697cbc13"
+PKG_CHECKSUM="ccdc02f78ebf615002dbcab19c8dd9e124b99207b6fed4eecce7562e64c647c9"
 
 
 
@@ -27,22 +27,11 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    # apr-util depends on apr and apr-util, compile it first
-    APR_VERSION="apr-1.7.0"
-    [ ! -f "${SCRIPTSDIR}/${APR_VERSION}.sh" ] && exit_failure "compile ${SCRIPTSDIR}/${APR_VERSION} first!"
-    APR_WORKING="${PKG_BUILD_DIR}/../${APR_VERSION}/"
-    [ ! -d "${APR_WORKING}" ] && exit_failure "compile ${APR_VERSION} first!"
-
-    APRUTIL_VERSION="apr-util-1.6.1"
-    [ ! -f "${SCRIPTSDIR}/${APRUTIL_VERSION}.sh" ] && exit_failure "compile ${SCRIPTSDIR}/${APRUTIL_VERSION} first!"
-    APRUTIL_WORKING="${PKG_BUILD_DIR}/../${APRUTIL_VERSION}/"
-    [ ! -d "${APR_WORKING}" ] && exit_failure "compile ${APRUTIL_VERSION} first!"
-
     cd "${PKG_BUILD_DIR}"
     ./configure \
         CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        CFLAGS="${M3_CFLAGS} -I${PKG_BUILD_DIR}/include -I${STAGING_INCLUDE} -I${STAGING_INCLUDE}/apr-1" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -L${STAGING_LIB}/apr-util-1"\
         PCRE_CONFIG="${STAGING_DIR}/bin/pcre2-config" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
@@ -50,14 +39,12 @@ configure()
         --enable-authn-anon \
         --enable-v4-mapped \
         --enable-authz-owner \
-        --enable-auth-digest \
         --disable-imagemap \
         --disable-brotli \
         --disable-lua \
-        --enable-dav \
-        --enable-dav-fs \
-        --enable-dav-lock \
-        --enable-deflate \
+        --disable-dav \
+        --disable-dav-fs \
+        --disable-dav-lock \
         --enable-expires \
         --enable-headers \
         --enable-info \
@@ -70,20 +57,22 @@ configure()
         --enable-proxy-connect \
         --enable-suexec \
         --enable-rewrite \
-        --enable-so \
         --enable-ssl \
         --disable-md \
-        --with-z="${STAGING_DIR}" \
+        --enable-mods-shared=all \
+        --enable-deflate \
+        --enable-so \
+        --enable-auth-digest \
         --with-ssl="${STAGING_DIR}" \
         --with-pcre="${STAGING_DIR}" \
         --with-libxml2="${STAGING_DIR}" \
         --with-jansson="${STAGING_DIR}" \
+        --with-z="${STAGING_DIR}" \
         --disable-userdir \
         --enable-vhost-alias \
         --with-mpm=prefork \
-        --enable-mods-shared=all \
-        --with-apr="${APR_WORKING}" \
-        --with-apr-util="${APRUTIL_WORKING}" \
+        --with-apr="${STAGING_DIR}/bin/apr-1-config" \
+        --with-apr-util="${STAGING_DIR}/bin/apu-1-config" \
         ap_cv_void_ptr_lt_long=no \
         || exit_failure "failed to configure ${PKG_DIR}"
 }

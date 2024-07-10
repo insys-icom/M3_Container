@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="apr-util-1.6.1"
+PKG_DIR="apr-1.7.4"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://mirror.checkdomain.de/apache//apr/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://artfiles.org/apache.org/apr/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="bd502b9a8670a8012c4d90c31a84955f"
+PKG_CHECKSUM="a4137dd82a185076fa50ba54232d920a17c6469c30b0876569e1c2a05ff311d9"
 
 
 
@@ -27,26 +27,24 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    # apr-util depends on apr, compile it first
-    APR_VERSION="apr-1.7.0"
-    [ ! -f "${SCRIPTSDIR}/${APR_VERSION}.sh" ] && exit_failure "compile ${SCRIPTSDIR}/${APR_VERSION} first!"
-    APR_WORKING="${PKG_BUILD_DIR}/../${APR_VERSION}/"
-    [ ! -d "${APR_WORKING}" ] && exit_failure "compile ${APR_VERSION} first!"
-
     cd "${PKG_BUILD_DIR}"
     ./configure \
         CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -Wl,-rpath,${STAGING_LIB},--enable-new-dtags" \
+        CFLAGS="${M3_CFLAGS} -fcommon -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
-        --build=x86_64-pc-linux-gnu \
-        --with-apr="${APR_WORKING}" \
-        --with-expat="${STAGING_DIR}" \
-        --with-sqlite3="${STAGING_INCLUDE}" \
-        --with-openssl="${STAGING_INCLUDE}" \
-        --with-crypto \
-        --prefix="" \
+        --prefix="/" \
+        --disable-lfs \
+        --enable-sysv-shm \
+        --enable-threads \
+        --disable-fast-install \
+        --with-devrandom=/dev/random \
+        ac_cv_file__dev_zero=yes \
+        ac_cv_func_setpgrp_void=yes \
+        apr_cv_tcp_nodelay_with_cork=yes \
+        apr_cv_process_shared_works=no \
+        ac_cv_sizeof_struct_iovec=1 \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -54,8 +52,6 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    touch build/rules.mk
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
@@ -63,6 +59,11 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+
+    cp "${PKG_BUILD_DIR}/build/apr_rules.mk" "${STAGING_DIR}/build-1/"
+
+    # fix path to libuuid in libtool file
+    sed -i "s| /lib/libuuid.la | /home/user/Container/M3_Container/rootfs_staging/${ARCH}/lib/libuuid.la |" "${STAGING_LIB}/libapr-1.la"
 }
 
 . ${HELPERSDIR}/call_functions.sh

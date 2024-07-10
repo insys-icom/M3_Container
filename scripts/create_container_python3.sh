@@ -14,7 +14,7 @@ PACKAGES_1="
     libuuid-1.0.3.sh
     libffi-3.4.6.sh
     xz-5.6.2.sh
-    cacert-2024-03-11.sh
+    cacert-2024-07-02.sh
     certifi.sh
     charset-normalizer-3.3.2.sh
     idna-3.7.sh

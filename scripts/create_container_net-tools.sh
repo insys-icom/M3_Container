@@ -13,7 +13,7 @@ PACKAGES_1="
     pcre2-10.44.sh
     openssl-3.3.1.sh
     mcip.sh
-    cacert-2024-03-11.sh
+    cacert-2024-07-02.sh
     nghttp2-1.62.1.sh
     libpcap-1.10.4.sh
     libcap-ng-0.8.5.sh
