@@ -61,9 +61,9 @@ install_staging()
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 
     # fix path to libuuid, libexpat and libapr in libtool file
-    sed -i "s| /lib/libuuid.la| /home/user/Container/M3_Container/rootfs_staging/${ARCH}/lib/libuuid.la|" "${STAGING_LIB}/libaprutil-1.la"
-    sed -i "s| /lib/libexpat.la| /home/user/Container/M3_Container/rootfs_staging/${ARCH}/lib/libexpat.la|" "${STAGING_LIB}/libaprutil-1.la"
-    sed -i "s| //lib/libapr-1.la| /home/user/Container/M3_Container/rootfs_staging/${ARCH}/lib/libapr-1.la|" "${STAGING_LIB}/libaprutil-1.la"
+    sed -i "s| /lib/libuuid.la| ${STAGING_LIB}/libuuid.la|" "${STAGING_LIB}/libaprutil-1.la"
+    sed -i "s| /lib/libexpat.la| ${STAGING_LIB}/libexpat.la|" "${STAGING_LIB}/libaprutil-1.la"
+    sed -i "s| //lib/libapr-1.la| ${STAGING_LIB}/libapr-1.la|" "${STAGING_LIB}/libaprutil-1.la"
 }
 
 . ${HELPERSDIR}/call_functions.sh
