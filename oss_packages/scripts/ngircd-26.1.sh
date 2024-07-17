@@ -11,7 +11,7 @@ PKG_DOWNLOAD="https://ngircd.barton.de/pub/ngircd/${PKG_ARCHIVE_FILE}"
 #PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="81b9c5ae283d07aab35ce16eaf49e458"
+PKG_CHECKSUM="55c16fd26009f6fc6a007df4efac87a02e122f680612cda1ce26e17a18d86254"
 
 
 

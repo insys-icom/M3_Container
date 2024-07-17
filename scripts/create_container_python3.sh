@@ -19,10 +19,10 @@ PACKAGES_1="
     charset-normalizer-3.3.2.sh
     idna-3.7.sh
     requests-2.32.3.sh
-    urllib3-2.2.1.sh
+    urllib3-2.2.2.sh
     paho.mqtt.eclipse-1.6.1.sh
     pyserial-3.5.sh
-    pymodbus-3.6.8.sh
+    pymodbus-3.6.9.sh
     mcip.sh
 "
 
@@ -36,7 +36,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    nano-8.0.sh
+    nano-8.1.sh
     python-3.12.4.sh
 "
 

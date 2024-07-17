@@ -18,7 +18,7 @@ PACKAGES_1="
     libpcap-1.10.4.sh
     libcap-ng-0.8.5.sh
     iptables-1.8.10.sh
-    c-ares-1.30.0.sh
+    c-ares-1.32.2.sh
     cJSON-1.7.18.sh
     wireguard-tools-v1.0.20210914.sh
 "
@@ -29,7 +29,7 @@ PACKAGES_2="
     dropbear-2024.85.sh
     metalog-20230719.sh
     dnsmasq-2.90.sh
-    openvpn-2.6.10.sh
+    openvpn-2.6.11.sh
     tcpdump-4.99.4.sh
     iperf-3.12.sh
     stunnel-5.72.sh

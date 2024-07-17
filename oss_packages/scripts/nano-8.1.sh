@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nano-7.2"
+PKG_DIR="nano-8.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://www.nano-editor.org/dist/v6/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.nano-editor.org/dist/v8/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="13742c686c6ddb0b7b294634f0c13cec"
+PKG_CHECKSUM="93b3e3e9155ae389fe9ccf9cb7ab380eac29602835ba3077b22f64d0f0cbe8cb"
 
 
 
@@ -40,12 +40,10 @@ configure()
         --disable-largefile \
         --disable-nls \
         --disable-rpath \
-        --disable-browser \
         --disable-extra \
-        --disable-libmagic \
         --disable-mouse \
         --disable-speller \
-        --disable-glibtest \
+        --enable-year2038 \
         --datarootdir="/usr/share" \
         --enable-utf8 || exit_failure "failed to configure ${PKG_DIR}"
 }

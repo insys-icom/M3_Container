@@ -31,7 +31,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    nano-8.0.sh
+    nano-8.1.sh
     httpd-2.4.61.sh
 "
 

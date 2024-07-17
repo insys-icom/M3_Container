@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="c-ares-1.30.0"
+PKG_DIR="urllib3-2.2.2"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/36/dd/a6b232f449e1bc71802a5b7950dc3675d32c6dbc2a1bd6d71f065551adb6/urllib3-2.1.0.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="4fea312112021bcef081203b1ea020109842feb58cd8a36a3d3f7e0d8bc1138c"
+PKG_CHECKSUM="dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"
 
 
 
@@ -25,31 +25,29 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
+PYTHON_VERSION="python3.12"
+PYTHON_VERSION="python3.12"
+
 configure()
 {
-    cd "${PKG_BUILD_DIR}"
-    ./configure \
-        CFLAGS="${M3_CFLAGS}" \
-        LDFLAGS="${M3_LDFLAGS}" \
-        --disable-tests \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
-        --prefix="" \
-        || exit_failure "failed to configure ${PKG_DIR}"
+    true
 }
 
 compile()
 {
-    copy_overlay
-    cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    true
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
+    cp -a "${PKG_BUILD_DIR}/src/urllib3" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+}
+
+uninstall_staging()
+{
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/urllib3"
 }
 
 . ${HELPERSDIR}/call_functions.sh

@@ -11,7 +11,7 @@ PACKAGES_1="
     tzdb-2024a.sh
     pcre2-10.44.sh
     openssl-3.3.1.sh
-    c-ares-1.30.0.sh
+    c-ares-1.32.2.sh
     cacert-2024-07-02.sh
     nghttp2-1.62.1.sh
     mcip.sh
@@ -28,8 +28,8 @@ PACKAGES_2="
 
 PACKAGES_3="
     curl-8.8.0.sh
-    nano-8.0.sh
-    node-v20.10.0-linux-armv7l.sh
+    nano-8.1.sh
+    node-v20.15.1-linux-armv7l.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
