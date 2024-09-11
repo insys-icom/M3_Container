@@ -43,10 +43,11 @@ install_staging()
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}"/lib
     mkdir -p "${STAGING_DIR}"/usr/bin
+    mkdir -p "${STAGING_DIR}"/include
+
     cp "src/mcip/mcip" "${STAGING_DIR}/usr/bin/mcip"
     cp "src/console/console" "${STAGING_DIR}/usr/bin/console"
     cp "libmcip/libmcip.so.1.0" "${STAGING_DIR}/lib/libmcip.so"
-
     cp "include/libmcip.h" "${STAGING_DIR}/include"
     cp "include/mcip_common.h" "${STAGING_DIR}/include"
 }
