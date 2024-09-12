@@ -39,11 +39,6 @@ $(BUILD_DIR)/%.o: %.c $(INCLUDES) $(BUILD_DIRS)
 .PHONY: all
 all: $(TARGETS) $(BUILD_DIRS)
 
-# rule for creating directories
-%.keep:
-	$(VERB)mkdir -p $(dir $@)
-	$(VERB)touch $@
-
 $(BUILD_DIR)/$(PROJECT_NAME): $(OBJS)
 	$(VERB)$(CC) $(OBJS) $(LDFLAGS) -o $@
 

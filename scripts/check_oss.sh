@@ -7,7 +7,7 @@ wget_check() {
 }
 
 # wget_check <URL to check> <text to parse in the retrieved HTML>  <additional wget parameter>
-wget_check "lz4"        "https://github.com/lz4/lz4"                            ">LZ4 v1.9.4</span>" ""
+wget_check "lz4"        "https://github.com/lz4/lz4"                            ">LZ4 v1.10.0</span>" ""
 wget_check "openssl"    "https://www.openssl.org/source"                        "openssl-3.3.1.tar.gz" ""
 wget_check "pcre2"      "https://github.com/PhilipHazel/pcre2"                  ">PCRE2-10.44</span>" ""
 wget_check "timezone"   "https://www.iana.org/time-zones"                       "Released 2024-02-01" ""

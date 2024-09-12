@@ -101,7 +101,7 @@ file /etc/metalog.conf                ${SKELETON_DIR}/etc/metalog.conf          
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
 file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
 file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
-file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0640 0 0
+file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0644 0 0
 file /etc/services                    ${SKELETON_DIR}/etc/services                   0644 0 0
 file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                     0640 0 0
 file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
@@ -137,6 +137,8 @@ file /lib/libmosquittopp.so.1         ${STAGING_DIR}/usr/local/lib/libmosquittop
 file /lib/mosquitto_dynamic_security.so ${STAGING_DIR}/usr/local/lib/mosquitto_dynamic_security.so 0755 0 0
 file /lib/libssl.so.3                 ${STAGING_DIR}/lib/libssl.so                   0644 0 0
 file /lib/libcrypto.so.3              ${STAGING_DIR}/lib/libcrypto.so                0644 0 0
+
+file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme.txt                0644 0 0
 

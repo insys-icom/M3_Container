@@ -7,7 +7,7 @@ ROOTFS_LIST="rootfs_list_python3.txt"
 PACKAGES_1="
     Linux-PAM-1.6.1.sh
     zlib-1.3.sh
-    lz4-1.9.4.sh
+    lz4-1.10.0.sh
     tzdb-2024a.sh
     pcre2-10.44.sh
     openssl-3.3.1.sh

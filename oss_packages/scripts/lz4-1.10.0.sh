@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="lz4-1.9.4"
+PKG_DIR="lz4-1.10.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="e9286adb64040071c5e23498bf753261"
+PKG_CHECKSUM="537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b"
 
 
 

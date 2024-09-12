@@ -79,7 +79,7 @@ file /etc/nanorc                      ${SKELETON_DIR}/etc/nanorc                
 file /etc/nsswitch.conf               ${SKELETON_DIR}/etc/nsswitch.conf              0644 0 0
 file /etc/passwd                      ${SKELETON_DIR}/etc/passwd                     0644 0 0
 file /etc/profile                     ${SKELETON_DIR}/etc/profile                    0644 0 0
-file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0640 0 0
+file /etc/resolv.conf                 ${SKELETON_DIR}/etc/resolv.conf                0644 0 0
 file /etc/shadow                      ${SKELETON_DIR}/etc/shadow                     0640 0 0
 file /etc/shells                      ${SKELETON_DIR}/etc/shells                     0644 0 0
 file /etc/protocols                   ${SKELETON_DIR}/etc/protocols                  0644 0 0
