@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nano-8.1"
+PKG_DIR="expat-2.6.3"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://www.nano-editor.org/dist/v8/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_4_1/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="93b3e3e9155ae389fe9ccf9cb7ab380eac29602835ba3077b22f64d0f0cbe8cb"
+PKG_CHECKSUM="274db254a6979bde5aad404763a704956940e465843f2a9bd9ed7af22e2c0efc"
 
 
 
@@ -28,31 +28,23 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -I${STAGING_DIR}/usr/include" \
-    CPPFLAGS="${M3_CFLAGS} -I${STAGING_DIR}/usr/include" \
-    NCURSES_LIBS="-L${STAGING_DIR}/lib -lncurses -ltinfow" \
-    NCURSES_CFLAGS="-I${STAGING_DIR}/include/ncurses" \
-    NCURSESW_LIBS="-L${STAGING_DIR}/lib -lncursesw -ltinfow" \
-    NCURSESW_CFLAGS="-I${STAGING_DIR}/include/ncursesw" \
     ./configure \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        PKG_CONFIG=pkg-config \
+        LIBFFI_LIBS="-lffi" \
         --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --disable-largefile \
-        --disable-nls \
-        --disable-rpath \
-        --disable-extra \
-        --disable-mouse \
-        --disable-speller \
-        --enable-year2038 \
-        --datarootdir="/usr/share" \
-        --enable-utf8 || exit_failure "failed to configure ${PKG_DIR}"
+        --host=${M3_TARGET}  \
+        --prefix="" \
+        --enable-shared \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make || exit_failure "failed to build ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
@@ -60,7 +52,6 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
-    cp "${PKG_BUILD_DIR}/doc/sample.nanorc" "${STAGING_DIR}/etc/"
 }
 
 . ${HELPERSDIR}/call_functions.sh

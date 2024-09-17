@@ -8,12 +8,12 @@ PACKAGES_1="
     Linux-PAM-1.6.1.sh
     zlib-1.3.sh
     lz4-1.10.0.sh
-    tzdb-2024a.sh
+    tzdb-2024b.sh
     pcre2-10.44.sh
-    openssl-3.3.1.sh
-    c-ares-1.32.2.sh
+    openssl-3.3.2.sh
+    c-ares-1.33.1.sh
     cacert-2024-07-02.sh
-    nghttp2-1.62.1.sh
+    nghttp2-1.63.0.sh
     mcip.sh
 "
 
@@ -27,9 +27,9 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-8.8.0.sh
-    nano-8.1.sh
-    node-v20.15.1-linux-armv7l.sh
+    curl-8.10.0.sh
+    nano-8.2.sh
+    node-v20.17.0-linux-armv7l.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds

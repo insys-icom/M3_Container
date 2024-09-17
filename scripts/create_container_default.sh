@@ -10,9 +10,9 @@ PACKAGES_1="
     Linux-PAM-1.6.1.sh
     zlib-1.3.sh
     lz4-1.10.0.sh
-    tzdb-2024a.sh
+    tzdb-2024b.sh
     pcre2-10.44.sh
-    openssl-3.3.1.sh
+    openssl-3.3.2.sh
     mcip.sh
 "
 

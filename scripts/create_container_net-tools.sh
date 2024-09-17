@@ -9,16 +9,16 @@ PACKAGES_1="
     zlib-1.3.sh
     lz4-1.10.0.sh
     lzo-2.10.sh
-    tzdb-2024a.sh
+    tzdb-2024b.sh
     pcre2-10.44.sh
-    openssl-3.3.1.sh
+    openssl-3.3.2.sh
     mcip.sh
     cacert-2024-07-02.sh
-    nghttp2-1.62.1.sh
-    libpcap-1.10.4.sh
+    nghttp2-1.63.0.sh
+    libpcap-1.10.5.sh
     libcap-ng-0.8.5.sh
     iptables-1.8.10.sh
-    c-ares-1.32.2.sh
+    c-ares-1.33.1.sh
     cJSON-1.7.18.sh
     wireguard-tools-v1.0.20210914.sh
 "
@@ -29,10 +29,10 @@ PACKAGES_2="
     dropbear-2024.85.sh
     metalog-20230719.sh
     dnsmasq-2.90.sh
-    openvpn-2.6.11.sh
-    tcpdump-4.99.4.sh
+    openvpn-2.6.12.sh
+    tcpdump-4.99.5.sh
     iperf-3.12.sh
-    stunnel-5.72.sh
+    stunnel-5.73.sh
     libssh2-1.11.0.sh
     socat-1.8.0.0.sh
     libwebsockets-4.3.3.sh
@@ -40,7 +40,7 @@ PACKAGES_2="
 "
 
 PACKAGES_3="
-    curl-8.8.0.sh
+    curl-8.10.0.sh
     nmap-7.95.sh
     mosquitto-2.0.18.sh
 "

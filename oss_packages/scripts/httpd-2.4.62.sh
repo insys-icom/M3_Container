@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="httpd-2.4.61"
+PKG_DIR="httpd-2.4.62"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="ccdc02f78ebf615002dbcab19c8dd9e124b99207b6fed4eecce7562e64c647c9"
+PKG_CHECKSUM="3e2404d762a2da03560d7ada379ba1599d32f04a0d70ad6ff86f44325f2f062d"
 
 
 

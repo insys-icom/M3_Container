@@ -7,16 +7,16 @@ ROOTFS_LIST="rootfs_list_LAMP.txt"
 PACKAGES_1="
     Linux-PAM-1.6.1.sh
     zlib-1.3.sh
-    tzdb-2024a.sh
+    tzdb-2024b.sh
     pcre2-10.44.sh
-    openssl-3.3.1.sh
-    apr-1.7.4.sh
+    openssl-3.3.2.sh
+    apr-1.7.5.sh
     libuuid-1.0.3.sh
-    nghttp2-1.62.1.sh
+    nghttp2-1.63.0.sh
     jansson-2.14.sh
     cacert-2024-07-02.sh
     mcip.sh
-    expat-2.6.2.sh
+    expat-2.6.3.sh
     libxml2-v2.9.14.sh
 "
 
@@ -26,17 +26,17 @@ PACKAGES_2="
     dropbear-2024.85.sh
     metalog-20230719.sh
     apr-util-1.6.3.sh
-    sqlite-src-3460000.sh
+    sqlite-src-3460100.sh
     ncurses-6.5.sh
 "
 
 PACKAGES_3="
-    nano-8.1.sh
-    httpd-2.4.61.sh
+    nano-8.2.sh
+    httpd-2.4.62.sh
 "
 
 PACKAGES_4="
-    php-8.3.9.sh
+    php-8.3.11.sh
 "
 
 # in case $1 is "do_nothing" this script will end here; quirk needed for automated daily builds
