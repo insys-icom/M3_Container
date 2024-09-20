@@ -8,6 +8,7 @@ PACKAGES_1="
     Linux-PAM-1.6.1.sh
     zlib-1.3.sh
     lz4-1.10.0.sh
+    bzip2-1.0.8.sh
     tzdb-2024b.sh
     pcre2-10.44.sh
     openssl-3.3.2.sh

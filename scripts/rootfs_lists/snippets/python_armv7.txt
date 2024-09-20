@@ -380,6 +380,7 @@ file /usr/local/lib/python3.12/keyword.py ${STAGING_DIR}/usr/local/lib/python3.1
 file /usr/local/lib/python3.12/lib-dynload/_asyncio.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_asyncio.cpython-312-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.12/lib-dynload/_bisect.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_bisect.cpython-312-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.12/lib-dynload/_blake2.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_blake2.cpython-312-arm-linux-gnueabihf.so 755 0 0
+file /usr/local/lib/python3.12/lib-dynload/_bz2.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_bz2.cpython-312-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.12/lib-dynload/_codecs_cn.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_codecs_cn.cpython-312-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.12/lib-dynload/_codecs_hk.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_codecs_hk.cpython-312-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.12/lib-dynload/_codecs_iso2022.cpython-312-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.12/lib-dynload/_codecs_iso2022.cpython-312-arm-linux-gnueabihf.so 755 0 0
