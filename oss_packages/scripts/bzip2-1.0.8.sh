@@ -45,6 +45,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    rm *.o
     make -f Makefile-libbz2_so "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR} shared lib"
 }
 
