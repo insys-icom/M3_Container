@@ -313,7 +313,7 @@ file /usr/local/lib/python3.12/encodings/uu_codec.py ${STAGING_DIR}/usr/local/li
 file /usr/local/lib/python3.12/encodings/zlib_codec.py ${STAGING_DIR}/usr/local/lib/python3.12/encodings/zlib_codec.py 644 0 0
 file /usr/local/lib/python3.12/ensurepip/__init__.py ${STAGING_DIR}/usr/local/lib/python3.12/ensurepip/__init__.py 644 0 0
 file /usr/local/lib/python3.12/ensurepip/__main__.py ${STAGING_DIR}/usr/local/lib/python3.12/ensurepip/__main__.py 644 0 0
-file /usr/local/lib/python3.12/ensurepip/_bundled/pip-24.0-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.12/ensurepip/_bundled/pip-24.0-py3-none-any.whl 644 0 0
+file /usr/local/lib/python3.12/ensurepip/_bundled/pip-24.2-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.12/ensurepip/_bundled/pip-24.2-py3-none-any.whl 644 0 0
 file /usr/local/lib/python3.12/ensurepip/_uninstall.py ${STAGING_DIR}/usr/local/lib/python3.12/ensurepip/_uninstall.py 644 0 0
 file /usr/local/lib/python3.12/enum.py ${STAGING_DIR}/usr/local/lib/python3.12/enum.py 644 0 0
 file /usr/local/lib/python3.12/filecmp.py ${STAGING_DIR}/usr/local/lib/python3.12/filecmp.py 644 0 0

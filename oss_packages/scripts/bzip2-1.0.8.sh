@@ -30,11 +30,13 @@ configure()
     cd "${PKG_BUILD_DIR}"
 
     sed -i "s|CC=gcc|CC=${M3_CROSS_COMPILE}gcc|"               "${PKG_BUILD_DIR}/Makefile-libbz2_so"
+    sed -i "s|CFLAGS=-fpic -fPIC -Wall -Winline -O2 -g $(BIGFILES)|CFLAGS=${M3_CFLAGS} -Wall -Winline -O2 -g $(BIGFILES)|" "${PKG_BUILD_DIR}/Makefile-libbz2_so"
 
     sed -i "s|CC=gcc|CC=${M3_CROSS_COMPILE}gcc|"               "${PKG_BUILD_DIR}/Makefile"
     sed -i "s|AR=ar|AR=${M3_CROSS_COMPILE}ar|"                 "${PKG_BUILD_DIR}/Makefile"
     sed -i "s|RANLIB=ranlib|RANLIB=${M3_CROSS_COMPILE}ranlib|" "${PKG_BUILD_DIR}/Makefile"
     sed -i "s|LDFLAGS=|LDFLAGS=${M3_LDFLAGS}|"                 "${PKG_BUILD_DIR}/Makefile"
+    sed -i "s|CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)|CFLAGS=${M3_CFLAGS} -Wall -Winline -O2 -g $(BIGFILES)|" "${PKG_BUILD_DIR}/Makefile"
 
     # do not test
     sed -i "s|all: libbz2.a bzip2 bzip2recover test|all: libbz2.a bzip2 bzip2recover|" "${PKG_BUILD_DIR}/Makefile"
@@ -45,7 +47,6 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
-    rm *.o
     make -f Makefile-libbz2_so "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR} shared lib"
 }
 
