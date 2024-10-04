@@ -2,6 +2,7 @@
 closed_packages/*
 !closed_packages/.keep
 !closed_packages/container_pcap
+!closed_packages/demo_python
 
 images/*
 !images/amd64/.keep
