@@ -13,6 +13,7 @@ PACKAGES_1="
     tzdb-2024b.sh
     pcre2-10.44.sh
     openssl-3.3.2.sh
+    cacert-2024-07-02.sh
     mcip.sh
 "
 
