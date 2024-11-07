@@ -31,7 +31,6 @@ dir /devices                    0755 0 0
 dir /devices/cli_no_auth        0755 0 0
 dir /etc                        0755 0 0
 dir /etc/httpd                  0755 0 0
-dir /etc/pam.d                  0755 0 0
 dir /etc/service                0755 0 0
 dir /etc/service/metalog        0755 0 0
 dir /etc/service/httpd          0755 0 0
@@ -62,7 +61,6 @@ dir /var/web                    0755 10 10
 
 include snippets/dropbear.txt
 include snippets/mcip-tool.txt
-include snippets/pam.txt
 include snippets/syslibs_${ARCH}.txt
 include snippets/nano.txt
 include snippets/timezone.txt

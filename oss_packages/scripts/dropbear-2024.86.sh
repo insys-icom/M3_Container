@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dropbear-2024.85"
+PKG_DIR="dropbear-2024.86"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="86b036c433a69d89ce51ebae335d65c47738ccf90d13e5eb0fea832e556da502"
+PKG_CHECKSUM="e78936dffc395f2e0db099321d6be659190966b99712b55c530dd0a1822e0a5e"
 
 
 
@@ -42,7 +42,7 @@ configure()
         --disable-wtmpx \
         --disable-pututline \
         --disable-pututxline \
-        --enable-pam \
+        --disable-pam \
         --disable-largefile \
         || exit_failure "failed to configure ${PKG_DIR}"
 }

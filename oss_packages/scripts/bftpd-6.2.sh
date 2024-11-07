@@ -34,7 +34,6 @@ configure()
         ./configure \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
-        --enable-pam \
         --enable-libz \
         || exit_failure "failed to configure ${PKG_DIR}"
 }

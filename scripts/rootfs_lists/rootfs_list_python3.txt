@@ -58,7 +58,6 @@ dir /var/spool/cron/crontabs    0755 0 0
 include snippets/busybox.txt
 include snippets/dropbear.txt
 include snippets/mcip-tool.txt
-include snippets/pam.txt
 include snippets/syslibs_${ARCH}.txt
 include snippets/nano.txt
 include snippets/timezone.txt

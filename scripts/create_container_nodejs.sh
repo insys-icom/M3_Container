@@ -5,7 +5,6 @@ CONTAINER_NAME="container_nodejs"
 ROOTFS_LIST="rootfs_list_nodejs.txt"
 
 PACKAGES_1="
-    Linux-PAM-1.6.1.sh
     zlib-1.3.sh
     lz4-1.10.0.sh
     tzdb-2024b.sh
@@ -19,7 +18,7 @@ PACKAGES_1="
 
 PACKAGES_2="
     busybox-1.36.1.sh
-    dropbear-2024.85.sh
+    dropbear-2024.86.sh
     metalog-20230719.sh
     libssh2-1.11.0.sh
     ncurses-6.5.sh
