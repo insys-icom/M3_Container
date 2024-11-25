@@ -7,11 +7,14 @@
 # create directories and device nodes
 ::sysinit:/bin/bash /bin/prepare_fs.sh
 
+# start logger
+::respawn:/bin/metalog -N -C /etc/metalog.conf
+
 # start SSH server
 ::respawn:/bin/dropbear -R -F -b /etc/banner.txt
 
-# start logger
-::respawn:/bin/metalog -N -C /etc/metalog.conf
+# start cron daemon
+#::respawn:/bin/crond -f
 
 ::restart:/sbin/init
 ::shutdown:/sbin/halt

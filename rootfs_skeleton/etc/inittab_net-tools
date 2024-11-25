@@ -10,14 +10,17 @@
 # start software bridge interface
 ::sysinit:/bin/start_bridge.sh
 
+# start logger
+::respawn:/bin/metalog -N -C /etc/metalog.conf
+
 # start SSH server
 ::respawn:/bin/dropbear -R -F -b /etc/banner.txt
 
+# start cron daemon
+#::respawn:/bin/crond -f
+
 # start FTP server
 ::respawn:/bin/bftpd -D
-
-# start logger
-::respawn:/bin/metalog -N -C /etc/metalog.conf
 
 # start OpenVPN as server or as client
 # ::respawn:/bin/openvpn /etc/openvpn/server.ovpn
