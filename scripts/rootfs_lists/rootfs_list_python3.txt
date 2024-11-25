@@ -96,6 +96,7 @@ file /lib/libuuid.so.1                ${STAGING_DIR}/lib/libuuid.so.1           
 file /lib/libffi.so.8                 ${STAGING_DIR}/lib/libffi.so.8                 0755 0 0
 file /lib/libssl.so.3                 ${STAGING_DIR}/lib/libssl.so                   0644 0 0
 file /lib/libcrypto.so.3              ${STAGING_DIR}/lib/libcrypto.so                0644 0 0
+file /lib/libcrypt.so.1               ${STAGING_DIR}/lib/libcrypt.so.1               0755 0 0
 
 file /lib/libformw.so.6               ${STAGING_DIR}/lib/libformw.so.6               0755 0 0
 file /lib/libmenuw.so.6               ${STAGING_DIR}/lib/libmenuw.so.6               0755 0 0

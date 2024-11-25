@@ -28,9 +28,9 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CPPFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -fcommon" \
+    CPPFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -fcommon -Wno-implicit-int" \
     LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-    CC="${M3_CROSS_COMPILE}gcc" \
+    ac_cv_prog_cc_works=yes CC="${M3_CROSS_COMPILE}gcc" \
         ./configure \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \

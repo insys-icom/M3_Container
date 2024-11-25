@@ -31,7 +31,7 @@ configure()
     ./configure \
         CROSS_COMPILE="${M3_CROSS_COMPILE}" \
         CFLAGS="${M3_CFLAGS} -I${PKG_BUILD_DIR}/include -I${STAGING_INCLUDE} -I${STAGING_INCLUDE}/apr-1" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -L${STAGING_LIB}/apr-util-1"\
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -L${STAGING_LIB}/apr-util-1" \
         PCRE_CONFIG="${STAGING_DIR}/bin/pcre2-config" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \

@@ -29,7 +29,7 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-                CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+                CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE} -Wno-implicit-function-declaration" \
                 LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
                 --target="${M3_TARGET}" \
                 --host="${M3_TARGET}" \

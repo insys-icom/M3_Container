@@ -62,8 +62,9 @@ install_staging()
 
     cp "${PKG_BUILD_DIR}/build/apr_rules.mk" "${STAGING_DIR}/build-1/"
 
-    # fix path to libuuid in libtool file
-    sed -i "s| /lib/libuuid.la | ${STAGING_LIB}/libuuid.la |" "${STAGING_LIB}/libapr-1.la"
+    # fix path to libuuid and libcrypt in libtool file
+    sed -i "s|/lib/libuuid.la|${STAGING_LIB}/libuuid.la|" "${STAGING_LIB}/libapr-1.la"
+    sed -i "s|/lib/libcrypt.la|${STAGING_LIB}/libcrypt.la|" "${STAGING_LIB}/libapr-1.la"
 }
 
 . ${HELPERSDIR}/call_functions.sh

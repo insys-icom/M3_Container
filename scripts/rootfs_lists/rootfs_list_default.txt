@@ -83,6 +83,7 @@ file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1            
 file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
 file /lib/libssl.so.3                 ${STAGING_DIR}/lib/libssl.so                   0644 0 0
 file /lib/libcrypto.so.3              ${STAGING_DIR}/lib/libcrypto.so                0644 0 0
+file /lib/libcrypt.so.1               ${STAGING_DIR}/lib/libcrypt.so.1               0755 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme.txt                0644 0 0
 
