@@ -40,11 +40,14 @@ PACKAGES_3=(
     "socat-1.8.0.0.sh"
     "libwebsockets-4.3.3.sh"
     "bftpd-6.2.sh"
+    "rsync-3.3.0.sh"
+    "libevent-2.1.12-stable.sh"
 )
 PACKAGES_4=(
     "curl-8.10.0.sh"
     "nmap-7.95.sh"
     "mosquitto-2.0.18.sh"
+    "addrwatch-1.0.2.sh"
 )
 
 PACKAGES=(

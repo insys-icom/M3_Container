@@ -11,18 +11,19 @@
 #                                                       #
 #                                                       #
 #   Additionally available net tools in here:           #
-#      - tcpdump                                        #
-#      - iperf                                          #
-#      - openvpn (read info in ~/openvpn.txt)           #
-#      - wg (wireguard)                                 #
-#      - curl                                           #
-#      - iptables                                       #
-#      - bftpd                                          #
-#      - stunnel                                        #
-#      - nmap                                           #
-#      - nping                                          #
-#      - ncat                                           #
-#      - socat                                          #
-#      - mosquitto (MQTT broker)                        #
+#      - addrwatch  ARP and NDP watcher                 #
+#      - bftpd      FTP server                          #
+#      - curl       multi protocol tool                 #
+#      - iperf      measure net performance             #
+#      - iptables   set netfilter                       #
+#      - mosquitto  MQTT broker                         #
+#      - nmap       network analyser                    #
+#      - nping      ping tool                           #
+#      - ncat       print network traffic               #
+#      - openvpn    VPN client (read ~/openvpn.txt)     #
+#      - socat      read from Unix Domain Sockets (UDS) #
+#      - stunnel    enwrap traffic within TLS           #
+#      - tcpdump    capture network traffic             #
+#      - wg         VPN client (wireguard)              #
 #                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="rsync-3.2.3"
+PKG_DIR="rsync-3.3.0"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="209f8326f5137d8817a6276d9577a2f1"
+PKG_CHECKSUM="7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90"
 
 
 
@@ -37,6 +37,8 @@ configure()
         --disable-xxhash \
         --disable-zstd \
         --disable-simd \
+        --disable-acl-support \
+        --with-included-popt \
         --prefix="" || exit_failure "failed to configure ${PKG_DIR}"
 }
 

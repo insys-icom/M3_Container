@@ -53,6 +53,9 @@ wget_check "requests"   "https://pypi.org/project/requests"                     
 wget_check "urllib3"    "https://pypi.org/project/urllib3"                      "urllib3 2.2.3"
 wget_check "socat"      "http://www.dest-unreach.org/socat"                     "version 1.8.0.0</a> has been released"
 wget_check "bftpd"      "https://sourceforge.net/projects/bftpd/files/bftpd"    "bftpd-6.2.tar.gz \(191.9 kB\)"
+wget_check "rsync"      "https://download.samba.org/pub/rsync/src"              "rsync-3.3.0" ""
+wget_check "libevent"   "https://github.com/libevent/libevent"                  "release-2.1.12-stable"
+wget_check "addrwatch"  "https://github.com/fln/addrwatch"                      "addrwatch v1.0.2"
 
 # not needed any more, use ensurepip that comes with python:
 # wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.2.2"

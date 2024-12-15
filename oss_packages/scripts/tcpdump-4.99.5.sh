@@ -38,7 +38,7 @@ configure()
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
         --disable-smb \
-        --without-crypto \
+        --with-crypto \
         --prefix="" \
         --with-cap-ng \
         || exit_failure "failed to configure ${PKG_DIR}"
