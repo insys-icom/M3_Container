@@ -7,14 +7,14 @@ ROOTFS_LIST="rootfs_list_default.txt"
 PACKAGES_1=(
     "libxcrypt-4.4.36.sh"
     "mcip.sh"
-    "cacert-2024-07-02.sh"
+    "cacert-2024-11-26.sh"
 )
 PACKAGES_2=(
     "zlib-1.3.sh"
     "lz4-1.10.0.sh"
     "tzdb-2024b.sh"
     "pcre2-10.44.sh"
-    "openssl-3.3.2.sh"
+    "openssl-3.4.0.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(

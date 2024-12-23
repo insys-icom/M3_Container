@@ -1,25 +1,25 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="expat-2.6.3"
+PKG_DIR="iptables-1.8.11"
 
-# name of the archive in dl directory
+# name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_4_1/${PKG_ARCHIVE_FILE}"
+# download link for the sources to be stored in dl directory (use "none" if empty)
+#PKG_DOWNLOAD="https://www.netfilter.org/pub/iptables/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="274db254a6979bde5aad404763a704956940e465843f2a9bd9ed7af22e2c0efc"
+# md5 checksum of archive in dl directory (use "none" if empty)
+PKG_CHECKSUM="d87303d55ef8c92bcad4dd3f978b26d272013642b029425775f5bad1009fe7b2"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${HELPERSDIR}/functions.sh
+. "${TOPDIR}/scripts/common_settings.sh"
+. "${HELPERSDIR}/functions.sh"
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -31,12 +31,13 @@ configure()
     ./configure \
         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        PKG_CONFIG=pkg-config \
-        LIBFFI_LIBS="-lffi" \
         --target=${M3_TARGET} \
-        --host=${M3_TARGET}  \
+        --host=${M3_TARGET} \
+        --enable-static \
+        --disable-shared \
+        --disable-debug \
+        --disable-nftables \
         --prefix="" \
-        --enable-shared \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -44,14 +45,14 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

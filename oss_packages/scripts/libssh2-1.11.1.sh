@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="iptables-1.8.10"
+PKG_DIR="libssh2-1.11.1"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://www.netfilter.org/pub/iptables/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.libssh2.org/download/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="5cc255c189356e317d070755ce9371eb63a1b783c34498fb8c30264f3cc59c9c"
+PKG_CHECKSUM="9954cb54c4f548198a7cbebad248bdc87dd64bd26185708a294b2b50771e3769"
 
 
 
@@ -29,15 +29,17 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --enable-static \
-        --disable-shared \
-        --disable-debug \
-        --disable-nftables \
+        LT_SYS_LIBRARY_PATH=-"${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --prefix="" \
+        --disable-largefile \
+        --disable-examples-build \
+        --with-libssl-prefix="${STAGING_DIR}" \
+        --with-libz-prefix="${STAGING_DIR}" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -45,6 +47,11 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
+
+    # do not compile and install tests
+    echo "all:" > tests/Makefile
+    echo "install:" >> tests/Makefile
+
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }

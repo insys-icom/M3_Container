@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pymodbus-3.7.2"
+PKG_DIR="pymodbus-3.7.4"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="6cc63a14c8cca83f5b6d9dae3319565061bd49503ee7282df681201c16357eef"
+PKG_CHECKSUM="573c370aea04523403eea1e159616a583cd7b93cfc5c81b07340d3cccd52c99f"
 
 
 
@@ -25,7 +25,7 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-PYTHON_VERSION="python3.12"
+PYTHON_VERSION="python3.13"
 
 configure()
 {
