@@ -1,0 +1,9 @@
+dir  /root  0700 0 0
+file /root/demo_cli.py                ${CLOSED_PACKAGES_DIR}/demo_python/demo_cli.py      0755 0 0
+file /root/demo_input.py              ${CLOSED_PACKAGES_DIR}/demo_python/demo_input.py    0755 0 0
+file /root/demo_modbus.py             ${CLOSED_PACKAGES_DIR}/demo_python/demo_modbus.py   0755 0 0
+file /root/demo_output.py             ${CLOSED_PACKAGES_DIR}/demo_python/demo_output.py   0755 0 0
+file /root/demo_rs232.py              ${CLOSED_PACKAGES_DIR}/demo_python/demo_rs232.py    0755 0 0
+file /root/demo_send_sms.py           ${CLOSED_PACKAGES_DIR}/demo_python/demo_send_sms.py 0755 0 0
+file /root/insys/cli.py               ${CLOSED_PACKAGES_DIR}/demo_python/insys/cli.py     0755 0 0
+file /root/insys/mcip.py              ${CLOSED_PACKAGES_DIR}/demo_python/insys/mcip.py    0755 0 0

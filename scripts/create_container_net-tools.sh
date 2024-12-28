@@ -8,12 +8,13 @@ PACKAGES_1=(
     "libxcrypt-4.4.36.sh"
     "mcip.sh"
     "cacert-2024-11-26.sh"
+    "zlib-1.3.sh"
+    "cJSON-1.7.18.sh"
+    "tzdb-2024b.sh"
 )
 PACKAGES_2=(
-    "zlib-1.3.sh"
     "lz4-1.10.0.sh"
     "lzo-2.10.sh"
-    "tzdb-2024b.sh"
     "pcre2-10.44.sh"
     "openssl-3.4.0.sh"
     "cacert-2024-11-26.sh"
@@ -22,7 +23,6 @@ PACKAGES_2=(
     "libcap-ng-0.8.5.sh"
     "iptables-1.8.11.sh"
     "c-ares-1.33.1.sh"
-    "cJSON-1.7.18.sh"
     "wireguard-tools-v1.0.20210914.sh"
     "mcip-tool-v4.sh"
 )

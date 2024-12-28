@@ -61,6 +61,7 @@ include snippets/mcip-tool.txt
 include snippets/syslibs_${ARCH}.txt
 include snippets/nano.txt
 include snippets/timezone.txt
+include ../../closed_packages/rootfs_list_python_demo.txt
 
 file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
 file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
@@ -109,15 +110,6 @@ file /usr/share/terminfo/x/xterm-utf8 ${STAGING_DIR}/usr/share/terminfo/x/xterm-
 slink /lib/terminfo                   /usr/share/terminfo                            0777 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme.txt                0644 0 0
-
-file /root/demo_cli.py                ${CLOSED_PACKAGES_DIR}/demo_python/demo_cli.py      0755 0 0
-file /root/demo_input.py              ${CLOSED_PACKAGES_DIR}/demo_python/demo_input.py    0755 0 0
-file /root/demo_modbus.py             ${CLOSED_PACKAGES_DIR}/demo_python/demo_modbus.py   0755 0 0
-file /root/demo_output.py             ${CLOSED_PACKAGES_DIR}/demo_python/demo_output.py   0755 0 0
-file /root/demo_rs232.py              ${CLOSED_PACKAGES_DIR}/demo_python/demo_rs232.py    0755 0 0
-file /root/demo_send_sms.py           ${CLOSED_PACKAGES_DIR}/demo_python/demo_send_sms.py 0755 0 0
-file /root/insys/cli.py               ${CLOSED_PACKAGES_DIR}/demo_python/insys/cli.py     0755 0 0
-file /root/insys/mcip.py              ${CLOSED_PACKAGES_DIR}/demo_python/insys/mcip.py    0755 0 0
 
 slink /run                            tmp/run                                        0777 0 0
 slink /sbin                           bin                                            0777 0 0

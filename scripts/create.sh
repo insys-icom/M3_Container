@@ -115,7 +115,7 @@ for i in "${PACKAGES[@]}"; do
     done
 done
 
-# compile
+# compile OSS
 echo " "
 echo "Compiling in parallel for ${ARCH}:"
 echo "------------------------------------------------------"
@@ -124,6 +124,20 @@ for i in "${PACKAGES[@]}"; do
     for p in "${PACKAGE[@]}"; do
         echo "    Compile ${p}"
         ${OSS_PACKAGES_SCRIPTS}/${p} all > "${BUILD_DIR}/${p}.log" 2>&1 &
+    done
+    wait || exit_failure "Failed to build ${p}"
+    echo "    --------------------------------------------------"
+done
+
+# compile closed source
+echo ""
+echo "Compiling closed packages:"
+echo "------------------------------------------------------"
+for i in "${CLOSED_PACKAGES[@]}"; do
+    CLOSED_PACKAGE=("${!i}")
+    for p in "${CLOSED_PACKAGE[@]}"; do
+        echo "    Compile ${p}"
+        ${CLOSED_PACKAGES_DIR}/${p} > "${BUILD_DIR}/${p}.log" 2>&1 &
     done
     wait || exit_failure "Failed to build ${p}"
     echo "    --------------------------------------------------"

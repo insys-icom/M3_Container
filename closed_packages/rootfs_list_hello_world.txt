@@ -1,0 +1,2 @@
+dir /bin            0755 0 0
+file /bin/hello     ${STAGING_DIR}/bin/hello_world 0755 0 0

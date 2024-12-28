@@ -54,6 +54,7 @@ include snippets/dropbear.txt
 include snippets/mcip-tool.txt
 include snippets/syslibs_${ARCH}.txt
 include snippets/timezone.txt
+include ../../closed_packages/rootfs_list_hello_world.txt
 
 file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
 file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0

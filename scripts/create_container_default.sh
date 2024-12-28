@@ -8,11 +8,11 @@ PACKAGES_1=(
     "libxcrypt-4.4.36.sh"
     "mcip.sh"
     "cacert-2024-11-26.sh"
+    "zlib-1.3.sh"
+    "tzdb-2024b.sh"
 )
 PACKAGES_2=(
-    "zlib-1.3.sh"
     "lz4-1.10.0.sh"
-    "tzdb-2024b.sh"
     "pcre2-10.44.sh"
     "openssl-3.4.0.sh"
     "mcip-tool-v4.sh"
@@ -23,11 +23,17 @@ PACKAGES_3=(
     "metalog-20230719.sh"
     "dnsmasq-2.90.sh"
 )
-
 PACKAGES=(
     PACKAGES_1[@]
     PACKAGES_2[@]
     PACKAGES_3[@]
+)
+
+CLOSED_PACKAGES_1=(
+    "hello_world.sh"
+)
+CLOSED_PACKAGES=(
+    CLOSED_PACKAGES_1[@]
 )
 
 # in case $1 is "do_nothing" this script will end here

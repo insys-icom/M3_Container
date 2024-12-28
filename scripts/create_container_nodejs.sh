@@ -8,11 +8,11 @@ PACKAGES_1=(
     "libxcrypt-4.4.36.sh"
     "mcip.sh"
     "cacert-2024-11-26.sh"
+    "zlib-1.3.sh"
+    "tzdb-2024b.sh"
 )
 PACKAGES_2=(
-    "zlib-1.3.sh"
     "lz4-1.10.0.sh"
-    "tzdb-2024b.sh"
     "pcre2-10.44.sh"
     "openssl-3.4.0.sh"
     "c-ares-1.33.1.sh"
