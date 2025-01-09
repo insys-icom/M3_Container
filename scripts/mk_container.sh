@@ -176,8 +176,6 @@ process_filesystem_list()
                     chmod 0644 "${TARGET_DIR}${DESTINATION_FILE}"
                     do_strip "${TARGET_DIR}${DESTINATION_FILE}"
                 fi
-                #md5sum "${TARGET_DIR}${DESTINATION_FILE}" | sed "s|${TARGET_DIR}/||" >> "${TARGET_DIR}/md5sums"
-                LINE="${TYPE} ${DESTINATION_FILE} ${TARGET_DIR}${DESTINATION_FILE} ${PERMISSON} ${OWNER} ${GROUP}"
             ;;
             "dir")
                 PERMISSON="${PARAM_1}"
@@ -185,7 +183,6 @@ process_filesystem_list()
                 GROUP="${PARAM_3}"
                 test -e "${TARGET_DIR}${DESTINATION_FILE}" -a ! -d "${TARGET_DIR}${DESTINATION_FILE}" && rm -f "${TARGET_DIR}${DESTINATION_FILE}"
                 test -d "${TARGET_DIR}${DESTINATION_FILE}" || mkdir --mode=${PERMISSON} "${TARGET_DIR}${DESTINATION_FILE}" || exit_failure "failed to create directory ${DESTINATION_FILE}"
-                LINE="${TYPE} ${DESTINATION_FILE} ${PERMISSON} ${OWNER} ${GROUP}"
             ;;
             "slink")
                 test -d "${TARGET_DIR}${DESTINATION_FILE}" && rm -rf "${TARGET_DIR}${DESTINATION_FILE}"
@@ -203,8 +200,6 @@ process_filesystem_list()
                         if [ $? -ne 0 ] ; then
                             cp -fL "${SOURCE_FILE}" "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" || exit_failure "failed to copy ${DESTINATION_FILE}/${FNAME}"
                         fi
-                        #md5sum "${TARGET_DIR}${DESTINATION_FILE}/${FNAME}" | sed "s|${TARGET_DIR}/||" >> "${TARGET_DIR}/md5sums"
-                        LINE="${TYPE} ${DESTINATION_FILE}/${FNAME} ${TARGET_DIR}${DESTINATION_FILE} ${PERMISSON} ${OWNER} ${GROUP}"
                         TAR_FILES="${TAR_FILES} ./rootfs${DESTINATION_FILE}/${FNAME}"
                     fi
                 done
@@ -218,11 +213,6 @@ process_filesystem_list()
         echo "./rootfs/${TAR_FILES}" | xargs tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=${PERMISSON} --owner=${OWNER} --group=${GROUP}
     done
     IFS=$OLDIFS
-
-    # append file with md5sum of every file within container
-    if [ -e "./rootfs/md5sums" ] ; then
-        tar --append -f ${FS_OUTFILE} --directory="${FS_TARGET_DIR}" --no-recursion --numeric-owner --mode=644 --owner=0 --group=0 "./rootfs/md5sums"
-    fi
 }
 
 # compression level 6 is used, because 9 MiB of decompression RAM is enough

@@ -7,7 +7,7 @@ wget_check() {
 }
 
 # wget_check <URL to check> <text to parse in the retrieved HTML>  <additional wget parameter>
-wget_check "libxcrypt"  "https://github.com/besser82/libxcrypt"                 ">v4.4.36</span>"
+wget_check "libxcrypt"  "https://github.com/besser82/libxcrypt"                 ">v4.4.37</span>"
 wget_check "lz4"        "https://github.com/lz4/lz4"                            ">LZ4 v1.10.0"
 wget_check "openssl"    "https://www.openssl.org/source"                        "openssl-3.4.0.tar.gz"
 wget_check "pcre2"      "https://github.com/PhilipHazel/pcre2"                  ">PCRE2-10.44</span>"

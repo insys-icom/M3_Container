@@ -4,6 +4,7 @@ slink /lib64                          lib                                       
 file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
 file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
 file /lib/libnss_dns.so.2             ${SYSROOT_DIR}/libnss_dns.so.2                 0755 0 0
+file /lib/libnss_files.so.2           ${SYSROOT_DIR}/libnss_files.so.2               0755 0 0
 file /lib/libc.so.6                   ${SYSROOT_DIR}/libc.so.6                       0755 0 0
 file /lib/ld-linux-x86-64.so.2        ${SYSROOT_DIR}/ld-linux-x86-64.so.2            0755 0 0
 file /lib/libutil.so.1                ${SYSROOT_DIR}/libutil.so.1                    0755 0 0
@@ -12,4 +13,3 @@ file /lib/libdl.so.2                  ${SYSROOT_DIR}/libdl.so.2                 
 file /lib/libpthread.so.0             ${SYSROOT_DIR}/libpthread.so.0                 0755 0 0
 file /lib/libm.so.6                   ${SYSROOT_DIR}/libm.so.6                       0755 0 0
 file /lib/librt.so.1                  ${SYSROOT_DIR}/librt.so.1                      0755 0 0
-file /lib/libnss_files.so.2           ${SYSROOT_DIR}/libnss_files.so.2               0755 0 0

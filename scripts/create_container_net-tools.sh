@@ -5,7 +5,7 @@ CONTAINER_NAME="container_net-tools"
 ROOTFS_LIST="rootfs_list_net-tools.txt"
 
 PACKAGES_1=(
-    "libxcrypt-4.4.36.sh"
+    "libxcrypt-4.4.37.sh"
     "mcip.sh"
     "cacert-2024-11-26.sh"
     "zlib-1.3.sh"
@@ -14,7 +14,6 @@ PACKAGES_1=(
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
-    "lzo-2.10.sh"
     "pcre2-10.44.sh"
     "openssl-3.4.0.sh"
     "cacert-2024-11-26.sh"
