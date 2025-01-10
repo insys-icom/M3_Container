@@ -44,6 +44,7 @@ configure()
         --disable-debug \
         --disable-unit-tests \
         --disable-dco \
+        --disable-lzo \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 

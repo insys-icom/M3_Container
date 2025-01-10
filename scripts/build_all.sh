@@ -59,6 +59,20 @@ for ARCH in ${ARCHITECTURES}; do
         echo "    --------------------------------------------------"
     done
 
+    # build all the closed packages
+    echo ""
+    echo "Compiling closed packages:"
+    echo "------------------------------------------------------"
+    for i in "${CLOSED_PACKAGES[@]}"; do
+        CLOSED_PACKAGE=("${!i}")
+        for p in "${CLOSED_PACKAGE[@]}"; do
+            echo "    Compile ${p}"
+            ARCH=${ARCH} ${CLOSED_PACKAGES_DIR}/${p} all > "${BUILD_DIR}/${p}.log" 2>&1 &
+        done
+        wait || exit_failure "Failed to build ${p}"
+        echo "    --------------------------------------------------"
+    done
+
     # create all Update Packets
     for i in $(ls ${SCRIPTS}); do
         if [[ "${i}" == *"create_container_"* ]]; then

@@ -127,7 +127,6 @@ file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0        
 file /lib/libiperf.so.0               ${STAGING_DIR}/lib/libiperf.so.0               0755 0 0
 file /lib/libcares.so.2               ${STAGING_DIR}/lib/libcares.so.2               0755 0 0
 file /lib/libcurl.so.4                ${STAGING_DIR}/lib/libcurl.so.4                0644 0 0
-file /lib/liblzo2.so.2                ${STAGING_DIR}/lib/liblzo2.so.2                0755 0 0
 file /lib/libnghttp2.so.14            ${STAGING_DIR}/lib/libnghttp2.so.14            0644 0 0
 file /lib/libssh2.so.1                ${STAGING_DIR}/lib/libssh2.so.1                0755 0 0
 file /lib/libcap-ng.so.0              ${STAGING_DIR}/lib/libcap-ng.so.0              0755 0 0
