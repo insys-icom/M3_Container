@@ -4,9 +4,7 @@ TOPDIR = $(abspath $(PWD)/../..)
 # PWD does not append a final /, so we can use notdir to get the folder name we are in
 PROJECT_NAME = $(notdir $(PWD))
 
-include $(TOPDIR)/scripts/common_settings_armv7.mk
-
-CFLAGS = -Wall -I$(STAGING_DIR)/include $(OPTIMIZE_CFLAGS)
+CFLAGS := -Wall -I$(STAGING_DIR)/include $(OPTIMIZE_CFLAGS)
 LDFLAGS = $(OPTIMIZE_LDFLAGS)
 
 BUILD_DIR := $(TOPDIR)/working/$(ARCH)/$(PROJECT_NAME)
