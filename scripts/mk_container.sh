@@ -85,14 +85,14 @@ do_strip()
     FILE_TYPE=$(file ${1})
     if echo "${FILE_TYPE}" | grep -q "${ELF_BINARY}" ; then
         if echo "${FILE_TYPE}" | grep -q "executable" ; then
-            ${M3_CROSS_COMPILE}strip "${1}" > /dev/null 2>&1
+            ${M3_TARGET}-strip "${1}" > /dev/null 2>&1
         else
             if echo "${FILE_TYPE}" | grep -q "shared object" ; then
-                ${M3_CROSS_COMPILE}strip "${1}" > /dev/null 2>&1
+                ${M3_TARGET}-strip "${1}" > /dev/null 2>&1
             else
                 if echo "${FILE_TYPE}" | grep -q "BuildID" ; then
                     # kernel modules my not be fully stripped
-                    ${M3_CROSS_COMPILE}strip --strip-debug "${1}"
+                    ${M3_TARGET}-strip --strip-debug "${1}"
                 fi
             fi
         fi

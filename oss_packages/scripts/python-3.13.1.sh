@@ -65,7 +65,7 @@ configure()
     ac_cv_file__dev_ptc=no \
     ac_cv_file__dev_ptmx=no \
     ax_cv_c_float_words_bigendian=no \
-    CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+    CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE} -Wno-implicit-function-declaration" \
     CPPFLAGS="${CFLAGS}" \
     LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
     CXX="" \

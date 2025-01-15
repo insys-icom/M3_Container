@@ -31,6 +31,8 @@ configure()
 
     if [ "${M3_TARGET}" = "x86_64-pc-linux-gnu" ] ; then
         OPENSSL_CONFIGURE_TARGET="linux-x86_64"
+    elif [ "${M3_TARGET}" = "aarch64-unknown-linux-gnu" ] ; then
+        OPENSSL_CONFIGURE_TARGET="linux-aarch64"
     else
         OPENSSL_CONFIGURE_TARGET="linux-armv4"
     fi

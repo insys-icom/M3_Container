@@ -29,7 +29,7 @@ PACKAGES_3=(
 PACKAGES_4=(
     "curl-8.11.0.sh"
     "nano-8.2.sh"
-    "node-v20.17.0-linux-armv7l.sh"
+    "node-v22.13.0-linux.sh"
 )
 
 PACKAGES=(

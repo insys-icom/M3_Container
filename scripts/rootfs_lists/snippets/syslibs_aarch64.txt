@@ -1,0 +1,15 @@
+dir /lib  0755 0 0
+
+slink /lib64                          lib                                            0777 0 0
+file /lib/libgcc_s.so.1               ${GCC_LIB_DIR}/libgcc_s.so.1                   0755 0 0
+file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
+file /lib/libnss_dns.so.2             ${SYSROOT_DIR}/lib64/libnss_dns.so.2           0755 0 0
+file /lib/libnss_files.so.2           ${SYSROOT_DIR}/lib64/libnss_files.so.2         0755 0 0
+file /lib/libc.so.6                   ${SYSROOT_DIR}/lib64/libc.so.6                 0755 0 0
+file /lib/ld-linux-aarch64.so.1       ${SYSROOT_DIR}/lib64/ld-linux-aarch64.so.1     0755 0 0
+file /lib/libutil.so.1                ${SYSROOT_DIR}/lib64/libutil.so.1              0755 0 0
+file /lib/libresolv.so.2              ${SYSROOT_DIR}/lib64/libresolv.so.2            0755 0 0
+file /lib/libdl.so.2                  ${SYSROOT_DIR}/lib64/libdl.so.2                0755 0 0
+file /lib/libpthread.so.0             ${SYSROOT_DIR}/lib64/libpthread.so.0           0755 0 0
+file /lib/libm.so.6                   ${SYSROOT_DIR}/lib64/libm.so.6                 0755 0 0
+file /lib/librt.so.1                  ${SYSROOT_DIR}/lib64/librt.so.1                0755 0 0

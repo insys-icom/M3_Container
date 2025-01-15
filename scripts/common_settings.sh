@@ -4,48 +4,43 @@
 export CPU_THREADS=$(grep processor /proc/cpuinfo | wc -l)
 
 if [ "${ARCH}" == "amd64" ] ; then
+    M3_TARGET="x86_64-pc-linux-gnu"
     M3_CFLAGS="-Os -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections -Wno-nonnull-compare"
     M3_LDFLAGS="-Wl,--as-needed -Os -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections -Wno-nonnull-compare"
-
-    M3_TARGET=x86_64-pc-linux-gnu
-    M3_CROSS_COMPILE=${M3_TARGET}-
 
     GCC_VERSION=$(ls /usr/lib/gcc/${M3_TARGET} | sort | tail -n 1)
     GCC_LIB_DIR="/usr/lib/gcc/${M3_TARGET}/${GCC_VERSION}/"
     SYSROOT_DIR="/lib64"
-    PATH="$PATH:/usr/x86_64-pc-linux-gnu/gcc-bin/${GCC_VERSION}"
+    PATH="$PATH:/usr/${M3_TARGET}/gcc-bin/${GCC_VERSION}"
 
-    # prefere self compiled libs in rootfs_staging
+    # prefere self compiled libs in rootfs_staging instead of SDK native libs
     LD_LIBRARY_PATH="${STAGING_LIB}"
+elif [ "${ARCH}" == "aarch64" ] ; then
+    M3_TARGET="aarch64-unknown-linux-gnu"
+    M3_CFLAGS="-Os -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections"
+    M3_LDFLAGS="-Wl,--as-needed -Os -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections"
+
+    GCC_VERSION=$(ls /usr/lib/gcc/${M3_TARGET} | sort | tail -n 1)
+    GCC_LIB_DIR="/usr/lib/gcc/${M3_TARGET}/${GCC_VERSION}/"
+    SYSROOT_DIR="/usr/${M3_TARGET}"
+    PATH="$PATH:/usr/i686-pc-linux-gnu/${M3_TARGET}/gcc-bin/${GCC_VERSION}"
 else
     ARCH=armv7
-
-    # create optimized build
+    M3_TARGET="armv7a-hardfloat-linux-gnueabi"
     M3_CFLAGS="-Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections"
     M3_LDFLAGS="-Wl,--as-needed -Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections"
 
-    # build with sanitizer
-    # M3_CFLAGS="-Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8 -fno-common -fsanitize=address"
-    # M3_LDFLAGS="-Wl,--as-needed -Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8 -fno-common -lstdc++ -fsanitize=address"
-    #  -fsanitize=undefined is a bit too much
-
-    # build for gdb / valgrind
-    # M3_CFLAGS="-Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8"
-    # M3_LDFLAGS="-Wl,--as-needed -Og -ggdb -mthumb -march=armv7-a -mtune=cortex-a8"
-
-    M3_TARGET=armv7a-hardfloat-linux-gnueabi
-    M3_CROSS_COMPILE=${M3_TARGET}-
-
-    GCC_VERSION=$(ls /usr/lib/gcc/armv7a-hardfloat-linux-gnueabi | sort  | tail -n 1)
-    GCC_LIB_DIR="/usr/lib/gcc/armv7a-hardfloat-linux-gnueabi/${GCC_VERSION}/"
-    SYSROOT_DIR="/usr/armv7a-hardfloat-linux-gnueabi"
-    PATH="$PATH:/usr/i686-pc-linux-gnu/armv7a-hardfloat-linux-gnueabi/gcc-bin/${GCC_VERSION}"
+    GCC_VERSION=$(ls /usr/lib/gcc/${M3_TARGET} | sort | tail -n 1)
+    GCC_LIB_DIR="/usr/lib/gcc/${M3_TARGET}/${GCC_VERSION}/"
+    SYSROOT_DIR="/usr/${M3_TARGET}"
+    PATH="$PATH:/usr/i686-pc-linux-gnu/${M3_TARGET}/gcc-bin/${GCC_VERSION}"
 fi
 
-export AR=$(which ${M3_CROSS_COMPILE}gcc-ar)
-export NM=$(which ${M3_CROSS_COMPILE}gcc-nm)
-export RANLIB=$(which ${M3_CROSS_COMPILE}gcc-ranlib)
+export AR=$(which ${M3_TARGET}-gcc-ar)
+export NM=$(which ${M3_TARGET}-gcc-nm)
+export RANLIB=$(which ${M3_TARGET}-gcc-ranlib)
 
+M3_CROSS_COMPILE="${M3_TARGET}-"
 M3_MAKEFLAGS="-j${CPU_THREADS}"
 
 OSS_PACKAGES_DIR="${TOPDIR}/oss_packages"
