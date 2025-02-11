@@ -9,6 +9,7 @@
 #    slink <name> <target> <mode> <uid> <gid>
 #    pipe <name> <mode> <uid> <gid>
 #    sock <name> <mode> <uid> <gid>
+#    include <path>
 #
 #    <name>       name of the file in the containers root file system
 #    <location>   location of the file where it should be copied from
@@ -18,6 +19,7 @@
 #    <gid>        group id (0=root)
 #    <hard links> space separated list of other links to file
 #    <wildcard>   copies all files of a directory non-recursively and does not strip the files
+#    <path>       path to another rootfs_list file relative to this path
 #
 #
 #     !!! DO NOT USE TABULATORS !!!

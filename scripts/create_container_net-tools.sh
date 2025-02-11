@@ -38,7 +38,7 @@ PACKAGES_3=(
     "socat-1.8.0.0.sh"
     "libwebsockets-4.3.3.sh"
     "bftpd-6.2.sh"
-    "rsync-3.3.0.sh"
+    "rsync-3.4.1.sh"
     "libevent-2.1.12-stable.sh"
 )
 PACKAGES_4=(
