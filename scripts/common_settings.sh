@@ -25,7 +25,7 @@ elif [ "${ARCH}" == "aarch64" ] ; then
     SYSROOT_DIR="/usr/${M3_TARGET}"
     PATH="$PATH:/usr/i686-pc-linux-gnu/${M3_TARGET}/gcc-bin/${GCC_VERSION}"
 else
-    ARCH=armv7
+    export ARCH=armv7
     M3_TARGET="armv7a-hardfloat-linux-gnueabi"
     M3_CFLAGS="-Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -ffunction-sections -fdata-sections"
     M3_LDFLAGS="-Wl,--as-needed -Os -mthumb -march=armv7-a -mtune=cortex-a8 -flto=${CPU_THREADS} -fuse-linker-plugin -Wl,--gc-sections"
