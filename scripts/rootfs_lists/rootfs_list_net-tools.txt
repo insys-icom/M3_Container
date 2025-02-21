@@ -30,6 +30,7 @@ dir /dev                        0755 0 0
 dir /devices                    0755 0 0
 dir /devices/cli_no_auth        0755 0 0
 dir /etc                        0755 0 0
+dir /etc/mosquitto              0755 0 0
 dir /etc/openvpn                0755 0 0
 dir /etc/openvpn/ccd            0755 0 0
 dir /etc/stunnel                0755 0 0
@@ -120,6 +121,10 @@ file /etc/openvpn/client.key          ${SKELETON_DIR}/etc/openvpn/client.key    
 file /etc/openvpn/up.sh               ${SKELETON_DIR}/etc/openvpn/up.sh              0755 nobody nogroup
 file /etc/openvpn/down.sh             ${SKELETON_DIR}/etc/openvpn/down.sh            0755 nobody nogroup
 file /etc/bftpd.conf                  ${SKELETON_DIR}/etc/bftpd.conf                 0755 0 0
+file /etc/mosquitto/aclfile           ${STAGING_DIR}/etc/mosquitto/aclfile.example   0644 0 0
+file /etc/mosquitto/mosquitto.conf    ${STAGING_DIR}/etc/mosquitto/mosquitto.conf.example 0644 0 0
+file /etc/mosquitto/pskfile           ${STAGING_DIR}/etc/mosquitto/pskfile.example   0644 0 0
+file /etc/mosquitto/pwfile            ${STAGING_DIR}/etc/mosquitto/pwfile.example    0644 0 0
 
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1                 0644 0 0

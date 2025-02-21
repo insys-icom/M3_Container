@@ -94,6 +94,7 @@ file /etc/php.ini                     ${STAGING_DIR}/etc/php.ini                
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
 file /lib/libsqlite3.so.0             ${STAGING_DIR}/lib/libsqlite3.so.0             0644 0 0
+slink /lib/libsqlite3.so              libsqlite3.so.0                                0777 0 0
 file /lib/libexpat.so.1               ${STAGING_DIR}/lib/libexpat.so.1               0755 0 0
 slink /lib/libexpat.so                libexpat.so.1                                  0777 0 0
 file /lib/libxml2.so.2                ${STAGING_DIR}/lib/libxml2.so.2                0644 0 0

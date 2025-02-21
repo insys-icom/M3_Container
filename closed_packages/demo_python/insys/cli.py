@@ -1,4 +1,5 @@
 import socket
+import os.path
 
 class Cli():
     """CLI uses an UDS (Unix Domain Socket) to communicate with the device similar to ssh"""
@@ -9,8 +10,12 @@ class Cli():
 
     def connect(self):
         """Establish a CLI connection to the router without authentication"""
+        uds = '/devices/cli_no_auth/cli.socket'
+        if os.path.exists(uds) is False:
+            print("Error: You have to enable authorized access to the CLI for this container in the router")
+            return False
         self._cli = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-        self._cli.connect('/devices/cli_no_auth/cli.socket')
+        self._cli.connect(uds)
 
         # remember prompt configuration
         self._prompt = self._cli.recv(1024).decode('utf-8')
@@ -23,6 +28,9 @@ class Cli():
 
     def get(self, command):
         """Send a CLI command and return the answer"""
+        if self._cli is None:
+            return None
+
         # append eventually missing new line character
         if command.endswith('\n') is False:
             command = command + '\n'

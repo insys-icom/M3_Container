@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Demonstrates how to send an SMS via CLI command"""
 
 from insys.cli import Cli
@@ -11,7 +11,8 @@ def main():
     text  = "This is the SMS text"
 
     cli = Cli()
-    cli.get(f'help.debug.sms.modem={modem}')
+    if cli.get(f'help.debug.sms.modem={modem}') is None:
+        return False
     cli.get(f'help.debug.sms.recipient={phone}')
     cli.get(f'help.debug.sms.text=-----BEGIN ...-----{text}-----END ...-----')
     cli.get('help.debug.sms.submit')

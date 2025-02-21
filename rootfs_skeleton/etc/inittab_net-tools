@@ -20,7 +20,10 @@
 #::respawn:/bin/crond -f
 
 # start FTP server
-::respawn:/bin/bftpd -D
+# ::respawn:/bin/bftpd -D
+
+# start MQTT broker
+# ::respawn:/bin/mosquitto -c /etc/mosquitto/mosquitto.conf
 
 # start OpenVPN as server or as client
 # ::respawn:/bin/openvpn /etc/openvpn/server.ovpn

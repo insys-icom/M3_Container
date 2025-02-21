@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Demonstrates how to use a serial interface"""
 
 from serial import Serial

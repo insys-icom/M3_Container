@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Demonstrate how to use the CLI"""
 
 from insys.cli import Cli
@@ -9,6 +9,8 @@ def main():
 
     # get serial number of device
     serial = cli.get('status.device_info.slot[1].serial_number')
+    if serial is None:
+        return False
     print(f"Serial number: {serial}")
 
     # create an array from the multi line answer of CLI

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Demonstrate how to set outputs via CLI"""
 
 import argparse
@@ -21,8 +21,10 @@ def main():
     # open and start a CLI session
     cli = Cli()
 
+    if cli.get(f'help.debug.output.change={direction}') is None:
+        return False
+
     print(f"Setting output {output} to {direction}")
-    cli.get(f'help.debug.output.change={direction}')
     cli.get(f'help.debug.output.output={output}')
     cli.get('help.debug.output.submit')
 

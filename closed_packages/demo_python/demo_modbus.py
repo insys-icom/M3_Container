@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Demonstrates reading and writing to Modbus devices via Modbus RTU and TCP"""
 
 from time import sleep

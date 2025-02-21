@@ -1,25 +1,25 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.6.3"
+PKG_DIR="sqlite-src-3490100"
 
-# name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+# name of the archive in dl directory (use "none" if empty)
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
-# download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+# download link for the sources to be stored in dl directory (use "none" if empty)
+#PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
-# md5 checksum of archive in dl directory
-PKG_CHECKSUM="db0590629b6f0fa36e74aea5f9731dc6f8df068ce7b7bafa45301832a5eebc3a"
+# md5 checksum of archive in dl directory (use "none" if empty)
+PKG_CHECKSUM="4404d93cbce818b1b98ca7259d0ba9b45db76f2fdd9373e56f2d29b519f4d43b"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${HELPERSDIR}/functions.sh
+. "${TOPDIR}/scripts/common_settings.sh"
+. "${HELPERSDIR}/functions.sh"
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -28,21 +28,15 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize" \
-    LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize" \
-        ./configure \
-        --target=${M3_TARGET} \
+    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
+        LDFLAGS="${M3_LDFLAGS}" \
         --host=${M3_TARGET} \
-        --disable-nls \
-        --enable-static \
-        --disable-lzmainfo \
-        --disable-lzmadec \
-        --disable-xzdec \
-        --disable-shared \
-        --disable-doc \
-        --disable-scripts \
-        --enable-small \
         --prefix="" \
+        --disable-largefile \
+        --with-tempstore=yes \
+        --disable-readline \
+        --disable-tcl \
+        --disable-load-extension \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -57,7 +51,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Demonstrate how to set outputs via CLI and receive input status via MCIP"""
 
 from insys.cli import Cli
@@ -14,6 +14,8 @@ def main():
 
     # read the device type via CLI
     device = cli.get('status.device_info.device_type')
+    if device is None:
+        return False
     print(f"Device type: {device}")
 
     while True:

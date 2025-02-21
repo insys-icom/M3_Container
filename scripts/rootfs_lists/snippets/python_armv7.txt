@@ -52,6 +52,7 @@ file /usr/local/lib/python3.13/__future__.py ${STAGING_DIR}/usr/local/lib/python
 file /usr/local/lib/python3.13/__hello__.py ${STAGING_DIR}/usr/local/lib/python3.13/__hello__.py 644 0 0
 file /usr/local/lib/python3.13/_aix_support.py ${STAGING_DIR}/usr/local/lib/python3.13/_aix_support.py 644 0 0
 file /usr/local/lib/python3.13/_android_support.py ${STAGING_DIR}/usr/local/lib/python3.13/_android_support.py 644 0 0
+file /usr/local/lib/python3.13/_apple_support.py ${STAGING_DIR}/usr/local/lib/python3.13/_apple_support.py 644 0 0
 file /usr/local/lib/python3.13/_collections_abc.py ${STAGING_DIR}/usr/local/lib/python3.13/_collections_abc.py 644 0 0
 file /usr/local/lib/python3.13/_colorize.py ${STAGING_DIR}/usr/local/lib/python3.13/_colorize.py 644 0 0
 file /usr/local/lib/python3.13/_compat_pickle.py ${STAGING_DIR}/usr/local/lib/python3.13/_compat_pickle.py 644 0 0
@@ -411,6 +412,7 @@ file /usr/local/lib/python3.13/lib-dynload/_codecs_kr.cpython-313-arm-linux-gnue
 file /usr/local/lib/python3.13/lib-dynload/_codecs_tw.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_codecs_tw.cpython-313-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.13/lib-dynload/_contextvars.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_contextvars.cpython-313-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.13/lib-dynload/_csv.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_csv.cpython-313-arm-linux-gnueabihf.so 755 0 0
+file /usr/local/lib/python3.13/lib-dynload/_ctypes.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_ctypes.cpython-313-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.13/lib-dynload/_datetime.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_datetime.cpython-313-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.13/lib-dynload/_decimal.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_decimal.cpython-313-arm-linux-gnueabihf.so 755 0 0
 file /usr/local/lib/python3.13/lib-dynload/_elementtree.cpython-313-arm-linux-gnueabihf.so ${STAGING_DIR}/usr/local/lib/python3.13/lib-dynload/_elementtree.cpython-313-arm-linux-gnueabihf.so 755 0 0

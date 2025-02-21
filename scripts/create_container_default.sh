@@ -5,16 +5,16 @@ CONTAINER_NAME="container_default"
 ROOTFS_LIST="rootfs_list_default.txt"
 
 PACKAGES_1=(
-    "libxcrypt-4.4.37.sh"
+    "libxcrypt-4.4.38.sh"
     "mcip.sh"
-    "cacert-2024-11-26.sh"
+    "cacert-2024-12-31.sh"
     "zlib-1.3.sh"
-    "tzdb-2024b.sh"
+    "tzdb-2025a.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
-    "pcre2-10.44.sh"
-    "openssl-3.4.0.sh"
+    "pcre2-10.45.sh"
+    "openssl-3.4.1.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(

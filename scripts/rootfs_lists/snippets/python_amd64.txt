@@ -52,6 +52,7 @@ file /usr/local/lib/python3.13/__future__.py ${STAGING_DIR}/usr/local/lib/python
 file /usr/local/lib/python3.13/__hello__.py ${STAGING_DIR}/usr/local/lib/python3.13/__hello__.py 644 0 0
 file /usr/local/lib/python3.13/_aix_support.py ${STAGING_DIR}/usr/local/lib/python3.13/_aix_support.py 644 0 0
 file /usr/local/lib/python3.13/_android_support.py ${STAGING_DIR}/usr/local/lib/python3.13/_android_support.py 644 0 0
+file /usr/local/lib/python3.13/_apple_support.py ${STAGING_DIR}/usr/local/lib/python3.13/_apple_support.py 644 0 0
 file /usr/local/lib/python3.13/_collections_abc.py ${STAGING_DIR}/usr/local/lib/python3.13/_collections_abc.py 644 0 0
 file /usr/local/lib/python3.13/_colorize.py ${STAGING_DIR}/usr/local/lib/python3.13/_colorize.py 644 0 0
 file /usr/local/lib/python3.13/_compat_pickle.py ${STAGING_DIR}/usr/local/lib/python3.13/_compat_pickle.py 644 0 0
