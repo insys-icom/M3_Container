@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARCHITECTURES="armv7 amd64"
+ARCHITECTURES="armv7 amd64 aarch64"
 
 SCRIPTS=$(realpath $(dirname ${BASH_SOURCE[0]}))
 TOPDIR=$(realpath ${SCRIPTS}/..)
