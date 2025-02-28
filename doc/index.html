@@ -6,148 +6,17 @@
     <meta name="description" content="This is about minimal LXC containers for armv7 and amd64 (x86), offered as finished products, basic demo containers or scripts to create them.">
     <meta name="keywords" content="INSYS, icom, LXC, minimal, container, industry, Industrie, router, armv7, amd64">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
     <title>LXC containers for INSYS icom OS industry routers and gateways</title>
-    <style>
-        html {
-            font-family: sans-serif;
-            color: black;
-        }
-
-        body {
-            background: #f2f2f2;
-        }
-
-        a:link,
-        a:visited {
-            color:#3641d8de;
-            text-decoration:none;
-            border:none;
-        }
-
-        a:active,
-        a:hover {
-            color:#ff0000de;
-            text-decoration:none;
-            border:none;
-        }
-
-        h1,
-        h2 {
-            padding-top: 1em;
-            padding-bottom: 0.2em;
-        }
-
-        h1,
-        h2,
-        h3 {
-            background: #ffffffed;
-        }
-
-        .code {
-            font-family: monospace;
-            transition: background;
-            transition-duration: 1s;
-        }
-
-        .code:hover {
-            background: #e9e9e9;
-            transition: background;
-            transition-duration: 0.3s;
-        }
-
-        span.code {
-            background: lightgray;
-            padding: 3px;
-            margin: 1px;
-        }
-
-        div.code {
-            background: lightgray;
-            display: inline-block;
-            padding: 0.75em;
-            margin-left: 1.5em;
-            white-space: nowrap;
-            overflow-x: auto;
-            max-width: -webkit-fill-available;
-            border-top-left-radius: 1.5em;
-            border-bottom-right-radius: 1.5em;
-        }
-
-        #content, html, body {
-            height: 100%;
-        }
-
-        #left {
-            float: left;
-            background: white;
-            text-align: left;
-            width: 17em;
-            margin-top: 1em;
-            padding-top: 0;
-            padding-bottom: 1em;
-            padding-left: 0.25em;
-            padding-right: 0;
-            box-shadow: 0.25em 0.25em 0.25em lightgray;
-            border-radius: 0.75em;
-            overflow: auto;
-        }
-        #right {
-            float: left;
-            height: 100%;
-            overflow: auto;
-        }
-
-        .card {
-            background: white;
-            max-width: 50em;
-            margin: 1em;
-            padding-top: 0;
-            padding-bottom: 1em;
-            padding-left: 1em;
-            padding-right: 1em;
-            box-shadow: 0.25em 0.25em 0.25em lightgray;
-            border-radius: 0.75em;
-        }
-
-        .card:nth-child(7n-6) {
-            border-left: 0.75em solid #1d5997;
-        }
-        .card:nth-child(7n-5) {
-            border-left: 0.75em solid #347e16;
-        }
-        .card:nth-child(7n-4) {
-            border-left: 0.75em solid #fcd75f;
-        }
-        .card:nth-child(7n-3) {
-            border-left: 0.75em solid #ff5f20;
-        }
-        .card:nth-child(7n-2) {
-            border-left: 0.75em solid #96d67c;
-        }
-        .card:nth-child(7n-1) {
-            border-left: 0.75em solid #bc44d4;
-        }
-        .card:nth-child(7n) {
-            border-left: 0.75em solid #993300;
-        }
-
-        .logo {
-            padding: 0 0 0 0;
-            position: sticky;
-        }
-
-        .logo img {
-            right: 0;
-            position: absolute;
-            top: 0.75em;
-            max-height: 5em;
-        }
-    </style>
 </head>
 
 <div id="content">
 
 <div id="left">
+    <br><center>
+    <a href="index.de.html" title="Deutsch"> <img src="./assets/icons/de.png" alt="Deutsch" height=20 width=30 style="border: 0px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="index.html"    title="English"> <img src="./assets/icons/gb.png" alt="English" height=20 width=30 style="border: 0px"></a>
+    </center>
     <br>
     <a href="#top">Where to start</a><br><br>
     Linux distribution containers<br>
@@ -178,7 +47,7 @@
 <div id="right">
 <div class="card">
     <h1 id="top">Containers for INSYS industrial routers</h1>
-    <p>(or other armv7 or amd64 based machines)</p>
+    <p>(or other armv7, aarch64 or amd64 based machines)</p>
     <p><a href="https://www.insys-icom.com/en/products/router-gateways" target="_blank">INSYS industrial routers</a> can
         run <a href="https://www.insys-icom.com/en/products/edge-computing/individual-programming" target="_blank">LXC containers</a>, which can add a lot of functionality!</p>
 
@@ -190,7 +59,7 @@
     <p>Use this poster (pdf <a href="assets/Poster_Container_en.pdf"> en</a>, <a href="assets/Poster_Container_de.pdf"> de)</a> to find your personal entry level to containers. There are at least four entry levels:</p>
     <ol type="A">
         <li><h3>Ready-to-use containers</h3>
-            <p>Products like our <a href="#ids">icom Data Suite (iDS)</a>, products from partners like <a href="#anyviz">AnyViz</a> or community based setups like <a href="#nodered">Node-RED</a> allow configuring instead of programming additional functionality.
+            <p>Products like the <a href="#ids">icom Data Suite (iDS)</a>, products from partners like <a href="#anyviz">AnyViz</a> or community based setups like <a href="#nodered">Node-RED</a> allow configuring instead of programming additional functionality.
         </li>
 
         <li><h3>Well known Linux distributions</h3>
@@ -202,8 +71,7 @@
         </li>
 
         <li><h3>Develop your own container</h3>
-            <p>This is the developers choice: Install the <a href="#sdk">SDK</a> (as <a href="https://hub.docker.com/r/insysicom/m3sdk_v5" target="_blank">Docker</a>
-                or <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz" target="_blank">LXC container</a>), clone the prepared <a href="#scripts">build scripts</a> and create containers from scratch.
+            <p>This is the developers choice: Install the <a href="#sdk">SDK</a>, clone the prepared <a href="#scripts">build scripts</a> and create containers from scratch.
                 This is how the basic containers are created.</p>
         </li>
     </ol>
@@ -215,7 +83,7 @@
         <img src="assets/alpinelinux-logo.svg" width="150" alt="alpinelinux-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images_static/Alpine.tar">Alpine.tar</a></p>
+    <p>Download <b>Alpine.tar</b>: <a href="https://m3-container.net/M3_Container/images_static/Alpine.tar">armv7</a></p>
 
     <p>An <a href="https://alpinelinux.org" target="_blank">Alpine Linux</a> demo container with only an SSH server for login.</p>
 
@@ -223,8 +91,7 @@
         The SDK doesn't support musl, so it's not possible to use it to cross compile applications for Alpine Linux.</p>
 
     <p>Alpine Linux does have a <a href="https://pkgs.alpinelinux.org/packages" target="_blank">huge catalogue</a> of precompiled applications and libraries.
-        Use the included package managing tool "apk" for updating, upgrading and installing additional packages,
-        so this container fits when you want to run standard software, e.g. Node-RED or a minetest server.</p>
+        Use the included package managing tool "apk" for updating, upgrading and installing additional packages.</p>
 </div>
 
 <div class="card">
@@ -233,20 +100,16 @@
         <img src="assets/debian-logo.svg" width="150" alt="debian-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images_static/Debian.tar">Debian.tar</a></p>
+    <p>Download <b>Debian.tar</b>: <a href="https://m3-container.net/M3_Container/images_static/Debian.tar">armv7</a></p>
 
     <p>A <a href="https://www.debian.org" target="_blank">Debian</a> demo container with only an SSH server for login.</p>
 
-    <p>This container might be the easiest way to add functionality due to the huge popularity of Debian.
-        Despite being perfect for quick tests of PoC (Proof of Concept) this comes at the cost of a bit
+    <p>This container might be the most comfortable way to add functionality due to the huge popularity of Debian.
+        Despite being perfect for quick tests of PoC (Proof of Concept) this comfort comes at the cost of a bit
         container size, so it isn't recommended to use such containers in a production environment.
     </p>
 
-    <p>Use the included package managing tool "apt" for updating, upgrading and installing additional packages.
-        Before downloading such a container from the device, it's recommended to delete as many files as possible,
-        e.g. all the cached downloaded packages and all the repository information.
-        This data will be outdated anyway and can be replaced with a fresh apt-get upgrade.
-    </p>
+    <p>Use the included package managing tool "apt" for updating, upgrading and installing additional packages.</p>
 </div>
 
 <div class="card">
@@ -255,11 +118,15 @@
         <img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images/container_default.tar">container_default.tar</a></p>
+    <p>Download <b>container_default.tar</b>:
+        <a href="https://m3-container.net/M3_Container/images/armv7/container_default.tar">armv7</a>,
+        <a href="https://m3-container.net/M3_Container/images/aarch64/container_default.tar">aarch64</a>,
+        <a href="https://m3-container.net/M3_Container/images/amd64/container_default.tar">amd64</a>
+    </p>
 
-    <p>A minimal demo container that brings a SSH server (for login).
-        This container is meant as an example or template for your own containers you want to create with the <a href="#sdk">SDK</a> and the provided <a href="#scripts">scripts</a>.
-        Also use this container for very simple applications, that can be implemented in ash, a minimal shell interpreter included in busybox.
+    <p>This minimal demo container brings only a SSH server (for login).
+        It's meant as an example or template for your own containers you want to create with the <a href="#sdk">SDK</a> and the provided <a href="#scripts">scripts</a>.
+        It's also useful for very simle applications that can be implemented in a minimal shell (ash).
     </p>
 </div>
 
@@ -269,10 +136,13 @@
         <img src="assets/python-logo.svg" width="150" alt="python-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images/container_python3.tar">container_python3.tar</a></p>
+    <p>Download <b>container_python3.tar</b>:
+        <a href="https://m3-container.net/M3_Container/images/armv7/container_python3.tar">armv7</a>,
+        <a href="https://m3-container.net/M3_Container/images/aarch64/container_python3.tar">aarch64</a>,
+        <a href="https://m3-container.net/M3_Container/images/amd64/container_python3.tar">amd64</a>
+    </p>
 
-    <p>A minimal demo container with Python 3 in it.
-        There are already a few modules installed (e.g. requests, certifi, urllib).
+    <p>This minimal demo container comes with Python 3 and also a few preinstalled modules like pyserial, requests, certifi, urllib.
         Additional packages can be installed using the included pip.
     </p>
 </div>
@@ -283,9 +153,13 @@
         <img src="assets/nodejs-logo.svg" width="100" alt="nodejs-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images/container_nodejs.tar">container_nodejs.tar</a></p>
+    <p>Download <b>container_nodejs.tar</b>:
+        <a href="https://m3-container.net/M3_Container/images/armv7/container_nodejs.tar">armv7</a>,
+        <a href="https://m3-container.net/M3_Container/images/aarch64/container_nodejs.tar">aarch64</a>,
+        <a href="https://m3-container.net/M3_Container/images/amd64/container_nodejs.tar">amd64</a>
+    </p>
 
-    <p>A minimal demo container with NodeJS in it.</p>
+    <p>This minimal demo container comes with NodeJS and the packet manager npm to install more modules.</p>
 </div>
 
 <div class="card">
@@ -293,9 +167,15 @@
         <h2 id="LAMP">LAMP (Linux, Apache, SQLite3, PHP)</h2>
         <img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
     </div>
-    <p>Download: <a href="https://m3-container.net/M3_Container/images/container_LAMP.tar">container_LAMP.tar</a></p>
 
-    <p>A demo container with a classic LAMP stack consisting of Linux, Apache web server, SQLite3 data base and PHP. Additionally it uses runit to start/stop processes.</p>
+    <p>Download <b>container_LAMP.tar</b>:
+        <a href="https://m3-container.net/M3_Container/images/armv7/container_LAMP.tar">armv7</a>,
+        <a href="https://m3-container.net/M3_Container/images/aarch64/container_LAMP.tar">aarch64</a>,
+        <a href="https://m3-container.net/M3_Container/images/amd64/container_LAMP.tar">amd64</a>
+    </p>
+
+    <p>This demo container comes with a classic LAMP stack consisting of Linux, Apache web server, SQLite3 data base and PHP.
+       Additionally it uses runit to start/stop processes.</p>
 </div>
 
 <div class="card">
@@ -304,7 +184,11 @@
         <img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images/container_net-tools.tar">container_net-tools.tar</a></p>
+    <p>Download <b>container_net-tools.tar</b>:
+        <a href="https://m3-container.net/M3_Container/images/armv7/container_net-tools.tar">armv7</a>,
+        <a href="https://m3-container.net/M3_Container/images/aarch64/container_net-tools.tar">aarch64</a>,
+        <a href="https://m3-container.net/M3_Container/images/amd64/container_net-tools.tar">amd64</a>
+    </p>
 
     <p>A demo container with a few net tools like tcpdump, nmap, nping, iperf, mosquitto (MQTT broker), httping, curl, iptables.
        It also contains tools to establish your own VPN connections like OpenVPN, wg (wireguard) or stunnel.
@@ -330,7 +214,7 @@
         <img src="assets/anyviz-logo.svg" width="150" alt="anyviz-logo.svg">
     </div>
 
-    <p>Download: <a href="https://download.anyviz.io/insys/anyvizcloudadapter.tar">AnyViz Cloud Adapter (Container)</a></p>
+    <p>Download <b>AnyViz Cloud Adapter (Container)</b>: <a href="https://download.anyviz.io/insys/anyvizcloudadapter.tar">armv7</a></p>
 
     <p>Documentation: <a href="https://docs.anyviz.io/Insys-Installation-Instructions_EN.pdf">Installation instructions</a></p>
 
@@ -347,7 +231,7 @@
         <img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
     </div>
 
-    <p>Download: <a href="https://github.com/insys-icom/Kickstarter/releases/download/1/container_kickstarter_2024-11-07_165443.tar" target="_blank">Kickstarter</a></p>
+    <p>Download <b>Kickstarter</b>: <a href="https://github.com/insys-icom/Kickstarter/releases/download/1/container_kickstarter_2024-11-07_165443.tar" target="_blank">armv7</a></p>
 
     <p>Product page: <a href="https://github.com/insys-icom/Kickstarter" target="_blank">https://github.com/insys-icom/Kickstarter</a></p>
 
@@ -360,7 +244,7 @@
         <img src="assets/node-red-logo.svg" width="100" alt="node-red-logo.sv">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/images_static/Node-Red.tar">Node-RED.tar</a></p>
+    <p>Download <b>Node-RED.tar</b>: <a href="https://m3-container.net/M3_Container/images_static/Node-Red.tar">armv7</a></p>
 
     <p>This demo container is based on Alpine Linux. Add more modules and connectors to it by using npm.
     Use this <a href="https://docs.insys-icom.de/pages/en_m3_nodered_thingsboard_dataviz.html">guide</a> to install packages with npm, that need a compiler to get installed.</p>
@@ -372,7 +256,8 @@
         <img src="assets/insys-logo.svg" width="100" alt="insys-logo.svg">
     </div>
 
-    <p>Download: <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC.tar.gz">M3_SDK_LXC.tar.gz</a></p>
+    <p>Download <b>M3_SDK_LXC.tar.gz</b>: <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC_7.tar.gz">Version 7</a>
+                                      (alt: <a href="https://m3-container.net/M3_Container/SDK/M3_SDK_LXC_6.tar.gz">Version 6</a>)</p>
 
     <p>This SDK is just a suggestion, you can use whatever toolchain you prefer!</p>
 
@@ -416,7 +301,7 @@
 
     <p>Hint! Use separate clones of the repos for separate container projects!
         This allows you to update different containers at different speed.
-        Also this scripts will change over time, when there are updates or new basic containers.
+        Also this scripts wihttps://www.insys-icom.com/impressum/ll change over time, when there are updates or new basic containers.
     </p>
 </div>
 

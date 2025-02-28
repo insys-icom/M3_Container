@@ -1,8 +1,134 @@
-pre {
-    background-color:#ececec;
+html {
+    font-family: sans-serif;
+    color: black;
 }
 
 body {
-    color:#000000;
-    background-color:#ffffff;
+    background: #f2f2f2;
+}
+
+a:link,
+a:visited {
+    color:#3641d8de;
+    text-decoration:none;
+    border:none;
+}
+
+a:active,
+a:hover {
+    color:#ff0000de;
+    text-decoration:none;
+    border:none;
+}
+
+h1,
+h2 {
+    padding-top: 1em;
+    padding-bottom: 0.2em;
+}
+
+h1,
+h2,
+h3 {
+    background: #ffffffed;
+}
+
+.code {
+    font-family: monospace;
+    transition: background;
+    transition-duration: 1s;
+}
+
+.code:hover {
+    background: #e9e9e9;
+    transition: background;
+    transition-duration: 0.3s;
+}
+
+span.code {
+    background: lightgray;
+    padding: 3px;
+    margin: 1px;
+}
+
+div.code {
+    background: lightgray;
+    display: inline-block;
+    padding: 0.75em;
+    margin-left: 1.5em;
+    white-space: nowrap;
+    overflow-x: auto;
+    max-width: -webkit-fill-available;
+    border-top-left-radius: 1.5em;
+    border-bottom-right-radius: 1.5em;
+}
+
+#content, html, body {
+    height: 100%;
+}
+
+#left {
+    float: left;
+    background: white;
+    text-align: left;
+    width: 17em;
+    margin-top: 1em;
+    padding-top: 0;
+    padding-bottom: 1em;
+    padding-left: 0.25em;
+    padding-right: 0;
+    box-shadow: 0.25em 0.25em 0.25em lightgray;
+    border-radius: 0.75em;
+    overflow: auto;
+}
+#right {
+    float: left;
+    height: 100%;
+    overflow: auto;
+}
+
+.card {
+    background: white;
+    max-width: 50em;
+    margin: 1em;
+    padding-top: 0;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-shadow: 0.25em 0.25em 0.25em lightgray;
+    border-radius: 0.75em;
+}
+
+.card:nth-child(7n-6) {
+    border-left: 0.75em solid #1d5997;
+}
+.card:nth-child(7n-5) {
+    border-left: 0.75em solid #347e16;
+}
+.card:nth-child(7n-4) {
+    border-left: 0.75em solid #fcd75f;
+}
+.card:nth-child(7n-3) {
+    border-left: 0.75em solid #ff5f20;
+}
+.card:nth-child(7n-2) {
+    border-left: 0.75em solid #96d67c;
+}
+.card:nth-child(7n-1) {
+    border-left: 0.75em solid #bc44d4;
+}
+.card:nth-child(7n) {
+    border-left: 0.75em solid #993300;
+}
+
+.logo {
+    padding: 0 0 0 0;
+    position: sticky;
+}
+
+.logo img {
+    right: 0;
+    position: absolute;
+    top: 0.75em;
+    max-height: 5em;
 }
