@@ -56,6 +56,7 @@ wget_check "bftpd"      "https://sourceforge.net/projects/bftpd/files/bftpd"    
 wget_check "rsync"      "https://download.samba.org/pub/rsync/src"              "rsync-3.4.1" ""
 wget_check "libevent"   "https://github.com/libevent/libevent"                  "release-2.1.12-stable"
 wget_check "addrwatch"  "https://github.com/fln/addrwatch"                      "addrwatch v1.0.2"
+wget_check "lua"        "https://lua.org"                                       ">Lua 5.4.7</A> released"
 
 # not needed any more, use ensurepip that comes with python:
 # wget_check "get-pip"    "https://pip.pypa.io/en/stable/news"                    "pip documentation v22.2.2"

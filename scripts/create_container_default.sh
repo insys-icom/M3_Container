@@ -22,6 +22,7 @@ PACKAGES_3=(
     "dropbear-2024.86.sh"
     "metalog-20230719.sh"
     "dnsmasq-2.90.sh"
+    "lua-5.4.7.sh"
 )
 PACKAGES=(
     PACKAGES_1[@]
