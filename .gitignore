@@ -7,20 +7,20 @@ closed_packages/*
 images/*
 !images/amd64/.keep
 !images/armv7/.keep
+!images/aarch64/.keep
 
 oss_packages/dl
 !oss_packages/dl/.keep
 
-scripts/keys/*
-!scripts/keys/.keep
-
 rootfs_staging/*
 !rootfs_staging/amd64/.keep
 !rootfs_staging/armv7/.keep
+!rootfs_staging/aarch64/.keep
 
 working/*
 !working/amd64/.keep
 !working/armv7/.keep
+!working/aarch64/.keep
 
 # ignore single files
 rootfs_skeleton/usr/share/build

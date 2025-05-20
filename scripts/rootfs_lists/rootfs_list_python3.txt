@@ -93,6 +93,7 @@ file /lib/liblz4.so.1                 ${STAGING_DIR}/lib/liblz4.so.1            
 file /lib/libbz2.so.1.0               ${STAGING_DIR}/lib/libbz2.so.1.0               0644 0 0
 file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
 file /lib/libsqlite3.so.0             ${STAGING_DIR}/lib/libsqlite3.so.0             0644 0 0
+slink /lib/libsqlite3.so              /lib/libsqlite3.so.0                           0777 0 0
 file /lib/libuuid.so.1                ${STAGING_DIR}/lib/libuuid.so.1                0755 0 0
 file /lib/libffi.so.8                 ${STAGING_DIR}/lib/libffi.so.8                 0755 0 0
 file /lib/libssl.so.3                 ${STAGING_DIR}/lib/libssl.so                   0644 0 0
