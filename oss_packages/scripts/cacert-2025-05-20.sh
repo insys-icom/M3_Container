@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="requests-2.32.3"
+PKG_DIR="cacert-2025-05-20.pem"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/9d/be/10918a2eac4ae9f02f6cfe6414b7a155ccd8f7f9d4380d62fd5b955065c3/requests-2.31.0.tar.gz"
+#PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760"
+PKG_CHECKSUM="ab3ee3651977a4178a702b0b828a4ee7b2bbb9127235b0ab740e2e15974bf5db"
 
 
 
@@ -25,7 +25,12 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-PYTHON_VERSION="python3.13"
+unpack()
+{
+    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
+    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
+    cp "${PKG_ARCHIVE}" "${PKG_BUILD_DIR}"
+}
 
 configure()
 {
@@ -39,14 +44,13 @@ compile()
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/requests" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    mkdir -p "${STAGING_DIR}/usr/share"
+    cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/requests"
+    rm -vf "${STAGING_DIR}/usr/share/cacert.pem"
 }
 
 . ${HELPERSDIR}/call_functions.sh

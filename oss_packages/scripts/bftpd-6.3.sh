@@ -4,14 +4,14 @@
 PKG_DIR="bftpd"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}-6.2.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}-6.3.tar.gz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://sourceforge.net/projects/bftpd/files/bftpd/bftpd-6.1/${PKG_ARCHIVE_FILE}/download"
+#PKG_DOWNLOAD="https://sourceforge.net/projects/bftpd/files/bftpd/bftpd-6.3/${PKG_ARCHIVE_FILE}/download"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="959185b1457a2cd8e404d52957d51879d56dd72b75a93049528af11ade00a6c2"
+PKG_CHECKSUM="7fb5d9092ac6c2642ac9fe42e31b49e3a4384831f16ebd79ac3cdc00ad4fbc1e"
 
 
 

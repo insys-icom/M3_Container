@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="charset_normalizer-3.4.1"
+PKG_DIR="requests-2.32.4"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/2a/53/cf0a48de1bdcf6ff6e1c9a023f5f523dfe303e4024f216feac64b6eb7f67/charset-normalizer-3.2.0.tar.gz"
+# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/9d/be/10918a2eac4ae9f02f6cfe6414b7a155ccd8f7f9d4380d62fd5b955065c3/requests-2.31.0.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="44251f18cd68a75b56585dd00dae26183e102cd5e0f9f1466e6df5da2ed64ea3"
+PKG_CHECKSUM="27d0316682c8a29834d3264820024b62a36942083d52caf2f14c0591336d3422"
 
 
 
@@ -41,12 +41,12 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/charset_normalizer" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    cp -a "${PKG_BUILD_DIR}/src/requests" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/charset_normalizer"
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/requests"
 }
 
 . ${HELPERSDIR}/call_functions.sh

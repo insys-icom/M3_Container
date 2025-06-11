@@ -70,6 +70,7 @@ file /usr/local/lib/python3.13/_pyrepl/__init__.py ${STAGING_DIR}/usr/local/lib/
 file /usr/local/lib/python3.13/_pyrepl/__main__.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/__main__.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/_minimal_curses.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/_minimal_curses.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/_threading_handler.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/_threading_handler.py 644 0 0
+file /usr/local/lib/python3.13/_pyrepl/base_eventqueue.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/base_eventqueue.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/commands.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/commands.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/completing_reader.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/completing_reader.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/console.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/console.py 644 0 0
@@ -90,6 +91,7 @@ file /usr/local/lib/python3.13/_pyrepl/unix_console.py ${STAGING_DIR}/usr/local/
 file /usr/local/lib/python3.13/_pyrepl/unix_eventqueue.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/unix_eventqueue.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/utils.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/utils.py 644 0 0
 file /usr/local/lib/python3.13/_pyrepl/windows_console.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/windows_console.py 644 0 0
+file /usr/local/lib/python3.13/_pyrepl/windows_eventqueue.py ${STAGING_DIR}/usr/local/lib/python3.13/_pyrepl/windows_eventqueue.py 644 0 0
 file /usr/local/lib/python3.13/_sitebuiltins.py ${STAGING_DIR}/usr/local/lib/python3.13/_sitebuiltins.py 644 0 0
 file /usr/local/lib/python3.13/_strptime.py ${STAGING_DIR}/usr/local/lib/python3.13/_strptime.py 644 0 0
 file /usr/local/lib/python3.13/_sysconfigdata__linux_x86_64-linux-gnu.py ${STAGING_DIR}/usr/local/lib/python3.13/_sysconfigdata__linux_x86_64-linux-gnu.py 644 0 0
@@ -338,7 +340,7 @@ file /usr/local/lib/python3.13/encodings/uu_codec.py ${STAGING_DIR}/usr/local/li
 file /usr/local/lib/python3.13/encodings/zlib_codec.py ${STAGING_DIR}/usr/local/lib/python3.13/encodings/zlib_codec.py 644 0 0
 file /usr/local/lib/python3.13/ensurepip/__init__.py ${STAGING_DIR}/usr/local/lib/python3.13/ensurepip/__init__.py 644 0 0
 file /usr/local/lib/python3.13/ensurepip/__main__.py ${STAGING_DIR}/usr/local/lib/python3.13/ensurepip/__main__.py 644 0 0
-file /usr/local/lib/python3.13/ensurepip/_bundled/pip-24.3.1-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.13/ensurepip/_bundled/pip-24.3.1-py3-none-any.whl 644 0 0
+file /usr/local/lib/python3.13/ensurepip/_bundled/pip-25.1.1-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.13/ensurepip/_bundled/pip-25.1.1-py3-none-any.whl 644 0 0
 file /usr/local/lib/python3.13/ensurepip/_uninstall.py ${STAGING_DIR}/usr/local/lib/python3.13/ensurepip/_uninstall.py 644 0 0
 file /usr/local/lib/python3.13/enum.py ${STAGING_DIR}/usr/local/lib/python3.13/enum.py 644 0 0
 file /usr/local/lib/python3.13/filecmp.py ${STAGING_DIR}/usr/local/lib/python3.13/filecmp.py 644 0 0
@@ -575,6 +577,7 @@ file /usr/local/lib/python3.13/tomllib/__init__.py ${STAGING_DIR}/usr/local/lib/
 file /usr/local/lib/python3.13/tomllib/_parser.py ${STAGING_DIR}/usr/local/lib/python3.13/tomllib/_parser.py 644 0 0
 file /usr/local/lib/python3.13/tomllib/_re.py ${STAGING_DIR}/usr/local/lib/python3.13/tomllib/_re.py 644 0 0
 file /usr/local/lib/python3.13/tomllib/_types.py ${STAGING_DIR}/usr/local/lib/python3.13/tomllib/_types.py 644 0 0
+file /usr/local/lib/python3.13/tomllib/mypy.ini ${STAGING_DIR}/usr/local/lib/python3.13/tomllib/mypy.ini 644 0 0
 file /usr/local/lib/python3.13/trace.py ${STAGING_DIR}/usr/local/lib/python3.13/trace.py 755 0 0
 file /usr/local/lib/python3.13/traceback.py ${STAGING_DIR}/usr/local/lib/python3.13/traceback.py 644 0 0
 file /usr/local/lib/python3.13/tracemalloc.py ${STAGING_DIR}/usr/local/lib/python3.13/tracemalloc.py 644 0 0

@@ -7,9 +7,9 @@ ROOTFS_LIST="rootfs_list_python3.txt"
 PACKAGES_1=(
     "libxcrypt-4.4.38.sh"
     "mcip.sh"
-    "cacert-2024-12-31.sh"
+    "cacert-2025-05-20.sh"
     "zlib-1.3.sh"
-    "tzdb-2025a.sh"
+    "tzdb-2025b.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
@@ -17,28 +17,28 @@ PACKAGES_2=(
     "pcre2-10.45.sh"
     "openssl-3.4.1.sh"
     "libuuid-1.0.3.sh"
-    "libffi-3.4.7.sh"
-    "xz-5.6.4.sh"
+    "libffi-3.5.0.sh"
+    "xz-5.8.1.sh"
     "certifi.sh"
-    "charset-normalizer-3.4.1.sh"
+    "charset-normalizer-3.4.2.sh"
     "idna-3.10.sh"
-    "requests-2.32.3.sh"
-    "urllib3-2.3.0.sh"
+    "requests-2.32.4.sh"
+    "urllib3-2.4.0.sh"
     "paho.mqtt.eclipse-1.6.1.sh"
     "pyserial-3.5.sh"
-    "pymodbus-3.8.6.sh"
+    "pymodbus-3.9.2.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(
     "busybox-1.36.1.sh"
-    "dropbear-2024.86.sh"
-    "sqlite-src-3490100.sh"
+    "dropbear-2025.88.sh"
+    "sqlite-src-3500100.sh"
     "metalog-20230719.sh"
     "ncurses-6.5.sh"
 )
 PACKAGES_4=(
-    "nano-8.3.sh"
-    "python-3.13.2.sh"
+    "nano-8.4.sh"
+    "python-3.13.4.sh"
 )
 
 PACKAGES=(

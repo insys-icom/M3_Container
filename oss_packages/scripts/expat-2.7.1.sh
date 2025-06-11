@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.6.4"
+PKG_DIR="expat-2.7.1"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_4_1/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="829ccfe79d769748f7557e7a4429a64d06858e27e1e362e25d01ab7b931d9c95"
+PKG_CHECKSUM="354552544b8f99012e5062f7d570ec77f14b412a3ff5c7d8d0dae62c0d217c30"
 
 
 
@@ -28,21 +28,15 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize" \
-    LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize" \
-        ./configure \
+    ./configure \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        PKG_CONFIG=pkg-config \
+        LIBFFI_LIBS="-lffi" \
         --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --disable-nls \
-        --enable-static \
-        --disable-lzmainfo \
-        --disable-lzmadec \
-        --disable-xzdec \
-        --disable-shared \
-        --disable-doc \
-        --disable-scripts \
-        --enable-small \
+        --host=${M3_TARGET}  \
         --prefix="" \
+        --enable-shared \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -50,7 +44,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 

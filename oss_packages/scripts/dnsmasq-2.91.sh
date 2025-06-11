@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dnsmasq-2.90"
+PKG_DIR="dnsmasq-2.91"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="8e50309bd837bfec9649a812e066c09b6988b73d749b7d293c06c57d46a109e4"
+PKG_CHECKSUM="f622682848b33677adb2b6ad08264618a2ae0a01da486a93fd8cd91186b3d153"
 
 
 
@@ -34,23 +34,14 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    PKG_CONFIG_PATH="${STAGING_LIB}/pkgconfig" \
-        make ${M3_MAKEFLAGS} \
+    make ${M3_MAKEFLAGS} \
         PREFIX=/ \
         CC="${M3_CROSS_COMPILE}gcc" \
         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        COPTS=' -DNO_AUTH -DNO_CONNTRACK -DNO_DBUS -DNO_IDN -DNO_LUASCRIPT -DNO_DNSSEC -DNO_DNSSEC_STATIC -DNO_GMP -DHAVE_TFTP' \
+        COPTS=' -DNO_AUTH -DNO_CONNTRACK -DNO_DBUS -DNO_IDN -DNO_LUASCRIPT -DNO_DNSSEC -DNO_DNSSEC_STATIC -DNO_GMP' \
         CONFFILE="/etc/dnsmasq.conf" \
         all
-
-    if [ $? -ne 0 ]; then
-        echo "############################################################"
-        echo "This needs the following packages, so build these first!"
-        echo "  nettle"
-        echo "############################################################"
-        exit_failure "failed to compile ${PKG_DIR}"
-    fi
 }
 
 install_staging()

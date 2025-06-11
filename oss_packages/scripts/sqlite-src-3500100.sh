@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openvpn-2.6.13"
+PKG_DIR="sqlite-src-3500100"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
-# checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="1af10b86922bd7c99827cc0f151dfe9684337b8e5ebdb397539172841ac24a6a"
+# md5 checksum of archive in dl directory (use "none" if empty)
+PKG_CHECKSUM="9090597773c60a49caebb3c1ac57db626fac4d97cb51890815a8b529a4d9c3dc"
 
 
 
@@ -28,23 +28,15 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        IPROUTE="/sbin/iproute" \
-        OPENSSL_SSL_LIBS="-lssl -L${STAGING_LIB}" \
-        OPENSSL_SSL_CFLAGS="-I${STAGING_INCLUDE}" \
-        OPENSSL_CRYPTO_CFLAGS="-I${STAGING_INCLUDE}" \
-        OPENSSL_CRYPTO_LIBS="-lcrypto -L${STAGING_LIB}" \
-        LIBCAPNG_CFLAGS="-I${STAGING_INCLUDE}" \
-        LIBCAPNG_LIBS="-lcap-ng -L${STAGING_LIB}" \
-        --target=${M3_TARGET} \
+    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
+        LDFLAGS="${M3_LDFLAGS}" \
         --host=${M3_TARGET} \
         --prefix="" \
-        --disable-plugin-auth-pam \
-        --disable-debug \
-        --disable-unit-tests \
-        --disable-dco \
-        --disable-lzo \
+        --disable-largefile \
+        --with-tempstore=yes \
+        --disable-readline \
+        --disable-tcl \
+        --disable-load-extension \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -58,7 +50,8 @@ compile()
 
 install_staging()
 {
-    cp -rv ${PKG_INSTALL_DIR}/* ${STAGING_DIR} || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    cd "${PKG_BUILD_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

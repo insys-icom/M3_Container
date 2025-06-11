@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="tzdb-2025a"
+PKG_DIR="lua-5.4.8"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.lz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://data.iana.org/time-zones/releases/tzdb-2023d.tar.lz"
+#PKG_DOWNLOAD="https://lua.org/ftp/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="86882399c58693976e0fd291994d2bd8520036c303f68836197a56fb135c2815"
+PKG_CHECKSUM="4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae"
 
 
 
@@ -34,15 +34,22 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} CFLAGS="${CFLAGS} -DZIC_BLOAT_DEFAULT='\"fat\"'" || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make "${M3_MAKEFLAGS}" \
+        CC="${M3_CROSS_COMPILE}gcc" \
+        CFLAGS="-Wall -Wextra -fPIC ${M3_CFLAGS}" \
+        LUA_LIBS="" \
+        SYSCFLAGS="-DLUA_USE_LINUX" \
+        SYSLDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        AR="${AR} rcu" \
+        RANLIB="${RANLIB}" \
+        NM="${NM}" || exit_failure "failed to build ${PKG_DIR}"
+    make local
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    test -d "${STAGING_DIR}/usr/share/" || mkdir -p "${STAGING_DIR}/usr/share/"
-    cp -r "${PKG_INSTALL_DIR}/usr/share/zoneinfo/" "${STAGING_DIR}/usr/share/" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    make INSTALL_TOP="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

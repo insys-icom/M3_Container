@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nano-8.3"
+PKG_DIR="nano-8.4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,15 +11,15 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="551b717b2e28f7e90f749323686a1b5bbbd84cfa1390604d854a3ca3778f111e"
+PKG_CHECKSUM="5ad29222bbd55624d87ea677928b3106a743114d6c6f9b41f36c97be2a8e628d"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${HELPERSDIR}/functions.sh
+. "${TOPDIR}"/scripts/common_settings.sh
+. "${HELPERSDIR}"/functions.sh
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -35,8 +35,9 @@ configure()
     NCURSESW_LIBS="-L${STAGING_DIR}/lib -lncursesw -ltinfow" \
     NCURSESW_CFLAGS="-I${STAGING_DIR}/include/ncursesw" \
     ./configure \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
+        gl_cv_func_strcasecmp_works=yes \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --disable-largefile \
         --disable-nls \
         --disable-rpath \
@@ -45,6 +46,7 @@ configure()
         --disable-speller \
         --enable-year2038 \
         --datarootdir="/usr/share" \
+        --enable-cross-guesses=conservative \
         --enable-utf8 || exit_failure "failed to configure ${PKG_DIR}"
 }
 
