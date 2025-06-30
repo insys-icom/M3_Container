@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DESCRIPTION="Container with a view network debugging tools"
+DESCRIPTION="Container with a few network debugging tools"
 CONTAINER_NAME="container_net-tools"
 ROOTFS_LIST="rootfs_list_net-tools.txt"
 
