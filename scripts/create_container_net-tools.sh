@@ -16,7 +16,6 @@ PACKAGES_2=(
     "lz4-1.10.0.sh"
     "pcre2-10.45.sh"
     "openssl-3.4.1.sh"
-    "cacert-2024-12-31.sh"
     "nghttp2-1.65.0.sh"
     "libpcap-1.10.5.sh"
     "libcap-ng-0.8.5.sh"
