@@ -9,7 +9,7 @@ TOPDIR=$(realpath ${SCRIPTSDIR}/..)
 usage()
 {
     echo "Usage: create.sh [-a ARCHITECTURE] [-p] [-b]"
-    echo "    -a  available architectures: \"amd64\", \"armv7\""
+    echo "    -a  available architectures: \"amd64\", \"armv7\", \"aarch64\""
     echo "    -b  build all sources and pack the container"
     echo "    -p  pack the container without building the sources"
     echo ""

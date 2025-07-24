@@ -9,7 +9,7 @@ from pymodbus.payload import BinaryPayloadBuilder
 from pymodbus import ExceptionResponse
 
 def read_temperature():
-    """Get a value from a temperature sensor via Modbus RTU"""
+    """Get a value from a temperature sensor via Modbus TCP"""
     client = ModbusTcpClient("192.168.1.3")
     res = client.read_input_registers(0, 2)
     client.close()
