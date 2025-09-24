@@ -20,13 +20,13 @@ PACKAGES_2=(
     "libffi-3.5.0.sh"
     "xz-5.8.1.sh"
     "certifi.sh"
-    "charset-normalizer-3.4.2.sh"
+    "charset-normalizer-3.4.3.sh"
     "idna-3.10.sh"
-    "requests-2.32.4.sh"
-    "urllib3-2.4.0.sh"
+    "requests-2.32.5.sh"
+    "urllib3-2.5.0.sh"
     "paho.mqtt.eclipse-1.6.1.sh"
     "pyserial-3.5.sh"
-    "pymodbus-3.9.2.sh"
+    "pymodbus-3.11.2.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(
