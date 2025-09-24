@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openssl-3.4.1"
+PKG_DIR="openssl-3.5.3"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="002a2d6b30b58bf4bea46c43bdd96365aaf8daa6c428782aa4feee06da197df3"
+PKG_CHECKSUM="c9489d2abcf943cdc8329a57092331c598a402938054dc3a22218aea8a8ec3bf"
 
 
 
@@ -55,6 +55,9 @@ configure()
         no-external-tests \
         no-tests \
         no-unit-test \
+        no-demos \
+        no-h3demo \
+        no-docs \
         shared
 
     if [ $? -ne 0 ]; then

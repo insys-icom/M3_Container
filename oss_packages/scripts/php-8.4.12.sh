@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="php-8.4.8"
+PKG_DIR="php-8.4.12"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="aa6a4d330b47eacd83e351658ba8c47747a1e4356456219cfb6d75e7838da091"
+PKG_CHECKSUM="c1b7978cbb5054eed6c749bde4444afc16a3f2268101fb70a7d5d9b1083b12ad"
 
 
 

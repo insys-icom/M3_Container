@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nano-8.4"
+PKG_DIR="nano-8.6"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="5ad29222bbd55624d87ea677928b3106a743114d6c6f9b41f36c97be2a8e628d"
+PKG_CHECKSUM="f7abfbf0eed5f573ab51bd77a458f32d82f9859c55e9689f819d96fe1437a619"
 
 
 

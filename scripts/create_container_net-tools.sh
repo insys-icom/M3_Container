@@ -7,16 +7,16 @@ ROOTFS_LIST="rootfs_list_net-tools.txt"
 PACKAGES_1=(
     "libxcrypt-4.4.38.sh"
     "mcip.sh"
-    "cacert-2025-05-20.sh"
+    "cacert-2025-09-09.sh"
     "zlib-1.3.sh"
-    "cJSON-1.7.18.sh"
+    "cJSON-1.7.19.sh"
     "tzdb-2025b.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
-    "pcre2-10.45.sh"
-    "openssl-3.4.1.sh"
-    "nghttp2-1.65.0.sh"
+    "pcre2-10.46.sh"
+    "openssl-3.5.3.sh"
+    "nghttp2-1.67.1.sh"
     "libpcap-1.10.5.sh"
     "libcap-ng-0.8.5.sh"
     "iptables-1.8.11.sh"
@@ -41,9 +41,9 @@ PACKAGES_3=(
     "libevent-2.1.12-stable.sh"
 )
 PACKAGES_4=(
-    "curl-8.14.1.sh"
-    "nmap-7.97.sh"
-    "mosquitto-2.0.21.sh"
+    "curl-8.16.0.sh"
+    "nmap-7.98.sh"
+    "mosquitto-2.0.22.sh"
     "addrwatch-1.0.2.sh"
 )
 

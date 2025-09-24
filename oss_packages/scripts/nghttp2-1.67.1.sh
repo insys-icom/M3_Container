@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="cJSON-1.7.18"
+PKG_DIR="nghttp2-1.67.1"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://github.com/DaveGamble/cJSON/archive/refs/tags/v${PKG_DIR##*-}.tar.gz"
+#PKG_DOWNLOAD="https://github.com/nghttp2/nghttp2/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="3aa806844a03442c00769b83e99970be70fbef03735ff898f4811dd03b9f5ee5"
+PKG_CHECKSUM="153972aad57e7bf9d911666df7613f2390acf37ea7e1a97a0c5567e90f98e830"
 
 
 
@@ -28,15 +28,20 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    cmake \
-        -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
-        -DCMAKE_C_FLAGS="${M3_CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
-        -DCMAKE_AR=${AR} \
-        -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
-        -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
-        -DCMAKE_NM=${NM} \
-        -DCMAKE_RANLIB=${RANLIB} \
-        -DCMAKE_INSTALL_PREFIX="" \
+    ./configure \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        OPENSSL_CFLAGS="-I${STAGING_INCLUDE}" \
+        OPENSSL_LIBS="-lssl -lcrypto -L${STAGING_LIB}" \
+        ZLIB_CFLAGS="-I${STAGING_INCLUDE}" \
+        ZLIB_LIBS="-lz -L${STAGING_LIB}" \
+        LIBCARES_CFLAGS="-I${STAGING_INCLUDE}" \
+        LIBCARES_LIBS="-lcares -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --prefix="" \
+        --enable-lib-only \
+        --enable-static \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -45,7 +50,8 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" \
+         install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

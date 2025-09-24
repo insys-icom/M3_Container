@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="cacert-2025-05-20.pem"
+PKG_DIR="cacert-2025-09-09.pem"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="ab3ee3651977a4178a702b0b828a4ee7b2bbb9127235b0ab740e2e15974bf5db"
+PKG_CHECKSUM="f290e6acaf904a4121424ca3ebdd70652780707e28e8af999221786b86bb1975"
 
 
 

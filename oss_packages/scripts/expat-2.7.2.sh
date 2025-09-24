@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="mosquitto-2.0.21"
+PKG_DIR="expat-2.7.2"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# PKG_DOWNLOAD="https://mosquitto.org/files/source/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_4_1/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="7ad5e84caeb8d2bb6ed0c04614b2a7042def961af82d87f688ba33db857b899d"
+PKG_CHECKSUM="21b778b34ec837c2ac285aef340f9fb5fa063a811b21ea4d2412a9702c88995c"
 
 
 
@@ -27,32 +27,30 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    true
+    cd "${PKG_BUILD_DIR}"
+    ./configure \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        PKG_CONFIG=pkg-config \
+        LIBFFI_LIBS="-lffi" \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET}  \
+        --prefix="" \
+        --enable-shared \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    CC="${M3_CROSS_COMPILE}gcc" \
-        CXX=$CC \
-        CROSS_COMPILE="" \
-        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB} -lcrypto -lssl" \
-        make \
-            "${M3_MAKEFLAGS}" \
-            WITH_EC=yes \
-            WITH_CJSON=yes \
-            WITH_DOCS:=no \
-            WITH_WEBSOCKETS:=yes \
-            DESTDIR="${PKG_INSTALL_DIR}" install \
-            || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 

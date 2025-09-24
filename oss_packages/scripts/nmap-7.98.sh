@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pcre2-10.45"
+PKG_DIR="nmap-7.98"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://github.com/PhilipHazel/pcre2/releases/download/${PKG_DIR}/${PKG_ARCHIVE_FILE}"
+# PKG_DOWNLOAD="https://nmap.org/dist/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="21547f3516120c75597e5b30a992e27a592a31950b5140e7b8bfde3f192033c4"
+PKG_CHECKSUM="ce847313eaae9e5c9f21708e42d2ab7b56c7e0eb8803729a3092f58886d897e6"
 
 
 
@@ -29,13 +29,20 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
         CFLAGS="${M3_CFLAGS}" \
-        LDFLAGS="${M3_LDFLAGS}" \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --disable-pcregrep-jit \
-        --enable-shared=yes \
-        --enable-utf \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
+        --with-openssl="${STAGING_DIR}" \
+        --with-libpcre="${STAGING_DIR}" \
+        --with-libpcap=included \
+        --with-liblua=included \
+        --with-libssh2="${STAGING_DIR}" \
+        --with-liblinear=included \
+        --with-libdnet=included \
+        --without-zenmap \
+        --without-ndiff \
         --prefix="" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
@@ -44,7 +51,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
