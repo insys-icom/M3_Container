@@ -5,18 +5,18 @@ CONTAINER_NAME="container_nodejs"
 ROOTFS_LIST="rootfs_list_nodejs.txt"
 
 PACKAGES_1=(
-    "libxcrypt-4.4.38.sh"
+    "libxcrypt-4.5.0.sh"
     "mcip.sh"
-    "cacert-2025-09-09.sh"
+    "cacert-2025-11-04.sh"
     "zlib-1.3.sh"
     "tzdb-2025b.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
-    "pcre2-10.46.sh"
-    "openssl-3.5.3.sh"
+    "pcre2-10.47.sh"
+    "openssl-3.6.0.sh"
     "c-ares-1.34.5.sh"
-    "nghttp2-1.67..sh"
+    "nghttp2-1.68.0.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(
@@ -27,7 +27,7 @@ PACKAGES_3=(
     "ncurses-6.5.sh"
 )
 PACKAGES_4=(
-    "curl-8.16.0.sh"
+    "curl-8.17.0.sh"
     "nano-8.6.sh"
     "node-v22.13.0-linux.sh"
 )
