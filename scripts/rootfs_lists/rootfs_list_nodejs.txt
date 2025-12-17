@@ -126,6 +126,6 @@ slink /bin/npm                         /lib/node_modules/npm/bin/npm-cli.js     
 slink /bin/npx                         /lib/node_modules/npm/bin/npx-cli.js                  0777 0 0
 
 # create these lines automatically by executing the next line in "working/$ARCH/node-vX.Y.Z"
-#  ../../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep ' /lib/' | sed 's| ./lib/| ${STAGING_DIR}/lib/|' | sort > ../list.txt
+#  ../../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep ' /lib/' | grep -v '/npm/man' | grep -v '/npm/docs' | sed 's| ./lib/| ${STAGING_DIR}/lib/|' | sort > ../list.txt
 
 include snippets/nodejs_${ARCH}.txt

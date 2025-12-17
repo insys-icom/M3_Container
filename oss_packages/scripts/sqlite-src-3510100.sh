@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="libxcrypt-4.5.0"
+PKG_DIR="sqlite-src-3510100"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://github.com/besser82/libxcrypt/releases/download/v4.4.36/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://www.sqlite.org/2022/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="825e764e4ff2e6304adb814cda297074b222d54a04edbd8ebc7cf58fc3af857d"
+PKG_CHECKSUM="0f8e765ac8ea7c36cf8ea9bffdd5c103564f4a8a635f215f9f783b338a13d971"
 
 
 
@@ -28,13 +28,15 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure \
-        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
-        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
+    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
+        LDFLAGS="${M3_LDFLAGS}" \
+        --host=${M3_TARGET} \
         --prefix="" \
+        --disable-largefile \
+        --with-tempstore=yes \
+        --disable-readline \
+        --disable-tcl \
+        --disable-load-extension \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -42,7 +44,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 

@@ -5,9 +5,9 @@ TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 . ${TOPDIR}/scripts/common_settings.sh
 
 # name of directory after extracting the archive in working directory
-[ "${ARCH}" == "armv7" ]   && PKG_DIR="node-v22.13.0-linux-armv7l"
-[ "${ARCH}" == "aarch64" ] && PKG_DIR="node-v22.13.0-linux-arm64"
-[ "${ARCH}" == "amd64" ]   && PKG_DIR="node-v22.13.0-linux-x64"
+[ "${ARCH}" == "armv7" ]   && PKG_DIR="node-v22.21.1-linux-armv7l"
+[ "${ARCH}" == "aarch64" ] && PKG_DIR="node-v22.21.1-linux-arm64"
+[ "${ARCH}" == "amd64" ]   && PKG_DIR="node-v22.21.1-linux-x64"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -17,9 +17,9 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-[ "${ARCH}" == "armv7" ]   && PKG_CHECKSUM="308687472523deee7abacc342e753e9b402ff4b178025374668039996b5c9699"
-[ "${ARCH}" == "aarch64" ] && PKG_CHECKSUM="5de54a12983d0de6ba23597d4d0194e64933e26b0f04a469db3be9c3e18b6b2b"
-[ "${ARCH}" == "amd64" ]   && PKG_CHECKSUM="3ff0d57063c33313d73d0bdcebc4c778ad6be948234584694a042c6fe57164f6"
+[ "${ARCH}" == "armv7" ]   && PKG_CHECKSUM="69faec17156bc240a7e7590bcfb236194e4c09412387ac94318e8b30f72155e0"
+[ "${ARCH}" == "aarch64" ] && PKG_CHECKSUM="e660365729b434af422bcd2e8e14228637ecf24a1de2cd7c916ad48f2a0521e1"
+[ "${ARCH}" == "amd64" ]   && PKG_CHECKSUM="680d3f30b24a7ff24b98db5e96f294c0070f8f9078df658da1bce1b9c9873c88"
 
 . ${HELPERSDIR}/functions.sh
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"

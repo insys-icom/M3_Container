@@ -5,11 +5,11 @@ CONTAINER_NAME="container_default"
 ROOTFS_LIST="rootfs_list_default.txt"
 
 PACKAGES_1=(
-    "libxcrypt-4.5.0.sh"
+    "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2025-11-04.sh"
+    "cacert-2025-12-02.sh"
     "zlib-1.3.sh"
-    "tzdb-2025b.sh"
+    "tzdb-2025c.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"

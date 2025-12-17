@@ -5,11 +5,11 @@ CONTAINER_NAME="container_LAMP"
 ROOTFS_LIST="rootfs_list_LAMP.txt"
 
 PACKAGES_1=(
-    "libxcrypt-4.5.0.sh"
+    "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2025-11-04.sh"
+    "cacert-2025-12-02.sh"
     "zlib-1.3.sh"
-    "tzdb-2025b.sh"
+    "tzdb-2025c.sh"
 )
 PACKAGES_2=(
     "pcre2-10.47.sh"
@@ -27,15 +27,15 @@ PACKAGES_3=(
     "dropbear-2025.88.sh"
     "metalog-20230719.sh"
     "apr-util-1.6.3.sh"
-    "sqlite-src-3510000.sh"
+    "sqlite-src-3510100.sh"
     "ncurses-6.5.sh"
 )
 PACKAGES_4=(
-    "nano-8.6.sh"
-    "httpd-2.4.65.sh"
+    "nano-8.7.sh"
+    "httpd-2.4.66.sh"
 )
 PACKAGES_5=(
-    "php-8.4.14.sh"
+    "php-8.5.0.sh"
 )
 
 PACKAGES=(

@@ -5,12 +5,12 @@ CONTAINER_NAME="container_net-tools"
 ROOTFS_LIST="rootfs_list_net-tools.txt"
 
 PACKAGES_1=(
-    "libxcrypt-4.5.0.sh"
+    "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2025-11-04.sh"
+    "cacert-2025-12-02.sh"
     "zlib-1.3.sh"
     "cJSON-1.7.19.sh"
-    "tzdb-2025b.sh"
+    "tzdb-2025c.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
@@ -20,7 +20,7 @@ PACKAGES_2=(
     "libpcap-1.10.5.sh"
     "libcap-ng-0.8.5.sh"
     "iptables-1.8.11.sh"
-    "c-ares-1.34.5.sh"
+    "c-ares-1.34.6.sh"
     "wireguard-tools-v1.0.20210914.sh"
     "mcip-tool-v4.sh"
 )
@@ -29,7 +29,7 @@ PACKAGES_3=(
     "dropbear-2025.88.sh"
     "metalog-20230719.sh"
     "dnsmasq-2.91.sh"
-    "openvpn-2.6.15.sh"
+    "openvpn-2.6.17.sh"
     "tcpdump-4.99.5.sh"
     "iperf-3.12.sh"
     "stunnel-5.76.sh"
