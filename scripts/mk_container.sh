@@ -28,9 +28,14 @@ usage()
 # create the MANIFEST file
 print_manifest_entry()
 {
+    if [ "${ARCH}" == "aarch64" ] ; then
+        FILETYPE="Container ARM64"
+    else
+        FILETYPE="Container"
+    fi
     echo "FILENAME=${FILENAME}.tar.xz"
     echo "FILESIZE=${FILESIZE}"
-    echo "FILETYPE=Container"
+    echo "FILETYPE=${FILETYPE}"
     echo "MD5SUM=${MD5SUM}"
     [ "${KEY}" ] && echo "KEY=${KEY}.router"
     [ "${VERSION}" ] && echo "VERSION=${VERSION}"
