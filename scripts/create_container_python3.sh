@@ -18,7 +18,7 @@ PACKAGES_2=(
     "openssl-3.6.0.sh"
     "libuuid-1.0.3.sh"
     "libffi-3.5.0.sh"
-    "xz-5.8.1.sh"
+    "xz-5.8.2.sh"
     "certifi.sh"
     "charset-normalizer-3.4.4.sh"
     "idna-3.11.sh"
@@ -31,7 +31,7 @@ PACKAGES_2=(
 )
 PACKAGES_3=(
     "busybox-1.36.1.sh"
-    "dropbear-2025.88.sh"
+    "dropbear-2025.89.sh"
     "sqlite-src-3510100.sh"
     "metalog-20230719.sh"
     "ncurses-6.5.sh"

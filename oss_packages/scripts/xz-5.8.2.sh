@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.8.1"
+PKG_DIR="xz-5.8.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="0b54f79df85912504de0b14aec7971e3f964491af1812d83447005807513cd9e"
+PKG_CHECKSUM="890966ec3f5d5cc151077879e157c0593500a522f413ac50ba26d22a9a145214"
 
 
 

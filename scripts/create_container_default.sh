@@ -19,7 +19,7 @@ PACKAGES_2=(
 )
 PACKAGES_3=(
     "busybox-1.36.1.sh"
-    "dropbear-2025.88.sh"
+    "dropbear-2025.89.sh"
     "metalog-20230719.sh"
     "dnsmasq-2.91.sh"
     "lua-5.4.8.sh"
