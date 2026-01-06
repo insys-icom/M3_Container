@@ -29,13 +29,14 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     cmake \
-        -DCMAKE_C_COMPILER=${M3_CROSS_COMPILE}gcc \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_C_COMPILER="${M3_CROSS_COMPILE}"gcc \
         -DCMAKE_C_FLAGS="${M3_CFLAGS} -fPIC -I${STAGING_INCLUDE} -L${STAGING_LIB}" \
-        -DCMAKE_AR=${AR} \
-        -DCMAKE_LINKER=${M3_CROSS_COMPILE}ld \
-        -DCMAKE_STRIP=${M3_CROSS_COMPILE}strip \
-        -DCMAKE_NM=${NM} \
-        -DCMAKE_RANLIB=${RANLIB} \
+        -DCMAKE_AR="${AR}" \
+        -DCMAKE_LINKER="${M3_CROSS_COMPILE}"ld \
+        -DCMAKE_STRIP="${M3_CROSS_COMPILE}"strip \
+        -DCMAKE_NM="${NM}" \
+        -DCMAKE_RANLIB="${RANLIB}" \
         -DCMAKE_INSTALL_PREFIX="" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
@@ -44,7 +45,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
