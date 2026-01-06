@@ -65,7 +65,6 @@ include snippets/timezone.txt
 include ../../closed_packages/rootfs_list_python_demo.txt
 
 file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
-file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_python3.sh        0755 0 0
 file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh              0755 0 0
 file /bin/sqlite3                     ${STAGING_DIR}/bin/sqlite3                     0755 0 0

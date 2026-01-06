@@ -59,7 +59,6 @@ include snippets/timezone.txt
 include ../../closed_packages/rootfs_list_hello_world.txt
 
 file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
-file /bin/compress_log.sh             ${SKELETON_DIR}/bin/compress_log.sh            0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_default.sh        0755 0 0
 file /bin/prepare_fs.sh               ${SKELETON_DIR}/bin/prepare_fs.sh              0755 0 0
 file /bin/dnsmasq                     ${STAGING_DIR}/sbin/dnsmasq                    0755 0 0

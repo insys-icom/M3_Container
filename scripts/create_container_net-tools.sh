@@ -27,7 +27,7 @@ PACKAGES_2=(
 PACKAGES_3=(
     "busybox-1.36.1.sh"
     "dropbear-2025.89.sh"
-    "metalog-20230719.sh"
+    "metalog-20260105.sh"
     "dnsmasq-2.91.sh"
     "openvpn-2.6.17.sh"
     "tcpdump-4.99.5.sh"
@@ -35,7 +35,7 @@ PACKAGES_3=(
     "stunnel-5.76.sh"
     "libssh2-1.11.1.sh"
     "socat-1.8.0.0.sh"
-    "libwebsockets-4.3.3.sh"
+    "libwebsockets-4.3.5.sh"
     "bftpd-6.3.sh"
     "rsync-3.4.1.sh"
     "libevent-2.1.12-stable.sh"
