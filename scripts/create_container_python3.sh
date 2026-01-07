@@ -33,7 +33,7 @@ PACKAGES_3=(
     "busybox-1.36.1.sh"
     "dropbear-2025.89.sh"
     "sqlite-src-3510100.sh"
-    "metalog-20230719.sh"
+    "metalog-20260105.sh"
     "ncurses-6.5.sh"
 )
 PACKAGES_4=(

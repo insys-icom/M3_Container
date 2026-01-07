@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="metalog-20260103"
+PKG_DIR="metalog-20260105"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -11,7 +11,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="da762375999762069d0cd546b2d8f6b143dbd5677dbb68443e4b455f825e897e"
+PKG_CHECKSUM="58ee4f423d51eccdd4b404c7c6e3b62b334d7be6e1a052bca1b0efb2501f69cc"
 
 
 
