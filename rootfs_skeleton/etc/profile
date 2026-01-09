@@ -6,3 +6,4 @@ else
 fi
 export PS1="\[\033[0;32m\]\u@${HOSTNAME} \[\033[1;34m\]\w \[\033[0m\] $ "
 export PATH="/bin:/usr/local/bin"
+export TERM="xterm"

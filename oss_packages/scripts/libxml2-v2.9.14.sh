@@ -53,6 +53,9 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+
+    # fix pathes
+    sed -i "s|/lib/liblzma.la|${STAGING_LIB}/liblzma.la|" "${STAGING_LIB}/libxml2.la"
 }
 
 . ${HELPERSDIR}/call_functions.sh

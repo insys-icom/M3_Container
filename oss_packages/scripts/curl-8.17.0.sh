@@ -40,6 +40,7 @@ configure()
         --with-ssl="${STAGING_DIR}" \
         --with-zlib="${STAGING_DIR}" \
         --with-libssh2="${STAGING_DIR}" \
+        --with-nghttp2="${STAGING_DIR}" \
         --prefix="" \
         --enable-shared \
         --enable-http \

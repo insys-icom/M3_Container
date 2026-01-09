@@ -38,7 +38,7 @@ configure()
         --disable-lzmainfo \
         --disable-lzmadec \
         --disable-xzdec \
-        --disable-shared \
+        --enable-shared \
         --disable-doc \
         --disable-scripts \
         --enable-small \

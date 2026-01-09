@@ -27,7 +27,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    # compile Python for amd64. This is only needed once in case there is not native python 3.13
+    # compile Python for amd64. This is only needed once in case there is not native python with the same version
     AR_TARGET="${AR}"
     NM_TARGET="${NM}"
     RANLIB_TARGET="${RANLIB}"
@@ -50,7 +50,6 @@ configure()
     make "${M3_MAKEFLAGS}" || exit_failure "failed to build Python for host"
     make install || exit_failure "failed to install Python for host"
 
-    ln -s "${PYTHON_HOST}/bin/python3.13" "${PYTHON_HOST}/bin/python3"
     rm "${PKG_BUILD_DIR}/Parser/"*".o"
     rm "${PKG_BUILD_DIR}/Programs/"*".o"
 

@@ -34,7 +34,7 @@ PACKAGES_3=(
     "dropbear-2025.89.sh"
     "sqlite-src-3510100.sh"
     "metalog-20260105.sh"
-    "ncurses-6.5.sh"
+    "ncurses-6.6.sh"
 )
 PACKAGES_4=(
     "nano-8.7.sh"

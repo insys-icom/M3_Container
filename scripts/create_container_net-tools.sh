@@ -34,7 +34,7 @@ PACKAGES_3=(
     "iperf-3.12.sh"
     "stunnel-5.76.sh"
     "libssh2-1.11.1.sh"
-    "socat-1.8.0.0.sh"
+    "socat-1.8.1.0.sh"
     "libwebsockets-4.3.5.sh"
     "bftpd-6.3.sh"
     "rsync-3.4.1.sh"

@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="socat-1.8.0.0"
+PKG_DIR="ncurses-6.6"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-# PKG_DOWNLOAD="http://www.dest-unreach.org/socat/download/${PKG_ARCHIVE_FILE}"
+#PKG_DOWNLOAD="https://invisible-island.net/archives/ncurses/${PKG_ARCHIVE_FILE}"
 PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="6010f4f311e5ebe0e63c77f78613d264253680006ac8979f52b0711a9a231e82"
+PKG_CHECKSUM="355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11"
 
 
 
@@ -28,13 +28,26 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure \
-        CFLAGS="${M3_CFLAGS} -include stddef.h" \
-        LDFLAGS="${M3_LDFLAGS}" \
+    CFLAGS="${M3_CFLAGS}" \
+        ./configure \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
-        --prefix="" \
-        --disable-readline \
+        --prefix="/" \
+        --with-termlib \
+        --disable-relink \
+        --with-shared \
+        --without-cxx \
+        --without-ada \
+        --without-manpages \
+        --without-progs \
+        --without-tests \
+        --disable-big-core \
+        --disable-home-terminfo \
+        --without-develop \
+        --datarootdir="/usr/share" \
+        --enable-widec \
+        --without-dlsym \
+        --disable-largefile \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -42,8 +55,8 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
