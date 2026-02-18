@@ -15,7 +15,7 @@ PACKAGES_2=(
     "lz4-1.10.0.sh"
     "bzip2-1.0.8.sh"
     "pcre2-10.47.sh"
-    "openssl-3.6.0.sh"
+    "openssl-3.6.1.sh"
     "libuuid-1.0.3.sh"
     "libffi-3.5.0.sh"
     "xz-5.8.2.sh"

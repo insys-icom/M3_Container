@@ -15,7 +15,7 @@ PACKAGES_1=(
 PACKAGES_2=(
     "lz4-1.10.0.sh"
     "pcre2-10.47.sh"
-    "openssl-3.6.0.sh"
+    "openssl-3.6.1.sh"
     "nghttp2-1.68.0.sh"
     "libpcap-1.10.5.sh"
     "libcap-ng-0.8.5.sh"

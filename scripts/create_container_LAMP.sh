@@ -13,7 +13,7 @@ PACKAGES_1=(
 )
 PACKAGES_2=(
     "pcre2-10.47.sh"
-    "openssl-3.6.0.sh"
+    "openssl-3.6.1.sh"
     "apr-1.7.6.sh"
     "libuuid-1.0.3.sh"
     "nghttp2-1.68.0.sh"
