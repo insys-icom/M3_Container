@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="lighttpd-1.4.59"
+PKG_DIR="lighttpd-1.4.82"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://download.lighttpd.net/lighttpd/releases-1.4.x/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="a8838dac90fcddbcc05c0d1877bd8cdf"
+PKG_CHECKSUM="abfe74391f9cbd66ab154ea07e64f194dbe7e906ef4ed47eb3b0f3b46246c962"
 
 
 
@@ -28,6 +27,7 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
+    ./autogen.sh
     ./configure \
         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
@@ -36,10 +36,10 @@ configure()
         XML_LIBS="-L${STAGING_LIB}" \
         SQLITE_CFLAGS="-I${STAGING_INCLUDE}" \
         SQLITE_LIBS="-L${STAGING_LIB}" \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --with-openssl \
-        --with-pam \
+        --without-pam \
         --with-attr \
         --with-libxml \
         --with-zlib \
@@ -47,15 +47,16 @@ configure()
         --without-brotli \
         --without-bzip2 \
         --without-lua \
-        --with-pcre \
-        --disable-lfs || exit_failure "failed to configure ${PKG_DIR}"
+        --with-pcre2 \
+        --disable-lfs \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
