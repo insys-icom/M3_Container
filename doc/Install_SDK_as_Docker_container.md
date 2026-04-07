@@ -17,15 +17,15 @@ Create the Docker image
     user@host ~ # <b>su root</b>
     Password:
     root@host /home/joe # <b>tar xf *PATH_OF_THE_DOWNLOADED_SDK_ARCHIVE*</b>
-    root@host /home/joe # <b>cd m3sdk_6</b>
-    root@host /home/joe/m3sdk_6 #
+    root@host /home/joe # <b>cd m3sdk</b>
+    root@host /home/joe/m3sdk #
     </pre>
 
 3. Find out the UID and GID of the user on your host machine. Let's assume the user name is "joe". For most installations they are both 1000. In that case, you can skip this.
     <pre>
-    root@/home/joe/m3sdk_6 ~ # <b>id joe -u</b>
+    root@/home/joe/m3sdk ~ # <b>id joe -u</b>
     1001
-    root@/home/joe/m3sdk_6 ~ # <b>id joe -g</b>
+    root@/home/joe/m3sdk ~ # <b>id joe -g</b>
     1005
     </pre>
 
@@ -39,7 +39,7 @@ Create the Docker image
 
 4. Optionally set the IP address of an DNS server, so the SDK can resolve hosts to download source packages or work with repos:
     <pre>
-    root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/resolv.conf</b>
+    root@/home/joe/m3sdk ~ # <b>nano rootfs/etc/resolv.conf</b>
     </pre>
 
 5. Create a Dockerfile: Paste this into a file called "Dockerfile" in the current directory
