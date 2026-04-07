@@ -37,7 +37,12 @@ Installation
     ...
     </pre>
 
-4. Optionally mount directories into the container. After starting your container, you will see these mounted directories, as you do on your host computer. That way you can work on the same files from within the container and on your host PC. This avoids the need to copy files into and from the LXC container:
+4. Optionally set the IP address of an DNS server, so the SDK can resolve hosts to download source packages or work with repos:
+    <pre>
+    root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/resolv.conf</b>
+    </pre>
+
+5. Optionally mount directories into the container. After starting your container, you will see these mounted directories, as you do on your host computer. That way you can work on the same files from within the container and on your host PC. This avoids the need to copy files into and from the LXC container:
     <pre>
     root@host ~ # <b>nano /var/lib/lxc/m3sdk/config</b>
     </pre>

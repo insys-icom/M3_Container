@@ -37,19 +37,24 @@ Create the Docker image
     ...
     </pre>
 
-4. Create a Dockerfile: Paste this into a file called "Dockerfile" in the current directory
+4. Optionally set the IP address of an DNS server, so the SDK can resolve hosts to download source packages or work with repos:
+    <pre>
+    root@host ~ # <b>nano /var/lib/lxc/m3sdk/rootfs/etc/resolv.conf</b>
+    </pre>
+
+5. Create a Dockerfile: Paste this into a file called "Dockerfile" in the current directory
     <pre>
     FROM scratch
     ADD rootfs/ /
     CMD ["/sbin/init"]
     </pre>
 
-5. Create the docker image:
+6. Create the docker image:
     <pre>
     root@/home/joe/m3sdk # <b>docker build -t m3sdk .</b>
     </pre>
 
-6. Delete the downloaded and also the extracted tar archive, as they are not needed any longer
+7. Delete the downloaded and also the extracted tar archive, as they are not needed any longer
 
 Start the Docker container
 ---
