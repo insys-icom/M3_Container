@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="tzdb-2025c"
+PKG_DIR="jansson-2.15.0"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.lz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://data.iana.org/time-zones/releases/tzdb-2023d.tar.lz"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/akheron/jansson/archive/refs/tags/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="fbe5b52a151c992c1aeb49bc6ca41e170ca9f8d3fb810ec459eeb79c82d6972b"
+PKG_CHECKSUM="73ac12bbc62ff536e40c7a3e15ed007993c5ca4d23897de23f1906f891b5a4bb"
 
 
 
@@ -27,22 +26,31 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
 {
-    true
+    cd "${PKG_BUILD_DIR}"
+    autoreconf -i -f
+    ./configure \
+        LDFLAGS="${M3_LDFLAGS}" \
+        CFLAGS="${M3_CFLAGS}" \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET} \
+        --enable-shared \
+        --disable-windows-cryptoapi \
+        --prefix="" \
+        || exit_failure "failed to configure ${PKG_DIR}"
 }
 
 compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} CFLAGS="${CFLAGS} -DZIC_BLOAT_DEFAULT='\"fat\"'" || exit_failure "failed to build ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    test -d "${STAGING_DIR}/usr/share/" || mkdir -p "${STAGING_DIR}/usr/share/"
-    cp -r "${PKG_INSTALL_DIR}/usr/share/zoneinfo/" "${STAGING_DIR}/usr/share/" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

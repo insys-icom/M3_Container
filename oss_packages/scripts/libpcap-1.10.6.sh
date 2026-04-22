@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="xz-5.8.2"
+PKG_DIR="libpcap-1.10.6"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://tukaani.org/xz/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="890966ec3f5d5cc151077879e157c0593500a522f413ac50ba26d22a9a145214"
+PKG_CHECKSUM="ec97d1206bdd19cb6bdd043eaa9f0037aa732262ec68e070fd7c7b5f834d5dfc"
 
 
 
@@ -28,20 +27,20 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    CFLAGS="${M3_CFLAGS} -O2 -ftree-vectorize" \
-    LDFLAGS="${M3_LDFLAGS} -O2 -ftree-vectorize" \
-        ./configure \
+    ./configure \
+        CFLAGS="${M3_CFLAGS}" \
+        CFLAGS="${M3_LDFLAGS}" \
         --target=${M3_TARGET} \
         --host=${M3_TARGET} \
-        --disable-nls \
-        --enable-static \
-        --disable-lzmainfo \
-        --disable-lzmadec \
-        --disable-xzdec \
-        --enable-shared \
-        --disable-doc \
-        --disable-scripts \
-        --enable-small \
+        --with-pcap=linux \
+        --without-libnl \
+        --enable-ipv6 \
+        --disable-netmap \
+        --disable-rdma \
+        --disable-bluetooth \
+        --disable-dbus \
+        --disable-usb \
+        --with-pcap=linux \
         --prefix="" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
@@ -51,7 +50,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()

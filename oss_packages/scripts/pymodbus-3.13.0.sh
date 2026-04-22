@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="requests-2.32.5"
+PKG_DIR="pymodbus-3.13.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://files.pythonhosted.org/packages/9d/be/10918a2eac4ae9f02f6cfe6414b7a155ccd8f7f9d4380d62fd5b955065c3/requests-2.31.0.tar.gz"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v${PKG_ARCHIVE_FILE##*-}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf"
+PKG_CHECKSUM="8be6ff99469ec8af50eed48d9cdea49003353b0e426948c979061b7cdc1570e6"
 
 
 
@@ -25,7 +24,7 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-PYTHON_VERSION="python3.14"
+
 
 configure()
 {
@@ -41,12 +40,12 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/requests" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/requests"
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/pymodbus"*
 }
 
 . ${HELPERSDIR}/call_functions.sh

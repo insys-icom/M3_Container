@@ -7,35 +7,35 @@ ROOTFS_LIST="rootfs_list_LAMP.txt"
 PACKAGES_1=(
     "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2025-12-02.sh"
+    "cacert-2026-03-19.sh"
     "zlib-1.3.sh"
-    "tzdb-2025c.sh"
+    "tzdb-2026a.sh"
 )
 PACKAGES_2=(
     "pcre2-10.47.sh"
-    "openssl-3.6.1.sh"
+    "openssl-3.6.2.sh"
     "apr-1.7.6.sh"
     "libuuid-1.0.3.sh"
-    "nghttp2-1.68.0.sh"
-    "jansson-2.14.1.sh"
-    "expat-2.7.3.sh"
+    "nghttp2-1.69.0.sh"
+    "jansson-2.15.0.sh"
+    "expat-2.7.5.sh"
     "libxml2-v2.9.14.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(
     "busybox-1.36.1.sh"
     "dropbear-2025.89.sh"
-    "metalog-20260105.sh"
+    "metalog-20260221.sh"
     "apr-util-1.6.3.sh"
-    "sqlite-src-3510100.sh"
+    "sqlite-src-3530000.sh"
     "ncurses-6.5.sh"
 )
 PACKAGES_4=(
-    "nano-8.7.sh"
+    "nano-9.0.sh"
     "httpd-2.4.66.sh"
 )
 PACKAGES_5=(
-    "php-8.5.0.sh"
+    "php-8.5.5.sh"
 )
 
 PACKAGES=(

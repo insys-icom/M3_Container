@@ -10,20 +10,21 @@
 #               $ cat readme.txt                        #
 #                                                       #
 #                                                       #
-#   Additionally available net tools in here:           #
-#      - addrwatch  ARP and NDP watcher                 #
-#      - bftpd      FTP server                          #
-#      - curl       multi protocol tool                 #
-#      - iperf      measure net performance             #
-#      - iptables   set netfilter                       #
-#      - mosquitto  MQTT broker                         #
-#      - nmap       network analyser                    #
-#      - nping      ping tool                           #
-#      - ncat       print network traffic               #
-#      - openvpn    VPN client (read ~/openvpn.txt)     #
-#      - socat      read from Unix Domain Sockets (UDS) #
-#      - stunnel    enwrap traffic within TLS           #
-#      - tcpdump    capture network traffic             #
-#      - wg         VPN client (wireguard)              #
+# Additional net tools in here:                         #
+# - addrwatch       ARP and NDP watcher                 #
+# - bftpd           FTP server                          #
+# - curl            multi protocol tool                 #
+# - iperf           measure net performance             #
+# - iptables        set netfilter                       #
+# - mosquitto       MQTT broker                         #
+# - nmap            network analyser                    #
+# - nping           ping tool                           #
+# - ncat            print network traffic               #
+# - openvpn         VPN client (read ~/openvpn.txt)     #
+# - socat           read from Unix Domain Sockets (UDS) #
+# - stunnel         enwrap traffic within TLS           #
+# - tcpdump         capture network traffic             #
+# - wg              VPN client (wireguard)              #
+# - wpa_supplicant  authentication, e.g. 802.1X, WiFi   #
 #                                                       #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #

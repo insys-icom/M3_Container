@@ -366,7 +366,7 @@ file /usr/local/lib/python3.14/encodings/uu_codec.py ${STAGING_DIR}/usr/local/li
 file /usr/local/lib/python3.14/encodings/zlib_codec.py ${STAGING_DIR}/usr/local/lib/python3.14/encodings/zlib_codec.py 644 0 0
 file /usr/local/lib/python3.14/ensurepip/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/__init__.py 644 0 0
 file /usr/local/lib/python3.14/ensurepip/__main__.py ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/__main__.py 644 0 0
-file /usr/local/lib/python3.14/ensurepip/_bundled/pip-25.3-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/_bundled/pip-25.3-py3-none-any.whl 644 0 0
+file /usr/local/lib/python3.14/ensurepip/_bundled/pip-26.0.1-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/_bundled/pip-26.0.1-py3-none-any.whl 644 0 0
 file /usr/local/lib/python3.14/ensurepip/_uninstall.py ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/_uninstall.py 644 0 0
 file /usr/local/lib/python3.14/enum.py ${STAGING_DIR}/usr/local/lib/python3.14/enum.py 644 0 0
 file /usr/local/lib/python3.14/filecmp.py ${STAGING_DIR}/usr/local/lib/python3.14/filecmp.py 644 0 0
@@ -548,6 +548,7 @@ file /usr/local/lib/python3.14/pyclbr.py ${STAGING_DIR}/usr/local/lib/python3.14
 file /usr/local/lib/python3.14/pydoc.py ${STAGING_DIR}/usr/local/lib/python3.14/pydoc.py 644 0 0
 file /usr/local/lib/python3.14/pydoc_data/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/pydoc_data/__init__.py 644 0 0
 file /usr/local/lib/python3.14/pydoc_data/_pydoc.css ${STAGING_DIR}/usr/local/lib/python3.14/pydoc_data/_pydoc.css 644 0 0
+file /usr/local/lib/python3.14/pydoc_data/module_docs.py ${STAGING_DIR}/usr/local/lib/python3.14/pydoc_data/module_docs.py 644 0 0
 file /usr/local/lib/python3.14/pydoc_data/topics.py ${STAGING_DIR}/usr/local/lib/python3.14/pydoc_data/topics.py 644 0 0
 file /usr/local/lib/python3.14/queue.py ${STAGING_DIR}/usr/local/lib/python3.14/queue.py 644 0 0
 file /usr/local/lib/python3.14/quopri.py ${STAGING_DIR}/usr/local/lib/python3.14/quopri.py 644 0 0

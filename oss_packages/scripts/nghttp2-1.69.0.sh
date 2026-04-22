@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nmap-7.98"
+PKG_DIR="nghttp2-1.69.0"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://nmap.org/dist/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/nghttp2/nghttp2/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="ce847313eaae9e5c9f21708e42d2ab7b56c7e0eb8803729a3092f58886d897e6"
+PKG_CHECKSUM="1fb324b6ec2c56f6bde0658f4139ffd8209fa9e77ce98fd7a5f63af8d0e508ad"
 
 
 
@@ -29,21 +28,19 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
-        CFLAGS="${M3_CFLAGS}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        OPENSSL_CFLAGS="-I${STAGING_INCLUDE}" \
+        OPENSSL_LIBS="-lssl -lcrypto -L${STAGING_LIB}" \
+        ZLIB_CFLAGS="-I${STAGING_INCLUDE}" \
+        ZLIB_LIBS="-lz -L${STAGING_LIB}" \
+        LIBCARES_CFLAGS="-I${STAGING_INCLUDE}" \
+        LIBCARES_LIBS="-lcares -L${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
-        --with-openssl="${STAGING_DIR}" \
-        --with-libpcre="${STAGING_DIR}" \
-        --with-libpcap=included \
-        --with-liblua=included \
-        --with-libssh2="${STAGING_DIR}" \
-        --with-liblinear=included \
-        --with-libdnet=included \
-        --without-zenmap \
-        --without-ndiff \
         --prefix="" \
+        --enable-lib-only \
+        --enable-static \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -51,8 +48,9 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" \
+         install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

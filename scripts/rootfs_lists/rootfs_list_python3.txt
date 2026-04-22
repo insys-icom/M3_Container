@@ -142,6 +142,6 @@ include snippets/python_${ARCH}.txt
 dir /usr/local/lib/python3.14/site-packages 755 0 0
 
 # execute in rootfs_staging/$ARCH:
-# ../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep '/usr/local/lib/python3.14/site-packages/*/' | sed 's| ./usr/local/lib/python3.14/site-packages/| ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/|' | sort > ../list.txt
+# ../../scripts/gen_initramfs_list.sh -u $(id -u) -g $(id -g) -d ./ | grep -v '/site-packages/test' | grep -v '/site-packages/doc' | grep -v '/site-packages/examples' | grep '/usr/local/lib/python3.14/site-packages/*/' | sed 's| ./usr/local/lib/python3.14/site-packages/| ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/|' | sort > ../../scripts/rootfs_lists/snippets/python_modules.txt
 
 include snippets/python_modules.txt

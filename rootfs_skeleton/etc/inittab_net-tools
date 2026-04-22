@@ -16,8 +16,10 @@
 # start SSH server
 ::respawn:/bin/dropbear -R -F -b /etc/banner.txt
 
+### optionally start more daemons:
+
 # start cron daemon
-#::respawn:/bin/crond -f
+# ::respawn:/bin/crond -f
 
 # start FTP server
 # ::respawn:/bin/bftpd -D
@@ -28,6 +30,9 @@
 # start OpenVPN as server or as client
 # ::respawn:/bin/openvpn /etc/openvpn/server.ovpn
 # ::respawn:/bin/openvpn /etc/openvpn/client.ovpn
+
+# start wpa_supplicant for opening 802.1X Ethernet port
+# ::respawn:/bin/wpa_supplicant -i eth0 -D wired -c /etc/wpa.conf
 
 ::restart:/sbin/init
 ::shutdown:/sbin/halt

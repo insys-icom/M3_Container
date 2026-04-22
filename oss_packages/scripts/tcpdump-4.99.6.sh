@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="stunnel-5.76"
+PKG_DIR="tcpdump-4.99.6"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-# PKG_DOWNLOAD="https://www.stunnel.org/downloads/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.tcpdump.org/release/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="cda37eb4d0fb1e129718ed27ad77b5735e899394ce040bb2be28bbb937fd79e1"
+PKG_CHECKSUM="40a8cefd45f0d2a06827e6658efb830d484868c449ad80f7efb33516af44f3da"
 
 
 
@@ -29,15 +28,18 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
         CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        ac_cv_linux_vers=2 \
+        td_cv_buggygetaddrinfo=no \
+        ac_cv_func_strlcpy=no \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
+        --disable-smb \
+        --with-crypto \
         --prefix="" \
-        --disable-systemd \
-        --disable-fips \
-        --disable-libwrap \
-        --with-ssl="${STAGING_DIR}" \
+        --with-cap-ng \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -45,8 +47,8 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} CROSS_COMPILE="${M3_CROSS_COMPILE}" || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()

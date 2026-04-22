@@ -1,25 +1,24 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="metalog-20260105"
+PKG_DIR="nmap-7.99"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://github.com/hvisage/metalog/archive/refs/tags/${PKG_ARCHIVE_FILE#*-}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://nmap.org/dist/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="58ee4f423d51eccdd4b404c7c6e3b62b334d7be6e1a052bca1b0efb2501f69cc"
+PKG_CHECKSUM="df512492ffd108e53a27a06f26d8635bbe89e0e569455dc8ffef058c035d51b2"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. "${TOPDIR}"/scripts/common_settings.sh
-. "${HELPERSDIR}"/functions.sh
+. "${TOPDIR}/scripts/common_settings.sh"
+. "${HELPERSDIR}/functions.sh"
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -28,19 +27,22 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./autogen.sh
     ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
         CFLAGS="${M3_CFLAGS}" \
-        LDFLAGS="${M3_LDFLAGS}" \
-        PCRE2_CFLAGS="-I${STAGING_INCLUDE}" \
-        PCRE2_LIBS="-L${STAGING_LIB} -lpcre2-8" \
-        ZLIB_CFLAGS="-I${STAGING_INCLUDE}" \
-        ZLIB_LIBS="-L${STAGING_LIB} -lz" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
+        --with-openssl="${STAGING_DIR}" \
+        --with-libpcre="${STAGING_DIR}" \
+        --with-libpcap=included \
+        --with-liblua=included \
+        --with-libssh2="${STAGING_DIR}" \
+        --with-liblinear=included \
+        --with-libdnet=included \
+        --without-zenmap \
+        --without-ndiff \
         --prefix="" \
-        --with-compress \
-        --with-unicode \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -55,7 +57,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

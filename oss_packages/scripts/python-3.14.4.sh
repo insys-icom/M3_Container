@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.14.2"
+PKG_DIR="Python-3.14.4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="ce543ab854bc256b61b71e9b27f831ffd1bfd60a479d639f8be7f9757cf573e9"
+PKG_CHECKSUM="d923c51303e38e249136fc1bdf3568d56ecb03214efdef48516176d3d7faaef8"
 
 
 
@@ -100,9 +99,6 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     make -i DESTDIR="${STAGING_DIR}" commoninstall || exit_failure "failed to install ${PKG_DIR}"
-
-    # Variable for the install path used in script
-    PYTHON_VERSION="python3.14"
 
     # remove the static lib
     rm -Rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/config-"*

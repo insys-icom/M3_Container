@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dnsmasq-2.91"
+PKG_DIR="dnsmasq-2.92"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="http://www.thekelleys.org.uk/dnsmasq/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="http://www.thekelleys.org.uk/dnsmasq/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="f622682848b33677adb2b6ad08264618a2ae0a01da486a93fd8cd91186b3d153"
+PKG_CHECKSUM="4bf50c2c1018f9fbc26037df51b90ecea0cb73d46162846763b92df0d6c3a458"
 
 
 

@@ -40,6 +40,8 @@ export AR=$(which ${M3_TARGET}-gcc-ar)
 export NM=$(which ${M3_TARGET}-gcc-nm)
 export RANLIB=$(which ${M3_TARGET}-gcc-ranlib)
 
+PYTHON_VERSION="python3.14"
+
 M3_CROSS_COMPILE="${M3_TARGET}-"
 M3_MAKEFLAGS="-j${CPU_THREADS}"
 

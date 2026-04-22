@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="curl-8.17.0"
+PKG_DIR="curl-8.19.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://curl.se/download/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://curl.se/download/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="955f6e729ad6b3566260e8fef68620e76ba3c31acf0a18524416a185acf77992"
+PKG_CHECKSUM="4eb41489790d19e190d7ac7e18e82857cdd68af8f4e66b292ced562d333f11df"
 
 
 

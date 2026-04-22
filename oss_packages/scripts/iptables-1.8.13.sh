@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nghttp2-1.68.0"
+PKG_DIR="iptables-1.8.13"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://github.com/nghttp2/nghttp2/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.netfilter.org/pub/iptables/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="5511d3128850e01b5b26ec92bf39df15381c767a63441438b25ad6235def902c"
+PKG_CHECKSUM="1afcd33da9e8f913ace6a2126788162e207e26f5d5e29c6573c0e581ffc58b99"
 
 
 
@@ -29,19 +28,15 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        OPENSSL_CFLAGS="-I${STAGING_INCLUDE}" \
-        OPENSSL_LIBS="-lssl -lcrypto -L${STAGING_LIB}" \
-        ZLIB_CFLAGS="-I${STAGING_INCLUDE}" \
-        ZLIB_LIBS="-lz -L${STAGING_LIB}" \
-        LIBCARES_CFLAGS="-I${STAGING_INCLUDE}" \
-        LIBCARES_LIBS="-lcares -L${STAGING_LIB}" \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
-        --prefix="" \
-        --enable-lib-only \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET} \
         --enable-static \
+        --disable-shared \
+        --disable-debug \
+        --disable-nftables \
+        --prefix="" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -50,8 +45,7 @@ compile()
     copy_overlay
     cd "${PKG_BUILD_DIR}"
     make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" \
-         install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
