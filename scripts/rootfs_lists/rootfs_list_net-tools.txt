@@ -58,6 +58,7 @@ include snippets/dropbear.txt
 include snippets/mcip-tool.txt
 include snippets/syslibs_${ARCH}.txt
 include snippets/timezone.txt
+include ../../closed_packages/rootfs_list_container_pcap.txt
 
 file /bin/metalog                     ${STAGING_DIR}/sbin/metalog                    0755 0 0
 file /bin/selftest                    ${SKELETON_DIR}/bin/selftest_net-tools.sh      0755 0 0
@@ -152,6 +153,7 @@ file /lib/libpcap.so.1                ${STAGING_DIR}/lib/libpcap.so.1           
 file /lib/libstdc++.so.6              ${GCC_LIB_DIR}/libstdc++.so.6                  0755 0 0
 
 file /root/readme.txt                 ${SKELETON_DIR}/root/readme.txt                0644 0 0
+file /root/start_trace.sh             ${SKELETON_DIR}/root/start_trace.sh            0755 0 0
 
 slink /run                            tmp/run                                        0777 0 0
 slink /sbin                           bin                                            0777 0 0

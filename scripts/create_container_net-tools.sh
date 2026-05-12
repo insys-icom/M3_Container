@@ -55,6 +55,13 @@ PACKAGES=(
     PACKAGES_4[@]
 )
 
+CLOSED_PACKAGES_1=(
+    "container_pcap.sh"
+)
+CLOSED_PACKAGES=(
+    CLOSED_PACKAGES_1[@]
+)
+
 # in case $1 is "do_nothing" this script will end here
 [ "$1" == "do_nothing" ] && return
 

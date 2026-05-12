@@ -34,6 +34,9 @@
 # start wpa_supplicant for opening 802.1X Ethernet port
 # ::respawn:/bin/wpa_supplicant -i eth0 -D wired -c /etc/wpa.conf
 
+# start a never ending tcpdump of net1 and store it in /data
+# ::respawn:/root/start_trace.sh
+
 ::restart:/sbin/init
 ::shutdown:/sbin/halt
 ::ctrlaltdel:/sbin/reboot
