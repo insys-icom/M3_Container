@@ -12,17 +12,18 @@ for ARCH in ${ARCHITECTURES}; do
     rm -Rf "${TOPDIR}"/rootfs_staging/"${ARCH}"/*
 done
 
-# find all scripts that are named "create_container_*" and retrieve their needed OSS packages without executing the build
-SUM=()
+# find all scripts that are named "create_container_*" and retrieve their needed packages without executing the build
+SUM_OPEN=()
+SUM_CLOSED=()
 for i in $(ls ${SCRIPTS}); do
     if [[ "${i}" == *"create_container_"* ]]; then
         # get container specific variables
         . "${SCRIPTS}"/"${i}" do_nothing
 
         index=0
-        # walk over all package groups
+        # walk over all open source package groups
         for i in "${PACKAGES[@]}"; do
-            group=${SUM[$index]}
+            group=${SUM_OPEN[$index]}
             PACKAGE=("${!i}")
             # walk over all packages in this group
             for p in "${PACKAGE[@]}"; do
@@ -31,7 +32,23 @@ for i in $(ls ${SCRIPTS}); do
                     group+="${p} "
                 fi
             done
-            SUM[$index]=$group
+            SUM_OPEN[$index]=$group
+            index=$((index+1))
+        done
+
+        index=0
+        # walk over all closed source package groups
+        for i in "${CLOSED_PACKAGES[@]}"; do
+            group=${SUM_CLOSED[$index]}
+            PACKAGE=("${!i}")
+            # walk over all packages in this group
+            for p in "${PACKAGE[@]}"; do
+                # only add package to the group list, if it is not already in there
+                if ! [[ "${group}" == *"${p}"* ]]; then
+                    group+="${p} "
+                fi
+            done
+            SUM_CLOSED[$index]=$group
             index=$((index+1))
         done
     fi
@@ -50,7 +67,7 @@ for ARCH in ${ARCHITECTURES}; do
     echo " "
     echo "Compiling in parallel for ${ARCH}:"
     echo "------------------------------------------------------"
-    for i in "${SUM[@]}"; do
+    for i in "${SUM_OPEN[@]}"; do
         for p in $i; do
            echo "    Compile ${p}"
            ARCH=${ARCH} ${OSS_PACKAGES_SCRIPTS}/${p} all > "${BUILD_DIR}/${p}.log" 2>&1 &
@@ -63,9 +80,8 @@ for ARCH in ${ARCHITECTURES}; do
     echo ""
     echo "Compiling closed packages:"
     echo "------------------------------------------------------"
-    for i in "${CLOSED_PACKAGES[@]}"; do
-        CLOSED_PACKAGE=("${!i}")
-        for p in "${CLOSED_PACKAGE[@]}"; do
+    for i in "${SUM_CLOSED[@]}"; do
+        for p in $i; do
             echo "    Compile ${p}"
             ARCH=${ARCH} ${CLOSED_PACKAGES_DIR}/${p} all > "${BUILD_DIR}/${p}.log" 2>&1 &
         done

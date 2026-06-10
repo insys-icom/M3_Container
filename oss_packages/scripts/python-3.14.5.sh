@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="Python-3.14.4"
+PKG_DIR="Python-3.14.5"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://www.python.org/ftp/python/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="d923c51303e38e249136fc1bdf3568d56ecb03214efdef48516176d3d7faaef8"
+PKG_CHECKSUM="7e32597b99e5d9a39abed35de4693fa169df3e5850d4c334337ffd6a19a36db6"
 
 
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="sqlite-src-3530000"
+PKG_DIR="sqlite-src-3530200"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 PKG_DOWNLOAD="https://www.sqlite.org/2026/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="fbc30cdbfcfa42c78fe7bddd3fd37ab8995369a31d39097a5d0633296c0b6e65"
+PKG_CHECKSUM="cafff764c03f6d720968f746e2f47a986bbf12bf4c18904f1eb131c0b0b592d3"
 
 
 

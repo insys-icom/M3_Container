@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="requests-2.33.1"
+PKG_DIR="urllib3-2.7.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/psf/requests/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/urllib3/urllib3/releases/download/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517"
+PKG_CHECKSUM="231e0ec3b63ceb14667c67be60f2f2c40a518cb38b03af60abc813da26505f4c"
 
 
 
@@ -40,12 +40,12 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/requests" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    cp -a "${PKG_BUILD_DIR}/src/urllib3" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/requests"
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/urllib3"
 }
 
 . ${HELPERSDIR}/call_functions.sh

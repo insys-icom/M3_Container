@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="openvpn-2.7.1"
+PKG_DIR="openvpn-2.7.4"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://swupdate.openvpn.org/community/releases/${PKG_ARCHIVE_FILE}"
 
 # checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="9858477ec2894a8a672974d8650dcb1af2eeffb468981a2b619f0fa387081167"
+PKG_CHECKSUM="18db05f3d5eee3663db1914590044e5f96ff5cd47b6e7846c6a350806c23dbce"
 
 
 

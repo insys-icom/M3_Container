@@ -7,27 +7,27 @@ ROOTFS_LIST="rootfs_list_nodejs.txt"
 PACKAGES_1=(
     "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2026-03-19.sh"
+    "cacert-2026-05-14.sh"
     "zlib-1.3.sh"
-    "tzdb-2026a.sh"
+    "tzdb-2026b.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
     "pcre2-10.47.sh"
-    "openssl-3.6.2.sh"
+    "openssl-3.6.3.sh"
     "c-ares-1.34.6.sh"
     "nghttp2-1.69.0.sh"
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(
-    "busybox-1.36.1.sh"
-    "dropbear-2025.89.sh"
+    "busybox-1.38.0.sh"
+    "dropbear-2026.91.sh"
     "metalog-20260221.sh"
     "libssh2-1.11.1.sh"
     "ncurses-6.5.sh"
 )
 PACKAGES_4=(
-    "curl-8.19.0.sh"
+    "curl-8.20.0.sh"
     "nano-9.0.sh"
     "node-v22.21.1-linux.sh"
 )

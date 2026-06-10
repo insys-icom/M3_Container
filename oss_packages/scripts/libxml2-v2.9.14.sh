@@ -38,6 +38,7 @@ configure()
         --host="${M3_TARGET}" \
         --prefix="" \
         --without-python \
+        --without-lzma \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 

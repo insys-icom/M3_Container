@@ -7,15 +7,15 @@ ROOTFS_LIST="rootfs_list_net-tools.txt"
 PACKAGES_1=(
     "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2026-03-19.sh"
+    "cacert-2026-05-14.sh"
     "zlib-1.3.sh"
     "cJSON-1.7.19.sh"
-    "tzdb-2026a.sh"
+    "tzdb-2026b.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
     "pcre2-10.47.sh"
-    "openssl-3.6.2.sh"
+    "openssl-3.6.3.sh"
     "nghttp2-1.69.0.sh"
     "libpcap-1.10.6.sh"
     "libcap-ng-0.8.5.sh"
@@ -25,11 +25,11 @@ PACKAGES_2=(
     "mcip-tool-v4.sh"
 )
 PACKAGES_3=(
-    "busybox-1.36.1.sh"
-    "dropbear-2025.89.sh"
+    "busybox-1.38.0.sh"
+    "dropbear-2026.91.sh"
     "metalog-20260221.sh"
-    "dnsmasq-2.92.sh"
-    "openvpn-2.7.1.sh"
+    "dnsmasq-2.93.sh"
+    "openvpn-2.7.4.sh"
     "tcpdump-4.99.6.sh"
     "iperf-3.12.sh"
     "stunnel-5.78.sh"
@@ -42,7 +42,7 @@ PACKAGES_3=(
     "wpa_supplicant-2.11.sh"
 )
 PACKAGES_4=(
-    "curl-8.19.0.sh"
+    "curl-8.20.0.sh"
     "nmap-7.99.sh"
     "mosquitto-2.1.2.sh"
     "addrwatch-1.0.2.sh"

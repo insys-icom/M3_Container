@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="urllib3-2.6.3"
+PKG_DIR="cacert-2026-05-14.pem"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/urllib3/urllib3/releases/download/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed"
+PKG_CHECKSUM="86a1f3366afac7c6f8ae9f3c779ac221129328c43f0ab2b8817eb2f362a5025c"
 
 
 
@@ -24,7 +24,12 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-
+unpack()
+{
+    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
+    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
+    cp "${PKG_ARCHIVE}" "${PKG_BUILD_DIR}"
+}
 
 configure()
 {
@@ -38,14 +43,13 @@ compile()
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/urllib3" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    mkdir -p "${STAGING_DIR}/usr/share"
+    cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/urllib3"
+    rm -vf "${STAGING_DIR}/usr/share/cacert.pem"
 }
 
 . ${HELPERSDIR}/call_functions.sh
