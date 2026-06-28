@@ -39,6 +39,7 @@ configure()
         --prefix="" \
         --without-python \
         --without-lzma \
+        --without-iconv \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 

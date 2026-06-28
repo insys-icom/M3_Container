@@ -8,7 +8,7 @@ PACKAGES_1=(
     "libxcrypt-4.5.2.sh"
     "mcip.sh"
     "cacert-2026-05-14.sh"
-    "zlib-1.3.sh"
+    "zlib-1.3.2.sh"
     "cJSON-1.7.19.sh"
     "tzdb-2026b.sh"
 )

@@ -8,7 +8,7 @@ PACKAGES_1=(
     "libxcrypt-4.5.2.sh"
     "mcip.sh"
     "cacert-2026-05-14.sh"
-    "zlib-1.3.sh"
+    "zlib-1.3.2.sh"
     "tzdb-2026b.sh"
 )
 PACKAGES_2=(
@@ -28,7 +28,7 @@ PACKAGES_3=(
     "metalog-20260221.sh"
     "apr-util-1.6.3.sh"
     "sqlite-src-3530200.sh"
-    "ncurses-6.5.sh"
+    "ncurses-6.6.sh"
 )
 PACKAGES_4=(
     "nano-9.0.sh"
