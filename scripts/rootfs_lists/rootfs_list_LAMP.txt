@@ -90,6 +90,7 @@ file /etc/service/metalog/run         ${SKELETON_DIR}/etc/service/metalog/run   
 file /etc/service/dropbear/run        ${SKELETON_DIR}/etc/service/dropbear/run       0755 0 0
 file /etc/service/httpd/run           ${SKELETON_DIR}/etc/service/httpd/run          0755 0 0
 file /etc/php.ini                     ${STAGING_DIR}/etc/php.ini                     0644 0 0
+file /etc/httpd/modules               ${SKELETON_DIR}/etc/httpd/modules              0644 0 0
 
 file /lib/libz.so.1                   ${STAGING_DIR}/lib/libz.so.1                   0644 0 0
 file /lib/libpcre2-8.so.0             ${STAGING_DIR}/lib/libpcre2-8.so.0             0755 0 0
@@ -143,109 +144,111 @@ file /etc/httpd/mime.types            ${STAGING_DIR}/conf/mime.types            
 file /lib/libapr-1.so.0               ${STAGING_DIR}/lib/libapr-1.so.0               0755 0 0
 file /lib/libaprutil-1.so.0           ${STAGING_DIR}/lib/libaprutil-1.so.0           0755 0 0
 
-# file /lib/httpd/mod_access_compat.so        ${STAGING_DIR}/modules/mod_access_compat.so         0755 0 0
-# file /lib/httpd/mod_actions.so              ${STAGING_DIR}/modules/mod_actions.so               0755 0 0
-# file /lib/httpd/mod_alias.so                ${STAGING_DIR}/modules/mod_alias.so                 0755 0 0
-# file /lib/httpd/mod_allowmethods.so         ${STAGING_DIR}/modules/mod_allowmethods.so          0755 0 0
-# file /lib/httpd/mod_asis.so                 ${STAGING_DIR}/modules/mod_asis.so                  0755 0 0
+file /lib/httpd/mod_access_compat.so        ${STAGING_DIR}/modules/mod_access_compat.so         0755 0 0
+file /lib/httpd/mod_actions.so              ${STAGING_DIR}/modules/mod_actions.so               0755 0 0
+file /lib/httpd/mod_alias.so                ${STAGING_DIR}/modules/mod_alias.so                 0755 0 0
+file /lib/httpd/mod_allowmethods.so         ${STAGING_DIR}/modules/mod_allowmethods.so          0755 0 0
+file /lib/httpd/mod_asis.so                 ${STAGING_DIR}/modules/mod_asis.so                  0755 0 0
 file /lib/httpd/mod_auth_basic.so           ${STAGING_DIR}/modules/mod_auth_basic.so            0755 0 0
 file /lib/httpd/mod_auth_digest.so          ${STAGING_DIR}/modules/mod_auth_digest.so           0755 0 0
 file /lib/httpd/mod_auth_form.so            ${STAGING_DIR}/modules/mod_auth_form.so             0755 0 0
-# file /lib/httpd/mod_authn_anon.so           ${STAGING_DIR}/modules/mod_authn_anon.so            0755 0 0
-# file /lib/httpd/mod_authn_core.so           ${STAGING_DIR}/modules/mod_authn_core.so            0755 0 0
-# file /lib/httpd/mod_authn_dbd.so            ${STAGING_DIR}/modules/mod_authn_dbd.so             0755 0 0
-# file /lib/httpd/mod_authn_dbm.so            ${STAGING_DIR}/modules/mod_authn_dbm.so             0755 0 0
-# file /lib/httpd/mod_authn_file.so           ${STAGING_DIR}/modules/mod_authn_file.so            0755 0 0
-# file /lib/httpd/mod_authn_socache.so        ${STAGING_DIR}/modules/mod_authn_socache.so         0755 0 0
+file /lib/httpd/mod_authn_anon.so           ${STAGING_DIR}/modules/mod_authn_anon.so            0755 0 0
+file /lib/httpd/mod_authn_core.so           ${STAGING_DIR}/modules/mod_authn_core.so            0755 0 0
+file /lib/httpd/mod_authn_dbd.so            ${STAGING_DIR}/modules/mod_authn_dbd.so             0755 0 0
+file /lib/httpd/mod_authn_dbm.so            ${STAGING_DIR}/modules/mod_authn_dbm.so             0755 0 0
+file /lib/httpd/mod_authn_file.so           ${STAGING_DIR}/modules/mod_authn_file.so            0755 0 0
+file /lib/httpd/mod_authn_socache.so        ${STAGING_DIR}/modules/mod_authn_socache.so         0755 0 0
 file /lib/httpd/mod_authz_core.so           ${STAGING_DIR}/modules/mod_authz_core.so            0755 0 0
-# file /lib/httpd/mod_authz_dbd.so            ${STAGING_DIR}/modules/mod_authz_dbd.so             0755 0 0
-# file /lib/httpd/mod_authz_dbm.so            ${STAGING_DIR}/modules/mod_authz_dbm.so             0755 0 0
-# file /lib/httpd/mod_authz_groupfile.so      ${STAGING_DIR}/modules/mod_authz_groupfile.so       0755 0 0
-# file /lib/httpd/mod_authz_host.so           ${STAGING_DIR}/modules/mod_authz_host.so            0755 0 0
-# file /lib/httpd/mod_authz_owner.so          ${STAGING_DIR}/modules/mod_authz_owner.so           0755 0 0
-# file /lib/httpd/mod_authz_user.so           ${STAGING_DIR}/modules/mod_authz_user.so            0755 0 0
+file /lib/httpd/mod_authz_dbd.so            ${STAGING_DIR}/modules/mod_authz_dbd.so             0755 0 0
+file /lib/httpd/mod_authz_dbm.so            ${STAGING_DIR}/modules/mod_authz_dbm.so             0755 0 0
+file /lib/httpd/mod_authz_groupfile.so      ${STAGING_DIR}/modules/mod_authz_groupfile.so       0755 0 0
+file /lib/httpd/mod_authz_host.so           ${STAGING_DIR}/modules/mod_authz_host.so            0755 0 0
+file /lib/httpd/mod_authz_owner.so          ${STAGING_DIR}/modules/mod_authz_owner.so           0755 0 0
+file /lib/httpd/mod_authz_user.so           ${STAGING_DIR}/modules/mod_authz_user.so            0755 0 0
 file /lib/httpd/mod_autoindex.so            ${STAGING_DIR}/modules/mod_autoindex.so             0755 0 0
-# file /lib/httpd/mod_buffer.so               ${STAGING_DIR}/modules/mod_buffer.so                0755 0 0
-# file /lib/httpd/mod_cache.so                ${STAGING_DIR}/modules/mod_cache.so                 0755 0 0
-# file /lib/httpd/mod_cache_disk.so           ${STAGING_DIR}/modules/mod_cache_disk.so            0755 0 0
-# file /lib/httpd/mod_cache_socache.so        ${STAGING_DIR}/modules/mod_cache_socache.so         0755 0 0
+file /lib/httpd/mod_buffer.so               ${STAGING_DIR}/modules/mod_buffer.so                0755 0 0
+file /lib/httpd/mod_cache.so                ${STAGING_DIR}/modules/mod_cache.so                 0755 0 0
+file /lib/httpd/mod_cache_disk.so           ${STAGING_DIR}/modules/mod_cache_disk.so            0755 0 0
+file /lib/httpd/mod_cache_socache.so        ${STAGING_DIR}/modules/mod_cache_socache.so         0755 0 0
 file /lib/httpd/mod_cgi.so                  ${STAGING_DIR}/modules/mod_cgi.so                   0755 0 0
-# file /lib/httpd/mod_charset_lite.so         ${STAGING_DIR}/modules/mod_charset_lite.so          0755 0 0
-# file /lib/httpd/mod_data.so                 ${STAGING_DIR}/modules/mod_data.so                  0755 0 0
-# file /lib/httpd/mod_dav.so                  ${STAGING_DIR}/modules/mod_dav.so                   0755 0 0
-# file /lib/httpd/mod_dav_fs.so               ${STAGING_DIR}/modules/mod_dav_fs.so                0755 0 0
-# file /lib/httpd/mod_dav_lock.so             ${STAGING_DIR}/modules/mod_dav_lock.so              0755 0 0
-# file /lib/httpd/mod_dbd.so                  ${STAGING_DIR}/modules/mod_dbd.so                   0755 0 0
-# file /lib/httpd/mod_deflate.so              ${STAGING_DIR}/modules/mod_deflate.so               0755 0 0
-# file /lib/httpd/mod_dialup.so               ${STAGING_DIR}/modules/mod_dialup.so                0755 0 0
+file /lib/httpd/mod_charset_lite.so         ${STAGING_DIR}/modules/mod_charset_lite.so          0755 0 0
+file /lib/httpd/mod_data.so                 ${STAGING_DIR}/modules/mod_data.so                  0755 0 0
+#file /lib/httpd/mod_dav.so                  ${STAGING_DIR}/modules/mod_dav.so                   0755 0 0
+#file /lib/httpd/mod_dav_fs.so               ${STAGING_DIR}/modules/mod_dav_fs.so                0755 0 0
+#file /lib/httpd/mod_dav_lock.so             ${STAGING_DIR}/modules/mod_dav_lock.so              0755 0 0
+file /lib/httpd/mod_dbd.so                  ${STAGING_DIR}/modules/mod_dbd.so                   0755 0 0
+file /lib/httpd/mod_deflate.so              ${STAGING_DIR}/modules/mod_deflate.so               0755 0 0
+file /lib/httpd/mod_dialup.so               ${STAGING_DIR}/modules/mod_dialup.so                0755 0 0
 file /lib/httpd/mod_dir.so                  ${STAGING_DIR}/modules/mod_dir.so                   0755 0 0
-# file /lib/httpd/mod_dumpio.so               ${STAGING_DIR}/modules/mod_dumpio.so                0755 0 0
-# file /lib/httpd/mod_echo.so                 ${STAGING_DIR}/modules/mod_echo.so                  0755 0 0
+file /lib/httpd/mod_dumpio.so               ${STAGING_DIR}/modules/mod_dumpio.so                0755 0 0
+file /lib/httpd/mod_echo.so                 ${STAGING_DIR}/modules/mod_echo.so                  0755 0 0
 file /lib/httpd/mod_env.so                  ${STAGING_DIR}/modules/mod_env.so                   0755 0 0
-# file /lib/httpd/mod_expires.so              ${STAGING_DIR}/modules/mod_expires.so               0755 0 0
-# file /lib/httpd/mod_ext_filter.so           ${STAGING_DIR}/modules/mod_ext_filter.so            0755 0 0
-# file /lib/httpd/mod_file_cache.so           ${STAGING_DIR}/modules/mod_file_cache.so            0755 0 0
-# file /lib/httpd/mod_filter.so               ${STAGING_DIR}/modules/mod_filter.so                0755 0 0
+file /lib/httpd/mod_expires.so              ${STAGING_DIR}/modules/mod_expires.so               0755 0 0
+file /lib/httpd/mod_ext_filter.so           ${STAGING_DIR}/modules/mod_ext_filter.so            0755 0 0
+file /lib/httpd/mod_file_cache.so           ${STAGING_DIR}/modules/mod_file_cache.so            0755 0 0
+file /lib/httpd/mod_filter.so               ${STAGING_DIR}/modules/mod_filter.so                0755 0 0
 file /lib/httpd/mod_headers.so              ${STAGING_DIR}/modules/mod_headers.so               0755 0 0
-# file /lib/httpd/mod_heartbeat.so            ${STAGING_DIR}/modules/mod_heartbeat.so             0755 0 0
-# file /lib/httpd/mod_heartmonitor.so         ${STAGING_DIR}/modules/mod_heartmonitor.so          0755 0 0
+file /lib/httpd/mod_heartbeat.so            ${STAGING_DIR}/modules/mod_heartbeat.so             0755 0 0
+file /lib/httpd/mod_heartmonitor.so         ${STAGING_DIR}/modules/mod_heartmonitor.so          0755 0 0
 file /lib/httpd/mod_http2.so                ${STAGING_DIR}/modules/mod_http2.so                 0755 0 0
 file /lib/httpd/mod_include.so              ${STAGING_DIR}/modules/mod_include.so               0755 0 0
 file /lib/httpd/mod_info.so                 ${STAGING_DIR}/modules/mod_info.so                  0755 0 0
-# file /lib/httpd/mod_lbmethod_bybusyness.so  ${STAGING_DIR}/modules/mod_lbmethod_bybusyness.so   0755 0 0
-# file /lib/httpd/mod_lbmethod_byrequests.so  ${STAGING_DIR}/modules/mod_lbmethod_byrequests.so   0755 0 0
-# file /lib/httpd/mod_lbmethod_bytraffic.so   ${STAGING_DIR}/modules/mod_lbmethod_bytraffic.so    0755 0 0
-# file /lib/httpd/mod_lbmethod_heartbeat.so   ${STAGING_DIR}/modules/mod_lbmethod_heartbeat.so    0755 0 0
+file /lib/httpd/mod_lbmethod_bybusyness.so  ${STAGING_DIR}/modules/mod_lbmethod_bybusyness.so   0755 0 0
+file /lib/httpd/mod_lbmethod_byrequests.so  ${STAGING_DIR}/modules/mod_lbmethod_byrequests.so   0755 0 0
+file /lib/httpd/mod_lbmethod_bytraffic.so   ${STAGING_DIR}/modules/mod_lbmethod_bytraffic.so    0755 0 0
+file /lib/httpd/mod_lbmethod_heartbeat.so   ${STAGING_DIR}/modules/mod_lbmethod_heartbeat.so    0755 0 0
 file /lib/httpd/mod_log_config.so           ${STAGING_DIR}/modules/mod_log_config.so            0755 0 0
-# file /lib/httpd/mod_log_debug.so            ${STAGING_DIR}/modules/mod_log_debug.so             0755 0 0
-# file /lib/httpd/mod_log_forensic.so         ${STAGING_DIR}/modules/mod_log_forensic.so          0755 0 0
-# file /lib/httpd/mod_logio.so                ${STAGING_DIR}/modules/mod_logio.so                 0755 0 0
-# file /lib/httpd/mod_macro.so                ${STAGING_DIR}/modules/mod_macro.so                 0755 0 0
+file /lib/httpd/mod_log_debug.so            ${STAGING_DIR}/modules/mod_log_debug.so             0755 0 0
+file /lib/httpd/mod_log_forensic.so         ${STAGING_DIR}/modules/mod_log_forensic.so          0755 0 0
+file /lib/httpd/mod_logio.so                ${STAGING_DIR}/modules/mod_logio.so                 0755 0 0
+file /lib/httpd/mod_macro.so                ${STAGING_DIR}/modules/mod_macro.so                 0755 0 0
 file /lib/httpd/mod_mime.so                 ${STAGING_DIR}/modules/mod_mime.so                  0755 0 0
-# file /lib/httpd/mod_mime_magic.so           ${STAGING_DIR}/modules/mod_mime_magic.so            0755 0 0
-# file /lib/httpd/mod_negotiation.so          ${STAGING_DIR}/modules/mod_negotiation.so           0755 0 0
+file /lib/httpd/mod_mime_magic.so           ${STAGING_DIR}/modules/mod_mime_magic.so            0755 0 0
+file /lib/httpd/mod_negotiation.so          ${STAGING_DIR}/modules/mod_negotiation.so           0755 0 0
 file /lib/httpd/mod_proxy.so                ${STAGING_DIR}/modules/mod_proxy.so                 0755 0 0
-# file /lib/httpd/mod_proxy_ajp.so            ${STAGING_DIR}/modules/mod_proxy_ajp.so             0755 0 0
-# file /lib/httpd/mod_proxy_balancer.so       ${STAGING_DIR}/modules/mod_proxy_balancer.so        0755 0 0
-# file /lib/httpd/mod_proxy_connect.so        ${STAGING_DIR}/modules/mod_proxy_connect.so         0755 0 0
-# file /lib/httpd/mod_proxy_express.so        ${STAGING_DIR}/modules/mod_proxy_express.so         0755 0 0
-# file /lib/httpd/mod_proxy_fcgi.so           ${STAGING_DIR}/modules/mod_proxy_fcgi.so            0755 0 0
-# file /lib/httpd/mod_proxy_fdpass.so         ${STAGING_DIR}/modules/mod_proxy_fdpass.so          0755 0 0
-# file /lib/httpd/mod_proxy_ftp.so            ${STAGING_DIR}/modules/mod_proxy_ftp.so             0755 0 0
-# file /lib/httpd/mod_proxy_hcheck.so         ${STAGING_DIR}/modules/mod_proxy_hcheck.so          0755 0 0
+file /lib/httpd/mod_proxy_ajp.so            ${STAGING_DIR}/modules/mod_proxy_ajp.so             0755 0 0
+file /lib/httpd/mod_proxy_balancer.so       ${STAGING_DIR}/modules/mod_proxy_balancer.so        0755 0 0
+file /lib/httpd/mod_proxy_connect.so        ${STAGING_DIR}/modules/mod_proxy_connect.so         0755 0 0
+file /lib/httpd/mod_proxy_express.so        ${STAGING_DIR}/modules/mod_proxy_express.so         0755 0 0
+file /lib/httpd/mod_proxy_fcgi.so           ${STAGING_DIR}/modules/mod_proxy_fcgi.so            0755 0 0
+file /lib/httpd/mod_proxy_fdpass.so         ${STAGING_DIR}/modules/mod_proxy_fdpass.so          0755 0 0
+file /lib/httpd/mod_proxy_ftp.so            ${STAGING_DIR}/modules/mod_proxy_ftp.so             0755 0 0
+file /lib/httpd/mod_proxy_hcheck.so         ${STAGING_DIR}/modules/mod_proxy_hcheck.so          0755 0 0
 file /lib/httpd/mod_proxy_http.so           ${STAGING_DIR}/modules/mod_proxy_http.so            0755 0 0
-# file /lib/httpd/mod_proxy_scgi.so           ${STAGING_DIR}/modules/mod_proxy_scgi.so            0755 0 0
-# file /lib/httpd/mod_proxy_uwsgi.so          ${STAGING_DIR}/modules/mod_proxy_uwsgi.so           0755 0 0
-# file /lib/httpd/mod_proxy_wstunnel.so       ${STAGING_DIR}/modules/mod_proxy_wstunnel.so        0755 0 0
-# file /lib/httpd/mod_ratelimit.so            ${STAGING_DIR}/modules/mod_ratelimit.so             0755 0 0
-# file /lib/httpd/mod_reflector.so            ${STAGING_DIR}/modules/mod_reflector.so             0755 0 0
-# file /lib/httpd/mod_remoteip.so             ${STAGING_DIR}/modules/mod_remoteip.so              0755 0 0
-# file /lib/httpd/mod_reqtimeout.so           ${STAGING_DIR}/modules/mod_reqtimeout.so            0755 0 0
-# file /lib/httpd/mod_request.so              ${STAGING_DIR}/modules/mod_request.so               0755 0 0
-# file /lib/httpd/mod_rewrite.so              ${STAGING_DIR}/modules/mod_rewrite.so               0755 0 0
-# file /lib/httpd/mod_sed.so                  ${STAGING_DIR}/modules/mod_sed.so                   0755 0 0
+file /lib/httpd/mod_proxy_html.so           ${STAGING_DIR}/modules/mod_proxy_html.so            0755 0 0
+file /lib/httpd/mod_proxy_scgi.so           ${STAGING_DIR}/modules/mod_proxy_scgi.so            0755 0 0
+file /lib/httpd/mod_proxy_uwsgi.so          ${STAGING_DIR}/modules/mod_proxy_uwsgi.so           0755 0 0
+file /lib/httpd/mod_proxy_wstunnel.so       ${STAGING_DIR}/modules/mod_proxy_wstunnel.so        0755 0 0
+file /lib/httpd/mod_ratelimit.so            ${STAGING_DIR}/modules/mod_ratelimit.so             0755 0 0
+file /lib/httpd/mod_reflector.so            ${STAGING_DIR}/modules/mod_reflector.so             0755 0 0
+file /lib/httpd/mod_remoteip.so             ${STAGING_DIR}/modules/mod_remoteip.so              0755 0 0
+file /lib/httpd/mod_reqtimeout.so           ${STAGING_DIR}/modules/mod_reqtimeout.so            0755 0 0
+file /lib/httpd/mod_request.so              ${STAGING_DIR}/modules/mod_request.so               0755 0 0
+file /lib/httpd/mod_rewrite.so              ${STAGING_DIR}/modules/mod_rewrite.so               0755 0 0
+file /lib/httpd/mod_sed.so                  ${STAGING_DIR}/modules/mod_sed.so                   0755 0 0
 file /lib/httpd/mod_session.so              ${STAGING_DIR}/modules/mod_session.so               0755 0 0
 file /lib/httpd/mod_session_cookie.so       ${STAGING_DIR}/modules/mod_session_cookie.so        0755 0 0
 file /lib/httpd/mod_session_crypto.so       ${STAGING_DIR}/modules/mod_session_crypto.so        0755 0 0
-# file /lib/httpd/mod_session_dbd.so          ${STAGING_DIR}/modules/mod_session_dbd.so           0755 0 0
-# file /lib/httpd/mod_setenvif.so             ${STAGING_DIR}/modules/mod_setenvif.so              0755 0 0
-# file /lib/httpd/mod_slotmem_plain.so        ${STAGING_DIR}/modules/mod_slotmem_plain.so         0755 0 0
-# file /lib/httpd/mod_slotmem_shm.so          ${STAGING_DIR}/modules/mod_slotmem_shm.so           0755 0 0
-# file /lib/httpd/mod_socache_dbm.so          ${STAGING_DIR}/modules/mod_socache_dbm.so           0755 0 0
-# file /lib/httpd/mod_socache_memcache.so     ${STAGING_DIR}/modules/mod_socache_memcache.so      0755 0 0
-# file /lib/httpd/mod_socache_redis.so        ${STAGING_DIR}/modules/mod_socache_redis.so         0755 0 0
-# file /lib/httpd/mod_socache_shmcb.so        ${STAGING_DIR}/modules/mod_socache_shmcb.so         0755 0 0
-# file /lib/httpd/mod_speling.so              ${STAGING_DIR}/modules/mod_speling.so               0755 0 0
+file /lib/httpd/mod_session_dbd.so          ${STAGING_DIR}/modules/mod_session_dbd.so           0755 0 0
+file /lib/httpd/mod_setenvif.so             ${STAGING_DIR}/modules/mod_setenvif.so              0755 0 0
+file /lib/httpd/mod_slotmem_plain.so        ${STAGING_DIR}/modules/mod_slotmem_plain.so         0755 0 0
+file /lib/httpd/mod_slotmem_shm.so          ${STAGING_DIR}/modules/mod_slotmem_shm.so           0755 0 0
+file /lib/httpd/mod_socache_dbm.so          ${STAGING_DIR}/modules/mod_socache_dbm.so           0755 0 0
+file /lib/httpd/mod_socache_memcache.so     ${STAGING_DIR}/modules/mod_socache_memcache.so      0755 0 0
+file /lib/httpd/mod_socache_redis.so        ${STAGING_DIR}/modules/mod_socache_redis.so         0755 0 0
+file /lib/httpd/mod_socache_shmcb.so        ${STAGING_DIR}/modules/mod_socache_shmcb.so         0755 0 0
+file /lib/httpd/mod_speling.so              ${STAGING_DIR}/modules/mod_speling.so               0755 0 0
 file /lib/httpd/mod_ssl.so                  ${STAGING_DIR}/modules/mod_ssl.so                   0755 0 0
 file /lib/httpd/mod_status.so               ${STAGING_DIR}/modules/mod_status.so                0755 0 0
-# file /lib/httpd/mod_substitute.so           ${STAGING_DIR}/modules/mod_substitute.so            0755 0 0
-# file /lib/httpd/mod_suexec.so               ${STAGING_DIR}/modules/mod_suexec.so                0755 0 0
-# file /lib/httpd/mod_unique_id.so            ${STAGING_DIR}/modules/mod_unique_id.so             0755 0 0
+file /lib/httpd/mod_substitute.so           ${STAGING_DIR}/modules/mod_substitute.so            0755 0 0
+file /lib/httpd/mod_suexec.so               ${STAGING_DIR}/modules/mod_suexec.so                0755 0 0
+file /lib/httpd/mod_unique_id.so            ${STAGING_DIR}/modules/mod_unique_id.so             0755 0 0
 file /lib/httpd/mod_unixd.so                ${STAGING_DIR}/modules/mod_unixd.so                 0755 0 0
-# file /lib/httpd/mod_usertrack.so            ${STAGING_DIR}/modules/mod_usertrack.so             0755 0 0
-# file /lib/httpd/mod_version.so              ${STAGING_DIR}/modules/mod_version.so               0755 0 0
-# file /lib/httpd/mod_vhost_alias.so          ${STAGING_DIR}/modules/mod_vhost_alias.so           0755 0 0
-# file /lib/httpd/mod_watchdog.so             ${STAGING_DIR}/modules/mod_watchdog.so              0755 0 0
+file /lib/httpd/mod_usertrack.so            ${STAGING_DIR}/modules/mod_usertrack.so             0755 0 0
+file /lib/httpd/mod_version.so              ${STAGING_DIR}/modules/mod_version.so               0755 0 0
+file /lib/httpd/mod_vhost_alias.so          ${STAGING_DIR}/modules/mod_vhost_alias.so           0755 0 0
+file /lib/httpd/mod_watchdog.so             ${STAGING_DIR}/modules/mod_watchdog.so              0755 0 0
+file /lib/httpd/mod_xml2enc.so              ${STAGING_DIR}/modules/mod_xml2enc.so               0755 0 0
 
 file   /bin/busybox   ${STAGING_DIR}/bin/busybox    4755 0 00 0
 slink /bin/[ busybox 777 0 0

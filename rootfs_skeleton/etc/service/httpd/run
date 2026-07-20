@@ -1,4 +1,20 @@
-#! /bin/sh
+#!/bin/sh
 
 exec 2>&1
-exec httpd -DFOREGROUND -f /etc/httpd/httpd.conf
+
+if ! [ -e /etc/httpd/cert.pem ] ; then
+    touch /etc/ssl/openssl.cnf
+    /bin/openssl req \
+        -x509 \
+        -newkey ec \
+        -pkeyopt ec_paramgen_curve:prime256v1 \
+        -keyout /etc/httpd/key.pem \
+        -out /etc/httpd/cert.pem \
+        -sha256 \
+        -not_before 19700101000000Z \
+        -not_after 99991231235959Z \
+        -nodes \
+        -subj "/C=DE/ST=Bayern/L=Regensburg/O=INSYS icom GmbH/CN=LAMP container"
+fi
+
+exec httpd -D FOREGROUND -f /etc/httpd/httpd.conf
