@@ -7,9 +7,9 @@ ROOTFS_LIST="rootfs_list_default.txt"
 PACKAGES_1=(
     "libxcrypt-4.5.2.sh"
     "mcip.sh"
-    "cacert-2026-05-14.sh"
+    "cacert-2026-07-16.sh"
     "zlib-1.3.2.sh"
-    "tzdb-2026b.sh"
+    "tzdb-2026c.sh"
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
@@ -19,7 +19,7 @@ PACKAGES_2=(
 )
 PACKAGES_3=(
     "busybox-1.38.0.sh"
-    "dropbear-2026.91.sh"
+    "dropbear-2026.92.sh"
     "metalog-20260221.sh"
     "dnsmasq-2.93.sh"
     "lua-5.5.0.sh"

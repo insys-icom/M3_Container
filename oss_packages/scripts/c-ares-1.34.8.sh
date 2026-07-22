@@ -1,17 +1,17 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="jansson-2.14.1"
+PKG_DIR="c-ares-1.34.8"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://github.com/akheron/jansson/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/c-ares/c-ares/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="2521cd51a9641d7a4e457f7215a4cd5bb176f690bc11715ddeec483e85d9e2b3"
+PKG_CHECKSUM="c222b6d681096f9444d2c4863d2c1174019e27cacca0a4a5c114d36dd7d7bf78"
 
 
 
@@ -29,12 +29,11 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        LDFLAGS="${M3_LDFLAGS}" \
         CFLAGS="${M3_CFLAGS}" \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --enable-shared \
-        --disable-windows-cryptoapi \
+        LDFLAGS="${M3_LDFLAGS}" \
+        --disable-tests \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --prefix="" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
@@ -50,7 +49,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

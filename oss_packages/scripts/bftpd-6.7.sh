@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="bftpd-6.6"
+PKG_DIR="bftpd-6.7"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://sourceforge.net/projects/bftpd/files/bftpd/${PKG_DIR}/${PKG_ARCHIVE_FILE}/download"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="a867ba93a608cccb60944e1fae00e52b463f416b09235f87a31c023b296ac12e"
+PKG_CHECKSUM="40317957c3667fded7541ff4b0f44328573827ef0315519a44ca1b627f5eafb2"
 
 
 

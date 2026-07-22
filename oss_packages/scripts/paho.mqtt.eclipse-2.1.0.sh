@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="paho.mqtt.python-1.6.1"
+PKG_DIR="paho.mqtt.python-2.1.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-# PKG_DOWNLOAD="https://github.com/eclipse/paho.mqtt.python/archive/refs/tags/v${PKG_ARCHIVE_FILE#*-}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/eclipse-paho/paho.mqtt.python/archive/refs/tags/v${PKG_ARCHIVE_FILE#*-}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="6e35c1be242a901fc9c00bad7d37b5cc4a497f398dfceb4ed0d8018a959be650"
+PKG_CHECKSUM="3602ce9d1ada58b063f2052ff013ff8cdd06d66cef918d5f6d048b6f68ccf049"
 
 
 

@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="jansson-2.15.0"
+PKG_DIR="libevent-2.1.13-stable"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/akheron/jansson/archive/refs/tags/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/libevent/libevent/releases/download/release-${PKG_DIR#*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="73ac12bbc62ff536e40c7a3e15ed007993c5ca4d23897de23f1906f891b5a4bb"
+PKG_CHECKSUM="f7e9383b8c0baa81b687e5b5eecc01beefaf1b19b64151d95ed61647fe7a315c"
 
 
 
@@ -27,15 +27,16 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    autoreconf -i -f
     ./configure \
-        LDFLAGS="${M3_LDFLAGS}" \
-        CFLAGS="${M3_CFLAGS}" \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET} \
-        --enable-shared \
-        --disable-windows-cryptoapi \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CPPFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --prefix="" \
+        --disable-samples \
+        --disable-doxygen-html \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -43,7 +44,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
@@ -52,5 +53,6 @@ install_staging()
     cd "${PKG_BUILD_DIR}"
     make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
+
 
 . ${HELPERSDIR}/call_functions.sh

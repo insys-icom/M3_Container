@@ -319,7 +319,7 @@ file /usr/local/lib/python3.14/encodings/utf_8_sig.py ${STAGING_DIR}/usr/local/l
 file /usr/local/lib/python3.14/encodings/uu_codec.py ${STAGING_DIR}/usr/local/lib/python3.14/encodings/uu_codec.py 644 0 0
 file /usr/local/lib/python3.14/encodings/_win_cp_codecs.py ${STAGING_DIR}/usr/local/lib/python3.14/encodings/_win_cp_codecs.py 644 0 0
 file /usr/local/lib/python3.14/encodings/zlib_codec.py ${STAGING_DIR}/usr/local/lib/python3.14/encodings/zlib_codec.py 644 0 0
-file /usr/local/lib/python3.14/ensurepip/_bundled/pip-26.1.1-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/_bundled/pip-26.1.1-py3-none-any.whl 644 0 0
+file /usr/local/lib/python3.14/ensurepip/_bundled/pip-26.1.2-py3-none-any.whl ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/_bundled/pip-26.1.2-py3-none-any.whl 644 0 0
 file /usr/local/lib/python3.14/ensurepip/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/__init__.py 644 0 0
 file /usr/local/lib/python3.14/ensurepip/__main__.py ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/__main__.py 644 0 0
 file /usr/local/lib/python3.14/ensurepip/_uninstall.py ${STAGING_DIR}/usr/local/lib/python3.14/ensurepip/_uninstall.py 644 0 0

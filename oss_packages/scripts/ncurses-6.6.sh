@@ -7,8 +7,7 @@ PKG_DIR="ncurses-6.6"
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://invisible-island.net/archives/ncurses/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://invisible-island.net/archives/ncurses/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
 PKG_CHECKSUM="355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11"

@@ -7,29 +7,34 @@ from pymodbus.client import ModbusTcpClient, ModbusSerialClient
 def read_temperature():
     """Get a value from a temperature sensor via Modbus TCP"""
     client = ModbusTcpClient("192.168.1.3")
-    result = client.read_input_registers(0, count=2)
-    client.close()
 
-    temperature = client.convert_from_registers(result.registers, client.DATATYPE.INT32, "big") / 10
+    try:
+        result = client.read_input_registers(0, count=2)
+        client.close()
+    except Exception as e:
+        print(f"Could not read from Modbus TCP device: {str(e)}")
+        return 0
 
-    return temperature
+    return client.convert_from_registers(result.registers, client.DATATYPE.INT32, "big") / 10
 
 def set_display(value):
     """Set a value to be displayed on a Modbus RTU display"""
-    client = ModbusSerialClient(port="/devices/2_serial1",
-                                baudrate=9600, bytesize=8, parity="N", stopbits=1)
+    client = ModbusSerialClient(port="/devices/2_serial1", baudrate=9600, bytesize=8, parity="N", stopbits=1)
+    try:
+        # set dot in the middle of display
+        _ = client.write_register(18, 0, device_id=16)
 
-    # set dot in the middle of display
-    _ = client.write_register(18, 0, device_id=16)
+        # set data type to float
+        _ = client.write_register(17, 2, device_id=16)
 
-    # set data type to float
-    _ = client.write_register(17, 2, device_id=16)
+        # write to register as INT
+        payload = client.convert_to_registers(value, client.DATATYPE.FLOAT32, "big")
+        _ = client.write_registers(27, payload, device_id=16)
 
-    # write to register as INT
-    payload = client.convert_to_registers(value, client.DATATYPE.FLOAT32, "big")
-    _ = client.write_registers(27, payload, device_id=16)
-
-    client.close()
+        client.close()
+    except Exception as e:
+        client.close()
+        print(f"Could not write to Modbus RTU device: {str(e)}")
 
 def janitza():
     """Read frequency from a Janitza UMG 96RM-E"""

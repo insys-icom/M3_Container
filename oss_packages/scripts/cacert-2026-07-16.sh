@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="pymodbus-3.13.0"
+PKG_DIR="cacert-2026-07-16.pem"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v${PKG_ARCHIVE_FILE##*-}"
+PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="8be6ff99469ec8af50eed48d9cdea49003353b0e426948c979061b7cdc1570e6"
+PKG_CHECKSUM="3ff344e30b9b1ed2971044eabb438a08f2e2245ddb5f8ab1a3ad8b63ab4eaf91"
 
 
 
@@ -24,7 +24,12 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-
+unpack()
+{
+    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
+    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
+    cp "${PKG_ARCHIVE}" "${PKG_BUILD_DIR}"
+}
 
 configure()
 {
@@ -38,14 +43,13 @@ compile()
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    mkdir -p "${STAGING_DIR}/usr/share"
+    cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/pymodbus"*
+    rm -vf "${STAGING_DIR}/usr/share/cacert.pem"
 }
 
 . ${HELPERSDIR}/call_functions.sh

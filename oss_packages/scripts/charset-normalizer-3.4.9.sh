@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="cacert-2026-03-19.pem"
+PKG_DIR="charset_normalizer-3.4.9"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://curl.se/ca/${PKG_DIR}"
+PKG_DOWNLOAD="https://github.com/jawah/charset_normalizer/releases/download/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="b6e66569cc3d438dd5abe514d0df50005d570bfc96c14dca8f768d020cb96171"
+PKG_CHECKSUM="673611bbd43f0810bec0b0f028ddeaaa501190339cac411f347ac76917c3ae7b"
 
 
 
@@ -24,13 +24,6 @@ PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
-unpack()
-{
-    ! [ -e "${PKG_BUILD_DIR}" ] && mkdir -p "${PKG_BUILD_DIR}"
-    ! [ -e "${TARGET_DIR}" ] && mkdir -p "${TARGET_DIR}"
-    cp "${PKG_ARCHIVE}" "${PKG_BUILD_DIR}"
-}
-
 configure()
 {
     true
@@ -43,13 +36,14 @@ compile()
 
 install_staging()
 {
-    mkdir -p "${STAGING_DIR}/usr/share"
-    cp "${PKG_BUILD_DIR}/${PKG_DIR}" "${STAGING_DIR}/usr/share/cacert.pem" || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    cd "${PKG_BUILD_DIR}"
+    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
+    cp -a "${PKG_BUILD_DIR}/src/charset_normalizer" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -vf "${STAGING_DIR}/usr/share/cacert.pem"
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/charset_normalizer"
 }
 
 . ${HELPERSDIR}/call_functions.sh

@@ -1,5 +1,5 @@
 #!/bin/sh
 . /etc/profile
 
-wget -O - http://localhost | grep 'Welcome to Apache 2 with PHP support'
+wget --no-check-certificate -O - https://localhost | grep 'Welcome to Apache 2 with PHP support'
 exit $?

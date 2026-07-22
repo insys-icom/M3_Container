@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="stunnel-5.78"
+PKG_DIR="expat-2.8.2"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.stunnel.org/downloads/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_8_2/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="8727e53bb8b7528f850327a2a149158422c02183bc120d1d733cc65b1e2c349d"
+PKG_CHECKSUM="3ad89b8588e6644bd4e49981480d48b21289eebbcd4f0a1a4afb1c29f99b6ab4"
 
 
 
@@ -28,15 +28,14 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
+        PKG_CONFIG=pkg-config \
+        LIBFFI_LIBS="-lffi" \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET}  \
         --prefix="" \
-        --disable-systemd \
-        --disable-fips \
-        --disable-libwrap \
-        --with-ssl="${STAGING_DIR}" \
+        --enable-shared \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -44,14 +43,14 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

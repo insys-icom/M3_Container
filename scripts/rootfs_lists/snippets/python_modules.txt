@@ -68,11 +68,13 @@ file /usr/local/lib/python3.14/site-packages/MAKE_RELEASE.rst ${STAGING_DIR}/usr
 file /usr/local/lib/python3.14/site-packages/MANIFEST.in ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/MANIFEST.in 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/__init__.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/client.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/client.py 644 0 0
+file /usr/local/lib/python3.14/site-packages/paho/mqtt/enums.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/enums.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/__init__.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/matcher.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/matcher.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/packettypes.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/packettypes.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/properties.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/properties.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/publish.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/publish.py 644 0 0
+file /usr/local/lib/python3.14/site-packages/paho/mqtt/py.typed ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/py.typed 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/reasoncodes.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/reasoncodes.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/subscribeoptions.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/subscribeoptions.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/paho/mqtt/subscribe.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/paho/mqtt/subscribe.py 644 0 0

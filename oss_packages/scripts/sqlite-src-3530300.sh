@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="c-ares-1.34.6"
+PKG_DIR="sqlite-src-3530300"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-#PKG_DOWNLOAD="https://c-ares.haxx.se/download/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.sqlite.org/2026/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="912dd7cc3b3e8a79c52fd7fb9c0f4ecf0aaa73e45efda880266a2d6e26b84ef5"
+PKG_CHECKSUM="bb80bf8a3bffc19241ce8aba5a4bc74e9c3980013cb0b5f0f0976a99516942af"
 
 
 
@@ -28,13 +27,15 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure \
-        CFLAGS="${M3_CFLAGS}" \
+    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
         LDFLAGS="${M3_LDFLAGS}" \
-        --disable-tests \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
+        --host=${M3_TARGET} \
         --prefix="" \
+        --disable-largefile \
+        --with-tempstore=yes \
+        --disable-readline \
+        --disable-tcl \
+        --disable-load-extension \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -49,7 +50,7 @@ compile()
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
