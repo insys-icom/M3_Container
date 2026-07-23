@@ -1,0 +1,2 @@
+dir /bin                     0755 0 0
+file /bin/container_pcap     ${STAGING_DIR}/bin/container_pcap 0755 0 0
