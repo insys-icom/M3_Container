@@ -25,8 +25,10 @@ PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
+
 {
-    true
+    # disable building plugins, we don't have sqlite
+    sed -i 's|DIRS=libcommon lib apps client plugins src|DIRS=libcommon lib apps client src|' "${PKG_BUILD_DIR}/Makefile"
 }
 
 compile()
@@ -42,11 +44,11 @@ compile()
             "${M3_MAKEFLAGS}" \
             WITH_UUID=no \
             WITH_EC=yes \
-            WITH_DOCS:=no \
-            WITH_EDITLINE:=no \
-            WITH_WEBSOCKETS:=yes \
-            WITH_HTTP_API:=no \
-            WITH_SQLITE:=yes \
+            WITH_DOCS=no \
+            WITH_EDITLINE=no \
+            WITH_WEBSOCKETS=yes \
+            WITH_HTTP_API=no \
+            WITH_SQLITE=no \
             DESTDIR="${PKG_INSTALL_DIR}" install \
             || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
@@ -63,11 +65,11 @@ install_staging()
             "${M3_MAKEFLAGS}" \
             WITH_UUID=no \
             WITH_EC=yes \
-            WITH_DOCS:=no \
-            WITH_EDITLINE:=no \
-            WITH_WEBSOCKETS:=yes \
-            WITH_HTTP_API:=no \
-            WITH_SQLITE:=yes \
+            WITH_DOCS=no \
+            WITH_EDITLINE=no \
+            WITH_WEBSOCKETS=yes \
+            WITH_HTTP_API=no \
+            WITH_SQLITE=no \
             DESTDIR="${STAGING_DIR}" install \
             || exit_failure "failed to install ${PKG_DIR}"
 }
