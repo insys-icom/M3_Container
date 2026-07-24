@@ -33,7 +33,9 @@ unpack()
     [ -d "${PKG_BUILD_DIR}" ] || exit_failure "${PKG_BUILD_DIR} was not found in archive"
 
     rm -Rf "${PKG_BUILD_DIR}"
-    mv $(echo "${PKG_BUILD_DIR}" | cut -d'-' -f1) "${PKG_BUILD_DIR}"
+
+    DIR=$(echo "${PKG_DIR}" | cut -d'-' -f1)
+    mv "${BUILD_DIR}/${DIR}" "${PKG_BUILD_DIR}"
     copy_overlay
 }
 
