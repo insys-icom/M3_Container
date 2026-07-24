@@ -143,7 +143,6 @@ file /lib/libcjson.so.1               ${STAGING_DIR}/lib/libcjson.so.1          
 file /lib/libwebsockets.so.19         ${STAGING_DIR}/lib/libwebsockets.so.19         0755 0 0
 file /lib/libmosquitto.so.1           ${STAGING_DIR}/usr/local/lib/libmosquitto.so   0755 0 0
 file /lib/libmosquittopp.so.1         ${STAGING_DIR}/usr/local/lib/libmosquittopp.so 0755 0 0
-file /lib/mosquitto_dynamic_security.so ${STAGING_DIR}/usr/local/lib/mosquitto_dynamic_security.so 0755 0 0
 file /lib/libssl.so.3                 ${STAGING_DIR}/lib/libssl.so                   0644 0 0
 file /lib/libcrypto.so.3              ${STAGING_DIR}/lib/libcrypto.so                0644 0 0
 file /lib/libcrypt.so.1               ${STAGING_DIR}/lib/libcrypt.so.1               0755 0 0
