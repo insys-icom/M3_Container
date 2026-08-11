@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="metalog-20260221"
+PKG_DIR="metalog-20260811"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 PKG_DOWNLOAD="https://github.com/hvisage/metalog/archive/refs/tags/${PKG_ARCHIVE_FILE#*-}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="74758d711cf264aa8eb78caf4887998cb7bea0876c34d8ec19bd59fb8991349f"
+PKG_CHECKSUM="6d6f38617927896139f54819cdda4a9f8fe56f5de80fd9b59adefb3478a23729"
 
 
 

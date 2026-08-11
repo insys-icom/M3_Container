@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="dropbear-2026.92"
+PKG_DIR="dropbear-2026.94"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.bz2"
 PKG_DOWNLOAD="https://matt.ucc.asn.au/dropbear/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="91dcb5234de8dea68dd82c55411c9fc986b457ab58372a780ee8a870419c2f7e"
+PKG_CHECKSUM="e098034a843699200c8c977a991fff73159735bf795d5f72ef672c41a6b1ae81"
 
 
 

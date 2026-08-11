@@ -24,8 +24,8 @@ PACKAGES_2=(
 )
 PACKAGES_3=(
     "busybox-1.38.0.sh"
-    "dropbear-2026.92.sh"
-    "metalog-20260221.sh"
+    "dropbear-2026.94.sh"
+    "metalog-20260811.sh"
     "apr-util-1.6.3.sh"
     "sqlite-src-3530300.sh"
     "ncurses-6.6.sh"

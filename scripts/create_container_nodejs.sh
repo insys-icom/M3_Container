@@ -21,8 +21,8 @@ PACKAGES_2=(
 )
 PACKAGES_3=(
     "busybox-1.38.0.sh"
-    "dropbear-2026.92.sh"
-    "metalog-20260221.sh"
+    "dropbear-2026.94.sh"
+    "metalog-20260811.sh"
     "libssh2-1.11.1.sh"
     "ncurses-6.6.sh"
 )

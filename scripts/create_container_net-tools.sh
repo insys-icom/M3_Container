@@ -26,8 +26,8 @@ PACKAGES_2=(
 )
 PACKAGES_3=(
     "busybox-1.38.0.sh"
-    "dropbear-2026.92.sh"
-    "metalog-20260221.sh"
+    "dropbear-2026.94.sh"
+    "metalog-20260811.sh"
     "dnsmasq-2.93.sh"
     "openvpn-2.7.5.sh"
     "tcpdump-4.99.6.sh"
