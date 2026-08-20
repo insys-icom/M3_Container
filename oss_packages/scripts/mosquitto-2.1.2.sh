@@ -25,7 +25,6 @@ PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
 PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 
 configure()
-
 {
     # disable building plugins, we don't have sqlite
     sed -i 's|DIRS=libcommon lib apps client plugins src|DIRS=libcommon lib apps client src|' "${PKG_BUILD_DIR}/Makefile"
