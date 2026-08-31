@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="php-8.5.8"
+PKG_DIR="php-8.5.10"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://www.php.net/distributions/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="58910198d19e873048fe87cdfe16bc790025417ede3d1651bfa1c4b533d573f2"
+PKG_CHECKSUM="6a8bebaa4d5a979a38db29a9373e9851f60c6b11f72172c585947e78f3081957"
 
 
 

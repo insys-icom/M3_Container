@@ -1,24 +1,24 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="expat-2.8.2"
+PKG_DIR="libffi-3.8.0"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_8_2/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/libffi/libffi/releases/download/v${PKG_DIR#*-}/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="3ad89b8588e6644bd4e49981480d48b21289eebbcd4f0a1a4afb1c29f99b6ab4"
+PKG_CHECKSUM="7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${HELPERSDIR}/functions.sh
+. "${TOPDIR}"/scripts/common_settings.sh
+. "${HELPERSDIR}"/functions.sh
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -30,12 +30,9 @@ configure()
     ./configure \
         CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        PKG_CONFIG=pkg-config \
-        LIBFFI_LIBS="-lffi" \
-        --target=${M3_TARGET} \
-        --host=${M3_TARGET}  \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --prefix="" \
-        --enable-shared \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -43,14 +40,24 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install
 }
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}"
-    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    cd "${PKG_BUILD_DIR}/install"
+    cp -r ./lib/libffi.so* "${STAGING_LIB}"
+    cp -r ./lib64/libffi.so* "${STAGING_LIB}"
+    cp -r ./include/* "${STAGING_INCLUDE}"
+}
+
+uninstall_staging()
+{
+    cd "${PKG_BUILD_DIR}/install"
+    rm "${STAGING_LIB}"/libffi*
+    rm "${STAGING_INCLUDE}"/ffi.h
+    rm "${STAGING_INCLUDE}"/ffitarget.h
 }
 
 . ${HELPERSDIR}/call_functions.sh

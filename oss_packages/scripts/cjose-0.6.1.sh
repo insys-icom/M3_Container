@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="sqlite-src-3530300"
+PKG_DIR="cjose-0.6.1"
 
 # name of the archive in dl directory (use "none" if empty)
-PKG_ARCHIVE_FILE="${PKG_DIR}.zip"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://www.sqlite.org/2026/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/cisco/cjose/archive/refs/tags/${PKG_ARCHIVE_FILE##*-}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="bb80bf8a3bffc19241ce8aba5a4bc74e9c3980013cb0b5f0f0976a99516942af"
+PKG_CHECKSUM="208eaa0fa616b44a71d8aa155c40b14c7c9d0fa2bb91d1408824520d2fc1b4dd"
 
 
 
@@ -27,15 +27,13 @@ PKG_INSTALL_DIR="${PKG_BUILD_DIR}/install"
 configure()
 {
     cd "${PKG_BUILD_DIR}"
-    ./configure CFLAGS="${M3_CFLAGS} -pthread -ldl" \
-        LDFLAGS="${M3_LDFLAGS}" \
-        --host=${M3_TARGET} \
+    ./configure \
+        CROSS_COMPILE="${M3_CROSS_COMPILE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE} -Wno-error=deprecated-declarations" \
+        LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        --target="${M3_TARGET}" \
+        --host="${M3_TARGET}" \
         --prefix="" \
-        --disable-largefile \
-        --with-tempstore=yes \
-        --disable-readline \
-        --disable-tcl \
-        --disable-load-extension \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -43,7 +41,7 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
     make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 

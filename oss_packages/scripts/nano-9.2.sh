@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="nano-9.1"
+PKG_DIR="nano-9.2"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
@@ -10,7 +10,7 @@ PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 PKG_DOWNLOAD="https://www.nano-editor.org/dist/v9/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="5f47764274cb7532349ce0aa20ec10f1e8e851a6e9fa3eb66812c43d196db042"
+PKG_CHECKSUM="05ecb99247b782e8a5b3a25ed4101dd034b0236902f7449bc9795b717642f7e9"
 
 
 

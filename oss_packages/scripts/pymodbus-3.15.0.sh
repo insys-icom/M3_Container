@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="idna-3.18"
+PKG_DIR="pymodbus-3.15.0"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/kjd/idna/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/pymodbus-dev/pymodbus/archive/refs/tags/v${PKG_ARCHIVE_FILE##*-}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="ffb385a7e039654cef1ab9ef32c6fafe283c0c0467bba1d9029738ce4a14a848"
+PKG_CHECKSUM="c9107fea58ea8ab8b9a29de3c34e0b4b2421a85bedc8a4900c91f1eed081bcc5"
 
 
 
@@ -40,12 +40,12 @@ install_staging()
 {
     cd "${PKG_BUILD_DIR}"
     mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/idna" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
+    cp -a "${PKG_BUILD_DIR}/"* "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
 }
 
 uninstall_staging()
 {
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/idna"
+    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/pymodbus"*
 }
 
 . ${HELPERSDIR}/call_functions.sh

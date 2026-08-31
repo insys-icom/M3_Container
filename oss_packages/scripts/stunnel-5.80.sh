@@ -1,17 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="libffi-3.5.0"
+PKG_DIR="stunnel-5.80"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://github.com/libffi/libffi/releases/download/v${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://www.stunnel.org/downloads/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="8c72678628a5dd8782f08ad421d5a441e42c1c5c1b33e0bc211cbfcf1f3b3978"
+PKG_CHECKSUM="6d0841d48de07cbbaf4a055919065bf7bb5ebc63cc15c97a2c76caa2bf285513"
 
 
 
@@ -29,11 +28,15 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
         --target="${M3_TARGET}" \
         --host="${M3_TARGET}" \
         --prefix="" \
+        --disable-systemd \
+        --disable-fips \
+        --disable-libwrap \
+        --with-ssl="${STAGING_DIR}" \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -41,24 +44,14 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make "${M3_MAKEFLAGS}" || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install
+    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
 }
 
 install_staging()
 {
-    cd "${PKG_BUILD_DIR}/install"
-    cp -r ./lib/libffi.so* "${STAGING_LIB}"
-    cp -r ./lib64/libffi.so* "${STAGING_LIB}"
-    cp -r ./include/* "${STAGING_INCLUDE}"
-}
-
-uninstall_staging()
-{
-    cd "${PKG_BUILD_DIR}/install"
-    rm "${STAGING_LIB}"/libffi*
-    rm "${STAGING_INCLUDE}"/ffi.h
-    rm "${STAGING_INCLUDE}"/ffitarget.h
+    cd "${PKG_BUILD_DIR}"
+    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

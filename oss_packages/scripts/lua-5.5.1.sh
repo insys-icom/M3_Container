@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="charset_normalizer-3.4.9"
+PKG_DIR="lua-5.5.1"
 
 # name of the archive in dl directory (use "none" if empty)
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
 
 # download link for the sources to be stored in dl directory (use "none" if empty)
-PKG_DOWNLOAD="https://github.com/jawah/charset_normalizer/releases/download/${PKG_DIR##*-}/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://lua.org/ftp/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory (use "none" if empty)
-PKG_CHECKSUM="673611bbd43f0810bec0b0f028ddeaaa501190339cac411f347ac76917c3ae7b"
+PKG_CHECKSUM="1c4b4068d67061f2a2231ad2b5422e77acea1487ea9890f6320af614f4373dce"
 
 
 
@@ -31,19 +31,24 @@ configure()
 
 compile()
 {
-    true
+    copy_overlay
+    cd "${PKG_BUILD_DIR}"
+    make "${M3_MAKEFLAGS}" \
+        CC="${M3_CROSS_COMPILE}gcc" \
+        CFLAGS="-Wall -Wextra -fPIC ${M3_CFLAGS}" \
+        LUA_LIBS="" \
+        SYSCFLAGS="-DLUA_USE_LINUX" \
+        SYSLDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
+        AR="${AR} rcu" \
+        RANLIB="${RANLIB}" \
+        NM="${NM}" || exit_failure "failed to build ${PKG_DIR}"
+    make local
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    mkdir -p "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages"
-    cp -a "${PKG_BUILD_DIR}/src/charset_normalizer" "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/"
-}
-
-uninstall_staging()
-{
-    rm -rf "${STAGING_DIR}/usr/local/lib/${PYTHON_VERSION}/site-packages/charset_normalizer"
+    make INSTALL_TOP="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${STAGING_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh

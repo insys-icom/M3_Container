@@ -37,13 +37,17 @@ file /usr/local/lib/python3.14/site-packages/certifi/__init__.py ${STAGING_DIR}/
 file /usr/local/lib/python3.14/site-packages/CHANGELOG.rst ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/CHANGELOG.rst 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/api.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/api.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/cd.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/cd.py 644 0 0
+file /usr/local/lib/python3.14/site-packages/charset_normalizer/cd.pyx ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/cd.pyx 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/cli/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/cli/__init__.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/cli/__main__.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/cli/__main__.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/constant.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/constant.py 644 0 0
+file /usr/local/lib/python3.14/site-packages/charset_normalizer/_cython_compat.pxd ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/_cython_compat.pxd 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/__init__.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/__init__.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/legacy.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/legacy.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/__main__.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/__main__.py 644 0 0
+file /usr/local/lib/python3.14/site-packages/charset_normalizer/md.pxd ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/md.pxd 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/md.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/md.py 644 0 0
+file /usr/local/lib/python3.14/site-packages/charset_normalizer/md.pyx ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/md.pyx 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/models.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/models.py 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/py.typed ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/py.typed 644 0 0
 file /usr/local/lib/python3.14/site-packages/charset_normalizer/utils.py ${STAGING_DIR}/usr/local/lib/python3.14/site-packages/charset_normalizer/utils.py 644 0 0

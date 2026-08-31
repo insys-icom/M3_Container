@@ -4,22 +4,24 @@ HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
 . ${TOPDIR}/scripts/common_settings.sh
 
+VERSION="22.23.2"
+
 # name of directory after extracting the archive in working directory
-[ "${ARCH}" == "armv7" ]   && PKG_DIR="node-v22.21.1-linux-armv7l"
-[ "${ARCH}" == "aarch64" ] && PKG_DIR="node-v22.21.1-linux-arm64"
-[ "${ARCH}" == "amd64" ]   && PKG_DIR="node-v22.21.1-linux-x64"
+[ "${ARCH}" == "armv7" ]   && PKG_DIR="node-v${VERSION}-linux-armv7l"
+[ "${ARCH}" == "aarch64" ] && PKG_DIR="node-v${VERSION}-linux-arm64"
+[ "${ARCH}" == "amd64" ]   && PKG_DIR="node-v${VERSION}-linux-x64"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-#PKG_DOWNLOAD="https://nodejs.org/dist/v22.13.0/${PKG_ARCHIVE_FILE}"
-PKG_DOWNLOAD="https://m3-container.net/M3_Container/oss_packages/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://nodejs.org/dist/v${VERSION}/${PKG_ARCHIVE_FILE}"
+
 
 # md5 checksum of archive in dl directory
-[ "${ARCH}" == "armv7" ]   && PKG_CHECKSUM="69faec17156bc240a7e7590bcfb236194e4c09412387ac94318e8b30f72155e0"
-[ "${ARCH}" == "aarch64" ] && PKG_CHECKSUM="e660365729b434af422bcd2e8e14228637ecf24a1de2cd7c916ad48f2a0521e1"
-[ "${ARCH}" == "amd64" ]   && PKG_CHECKSUM="680d3f30b24a7ff24b98db5e96f294c0070f8f9078df658da1bce1b9c9873c88"
+[ "${ARCH}" == "armv7" ]   && PKG_CHECKSUM="ef8f26a3de19acd8c23548e6c3cfc2052610b0e67abb5fd64dbd92c8b1c1245b"
+[ "${ARCH}" == "aarch64" ] && PKG_CHECKSUM="fff4078c5def658577f92c88db7db3bc0072924bfb93fe52c1e744a54e94abb8"
+[ "${ARCH}" == "amd64" ]   && PKG_CHECKSUM="d60acfe00a2932254bb0ad20e01b0d74397a0875595de719654b214f4b03f307"
 
 . ${HELPERSDIR}/functions.sh
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"

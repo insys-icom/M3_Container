@@ -1,24 +1,24 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="stunnel-5.79"
+PKG_DIR="expat-2.8.3"
 
 # name of the archive in dl directory
-PKG_ARCHIVE_FILE="${PKG_DIR}.tar.gz"
+PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://www.stunnel.org/downloads/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_8_3/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="8ea0de6e5ea76f38ea987fa831c7fd47f7a1f1e7dd465fd6fa8622edf30d3a45"
+PKG_CHECKSUM="f6256df90c906773d344da084402b7d3e4f22ed41b1a59c989098a83d3ea0c85"
 
 
 
 SCRIPTSDIR=$(dirname $0)
 HELPERSDIR="${SCRIPTSDIR}/helpers"
 TOPDIR=$(realpath ${SCRIPTSDIR}/../..)
-. ${TOPDIR}/scripts/common_settings.sh
-. ${HELPERSDIR}/functions.sh
+. "${TOPDIR}"/scripts/common_settings.sh
+. "${HELPERSDIR}"/functions.sh
 PKG_ARCHIVE="${DOWNLOADS_DIR}/${PKG_ARCHIVE_FILE}"
 PKG_SRC_DIR="${SOURCES_DIR}/${PKG_DIR}"
 PKG_BUILD_DIR="${BUILD_DIR}/${PKG_DIR}"
@@ -28,15 +28,14 @@ configure()
 {
     cd "${PKG_BUILD_DIR}"
     ./configure \
-        CFLAGS="${M3_CFLAGS} -L${STAGING_LIB} -I${STAGING_INCLUDE}" \
+        CFLAGS="${M3_CFLAGS} -I${STAGING_INCLUDE}" \
         LDFLAGS="${M3_LDFLAGS} -L${STAGING_LIB}" \
-        --target="${M3_TARGET}" \
-        --host="${M3_TARGET}" \
+        PKG_CONFIG=pkg-config \
+        LIBFFI_LIBS="-lffi" \
+        --target=${M3_TARGET} \
+        --host=${M3_TARGET}  \
         --prefix="" \
-        --disable-systemd \
-        --disable-fips \
-        --disable-libwrap \
-        --with-ssl="${STAGING_DIR}" \
+        --enable-shared \
         || exit_failure "failed to configure ${PKG_DIR}"
 }
 
@@ -44,14 +43,14 @@ compile()
 {
     copy_overlay
     cd "${PKG_BUILD_DIR}"
-    make ${M3_MAKEFLAGS} || exit_failure "failed to build ${PKG_DIR}"
-    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to compile ${PKG_DIR}"
+    make ${M3_MAKEFLAGS} V=1 || exit_failure "failed to build ${PKG_DIR}"
+    make DESTDIR="${PKG_INSTALL_DIR}" install || exit_failure "failed to install ${PKG_DIR} to ${PKG_INSTALL_DIR}"
 }
 
 install_staging()
 {
     cd "${PKG_BUILD_DIR}"
-    make -i DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
+    make DESTDIR="${STAGING_DIR}" install || exit_failure "failed to install ${PKG_DIR}"
 }
 
 . ${HELPERSDIR}/call_functions.sh
