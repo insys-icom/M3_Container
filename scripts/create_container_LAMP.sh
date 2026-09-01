@@ -12,13 +12,13 @@ PACKAGES_1=(
     "tzdb-2026c.sh"
 )
 PACKAGES_2=(
-    "pcre2-10.47.sh"
+    "pcre2-10.48.sh"
     "openssl-3.6.4.sh"
     "apr-1.7.6.sh"
     "libuuid-1.0.3.sh"
     "nghttp2-1.70.0.sh"
     "jansson-2.15.1.sh"
-    "expat-2.8.3.sh"
+    "expat-2.8.4.sh"
     "libxml2-v2.9.14.sh"
     "mcip-tool-v4.sh"
 )

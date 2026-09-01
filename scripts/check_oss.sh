@@ -19,7 +19,7 @@ wget_check "cJSON"      "https://api.github.com/repos/DaveGamble/cJSON/releases/
 wget_check "curl"       "https://curl.haxx.se/download.html"                                              "Release date: </td><td> <b><b>2026-06-24"
 wget_check "dnsmasq"    "https://www.thekelleys.org.uk/dnsmasq"                                           "LATEST_IS_2.93"
 wget_check "dropbear"   "https://matt.ucc.asn.au/dropbear/dropbear.html"                                  "Latest is 2026.94"
-wget_check "expat"      "https://api.github.com/repos/libexpat/libexpat/releases/latest"                  '"tag_name": "R_2_8_3"'
+wget_check "expat"      "https://api.github.com/repos/libexpat/libexpat/releases/latest"                  '"tag_name": "R_2_8_4"'
 wget_check "httpd"      "https://httpd.apache.org"                                                        "Apache httpd 2.4.68 Released"
 wget_check "idna"       "https://api.github.com/repos/kjd/idna/releases/latest"                           '"tag_name": "v3.19"'
 wget_check "iperf"      "https://api.github.com/repos/esnet/iperf/releases/latest"                        '"tag_name": "3.21"'
@@ -40,10 +40,10 @@ wget_check "ncurses"    "https://invisible-island.net/ncurses/announce.html"    
 wget_check "nghttp2"    "https://api.github.com/repos/nghttp2/nghttp2/releases/latest"                    '"tag_name": "v1.70.0"'
 wget_check "nmap"       "https://nmap.org/dist"                                                           "The latest Nmap release is version 7.99"
 wget_check "node"       "https://nodejs.org/en/download/prebuilt-binaries"                                "Download Node.js v22.21.1"
-wget_check "openssl"    "https://www.openssl.org/source"                                                  "openssl-3.6.4.sh.tar.gz"
+wget_check "openssl"    "https://www.openssl.org/source"                                                  "openssl-3.6.4.tar.gz"
 wget_check "openvpn"    "https://api.github.com/repos/OpenVPN/openvpn/releases/latest"                    '"tag_name": "v2.7.6"'
 wget_check "paho-mqtt"  "https://api.github.com/repos/eclipse-paho/paho.mqtt.python/releases/latest"      '"tag_name": "v2.1.0"'
-wget_check "pcre2"      "https://api.github.com/repos/PhilipHazel/pcre2/releases/latest"                  '"tag_name": "pcre2-10.47"'
+wget_check "pcre2"      "https://api.github.com/repos/PhilipHazel/pcre2/releases/latest"                  '"tag_name": "pcre2-10.48"'
 wget_check "php"        "https://www.php.net/downloads.php?source=Y"                                       "Current Stable</span>\n            PHP 8.5.10"
 wget_check "pymodbus"   "https://api.github.com/repos/pymodbus-dev/pymodbus/releases/latest"              '"tag_name": "v3.15.0"'
 wget_check "pyserial"   "https://api.github.com/repos/pyserial/pyserial/releases/latest"                  '"tag_name": "v3.5"'
@@ -54,7 +54,7 @@ wget_check "socat"      "http://www.dest-unreach.org/socat"                     
 wget_check "sqlite-src" "https://www.sqlite.org/download.html"                                            "sqlite-src-3530400.zip"
 wget_check "stunnel"    "https://www.stunnel.org/downloads.html"                                          "stunnel-5.80.tar.gz"
 wget_check "tcpdump"    "https://www.tcpdump.org/index.html#latest-releases"                              ">tcpdump-4.99.6.tar.xz</a>"
-wget_check "timezone"   "https://www.iana.org/time-zones"                                                 "Released 2026-07-08"
+wget_check "timezone"   "https://www.iana.org/time-zones"                                                 "2026c"
 wget_check "urllib3"    "https://api.github.com/repos/urllib3/urllib3/releases/latest"                    '"tag_name": "2.7.0"'
 wget_check "wpa_suppl"  "https://w1.fi//wpa_supplicant/"                                                   "wpa_supplicant-2.12.tar.gz"
 wget_check "xz"         "https://tukaani.org/xz"                                                           "5.8.3 \(2026-03-31\)"

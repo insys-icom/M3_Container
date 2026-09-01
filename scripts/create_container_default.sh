@@ -13,7 +13,7 @@ PACKAGES_1=(
 )
 PACKAGES_2=(
     "lz4-1.10.0.sh"
-    "pcre2-10.47.sh"
+    "pcre2-10.48.sh"
     "openssl-3.6.4.sh"
     "mcip-tool-v4.sh"
 )

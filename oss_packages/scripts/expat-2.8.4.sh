@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # name of directory after extracting the archive in working directory
-PKG_DIR="expat-2.8.3"
+PKG_DIR="expat-2.8.4"
 
 # name of the archive in dl directory
 PKG_ARCHIVE_FILE="${PKG_DIR}.tar.xz"
 
 # download link for the sources to be stored in dl directory
-PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_8_3/${PKG_ARCHIVE_FILE}"
+PKG_DOWNLOAD="https://github.com/libexpat/libexpat/releases/download/R_2_8_4/${PKG_ARCHIVE_FILE}"
 
 # md5 checksum of archive in dl directory
-PKG_CHECKSUM="f6256df90c906773d344da084402b7d3e4f22ed41b1a59c989098a83d3ea0c85"
+PKG_CHECKSUM="656ae1cc8da3b4ea513bb4e254f33e6243938084c0ec6239da873376b09985a7"
 
 
 
